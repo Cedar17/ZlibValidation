@@ -1,18 +1,35 @@
+# CMakeLists.txt
 cmake_minimum_required(VERSION 3.25)
 project(ZlibValidation
     LANGUAGES CXX
-    VERSION 1.0.0
+    VERSION 0.1.0
+)
+
+# Define author information (CMake 3.21+)
+set(PROJECT_AUTHOR "Song Zixuan" CACHE STRING "Project maintainer")
+set(PROJECT_CONTACT "cedar@zju.edu.cn" CACHE STRING "Contact info")
+
+# Generate version header file
+string(TIMESTAMP BUILD_TIMESTAMP "%Y-%m-%d %H:%M:%S")
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/version.h.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/version.h
 )
 
 # Set C++ standard to C++20
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Set default generator to Unix Makefiles (可选，如果需要)
+# Set the default generator to Unix Makefiles. This is optional and can be modified if needed.
+# The CACHE INTERNAL "" FORCE parameters ensure that this setting is applied globally and cannot be overridden by the user.
 set(CMAKE_GENERATOR "Unix Makefiles" CACHE INTERNAL "" FORCE)
 
-# Enable verbose output from the makefile (可选，用于调试)
+# Enable verbose output from the makefile. This is optional and useful for debugging purposes.
+# When enabled, the makefile will print detailed information about the build process.
 set(CMAKE_VERBOSE_MAKEFILE ON)
+
+# Enable detailed output from CMake during the configuration process
+set(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "ON" FORCE)
 
 # Fetch Content for dependencies
 include(FetchContent)
@@ -35,6 +52,13 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(spdlog_proj)
 
+# Fetch nonlohmann/json
+FetchContent_Declare(
+    json 
+    URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
+)
+FetchContent_MakeAvailable(json)
+
 # Add target
 add_executable(zlibvalidation)
 target_sources(zlibvalidation PRIVATE src/main.cpp)
@@ -42,4 +66,9 @@ target_sources(zlibvalidation PRIVATE src/main.cpp)
 # Link libraries
 target_include_directories(zlibvalidation PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_directories(zlibvalidation PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib)
-target_link_libraries(zlibvalidation PRIVATE si2dr_liberty CLI11::CLI11 spdlog::spdlog)
+target_link_libraries(zlibvalidation PRIVATE 
+    si2dr_liberty
+    CLI11::CLI11 
+    spdlog::spdlog 
+    nlohmann_json::nlohmann_json
+)
