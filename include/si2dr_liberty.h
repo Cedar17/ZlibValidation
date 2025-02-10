@@ -202,7 +202,7 @@ typedef enum si2drErrorT
 	SI2DR_TRACE_FILES_CANNOT_BE_OPENED        = 3,
 	SI2DR_PIINIT_NOT_CALLED                   = 11,
 	SI2DR_SEMANTIC_ERROR                      = 12,
-    SI2DR_REFERENCE_ERROR                     = 13,
+	SI2DR_REFERENCE_ERROR                     = 13,
 	SI2DR_MAX_ERROR                           = 14
 } si2drErrorT;
 

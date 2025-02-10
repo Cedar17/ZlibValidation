@@ -59,9 +59,12 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(json)
 
+# Collect all source and header files
+file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
+file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
+
 # Add target
-add_executable(zlibvalidation)
-target_sources(zlibvalidation PRIVATE src/main.cpp)
+add_executable(zlibvalidation ${SOURCES} ${HEADERS})
 
 # Link libraries
 target_include_directories(zlibvalidation PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)

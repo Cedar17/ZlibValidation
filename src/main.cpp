@@ -5,137 +5,19 @@
 #include <string>
 
 #include "CLI/CLI.hpp"
-#include "spdlog/spdlog.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
-#include "spdlog/sinks/basic_file_sink.h"
-#include "si2dr_liberty.h"
 #include "nlohmann/json.hpp"
+#include "si2dr_liberty.h"
+#include "spdlog/sinks/basic_file_sink.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/spdlog.h"
 
+#include "lib_file.h"
 #include "version.h"
 
 void print_info() {
   spdlog::info("Version {}, Built: {}", APP_VERSION, BUILD_TIMESTAMP);
   spdlog::info("Author: {}, Email: {}", APP_AUTHOR, APP_CONTACT);
 }
-
-// Forward declarations
-class LibAttribute;
-class LibGroup;
-class LibFile;
-
-
-
-class LibFile {
-public:
-  std::string libname_;
-  int process_;
-  float voltage_;
-  int temperature_;
-
-  LibFile(const std::string &filename) : filename_(filename){
-    si2drPIInit(&err_);
-  }
-
-  ~LibFile() {
-    spdlog::info("Closing '{}' ...", filename_);
-    si2drPIQuit(&err_);
-  }
-
-  void read() {
-    spdlog::info("Reading '{}' ...", filename_);
-
-    auto start = std::chrono::high_resolution_clock::now();
-    si2drReadLibertyFile(const_cast<char *>(filename_.c_str()), &err_);
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> duration = end - start;
-
-    if (err_ == SI2DR_INVALID_NAME) {
-      spdlog::error("COULD NOT OPEN {} for parsing-- quitting...", filename_);
-      exit(301);
-    } else if (err_ == SI2DR_SYNTAX_ERROR) {
-      spdlog::error("Syntax Errors were detected in the input file!");
-      exit(401);
-    } else {
-      spdlog::info("Done. Read time: {:.2f} seconds", duration.count());
-    }
-  }
-
-  void parse() {
-    spdlog::info("Parsing the file...");
-
-    si2drGroupsIdT groups;
-    si2drGroupIdT group;
-    groups = si2drPIGetGroups(&err_);
-    while (!si2drObjectIsNull(group = si2drIterNextGroup(groups, &err_), &err_)) {
-      si2drNamesIdT gnames;
-      si2drStringT gname;
-
-      gnames = si2drGroupGetNames(group, &err_);
-      gname = si2drIterNextName(gnames, &err_);
-      si2drIterQuit(gnames, &err_);
-
-      if (gname) {
-        libname_ = gname;
-        spdlog::info("Library Name: {}", libname_);
-      } else {
-        spdlog::warn("Library Name: <NONAME>");
-      }
-
-      si2drGroupsIdT sub_groups;
-      si2drGroupIdT sub_group;
-      sub_groups = si2drGroupGetGroups(group, &err_);
-      while (!si2drObjectIsNull(sub_group = si2drIterNextGroup(sub_groups, &err_), &err_)) {
-        si2drStringT sub_group_type = si2drGroupGetGroupType(sub_group, &err_);
-        si2drNamesIdT sub_group_names = si2drGroupGetNames(sub_group, &err_);
-        si2drStringT sub_group_name = si2drIterNextName(sub_group_names, &err_);
-
-        si2drIterQuit(sub_group_names, &err_);
-        if (!strcmp(sub_group_type, "cell")) {
-          spdlog::debug("Cell Name: {}", sub_group_name);
-        }	else if (!strcmp(sub_group_type, "operating_conditions"))
-        {
-          spdlog::info("Operating Conditions: {}", sub_group_name);
-          // print all the attrs
-          si2drAttrsIdT attrs;
-          si2drAttrIdT attr;
-          attrs = si2drGroupGetAttrs(sub_group, &err_);
-          for (attr = si2drIterNextAttr(attrs, &err_);
-              !si2drObjectIsNull(attr, &err_);
-              attr = si2drIterNextAttr(attrs, &err_))
-          {
-            si2drAttrTypeT at = si2drAttrGetAttrType(attr, &err_);
-            si2drValuesIdT  vals;
-            si2drInt32T     intgr= si2drSimpleAttrGetInt32Value(attr,&err_);
-            si2drFloat64T   float64= si2drSimpleAttrGetFloat64Value(attr,&err_);
-            si2drStringT    string, nam= si2drAttrGetName(attr,&err_);
-            if (!strcmp(nam, "process"))
-              process_ = intgr;
-            if (!strcmp(nam, "temperature"))
-              temperature_ = intgr;
-            if (!strcmp(nam, "voltage"))
-              voltage_ = float64;
-          }
-          si2drIterQuit(attrs, &err_);
-          spdlog::info("Process: {}, Temperature: {}, Voltage: {}", process_, temperature_, voltage_);
-          continue;
-        }      
-      }
-      si2drIterQuit(sub_groups, &err_);
-    }
-    si2drIterQuit(groups, &err_);
-
-  }
-
-  void modify() {
-    spdlog::info("Modifying the file...");
-  }
-
-private:
-  std::string filename_;
-  si2drErrorT err_;
-};
-
-
 
 /**
  * @brief Sets up the logger with both console and file sinks.
@@ -153,7 +35,7 @@ void setup_logger() {
   auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>("logfile.log", true);
   file_sink->set_level(spdlog::level::debug);
 
-  std::vector<spdlog::sink_ptr> sinks {console_sink, file_sink};
+  std::vector<spdlog::sink_ptr> sinks{console_sink, file_sink};
   auto logger = std::make_shared<spdlog::logger>(APP_NAME, sinks.begin(), sinks.end());
   logger->set_level(spdlog::level::debug);
   spdlog::set_default_logger(logger);
