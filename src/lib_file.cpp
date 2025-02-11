@@ -1,8 +1,11 @@
-#include "lib_file.h"
-#include "lib_group.h"
-#include "iterators.h"
-#include "spdlog/spdlog.h"
 #include <chrono>
+#include <fstream>
+
+#include "spdlog/spdlog.h"
+
+#include "lib_file.hpp"
+#include "iterators.hpp"
+
 
 LibFile::LibFile(const std::string &filename) : filename_(filename) {
   si2drPIInit(&err_);
@@ -11,6 +14,60 @@ LibFile::LibFile(const std::string &filename) : filename_(filename) {
 LibFile::~LibFile() {
   spdlog::info("Closing '{}' ...", filename_);
   si2drPIQuit(&err_);
+}
+
+
+/*
+方括号 []：用于包含一组有序的值（数组）。
+数组中的每个值可以是任意类型的 JSON 值，包括对象、数组、字符串、数字、布尔值或 null。
+花括号 {}：用于包含一组键值对（对象）。
+对象中的每个键都是一个字符串，值可以是任意类型的 JSON 值，包括对象、数组、字符串、数字、布尔值或 null。
+*/
+json generateCellJson(LibGroup &cell_group, si2drErrorT &err) {
+  json cell_json;
+  si2drNamesIdT sub_group_names = cell_group.getNames();
+  si2drStringT sub_group_name = si2drIterNextName(sub_group_names, &err);
+  si2drIterQuit(sub_group_names, &err);
+
+  cell_json["cell_name"] = sub_group_name;
+
+  si2drAttrsIdT attrs = cell_group.getAttrs();
+  AttributesIterator attr_iter(attrs, err);
+  for (attr_iter.begin(); !attr_iter.end(); attr_iter.next()) {
+    LibAttribute libattr = attr_iter.get();
+    cell_json["attributes"][libattr.getName()] = {
+      // {"int", libattr.getInt()},
+      {"float", libattr.getFloat()},
+      {"string", libattr.getString()}
+    };
+  }
+  return cell_json;
+}
+
+
+/**
+ * @brief Writes the JSON representation of the library data to a file.
+ *
+ * This function serializes the internal JSON object, which includes
+ * process, temperature, and voltage data, and writes it to the specified
+ * file. If the file cannot be opened for writing, an error message is logged.
+ * Upon successful writing, an informational message is logged.
+ *
+ * @param filename The name of the file to which the JSON data will be written.
+ */
+void LibFile::writeJsonToFile(const std::string &filename) {
+  lib_json_["process"] = process_;
+  lib_json_["temperature"] = temperature_;
+  lib_json_["voltage"] = voltage_;
+
+  std::ofstream out(filename);
+  if (!out.is_open()) {
+    spdlog::error("Could not open file '{}' for writing", filename);
+    return;
+  }
+  out << lib_json_.dump(2);
+  out.close();
+  spdlog::info("JSON data successfully written to '{}'", filename);
 }
 
 
@@ -65,6 +122,9 @@ void LibFile::parse() {
 
       if (sub_group_type == "cell") {
         spdlog::debug("Cell Name: {}", sub_group_name);
+        // handle cell
+        json cell_json = generateCellJson(lib_sub_group, err_);
+        lib_json_["cells"].push_back(cell_json);
       } else if (sub_group_type == "operating_conditions") {
         spdlog::info("Operating Conditions: {}", sub_group_name);
         // print all the attrs
@@ -85,7 +145,6 @@ void LibFile::parse() {
           }
         }
         spdlog::info("Process: {}, Temperature: {}, Voltage: {}", process_, temperature_, voltage_);
-        continue;
       }
     }
   }

@@ -1,17 +1,14 @@
 // ./src/main.cpp
-#include <chrono>
-#include <iomanip>
 #include <iostream>
 #include <string>
 
 #include "CLI/CLI.hpp"
-#include "nlohmann/json.hpp"
 #include "si2dr_liberty.h"
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/spdlog.h"
 
-#include "lib_file.h"
+#include "lib_file.hpp"
 #include "version.h"
 
 void print_info() {
@@ -71,6 +68,7 @@ int main(int argc, char *argv[]) {
 
   if (mode == "parse") {
     libfile.parse();
+    libfile.writeJsonToFile(filename + ".json");
   } else if (mode == "modify") {
     libfile.modify();
   }

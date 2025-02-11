@@ -62,6 +62,7 @@ FetchContent_MakeAvailable(json)
 # Collect all source and header files
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
+file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp)
 
 # Add target
 add_executable(zlibvalidation ${SOURCES} ${HEADERS})

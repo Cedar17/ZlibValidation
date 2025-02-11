@@ -2,6 +2,7 @@
 #define LIB_ATTRIBUTE_H
 
 #include <string>
+
 #include "si2dr_liberty.h"
 
 class LibAttribute {

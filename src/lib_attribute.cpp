@@ -1,4 +1,4 @@
-#include "lib_attribute.h"
+#include "lib_attribute.hpp"
 
 LibAttribute::LibAttribute(si2drAttrIdT attr, si2drErrorT &err) : attr_(attr), err_(err) {}
 

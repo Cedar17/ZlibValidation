@@ -1,9 +1,10 @@
 #ifndef ITERATORS_H
 #define ITERATORS_H
 
-#include "lib_attribute.h"
-#include "lib_group.h"
 #include "si2dr_liberty.h"
+
+#include "lib_attribute.hpp"
+#include "lib_group.hpp"
 
 class GroupsIterator {
 public:
