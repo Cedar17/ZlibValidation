@@ -9,7 +9,7 @@ class LibGroup {
 public:
   LibGroup(si2drGroupIdT group, si2drErrorT &err);
   ~LibGroup();
-  si2drNamesIdT getNames();
+  std::string getName();
   std::string getType();
   si2drAttrsIdT getAttrs();
   si2drGroupsIdT getGroups();

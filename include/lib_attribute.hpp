@@ -10,7 +10,7 @@ public:
   LibAttribute(si2drAttrIdT attr, si2drErrorT &err);
   ~LibAttribute();
   std::string getName();
-  si2drAttrTypeT isComplex();
+  bool isComplex();
   si2drValuesIdT getValues();
   long int getInt();
   double getFloat();

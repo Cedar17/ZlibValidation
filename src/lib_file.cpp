@@ -3,8 +3,9 @@
 
 #include "spdlog/spdlog.h"
 
-#include "lib_file.hpp"
 #include "iterators.hpp"
+#include "json_utils.hpp"
+#include "lib_file.hpp"
 
 
 LibFile::LibFile(const std::string &filename) : filename_(filename) {
@@ -17,49 +18,18 @@ LibFile::~LibFile() {
 }
 
 
-/*
-方括号 []：用于包含一组有序的值（数组）。
-数组中的每个值可以是任意类型的 JSON 值，包括对象、数组、字符串、数字、布尔值或 null。
-花括号 {}：用于包含一组键值对（对象）。
-对象中的每个键都是一个字符串，值可以是任意类型的 JSON 值，包括对象、数组、字符串、数字、布尔值或 null。
-*/
-json generateCellJson(LibGroup &cell_group, si2drErrorT &err) {
-  json cell_json;
-  si2drNamesIdT sub_group_names = cell_group.getNames();
-  si2drStringT sub_group_name = si2drIterNextName(sub_group_names, &err);
-  si2drIterQuit(sub_group_names, &err);
-
-  cell_json["cell_name"] = sub_group_name;
-
-  si2drAttrsIdT attrs = cell_group.getAttrs();
-  AttributesIterator attr_iter(attrs, err);
-  for (attr_iter.begin(); !attr_iter.end(); attr_iter.next()) {
-    LibAttribute libattr = attr_iter.get();
-    cell_json["attributes"][libattr.getName()] = {
-      // {"int", libattr.getInt()},
-      {"float", libattr.getFloat()},
-      {"string", libattr.getString()}
-    };
-  }
-  return cell_json;
-}
-
 
 /**
- * @brief Writes the JSON representation of the library data to a file.
+ * @brief Writes the JSON data stored in the lib_json_ member to a file.
  *
- * This function serializes the internal JSON object, which includes
- * process, temperature, and voltage data, and writes it to the specified
- * file. If the file cannot be opened for writing, an error message is logged.
- * Upon successful writing, an informational message is logged.
+ * This function attempts to open the specified file for writing. If the file
+ * cannot be opened, an error message is logged. If the file is successfully
+ * opened, the JSON data is written to the file with an indentation of 2 spaces.
+ * After writing, the file is closed and a success message is logged.
  *
  * @param filename The name of the file to which the JSON data will be written.
  */
 void LibFile::writeJsonToFile(const std::string &filename) {
-  lib_json_["process"] = process_;
-  lib_json_["temperature"] = temperature_;
-  lib_json_["voltage"] = voltage_;
-
   std::ofstream out(filename);
   if (!out.is_open()) {
     spdlog::error("Could not open file '{}' for writing", filename);
@@ -71,6 +41,26 @@ void LibFile::writeJsonToFile(const std::string &filename) {
 }
 
 
+/**
+ * @brief Reads the Liberty file specified by the filename_ member variable.
+ *
+ * This function attempts to read a Liberty file and logs the process. It measures
+ * the time taken to read the file and logs any errors encountered during the read
+ * operation. If an error occurs, the function logs the error and terminates the program.
+ *
+ * @details
+ * - Logs the start of the read operation.
+ * - Measures the duration of the read operation.
+ * - Checks for specific errors (invalid name or syntax error) and logs them.
+ * - Terminates the program with specific exit codes if errors are detected.
+ * - Logs the completion of the read operation and the time taken.
+ *
+ * @note This function uses the spdlog library for logging and the si2drReadLibertyFile
+ * function for reading the Liberty file.
+ *
+ * @throws This function will terminate the program with exit codes 301 or 401
+ * if specific errors are encountered.
+ */
 void LibFile::read() {
   spdlog::info("Reading '{}' ...", filename_);
 
@@ -94,57 +84,51 @@ void LibFile::read() {
 void LibFile::parse() {
   spdlog::info("Parsing the file...");
   // Top level groups
-  si2drGroupsIdT groups = si2drPIGetGroups(&err_);
-  GroupsIterator group_iterator(groups, err_);
-  for (group_iterator.begin(); !group_iterator.end(); group_iterator.next()) {
-    LibGroup lib_group = group_iterator.get();
+  GroupsIterator group_iter(si2drPIGetGroups(&err_), err_);
+  for (group_iter.begin(); !group_iter.end(); group_iter.next()) {
+    LibGroup lib_group = group_iter.get();
   
-    si2drNamesIdT gnames = lib_group.getNames();
-    si2drStringT gname = si2drIterNextName(gnames, &err_);
-    si2drIterQuit(gnames, &err_);
-
-    if (gname) {
-      libname_ = gname;
+    if (lib_group.getName() != "") {
+      libname_ = lib_group.getName();
       spdlog::info("Library Name: {}", libname_);
     } else {
-      spdlog::info("Library Name: <NONAME>");
+      spdlog::warn("Library Name: <NONAME>");
     }
     // Second level groups
-    si2drGroupsIdT sub_groups = lib_group.getGroups();
-    GroupsIterator sub_group_iterator(sub_groups, err_);
-    for (sub_group_iterator.begin(); !sub_group_iterator.end(); sub_group_iterator.next()) {
-      LibGroup lib_sub_group = sub_group_iterator.get();
+    GroupsIterator sub_group_iter(lib_group.getGroups(), err_);
+    for (sub_group_iter.begin(); !sub_group_iter.end(); sub_group_iter.next()) {
+      LibGroup lib_sub_group = sub_group_iter.get();
 
       std::string sub_group_type = lib_sub_group.getType();
-      si2drNamesIdT sub_group_names = lib_sub_group.getNames();
-      si2drStringT sub_group_name = si2drIterNextName(sub_group_names, &err_);
-      si2drIterQuit(sub_group_names, &err_);
+      std::string sub_group_name = lib_sub_group.getName();
 
       if (sub_group_type == "cell") {
         spdlog::debug("Cell Name: {}", sub_group_name);
-        // handle cell
+        // Handle each cell
         json cell_json = generateCellJson(lib_sub_group, err_);
         lib_json_["cells"].push_back(cell_json);
       } else if (sub_group_type == "operating_conditions") {
         spdlog::info("Operating Conditions: {}", sub_group_name);
-        // print all the attrs
-        si2drAttrsIdT attrs = lib_sub_group.getAttrs();
-        AttributesIterator attr_iter(attrs, err_);
+        // Get PVT from Operating Conditions
+        AttributesIterator attr_iter(lib_sub_group.getAttrs(), err_);
         for (attr_iter.begin(); !attr_iter.end(); attr_iter.next()) {
-          LibAttribute libattr = attr_iter.get();
-          spdlog::debug("Attribute Name: {}", libattr.getName());
-          spdlog::debug("Int Value: {}", libattr.getInt());
-          spdlog::debug("Float Value: {}", libattr.getFloat());
-          spdlog::debug("String Value: {}", libattr.getString());
-          if (libattr.getName() == "process") {
-            process_ = libattr.getInt();
-          } else if (libattr.getName() == "temperature") {
-            temperature_ = libattr.getInt();
-          } else if (libattr.getName() == "voltage") {
-            voltage_ = libattr.getFloat();
+          LibAttribute lib_attr = attr_iter.get();
+          spdlog::debug("Attribute Name: {}", lib_attr.getName());
+          spdlog::debug("Int Value: {}", lib_attr.getInt());
+          spdlog::debug("Float Value: {}", lib_attr.getFloat());
+          spdlog::debug("String Value: {}", lib_attr.getString());
+          if (lib_attr.getName() == "process") {
+            process_ = lib_attr.getInt();
+            lib_json_["process"] = process_;
+          } else if (lib_attr.getName() == "voltage") {
+            voltage_ = lib_attr.getFloat();
+            lib_json_["voltage"] = voltage_;      
+          } else if (lib_attr.getName() == "temperature") {
+            temperature_ = lib_attr.getInt();
+            lib_json_["temperature"] = temperature_;
           }
         }
-        spdlog::info("Process: {}, Temperature: {}, Voltage: {}", process_, temperature_, voltage_);
+        spdlog::info("P: {}, V: {}, T: {}", process_, voltage_, temperature_);
       }
     }
   }

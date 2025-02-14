@@ -36,4 +36,22 @@ private:
   si2drErrorT &err_;
 };
 
+class ValuesIterator {
+public:
+  ValuesIterator(si2drValuesIdT values, si2drErrorT &err);
+  ~ValuesIterator();
+  void begin();
+  void next();
+  bool end();
+  
+  si2drValuesIdT values_;
+  si2drValueTypeT vtype_;
+  si2drInt32T int_;
+  si2drFloat64T float_;
+  si2drStringT str_;
+  si2drBooleanT bool_;
+  si2drExprT *exprp_;
+  si2drErrorT &err_;
+};
+
 #endif // ITERATORS_H

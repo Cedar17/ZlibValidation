@@ -9,7 +9,7 @@ std::string LibAttribute::getName() {
   return name ? std::string(name) : std::string();
 }
 
-si2drAttrTypeT LibAttribute::isComplex() { return si2drAttrGetAttrType(attr_, &err_); }
+bool LibAttribute::isComplex() { return si2drAttrGetAttrType(attr_, &err_) ? 1 : 0; }
 
 si2drValuesIdT LibAttribute::getValues() { return si2drComplexAttrGetValues(attr_, &err_); }
 

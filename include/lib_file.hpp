@@ -3,8 +3,8 @@
 
 #include <string>
 
-#include "si2dr_liberty.h"
 #include "nlohmann/json.hpp"
+#include "si2dr_liberty.h"
 
 using json = nlohmann::json;
 
@@ -25,7 +25,6 @@ private:
   float voltage_;
   int temperature_;
   json lib_json_;
-  json cells_json_;
 };
 
 #endif // LIB_FILE_H

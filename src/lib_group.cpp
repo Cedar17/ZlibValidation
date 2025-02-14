@@ -4,7 +4,12 @@ LibGroup::LibGroup(si2drGroupIdT group, si2drErrorT &err) : group_(group), err_(
 
 LibGroup::~LibGroup() {}
 
-si2drNamesIdT LibGroup::getNames() { return si2drGroupGetNames(group_, &err_); }
+std::string LibGroup::getName() { 
+  si2drNamesIdT names = si2drGroupGetNames(group_, &err_);
+  si2drStringT name = si2drIterNextName(names, &err_);
+  si2drIterQuit(names, &err_);
+  return name ? std::string(name) : std::string();
+}
 
 std::string LibGroup::getType() {
   si2drStringT type = si2drGroupGetGroupType(group_, &err_);

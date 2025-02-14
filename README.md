@@ -49,6 +49,17 @@ Options:
 
 ### 2025-02-11
 
-- 类的头文件改为`hpp`后缀，修改了`CMakeLists.txt`中的文件收集规则，CMake编译时间更新
-- 为`LibFile`类添加了输出同名json格式文件的方法，目前能输出PVT、cell_name、cell_footprint、cell_area信息。
+- 类的头文件改为`hpp`后缀，修改了`CMakeLists.txt`中的文件收集规则，CMake编译时间戳更新
+- 为`LibFile`类添加了输出同名json格式文件的方法`LibFile::writeJsonToFile`，目前能输出PVT、cell_name、cell_footprint、cell_area信息。
 - [ ] voltage 浮点数误差未解决
+
+### 2025-02-14
+
+- 在 `json_utils.cpp` 中，实现了以 JSON 数据结构循环迭代存储库 (lib) 信息的功能，具体包括 `generateCellJson, generatePinJson, generatePowerJson, generateLutJson` 等函数，并添加了同名的 hpp 头文件。
+- [ ] 时序 (timing) 信息解析功能待完成。
+- 新增辅助函数 `parseStringToVector`，该函数可将以逗号分隔的字符串解析为浮点数向量，以便于读取 Look Up Table (LUT)。
+- 为 `LibFile` 对象添加了私有属性 `lib_json_`，用于存储库 (lib) 的 JSON 对象。
+- 封装了用于迭代复杂属性值的 `ValuesIterator` 类。
+- 修改了 `LibAttribute::isComplex()` 函数的返回值类型，由原类型变更为 `bool` 类型。
+- 重写了 `LibGroup::getName()` 函数，使其直接返回 `std::string` 类型的组名字。
+- 重构了迭代器使用代码。移除了中间变量类似`si2drGroupsIdT sub_groups` 的声明步骤。直接使用 `lib_group.getGroups()`的返回值进行初始化`GroupsIterator`，提升了代码的可读性和简洁性。
