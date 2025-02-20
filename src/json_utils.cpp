@@ -49,7 +49,7 @@ json generateLutJson(LibGroup &lib_lut_group, si2drErrorT &err) {
   json lut_json;
 
   AttributesIterator attr_iter(lib_lut_group.getAttrs(), err);
-  for (attr_iter.begin(); !attr_iter.end(); attr_iter.next()) {
+  for (; !attr_iter.end(); attr_iter.next()) {
     LibAttribute lib_attr = attr_iter.get();
     std::string lut_attr_name = lib_attr.getName();
 
@@ -58,14 +58,14 @@ json generateLutJson(LibGroup &lib_lut_group, si2drErrorT &err) {
 
     if (lut_attr_name == "index_1" || lut_attr_name == "index_2") {
       ValuesIterator values_iter(lib_attr.getValues(), err);
-      for (values_iter.begin(); !values_iter.end(); values_iter.next()) {
+      for (; !values_iter.end(); values_iter.next()) {
         // spdlog::debug("Type: {}", int(values_iter.vtype_)); // 5 is string
         // spdlog::debug("Str: {}", values_iter.str_);
         lut_json[lut_attr_name] = parseStringToVector(std::string(values_iter.str_));
       }
     } else if (lut_attr_name == "values") {
       ValuesIterator values_iter(lib_attr.getValues(), err);
-      for (values_iter.begin(); !values_iter.end(); values_iter.next()) {
+      for (; !values_iter.end(); values_iter.next()) {
         lut_json["values"].push_back(parseStringToVector(std::string(values_iter.str_)));
       }
     } else {
@@ -75,11 +75,43 @@ json generateLutJson(LibGroup &lib_lut_group, si2drErrorT &err) {
   return lut_json;
 }
 
+json generateTimingJson(LibGroup &lib_timing_group, si2drErrorT &err) {
+  json timing_json;
+
+  AttributesIterator attr_iter(lib_timing_group.getAttrs(), err);
+  for (; !attr_iter.end(); attr_iter.next()) {
+    LibAttribute lib_attr = attr_iter.get();
+
+    std::string attr_name = lib_attr.getName();
+    if (attr_name == "related_pin" || attr_name == "timing_type" || attr_name == "timing_sense" ||
+        attr_name == "when") {
+      timing_json[attr_name] = lib_attr.getString();
+    }
+    // More timing attributes can be added here
+  }
+
+  GroupsIterator timing_sub_group_iter(lib_timing_group.getGroups(), err);
+  for (; !timing_sub_group_iter.end(); timing_sub_group_iter.next()) {
+    LibGroup lib_timing_sub_group = timing_sub_group_iter.get();
+
+    std::string timing_sub_group_type = lib_timing_sub_group.getType();
+    // std::string timing_sub_group_name = lib_timing_sub_group.getName();
+    if (timing_sub_group_type == "cell_fall" || timing_sub_group_type == "cell_rise" ||
+        timing_sub_group_type == "fall_transition" || timing_sub_group_type == "rise_transition" ||
+        timing_sub_group_type == "fall_constraint" || timing_sub_group_type == "rise_constraint") {
+      timing_json[timing_sub_group_type] = generateLutJson(lib_timing_sub_group, err);
+    } else {
+      spdlog::warn("Unknown timing sub group type: {}", timing_sub_group_type);
+    }
+  }
+  return timing_json;
+}
+
 json generatePowerJson(LibGroup &lib_power_group, si2drErrorT &err) {
   json power_json;
 
   AttributesIterator attr_iter(lib_power_group.getAttrs(), err);
-  for (attr_iter.begin(); !attr_iter.end(); attr_iter.next()) {
+  for (; !attr_iter.end(); attr_iter.next()) {
     LibAttribute lib_attr = attr_iter.get();
 
     std::string attr_name = lib_attr.getName();
@@ -90,7 +122,7 @@ json generatePowerJson(LibGroup &lib_power_group, si2drErrorT &err) {
   }
 
   GroupsIterator power_sub_group_iter(lib_power_group.getGroups(), err);
-  for (power_sub_group_iter.begin(); !power_sub_group_iter.end(); power_sub_group_iter.next()) {
+  for (; !power_sub_group_iter.end(); power_sub_group_iter.next()) {
     LibGroup lib_power_sub_group = power_sub_group_iter.get();
 
     std::string power_sub_group_type = lib_power_sub_group.getType();
@@ -113,24 +145,26 @@ std::pair<std::string, json> generatePinJson(LibGroup &lib_pin_group, si2drError
   pin_json["pin_name"] = lib_pin_group.getName();
 
   AttributesIterator attr_iter(lib_pin_group.getAttrs(), err);
-  for (attr_iter.begin(); !attr_iter.end(); attr_iter.next()) {
+  for (; !attr_iter.end(); attr_iter.next()) {
     LibAttribute lib_attr = attr_iter.get();
 
     std::string attr_name = lib_attr.getName();
     if (attr_name == "direction") {
       direction = lib_attr.getString();
-    } else if (attr_name == "capacitance" || attr_name == "rise_capacitance" ||
-               attr_name == "fall_capacitance" || attr_name == "max_capacitance") {
+    } else if (attr_name == "max_transition" || attr_name == "capacitance" ||
+               attr_name == "rise_capacitance" || attr_name == "fall_capacitance" ||
+               attr_name == "max_capacitance") {
       pin_json[attr_name] = lib_attr.getFloat();
-    } else if (attr_name == "function" || attr_name == "related_ground_pin" ||
-               attr_name == "related_power_pin") {
+    } else if (attr_name == "function" || attr_name == "power_down_function" ||
+               attr_name == "related_ground_pin" || attr_name == "related_power_pin" ||
+               attr_name == "three_state") {
       pin_json[attr_name] = lib_attr.getString();
     }
     // More pin attributes can be added here
   }
 
   GroupsIterator pin_sub_group_iter(lib_pin_group.getGroups(), err);
-  for (pin_sub_group_iter.begin(); !pin_sub_group_iter.end(); pin_sub_group_iter.next()) {
+  for (; !pin_sub_group_iter.end(); pin_sub_group_iter.next()) {
     LibGroup lib_pin_sub_group = pin_sub_group_iter.get();
 
     std::string pin_sub_group_type = lib_pin_sub_group.getType();
@@ -139,8 +173,9 @@ std::pair<std::string, json> generatePinJson(LibGroup &lib_pin_group, si2drError
       json power_json = generatePowerJson(lib_pin_sub_group, err);
       pin_json["power_arcs"].push_back(power_json);
     } else if (pin_sub_group_type == "timing") {
-      // TODO: Implement timing
-      spdlog::debug("Has Timing: {}", lib_pin_group.getName());
+      // spdlog::debug("Has Timing: {}", lib_pin_group.getName());
+      json timing_json = generateTimingJson(lib_pin_sub_group, err);
+      pin_json["timing_arcs"].push_back(timing_json);
     } else {
       spdlog::warn("Unknown pin sub group type: {}", pin_sub_group_type);
     }
@@ -153,20 +188,20 @@ json generateCellJson(LibGroup &lib_cell_group, si2drErrorT &err) {
   cell_json["cell_name"] = lib_cell_group.getName();
 
   AttributesIterator attr_iter(lib_cell_group.getAttrs(), err);
-  for (attr_iter.begin(); !attr_iter.end(); attr_iter.next()) {
+  for (; !attr_iter.end(); attr_iter.next()) {
     LibAttribute lib_attr = attr_iter.get();
 
     std::string attr_name = lib_attr.getName();
-    if (attr_name == "area") {
-      cell_json["area"] = lib_attr.getFloat();
+    if (attr_name == "area" || attr_name == "cell_leakage_power") {
+      cell_json[attr_name] = lib_attr.getFloat();
     } else if (attr_name == "cell_footprint") {
-      cell_json["cell_footprint"] = lib_attr.getString();
+      cell_json[attr_name] = lib_attr.getString();
     }
     // More cell attributes can be added here
   }
 
   GroupsIterator cell_sub_group_iter(lib_cell_group.getGroups(), err);
-  for (cell_sub_group_iter.begin(); !cell_sub_group_iter.end(); cell_sub_group_iter.next()) {
+  for (; !cell_sub_group_iter.end(); cell_sub_group_iter.next()) {
     LibGroup lib_cell_sub_group = cell_sub_group_iter.get();
 
     std::string cell_sub_group_type = lib_cell_sub_group.getType();

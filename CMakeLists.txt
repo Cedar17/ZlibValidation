@@ -26,9 +26,6 @@ set(CMAKE_GENERATOR "Unix Makefiles" CACHE INTERNAL "" FORCE)
 
 # Enable verbose output from the makefile. This is optional and useful for debugging purposes.
 # When enabled, the makefile will print detailed information about the build process.
-set(CMAKE_VERBOSE_MAKEFILE ON)
-
-# Enable detailed output from CMake during the configuration process
 set(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "ON" FORCE)
 
 # Fetch Content for dependencies
@@ -75,4 +72,5 @@ target_link_libraries(zlibvalidation PRIVATE
     CLI11::CLI11 
     spdlog::spdlog 
     nlohmann_json::nlohmann_json
+    stdc++fs # Required for filesystem support in C++17
 )

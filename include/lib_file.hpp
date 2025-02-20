@@ -15,6 +15,7 @@ public:
   void read();
   void parse();
   void modify();
+  void mono();
   void writeJsonToFile(const std::string &filename);
 
 private:

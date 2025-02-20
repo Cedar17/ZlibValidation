@@ -10,7 +10,6 @@ class GroupsIterator {
 public:
   GroupsIterator(si2drGroupsIdT groups, si2drErrorT &err);
   ~GroupsIterator();
-  void begin();
   void next();
   bool end();
   LibGroup get();
@@ -25,7 +24,6 @@ class AttributesIterator {
 public:
   AttributesIterator(si2drAttrsIdT attrs, si2drErrorT &err);
   ~AttributesIterator();
-  void begin();
   void next();
   bool end();
   LibAttribute get();
@@ -40,7 +38,6 @@ class ValuesIterator {
 public:
   ValuesIterator(si2drValuesIdT values, si2drErrorT &err);
   ~ValuesIterator();
-  void begin();
   void next();
   bool end();
   
