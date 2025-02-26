@@ -161,6 +161,7 @@ void LibFile::modify() { spdlog::info("Modifying the file..."); }
  * @param pin The JSON object representing the pin.
  * @param arc The JSON object representing the timing arc.
  * @param timing_arc_type The type of the timing arc to check.
+ * @param is_slew Flag indicating whether to check for input slew monotonicity.
  * @return true if the timing arc values are monotonic, false otherwise.
  *
  * The function performs the following steps:
@@ -171,11 +172,12 @@ void LibFile::modify() { spdlog::info("Modifying the file..."); }
  * 5. Validates the format of the "values" array and logs errors for invalid formats.
  * 6. Checks for non-numeric values in the "values" array and logs warnings for such values.
  * 7. Checks the monotonic incrementality of rows in the matrix.
- * 8. Logs warnings for non-monotonic values, including the "when" key if present.
- * 9. Returns the monotonicity status.
+ * 8. If is_slew is true, checks the monotonic incrementality of columns in the matrix.
+ * 9. Logs warnings for non-monotonic values, including the "when" key if present.
+ * 10. Returns the monotonicity status.
  */
 bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &arc,
-                                const std::string &timing_arc_type) {
+                                const std::string &timing_arc_type, const bool is_slew) {
   spdlog::debug("Checking cell: '{}', pin: '{}', related_pin: '{}', timing_arc: '{}'",
                 cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
                 arc["related_pin"].get<std::string>(), timing_arc_type);
@@ -208,7 +210,7 @@ bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &a
     }
     // Check the matrix for monotonicity
     if (!value_matrix.empty() && !value_matrix[0].empty()) {
-      // Check the monotonic incrementality of rows
+      // Check the monotonic incrementality of rows (by output load capacitance, index 2)
       for (size_t i = 0; i < value_matrix.size(); ++i) {
         for (size_t j = 1; j < value_matrix[i].size(); ++j) {
           if (value_matrix[i][j] <= value_matrix[i][j - 1]) {
@@ -230,6 +232,30 @@ bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &a
           }
         }
       }
+      if (is_slew) {
+        // Check the monotonic incrementality of columns (by input slew, index 1)
+        for (size_t j = 0; j < value_matrix[0].size(); ++j) {
+          for (size_t i = 1; i < value_matrix.size(); ++i) {
+            if (value_matrix[i][j] <= value_matrix[i - 1][j]) {
+              // If contains "when" key, log the when value
+              if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
+                spdlog::warn("Non-monotonic (by slew) '{}' values: ({}, {}) {} < ({}, {}) {} "
+                            "for Cell: {} Pin: {}->{} when: \"{}\"",
+                            timing_arc_type, i, j, value_matrix[i][j], i - 1, j, value_matrix[i - 1][j],
+                            cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
+                            pin["pin_name"].get<std::string>(), arc["when"].get<std::string>());
+              } else {
+                spdlog::warn("Non-monotonic (by slew) '{}' values: ({}, {}) {} < ({}, {}) {} "
+                            "for Cell: {} Pin: {}->{}",
+                            timing_arc_type, i, j, value_matrix[i][j], i - 1, j, value_matrix[i - 1][j],
+                            cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
+                            pin["pin_name"].get<std::string>());
+              }
+              is_monotonic = false;
+            }
+          }
+        }
+      }
     } else {
       spdlog::warn("Empty or invalid 'values' array found for cell: '{}', pin: '{}', related_pin: '{}', "
                    "timing_arc: '{}'",
@@ -240,7 +266,7 @@ bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &a
   return is_monotonic;
 }
 
-void LibFile::mono() {
+void LibFile::mono(const bool is_slew) {
   /*
    * Use this command to check the following data in the current library to ensure
    * the tables are monotonically increasing with respect to output load:
@@ -250,7 +276,7 @@ void LibFile::mono() {
    * fall_transition retain_fall_slew
    * mpw
    */
-  spdlog::info("Monotonicity check of {}", filename_ + ".json");
+  spdlog::info("Monotonicity check of '{}'", filename_ + ".json");
 
   // Read the JSON file into json object
   std::ifstream in(filename_ + ".json");
@@ -280,7 +306,7 @@ void LibFile::mono() {
           for (const auto &arc : pin["timing_arcs"]) {
             // Check 4 timing arc types and accumulate monotonicity status
             for (const auto &type : {"cell_rise", "cell_fall", "rise_transition", "fall_transition"}) {
-              if (!checkTimingArcMonotonicity(cell, pin, arc, type)) {
+              if (!checkTimingArcMonotonicity(cell, pin, arc, type, is_slew)) {
                 cell_is_monotonic = false;
               }
             }

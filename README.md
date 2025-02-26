@@ -2,7 +2,7 @@
 
 ## Description
 
-command line tool to validate standard cell libraries in `.lib` format.
+Command line tool to validate standard cell libraries in `.lib` format.
 
 ## Usage
 
@@ -11,10 +11,10 @@ ZlibValidation
 Usage: ./zlibvalidation [OPTIONS]
 
 Options:
-  -h,--help                                  Print this help message and exit
-  -v,--version                               Display program version information and exit
-  -m,--mode TEXT:{parse,modify} [parse]      Choose the mode: 'parse' or 'modify'
-  -f,--file TEXT:FILE REQUIRED               Specify the file to process
+  -h,--help                                       Print this help message and exit
+  -v,--version                                    Display program version information and exit
+  -m,--mode TEXT:{parse,modify,mono} [parse]      Choose the mode to run the program in
+  -f,--file TEXT:FILE REQUIRED                    Specify the file to process
 ```
 
 ## Development Diary
@@ -85,4 +85,15 @@ Options:
 ### 2025-02-20
 
 - `LibFile::mono()`方法增加结果统计功能，在程序运行的最后输出单调性检查中 `passed` (通过) 和 `failed` (失败) 的 cell 数量，输出格式参考 `liberate_lv` 工具的风格。
+- 以 `sl018_ff_3.96_-40.lib` 为例，与 `liberate_lv` 工具对比测试，结果均为 205 out of 559 cells failed。
 - 对于非单调信息警告，增加输出 when 信息，方便用户查看具体位置。
+
+### 2025-02-25
+
+- 重构命令行参数解析，使用 `CLI11` 库的子命令，在每个回调函数中实现 `parse`、`mono` 功能。
+
+### 2025-02-26
+
+- 子命令可自定义输出文件名、日志文件名，并设置了相应的默认值。
+- 改为在 Logger 初始化时打印版本信息，避免在 `-h`，`-v` 时多余打印。
+- `LibFile::mono()` 方法增加对 `input_slew` 的单调性检查，如果在输入时有指定，就检查 value 矩阵的每一列是否单调。经过测试，`tcbn65lpbc.lib` 输出与 `liberate_lv` 工具一致。

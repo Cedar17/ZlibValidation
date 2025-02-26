@@ -15,7 +15,7 @@ public:
   void read();
   void parse();
   void modify();
-  void mono();
+  void mono(const bool is_slew);
   void writeJsonToFile(const std::string &filename);
 
 private:

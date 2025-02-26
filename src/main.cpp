@@ -52,50 +52,65 @@ void setupLogger(const std::string &logger_name) {
   spdlog::set_default_logger(logger);
 
   spdlog::info("Debug log in: '{}'", logger_name);
+  printInfo();
 }
 
 int main(int argc, char *argv[]) {
   // Parse command line arguments
   std::string filename;
-  std::string mode;
+  std::string log_filename;
+  bool is_slew = false;
 
   // Command line parameter parsing using CLI11
   CLI::App app{APP_NAME};
   app.set_version_flag("-v,--version", APP_VERSION);
-  app.add_option("-m,--mode", mode, "Choose the mode to run the program in")
-      ->default_val("parse")
-      ->check(CLI::IsMember({"parse", "modify", "mono"}));
-  app.add_option("-f,--file", filename, "Specify the file to process")->check(CLI::ExistingFile)->required();
-  auto formatter = std::make_shared<CLI::Formatter>();
-  formatter->column_width(50);
-  app.formatter(formatter);
-  CLI11_PARSE(app, argc, argv);
 
-  printInfo();
-
-  // Create a LibFile object and run the specified mode
-  LibFile libfile(filename);
-
-  if (mode == "parse") {
-    setupLogger(filename + ".parse.log");
+  // Add subcommands for parse mode
+  CLI::App *parse_cmd = app.add_subcommand("parse", "Parse the Liberty file and write JSON to a file");
+  parse_cmd->add_option("-f,--file", filename, "Specify the lib file to process")
+      ->check(CLI::ExistingFile)
+      ->required();
+  parse_cmd->add_option("-l,--log", log_filename,
+                        "Specify the log filename. Default: <input_file>.parse.log");
+  parse_cmd->callback([&] {
+    setupLogger(log_filename.empty() ? filename + ".parse.log" : log_filename);
+    LibFile libfile(filename);
     libfile.read();
     libfile.parse();
     libfile.writeJsonToFile(filename + ".json");
-  } else if (mode == "modify") {
-    libfile.modify();
-  } else if (mode == "mono") {
-    setupLogger(filename + ".mono.log");
+  });
+
+  // Add subcommands for mono check mode
+  CLI::App *mono_cmd = app.add_subcommand("mono", "Check the monotonicity of timing arc values");
+  mono_cmd->add_option("-f,--file", filename, "Specify the lib file to process")
+      ->check(CLI::ExistingFile)
+      ->required();
+  mono_cmd->add_option("-l,--log", log_filename, "Specify the log filename. Default: <input_file>.mono.log");
+  mono_cmd->add_flag("-s,--slew", is_slew, "Specify that monotonicity checks also include input slew.");
+  mono_cmd->callback([&] {
+    setupLogger(log_filename.empty() ? filename + ".mono.log" : log_filename);
+    spdlog::info("Check input slew? {}", is_slew);
+    LibFile libfile(filename);
     // If a JSON file exists, read from it directly.
     // Otherwise, parse the Liberty file and write the JSON to a file.
-    if (!std::filesystem::exists(filename)) {
+    if (!std::filesystem::exists(filename + ".json")) {
       spdlog::info("JSON file not found.");
       libfile.read();
       libfile.parse();
       libfile.writeJsonToFile(filename + ".json");
     }
-    libfile.mono();
-  }
+    libfile.mono(is_slew);
+  });
 
+  auto formatter = std::make_shared<CLI::Formatter>();
+  formatter->column_width(40);
+  app.formatter(formatter);
+  parse_cmd->formatter(formatter);
+  mono_cmd->formatter(formatter);
+
+  CLI11_PARSE(app, argc, argv);
+
+  // End of program
   spdlog::info("All Done!");
   return 0;
 }
