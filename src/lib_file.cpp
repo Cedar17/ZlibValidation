@@ -8,12 +8,9 @@
 #include "json_utils.hpp"
 #include "lib_file.hpp"
 
-LibFile::LibFile(const std::string &filename) : filename_(filename) { si2drPIInit(&err_); }
+LibFile::LibFile(const std::string &filename) : filename_(filename) {}
 
-LibFile::~LibFile() {
-  spdlog::info("Closing '{}' ...", filename_);
-  si2drPIQuit(&err_);
-}
+LibFile::~LibFile() { spdlog::info("Closing file: '{}'", filename_); }
 
 /**
  * @brief Writes the JSON data stored in the lib_json_ member to a file.
@@ -93,6 +90,9 @@ void LibFile::read() {
  * the parsing process.
  */
 void LibFile::parse() {
+  si2drPIInit(&err_); // Initialize private error handler
+  this->read();       // Read the Liberty file
+
   spdlog::info("Parsing '{}' ...", filename_);
   // Top level groups
   GroupsIterator group_iter(si2drPIGetGroups(&err_), err_);
@@ -144,8 +144,10 @@ void LibFile::parse() {
         }
         spdlog::info("P: {}, V: {}, T: {}", process_, voltage_, temperature_);
       }
-    }
+    } // sub_group_iter's lifetime ends here, and the destructor is called
   }
+  // si2drPIQuit(&err); // Don't need here, as it will be called in the destructor
+  // group_iter's lifetime ends here, and the destructor is called
 }
 
 void LibFile::modify() { spdlog::info("Modifying the file..."); }
@@ -240,16 +242,16 @@ bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &a
               // If contains "when" key, log the when value
               if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
                 spdlog::warn("Non-monotonic (by slew) '{}' values: ({}, {}) {} < ({}, {}) {} "
-                            "for Cell: {} Pin: {}->{} when: \"{}\"",
-                            timing_arc_type, i, j, value_matrix[i][j], i - 1, j, value_matrix[i - 1][j],
-                            cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
-                            pin["pin_name"].get<std::string>(), arc["when"].get<std::string>());
+                             "for Cell: {} Pin: {}->{} when: \"{}\"",
+                             timing_arc_type, i, j, value_matrix[i][j], i - 1, j, value_matrix[i - 1][j],
+                             cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
+                             pin["pin_name"].get<std::string>(), arc["when"].get<std::string>());
               } else {
                 spdlog::warn("Non-monotonic (by slew) '{}' values: ({}, {}) {} < ({}, {}) {} "
-                            "for Cell: {} Pin: {}->{}",
-                            timing_arc_type, i, j, value_matrix[i][j], i - 1, j, value_matrix[i - 1][j],
-                            cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
-                            pin["pin_name"].get<std::string>());
+                             "for Cell: {} Pin: {}->{}",
+                             timing_arc_type, i, j, value_matrix[i][j], i - 1, j, value_matrix[i - 1][j],
+                             cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
+                             pin["pin_name"].get<std::string>());
               }
               is_monotonic = false;
             }
@@ -322,7 +324,7 @@ void LibFile::mono(const bool is_slew) {
       failed_cells.push_back(cell_name);
     }
   }
-  spdlog::info("Monotonicity check complete.");
+  spdlog::info("Monotonicity check complete of '{}'", filename_ + ".json");
 
   // Output summary statistics
   spdlog::info("validate_monotonicity : {} out of {} cells passed", passed_cells, total_cells);

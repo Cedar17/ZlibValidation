@@ -12,20 +12,20 @@ class LibFile {
 public:
   LibFile(const std::string &filename);
   ~LibFile();
-  void read();
   void parse();
   void modify();
   void mono(const bool is_slew);
   void writeJsonToFile(const std::string &filename);
-
-private:
-  std::string filename_;
+  
+  private:
   si2drErrorT err_;
-  std::string libname_;
-  int process_;
-  float voltage_;
-  int temperature_;
-  json lib_json_;
+  std::string filename_;
+  std::string libname_ = "";
+  int process_ = 0;
+  float voltage_ = 0.0;
+  int temperature_ = 0;
+  json lib_json_ = json::object();
+  void read();
 };
 
 #endif // LIB_FILE_H

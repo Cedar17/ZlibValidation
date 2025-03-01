@@ -16,6 +16,15 @@ configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/include/version.h
 )
 
+# # Enable debug info
+# set(CMAKE_BUILD_TYPE Debug)
+
+# Set build type to Release for optimization
+set(CMAKE_BUILD_TYPE Release)
+
+# # Set specific optimization flags
+# set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
 # Set C++ standard to C++20
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
