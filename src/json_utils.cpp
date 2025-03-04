@@ -24,7 +24,16 @@ null。
  */
 std::vector<double> parseStringToVector(const std::string &str) {
   std::vector<double> result;
-  std::stringstream ss(str);
+  std::string cleaned_str;
+  
+  // Remove backslashes and newline characters
+  for (char c : str) {
+    if (c != '\\' && c != '\n') {
+      cleaned_str += c;
+    }
+  }
+
+  std::stringstream ss(cleaned_str);
   std::string item;
   while (std::getline(ss, item, ',')) {
     result.push_back(std::stod(item));
@@ -66,6 +75,7 @@ json generateLutJson(LibGroup &lib_lut_group, si2drErrorT &err) {
     } else if (lut_attr_name == "values") {
       ValuesIterator values_iter(lib_attr.getValues(), err);
       for (; !values_iter.end(); values_iter.next()) {
+        // spdlog::debug("{}", values_iter.str_);
         lut_json["values"].push_back(parseStringToVector(std::string(values_iter.str_)));
       }
     } else {
