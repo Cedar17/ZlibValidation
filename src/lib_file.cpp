@@ -1,6 +1,7 @@
 #include <chrono>
 #include <fstream>
 #include <sstream>
+#include <unordered_set>
 
 #include "spdlog/spdlog.h"
 
@@ -20,17 +21,17 @@ LibFile::~LibFile() { spdlog::info("Closing file: '{}'", filename_); }
  * opened, the JSON data is written to the file with an indentation of 2 spaces.
  * After writing, the file is closed and a success message is logged.
  *
- * @param filename The name of the file to which the JSON data will be written.
+ * @param json_file_name The name of the file to which the JSON data will be written.
  */
-void LibFile::writeJsonToFile(const std::string &filename) {
-  std::ofstream out(filename);
+void LibFile::writeJsonToFile(const std::string &json_file_name) {
+  std::ofstream out(json_file_name);
   if (!out.is_open()) {
-    spdlog::error("Could not open file '{}' for writing", filename);
+    spdlog::error("Could not open file '{}' for writing", json_file_name);
     return;
   }
   out << lib_json_.dump(2);
   out.close();
-  spdlog::info("JSON data written to '{}'", filename);
+  spdlog::info("JSON data written to '{}'", json_file_name);
 }
 
 /**
@@ -101,6 +102,7 @@ void LibFile::parse() {
 
     if (lib_group.getName() != "") {
       libname_ = lib_group.getName();
+      lib_json_["library_name"] = this->libname_;
       spdlog::info("Library Name: {}", libname_);
     } else {
       spdlog::warn("Library Name: <NONAME>");
@@ -268,7 +270,7 @@ bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &a
   return is_monotonic;
 }
 
-void LibFile::mono(const bool is_slew) {
+void LibFile::mono(const std::string json_file_name, const bool is_slew) {
   /*
    * Use this command to check the following data in the current library to ensure
    * the tables are monotonically increasing with respect to output load:
@@ -278,12 +280,12 @@ void LibFile::mono(const bool is_slew) {
    * fall_transition retain_fall_slew
    * mpw
    */
-  spdlog::info("Monotonicity check of '{}'", filename_ + ".json");
+  spdlog::info("Monotonicity check of '{}'", json_file_name);
 
   // Read the JSON file into json object
-  std::ifstream in(filename_ + ".json");
+  std::ifstream in(json_file_name);
   if (!in.is_open()) {
-    spdlog::error("Could not open file '{}' for reading", filename_ + ".json");
+    spdlog::error("Could not open file '{}' for reading", json_file_name);
     return;
   }
   json j = json::parse(in);
@@ -324,7 +326,7 @@ void LibFile::mono(const bool is_slew) {
       failed_cells.push_back(cell_name);
     }
   }
-  spdlog::info("Monotonicity check complete of '{}'", filename_ + ".json");
+  spdlog::info("Monotonicity check complete of '{}'", json_file_name);
 
   // Output summary statistics
   spdlog::info("validate_monotonicity : {} out of {} cells passed", passed_cells, total_cells);
@@ -339,4 +341,49 @@ void LibFile::mono(const bool is_slew) {
     }
     spdlog::info("Failed cell list : {}", failed_cells_ss.str());
   }
+}
+
+void LibFile::supercell(const std::string json_file_name, const int chain_length) {
+  /*
+   * Supercells are named as follows:
+   *   <cellname>__X<chain_length>__<input_pin>__<output_pin>
+   * The netlists are stored in the directory dir/netlists.
+   * The input files for timing analysis are stored in dir/timer
+   */
+  spdlog::info("Creating supercells for '{}'", json_file_name);
+
+  // write to <libname>.map file
+  std::ofstream out(libname_ + ".map");
+  if (!out.is_open()) {
+    spdlog::error("Could not open file '{}' for writing", filename_ + ".map");
+    return;
+  }
+
+  for (const auto &cell : lib_json_["cells"]) {
+    std::string cell_name = cell["cell_name"].get<std::string>();
+    spdlog::debug("Creating supercells for cell: '{}'", cell_name);
+
+    std::unordered_set<std::string> output_pins;
+    std::unordered_set<std::string> input_pins;
+    if (cell.contains("output_pins")) {
+      for (const auto &pin : cell["output_pins"]) {
+        output_pins.insert(pin["pin_name"].get<std::string>());
+      }
+    }
+    if (cell.contains("input_pins")) {
+      for (const auto &pin : cell["input_pins"]) {
+        input_pins.insert(pin["pin_name"].get<std::string>());
+      }
+    }
+    // create supercells for all combinations of input and output pins
+    for (const auto &output_pin : output_pins) {
+      for (const auto &input_pin : input_pins) {
+        std::string supercell_name =
+            cell_name + "__X" + std::to_string(chain_length) + "__" + input_pin + "__" + output_pin;
+        out << cell_name << " " << supercell_name << std::endl;
+      }
+    }
+  }
+  out.close();
+  spdlog::info("Supercell creation complete in '{}'", libname_ + ".map");
 }

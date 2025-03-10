@@ -14,8 +14,9 @@ public:
   ~LibFile();
   void parse();
   void modify();
-  void mono(const bool is_slew);
+  void mono(const std::string json_file_name, const bool is_slew);
   void writeJsonToFile(const std::string &filename);
+  void supercell(const std::string json_file_name, const int chain_length);
   
   private:
   si2drErrorT err_;
