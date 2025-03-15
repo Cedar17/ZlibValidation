@@ -1,17 +1,38 @@
 #include <chrono>
+#include <filesystem>
 #include <fstream>
 #include <sstream>
 #include <unordered_set>
 
+#include "spdlog/sinks/basic_file_sink.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/spdlog.h"
 
 #include "iterators.hpp"
 #include "json_utils.hpp"
 #include "lib_file.hpp"
 
-LibFile::LibFile(const std::string &filename) : filename_(filename) {}
+LibFile::LibFile(const std::string &filepath, const std::string &loggername)
+    : filepath_(filepath), loggername_(loggername) {
+  filename_ = filepath_.string();
+  basename_ = filepath_.stem().string();
+  jsonname_ = basename_ + ".json";
 
-LibFile::~LibFile() { spdlog::info("Closing file: '{}'", filename_); }
+  auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+  console_sink->set_level(spdlog::level::info);
+
+  auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(loggername_, true);
+  file_sink->set_level(spdlog::level::debug);
+
+  std::vector<spdlog::sink_ptr> sinks{console_sink, file_sink};
+  logger_ = std::make_shared<spdlog::logger>(loggername_, sinks.begin(), sinks.end());
+  logger_->set_level(spdlog::level::debug);
+  
+  logger_->info("Created LibFile object for '{}'", filename_);
+  logger_->info("Debug log in: '{}'", loggername_);
+}
+
+LibFile::~LibFile() { logger_->info("Closing file: '{}'", filename_); }
 
 /**
  * @brief Writes the JSON data stored in the lib_json_ member to a file.
@@ -21,17 +42,17 @@ LibFile::~LibFile() { spdlog::info("Closing file: '{}'", filename_); }
  * opened, the JSON data is written to the file with an indentation of 2 spaces.
  * After writing, the file is closed and a success message is logged.
  *
- * @param json_file_name The name of the file to which the JSON data will be written.
+ * @param jsonname_ The name of the file to which the JSON data will be written.
  */
-void LibFile::writeJsonToFile(const std::string &json_file_name) {
-  std::ofstream out(json_file_name);
+void LibFile::writeJsonToFile() {
+  std::ofstream out(jsonname_);
   if (!out.is_open()) {
-    spdlog::error("Could not open file '{}' for writing", json_file_name);
+    logger_->error("Could not open file '{}' for writing", jsonname_);
     return;
   }
   out << lib_json_.dump(2);
   out.close();
-  spdlog::info("JSON data written to '{}'", json_file_name);
+  logger_->info("JSON data written to '{}'", jsonname_);
 }
 
 /**
@@ -55,21 +76,21 @@ void LibFile::writeJsonToFile(const std::string &json_file_name) {
  * if specific errors are encountered.
  */
 void LibFile::read() {
-  spdlog::info("Reading '{}' ...", filename_);
+  logger_->info("Reading '{}' ...", filename_);
 
   auto start = std::chrono::high_resolution_clock::now();
-  si2drReadLibertyFile(const_cast<char *>(filename_.c_str()), &err_);
+  si2drReadLibertyFile(const_cast<char *>(filepath_.c_str()), &err_);
   auto end = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> duration = end - start;
 
   if (err_ == SI2DR_INVALID_NAME) {
-    spdlog::error("Could not open file '{}' for parsing, quitting...", filename_);
+    logger_->error("Could not open file '{}' for parsing, quitting...", filename_);
     exit(301);
   } else if (err_ == SI2DR_SYNTAX_ERROR) {
-    spdlog::error("Syntax Errors were detected in the input file!");
+    logger_->error("Syntax Errors were detected in the input file!");
     exit(401);
   } else {
-    spdlog::info("Done. Read time: {:.2f} seconds", duration.count());
+    logger_->info("Done. Read time: {:.2f} seconds", duration.count());
   }
 }
 
@@ -94,65 +115,68 @@ void LibFile::parse() {
   si2drPIInit(&err_); // Initialize private error handler
   this->read();       // Read the Liberty file
 
-  spdlog::info("Parsing '{}' ...", filename_);
-  // Top level groups
-  GroupsIterator group_iter(si2drPIGetGroups(&err_), err_);
-  for (; !group_iter.end(); group_iter.next()) {
-    LibGroup lib_group = group_iter.get();
+  logger_->info("Parsing '{}' ...", filename_);
+  // Create a scope for the top-level groups iteration
+  {
+    GroupsIterator group_iter(si2drPIGetGroups(&err_), err_);
+    for (; !group_iter.end(); group_iter.next()) {
+      LibGroup lib_group = group_iter.get();
 
-    if (lib_group.getName() != "") {
-      libname_ = lib_group.getName();
-      lib_json_["library_name"] = this->libname_;
-      spdlog::info("Library Name: {}", libname_);
-    } else {
-      spdlog::warn("Library Name: <NONAME>");
-    }
-    // Second level groups
-    GroupsIterator sub_group_iter(lib_group.getGroups(), err_);
-    for (; !sub_group_iter.end(); sub_group_iter.next()) {
-      LibGroup lib_sub_group = sub_group_iter.get();
-
-      std::string sub_group_type = lib_sub_group.getType();
-      std::string sub_group_name = lib_sub_group.getName();
-
-      if (sub_group_type == "cell") {
-        spdlog::debug("Cell Name: {}", sub_group_name);
-        // if (sub_group_name != "AN2D0") {
-        //   continue;
-        // }
-        // Handle each cell
-        json cell_json = generateCellJson(lib_sub_group, err_);
-        lib_json_["cells"].push_back(cell_json);
-      } else if (sub_group_type == "operating_conditions") {
-        spdlog::info("Operating Conditions: {}", sub_group_name);
-        // Get PVT from Operating Conditions
-        AttributesIterator attr_iter(lib_sub_group.getAttrs(), err_);
-        for (; !attr_iter.end(); attr_iter.next()) {
-          LibAttribute lib_attr = attr_iter.get();
-          spdlog::debug("Attribute Name: {}", lib_attr.getName());
-          spdlog::debug("Int Value: {}", lib_attr.getInt());
-          spdlog::debug("Float Value: {}", lib_attr.getFloat());
-          spdlog::debug("String Value: {}", lib_attr.getString());
-          if (lib_attr.getName() == "process") {
-            process_ = lib_attr.getInt();
-            lib_json_["process"] = process_;
-          } else if (lib_attr.getName() == "voltage") {
-            voltage_ = lib_attr.getFloat();
-            lib_json_["voltage"] = voltage_;
-          } else if (lib_attr.getName() == "temperature") {
-            temperature_ = lib_attr.getInt();
-            lib_json_["temperature"] = temperature_;
-          }
-        }
-        spdlog::info("P: {}, V: {}, T: {}", process_, voltage_, temperature_);
+      if (lib_group.getName() != "") {
+        libname_ = lib_group.getName();
+        lib_json_["library_name"] = this->libname_;
+        logger_->info("Library Name: {}", libname_);
+      } else {
+        logger_->warn("Library Name: <NONAME>");
       }
-    } // sub_group_iter's lifetime ends here, and the destructor is called
+      // Second level groups
+      GroupsIterator sub_group_iter(lib_group.getGroups(), err_);
+      for (; !sub_group_iter.end(); sub_group_iter.next()) {
+        LibGroup lib_sub_group = sub_group_iter.get();
+
+        std::string sub_group_type = lib_sub_group.getType();
+        std::string sub_group_name = lib_sub_group.getName();
+
+        if (sub_group_type == "cell") {
+          logger_->debug("Cell Name: {}", sub_group_name);
+          // if (sub_group_name != "AN2D0") {
+          //   continue;
+          // }
+          // Handle each cell
+          json cell_json = generateCellJson(lib_sub_group, err_);
+          lib_json_["cells"].push_back(cell_json);
+        } else if (sub_group_type == "operating_conditions") {
+          logger_->info("Operating Conditions: {}", sub_group_name);
+          // Get PVT from Operating Conditions
+          AttributesIterator attr_iter(lib_sub_group.getAttrs(), err_);
+          for (; !attr_iter.end(); attr_iter.next()) {
+            LibAttribute lib_attr = attr_iter.get();
+            logger_->debug("Attribute Name: {}", lib_attr.getName());
+            logger_->debug("Int Value: {}", lib_attr.getInt());
+            logger_->debug("Float Value: {}", lib_attr.getFloat());
+            logger_->debug("String Value: {}", lib_attr.getString());
+            if (lib_attr.getName() == "process") {
+              process_ = lib_attr.getInt();
+              lib_json_["process"] = process_;
+            } else if (lib_attr.getName() == "voltage") {
+              voltage_ = lib_attr.getFloat();
+              lib_json_["voltage"] = voltage_;
+            } else if (lib_attr.getName() == "temperature") {
+              temperature_ = lib_attr.getInt();
+              lib_json_["temperature"] = temperature_;
+            }
+          }
+          logger_->info("P: {}, V: {}, T: {}", process_, voltage_, temperature_);
+        }
+        // sub_group_iter's lifetime ends here, and the destructor is called
+      }
+    }
+    // group_iter's lifetime ends here, and the destructor is called
   }
-  // si2drPIQuit(&err); // Don't need here, as it will be called in the destructor
-  // group_iter's lifetime ends here, and the destructor is called
+  si2drPIQuit(&err_);
 }
 
-void LibFile::modify() { spdlog::info("Modifying the file..."); }
+void LibFile::modify() { logger_->info("Modifying the file..."); }
 
 /**
  * @brief Checks the monotonicity of timing arc values in a given cell.
@@ -180,9 +204,9 @@ void LibFile::modify() { spdlog::info("Modifying the file..."); }
  * 9. Logs warnings for non-monotonic values, including the "when" key if present.
  * 10. Returns the monotonicity status.
  */
-bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &arc,
+bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, const json &arc,
                                 const std::string &timing_arc_type, const bool is_slew) {
-  spdlog::debug("Checking cell: '{}', pin: '{}', related_pin: '{}', timing_arc: '{}'",
+  logger_->debug("Checking cell: '{}', pin: '{}', related_pin: '{}', timing_arc: '{}'",
                 cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
                 arc["related_pin"].get<std::string>(), timing_arc_type);
   bool is_monotonic = true; // Assume the values are monotonic initially
@@ -193,7 +217,7 @@ bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &a
       std::vector<double> row_data;
       // Check if the value is an array
       if (!row_val.is_array()) {
-        spdlog::error("Invalid format: '{}' values should be an array of arrays in cell '{}', pin "
+        logger_->error("Invalid format: '{}' values should be an array of arrays in cell '{}', pin "
                       "'{}', related_pin '{}'",
                       timing_arc_type, cell["cell_name"].get<std::string>(),
                       pin["pin_name"].get<std::string>(), arc["related_pin"].get<std::string>());
@@ -204,7 +228,7 @@ bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &a
         if (val.is_number()) {
           row_data.push_back(val.get<double>());
         } else {
-          spdlog::warn("Non-numeric value found in '{}'.values, skipping value: {} in cell '{}', "
+          logger_->warn("Non-numeric value found in '{}'.values, skipping value: {} in cell '{}', "
                        "pin '{}', related_pin '{}'",
                        timing_arc_type, val.dump(), cell["cell_name"].get<std::string>(),
                        pin["pin_name"].get<std::string>(), arc["related_pin"].get<std::string>());
@@ -220,13 +244,13 @@ bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &a
           if (value_matrix[i][j] <= value_matrix[i][j - 1]) {
             // If contains "when" key, log the when value
             if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
-              spdlog::warn("Non-monotonic (by load) '{}' values: ({}, {}) {} < ({}, {}) {} "
+              logger_->warn("Non-monotonic (by load) '{}' values: ({}, {}) {} < ({}, {}) {} "
                            "for Cell: {} Pin: {}->{} when: \"{}\"",
                            timing_arc_type, i, j, value_matrix[i][j], i, j - 1, value_matrix[i][j - 1],
                            cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
                            pin["pin_name"].get<std::string>(), arc["when"].get<std::string>());
             } else {
-              spdlog::warn("Non-monotonic (by load) '{}' values: ({}, {}) {} < ({}, {}) {} "
+              logger_->warn("Non-monotonic (by load) '{}' values: ({}, {}) {} < ({}, {}) {} "
                            "for Cell: {} Pin: {}->{}",
                            timing_arc_type, i, j, value_matrix[i][j], i, j - 1, value_matrix[i][j - 1],
                            cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
@@ -243,13 +267,13 @@ bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &a
             if (value_matrix[i][j] <= value_matrix[i - 1][j]) {
               // If contains "when" key, log the when value
               if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
-                spdlog::warn("Non-monotonic (by slew) '{}' values: ({}, {}) {} < ({}, {}) {} "
+                logger_->warn("Non-monotonic (by slew) '{}' values: ({}, {}) {} < ({}, {}) {} "
                              "for Cell: {} Pin: {}->{} when: \"{}\"",
                              timing_arc_type, i, j, value_matrix[i][j], i - 1, j, value_matrix[i - 1][j],
                              cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
                              pin["pin_name"].get<std::string>(), arc["when"].get<std::string>());
               } else {
-                spdlog::warn("Non-monotonic (by slew) '{}' values: ({}, {}) {} < ({}, {}) {} "
+                logger_->warn("Non-monotonic (by slew) '{}' values: ({}, {}) {} < ({}, {}) {} "
                              "for Cell: {} Pin: {}->{}",
                              timing_arc_type, i, j, value_matrix[i][j], i - 1, j, value_matrix[i - 1][j],
                              cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
@@ -261,7 +285,7 @@ bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &a
         }
       }
     } else {
-      spdlog::warn("Empty or invalid 'values' array found for cell: '{}', pin: '{}', related_pin: '{}', "
+      logger_->warn("Empty or invalid 'values' array found for cell: '{}', pin: '{}', related_pin: '{}', "
                    "timing_arc: '{}'",
                    cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
                    arc["related_pin"].get<std::string>(), timing_arc_type);
@@ -270,7 +294,7 @@ bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &a
   return is_monotonic;
 }
 
-void LibFile::mono(const std::string json_file_name, const bool is_slew) {
+void LibFile::mono(const bool is_slew) {
   /*
    * Use this command to check the following data in the current library to ensure
    * the tables are monotonically increasing with respect to output load:
@@ -280,16 +304,28 @@ void LibFile::mono(const std::string json_file_name, const bool is_slew) {
    * fall_transition retain_fall_slew
    * mpw
    */
-  spdlog::info("Monotonicity check of '{}'", json_file_name);
+  logger_->info("Monotonicity check of '{}' starting ...", filename_);
 
-  // Read the JSON file into json object
-  std::ifstream in(json_file_name);
-  if (!in.is_open()) {
-    spdlog::error("Could not open file '{}' for reading", json_file_name);
-    return;
+  if (!std::filesystem::exists(jsonname_)) {
+    logger_->info("JSON file not found. Parsing Liberty file first.");
+    this->parse();
+    this->writeJsonToFile();
+  } else {
+    // Read the JSON file into json object
+    std::ifstream in(jsonname_);
+    if (!in.is_open()) {
+      logger_->error("Could not open file '{}' for reading", jsonname_);
+      return;
+    }
+    try {
+      lib_json_ = json::parse(in);
+    } catch (const json::parse_error &e) {
+      logger_->error("JSON parsing error in file '{}': {}", jsonname_, e.what());
+      in.close();
+      return;
+    }
+    in.close();
   }
-  json j = json::parse(in);
-  in.close();
 
   std::map<std::string, bool> cell_monotonicity_status; // Track pass/fail status for each cell
   std::vector<std::string> failed_cells;                // List of failed cell names
@@ -298,7 +334,7 @@ void LibFile::mono(const std::string json_file_name, const bool is_slew) {
 
   // Check the monotonicity of delay values
   // The index 1 (time values) must be monotonically increasing and >= 0
-  for (const auto &cell : j["cells"]) {
+  for (const auto &cell : lib_json_["cells"]) {
     total_cells++;
     bool cell_is_monotonic = true; // Assume cell is monotonic initially
     std::string cell_name = cell["cell_name"].get<std::string>();
@@ -326,11 +362,11 @@ void LibFile::mono(const std::string json_file_name, const bool is_slew) {
       failed_cells.push_back(cell_name);
     }
   }
-  spdlog::info("Monotonicity check complete of '{}'", json_file_name);
+  logger_->info("Monotonicity check of '{}' completed.", filename_);
 
   // Output summary statistics
-  spdlog::info("validate_monotonicity : {} out of {} cells passed", passed_cells, total_cells);
-  spdlog::info("validate_monotonicity : {} out of {} cells failed", total_cells - passed_cells, total_cells);
+  logger_->info("validate_monotonicity : {} out of {} cells passed", passed_cells, total_cells);
+  logger_->info("validate_monotonicity : {} out of {} cells failed", total_cells - passed_cells, total_cells);
   if (!failed_cells.empty()) {
     std::stringstream failed_cells_ss;
     for (size_t i = 0; i < failed_cells.size(); ++i) {
@@ -339,29 +375,50 @@ void LibFile::mono(const std::string json_file_name, const bool is_slew) {
         failed_cells_ss << ", "; // Add comma if not the last element
       }
     }
-    spdlog::info("Failed cell list : {}", failed_cells_ss.str());
+    logger_->info("Failed cell list : {}", failed_cells_ss.str());
   }
 }
 
-void LibFile::supercell(const std::string json_file_name, const int chain_length) {
+void LibFile::supercell(const int chain_length) {
   /*
    * Supercells are named as follows:
    *   <cellname>__X<chain_length>__<input_pin>__<output_pin>
    * The netlists are stored in the directory dir/netlists.
    * The input files for timing analysis are stored in dir/timer
    */
-  spdlog::info("Creating supercells for '{}'", json_file_name);
+  logger_->info("Creating supercells for '{}'", filename_);
 
+  if (!std::filesystem::exists(jsonname_)) {
+    logger_->info("JSON file not found. Parsing Liberty file first.");
+    this->parse();
+    this->writeJsonToFile();
+  } else {
+    // Read the JSON file into json object
+    std::ifstream in(jsonname_);
+    if (!in.is_open()) {
+      logger_->error("Could not open file '{}' for reading", jsonname_);
+      return;
+    }
+    try {
+      lib_json_ = json::parse(in);
+    } catch (const json::parse_error &e) {
+      logger_->error("JSON parsing error in file '{}': {}", jsonname_, e.what());
+      in.close();
+      return;
+    }
+    in.close();
+  }
+  
   // write to <libname>.map file
-  std::ofstream out(libname_ + ".map");
+  std::ofstream out(basename_ + ".map");
   if (!out.is_open()) {
-    spdlog::error("Could not open file '{}' for writing", filename_ + ".map");
+    logger_->error("Could not open file '{}' for writing", basename_ + ".map");
     return;
   }
-
+  // TODO: check combinational or sequential cells
   for (const auto &cell : lib_json_["cells"]) {
     std::string cell_name = cell["cell_name"].get<std::string>();
-    spdlog::debug("Creating supercells for cell: '{}'", cell_name);
+    logger_->debug("Creating supercells for cell: '{}'", cell_name);
 
     std::unordered_set<std::string> output_pins;
     std::unordered_set<std::string> input_pins;
@@ -385,5 +442,5 @@ void LibFile::supercell(const std::string json_file_name, const int chain_length
     }
   }
   out.close();
-  spdlog::info("Supercell creation complete in '{}'", libname_ + ".map");
+  logger_->info("Supercell creation complete in '{}'", basename_ + ".map");
 }

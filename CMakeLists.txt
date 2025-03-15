@@ -65,6 +65,14 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(json)
 
+# Fetch tabulate
+FetchContent_Declare(
+    tabulate
+    GIT_REPOSITORY https://github.com/p-ranav/tabulate.git
+    GIT_TAG v1.5
+)
+FetchContent_MakeAvailable(tabulate)
+
 # Collect all source and header files
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
@@ -81,5 +89,6 @@ target_link_libraries(zlibvalidation PRIVATE
     CLI11::CLI11 
     spdlog::spdlog 
     nlohmann_json::nlohmann_json
+    tabulate::tabulate
     stdc++fs # Required for filesystem support in C++17
 )

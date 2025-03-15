@@ -2,6 +2,7 @@
 #define LIB_FILE_H
 
 #include <string>
+#include <filesystem>
 
 #include "nlohmann/json.hpp"
 #include "si2dr_liberty.h"
@@ -10,23 +11,29 @@ using json = nlohmann::json;
 
 class LibFile {
 public:
-  LibFile(const std::string &filename);
+  LibFile(const std::string &filepath, const std::string &loggername);
   ~LibFile();
+  std::shared_ptr<spdlog::logger> logger_;
+  std::filesystem::path filepath_; // full path to the file
+  std::string basename_; // file name without extension
+  std::string filename_; // full file name with extension
+  std::string libname_ = ""; // library name obtained through parsing
+  std::string jsonname_ = ""; // json file name to store parsed data
+  std::string loggername_ = ""; // log file name
+  json lib_json_ = json::object();
   void parse();
   void modify();
-  void mono(const std::string json_file_name, const bool is_slew);
-  void writeJsonToFile(const std::string &filename);
-  void supercell(const std::string json_file_name, const int chain_length);
+  void mono(const bool is_slew);
+  void supercell(const int chain_length);
+  void writeJsonToFile();
   
   private:
   si2drErrorT err_;
-  std::string filename_;
-  std::string libname_ = "";
   int process_ = 0;
   float voltage_ = 0.0;
   int temperature_ = 0;
-  json lib_json_ = json::object();
   void read();
+  bool checkTimingArcMonotonicity(const json &cell, const json &pin, const json &arc, const std::string &type, bool is_slew);
 };
 
 #endif // LIB_FILE_H

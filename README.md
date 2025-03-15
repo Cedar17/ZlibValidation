@@ -8,13 +8,19 @@ Command line tool to validate standard cell libraries in `.lib` format.
 
 ```zsh
 ZlibValidation
-Usage: ./zlibvalidation [OPTIONS]
+Usage: ./zlibvalidation [OPTIONS] [SUBCOMMAND]
 
 Options:
-  -h,--help                                       Print this help message and exit
-  -v,--version                                    Display program version information and exit
-  -m,--mode TEXT:{parse,modify,mono} [parse]      Choose the mode to run the program in
-  -f,--file TEXT:FILE REQUIRED                    Specify the file to process
+  -h,--help                   Print this help message and exit
+  -v,--version                Display program version information and exit
+
+Subcommands:
+  parse                       Parse the Liberty file and write JSON to a file
+  mono                        Check the monotonicity of timing arc values
+  compare                     Compare the comparison library against the reference library and report differences
+  supercell                   Generate supercells for the given Liberty file
+  zlibboost                   ZlibBoost - Multi-threaded Library Processing Tool
+  clear                       Clear the log, JSON, map, markdown files in this directory
 ```
 
 ## Development Diary
@@ -131,3 +137,19 @@ Options:
 - 集成了 `zlibboost` 子命令，支持调用开源库特征化工具 [zlibboost](https://github.com/skycrapers/ZlibBoost)。已与开发者取得联系。
 - 调整了子命令输出文件的位置为当前目录，避免文件混淆。
 - 添加了 `clear` 子命令，方便清理生成的 JSON 文件和日志文件。
+
+### 2025-03-14
+
+- 添加了 `tabulate/table` 库，通过 CMake FetchContent 进行管理，用于生成格式化的表格输出。
+- 新建了 `compare.cpp` 和 `compare.hpp` 文件，创建了 `LibraryComparator` 类，用于比较两个库文件的差异。目前实现了读取参考库 JSON 文件的功能。
+
+### 2025-03-15
+
+- 使用 `std::filesystem::path` 重构了 `LibFile` 类的文件路径管理，方便文件路径的拼接和处理。`LibFile` 类添加了成员变量 `basename_`、`filename_`、`libname_`、`jsonname_` 和 `loggername_`，用于存储文件名、库名、JSON 文件名和日志文件名。
+- 通过作用域 (scope) 管理 `LibFile::parse` 方法中的顶层迭代器的生命周期，提前结束并调用 `si2drPIQuit` 保证资源释放，解决了分析多个库时日志重复输出和数据保存错误的问题。
+- `clear` 子命令增加了删除 `.map` 和 `.md` 文件的功能。
+- 实现了 `mono` 子命令的多线程并行。首先检查是否是多文件输入，如果是，就顺序检查是否准备好了每个文件的 JSON 文件，否则顺序进行多文件库解析。在所有文件的 JSON 准备就绪后，根据文件数量创建线程池，每个线程负责一个库的单调性检查。
+- 重构了 `spdlog` 日志初始化，返回 logger 对象而不是设置全局默认 logger。保留名为 `APP_NAME` 的全局 logger，用于输出总体提示信息。
+- 为 `LibFile` 类添加了独立的成员变量 logger，用于记录每个库文件的日志信息。
+- 完成了 `supercell` 子命令的多线程并行，处理逻辑与 `mono` 子命令类似。
+- `LibraryComparator::generateReport()` 方法测试了 `tabulate` 库的markdown表格输出功能，完善了报告的头部信息输出，包括参考库、比较库、相对容差、软件信息、报告生成时间和图例说明。
