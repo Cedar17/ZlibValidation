@@ -27,7 +27,7 @@ LibFile::LibFile(const std::string &filepath, const std::string &loggername)
   std::vector<spdlog::sink_ptr> sinks{console_sink, file_sink};
   logger_ = std::make_shared<spdlog::logger>(loggername_, sinks.begin(), sinks.end());
   logger_->set_level(spdlog::level::debug);
-  
+
   logger_->info("Created LibFile object for '{}'", filename_);
   logger_->info("Debug log in: '{}'", loggername_);
 }
@@ -188,14 +188,14 @@ void LibFile::modify() { logger_->info("Modifying the file..."); }
  * @param cell The JSON object representing the cell.
  * @param pin The JSON object representing the pin.
  * @param arc The JSON object representing the timing arc.
- * @param timing_arc_type The type of the timing arc to check.
+ * @param timing_arc_name The name of the timing arc to check.
  * @param is_slew Flag indicating whether to check for input slew monotonicity.
  * @return true if the timing arc values are monotonic, false otherwise.
  *
  * The function performs the following steps:
- * 1. Logs the cell, pin, related pin, and timing arc type being checked.
+ * 1. Logs the cell, pin, related pin, and timing arc name being checked.
  * 2. Assumes the values are monotonic initially.
- * 3. Checks if the timing arc contains the specified type and if it has a "values" array.
+ * 3. Checks if the timing arc contains the specified name and if it has a "values" array.
  * 4. Generates a matrix of values from the JSON array.
  * 5. Validates the format of the "values" array and logs errors for invalid formats.
  * 6. Checks for non-numeric values in the "values" array and logs warnings for such values.
@@ -205,22 +205,22 @@ void LibFile::modify() { logger_->info("Modifying the file..."); }
  * 10. Returns the monotonicity status.
  */
 bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, const json &arc,
-                                const std::string &timing_arc_type, const bool is_slew) {
+                                         const std::string &timing_arc_name, const bool is_slew) {
   logger_->debug("Checking cell: '{}', pin: '{}', related_pin: '{}', timing_arc: '{}'",
-                cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
-                arc["related_pin"].get<std::string>(), timing_arc_type);
+                 cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
+                 arc["related_pin"].get<std::string>(), timing_arc_name);
   bool is_monotonic = true; // Assume the values are monotonic initially
-  if (arc.contains(timing_arc_type) && arc[timing_arc_type].contains("values")) {
+  if (arc.contains(timing_arc_name) && arc[timing_arc_name].contains("values")) {
     std::vector<std::vector<double>> value_matrix;
     // Generate a matrix of values from the JSON array
-    for (const auto &row_val : arc[timing_arc_type]["values"]) {
+    for (const auto &row_val : arc[timing_arc_name]["values"]) {
       std::vector<double> row_data;
       // Check if the value is an array
       if (!row_val.is_array()) {
         logger_->error("Invalid format: '{}' values should be an array of arrays in cell '{}', pin "
-                      "'{}', related_pin '{}'",
-                      timing_arc_type, cell["cell_name"].get<std::string>(),
-                      pin["pin_name"].get<std::string>(), arc["related_pin"].get<std::string>());
+                       "'{}', related_pin '{}'",
+                       timing_arc_name, cell["cell_name"].get<std::string>(),
+                       pin["pin_name"].get<std::string>(), arc["related_pin"].get<std::string>());
         return false;
       }
       // Check for non-numeric values
@@ -229,9 +229,9 @@ bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, cons
           row_data.push_back(val.get<double>());
         } else {
           logger_->warn("Non-numeric value found in '{}'.values, skipping value: {} in cell '{}', "
-                       "pin '{}', related_pin '{}'",
-                       timing_arc_type, val.dump(), cell["cell_name"].get<std::string>(),
-                       pin["pin_name"].get<std::string>(), arc["related_pin"].get<std::string>());
+                        "pin '{}', related_pin '{}'",
+                        timing_arc_name, val.dump(), cell["cell_name"].get<std::string>(),
+                        pin["pin_name"].get<std::string>(), arc["related_pin"].get<std::string>());
         }
       }
       value_matrix.push_back(row_data);
@@ -245,16 +245,16 @@ bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, cons
             // If contains "when" key, log the when value
             if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
               logger_->warn("Non-monotonic (by load) '{}' values: ({}, {}) {} < ({}, {}) {} "
-                           "for Cell: {} Pin: {}->{} when: \"{}\"",
-                           timing_arc_type, i, j, value_matrix[i][j], i, j - 1, value_matrix[i][j - 1],
-                           cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
-                           pin["pin_name"].get<std::string>(), arc["when"].get<std::string>());
+                            "for Cell: {} Pin: {}->{} when: \"{}\"",
+                            timing_arc_name, i, j, value_matrix[i][j], i, j - 1, value_matrix[i][j - 1],
+                            cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
+                            pin["pin_name"].get<std::string>(), arc["when"].get<std::string>());
             } else {
               logger_->warn("Non-monotonic (by load) '{}' values: ({}, {}) {} < ({}, {}) {} "
-                           "for Cell: {} Pin: {}->{}",
-                           timing_arc_type, i, j, value_matrix[i][j], i, j - 1, value_matrix[i][j - 1],
-                           cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
-                           pin["pin_name"].get<std::string>());
+                            "for Cell: {} Pin: {}->{}",
+                            timing_arc_name, i, j, value_matrix[i][j], i, j - 1, value_matrix[i][j - 1],
+                            cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
+                            pin["pin_name"].get<std::string>());
             }
             is_monotonic = false;
           }
@@ -268,16 +268,17 @@ bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, cons
               // If contains "when" key, log the when value
               if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
                 logger_->warn("Non-monotonic (by slew) '{}' values: ({}, {}) {} < ({}, {}) {} "
-                             "for Cell: {} Pin: {}->{} when: \"{}\"",
-                             timing_arc_type, i, j, value_matrix[i][j], i - 1, j, value_matrix[i - 1][j],
-                             cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
-                             pin["pin_name"].get<std::string>(), arc["when"].get<std::string>());
+                              "for Cell: {} Pin: {}->{} when: \"{}\"",
+                              timing_arc_name, i, j, value_matrix[i][j], i - 1, j,
+                              value_matrix[i - 1][j], cell["cell_name"].get<std::string>(),
+                              arc["related_pin"].get<std::string>(), pin["pin_name"].get<std::string>(),
+                              arc["when"].get<std::string>());
               } else {
                 logger_->warn("Non-monotonic (by slew) '{}' values: ({}, {}) {} < ({}, {}) {} "
-                             "for Cell: {} Pin: {}->{}",
-                             timing_arc_type, i, j, value_matrix[i][j], i - 1, j, value_matrix[i - 1][j],
-                             cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
-                             pin["pin_name"].get<std::string>());
+                              "for Cell: {} Pin: {}->{}",
+                              timing_arc_name, i, j, value_matrix[i][j], i - 1, j,
+                              value_matrix[i - 1][j], cell["cell_name"].get<std::string>(),
+                              arc["related_pin"].get<std::string>(), pin["pin_name"].get<std::string>());
               }
               is_monotonic = false;
             }
@@ -285,10 +286,11 @@ bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, cons
         }
       }
     } else {
-      logger_->warn("Empty or invalid 'values' array found for cell: '{}', pin: '{}', related_pin: '{}', "
-                   "timing_arc: '{}'",
-                   cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
-                   arc["related_pin"].get<std::string>(), timing_arc_type);
+      logger_->warn(
+          "Empty or invalid 'values' array found for cell: '{}', pin: '{}', related_pin: '{}', "
+          "timing_arc: '{}'",
+          cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
+          arc["related_pin"].get<std::string>(), timing_arc_name);
     }
   }
   return is_monotonic;
@@ -338,15 +340,16 @@ void LibFile::mono(const bool is_slew) {
     total_cells++;
     bool cell_is_monotonic = true; // Assume cell is monotonic initially
     std::string cell_name = cell["cell_name"].get<std::string>();
-    cell_monotonicity_status[cell_name] = true; // Initialize to pass, will be set to false if any check fails
+    cell_monotonicity_status[cell_name] =
+        true; // Initialize to pass, will be set to false if any check fails
 
     if (cell.contains("output_pins")) {
       for (const auto &pin : cell["output_pins"]) {
         if (pin.contains("timing_arcs")) {
           for (const auto &arc : pin["timing_arcs"]) {
-            // Check 4 timing arc types and accumulate monotonicity status
-            for (const auto &type : {"cell_rise", "cell_fall", "rise_transition", "fall_transition"}) {
-              if (!checkTimingArcMonotonicity(cell, pin, arc, type, is_slew)) {
+            // Check 4 timing arc names and accumulate monotonicity status
+            for (const auto &name : {"cell_rise", "cell_fall", "rise_transition", "fall_transition"}) {
+              if (!checkTimingArcMonotonicity(cell, pin, arc, name, is_slew)) {
                 cell_is_monotonic = false;
               }
             }
@@ -366,7 +369,8 @@ void LibFile::mono(const bool is_slew) {
 
   // Output summary statistics
   logger_->info("validate_monotonicity : {} out of {} cells passed", passed_cells, total_cells);
-  logger_->info("validate_monotonicity : {} out of {} cells failed", total_cells - passed_cells, total_cells);
+  logger_->info("validate_monotonicity : {} out of {} cells failed", total_cells - passed_cells,
+                total_cells);
   if (!failed_cells.empty()) {
     std::stringstream failed_cells_ss;
     for (size_t i = 0; i < failed_cells.size(); ++i) {
@@ -408,7 +412,7 @@ void LibFile::supercell(const int chain_length) {
     }
     in.close();
   }
-  
+
   // write to <libname>.map file
   std::ofstream out(basename_ + ".map");
   if (!out.is_open()) {
