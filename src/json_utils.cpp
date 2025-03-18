@@ -169,6 +169,8 @@ std::pair<std::string, json> generatePinJson(LibGroup &lib_pin_group, si2drError
                attr_name == "related_ground_pin" || attr_name == "related_power_pin" ||
                attr_name == "three_state") {
       pin_json[attr_name] = lib_attr.getString();
+    } else if (attr_name == "clock") {
+      pin_json[attr_name] = lib_attr.getBoolean();
     }
     // More pin attributes can be added here
   }

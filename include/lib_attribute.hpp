@@ -15,6 +15,7 @@ public:
   long int getInt();
   double getFloat();
   std::string getString();
+  bool getBoolean();
 
 private:
   si2drAttrIdT attr_;

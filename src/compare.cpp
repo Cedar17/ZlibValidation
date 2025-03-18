@@ -20,7 +20,8 @@
  * @param comp_libfile Reference to the comparison library file object.
  * @param reltol Relative tolerance value for comparison.
  */
-LibraryComparator::LibraryComparator(LibFile &ref_libfile, LibFile &comp_libfile, double reltol, double abstol)
+LibraryComparator::LibraryComparator(LibFile &ref_libfile, LibFile &comp_libfile, double reltol,
+                                     double abstol)
     : reltol_(reltol), abstol_(abstol) {
   std::string ref_json_name = ref_libfile.basename_ + ".json";
   if (!std::filesystem::exists(ref_json_name)) {
@@ -91,10 +92,11 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
       std::vector<double> row_data;
       // Check if the row value is an array
       if (!row_val.is_array()) {
-        spdlog::error(
-            "Invalid LUT format: '{}' values should be an array of arrays in comp_lib '{}', cell '{}', pin '{}', "
-            "related_pin '{}', timing_type '{}'",
-            arc_name, this->comp_lib_path_.string(), cell_name, pin_name, related_pin, timing_type);
+        spdlog::error("Invalid LUT format: '{}' values should be an array of arrays in comp_lib '{}', "
+                      "cell '{}', pin '{}', "
+                      "related_pin '{}', timing_type '{}'",
+                      arc_name, this->comp_lib_path_.string(), cell_name, pin_name, related_pin,
+                      timing_type);
         return;
       }
       // Check if non-numeric values
@@ -102,9 +104,11 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
         if (val.is_number()) {
           row_data.push_back(val.get<double>());
         } else {
-          spdlog::error("Non-numeric value found in '{}'.values, skipping value: {} in comp_lib '{}', cell '{}', "
-            "pin '{}', related_pin '{}', timing_type '{}'",
-            arc_name, val.dump(), this->comp_lib_path_.string(), cell_name, pin_name, related_pin, timing_type);
+          spdlog::error(
+              "Non-numeric value found in '{}'.values, skipping value: {} in comp_lib '{}', cell '{}', "
+              "pin '{}', related_pin '{}', timing_type '{}'",
+              arc_name, val.dump(), this->comp_lib_path_.string(), cell_name, pin_name, related_pin,
+              timing_type);
           return;
         }
       }
@@ -116,10 +120,11 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
       std::vector<double> row_data;
       // Check if the row value is an array
       if (!row_val.is_array()) {
-        spdlog::error(
-            "Invalid LUT format: '{}' values should be an array of arrays in ref_lib '{}', cell '{}', pin '{}', "
-            "related_pin '{}', timing_type '{}'",
-            arc_name, this->ref_lib_path_.string(), cell_name, pin_name, related_pin, timing_type);
+        spdlog::error("Invalid LUT format: '{}' values should be an array of arrays in ref_lib '{}', "
+                      "cell '{}', pin '{}', "
+                      "related_pin '{}', timing_type '{}'",
+                      arc_name, this->ref_lib_path_.string(), cell_name, pin_name, related_pin,
+                      timing_type);
         return;
       }
       // Check if non-numeric values
@@ -127,9 +132,11 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
         if (val.is_number()) {
           row_data.push_back(val.get<double>());
         } else {
-          spdlog::error("Non-numeric value found in '{}'.values, skipping value: {} in ref_lib '{}', cell '{}', "
-            "pin '{}', related_pin '{}', timing_type '{}'",
-            arc_name, val.dump(), this->ref_lib_path_.string(), cell_name, pin_name, related_pin, timing_type);
+          spdlog::error(
+              "Non-numeric value found in '{}'.values, skipping value: {} in ref_lib '{}', cell '{}', "
+              "pin '{}', related_pin '{}', timing_type '{}'",
+              arc_name, val.dump(), this->ref_lib_path_.string(), cell_name, pin_name, related_pin,
+              timing_type);
           return;
         }
       }
@@ -141,25 +148,28 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
         for (size_t j = 0; j < comp_value_matrix[i].size(); ++j) {
           double ref_val = ref_value_matrix[i][j];
           double comp_val = comp_value_matrix[i][j];
-          if (std::abs(ref_val - comp_val) > reltol_ * std::abs(ref_val) && std::abs(ref_val - comp_val) > abstol_) {
+          if (std::abs(ref_val - comp_val) > reltol_ * std::abs(ref_val) &&
+              std::abs(ref_val - comp_val) > abstol_) {
             // TODO: Found a outlier
-            spdlog::debug("LUT value mismatch for '{}', index_1: {}, index_2: {}", arc_name, ref_index_1[i],
-                          ref_index_2[j]);
-            // table.add_row({"Row #", "Pin Name", "Reference", "Comparison", "Diff", "Diff%", "Type", "Index_1", "Index_2", "Note"});
-            table.add_row({std::to_string(i), pin_name, std::to_string(ref_val), std::to_string(comp_val),
-                           std::to_string(comp_val - ref_val),
-                           std::to_string((comp_val - ref_val) / ref_val * 100), arc_name,
-                           std::to_string(ref_index_1[i]), std::to_string(ref_index_2[j]), "<"});
+            spdlog::debug("LUT value mismatch for '{}', index_1: {}, index_2: {}", arc_name,
+                          ref_index_1[i], ref_index_2[j]);
+            table.add_row({related_pin + "->" + pin_name, std::to_string(ref_val),
+                           std::to_string(comp_val), std::to_string(comp_val - ref_val),
+                           std::to_string((comp_val - ref_val) / ref_val * 100), timing_type, arc_name,
+                           std::to_string(i + 1), std::to_string(ref_index_1[i]), std::to_string(j + 1),
+                           std::to_string(ref_index_2[j]), "<"});
             spdlog::debug("table size: {}", table.size());
           } else {
-            spdlog::debug("LUT value match for '{}', index_1: {}, index_2: {}", arc_name, ref_index_1[i], ref_index_2[j]);
+            spdlog::debug("LUT value match for '{}', index_1: {}, index_2: {}", arc_name, ref_index_1[i],
+                          ref_index_2[j]);
           }
         }
       }
     } else {
-      spdlog::error("Empty or invalid 'values' array found for cell: '{}', pin: '{}', related_pin: '{}', "
-                    "timing_type: '{}', arc: '{}'",
-                    cell_name, pin_name, related_pin, timing_type, arc_name);
+      spdlog::error(
+          "Empty or invalid 'values' array found for cell: '{}', pin: '{}', related_pin: '{}', "
+          "timing_type: '{}', arc: '{}'",
+          cell_name, pin_name, related_pin, timing_type, arc_name);
     }
   }
 }
@@ -181,7 +191,7 @@ void LibraryComparator::compareTimingArc(const std::string &cell_name, const std
         // Found this arc
         spdlog::debug("Found timing arc: '{}'", arc_name);
         compareLut(cell_name, pin_name, timing_type, related_pin, arc_name, ref_timing_arc[arc_name],
-                     comp_timing_arc[arc_name], table);
+                   comp_timing_arc[arc_name], table);
       } else {
         // arc not found in reference JSON
         spdlog::warn("Timing arc: '{}' not found in reference JSON", arc_name);
@@ -247,6 +257,7 @@ void LibraryComparator::generateReport(const std::string &output_file) {
   outfile << "# LIBRARY comparison\n" << std::endl;
   outfile << "**Reference library: " << ref_lib_path_ << "**\n" << std::endl;
   outfile << "**Comparison library: " << comp_lib_path_ << "**\n" << std::endl;
+  outfile << "**Absolute tolerance: " << abstol_ << "**\n" << std::endl;
   outfile << "**Relative tolerance: " << reltol_ << "**\n" << std::endl;
   outfile << "**Performed by " << APP_NAME << " v" << APP_VERSION << " from " << APP_AUTHOR;
   auto now = std::chrono::system_clock::now();
@@ -260,39 +271,7 @@ void LibraryComparator::generateReport(const std::string &output_file) {
       << "> Legend: + padding added, /0 divide by zero, / slews interpolated, # loads interpolated\n";
   outfile << "> \n";
   outfile << "> Legend: << value is less but unknown, >> value is more but unknown\n\n";
-  /*
-    tabulate::Table report;
-    report.add_row({"Cell Name", "Pin", "Reference", "Compare", "Diff", "Diff%", "Outlier"});
-    report.add_row({"1", "2", "3", "4", "5", "6", "7"});
 
-    // compareCells(report);
-    // center align 'Director' column
-    report.column(2).format().font_align(FontAlign::center);
-
-    // right align 'Estimated Budget' column
-    report.column(3).format().font_align(FontAlign::right);
-
-    // right align 'Release Date' column
-    report.column(4).format().font_align(FontAlign::right);
-
-    // Color header cells
-    for (size_t i = 0; i < 5; ++i) {
-      report[0][i].format().font_color(Color::yellow).font_style({FontStyle::bold});
-    }
-
-    // Check if the output file is Markdown
-    if (output_file.substr(output_file.size() - 3) == ".md") {
-      // Export to Markdown
-      MarkdownExporter exporter;
-      auto markdown = exporter.dump(report);
-      outfile << markdown << std::endl;
-    } else {
-      // Export to file
-      outfile << report << std::endl;
-    }
-    // Export to console
-    std::cout << report << std::endl;
-  */
   spdlog::info("Starting comparison report generation ...");
   for (const auto &comp_cell : comp_json_["cells"]) {
     std::string cell_name = comp_cell["cell_name"].get<std::string>();
@@ -305,8 +284,53 @@ void LibraryComparator::generateReport(const std::string &output_file) {
       // Found this cell
       spdlog::debug("Found cell: '{}'", cell_name);
       Table table;
+      table.add_row({"Pin Name", "Reference", "Comparison", "Diff", "Diff %", "Type", "Arc Name",
+                     "Row #", "Index_1", "Col #", "Index_2", "Note"});
+      // Header formatting
+      for (size_t i = 0; i < table[0].size(); ++i) {
+        table[0][i].format().font_color(Color::yellow).font_style({FontStyle::bold});
+      }
       compareCell(cell_name, *ref_cell_it, comp_cell, table);
-      if (table.size() > 0) {
+
+      if (table.size() > 1) {
+        // Data starts from row 1, row 0 is header
+        size_t failed_count = table.size() - 1;
+        double sum_diff = 0.0;
+        double sum_diff_percent = 0.0;
+        size_t outlier_count = 0;
+        double max_diff = -1e9;
+        double max_diff_percent = -1e9;
+        std::vector<double> diff_values; // Store diff values for std deviation calculation
+
+        // Index of columns
+        const int diff_index = 3;
+        const int diff_percent_index = 4;
+        const int note_index = 11;
+
+        for (size_t i = 1; i < table.size(); ++i) {
+          try {
+            double diff = std::stod(table[i][diff_index].get_text());
+            double diff_percent = std::stod(table[i][diff_percent_index].get_text());
+
+            sum_diff += diff;
+            sum_diff_percent += diff_percent;
+            diff_values.push_back(diff_percent);
+
+            if (table[i][note_index].get_text() == "<") {
+              outlier_count++;
+            }
+            max_diff = std::max(max_diff, diff);
+            max_diff_percent = std::max(max_diff_percent, diff_percent);
+
+          } catch (const std::invalid_argument &e) {
+            spdlog::error("Could not convert value to double: {}", e.what());
+            continue; // Skip this row if there's an error
+          }
+        }
+
+        double avg_diff = sum_diff / failed_count;
+        double avg_diff_percent = sum_diff_percent / failed_count;
+
         outfile << "## " << cell_name << "\n\n";
         outfile << "Delay Comparison in ns\n\n";
         if (output_file.substr(output_file.size() - 3) == ".md") {
@@ -316,8 +340,30 @@ void LibraryComparator::generateReport(const std::string &output_file) {
         } else {
           outfile << table << std::endl;
         }
-        std::cout << table << std::endl;
         outfile << std::endl;
+        std::cout << table << std::endl;
+        outfile << cell_name << " delay SUMMARY (abstol: " << abstol_ << ", reltol: " << reltol_
+                << ")\n";
+
+        // Create summary table
+        Table summary_table;
+        summary_table.add_row({"Cell Name", "Data Type", "Failed Count", "Avg Diff", "Avg Diff%",
+                               "Max Diff", "Max Diff%", "Outliers"});
+        summary_table.add_row({cell_name, "delay(ns)", std::to_string(failed_count),
+                               std::to_string(avg_diff), std::to_string(avg_diff_percent) + "%",
+                               std::to_string(max_diff), std::to_string(max_diff_percent) + "%",
+                               std::to_string(outlier_count)});
+
+        // Output summary table
+        if (output_file.substr(output_file.size() - 3) == ".md") {
+          MarkdownExporter exporter;
+          auto markdown = exporter.dump(summary_table);
+          outfile << markdown << std::endl;
+        } else {
+          outfile << summary_table << std::endl;
+        }
+        outfile << "Worst delay outlier: Max Abs: " << max_diff << ", Max Rel: " << max_diff_percent
+                << "%, Outliers: " << outlier_count << "\n\n";
       }
     } else {
       // cell not found in reference JSON

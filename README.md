@@ -21,6 +21,8 @@ Subcommands:
   supercell                   Generate supercells for the given Liberty file
   zlibboost                   ZlibBoost - Multi-threaded Library Processing Tool
   clear                       Clear the log, JSON, map, markdown files in this directory
+  verilog                     Generate Verilog file for given Liberty file
+  spice                       Generate SPICE file for given Liberty file
 ```
 
 ## Development Diary
@@ -166,3 +168,24 @@ Subcommands:
 - 修复了 `LibraryComparator::compareValue()` 方法的命名错误，已更正为 `LibraryComparator::compareLut()`。
 - 已经可以输出表格，数据数量和商用工具结果一致，但格式还需要进一步调整。
 - 新增了 `abstol` 参数，默认值为 0.002ns，用于设置绝对容差，与库验证工具保持一致。
+
+### 2025-03-17
+
+- 新增 `verilog` 和 `spice` 子命令，用于生成 Verilog 和 SPICE 代码。
+- 完善 `LibraryComparator` 报告生成：
+  - 为每个 cell 增加表头，仅在存在表格数据时输出表格，避免冗余输出。
+  - 增加 cell 结果统计功能，输出结果统计表格，目前仅支持 Timing 中 Delay 的比较。
+
+### 2025-03-18
+
+- 优化统计表格，包含 | Cell Name | Data Type | Failed Count | Avg Diff | Avg Diff% | Max Diff | Max Diff% | Outliers |。
+- 优化报告对比表格，包含 | Pin Name | Reference | Comparison | Diff | Diff % | Type | Arc Name | Row # | Index_1 | Column # | Index_2 | Note |
+- 报告表格的 stdout 输出增加表头加粗、黄色的格式化。
+- 增加 `si2drSimpleAttrGetBooleanValue` 封装，用于获取布尔类型的属性值，以判断引脚是否是时钟引脚。
+- `LibFile::mono()` 增加对 `min_pulse_width` 的单调性检查：
+  - 针对包含 "input_pins" 的 cell，遍历每个输入引脚。
+  - 如果引脚是时钟引脚，则检查其 "timing_arcs"。
+  - 针对 "timing_type" 为 "min_pulse_width" 的 timing arc，对 "rise_constraint" 和 "fall_constraint" 调用 `checkTimingArcMonotonicity` 进行单调性检查。
+- `checkTimingArcMonotonicity` 函数日志区分有无 when 信息，输出不同日志。
+- `checkTimingArcMonotonicity` 核心比较功能取消了等于的情况，相等情况默认为通过。
+- `checkTimingArcMonotonicity` 核心比较功能增加了判断 `related_pin` 是否等于当前 pin，不等于则跳过。最终改为：如果矩阵中当前的值小于前一个值，并且当前引脚不是相关引脚，或者当前值和前一个值都为零，那么就认为这些值不是单调递增的。

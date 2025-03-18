@@ -146,7 +146,7 @@ void supercellLibFile(const std::string &library_path, const std::string &log_fi
 }
 
 void compareLibFiles(const std::string &ref_lib, const std::string &comp_lib, const double reltol,
-  const double abstol, std::string &report_file_name) {
+                     const double abstol, std::string &report_file_name) {
   std::string ref_logname = std::filesystem::path(ref_lib).stem().string() + ".cmp.log";
   std::string comp_logname = std::filesystem::path(comp_lib).stem().string() + ".cmp.log";
   LibFile ref_libfile(ref_lib, ref_logname), comp_libfile(comp_lib, comp_logname);
@@ -251,12 +251,12 @@ int main(int argc, char *argv[]) {
   compare_cmd->add_option("--comp", comp_lib, "Specify the comparison library file")
       ->check(CLI::ExistingFile)
       ->required();
-  double reltol = 0.02;
-  compare_cmd->add_option("--reltol", reltol,
-                          "Specify the relative tolerance for comparison. Default: 0.02/2.0%");
   double abstol = 0.002;
   compare_cmd->add_option("--abstol", abstol,
                           "Specify the absolute tolerance for comparison. Default: 0.002ns");
+  double reltol = 0.02;
+  compare_cmd->add_option("--reltol", reltol,
+                          "Specify the relative tolerance for comparison. Default: 0.02/2.0%");
   compare_cmd->add_option("--report", report_file_name,
                           "Specify the report file name. Default: <comp_lib>.cmp.md");
   compare_cmd->callback([&] {
@@ -346,6 +346,81 @@ int main(int argc, char *argv[]) {
       }
     }
     spdlog::info("All log, JSON, map, markdown files cleared.");
+  });
+
+  // Add subcommand for Verilog generation
+  CLI::App *verilog_cmd = app.add_subcommand("verilog", "Generate Verilog file for given Liberty file");
+  verilog_cmd->add_option("library_path", library_paths, "Specify the library file to process")
+      ->check(CLI::ExistingFile)
+      ->required();
+  verilog_cmd->add_option("-l,--log", log_file_name,
+                          "Specify the log file name. Default: <basename>.verilog.log");
+  std::vector<std::string> cell_names;
+  verilog_cmd->add_option("--cells", cell_names, "Specify the cell names to generate Verilog for");
+  verilog_cmd->callback([&] {
+    printInfo();
+    // Check if multi files
+    if (library_paths.size() > 1) {
+      spdlog::info("Running multi-threaded Verilog generation for {} files.", library_paths.size());
+      spdlog::info("Each library will write to its own log file.");
+
+      // Sequential json file check
+      for (const auto &library_path : library_paths) {
+        if (!std::filesystem::exists(std::filesystem::path(library_path).stem().string() + ".json")) {
+          spdlog::info("JSON file not found for '{}'. Parsing Liberty file first.", library_path);
+          parseLibFile(library_path, log_file_name = "");
+        }
+      }
+      spdlog::info("All JSON files prepared.");
+      // Parallel Verilog generation
+      std::vector<std::thread> threads;
+      for (const auto &library_path : library_paths) {
+        // threads.emplace_back(verilogLibFile, library_path, log_file_name = "", cell_names);
+      }
+      for (auto &thread : threads) {
+        thread.join();
+      }
+      spdlog::info("All threads completed.");
+    } else {
+      // verilogLibFile(library_paths[0], log_file_name, cell_names);
+    }
+  });
+
+  // Add subcommand for SPICE generation
+  CLI::App *spice_cmd = app.add_subcommand("spice", "Generate SPICE file for given Liberty file");
+  spice_cmd->add_option("library_path", library_paths, "Specify the library file to process")
+      ->check(CLI::ExistingFile)
+      ->required();
+  spice_cmd->add_option("-l,--log", log_file_name,
+                        "Specify the log file name. Default: <basename>.spice.log");
+  spice_cmd->add_option("--cells", cell_names, "Specify the cell names to generate SPICE for");
+  spice_cmd->callback([&] {
+    printInfo();
+    // Check if multi files
+    if (library_paths.size() > 1) {
+      spdlog::info("Running multi-threaded SPICE generation for {} files.", library_paths.size());
+      spdlog::info("Each library will write to its own log file.");
+
+      // Sequential json file check
+      for (const auto &library_path : library_paths) {
+        if (!std::filesystem::exists(std::filesystem::path(library_path).stem().string() + ".json")) {
+          spdlog::info("JSON file not found for '{}'. Parsing Liberty file first.", library_path);
+          parseLibFile(library_path, log_file_name = "");
+        }
+      }
+      spdlog::info("All JSON files prepared.");
+      // Parallel SPICE generation
+      std::vector<std::thread> threads;
+      for (const auto &library_path : library_paths) {
+        // threads.emplace_back(spiceLibFile, library_path, log_file_name = "", cell_names);
+      }
+      for (auto &thread : threads) {
+        thread.join();
+      }
+      spdlog::info("All threads completed.");
+    } else {
+      // spiceLibFile(library_paths[0], log_file_name, cell_names);
+    }
   });
 
   CLI11_PARSE(app, argc, argv);

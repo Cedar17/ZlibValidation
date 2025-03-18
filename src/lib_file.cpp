@@ -206,9 +206,16 @@ void LibFile::modify() { logger_->info("Modifying the file..."); }
  */
 bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, const json &arc,
                                          const std::string &timing_arc_name, const bool is_slew) {
-  logger_->debug("Checking cell: '{}', pin: '{}', related_pin: '{}', timing_arc: '{}'",
-                 cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
-                 arc["related_pin"].get<std::string>(), timing_arc_name);
+  if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
+    logger_->debug("Checking cell: '{}', pin: '{}', related_pin: '{}', timing_arc: '{}', when: '{}'",
+                   cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
+                   arc["related_pin"].get<std::string>(), timing_arc_name,
+                   arc["when"].get<std::string>());
+  } else {
+    logger_->debug("Checking cell: '{}', pin: '{}', related_pin: '{}', timing_arc: '{}'",
+                   cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
+                   arc["related_pin"].get<std::string>(), timing_arc_name);
+  }
   bool is_monotonic = true; // Assume the values are monotonic initially
   if (arc.contains(timing_arc_name) && arc[timing_arc_name].contains("values")) {
     std::vector<std::vector<double>> value_matrix;
@@ -241,7 +248,8 @@ bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, cons
       // Check the monotonic incrementality of rows (by output load capacitance, index 2)
       for (size_t i = 0; i < value_matrix.size(); ++i) {
         for (size_t j = 1; j < value_matrix[i].size(); ++j) {
-          if (value_matrix[i][j] <= value_matrix[i][j - 1]) {
+          if ((value_matrix[i][j] < value_matrix[i][j - 1] && pin["pin_name"] != arc["related_pin"]) ||
+              (value_matrix[i][j] == 0 && value_matrix[i][j - 1] == 0)) {
             // If contains "when" key, log the when value
             if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
               logger_->warn("Non-monotonic (by load) '{}' values: ({}, {}) {} < ({}, {}) {} "
@@ -264,7 +272,8 @@ bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, cons
         // Check the monotonic incrementality of columns (by input slew, index 1)
         for (size_t j = 0; j < value_matrix[0].size(); ++j) {
           for (size_t i = 1; i < value_matrix.size(); ++i) {
-            if (value_matrix[i][j] <= value_matrix[i - 1][j]) {
+            if ((value_matrix[i][j] < value_matrix[i - 1][j] && pin["pin_name"] != arc["related_pin"]) ||
+                (value_matrix[i][j] == 0 && value_matrix[i - 1][j] == 0)) {
               // If contains "when" key, log the when value
               if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
                 logger_->warn("Non-monotonic (by slew) '{}' values: ({}, {}) {} < ({}, {}) {} "
@@ -351,6 +360,28 @@ void LibFile::mono(const bool is_slew) {
             for (const auto &name : {"cell_rise", "cell_fall", "rise_transition", "fall_transition"}) {
               if (!checkTimingArcMonotonicity(cell, pin, arc, name, is_slew)) {
                 cell_is_monotonic = false;
+              }
+            }
+          }
+        }
+      }
+    }
+    if (cell.contains("input_pins")) {
+      for (const auto &pin : cell["input_pins"]) {
+        if (!pin.contains("clock")) {
+          continue; // Skip non-clock pins
+        }
+        // logger_->debug("Clock pin: {}", pin["pin_name"].get<std::string>());
+        if (pin.contains("timing_arcs")) {
+          for (const auto &arc : pin["timing_arcs"]) {
+            if (arc.contains("timing_type")) {
+              // logger_->debug("Timing type: {}", arc["timing_type"].get<std::string>());
+              if (arc["timing_type"].get<std::string>() == "min_pulse_width") {
+                for (const auto &name : {"rise_constraint", "fall_constraint"}) {
+                  if (!checkTimingArcMonotonicity(cell, pin, arc, name, is_slew)) {
+                    cell_is_monotonic = false;
+                  }
+                }
               }
             }
           }

@@ -21,3 +21,5 @@ std::string LibAttribute::getString() {
   si2drStringT str = si2drSimpleAttrGetStringValue(attr_, &err_);
   return str ? std::string(str) : std::string();
 }
+
+bool LibAttribute::getBoolean() { return si2drSimpleAttrGetBooleanValue(attr_, &err_) ? 1 : 0; }
