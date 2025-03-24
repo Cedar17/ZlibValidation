@@ -59,7 +59,7 @@ Subcommands:
 
 - 类的头文件改为`hpp`后缀，修改了`CMakeLists.txt`中的文件收集规则，CMake编译时间戳更新。
 - 为`LibFile`类添加了输出同名json格式文件的方法`LibFile::writeJsonToFile`，目前能输出PVT、cell_name、cell_footprint、cell_area信息。
-- [ ] voltage 浮点数误差未解决。
+- [x] voltage 浮点数误差未解决。
 
 ### 2025-02-14
 
@@ -189,3 +189,12 @@ Subcommands:
 - `checkTimingArcMonotonicity` 函数日志区分有无 when 信息，输出不同日志。
 - `checkTimingArcMonotonicity` 核心比较功能取消了等于的情况，相等情况默认为通过。
 - `checkTimingArcMonotonicity` 核心比较功能增加了判断 `related_pin` 是否等于当前 pin，不等于则跳过。最终改为：如果矩阵中当前的值小于前一个值，并且当前引脚不是相关引脚，或者当前值和前一个值都为零，那么就认为这些值不是单调递增的。
+
+### 2025-03-19
+
+- 完善supercell方法，如果有有时钟信号引脚，链式长度被设为1，再生成超级单元。
+- 解决 voltage 浮点数误差问题，std::round(voltage_ * 100) / 100.0 保留两位小数。
+
+### 2025-03-21
+
+- 新增 func 子命令，用于检查库或者Verilog文件的逻辑等价性。

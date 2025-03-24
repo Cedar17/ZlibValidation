@@ -160,7 +160,8 @@ void LibFile::parse() {
               lib_json_["process"] = process_;
             } else if (lib_attr.getName() == "voltage") {
               voltage_ = lib_attr.getFloat();
-              lib_json_["voltage"] = voltage_;
+              // Round to 2 decimal places to avoid floating-point precision issues
+              lib_json_["voltage"] = std::round(voltage_ * 100) / 100.0;
             } else if (lib_attr.getName() == "temperature") {
               temperature_ = lib_attr.getInt();
               lib_json_["temperature"] = temperature_;
@@ -444,14 +445,14 @@ void LibFile::supercell(const int chain_length) {
     in.close();
   }
 
-  // write to <libname>.map file
+  // write to .map file
   std::ofstream out(basename_ + ".map");
   if (!out.is_open()) {
     logger_->error("Could not open file '{}' for writing", basename_ + ".map");
     return;
   }
-  // TODO: check combinational or sequential cells
   for (const auto &cell : lib_json_["cells"]) {
+    bool is_sequential = false;
     std::string cell_name = cell["cell_name"].get<std::string>();
     logger_->debug("Creating supercells for cell: '{}'", cell_name);
 
@@ -464,15 +465,25 @@ void LibFile::supercell(const int chain_length) {
     }
     if (cell.contains("input_pins")) {
       for (const auto &pin : cell["input_pins"]) {
+        if (pin.contains("clock")) {
+          is_sequential = true;
+        }
         input_pins.insert(pin["pin_name"].get<std::string>());
       }
     }
     // create supercells for all combinations of input and output pins
     for (const auto &output_pin : output_pins) {
       for (const auto &input_pin : input_pins) {
+        if (is_sequential) {
+          const int chain_len = 1;
+          std::string supercell_name =
+              cell_name + "__X" + std::to_string(chain_len) + "__" + input_pin + "__" + output_pin;
+          out << cell_name << " " << supercell_name << std::endl;
+        } else {
         std::string supercell_name =
             cell_name + "__X" + std::to_string(chain_length) + "__" + input_pin + "__" + output_pin;
         out << cell_name << " " << supercell_name << std::endl;
+        }
       }
     }
   }

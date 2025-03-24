@@ -355,7 +355,7 @@ int main(int argc, char *argv[]) {
       ->required();
   verilog_cmd->add_option("-l,--log", log_file_name,
                           "Specify the log file name. Default: <basename>.verilog.log");
-  std::vector<std::string> cell_names;
+  std::vector<std::string> cell_names = {"AN2D0", "DFQD1"}; // "CMPE42D1"
   verilog_cmd->add_option("--cells", cell_names, "Specify the cell names to generate Verilog for");
   verilog_cmd->callback([&] {
     printInfo();
@@ -423,9 +423,32 @@ int main(int argc, char *argv[]) {
     }
   });
 
+  // Add subcommand for funtional equivalence check
+  CLI::App *func_cmd = app.add_subcommand("func", "Check functional equivalence of two Liberty files or Verilog files");
+  std::string ref_file, comp_file;
+  func_cmd->add_option("--ref", ref_file, "Specify the reference Liberty or Verilog file")
+      ->check(CLI::ExistingFile)
+      ->required();
+  func_cmd->add_option("--comp", comp_file, "Specify the comparison Liberty or Verilog file")
+      ->check(CLI::ExistingFile)
+      ->required();
+  func_cmd->add_option("--cells", cell_names, "Specify the cell names to check functional equivalence for");
+  func_cmd->callback([&] {
+    printInfo();
+     // funcLibFile();
+  });
+
   CLI11_PARSE(app, argc, argv);
 
   // End of program
-  spdlog::info("All Done!");
+  char hostname[256];
+  gethostname(hostname, sizeof(hostname));
+  
+  auto now = std::chrono::system_clock::now();
+  auto time_now = std::chrono::system_clock::to_time_t(now);
+  std::stringstream ss;
+  ss << std::put_time(std::localtime(&time_now), "%c");
+
+  spdlog::info("ZlibValidation exited on '{}' at {}", hostname, ss.str());
   return 0;
 }
