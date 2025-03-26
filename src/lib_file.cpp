@@ -12,6 +12,18 @@
 #include "json_utils.hpp"
 #include "lib_file.hpp"
 
+/**
+ * @brief Constructs a LibFile object with specified file path and logger name
+ *
+ * This constructor initializes a LibFile object with the given file path and creates
+ * a logger with the specified name. It sets up:
+ * - Two logging sinks: a colored console sink and a file sink
+ * - File path information including filename, basename, and a corresponding JSON filename
+ * - Log levels (info for console, debug for file)
+ *
+ * @param filepath The path to the file to be processed
+ * @param loggername The name for the logger and the log file
+ */
 LibFile::LibFile(const std::string &filepath, const std::string &loggername)
     : filepath_(filepath), loggername_(loggername) {
   filename_ = filepath_.string();
@@ -94,6 +106,26 @@ void LibFile::read() {
   }
 }
 
+/**
+ * @brief Parses the Liberty file and extracts library information into a JSON structure.
+ *
+ * This method handles the parsing of a Liberty file by:
+ * 1. Initializing the SI2 parser interface error handler
+ * 2. Reading the Liberty file contents
+ * 3. Extracting the library name
+ * 4. Processing second-level groups including:
+ *    - Cell definitions, which are added to the JSON structure
+ *    - Operating conditions, extracting PVT (Process, Voltage, Temperature) values
+ *
+ * The parsed data is stored in the lib_json_ member variable, with the following structure:
+ *   - "library_name": Name of the library
+ *   - "cells": Array of cell definitions
+ *   - "process": Process value
+ *   - "voltage": Voltage value (rounded to 2 decimal places)
+ *   - "temperature": Temperature value
+ *
+ * @note This method creates local scopes to ensure proper cleanup of SI2 iterators.
+ */
 void LibFile::parse() {
   si2drPIInit(&err_); // Initialize private error handler
   this->read();       // Read the Liberty file
@@ -162,6 +194,27 @@ void LibFile::parse() {
 
 void LibFile::modify() { logger_->info("Modifying the file..."); }
 
+/**
+ * @brief Checks if the values in a timing arc are monotonically increasing.
+ *
+ * This function examines the values in the specified timing arc to ensure they are monotonically
+ * increasing. It checks monotonicity in two dimensions:
+ * 1. Across rows (by output load capacitance)
+ * 2. Across columns (by input slew, only if is_slew is true)
+ *
+ * The function logs detailed information about any non-monotonic values found, including
+ * cell name, pin names, and conditional statements (when clause) if present.
+ *
+ * @param cell The JSON object representing the cell being checked
+ * @param pin The JSON object representing the pin being checked
+ * @param arc The JSON object representing the timing arc being checked
+ * @param timing_arc_name The name of the timing arc to check (e.g., "cell_rise", "cell_fall")
+ * @param is_slew Boolean flag indicating whether to check monotonicity across input slew values
+ *
+ * @return true if all values in the timing arc are monotonic, false otherwise
+ *
+ * @throw None, but logs errors or warnings for invalid data formats or non-monotonic values
+ */
 bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, const json &arc,
                                          const std::string &timing_arc_name, const bool is_slew) {
   if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
@@ -263,6 +316,26 @@ bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, cons
   return is_monotonic;
 }
 
+/**
+ * @brief Validates that lookup tables are monotonically increasing with respect to the output load.
+ *
+ * This function checks the following timing data in the current library to ensure monotonicity:
+ * - cell_rise and retaining_rise
+ * - cell_fall and retaining_fall
+ * - rise_transition and retain_rise_slew
+ * - fall_transition and retain_fall_slew
+ * - min_pulse_width constraints (rise_constraint, fall_constraint)
+ *
+ * The function first checks if a parsed JSON representation exists. If not, it parses the Liberty
+ * file and creates the JSON file. It then evaluates each timing arc in all cells and reports
+ * the pass/fail status at the end.
+ *
+ * @param is_slew Boolean flag indicating whether to check slew values rather than delay values
+ *
+ * @details The function outputs:
+ *          - Number of cells that passed/failed the monotonicity check
+ *          - List of cells that failed the check (if any)
+ */
 void LibFile::mono(const bool is_slew) {
   /*
    * Use this command to check the following data in the current library to ensure

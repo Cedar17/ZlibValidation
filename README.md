@@ -23,6 +23,7 @@ Subcommands:
   clear                       Clear the log, JSON, map, markdown files in this directory
   verilog                     Generate Verilog file for given Liberty file
   spice                       Generate SPICE file for given Liberty file
+  func                        Check functional equivalence of two Liberty files or Verilog files
 ```
 
 ## Development Diary

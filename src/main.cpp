@@ -16,6 +16,21 @@
 #include "verilog_utils.hpp"
 #include "version.h"
 
+/**
+ * @brief Sets up and configures the global logger and prints application information.
+ *
+ * This function performs the following operations:
+ * 1. Creates a console sink for logging with level set to INFO
+ * 2. Creates a file sink for logging with level set to DEBUG, saving to [APP_NAME].log
+ * 3. Configures a logger with both sinks and sets it as the default logger
+ * 4. Outputs basic application information:
+ *    - Version and build timestamp
+ *    - Author information
+ *    - Log file location
+ *
+ * @note Uses spdlog library for logging functionality
+ * @note Depends on APP_NAME, APP_VERSION, BUILD_TIMESTAMP, APP_AUTHOR, and APP_CONTACT macros
+ */
 void printInfo() {
   // Set Global Logger
   auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
@@ -34,6 +49,19 @@ void printInfo() {
   spdlog::info("Global log file in: '{}'", app_name + ".log");
 }
 
+/**
+ * @brief Parses a library file and generates corresponding output.
+ *
+ * This function processes the given library file, parsing its contents and generating
+ * a JSON output. It also logs the parsing process to a specified log file or creates
+ * a default log file if none is provided.
+ *
+ * @param library_path Path to the library file that needs to be parsed
+ * @param log_file_name Optional name for the log file. If empty, a default name is generated
+ *                      based on the library filename with ".parse.log" extension
+ *
+ * @throws The function catches and logs any exceptions but doesn't propagate them
+ */
 void parseLibFile(const std::string &library_path, const std::string log_file_name) {
   std::string logname = log_file_name.empty()
                             ? std::filesystem::path(library_path).stem().string() + ".parse.log"
@@ -51,6 +79,21 @@ void parseLibFile(const std::string &library_path, const std::string log_file_na
   }
 }
 
+/**
+ * @brief Performs a monotonicity check on a library file
+ *
+ * This function loads a library file and performs monotonicity validation on it.
+ * Results are logged to a file. If no log file name is provided, it generates one
+ * based on the library file name.
+ *
+ * @param library_path Path to the library file to check
+ * @param log_file_name Name of the log file (optional - if empty, generates a name based on library
+ * file)
+ * @param is_slew Boolean flag indicating whether to check slew monotonicity (true) or other parameters
+ * (false)
+ *
+ * @throws Any exceptions from the monotonicity check are caught and logged
+ */
 void monoCheckLibFile(const std::string &library_path, const std::string log_file_name, bool is_slew) {
   std::string logname = log_file_name.empty()
                             ? std::filesystem::path(library_path).stem().string() + ".mono.log"
@@ -68,6 +111,22 @@ void monoCheckLibFile(const std::string &library_path, const std::string log_fil
   }
 }
 
+/**
+ * @brief Creates supercell map structures from a Liberty library file
+ *
+ * This function reads a Liberty file, creates supercell structures based on the specified
+ * chain length and cell names, and logs the process to a file.
+ *
+ * @param library_path Path to the Liberty file to process
+ * @param log_file_name Name of the log file (if empty, defaults to "[library_name].supercell.log")
+ * @param chain_length The length of chains to create (must be >= 1)
+ * @param cell_names Vector of cell names to process for supercell generation
+ *
+ * @throws May pass through exceptions from the LibFile::supercell method
+ *
+ * @note The function validates the chain length and logs all activities including
+ *       errors that might occur during processing
+ */
 void supercellLibFile(const std::string &library_path, const std::string &log_file_name,
                       int chain_length, const std::vector<std::string> &cell_names) {
   std::string logname = log_file_name.empty()
@@ -95,6 +154,20 @@ void supercellLibFile(const std::string &library_path, const std::string &log_fi
   }
 }
 
+/**
+ * @brief Generates Verilog files from a library file for specified cells.
+ *
+ * This function processes a library file and generates Verilog representation
+ * for the specified cell names with a given chain length. The operation results
+ * are logged to a specified or default log file.
+ *
+ * @param library_path Path to the library file to process
+ * @param log_file_name Name for the log file (if empty, a default name will be generated)
+ * @param chain_length Number of cells to chain together, must be >= 1
+ * @param cell_names Vector of cell names to generate Verilog for
+ *
+ * @throws Catches any exceptions from the verilog generation process and logs them
+ */
 void verilogLibFile(const std::string &library_path, const std::string &log_file_name, int chain_length,
                     const std::vector<std::string> &cell_names) {
   std::string logname = log_file_name.empty()
@@ -121,6 +194,25 @@ void verilogLibFile(const std::string &library_path, const std::string &log_file
   }
 }
 
+/**
+ * @brief Compares two library files and generates a detailed comparison report.
+ *
+ * This function compares a reference library file with another library file,
+ * performing validation checks based on specified tolerance parameters.
+ * The comparison results are written to a report file in markdown or text format.
+ *
+ * @param ref_lib Path to the reference library file to use as the baseline
+ * @param comp_lib Path to the library file to compare against the reference
+ * @param reltol Relative tolerance for numerical comparisons (must be >= 0.0)
+ * @param abstol Absolute tolerance for numerical comparisons
+ * @param report_file_name [in,out] Name of the file to write the comparison report to.
+ *                         If empty, defaults to [comp_lib_basename].cmp.md.
+ *                         If provided but doesn't end with .txt or .md, .md will be appended.
+ *
+ * @note The function will log an error and return without comparing if reltol is invalid.
+ * @note Log files will be created with the naming pattern [library_basename].cmp.log
+ * @note The function uses the LibraryComparator class to perform the actual comparison.
+ */
 void compareLibFiles(const std::string &ref_lib, const std::string &comp_lib, const double reltol,
                      const double abstol, std::string &report_file_name) {
   std::string ref_logname = std::filesystem::path(ref_lib).stem().string() + ".cmp.log";

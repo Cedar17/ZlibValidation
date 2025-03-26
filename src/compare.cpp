@@ -177,7 +177,6 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
           double comp_val = comp_value_matrix[i][j];
           if (std::abs(ref_val - comp_val) > reltol_ * std::abs(ref_val) &&
               std::abs(ref_val - comp_val) > abstol_) {
-            // TODO: Found a outlier
             spdlog::debug("LUT value mismatch for '{}', index_1: {}, index_2: {}", arc_name,
                           ref_index_1[i], ref_index_2[j]);
             table.add_row({related_pin + "->" + pin_name, std::to_string(ref_val),
