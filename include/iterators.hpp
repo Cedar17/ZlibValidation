@@ -40,7 +40,7 @@ public:
   ~ValuesIterator();
   void next();
   bool end();
-  
+
   si2drValuesIdT values_;
   si2drValueTypeT vtype_;
   si2drInt32T int_;

@@ -13,25 +13,9 @@
 
 #include "compare.hpp"
 #include "lib_file.hpp"
+#include "verilog_utils.hpp"
 #include "version.h"
 
-/**
- * @brief Initializes and sets up the global logger with both console and file sinks.
- *
- * This function configures the global logger to output log messages to both the console
- * and a log file. The log file is named after the application name with a ".log" extension.
- * The console sink is set to display messages at the info level, while the file sink
- * captures messages at the debug level. The logger is then set to the info level.
- *
- * The function also logs the application version, build timestamp, author, and contact information.
- *
- * @note The following macros are expected to be defined:
- * - APP_NAME: The name of the application.
- * - APP_VERSION: The version of the application.
- * - BUILD_TIMESTAMP: The build timestamp of the application.
- * - APP_AUTHOR: The author of the application.
- * - APP_CONTACT: The contact email of the author.
- */
 void printInfo() {
   // Set Global Logger
   auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
@@ -50,19 +34,6 @@ void printInfo() {
   spdlog::info("Global log file in: '{}'", app_name + ".log");
 }
 
-/**
- * @brief Parses a library file and writes the parsed data to a JSON file.
- *
- * This function takes the path to a library file and an optional log file name.
- * It creates a `LibFile` object, logs the start of the parsing process, and
- * attempts to parse the file. If parsing is successful, the parsed data is
- * written to a JSON file. If an error occurs during parsing, an error message
- * is logged.
- *
- * @param library_path The path to the library file to be parsed.
- * @param log_file_name The name of the log file. If empty, a default log file
- *                      name is generated based on the library file name.
- */
 void parseLibFile(const std::string &library_path, const std::string log_file_name) {
   std::string logname = log_file_name.empty()
                             ? std::filesystem::path(library_path).stem().string() + ".parse.log"
@@ -80,17 +51,6 @@ void parseLibFile(const std::string &library_path, const std::string log_file_na
   }
 }
 
-/**
- * @brief Performs a monotonicity check on a given library file.
- *
- * This function checks the monotonicity of the specified library file and logs the process.
- * It uses the provided log file name or generates one based on the library file name if not provided.
- *
- * @param library_path The path to the library file to be checked.
- * @param log_file_name The name of the log file to be used. If empty, a default log file name is
- * generated.
- * @param is_slew A boolean indicating whether input slew should be considered during the check.
- */
 void monoCheckLibFile(const std::string &library_path, const std::string log_file_name, bool is_slew) {
   std::string logname = log_file_name.empty()
                             ? std::filesystem::path(library_path).stem().string() + ".mono.log"
@@ -108,21 +68,8 @@ void monoCheckLibFile(const std::string &library_path, const std::string log_fil
   }
 }
 
-/**
- * @brief Generates supercells for a given library file and logs the process.
- *
- * This function takes a library file path, a log file name, and a chain length as input.
- * It generates supercells for the specified library file and logs the process, including
- * any errors encountered during the generation.
- *
- * @param library_path The path to the library file for which supercells are to be generated.
- * @param log_file_name The name of the log file where the process will be logged. If empty,
- *                      a default log file name will be generated based on the library file name.
- * @param chain_length The length of the chain for supercell generation. Must be greater than or equal
- * to 1.
- */
 void supercellLibFile(const std::string &library_path, const std::string &log_file_name,
-                      int chain_length) {
+                      int chain_length, const std::vector<std::string> &cell_names) {
   std::string logname = log_file_name.empty()
                             ? std::filesystem::path(library_path).stem().string() + ".supercell.log"
                             : log_file_name;
@@ -133,15 +80,44 @@ void supercellLibFile(const std::string &library_path, const std::string &log_fi
     libfile.logger_->error("Invalid chain length: {}. Chain length must be >= 1.", chain_length);
     return;
   }
-
-  libfile.logger_->info("Starting supercell generation for file: '{}', chain length: {}", library_path,
-                        chain_length);
+  std::stringstream ss;
+  for (const auto &cell : cell_names) {
+    ss << cell << ", ";
+  }
+  libfile.logger_->info("Starting supercell generation for file: '{}', chain length: {}, cells: {}",
+                        library_path, chain_length, ss.str());
   try {
-    libfile.supercell(chain_length);
+    libfile.supercell(chain_length, cell_names);
     libfile.logger_->info("Successfully generated supercells for file: '{}'", library_path);
   } catch (const std::exception &e) {
     libfile.logger_->error("Error during supercell generation for file '{}': {}", library_path,
                            e.what());
+  }
+}
+
+void verilogLibFile(const std::string &library_path, const std::string &log_file_name, int chain_length,
+                    const std::vector<std::string> &cell_names) {
+  std::string logname = log_file_name.empty()
+                            ? std::filesystem::path(library_path).stem().string() + ".verilog.log"
+                            : log_file_name;
+  LibFile libfile(library_path, logname);
+
+  // Check chain length validity
+  if (chain_length < 1) {
+    libfile.logger_->error("Invalid chain length: {}. Chain length must be >= 1.", chain_length);
+    return;
+  }
+  std::stringstream ss;
+  for (const auto &cell : cell_names) {
+    ss << cell << ", ";
+  }
+  libfile.logger_->info("Starting Verilog generation for file: '{}', chain length: {}, cells: {}",
+                        library_path, chain_length, ss.str());
+  try {
+    libfile.verilog(chain_length, cell_names);
+    libfile.logger_->info("Successfully generated Verilog for file: '{}'", library_path);
+  } catch (const std::exception &e) {
+    libfile.logger_->error("Error during Verilog generation for file '{}': {}", library_path, e.what());
   }
 }
 
@@ -166,10 +142,27 @@ void compareLibFiles(const std::string &ref_lib, const std::string &comp_lib, co
                  report_file_name);
   }
 
-  // TODO: Compare the two JSON files
   LibraryComparator comparator(ref_libfile, comp_libfile, reltol, abstol);
   comparator.generateReport(report_file_name);
   spdlog::info("Comparison completed. Report written to: '{}'", report_file_name);
+}
+
+void funcLibFile(const std::string &ref_file, const std::string &comp_file,
+                 const std::vector<std::string> &cell_names) {
+  // Check if the files are Liberty or Verilog
+  std::string ref_ext = std::filesystem::path(ref_file).extension();
+  std::string comp_ext = std::filesystem::path(comp_file).extension();
+  for (const auto &cell : cell_names) {
+    spdlog::info("Checking functional equivalence for cell: '{}'", cell);
+    if (ref_ext == ".v") {
+      spdlog::info("Reference file in Verilog format.");
+      getAST(ref_file, cell);
+    }
+    if (comp_ext == ".v") {
+      spdlog::info("Comparison file in Verilog format.");
+      getAST(comp_file, cell);
+    }
+  }
 }
 
 int main(int argc, char *argv[]) {
@@ -275,6 +268,8 @@ int main(int argc, char *argv[]) {
                             "Specify the log file name. Default: <basename>.supercell.log");
   supercell_cmd->add_option("-c,--chain", chain_length,
                             "Specify the chain length for supercell generation. Default: 1");
+  std::vector<std::string> cell_names = {}; // "CMPE42D1" "AN2D0", "DFQD1"
+  supercell_cmd->add_option("--cells", cell_names, "Specify the cell names to generate supercells for");
   supercell_cmd->callback([&] {
     printInfo();
     // Check if multi files
@@ -293,14 +288,15 @@ int main(int argc, char *argv[]) {
       // Parallel supercell generation
       std::vector<std::thread> threads;
       for (const auto &library_path : library_paths) {
-        threads.emplace_back(supercellLibFile, library_path, log_file_name = "", chain_length);
+        threads.emplace_back(supercellLibFile, library_path, log_file_name = "", chain_length,
+                             cell_names);
       }
       for (auto &thread : threads) {
         thread.join();
       }
       spdlog::info("All threads completed.");
     } else {
-      supercellLibFile(library_paths[0], log_file_name, chain_length);
+      supercellLibFile(library_paths[0], log_file_name, chain_length, cell_names);
     }
   });
 
@@ -355,7 +351,8 @@ int main(int argc, char *argv[]) {
       ->required();
   verilog_cmd->add_option("-l,--log", log_file_name,
                           "Specify the log file name. Default: <basename>.verilog.log");
-  std::vector<std::string> cell_names = {"AN2D0", "DFQD1"}; // "CMPE42D1"
+  verilog_cmd->add_option("-c,--chain", chain_length,
+                          "Specify the chain length for verilog generation. Default: 1");
   verilog_cmd->add_option("--cells", cell_names, "Specify the cell names to generate Verilog for");
   verilog_cmd->callback([&] {
     printInfo();
@@ -375,14 +372,14 @@ int main(int argc, char *argv[]) {
       // Parallel Verilog generation
       std::vector<std::thread> threads;
       for (const auto &library_path : library_paths) {
-        // threads.emplace_back(verilogLibFile, library_path, log_file_name = "", cell_names);
+        threads.emplace_back(verilogLibFile, library_path, log_file_name = "", chain_length, cell_names);
       }
       for (auto &thread : threads) {
         thread.join();
       }
       spdlog::info("All threads completed.");
     } else {
-      // verilogLibFile(library_paths[0], log_file_name, cell_names);
+      verilogLibFile(library_paths[0], log_file_name, chain_length, cell_names);
     }
   });
 
@@ -424,7 +421,8 @@ int main(int argc, char *argv[]) {
   });
 
   // Add subcommand for funtional equivalence check
-  CLI::App *func_cmd = app.add_subcommand("func", "Check functional equivalence of two Liberty files or Verilog files");
+  CLI::App *func_cmd =
+      app.add_subcommand("func", "Check functional equivalence of two Liberty files or Verilog files");
   std::string ref_file, comp_file;
   func_cmd->add_option("--ref", ref_file, "Specify the reference Liberty or Verilog file")
       ->check(CLI::ExistingFile)
@@ -432,10 +430,11 @@ int main(int argc, char *argv[]) {
   func_cmd->add_option("--comp", comp_file, "Specify the comparison Liberty or Verilog file")
       ->check(CLI::ExistingFile)
       ->required();
-  func_cmd->add_option("--cells", cell_names, "Specify the cell names to check functional equivalence for");
+  func_cmd->add_option("--cells", cell_names,
+                       "Specify the cell names to check functional equivalence for");
   func_cmd->callback([&] {
     printInfo();
-     // funcLibFile();
+    funcLibFile(ref_file, comp_file, cell_names);
   });
 
   CLI11_PARSE(app, argc, argv);
@@ -443,7 +442,7 @@ int main(int argc, char *argv[]) {
   // End of program
   char hostname[256];
   gethostname(hostname, sizeof(hostname));
-  
+
   auto now = std::chrono::system_clock::now();
   auto time_now = std::chrono::system_clock::to_time_t(now);
   std::stringstream ss;

@@ -94,23 +94,6 @@ void LibFile::read() {
   }
 }
 
-/**
- * @brief Parses the library file and extracts relevant information.
- *
- * This function performs the following tasks:
- * - Logs the start of the parsing process.
- * - Iterates through the top-level groups in the library file.
- * - Extracts and logs the library name.
- * - Iterates through the second-level groups within each top-level group.
- * - Handles cells by generating JSON representations and storing them.
- * - Handles operating conditions by extracting PVT (Process, Voltage, Temperature) attributes and
- * storing them.
- *
- * The extracted information is stored in the `lib_json_` member variable.
- *
- * Logging is performed at various levels (info, warn, debug) to provide detailed information about
- * the parsing process.
- */
 void LibFile::parse() {
   si2drPIInit(&err_); // Initialize private error handler
   this->read();       // Read the Liberty file
@@ -179,32 +162,6 @@ void LibFile::parse() {
 
 void LibFile::modify() { logger_->info("Modifying the file..."); }
 
-/**
- * @brief Checks the monotonicity of timing arc values in a given cell.
- *
- * This function verifies if the timing arc values in the provided JSON objects are monotonic.
- * It logs detailed information about the cell, pin, and related pin being checked, and reports
- * any non-monotonic values found.
- *
- * @param cell The JSON object representing the cell.
- * @param pin The JSON object representing the pin.
- * @param arc The JSON object representing the timing arc.
- * @param timing_arc_name The name of the timing arc to check.
- * @param is_slew Flag indicating whether to check for input slew monotonicity.
- * @return true if the timing arc values are monotonic, false otherwise.
- *
- * The function performs the following steps:
- * 1. Logs the cell, pin, related pin, and timing arc name being checked.
- * 2. Assumes the values are monotonic initially.
- * 3. Checks if the timing arc contains the specified name and if it has a "values" array.
- * 4. Generates a matrix of values from the JSON array.
- * 5. Validates the format of the "values" array and logs errors for invalid formats.
- * 6. Checks for non-numeric values in the "values" array and logs warnings for such values.
- * 7. Checks the monotonic incrementality of rows in the matrix.
- * 8. If is_slew is true, checks the monotonic incrementality of columns in the matrix.
- * 9. Logs warnings for non-monotonic values, including the "when" key if present.
- * 10. Returns the monotonicity status.
- */
 bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, const json &arc,
                                          const std::string &timing_arc_name, const bool is_slew) {
   if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
@@ -415,12 +372,10 @@ void LibFile::mono(const bool is_slew) {
   }
 }
 
-void LibFile::supercell(const int chain_length) {
+void LibFile::supercell(const int chain_length, const std::vector<std::string> &cell_names) {
   /*
    * Supercells are named as follows:
    *   <cellname>__X<chain_length>__<input_pin>__<output_pin>
-   * The netlists are stored in the directory dir/netlists.
-   * The input files for timing analysis are stored in dir/timer
    */
   logger_->info("Creating supercells for '{}'", filename_);
 
@@ -451,13 +406,44 @@ void LibFile::supercell(const int chain_length) {
     logger_->error("Could not open file '{}' for writing", basename_ + ".map");
     return;
   }
+  // if celll_names is empty, create supercells for all cells
+  // else create supercells for only the specified cells
+
+  // Check if we're processing specific cells or all cells
+  bool process_all_cells = cell_names.empty();
+
+  if (process_all_cells) {
+    logger_->info("Creating supercells for ALL cells in '{}'", filename_);
+  } else {
+    logger_->info("Creating supercells for {} specified cells in '{}'", cell_names.size(), filename_);
+  }
+
+  // Create a set for faster lookups if we have specific cell names
+  std::unordered_set<std::string> cell_set;
+  std::unordered_set<std::string> found_cells;
+  if (!process_all_cells) {
+    cell_set.insert(cell_names.begin(), cell_names.end());
+  }
+
   for (const auto &cell : lib_json_["cells"]) {
     bool is_sequential = false;
     std::string cell_name = cell["cell_name"].get<std::string>();
+
+    // Skip cells not in the specified list
+    if (!process_all_cells && cell_set.find(cell_name) == cell_set.end()) {
+      continue;
+    }
+
+    // Mark this cell as found
+    if (!process_all_cells) {
+      found_cells.insert(cell_name);
+    }
+
     logger_->debug("Creating supercells for cell: '{}'", cell_name);
 
     std::unordered_set<std::string> output_pins;
     std::unordered_set<std::string> input_pins;
+    // Extract input and output pins
     if (cell.contains("output_pins")) {
       for (const auto &pin : cell["output_pins"]) {
         output_pins.insert(pin["pin_name"].get<std::string>());
@@ -467,10 +453,13 @@ void LibFile::supercell(const int chain_length) {
       for (const auto &pin : cell["input_pins"]) {
         if (pin.contains("clock")) {
           is_sequential = true;
+          // clock pin not use for supercell
+          continue;
         }
         input_pins.insert(pin["pin_name"].get<std::string>());
       }
     }
+
     // create supercells for all combinations of input and output pins
     for (const auto &output_pin : output_pins) {
       for (const auto &input_pin : input_pins) {
@@ -480,13 +469,69 @@ void LibFile::supercell(const int chain_length) {
               cell_name + "__X" + std::to_string(chain_len) + "__" + input_pin + "__" + output_pin;
           out << cell_name << " " << supercell_name << std::endl;
         } else {
-        std::string supercell_name =
-            cell_name + "__X" + std::to_string(chain_length) + "__" + input_pin + "__" + output_pin;
-        out << cell_name << " " << supercell_name << std::endl;
+          std::string supercell_name =
+              cell_name + "__X" + std::to_string(chain_length) + "__" + input_pin + "__" + output_pin;
+          out << cell_name << " " << supercell_name << std::endl;
         }
       }
     }
   }
+
+  // Check for cells that were specified but not found
+  if (!process_all_cells) {
+    std::vector<std::string> not_found_cells;
+    for (const auto &requested_cell : cell_names) {
+      if (found_cells.find(requested_cell) == found_cells.end()) {
+        not_found_cells.push_back(requested_cell);
+      }
+    }
+
+    // Output warning for cells that weren't found
+    if (!not_found_cells.empty()) {
+      std::string missing_cells = not_found_cells[0];
+      for (size_t i = 1; i < not_found_cells.size(); ++i) {
+        missing_cells += ", " + not_found_cells[i];
+      }
+      logger_->warn("{} specified cell{} not found in the library: {}", not_found_cells.size(),
+                    not_found_cells.size() > 1 ? "s were" : " was", missing_cells);
+    }
+  }
+
   out.close();
   logger_->info("Supercell creation complete in '{}'", basename_ + ".map");
+}
+
+void LibFile::verilog(const int chain_length, const std::vector<std::string> &cell_names) {
+  logger_->info("Creating Verilog for '{}'", filename_);
+
+  if (!std::filesystem::exists(jsonname_)) {
+    logger_->info("JSON file not found. Parsing Liberty file first.");
+    this->parse();
+    this->writeJsonToFile();
+  } else {
+    // Read the JSON file into json object
+    std::ifstream in(jsonname_);
+    if (!in.is_open()) {
+      logger_->error("Could not open file '{}' for reading", jsonname_);
+      return;
+    }
+    try {
+      lib_json_ = json::parse(in);
+    } catch (const json::parse_error &e) {
+      logger_->error("JSON parsing error in file '{}': {}", jsonname_, e.what());
+      in.close();
+      return;
+    }
+    in.close();
+  }
+
+  // write to .v file
+  std::ofstream out(basename_ + ".v");
+  if (!out.is_open()) {
+    logger_->error("Could not open file '{}' for writing", basename_ + ".v");
+    return;
+  }
+  out << "`timescale 1ns/10ps" << std::endl;
+  out.close();
+  logger_->info("Verilog creation complete in '{}'", basename_ + ".v");
 }

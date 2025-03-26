@@ -198,3 +198,31 @@ Subcommands:
 ### 2025-03-21
 
 - 新增 func 子命令，用于检查库或者Verilog文件的逻辑等价性。
+
+### 2025-03-24
+
+- 调研了 C++ 操作 Verilog 相关的库，找到了一个实用的 Verilog 库：[slang](https://github.com/MikePopoloski/slang)，它可以解析出抽象语法树 (AST)。已修改 CMakeLists 文件，将 slang 集成到项目中，目前正在研究其 API。
+
+### 2025-03-25
+
+- 新增 `verilog_utils.cpp` 和 `verilog_utils.hpp` 文件，并创建了 `VerilogVisitor` 类，用于自定义遍历 Verilog AST。
+- 验证了 slang 对不同类型逻辑单元的解析能力：
+  - 简单组合逻辑（如 `AND2D0`）、复杂时序逻辑（如 `CMPE42D1`）和基本时序逻辑（如 `DFQD1`）均能被正确解析。
+  - 用户自定义原语 (UDP)，例如 `tsmc_dff`，会被错误地识别为模块实例化，并产生 "Invalid instance declaration" 警告。
+  - 成功提取了模块名、端口方向（`input`、`output`）及名称。
+  - 能够解析命名端口连接的层次化实例化，并获取模块名、实例名称和端口映射关系。
+  - 能够解析门级原语实例化，并获取门类型、实例名称、输出端口和输入端口。
+
+### 2025-03-26
+
+- 进一步完善了对 UDP（如 `tsmc_dff`）端口映射关系的解析，但其内部 Entry 尚未处理。
+- 尝试了通过继承 `slang::syntax::SyntaxRewriter` 类创建自定义类 `CellExtractor`，实现了只保留目标模块、删除其他模块，并将修改后的语法树另存为新文件。使用 `slang::syntax::SyntaxPrinter::printFile()` 方法可以将 Verilog 代码输出到文件。
+- 创建了 `CellPrinter` 类，继承自 `slang::syntax::SyntaxVisitor` 类。当访问到目标模块时，使用 `module.toString()` 方法也能将 Verilog 代码输出到文件，但发现输出结果中空行会被删除。
+- 实现了 `LibFile::supercell()` 方法，该方法可以根据输入的 `cell_names` 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。
+- 优化了时钟引脚的处理方式，现在时钟引脚不再被视为 supercell 的输入引脚，而是仅记录为时序单元，并跳过存入 `input_pins` 集合的步骤。
+- 引入了 Doxygen 文档生成工具，用于可视化分析项目，并生成了 Doxygen HTML 文档和 LaTeX 参考手册。
+- [ ] 尚未解决手册中文显示不正确的问题，可能需要自定义 LaTeX 头文件。
+
+### 2025-03-27
+
+- 误操作git分支，导致了一些修改丢失！

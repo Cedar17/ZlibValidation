@@ -1,4 +1,3 @@
-# CMakeLists.txt
 cmake_minimum_required(VERSION 3.25)
 project(ZlibValidation
     LANGUAGES CXX
@@ -29,6 +28,10 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Set no position independent code and no pie
+set(CMAKE_POSITION_INDEPENDENT_CODE OFF)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -no-pie")
+
 # Set the default generator to Unix Makefiles. This is optional and can be modified if needed.
 # The CACHE INTERNAL "" FORCE parameters ensure that this setting is applied globally and cannot be overridden by the user.
 set(CMAKE_GENERATOR "Unix Makefiles" CACHE INTERNAL "" FORCE)
@@ -45,6 +48,7 @@ FetchContent_Declare(
     cli11_proj
     QUIET
     GIT_REPOSITORY https://github.com/CLIUtils/CLI11.git
+    GIT_SHALLOW ON
     GIT_TAG v2.4.2
 )
 FetchContent_MakeAvailable(cli11_proj)
@@ -54,6 +58,7 @@ FetchContent_Declare(
     spdlog_proj
     QUIET
     GIT_REPOSITORY https://github.com/gabime/spdlog.git
+    GIT_SHALLOW ON
     GIT_TAG v1.15.0
 )
 FetchContent_MakeAvailable(spdlog_proj)
@@ -69,9 +74,19 @@ FetchContent_MakeAvailable(json)
 FetchContent_Declare(
     tabulate
     GIT_REPOSITORY https://github.com/p-ranav/tabulate.git
+    GIT_SHALLOW ON
     GIT_TAG v1.5
 )
 FetchContent_MakeAvailable(tabulate)
+
+# Fetch slang
+FetchContent_Declare(
+    slang
+    GIT_REPOSITORY https://github.com/MikePopoloski/slang.git
+    GIT_SHALLOW ON
+    GIT_TAG v8.0
+)
+FetchContent_MakeAvailable(slang)
 
 # Collect all source and header files
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
@@ -91,4 +106,8 @@ target_link_libraries(zlibvalidation PRIVATE
     nlohmann_json::nlohmann_json
     tabulate::tabulate
     stdc++fs # Required for filesystem support in C++17
+    slang::slang
 )
+
+# Allow multiple definition of symbols
+target_link_options(zlibvalidation PRIVATE "-Wl,--allow-multiple-definition")

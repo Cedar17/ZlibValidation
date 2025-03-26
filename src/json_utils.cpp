@@ -25,7 +25,7 @@ null。
 std::vector<double> parseStringToVector(const std::string &str) {
   std::vector<double> result;
   std::string cleaned_str;
-  
+
   // Remove backslashes and newline characters
   for (char c : str) {
     if (c != '\\' && c != '\n') {

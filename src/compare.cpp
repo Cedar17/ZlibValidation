@@ -70,13 +70,14 @@ LibraryComparator::LibraryComparator(LibFile &ref_libfile, LibFile &comp_libfile
 }
 
 /**
- * @brief Compares lookup tables (LUTs) between reference and comparison libraries for a specific timing arc.
- * 
+ * @brief Compares lookup tables (LUTs) between reference and comparison libraries for a specific timing
+ * arc.
+ *
  * This function compares the lookup table values between reference and comparison libraries for a given
  * timing arc, checking the consistency of indices and values. It verifies that the indices match between
  * libraries and then compares each value in the LUT against relative and absolute tolerance thresholds.
  * Any discrepancies that exceed the tolerance limits are recorded in the provided table.
- * 
+ *
  * @param cell_name The name of the cell containing the LUT.
  * @param pin_name The name of the pin associated with the LUT.
  * @param timing_type The timing type of the arc (e.g., "rise_transition", "fall_transition").
@@ -85,14 +86,14 @@ LibraryComparator::LibraryComparator(LibFile &ref_libfile, LibFile &comp_libfile
  * @param ref_lut The lookup table from the reference library (in JSON format).
  * @param comp_lut The lookup table from the comparison library (in JSON format).
  * @param table Table object to store comparison results for any mismatches found.
- * 
+ *
  * @note The function logs various information/warning/error messages:
  *       - Logs index mismatches as warnings
  *       - Logs value mismatches as debug messages
  *       - Logs format errors in LUT structure as errors
  *       - Records values exceeding tolerance in the provided table
- * 
- * @note The comparison uses both relative tolerance (reltol_) and absolute tolerance (abstol_) 
+ *
+ * @note The comparison uses both relative tolerance (reltol_) and absolute tolerance (abstol_)
  *       to determine if values differ significantly.
  */
 void LibraryComparator::compareLut(const std::string &cell_name, const std::string &pin_name,
@@ -203,12 +204,13 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
 /**
  * @brief Compares a timing arc between two JSON objects.
  *
- * This function compares a specific timing arc (e.g., cell_rise, cell_fall, rise_transition, fall_transition)
- * between a reference JSON object and a comparison JSON object. It extracts the related pin from the reference
- * timing arc and iterates through a predefined list of arc names. If an arc name is found in the comparison
- * timing arc, it checks if the same arc name exists in the reference timing arc. If both exist, it calls the
- * compareLut function to compare the LUT data associated with the arc. If the arc name is found in the
- * comparison JSON but not in the reference JSON, a warning message is logged.
+ * This function compares a specific timing arc (e.g., cell_rise, cell_fall, rise_transition,
+ * fall_transition) between a reference JSON object and a comparison JSON object. It extracts the related
+ * pin from the reference timing arc and iterates through a predefined list of arc names. If an arc name
+ * is found in the comparison timing arc, it checks if the same arc name exists in the reference timing
+ * arc. If both exist, it calls the compareLut function to compare the LUT data associated with the arc.
+ * If the arc name is found in the comparison JSON but not in the reference JSON, a warning message is
+ * logged.
  *
  * @param cell_name The name of the cell.
  * @param pin_name The name of the pin.
@@ -247,8 +249,8 @@ void LibraryComparator::compareTimingArc(const std::string &cell_name, const std
  * @brief Compares the timing arcs of a given pin between a reference JSON and a comparison JSON.
  *
  * This function iterates through the timing arcs of the comparison pin and looks for matching
- * timing types in the reference pin. If a matching timing type is found, it calls the 
- * compareTimingArc function to compare the timing arcs. If a timing type is not found in the 
+ * timing types in the reference pin. If a matching timing type is found, it calls the
+ * compareTimingArc function to compare the timing arcs. If a timing type is not found in the
  * reference JSON, a warning is logged.
  *
  * @param cell_name The name of the cell containing the pin.
@@ -325,15 +327,15 @@ void LibraryComparator::compareCell(const std::string &cell_name, const json &re
 /**
  * @brief Generates a comparison report between the reference and comparison libraries.
  *
- * This function generates a detailed comparison report between the reference library and the 
- * comparison library. The report includes metadata such as the reference and comparison library 
- * paths, absolute and relative tolerances, and the application details. It also includes a legend 
+ * This function generates a detailed comparison report between the reference library and the
+ * comparison library. The report includes metadata such as the reference and comparison library
+ * paths, absolute and relative tolerances, and the application details. It also includes a legend
  * explaining various symbols used in the report.
  *
- * The function iterates through each cell in the comparison library, compares it with the 
- * corresponding cell in the reference library, and generates a table of differences. If there are 
- * any differences, it calculates summary statistics such as the average and maximum differences, 
- * and the number of outliers. The results are written to the specified output file in either 
+ * The function iterates through each cell in the comparison library, compares it with the
+ * corresponding cell in the reference library, and generates a table of differences. If there are
+ * any differences, it calculates summary statistics such as the average and maximum differences,
+ * and the number of outliers. The results are written to the specified output file in either
  * Markdown or plain text format.
  *
  * @param output_file The path to the output file where the report will be written.
