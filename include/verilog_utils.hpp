@@ -13,7 +13,8 @@
 // Creating custom visitor class
 class VerilogVisitor : public slang::syntax::SyntaxVisitor<VerilogVisitor> {
 public:
-  explicit VerilogVisitor(const std::string &targetCell);
+  explicit VerilogVisitor(const std::string &targetCell)
+      : targetCell_(targetCell), depth_(0), inTargetModule_(false) {}
   void handle(const slang::syntax::SyntaxNode &node);
   void handle(const slang::syntax::ModuleDeclarationSyntax &module);
   void handle(const slang::syntax::PortDeclarationSyntax &portDecl);
@@ -22,7 +23,7 @@ public:
   void handle(const slang::syntax::SpecifyBlockSyntax &specifyBlock);
 
 private:
-  std::string targetCell_;
+  const std::string &targetCell_;
   int depth_;
   bool inTargetModule_;
 };
@@ -30,23 +31,24 @@ private:
 // Creating a Rewriter to extract a specific cell
 class CellExtractor : public slang::syntax::SyntaxRewriter<CellExtractor> {
 public:
-  explicit CellExtractor(const std::string &targetCell);
+  explicit CellExtractor(const std::string &targetCell) : targetCell_(targetCell), foundTarget_(false) {}
   void handle(const slang::syntax::ModuleDeclarationSyntax &module);
   bool foundTargetCell() const;
 
 private:
-  std::string targetCell_;
+  const std::string &targetCell_;
   bool foundTarget_;
 };
 
 // Print specific cell when visiting SyntaxTree
 class CellPrinter : public slang::syntax::SyntaxVisitor<CellPrinter> {
 public:
-  explicit CellPrinter(const std::string &targetCell, std::ostream &out);
+  explicit CellPrinter(const std::string &targetCell, std::ostream &out)
+      : targetCell_(targetCell), out_(out), foundTarget_(false) {}
   void handle(const slang::syntax::ModuleDeclarationSyntax &module);
 
 private:
-  std::string targetCell_;
+  const std::string &targetCell_;
   std::ostream &out_;
   bool foundTarget_;
 };
@@ -54,18 +56,22 @@ private:
 // Comprehensive module rewriter for adding ports, instances, and connections
 class ModuleRewriter : public slang::syntax::SyntaxRewriter<ModuleRewriter> {
 public:
-  explicit ModuleRewriter(const std::unordered_set<std::string> &inputPins,
-                          const std::unordered_set<std::string> &outputPins,
-                          const std::pair<std::string, std::string> &supercell_entry)
+  explicit ModuleRewriter(const std::vector<std::string> &inputPins,
+                          const std::vector<std::string> &outputPins,
+                          const std::pair<std::string, std::string> &supercell_entry,
+                          std::shared_ptr<spdlog::logger> logger)
       : inputPins_(inputPins), outputPins_(outputPins), cellName_(supercell_entry.first),
-        moduleName_(supercell_entry.second) {}
-
+        moduleName_(supercell_entry.second), logger_(logger), depth_(0) {}
+  std::shared_ptr<spdlog::logger> logger_;
+  void handle(const slang::syntax::SyntaxNode &node);
+  void handle(const slang::syntax::ModuleDeclarationSyntax &module);
 
 private:
-  const std::unordered_set<std::string> &inputPins_;
-  const std::unordered_set<std::string> &outputPins_;
-  std::string cellName_;
-  std::string moduleName_;
+  const std::vector<std::string> &inputPins_;
+  const std::vector<std::string> &outputPins_;
+  const std::string cellName_;
+  const std::string moduleName_;
+  int depth_;
 };
 
 void getAST(const std::string &verilog_file, const std::string &cell);

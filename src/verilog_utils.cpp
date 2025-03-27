@@ -4,9 +4,6 @@
 
 #include "verilog_utils.hpp"
 
-// Creating custom visitor class
-VerilogVisitor::VerilogVisitor(const std::string &targetCell) : targetCell_(targetCell), depth_(0) {}
-
 // Adding a generic handler method to record all visited nodes and increment the depth counter
 void VerilogVisitor::handle(const slang::syntax::SyntaxNode &node) {
   std::string indent(depth_ * 2, ' ');
@@ -347,10 +344,6 @@ void VerilogVisitor::handle(const slang::syntax::SpecifyBlockSyntax &specifyBloc
   }
 }
 
-// Creating a Rewriter to extract a specific cell
-CellExtractor::CellExtractor(const std::string &targetCell)
-    : targetCell_(targetCell), foundTarget_(false) {}
-
 // Handle module declarations, only keep the target module
 void CellExtractor::handle(const slang::syntax::ModuleDeclarationSyntax &module) {
   if (module.header && module.header->name.valid()) {
@@ -369,9 +362,6 @@ void CellExtractor::handle(const slang::syntax::ModuleDeclarationSyntax &module)
 
 // Get result
 bool CellExtractor::foundTargetCell() const { return foundTarget_; }
-
-CellPrinter::CellPrinter(const std::string &targetCell, std::ostream &out)
-    : targetCell_(targetCell), out_(out), foundTarget_(false) {}
 
 // Handle module declarations
 void CellPrinter::handle(const slang::syntax::ModuleDeclarationSyntax &module) {
@@ -392,6 +382,24 @@ void CellPrinter::handle(const slang::syntax::ModuleDeclarationSyntax &module) {
 
   // Continue traversing other modules
   visitDefault(module);
+}
+
+void ModuleRewriter::handle(const slang::syntax::SyntaxNode &node) {
+  std::string indent(depth_ * 2, ' ');
+  logger_->debug("{}Node: {}", indent, slang::syntax::toString(node.kind));
+
+  // Continue processing child nodes
+  depth_++;
+  visitDefault(node);
+  depth_--;
+}
+
+void ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module) {
+  logger_->info("Processing module: {}", module.header->name.valueText());
+  auto &newNode = parse("\n" + this->cellName_ + " I" + this->moduleName_ + "( );");
+  logger_->debug("New node: {}", newNode.toString());
+
+  // insertAfter(module.members, newNode);
 }
 
 void getAST(const std::string &verilog_file, const std::string &cell) {

@@ -10,8 +10,8 @@
 
 #include "iterators.hpp"
 #include "json_utils.hpp"
-#include "verilog_utils.hpp"
 #include "lib_file.hpp"
+#include "verilog_utils.hpp"
 
 /**
  * @brief Constructs a LibFile object with specified file path and logger name
@@ -586,7 +586,7 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
     logger_->error("Could not open file '{}' for writing", basename_ + ".v");
     return;
   }
-  
+
   // Read the .map file into a vector to preserve all entries and their order
   std::vector<std::pair<std::string, std::string>> supercell_entries;
   std::ifstream in(basename_ + ".map");
@@ -594,7 +594,7 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
     logger_->error("Could not open file '{}' for reading", basename_ + ".map");
     return;
   }
-  
+
   std::string line;
   while (std::getline(in, line)) {
     std::istringstream iss(line);
@@ -607,58 +607,84 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
   }
   in.close();
   logger_->info("Read {} supercells from '{}'", supercell_entries.size(), basename_ + ".map");
-  
+
   // Generate verilog module for each supercell
-  for (const auto& supercell_entry : supercell_entries) {
-    const std::string& module_name = supercell_entry.second; // Use supercell_name directly
-    out << "`timescale 1ns/1ps" << std::endl;
-    auto tree = slang::syntax::SyntaxTree::fromText("module " + module_name + "; endmodule");
+  for (const auto &supercell_entry : supercell_entries) {
+
+    // Get original cell name from pair
+    const std::string &cell_name = supercell_entry.first;
+    // Get supercell name(as well as module name) from pair
+    const std::string &module_name = supercell_entry.second;
+
+    logger_->info("Creating Module: '{}' from Cell '{}", module_name, cell_name);
+
+    // Get the cell JSON object
+    json cell_json;
+    for (const auto &cell : lib_json_["cells"]) {
+      if (cell["cell_name"].get<std::string>() == cell_name) {
+        cell_json = cell;
+        break;
+      }
+    }
+
+    // Get input/output pins from the cell JSON object
+    std::vector<std::string> input_pins;
+    std::vector<std::string> output_pins;
+    std::stringstream input_pins_ss;
+    std::stringstream output_pins_ss;
+    if (cell_json.contains("input_pins")) {
+      for (const auto &pin : cell_json["input_pins"]) {
+        input_pins.push_back(pin["pin_name"].get<std::string>());
+        input_pins_ss << pin["pin_name"].get<std::string>() << ", ";
+      }
+    }
+    if (cell_json.contains("output_pins")) {
+      for (const auto &pin : cell_json["output_pins"]) {
+        output_pins.push_back(pin["pin_name"].get<std::string>());
+        output_pins_ss << pin["pin_name"].get<std::string>() << ", ";
+      }
+    }
+    logger_->debug("Input pins set: {}", input_pins_ss.str());
+    logger_->debug("Output pins set: {}", output_pins_ss.str());
+
+    // Create ANSI port list
+    std::string port_list_text = "(";
+    // Add input ports
+    bool isFirstPort = true;
+    for (const auto &input_pin : input_pins) {
+      if (!isFirstPort) {
+        port_list_text += ", ";
+      }
+      port_list_text += "input " + input_pin;
+      isFirstPort = false;
+    }
+    // Add output ports
+    for (const auto &output_pin : output_pins) {
+      if (!isFirstPort) {
+        port_list_text += ", ";
+      }
+      port_list_text += "output " + output_pin;
+      isFirstPort = false;
+    }
+    port_list_text += ")";
+    logger_->debug("ANSI Port list: {}", port_list_text);
+
+    // Creat full module header text
+    std::string fullModuleText = "module " + module_name + port_list_text + ";\nendmodule";
+    logger_->debug("Full module text: {}", fullModuleText);
+
+    // Generate the syntax tree for the module using slang library
+    auto tree = slang::syntax::SyntaxTree::fromText(fullModuleText);
     if (tree) {
-      // Add port to this syntax tree
-      // Get original cell name from pair
-      const std::string& cell_name = supercell_entry.first;
-      logger_->info("Creating Module: '{}' from Cell '{}", module_name, cell_name);
-      // Get the cell JSON object
-      json cell_json;
-      for (const auto& cell : lib_json_["cells"]) {
-        if (cell["cell_name"].get<std::string>() == cell_name) {
-          cell_json = cell;
-          break;
-        }
-      }
-      // Get input / output pins from the cell JSON object
-      std::unordered_set<std::string> input_pins;
-      std::unordered_set<std::string> output_pins;
-      std::stringstream input_pins_ss;
-      std::stringstream output_pins_ss;
-      if (cell_json.contains("input_pins")) {
-        for (const auto& pin : cell_json["input_pins"]) {
-          input_pins.insert(pin["pin_name"].get<std::string>());
-          input_pins_ss << pin["pin_name"].get<std::string>() << ", ";
-        }
-      }
-      if (cell_json.contains("output_pins")) {
-        for (const auto& pin : cell_json["output_pins"]) {
-          output_pins.insert(pin["pin_name"].get<std::string>());
-          output_pins_ss << pin["pin_name"].get<std::string>() << ", ";
-        }
-      }
-      logger_->debug("Input pins set: {}", input_pins_ss.str());
-      logger_->debug("Output pins set: {}", output_pins_ss.str());
-
       // Add ports to the syntax tree
-      ModuleRewriter rewriter(input_pins, output_pins, supercell_entry);
+      ModuleRewriter rewriter(input_pins, output_pins, supercell_entry, logger_);
 
-      auto new_tree = rewriter.transform(tree);
-
-      // Check if transformation was successful
-      if (!new_tree) {
-        logger_->error("Failed to create syntax tree for module '{}'", module_name);
-        continue;
-      }
+      tree = rewriter.transform(tree);
+      rewriter.visit(tree->root());
 
       // Output the transformed syntax tree
-      out << slang::syntax::SyntaxPrinter::printFile(*new_tree) << std::endl << std::endl;
+      out << "`timescale 1ns/1ps" << std::endl;
+      out << slang::syntax::SyntaxPrinter::printFile(*tree) << std::endl << std::endl;
     } else {
       logger_->error("Failed to create syntax tree for module '{}'", module_name);
       continue;

@@ -227,3 +227,5 @@ Subcommands:
 ### 2025-03-27
 
 - 误操作git分支，导致了一些修改丢失！
+- LibFile::verilog方法先执行this->supercell()，然后读取map文件，提取cell映射关系到std::pair中，从lib_json_中提取出输入输出端口，送入ModuleRewriter类。
+- LibFile::verilog 目前能输出模块名和ANSI风格的端口声明。

@@ -32,23 +32,23 @@ include(FetchContent)
 
 # Fetch CLI11
 FetchContent_Declare(
-    cli11_proj
+    cli11
     QUIET
     GIT_REPOSITORY https://github.com/CLIUtils/CLI11.git
     GIT_SHALLOW ON
     GIT_TAG v2.4.2
 )
-FetchContent_MakeAvailable(cli11_proj)
+FetchContent_MakeAvailable(cli11)
 
 # Fetch spdlog
 FetchContent_Declare(
-    spdlog_proj
+    spdlog
     QUIET
     GIT_REPOSITORY https://github.com/gabime/spdlog.git
     GIT_SHALLOW ON
     GIT_TAG v1.15.0
 )
-FetchContent_MakeAvailable(spdlog_proj)
+FetchContent_MakeAvailable(spdlog)
 
 # Fetch nonlohmann/json
 FetchContent_Declare(
