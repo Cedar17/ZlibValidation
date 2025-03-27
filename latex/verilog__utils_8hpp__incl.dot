@@ -12,9 +12,11 @@ digraph "include/verilog_utils.hpp"
   Node1 -> Node4 [color="steelblue1",style="solid"];
   Node4 [label="string",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node5 [color="steelblue1",style="solid"];
-  Node5 [label="slang/syntax/SyntaxPrinter.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node5 [label="unordered_set",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node6 [color="steelblue1",style="solid"];
-  Node6 [label="slang/syntax/SyntaxTree.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node6 [label="slang/syntax/SyntaxPrinter.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node7 [color="steelblue1",style="solid"];
-  Node7 [label="slang/syntax/SyntaxVisitor.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node7 [label="slang/syntax/SyntaxTree.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node1 -> Node8 [color="steelblue1",style="solid"];
+  Node8 [label="slang/syntax/SyntaxVisitor.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
 }

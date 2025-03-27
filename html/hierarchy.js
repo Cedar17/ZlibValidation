@@ -10,7 +10,8 @@ var hierarchy =
     [ "si2drExprT", "structsi2drExprT.html", null ],
     [ "si2OID", "structsi2OID.html", null ],
     [ "slang::syntax::SyntaxRewriter", null, [
-      [ "CellExtractor", "classCellExtractor.html", null ]
+      [ "CellExtractor", "classCellExtractor.html", null ],
+      [ "ModuleRewriter", "classModuleRewriter.html", null ]
     ] ],
     [ "slang::syntax::SyntaxVisitor", null, [
       [ "CellPrinter", "classCellPrinter.html", null ],

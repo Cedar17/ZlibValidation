@@ -10,4 +10,9 @@ digraph "LibFile::supercell"
   Node2 [label="supercellLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a0d7485f0df82adbd1671def221103a4e",tooltip="Creates supercell map structures from a Liberty library file."];
   Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
   Node3 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="steelblue1",style="solid"];
+  Node4 [label="LibFile::verilog",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a92ef7304afa302f98a69bd371b7955dd",tooltip=" "];
+  Node4 -> Node5 [dir="back",color="steelblue1",style="solid"];
+  Node5 [label="verilogLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2",tooltip="Generates Verilog files from a library file for specified cells."];
+  Node5 -> Node3 [dir="back",color="steelblue1",style="solid"];
 }

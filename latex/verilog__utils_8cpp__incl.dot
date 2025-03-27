@@ -17,6 +17,7 @@ digraph "src/verilog_utils.cpp"
   Node6 [label="iostream",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node4 -> Node7 [color="steelblue1",style="solid"];
   Node7 [label="string",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node4 -> Node2 [color="steelblue1",style="solid"];
   Node4 -> Node8 [color="steelblue1",style="solid"];
   Node8 [label="slang/syntax/SyntaxPrinter.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node4 -> Node9 [color="steelblue1",style="solid"];
