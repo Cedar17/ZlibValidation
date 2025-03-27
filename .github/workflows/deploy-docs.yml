@@ -42,9 +42,10 @@ jobs:
             pwd
             ls -l
             which xelatex
-            where xelatex
             cd ./doc_doxygen/latex
             pwd
+            which xelatex
+            which make
             make
         
       - name: Deploy to GitHub Pages with Doxygen
