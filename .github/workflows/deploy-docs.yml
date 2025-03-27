@@ -31,6 +31,7 @@ jobs:
       - name: Generate Documentation
         run: |
           doxygen Doxyfile # 在根目录执行 Doxygen 命令，输出到 doc_doxygen 目录
+          ls -l
           pwd
           ls
 
@@ -39,8 +40,8 @@ jobs:
         with:
           run: |
             pwd
-            ls
-            cd ./doc/doxy_gen/latex
+            ls -l
+            cd ./doc_doxy_gen/latex
             make
         
       - name: Deploy to GitHub Pages with Doxygen
