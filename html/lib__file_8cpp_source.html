@@ -16,6 +16,7 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -105,8 +106,8 @@ $(document).ready(function(){initNavTree('lib__file_8cpp_source.html',''); initR
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="iterators_8hpp.html">iterators.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="json__utils_8hpp.html">json_utils.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="verilog__utils_8hpp.html">verilog_utils.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="lib__file_8hpp.html">lib_file.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="lib__file_8hpp.html">lib_file.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="verilog__utils_8hpp.html">verilog_utils.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classLibFile.html#a92a5efdef532776c5c2d60bc49dbe104">   28</a></span><a class="code hl_function" href="classLibFile.html#a92a5efdef532776c5c2d60bc49dbe104">LibFile::LibFile</a>(<span class="keyword">const</span> std::string &amp;filepath, <span class="keyword">const</span> std::string &amp;loggername)</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    : filepath_(filepath), loggername_(loggername) {</div>
@@ -578,7 +579,7 @@ $(document).ready(function(){initNavTree('lib__file_8cpp_source.html',''); initR
 <div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>    <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;error(<span class="stringliteral">&quot;Could not open file &#39;{}&#39; for writing&quot;</span>, <a class="code hl_variable" href="classLibFile.html#a167d7e2669926e724247cdd7e7bf48f4">basename_</a> + <span class="stringliteral">&quot;.v&quot;</span>);</div>
 <div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>    <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>  }</div>
-<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>  </div>
+<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span> </div>
 <div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>  <span class="comment">// Read the .map file into a vector to preserve all entries and their order</span></div>
 <div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>  std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt; supercell_entries;</div>
 <div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>  std::ifstream in(<a class="code hl_variable" href="classLibFile.html#a167d7e2669926e724247cdd7e7bf48f4">basename_</a> + <span class="stringliteral">&quot;.map&quot;</span>);</div>
@@ -586,7 +587,7 @@ $(document).ready(function(){initNavTree('lib__file_8cpp_source.html',''); initR
 <div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>    <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;error(<span class="stringliteral">&quot;Could not open file &#39;{}&#39; for reading&quot;</span>, <a class="code hl_variable" href="classLibFile.html#a167d7e2669926e724247cdd7e7bf48f4">basename_</a> + <span class="stringliteral">&quot;.map&quot;</span>);</div>
 <div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>    <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span>  }</div>
-<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>  </div>
+<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span> </div>
 <div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span>  std::string line;</div>
 <div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span>  <span class="keywordflow">while</span> (std::getline(in, line)) {</div>
 <div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span>    std::istringstream iss(line);</div>
@@ -599,67 +600,93 @@ $(document).ready(function(){initNavTree('lib__file_8cpp_source.html',''); initR
 <div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>  }</div>
 <div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>  in.close();</div>
 <div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span>  <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;info(<span class="stringliteral">&quot;Read {} supercells from &#39;{}&#39;&quot;</span>, supercell_entries.size(), <a class="code hl_variable" href="classLibFile.html#a167d7e2669926e724247cdd7e7bf48f4">basename_</a> + <span class="stringliteral">&quot;.map&quot;</span>);</div>
-<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>  </div>
+<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span> </div>
 <div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>  <span class="comment">// Generate verilog module for each supercell</span></div>
-<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; supercell_entry : supercell_entries) {</div>
-<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>    <span class="keyword">const</span> std::string&amp; module_name = supercell_entry.second; <span class="comment">// Use supercell_name directly</span></div>
-<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>    out &lt;&lt; <span class="stringliteral">&quot;`timescale 1ns/1ps&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>    <span class="keyword">auto</span> tree = slang::syntax::SyntaxTree::fromText(<span class="stringliteral">&quot;module &quot;</span> + module_name + <span class="stringliteral">&quot;; endmodule&quot;</span>);</div>
-<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>    <span class="keywordflow">if</span> (tree) {</div>
-<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>      <span class="comment">// Add port to this syntax tree</span></div>
-<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>      <span class="comment">// Get original cell name from pair</span></div>
-<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>      <span class="keyword">const</span> std::string&amp; cell_name = supercell_entry.first;</div>
-<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>      <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;info(<span class="stringliteral">&quot;Creating Module: &#39;{}&#39; from Cell &#39;{}&quot;</span>, module_name, cell_name);</div>
-<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>      <span class="comment">// Get the cell JSON object</span></div>
-<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>      <a class="code hl_typedef" href="lib__file_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> cell_json;</div>
-<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; cell : <a class="code hl_variable" href="classLibFile.html#aeb27fbc660990a2c0de6b285cf6a9449">lib_json_</a>[<span class="stringliteral">&quot;cells&quot;</span>]) {</div>
-<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>        <span class="keywordflow">if</span> (cell[<span class="stringliteral">&quot;cell_name&quot;</span>].get&lt;std::string&gt;() == cell_name) {</div>
-<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>          cell_json = cell;</div>
-<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>          <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>        }</div>
-<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>      }</div>
-<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span>      <span class="comment">// Get input / output pins from the cell JSON object</span></div>
-<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>      std::unordered_set&lt;std::string&gt; input_pins;</div>
-<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span>      std::unordered_set&lt;std::string&gt; output_pins;</div>
-<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>      std::stringstream input_pins_ss;</div>
-<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>      std::stringstream output_pins_ss;</div>
-<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>      <span class="keywordflow">if</span> (cell_json.contains(<span class="stringliteral">&quot;input_pins&quot;</span>)) {</div>
-<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; pin : cell_json[<span class="stringliteral">&quot;input_pins&quot;</span>]) {</div>
-<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>          input_pins.insert(pin[<span class="stringliteral">&quot;pin_name&quot;</span>].get&lt;std::string&gt;());</div>
-<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>          input_pins_ss &lt;&lt; pin[<span class="stringliteral">&quot;pin_name&quot;</span>].get&lt;std::string&gt;() &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>        }</div>
+<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;supercell_entry : supercell_entries) {</div>
+<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span> </div>
+<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span>    <span class="comment">// Get original cell name from pair</span></div>
+<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>    <span class="keyword">const</span> std::string &amp;cell_name = supercell_entry.first;</div>
+<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>    <span class="comment">// Get supercell name(as well as module name) from pair</span></div>
+<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>    <span class="keyword">const</span> std::string &amp;module_name = supercell_entry.second;</div>
+<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span> </div>
+<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>    <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;info(<span class="stringliteral">&quot;Creating Module: &#39;{}&#39; from Cell &#39;{}&quot;</span>, module_name, cell_name);</div>
+<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span> </div>
+<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>    <span class="comment">// Get the cell JSON object</span></div>
+<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>    <a class="code hl_typedef" href="lib__file_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> cell_json;</div>
+<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cell : <a class="code hl_variable" href="classLibFile.html#aeb27fbc660990a2c0de6b285cf6a9449">lib_json_</a>[<span class="stringliteral">&quot;cells&quot;</span>]) {</div>
+<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>      <span class="keywordflow">if</span> (cell[<span class="stringliteral">&quot;cell_name&quot;</span>].get&lt;std::string&gt;() == cell_name) {</div>
+<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>        cell_json = cell;</div>
+<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>      }</div>
+<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>    }</div>
+<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span> </div>
+<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>    <span class="comment">// Get input/output pins from the cell JSON object</span></div>
+<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span>    std::vector&lt;std::string&gt; input_pins;</div>
+<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>    std::vector&lt;std::string&gt; output_pins;</div>
+<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>    std::stringstream input_pins_ss;</div>
+<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>    std::stringstream output_pins_ss;</div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>    <span class="keywordflow">if</span> (cell_json.contains(<span class="stringliteral">&quot;input_pins&quot;</span>)) {</div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;pin : cell_json[<span class="stringliteral">&quot;input_pins&quot;</span>]) {</div>
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>        input_pins.push_back(pin[<span class="stringliteral">&quot;pin_name&quot;</span>].get&lt;std::string&gt;());</div>
+<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>        input_pins_ss &lt;&lt; pin[<span class="stringliteral">&quot;pin_name&quot;</span>].get&lt;std::string&gt;() &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
 <div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>      }</div>
-<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>      <span class="keywordflow">if</span> (cell_json.contains(<span class="stringliteral">&quot;output_pins&quot;</span>)) {</div>
-<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; pin : cell_json[<span class="stringliteral">&quot;output_pins&quot;</span>]) {</div>
-<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>          output_pins.insert(pin[<span class="stringliteral">&quot;pin_name&quot;</span>].get&lt;std::string&gt;());</div>
-<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>          output_pins_ss &lt;&lt; pin[<span class="stringliteral">&quot;pin_name&quot;</span>].get&lt;std::string&gt;() &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>        }</div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>    }</div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>    <span class="keywordflow">if</span> (cell_json.contains(<span class="stringliteral">&quot;output_pins&quot;</span>)) {</div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;pin : cell_json[<span class="stringliteral">&quot;output_pins&quot;</span>]) {</div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>        output_pins.push_back(pin[<span class="stringliteral">&quot;pin_name&quot;</span>].get&lt;std::string&gt;());</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>        output_pins_ss &lt;&lt; pin[<span class="stringliteral">&quot;pin_name&quot;</span>].get&lt;std::string&gt;() &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
 <div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>      }</div>
-<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>      <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;debug(<span class="stringliteral">&quot;Input pins set: {}&quot;</span>, input_pins_ss.str());</div>
-<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>      <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;debug(<span class="stringliteral">&quot;Output pins set: {}&quot;</span>, output_pins_ss.str());</div>
-<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span> </div>
-<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>      <span class="comment">// Add ports to the syntax tree</span></div>
-<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>      <a class="code hl_class" href="classModuleRewriter.html">ModuleRewriter</a> rewriter(input_pins, output_pins, supercell_entry);</div>
-<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span> </div>
-<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>      <span class="keyword">auto</span> new_tree = rewriter.transform(tree);</div>
-<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span> </div>
-<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>      <span class="comment">// Check if transformation was successful</span></div>
-<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>      <span class="keywordflow">if</span> (!new_tree) {</div>
-<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>        <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;error(<span class="stringliteral">&quot;Failed to create syntax tree for module &#39;{}&#39;&quot;</span>, module_name);</div>
-<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>      }</div>
-<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span> </div>
-<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>      <span class="comment">// Output the transformed syntax tree</span></div>
-<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>      out &lt;&lt; slang::syntax::SyntaxPrinter::printFile(*new_tree) &lt;&lt; std::endl &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>      <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;error(<span class="stringliteral">&quot;Failed to create syntax tree for module &#39;{}&#39;&quot;</span>, module_name);</div>
-<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>    }</div>
-<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>  }</div>
-<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span> </div>
-<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>  out.close();</div>
-<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>  <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;info(<span class="stringliteral">&quot;Verilog creation complete in &#39;{}&#39;&quot;</span>, <a class="code hl_variable" href="classLibFile.html#a167d7e2669926e724247cdd7e7bf48f4">basename_</a> + <span class="stringliteral">&quot;.v&quot;</span>);</div>
-<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>}</div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>    }</div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>    <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;debug(<span class="stringliteral">&quot;Input pins set: {}&quot;</span>, input_pins_ss.str());</div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span>    <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;debug(<span class="stringliteral">&quot;Output pins set: {}&quot;</span>, output_pins_ss.str());</div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span> </div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>    <span class="comment">// Create ANSI port list</span></div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>    std::string port_list_text = <span class="stringliteral">&quot;(&quot;</span>;</div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>    <span class="comment">// Add input ports</span></div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>    <span class="keywordtype">bool</span> isFirstPort = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;input_pin : input_pins) {</div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>      <span class="keywordflow">if</span> (!isFirstPort) {</div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>        port_list_text += <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>      }</div>
+<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>      port_list_text += <span class="stringliteral">&quot;input &quot;</span> + input_pin;</div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>      isFirstPort = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>    }</div>
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>    <span class="comment">// Add output ports</span></div>
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;output_pin : output_pins) {</div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>      <span class="keywordflow">if</span> (!isFirstPort) {</div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>        port_list_text += <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>      }</div>
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>      port_list_text += <span class="stringliteral">&quot;output &quot;</span> + output_pin;</div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>      isFirstPort = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>    }</div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>    port_list_text += <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>    <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;debug(<span class="stringliteral">&quot;ANSI Port list: {}&quot;</span>, port_list_text);</div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span> </div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>    <span class="comment">// Creat full module header text</span></div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>    std::string fullModuleText = <span class="stringliteral">&quot;module &quot;</span> + module_name + port_list_text + <span class="stringliteral">&quot;;\nendmodule&quot;</span>;</div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>    <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;debug(<span class="stringliteral">&quot;Full module text: {}&quot;</span>, fullModuleText);</div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span> </div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>    <span class="comment">// Generate the syntax tree for the module using slang library</span></div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>    <span class="keyword">auto</span> tree = slang::syntax::SyntaxTree::fromText(fullModuleText);</div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>    <span class="keywordflow">if</span> (tree) {</div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>      <span class="comment">// Add ports to the syntax tree</span></div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>      <a class="code hl_class" href="classModuleRewriter.html">ModuleRewriter</a> rewriter(input_pins, output_pins, supercell_entry, <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>);</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span> </div>
+<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>      tree = rewriter.transform(tree);</div>
+<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>      rewriter.visit(tree-&gt;root());</div>
+<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span> </div>
+<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>      <span class="comment">// Output the transformed syntax tree</span></div>
+<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>      out &lt;&lt; <span class="stringliteral">&quot;`timescale 1ns/1ps&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>      out &lt;&lt; slang::syntax::SyntaxPrinter::printFile(*tree) &lt;&lt; std::endl &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>      <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;error(<span class="stringliteral">&quot;Failed to create syntax tree for module &#39;{}&#39;&quot;</span>, module_name);</div>
+<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>    }</div>
+<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>  }</div>
+<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span> </div>
+<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>  out.close();</div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>  <a class="code hl_variable" href="classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d">logger_</a>-&gt;info(<span class="stringliteral">&quot;Verilog creation complete in &#39;{}&#39;&quot;</span>, <a class="code hl_variable" href="classLibFile.html#a167d7e2669926e724247cdd7e7bf48f4">basename_</a> + <span class="stringliteral">&quot;.v&quot;</span>);</div>
+<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>}</div>
 <div class="ttc" id="aclassAttributesIterator_html"><div class="ttname"><a href="classAttributesIterator.html">AttributesIterator</a></div><div class="ttdef"><b>Definition:</b> <a href="iterators_8hpp_source.html#l00023">iterators.hpp:23</a></div></div>
 <div class="ttc" id="aclassAttributesIterator_html_a04b774fcda3d9e6a6ef5858b3d9a5088"><div class="ttname"><a href="classAttributesIterator.html#a04b774fcda3d9e6a6ef5858b3d9a5088">AttributesIterator::get</a></div><div class="ttdeci">LibAttribute get()</div><div class="ttdef"><b>Definition:</b> <a href="iterators_8cpp_source.html#l00022">iterators.cpp:22</a></div></div>
 <div class="ttc" id="aclassAttributesIterator_html_a8c620baba68e823cbc3a60b339b8529b"><div class="ttname"><a href="classAttributesIterator.html#a8c620baba68e823cbc3a60b339b8529b">AttributesIterator::end</a></div><div class="ttdeci">bool end()</div><div class="ttdef"><b>Definition:</b> <a href="iterators_8cpp_source.html#l00020">iterators.cpp:20</a></div></div>
@@ -700,7 +727,7 @@ $(document).ready(function(){initNavTree('lib__file_8cpp_source.html',''); initR
 <div class="ttc" id="aclassLibGroup_html_a276eb509d5bc526c08feb562ce182f4d"><div class="ttname"><a href="classLibGroup.html#a276eb509d5bc526c08feb562ce182f4d">LibGroup::getType</a></div><div class="ttdeci">std::string getType()</div><div class="ttdef"><b>Definition:</b> <a href="lib__group_8cpp_source.html#l00014">lib_group.cpp:14</a></div></div>
 <div class="ttc" id="aclassLibGroup_html_a31fe51d52babdc9bbf06a54d97d1495a"><div class="ttname"><a href="classLibGroup.html#a31fe51d52babdc9bbf06a54d97d1495a">LibGroup::getGroups</a></div><div class="ttdeci">si2drGroupsIdT getGroups()</div><div class="ttdef"><b>Definition:</b> <a href="lib__group_8cpp_source.html#l00021">lib_group.cpp:21</a></div></div>
 <div class="ttc" id="aclassLibGroup_html_a5de2a5c697f684c1d809c3e944cf6db0"><div class="ttname"><a href="classLibGroup.html#a5de2a5c697f684c1d809c3e944cf6db0">LibGroup::getName</a></div><div class="ttdeci">std::string getName()</div><div class="ttdef"><b>Definition:</b> <a href="lib__group_8cpp_source.html#l00007">lib_group.cpp:7</a></div></div>
-<div class="ttc" id="aclassModuleRewriter_html"><div class="ttname"><a href="classModuleRewriter.html">ModuleRewriter</a></div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00055">verilog_utils.hpp:55</a></div></div>
+<div class="ttc" id="aclassModuleRewriter_html"><div class="ttname"><a href="classModuleRewriter.html">ModuleRewriter</a></div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00057">verilog_utils.hpp:57</a></div></div>
 <div class="ttc" id="aiterators_8hpp_html"><div class="ttname"><a href="iterators_8hpp.html">iterators.hpp</a></div></div>
 <div class="ttc" id="ajson__utils_8hpp_html"><div class="ttname"><a href="json__utils_8hpp.html">json_utils.hpp</a></div></div>
 <div class="ttc" id="ajson__utils_8hpp_html_a46effb948eb4bbf9858c4b32a2ccf730"><div class="ttname"><a href="json__utils_8hpp.html#a46effb948eb4bbf9858c4b32a2ccf730">generateCellJson</a></div><div class="ttdeci">json generateCellJson(LibGroup &amp;lib_cell_group, si2drErrorT &amp;err)</div><div class="ttdoc">Generates a JSON representation of a cell from a LibGroup object.</div><div class="ttdef"><b>Definition:</b> <a href="json__utils_8cpp_source.html#l00272">json_utils.cpp:272</a></div></div>
@@ -715,7 +742,7 @@ $(document).ready(function(){initNavTree('lib__file_8cpp_source.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="lib__file_8cpp.html">lib_file.cpp</a></li>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Thu Mar 27 2025 09:53:23 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

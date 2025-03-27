@@ -233,5 +233,7 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \end{DoxyItemize}\hypertarget{md_README_autotoc_md32}{}\doxysubsection{2025-\/03-\/27}\label{md_README_autotoc_md32}
 
 \begin{DoxyItemize}
-\item 误操作git分支，导致了一些修改丢失！ 
+\item 误操作git分支，导致了一些修改丢失！
+\item Lib\+File\+::verilog方法先执行this-\/\texorpdfstring{$>$}{>}supercell()，然后读取map文件，提取cell映射关系到std\+::pair中，从lib\+\_\+json\+\_\+中提取出输入输出端口，送入\+Module\+Rewriter类。
+\item \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{Lib\+File\+::verilog}} 目前能输出模块名和\+ANSI风格的端口声明。 
 \end{DoxyItemize}

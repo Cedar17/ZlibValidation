@@ -15,84 +15,139 @@ Collaboration diagram for Module\+Rewriter\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classModuleRewriter_ad69c6ac9dc20b6ca4a17ec8005b224d0}{Module\+Rewriter}} (const std\+::unordered\+\_\+set$<$ std\+::string $>$ \&input\+Pins, const std\+::unordered\+\_\+set$<$ std\+::string $>$ \&output\+Pins, const std\+::pair$<$ std\+::string, std\+::string $>$ \&supercell\+\_\+entry)
+\mbox{\hyperlink{classModuleRewriter_a795e8de5f24b2a9831c85559c7579f15}{Module\+Rewriter}} (const std\+::vector$<$ std\+::string $>$ \&input\+Pins, const std\+::vector$<$ std\+::string $>$ \&output\+Pins, const std\+::pair$<$ std\+::string, std\+::string $>$ \&supercell\+\_\+entry, std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ logger)
+\item 
+void \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{handle}} (const slang\+::syntax\+::\+Syntax\+Node \&node)
+\item 
+void \mbox{\hyperlink{classModuleRewriter_aa91fd9d45e04c0408aead2b70c359585}{handle}} (const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&module)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\+\_\+}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-const std\+::unordered\+\_\+set$<$ std\+::string $>$ \& \mbox{\hyperlink{classModuleRewriter_ac5f7c94aff928c0aa955f1dc19c34b19}{input\+Pins\+\_\+}}
+const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classModuleRewriter_a2f805c22fb4301d84cf005149b0a28e2}{input\+Pins\+\_\+}}
 \item 
-const std\+::unordered\+\_\+set$<$ std\+::string $>$ \& \mbox{\hyperlink{classModuleRewriter_abd4f542f783a00b8a42ad318ea3dcf18}{output\+Pins\+\_\+}}
+const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}{output\+Pins\+\_\+}}
 \item 
-std\+::string \mbox{\hyperlink{classModuleRewriter_a849c095a80e8b1a384458da5bf955b98}{cell\+Name\+\_\+}}
+const std\+::string \mbox{\hyperlink{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}{cell\+Name\+\_\+}}
 \item 
-std\+::string \mbox{\hyperlink{classModuleRewriter_a61459eade8e8491d9bca1bf3a4cac235}{module\+Name\+\_\+}}
+const std\+::string \mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{module\+Name\+\_\+}}
+\item 
+int \mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{depth\+\_\+}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00055}{55}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
-
-
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classModuleRewriter_ad69c6ac9dc20b6ca4a17ec8005b224d0}\label{classModuleRewriter_ad69c6ac9dc20b6ca4a17ec8005b224d0}} 
-\index{ModuleRewriter@{ModuleRewriter}!ModuleRewriter@{ModuleRewriter}}
-\index{ModuleRewriter@{ModuleRewriter}!ModuleRewriter@{ModuleRewriter}}
-\doxysubsubsection{\texorpdfstring{ModuleRewriter()}{ModuleRewriter()}}
-{\footnotesize\ttfamily Module\+Rewriter\+::\+Module\+Rewriter (\begin{DoxyParamCaption}\item[{const std\+::unordered\+\_\+set$<$ std\+::string $>$ \&}]{input\+Pins,  }\item[{const std\+::unordered\+\_\+set$<$ std\+::string $>$ \&}]{output\+Pins,  }\item[{const std\+::pair$<$ std\+::string, std\+::string $>$ \&}]{supercell\+\_\+entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
-
-
-
 Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
 
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classModuleRewriter_a795e8de5f24b2a9831c85559c7579f15}\label{classModuleRewriter_a795e8de5f24b2a9831c85559c7579f15}} 
+\index{ModuleRewriter@{ModuleRewriter}!ModuleRewriter@{ModuleRewriter}}
+\index{ModuleRewriter@{ModuleRewriter}!ModuleRewriter@{ModuleRewriter}}
+\doxysubsubsection{\texorpdfstring{ModuleRewriter()}{ModuleRewriter()}}
+{\footnotesize\ttfamily Module\+Rewriter\+::\+Module\+Rewriter (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{input\+Pins,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{output\+Pins,  }\item[{const std\+::pair$<$ std\+::string, std\+::string $>$ \&}]{supercell\+\_\+entry,  }\item[{std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$}]{logger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00059}{59}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classModuleRewriter_aa91fd9d45e04c0408aead2b70c359585}\label{classModuleRewriter_aa91fd9d45e04c0408aead2b70c359585}} 
+\index{ModuleRewriter@{ModuleRewriter}!handle@{handle}}
+\index{handle@{handle}!ModuleRewriter@{ModuleRewriter}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Module\+Rewriter\+::handle (\begin{DoxyParamCaption}\item[{const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&}]{module }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00397}{397}} of file \mbox{\hyperlink{verilog__utils_8cpp_source}{verilog\+\_\+utils.\+cpp}}.
+
+\mbox{\Hypertarget{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}\label{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}} 
+\index{ModuleRewriter@{ModuleRewriter}!handle@{handle}}
+\index{handle@{handle}!ModuleRewriter@{ModuleRewriter}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Module\+Rewriter\+::handle (\begin{DoxyParamCaption}\item[{const slang\+::syntax\+::\+Syntax\+Node \&}]{node }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00387}{387}} of file \mbox{\hyperlink{verilog__utils_8cpp_source}{verilog\+\_\+utils.\+cpp}}.
+
+
+
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{classModuleRewriter_a849c095a80e8b1a384458da5bf955b98}\label{classModuleRewriter_a849c095a80e8b1a384458da5bf955b98}} 
+\mbox{\Hypertarget{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}\label{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}} 
 \index{ModuleRewriter@{ModuleRewriter}!cellName\_@{cellName\_}}
 \index{cellName\_@{cellName\_}!ModuleRewriter@{ModuleRewriter}}
 \doxysubsubsection{\texorpdfstring{cellName\_}{cellName\_}}
-{\footnotesize\ttfamily std\+::string Module\+Rewriter\+::cell\+Name\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const std\+::string Module\+Rewriter\+::cell\+Name\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
 
-\mbox{\Hypertarget{classModuleRewriter_ac5f7c94aff928c0aa955f1dc19c34b19}\label{classModuleRewriter_ac5f7c94aff928c0aa955f1dc19c34b19}} 
+\mbox{\Hypertarget{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}\label{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}} 
+\index{ModuleRewriter@{ModuleRewriter}!depth\_@{depth\_}}
+\index{depth\_@{depth\_}!ModuleRewriter@{ModuleRewriter}}
+\doxysubsubsection{\texorpdfstring{depth\_}{depth\_}}
+{\footnotesize\ttfamily int Module\+Rewriter\+::depth\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+\mbox{\Hypertarget{classModuleRewriter_a2f805c22fb4301d84cf005149b0a28e2}\label{classModuleRewriter_a2f805c22fb4301d84cf005149b0a28e2}} 
 \index{ModuleRewriter@{ModuleRewriter}!inputPins\_@{inputPins\_}}
 \index{inputPins\_@{inputPins\_}!ModuleRewriter@{ModuleRewriter}}
 \doxysubsubsection{\texorpdfstring{inputPins\_}{inputPins\_}}
-{\footnotesize\ttfamily const std\+::unordered\+\_\+set$<$std\+::string$>$\& Module\+Rewriter\+::input\+Pins\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const std\+::vector$<$std\+::string$>$\& Module\+Rewriter\+::input\+Pins\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+\mbox{\Hypertarget{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}\label{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}} 
+\index{ModuleRewriter@{ModuleRewriter}!logger\_@{logger\_}}
+\index{logger\_@{logger\_}!ModuleRewriter@{ModuleRewriter}}
+\doxysubsubsection{\texorpdfstring{logger\_}{logger\_}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$spdlog\+::logger$>$ Module\+Rewriter\+::logger\+\_\+}
 
 
 
 Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
 
-\mbox{\Hypertarget{classModuleRewriter_a61459eade8e8491d9bca1bf3a4cac235}\label{classModuleRewriter_a61459eade8e8491d9bca1bf3a4cac235}} 
+\mbox{\Hypertarget{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}\label{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}} 
 \index{ModuleRewriter@{ModuleRewriter}!moduleName\_@{moduleName\_}}
 \index{moduleName\_@{moduleName\_}!ModuleRewriter@{ModuleRewriter}}
 \doxysubsubsection{\texorpdfstring{moduleName\_}{moduleName\_}}
-{\footnotesize\ttfamily std\+::string Module\+Rewriter\+::module\+Name\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const std\+::string Module\+Rewriter\+::module\+Name\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
 
-\mbox{\Hypertarget{classModuleRewriter_abd4f542f783a00b8a42ad318ea3dcf18}\label{classModuleRewriter_abd4f542f783a00b8a42ad318ea3dcf18}} 
+\mbox{\Hypertarget{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}\label{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}} 
 \index{ModuleRewriter@{ModuleRewriter}!outputPins\_@{outputPins\_}}
 \index{outputPins\_@{outputPins\_}!ModuleRewriter@{ModuleRewriter}}
 \doxysubsubsection{\texorpdfstring{outputPins\_}{outputPins\_}}
-{\footnotesize\ttfamily const std\+::unordered\+\_\+set$<$std\+::string$>$\& Module\+Rewriter\+::output\+Pins\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily const std\+::vector$<$std\+::string$>$\& Module\+Rewriter\+::output\+Pins\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/\mbox{\hyperlink{verilog__utils_8hpp}{verilog\+\_\+utils.\+hpp}}\end{DoxyCompactItemize}
+include/\mbox{\hyperlink{verilog__utils_8hpp}{verilog\+\_\+utils.\+hpp}}\item 
+src/\mbox{\hyperlink{verilog__utils_8cpp}{verilog\+\_\+utils.\+cpp}}\end{DoxyCompactItemize}

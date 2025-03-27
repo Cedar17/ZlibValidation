@@ -16,6 +16,7 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -92,6 +93,7 @@ $(document).ready(function(){initNavTree('classModuleRewriter.html',''); initRes
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classModuleRewriter-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ModuleRewriter Class Reference</div></div>
@@ -120,26 +122,37 @@ Collaboration diagram for ModuleRewriter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad69c6ac9dc20b6ca4a17ec8005b224d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#ad69c6ac9dc20b6ca4a17ec8005b224d0">ModuleRewriter</a> (const std::unordered_set&lt; std::string &gt; &amp;inputPins, const std::unordered_set&lt; std::string &gt; &amp;outputPins, const std::pair&lt; std::string, std::string &gt; &amp;supercell_entry)</td></tr>
-<tr class="separator:ad69c6ac9dc20b6ca4a17ec8005b224d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a795e8de5f24b2a9831c85559c7579f15"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#a795e8de5f24b2a9831c85559c7579f15">ModuleRewriter</a> (const std::vector&lt; std::string &gt; &amp;inputPins, const std::vector&lt; std::string &gt; &amp;outputPins, const std::pair&lt; std::string, std::string &gt; &amp;supercell_entry, std::shared_ptr&lt; spdlog::logger &gt; logger)</td></tr>
+<tr class="separator:a795e8de5f24b2a9831c85559c7579f15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa57bf8f3d6692468013a52a0154f08e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#aa57bf8f3d6692468013a52a0154f08e8">handle</a> (const slang::syntax::SyntaxNode &amp;node)</td></tr>
+<tr class="separator:aa57bf8f3d6692468013a52a0154f08e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa91fd9d45e04c0408aead2b70c359585"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#aa91fd9d45e04c0408aead2b70c359585">handle</a> (const slang::syntax::ModuleDeclarationSyntax &amp;module)</td></tr>
+<tr class="separator:aa91fd9d45e04c0408aead2b70c359585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a35bc880b11364a5c980c70be72ab42ab"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; spdlog::logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#a35bc880b11364a5c980c70be72ab42ab">logger_</a></td></tr>
+<tr class="separator:a35bc880b11364a5c980c70be72ab42ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ac5f7c94aff928c0aa955f1dc19c34b19"><td class="memItemLeft" align="right" valign="top">const std::unordered_set&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#ac5f7c94aff928c0aa955f1dc19c34b19">inputPins_</a></td></tr>
-<tr class="separator:ac5f7c94aff928c0aa955f1dc19c34b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd4f542f783a00b8a42ad318ea3dcf18"><td class="memItemLeft" align="right" valign="top">const std::unordered_set&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#abd4f542f783a00b8a42ad318ea3dcf18">outputPins_</a></td></tr>
-<tr class="separator:abd4f542f783a00b8a42ad318ea3dcf18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a849c095a80e8b1a384458da5bf955b98"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#a849c095a80e8b1a384458da5bf955b98">cellName_</a></td></tr>
-<tr class="separator:a849c095a80e8b1a384458da5bf955b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61459eade8e8491d9bca1bf3a4cac235"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#a61459eade8e8491d9bca1bf3a4cac235">moduleName_</a></td></tr>
-<tr class="separator:a61459eade8e8491d9bca1bf3a4cac235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f805c22fb4301d84cf005149b0a28e2"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#a2f805c22fb4301d84cf005149b0a28e2">inputPins_</a></td></tr>
+<tr class="separator:a2f805c22fb4301d84cf005149b0a28e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8314722fe0c97d3e78953ee0eb45b0ca"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#a8314722fe0c97d3e78953ee0eb45b0ca">outputPins_</a></td></tr>
+<tr class="separator:a8314722fe0c97d3e78953ee0eb45b0ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacc88ad73dec9641178c07cc519b4e9e"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#aacc88ad73dec9641178c07cc519b4e9e">cellName_</a></td></tr>
+<tr class="separator:aacc88ad73dec9641178c07cc519b4e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5bdc3d50b39f851fa1bb728d08c1bfb"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#ac5bdc3d50b39f851fa1bb728d08c1bfb">moduleName_</a></td></tr>
+<tr class="separator:ac5bdc3d50b39f851fa1bb728d08c1bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ccaa865548fbf442969925a8f4063aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#a1ccaa865548fbf442969925a8f4063aa">depth_</a></td></tr>
+<tr class="separator:a1ccaa865548fbf442969925a8f4063aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00055">55</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00057">57</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad69c6ac9dc20b6ca4a17ec8005b224d0" name="ad69c6ac9dc20b6ca4a17ec8005b224d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad69c6ac9dc20b6ca4a17ec8005b224d0">&#9670;&#160;</a></span>ModuleRewriter()</h2>
+<a id="a795e8de5f24b2a9831c85559c7579f15" name="a795e8de5f24b2a9831c85559c7579f15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a795e8de5f24b2a9831c85559c7579f15">&#9670;&#160;</a></span>ModuleRewriter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -150,20 +163,26 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">ModuleRewriter::ModuleRewriter </td>
           <td>(</td>
-          <td class="paramtype">const std::unordered_set&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
           <td class="paramname"><em>inputPins</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::unordered_set&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
           <td class="paramname"><em>outputPins</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::pair&lt; std::string, std::string &gt; &amp;&#160;</td>
-          <td class="paramname"><em>supercell_entry</em>&#160;</td>
+          <td class="paramname"><em>supercell_entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; spdlog::logger &gt;&#160;</td>
+          <td class="paramname"><em>logger</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -178,13 +197,54 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00057">57</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00059">59</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa91fd9d45e04c0408aead2b70c359585" name="aa91fd9d45e04c0408aead2b70c359585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa91fd9d45e04c0408aead2b70c359585">&#9670;&#160;</a></span>handle() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModuleRewriter::handle </td>
+          <td>(</td>
+          <td class="paramtype">const slang::syntax::ModuleDeclarationSyntax &amp;&#160;</td>
+          <td class="paramname"><em>module</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8cpp_source.html#l00397">397</a> of file <a class="el" href="verilog__utils_8cpp_source.html">verilog_utils.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa57bf8f3d6692468013a52a0154f08e8" name="aa57bf8f3d6692468013a52a0154f08e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa57bf8f3d6692468013a52a0154f08e8">&#9670;&#160;</a></span>handle() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModuleRewriter::handle </td>
+          <td>(</td>
+          <td class="paramtype">const slang::syntax::SyntaxNode &amp;&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8cpp_source.html#l00387">387</a> of file <a class="el" href="verilog__utils_8cpp_source.html">verilog_utils.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a849c095a80e8b1a384458da5bf955b98" name="a849c095a80e8b1a384458da5bf955b98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a849c095a80e8b1a384458da5bf955b98">&#9670;&#160;</a></span>cellName_</h2>
+<a id="aacc88ad73dec9641178c07cc519b4e9e" name="aacc88ad73dec9641178c07cc519b4e9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacc88ad73dec9641178c07cc519b4e9e">&#9670;&#160;</a></span>cellName_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -193,7 +253,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string ModuleRewriter::cellName_</td>
+          <td class="memname">const std::string ModuleRewriter::cellName_</td>
         </tr>
       </table>
   </td>
@@ -203,12 +263,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00067">67</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00072">72</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ac5f7c94aff928c0aa955f1dc19c34b19" name="ac5f7c94aff928c0aa955f1dc19c34b19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5f7c94aff928c0aa955f1dc19c34b19">&#9670;&#160;</a></span>inputPins_</h2>
+<a id="a1ccaa865548fbf442969925a8f4063aa" name="a1ccaa865548fbf442969925a8f4063aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ccaa865548fbf442969925a8f4063aa">&#9670;&#160;</a></span>depth_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -217,7 +277,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::unordered_set&lt;std::string&gt;&amp; ModuleRewriter::inputPins_</td>
+          <td class="memname">int ModuleRewriter::depth_</td>
         </tr>
       </table>
   </td>
@@ -225,14 +285,54 @@ Private Attributes</h2></td></tr>
 <span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00074">74</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2f805c22fb4301d84cf005149b0a28e2" name="a2f805c22fb4301d84cf005149b0a28e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f805c22fb4301d84cf005149b0a28e2">&#9670;&#160;</a></span>inputPins_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;std::string&gt;&amp; ModuleRewriter::inputPins_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00070">70</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a35bc880b11364a5c980c70be72ab42ab" name="a35bc880b11364a5c980c70be72ab42ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35bc880b11364a5c980c70be72ab42ab">&#9670;&#160;</a></span>logger_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;spdlog::logger&gt; ModuleRewriter::logger_</td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00065">65</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a61459eade8e8491d9bca1bf3a4cac235" name="a61459eade8e8491d9bca1bf3a4cac235"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61459eade8e8491d9bca1bf3a4cac235">&#9670;&#160;</a></span>moduleName_</h2>
+<a id="ac5bdc3d50b39f851fa1bb728d08c1bfb" name="ac5bdc3d50b39f851fa1bb728d08c1bfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5bdc3d50b39f851fa1bb728d08c1bfb">&#9670;&#160;</a></span>moduleName_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -241,7 +341,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string ModuleRewriter::moduleName_</td>
+          <td class="memname">const std::string ModuleRewriter::moduleName_</td>
         </tr>
       </table>
   </td>
@@ -251,12 +351,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00068">68</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00073">73</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
-<a id="abd4f542f783a00b8a42ad318ea3dcf18" name="abd4f542f783a00b8a42ad318ea3dcf18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd4f542f783a00b8a42ad318ea3dcf18">&#9670;&#160;</a></span>outputPins_</h2>
+<a id="a8314722fe0c97d3e78953ee0eb45b0ca" name="a8314722fe0c97d3e78953ee0eb45b0ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8314722fe0c97d3e78953ee0eb45b0ca">&#9670;&#160;</a></span>outputPins_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -265,7 +365,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::unordered_set&lt;std::string&gt;&amp; ModuleRewriter::outputPins_</td>
+          <td class="memname">const std::vector&lt;std::string&gt;&amp; ModuleRewriter::outputPins_</td>
         </tr>
       </table>
   </td>
@@ -275,12 +375,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00066">66</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00071">71</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a></li>
+<li>src/<a class="el" href="verilog__utils_8cpp_source.html">verilog_utils.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -288,7 +389,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classModuleRewriter.html">ModuleRewriter</a></li>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Thu Mar 27 2025 09:53:23 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

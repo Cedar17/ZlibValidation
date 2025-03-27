@@ -17,7 +17,7 @@ var searchData=
   ['libgroup_14',['LibGroup',['../classLibGroup.html#a1af97874abe20591db9eb0f81700869b',1,'LibGroup::LibGroup()'],['../classLibGroup.html',1,'LibGroup']]],
   ['libname_5f_15',['libname_',['../classLibFile.html#a20994ad220fbf032ca4ccb519fe7e704',1,'LibFile']]],
   ['librarycomparator_16',['LibraryComparator',['../classLibraryComparator.html#a3b1cf4c12188388533050cc7f2804444',1,'LibraryComparator::LibraryComparator()'],['../classLibraryComparator.html',1,'LibraryComparator']]],
-  ['logger_5f_17',['logger_',['../classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d',1,'LibFile']]],
+  ['logger_5f_17',['logger_',['../classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d',1,'LibFile::logger_()'],['../classModuleRewriter.html#a35bc880b11364a5c980c70be72ab42ab',1,'ModuleRewriter::logger_()']]],
   ['loggername_5f_18',['loggername_',['../classLibFile.html#ac603785bfcf7fb11172603e0777b3332',1,'LibFile']]],
   ['long_5fdouble_19',['LONG_DOUBLE',['../si2dr__liberty_8h.html#ad53edf12e98c4098e41b9d91fd8d5f17',1,'si2dr_liberty.h']]]
 ];
