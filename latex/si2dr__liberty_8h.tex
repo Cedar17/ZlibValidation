@@ -1,0 +1,1394 @@
+\hypertarget{si2dr__liberty_8h}{}\doxysection{include/si2dr\+\_\+liberty.h File Reference}
+\label{si2dr__liberty_8h}\index{include/si2dr\_liberty.h@{include/si2dr\_liberty.h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structsi2OID}{si2\+OID}}
+\item 
+struct \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}}
+\item 
+struct \mbox{\hyperlink{structliberty__value__data}{liberty\+\_\+value\+\_\+data}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_a7fff1a78cef671d1dad99eafc305ce38}{SI2\+\_\+\+ARGS}}(args)~()
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_a2748a5b1b402fe5b25a4c239a585d32b}{SI2\+\_\+\+LONG\+\_\+\+MAX}}~2147483647
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_ac3c0ea63ca2d6d98552e3ec1af343907}{SI2\+\_\+\+LONG\+\_\+\+MIN}}~-\/2147483647
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_a3b50f05db706e6185e6a21ccafabbdb8}{SI2\+\_\+\+ULONG\+\_\+\+MAX}}~4294967295
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_ad014fa20167509024047a444504a0f9f}{SI2\+DR\+\_\+\+MIN\+\_\+\+FLOAT32}}~-\/1E+37
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_a38f905a80d2386f738eeb60db5517de3}{SI2\+DR\+\_\+\+MAX\+\_\+\+FLOAT32}}~1E+37
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_ae7521c22a129e2e366c0fcffe1e5ffff}{SI2\+DR\+\_\+\+MIN\+\_\+\+FLOAT64}}~-\/1.\+797693e+308
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_a14584efcc1e323a4b28ec8406cdbd08d}{SI2\+DR\+\_\+\+MAX\+\_\+\+FLOAT64}}~1.\+797693e+308
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_a63f68af47b3b9f3863c3e3fb181ae1df}{SI2\+DR\+\_\+\+MIN\+\_\+\+INT32}}~-\/2147483647
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_a4fef1ebede03d126f6140587f07b9af0}{SI2\+DR\+\_\+\+MAX\+\_\+\+INT32}}~2147483647
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_a43ce139089307b7b218c021ab5b01334}{SI2\+DR\+\_\+\+MAX\+\_\+\+STRING\+\_\+\+LEN}}~1048576 /$\ast$1024$\ast$1024$\ast$/
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_a5d22f408f249e8a5c13267d04799939b}{SI2\+DR\+\_\+\+TRUE}}~\mbox{\hyperlink{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005a4f0f605d2798190c7ed0720843d2f26c}{SI2\+\_\+\+TRUE}}
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_a89cae2f1482bb485583fcf41302f39de}{SI2\+DR\+\_\+\+FALSE}}~\mbox{\hyperlink{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005a38d9e5bf4d57860b971fd04f7f89b967}{SI2\+\_\+\+FALSE}}
+\item 
+\#define \mbox{\hyperlink{si2dr__liberty_8h_ad53edf12e98c4098e41b9d91fd8d5f17}{LONG\+\_\+\+DOUBLE}}~long double
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005}{si2\+Boolean\+Enum}} \mbox{\hyperlink{si2dr__liberty_8h_a0030d0bfb6c375249afa0ea24f2c1621}{si2\+BooleanT}}
+\item 
+typedef long int \mbox{\hyperlink{si2dr__liberty_8h_a76c527c74f9a6ccc0462b4566b3ae2eb}{si2\+LongT}}
+\item 
+typedef float \mbox{\hyperlink{si2dr__liberty_8h_a312a809d7353ec24d4fd03a1bf14e520}{si2\+FloatT}}
+\item 
+typedef double \mbox{\hyperlink{si2dr__liberty_8h_ace42344f01825533844e7dc1819fdca4}{si2\+DoubleT}}
+\item 
+typedef char $\ast$ \mbox{\hyperlink{si2dr__liberty_8h_a984f4ede01e00c06c9a6c6a18a1094b1}{si2\+StringT}}
+\item 
+typedef void \mbox{\hyperlink{si2dr__liberty_8h_a7e2f47426c30a3163bd86e07472e60ba}{si2\+VoidT}}
+\item 
+typedef enum \mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712}{si2\+Type\+Enum}} \mbox{\hyperlink{si2dr__liberty_8h_a891da1ce16cf41c85bdde185fe35caac}{si2\+TypeT}}
+\item 
+typedef struct \mbox{\hyperlink{structsi2OID}{si2\+OID}} \mbox{\hyperlink{si2dr__liberty_8h_af48836b75e088058bc24d90d4765405b}{si2\+Object\+IdT}}
+\item 
+typedef void $\ast$ \mbox{\hyperlink{si2dr__liberty_8h_a404daf6221059318586eece643cc2c0c}{si2\+Iterator\+IdT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a0030d0bfb6c375249afa0ea24f2c1621}{si2\+BooleanT}} \mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a76c527c74f9a6ccc0462b4566b3ae2eb}{si2\+LongT}} \mbox{\hyperlink{si2dr__liberty_8h_ae5b1aca7e6553f2a53df82f2caae03b6}{si2dr\+Int32T}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a312a809d7353ec24d4fd03a1bf14e520}{si2\+FloatT}} \mbox{\hyperlink{si2dr__liberty_8h_a423428fc52f665568a1fd77a971d6412}{si2dr\+Float32T}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_ace42344f01825533844e7dc1819fdca4}{si2\+DoubleT}} \mbox{\hyperlink{si2dr__liberty_8h_a5f0db5120a1990ddfb700a6ea22d4315}{si2dr\+Float64T}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a984f4ede01e00c06c9a6c6a18a1094b1}{si2\+StringT}} \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a7e2f47426c30a3163bd86e07472e60ba}{si2\+VoidT}} \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a404daf6221059318586eece643cc2c0c}{si2\+Iterator\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_af48836b75e088058bc24d90d4765405b}{si2\+Object\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a54329fa453601db101b058d6befed0ed}{si2dr\+Attr\+Complex\+Val\+IdT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a9fa329ee3187c7385ba5c89d07e057d8}{si2dr\+Objects\+IdT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a48d41689e6837664a521c0d741ae2f11}{si2dr\+Groups\+IdT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_aab38e2f9b2c18b8024636eb5e84d07f0}{si2dr\+Attrs\+IdT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a75e1621f0aade36b05ed0691d252be87}{si2dr\+Defines\+IdT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_aa00384ca8ce16b17d055bcf32eb5950c}{si2dr\+Names\+IdT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a94cf0ed4382b87c45e9b2eb0871ba3a2}{si2dr\+Values\+IdT}}
+\item 
+typedef enum \mbox{\hyperlink{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2}{si2dr\+SeverityT}} \mbox{\hyperlink{si2dr__liberty_8h_a3dcdb6434d7fe8e6aadcb5eaf19d61e1}{si2dr\+SeverityT}}
+\item 
+typedef enum \mbox{\hyperlink{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49}{si2dr\+Object\+TypeT}} \mbox{\hyperlink{si2dr__liberty_8h_a3f29efb6934a281df6d40d02dfc64f3e}{si2dr\+Object\+TypeT}}
+\item 
+typedef enum \mbox{\hyperlink{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6}{si2dr\+Attr\+TypeT}} \mbox{\hyperlink{si2dr__liberty_8h_a4e62f75eb8583ab2fbd0109a2f0b82a0}{si2dr\+Attr\+TypeT}}
+\item 
+typedef enum \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}{si2dr\+Value\+TypeT}} \mbox{\hyperlink{si2dr__liberty_8h_a28f4e1a5d8db4ec328cee2af33812f27}{si2dr\+Value\+TypeT}}
+\item 
+typedef enum \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}{si2dr\+Expr\+TypeT}} \mbox{\hyperlink{si2dr__liberty_8h_abf65c544a6bad960866c2b478c90a12c}{si2dr\+Expr\+TypeT}}
+\item 
+typedef struct \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} \mbox{\hyperlink{si2dr__liberty_8h_ae820cf6b4874f2cca2d5b6f9bb19967f}{si2dr\+ExprT}}
+\item 
+typedef enum \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} \mbox{\hyperlink{si2dr__liberty_8h_aedf8847d53aa6a3f4a9c87398a2a97c6}{si2dr\+ErrorT}}
+\item 
+typedef \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}}($\ast$ \mbox{\hyperlink{si2dr__liberty_8h_ad44901a22da2d53caac456ea31628053}{si2dr\+Message\+HandlerT}}) (\mbox{\hyperlink{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2}{si2dr\+SeverityT}} sev, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} err\+To\+Print, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} aux\+Text, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005}{si2\+Boolean\+Enum}} \{ \mbox{\hyperlink{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005a38d9e5bf4d57860b971fd04f7f89b967}{SI2\+\_\+\+FALSE}} = 0
+, \mbox{\hyperlink{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005a4f0f605d2798190c7ed0720843d2f26c}{SI2\+\_\+\+TRUE}} = 1
+ \}
+\item 
+enum \mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712}{si2\+Type\+Enum}} \{ \newline
+\mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a3df62475b1078f4a8015ea9098f96a05}{SI2\+\_\+\+UNDEFINED\+\_\+\+VALUETYPE}} = 0
+, \mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a57791ad4a0a83942328884b1a23fe57f}{SI2\+\_\+\+BOOLEAN}} = 1
+, \mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a91bc95c6cca8909b35bb967261e05bae}{SI2\+\_\+\+LONG}} = 2
+, \mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712ad4627ea46c48afe09df7fdadf7a277fa}{SI2\+\_\+\+FLOAT}} = 3
+, \newline
+\mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712aefc810d820e367a7ccc630ff733ce1c2}{SI2\+\_\+\+DOUBLE}} = 4
+, \mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712ab4ac9ebc95a90c536a442122929cceea}{SI2\+\_\+\+STRING}} = 5
+, \mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a7e87b64a992b707a87c8a92e3c2a3f36}{SI2\+\_\+\+VOID}} = 6
+, \mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a26ac7978726c1a4453efdd3e159cb505}{SI2\+\_\+\+OID}} = 7
+, \newline
+\mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a7e24e630536e5dd7214e6b52e68c235d}{SI2\+\_\+\+ITER}} = 8
+, \mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a5c078bd74dd733f6f77e99bd1667efc5}{SI2\+\_\+\+EXPR}} = 9
+, \mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a8964c10c037ae329fecf366ecd037295}{SI2\+\_\+\+MAX\+\_\+\+VALUETYPE}} = 10
+ \}
+\item 
+enum \mbox{\hyperlink{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2}{si2dr\+SeverityT}} \{ \mbox{\hyperlink{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2add8bed41c0e6b9a98dae6f26ec1f512c}{SI2\+DR\+\_\+\+SEVERITY\+\_\+\+NOTE}} = 0
+, \mbox{\hyperlink{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2a8fb8b86b9f02a55882523834cc638bed}{SI2\+DR\+\_\+\+SEVERITY\+\_\+\+WARN}} = 1
+, \mbox{\hyperlink{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2a37f78e95b08ae42c284aaf5576f70feb}{SI2\+DR\+\_\+\+SEVERITY\+\_\+\+ERR}} = 2
+ \}
+\item 
+enum \mbox{\hyperlink{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49}{si2dr\+Object\+TypeT}} \{ \newline
+\mbox{\hyperlink{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49affa832c02b121708d9a4e52865cf1b2a}{SI2\+DR\+\_\+\+UNDEFINED\+\_\+\+OBJECTTYPE}} = 0
+, \mbox{\hyperlink{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49a9117708f9ef1e3811709c8de22ad20ee}{SI2\+DR\+\_\+\+GROUP}} = 1
+, \mbox{\hyperlink{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49aeb400a595332403159e5e89eadc148e3}{SI2\+DR\+\_\+\+ATTR}} = 2
+, \mbox{\hyperlink{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49a08c0c9adb18becdb14c084085ad95bb4}{SI2\+DR\+\_\+\+DEFINE}} = 3
+, \newline
+\mbox{\hyperlink{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49abb3b22f8cddc9fbdc32f0b5bb939c1f5}{SI2\+DR\+\_\+\+COMPLEXVAL}} = 4
+, \mbox{\hyperlink{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49abbb04b6b099ca8e65d7b92aeb8e5e80c}{SI2\+DR\+\_\+\+MAX\+\_\+\+OBJECTTYPE}} = 5
+ \}
+\item 
+enum \mbox{\hyperlink{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6}{si2dr\+Attr\+TypeT}} \{ \mbox{\hyperlink{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6a232f5a4c564aa27afe5068d30c771ae0}{SI2\+DR\+\_\+\+SIMPLE}}
+, \mbox{\hyperlink{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6a575498901cb90f9144a41959d0b0b805}{SI2\+DR\+\_\+\+COMPLEX}}
+ \}
+\item 
+enum \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}{si2dr\+Value\+TypeT}} \{ \newline
+\mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30ae2eb660dcba4321449649a44fba8ac61}{SI2\+DR\+\_\+\+UNDEFINED\+\_\+\+VALUETYPE}} = SI2\+\_\+\+UNDEFINED\+\_\+\+VALUETYPE
+, \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a7f2cbe17928b22427b9390ef33e9315f}{SI2\+DR\+\_\+\+INT32}} = SI2\+\_\+\+LONG
+, \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a4278686c82fbba7029b5d3f85d6d0709}{SI2\+DR\+\_\+\+STRING}} = SI2\+\_\+\+STRING
+, \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a428969fe54c2b58cd2d0554edf8803ba}{SI2\+DR\+\_\+\+FLOAT64}} = SI2\+\_\+\+DOUBLE
+, \newline
+\mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a3b864fa1f011cc4ac79ba91ab1946eb8}{SI2\+DR\+\_\+\+BOOLEAN}} = SI2\+\_\+\+BOOLEAN
+, \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a22101329332b608c5127d4e3e83861e6}{SI2\+DR\+\_\+\+EXPR}} = SI2\+\_\+\+EXPR
+, \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30ae94e700903aecff09f60633c0d4e7254}{SI2\+DR\+\_\+\+MAX\+\_\+\+VALUETYPE}} = SI2\+\_\+\+MAX\+\_\+\+VALUETYPE
+ \}
+\item 
+enum \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}{si2dr\+Expr\+TypeT}} \{ \newline
+\mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0aa8b12804d07dcb10896ebcfd9669cf38}{SI2\+DR\+\_\+\+EXPR\+\_\+\+VAL}} = 0
+, \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0af997e839c29fb486cb55b7c29b15cf32}{SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+ADD}} = 1
+, \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a8b2077db1b5fe871e0fc14211d0d3b48}{SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+SUB}} = 2
+, \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a6a4a5915eaa431c0606038611b5fdf10}{SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+MUL}} = 3
+, \newline
+\mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a7da311737c6efefd75d3662ee26b7c39}{SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+DIV}} = 4
+, \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a7a780c9a00d9843453946b8eba98ec3c}{SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+PAREN}} = 5
+, \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a9847d11492e922af33080e8b8e3c19df}{SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+LOG2}} = 6
+, \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0aaac44bb646fe00f625d99d7bf7c446ec}{SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+LOG10}} = 7
+, \newline
+\mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0ae2d292a9d8c77e3798273708133fd565}{SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+EXP}} = 8
+ \}
+\item 
+enum \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} \{ \newline
+\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da3a72567a407c6745afc8d0c78156b507}{SI2\+DR\+\_\+\+NO\+\_\+\+ERROR}} = 0
+, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da4f01e6ddcd3712f9d924fe6e1ff3de4c}{SI2\+DR\+\_\+\+INTERNAL\+\_\+\+SYSTEM\+\_\+\+ERROR}} = 1
+, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da01092b99c03508ab4a43bf34a780975b}{SI2\+DR\+\_\+\+INVALID\+\_\+\+VALUE}} = 4
+, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789daa898645bca0f55d05bc4ce6122784cad}{SI2\+DR\+\_\+\+INVALID\+\_\+\+NAME}} = 5
+, \newline
+\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da35f2d1f2a5b82e5bb350cf24c5ee9ed5}{SI2\+DR\+\_\+\+INVALID\+\_\+\+OBJECTTYPE}} = 6
+, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789daf0102a5f730524fd4b085b17ae673ae8}{SI2\+DR\+\_\+\+INVALID\+\_\+\+ATTRTYPE}} = 10
+, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da0d749c89fd6125614171bb66bcdb6dcc}{SI2\+DR\+\_\+\+UNUSABLE\+\_\+\+OID}} = 7
+, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da1b40a60641b202624af5fbdb83640980}{SI2\+DR\+\_\+\+OBJECT\+\_\+\+ALREADY\+\_\+\+EXISTS}} = 8
+, \newline
+\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da7a2d9b2e06c6f34d30040e46e310ba6c}{SI2\+DR\+\_\+\+OBJECT\+\_\+\+NOT\+\_\+\+FOUND}} = 9
+, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789dab796381410d6543d611fbf0d42b3cf68}{SI2\+DR\+\_\+\+SYNTAX\+\_\+\+ERROR}} = 2
+, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789dab83b827d8d8eacc2a9677c8a95159f31}{SI2\+DR\+\_\+\+TRACE\+\_\+\+FILES\+\_\+\+CANNOT\+\_\+\+BE\+\_\+\+OPENED}} = 3
+, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789dae559cf3eb5fcab974d59401ae0c28adc}{SI2\+DR\+\_\+\+PIINIT\+\_\+\+NOT\+\_\+\+CALLED}} = 11
+, \newline
+\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da8561599302e4aa07d06a173be15dc184}{SI2\+DR\+\_\+\+SEMANTIC\+\_\+\+ERROR}} = 12
+, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da7eb9083744388cad30992543a514faae}{SI2\+DR\+\_\+\+REFERENCE\+\_\+\+ERROR}} = 13
+, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da22ee276b28e9e50888532711dbb7c0df}{SI2\+DR\+\_\+\+MAX\+\_\+\+ERROR}} = 14
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} \mbox{\hyperlink{si2dr__liberty_8h_aebe5a23c8491d476392b9262899edbc9}{si2dr\+Default\+Message\+Handler}} (\mbox{\hyperlink{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2}{si2dr\+SeverityT}} sev, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} err\+To\+Print, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} aux\+Text, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_ad44901a22da2d53caac456ea31628053}{si2dr\+Message\+HandlerT}} \mbox{\hyperlink{si2dr__liberty_8h_ad7d5f5b7591c9c86ca429b5e0f725591}{si2dr\+PIGet\+Message\+Handler}} (\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} \mbox{\hyperlink{si2dr__liberty_8h_a7d9925927b275c7e81d4505c65aa2f82}{si2dr\+PISet\+Message\+Handler}} (\mbox{\hyperlink{si2dr__liberty_8h_ad44901a22da2d53caac456ea31628053}{si2dr\+Message\+HandlerT}} Msg\+Hand\+Func\+Ptr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} si2dr\+PICreate\+Group \mbox{\hyperlink{si2dr__liberty_8h_a8432e5fe9144922879655e9d874d8e76}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} group\+\_\+type, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} si2dr\+Group\+Create\+Attr \mbox{\hyperlink{si2dr__liberty_8h_af0a2757b79304a5a24517f2f7d5000a3}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6}{si2dr\+Attr\+TypeT}} type, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6}{si2dr\+Attr\+TypeT}} si2dr\+Attr\+Get\+Attr\+Type \mbox{\hyperlink{si2dr__liberty_8h_ae7d89135910b62155b5c35dd0c0f8ef3}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Complex\+Attr\+Add\+Int32\+Value \mbox{\hyperlink{si2dr__liberty_8h_a446767317a2aca8a047c97b020c7ad4a}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_ae5b1aca7e6553f2a53df82f2caae03b6}{si2dr\+Int32T}} intgr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Complex\+Attr\+Add\+String\+Value \mbox{\hyperlink{si2dr__liberty_8h_af05c37230957573f0972d2fcbf7d11d9}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} string, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Complex\+Attr\+Add\+Boolean\+Value \mbox{\hyperlink{si2dr__liberty_8h_aee39c0019276167926e807ac9697a9cd}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}} boolval, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Complex\+Attr\+Add\+Float64\+Value \mbox{\hyperlink{si2dr__liberty_8h_a61580aa8e965e01dc54ab869b887d944}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_a5f0db5120a1990ddfb700a6ea22d4315}{si2dr\+Float64T}} float64, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Complex\+Attr\+Add\+Expr\+Value \mbox{\hyperlink{si2dr__liberty_8h_a5931764b6413c053d1db1954371f8ccb}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$expr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Iter\+Next\+Complex\+Value \mbox{\hyperlink{si2dr__liberty_8h_a7d697605f915bf8f346d47db64d6acf2}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a94cf0ed4382b87c45e9b2eb0871ba3a2}{si2dr\+Values\+IdT}} iter, \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}{si2dr\+Value\+TypeT}} $\ast$type, \mbox{\hyperlink{si2dr__liberty_8h_ae5b1aca7e6553f2a53df82f2caae03b6}{si2dr\+Int32T}} $\ast$intgr, \mbox{\hyperlink{si2dr__liberty_8h_a5f0db5120a1990ddfb700a6ea22d4315}{si2dr\+Float64T}} $\ast$float64, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} $\ast$string, \mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}} $\ast$boolval, \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$$\ast$expr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a54329fa453601db101b058d6befed0ed}{si2dr\+Attr\+Complex\+Val\+IdT}} si2dr\+Iter\+Next\+Complex \mbox{\hyperlink{si2dr__liberty_8h_a65df71625cea85c8c42216fc2c5146a1}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a94cf0ed4382b87c45e9b2eb0871ba3a2}{si2dr\+Values\+IdT}} iter, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Simple\+Attr\+Set\+Boolean\+Value \mbox{\hyperlink{si2dr__liberty_8h_a0f02797717930b9abae9195aa19b8777}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}} intgr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Expr\+Destroy \mbox{\hyperlink{si2dr__liberty_8h_a73e965d704576cfdf6c0a2f77b90309c}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$expr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+Expr \mbox{\hyperlink{si2dr__liberty_8h_a16a487ffb334d082a27093765dde1985}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}{si2dr\+Expr\+TypeT}} type, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+Boolean\+Val\+Expr \mbox{\hyperlink{si2dr__liberty_8h_a0440ba6e3c30f4c577e14c0f67617b1f}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}} b, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+Double\+Val\+Expr \mbox{\hyperlink{si2dr__liberty_8h_aafe4f7552f0df6467e6dc2badee88953}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a5f0db5120a1990ddfb700a6ea22d4315}{si2dr\+Float64T}} d, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+String\+Val\+Expr \mbox{\hyperlink{si2dr__liberty_8h_a43bc3ae66e3d22e04b05e3d0a879e1a7}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} s, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+Int\+Val\+Expr \mbox{\hyperlink{si2dr__liberty_8h_a9092e7f0722e32621d46ca5a2b8d0cd0}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_ae5b1aca7e6553f2a53df82f2caae03b6}{si2dr\+Int32T}} i, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+Binary\+Op\+Expr \mbox{\hyperlink{si2dr__liberty_8h_ad8c38c0a7ae3d29a0f4eddda52e205fc}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$left, \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}{si2dr\+Expr\+TypeT}} optype, \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$right, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+Unary\+Op\+Expr \mbox{\hyperlink{si2dr__liberty_8h_a7604e05c724f4ba647f457b10a7625db}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}{si2dr\+Expr\+TypeT}} optype, \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$expr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}} si2dr\+Group\+Create\+Define \mbox{\hyperlink{si2dr__liberty_8h_a22a4679cb8f301f63a1db182cd677ba1}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} allowed\+\_\+group\+\_\+name, \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}{si2dr\+Value\+TypeT}} valtype, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Define\+Get\+Info \mbox{\hyperlink{si2dr__liberty_8h_abdc3fb07eef48d2206f2a4503db23e3e}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}} def, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} $\ast$name, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} $\ast$allowed\+\_\+group\+\_\+name, \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}{si2dr\+Value\+TypeT}} $\ast$valtype, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} si2dr\+Define\+Get\+Name \mbox{\hyperlink{si2dr__liberty_8h_a32762fb631dd4766fae78ceb85507b56}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}} def, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} si2dr\+Group\+Create\+Group \mbox{\hyperlink{si2dr__liberty_8h_af116a211fb6e8d8174b7d076b2bc5942}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} group\+\_\+type, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} si2dr\+Group\+Get\+Group\+Type \mbox{\hyperlink{si2dr__liberty_8h_a7592fdb6bc609aaeccbd83fbbbf479b6}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Group\+Set\+Comment \mbox{\hyperlink{si2dr__liberty_8h_a93c982cff2950f71d6d493621aeed4df}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} comment, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Attr\+Set\+Comment \mbox{\hyperlink{si2dr__liberty_8h_a8255cf3d7ff29bc5440894979970a316}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} comment, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Define\+Set\+Comment \mbox{\hyperlink{si2dr__liberty_8h_ac697dc9aaa4995eab8afa4feda7b58aa}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}} def, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} comment, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Group\+Add\+Name \mbox{\hyperlink{si2dr__liberty_8h_abc5798f63f0eb9ce44b203255c6d3f3d}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} si2dr\+PIFind\+Group\+By\+Name \mbox{\hyperlink{si2dr__liberty_8h_a668d4580d8814c710f143f43db6bb340}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} type, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} si2dr\+Group\+Find\+Group\+By\+Name \mbox{\hyperlink{si2dr__liberty_8h_aa63de32b6f5599957c195ee71c2d8063}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} type, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}} si2dr\+PIFind\+Define\+By\+Name \mbox{\hyperlink{si2dr__liberty_8h_aed31f77aea0a779128505ce8984dec67}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a48d41689e6837664a521c0d741ae2f11}{si2dr\+Groups\+IdT}} si2dr\+PIGet\+Groups \mbox{\hyperlink{si2dr__liberty_8h_a149c413493b89422d153d7f8c5df8837}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Object\+Delete \mbox{\hyperlink{si2dr__liberty_8h_ad9afbd96bd3e466a13f0b990b542df9d}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} object, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} si2dr\+PIGet\+Error\+Text \mbox{\hyperlink{si2dr__liberty_8h_a5359f07889d820053f5951818c04bab6}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} error\+Code, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}} si2dr\+Object\+Is\+Same \mbox{\hyperlink{si2dr__liberty_8h_a75dcdfabd859ba31fd84ac9a130a952d}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} object1, \mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} object2, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Object\+Set\+File\+Name \mbox{\hyperlink{si2dr__liberty_8h_a3cb44959d5ada6ad41c425844ded2f81}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} object, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} filename, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Object\+Set\+Line\+No \mbox{\hyperlink{si2dr__liberty_8h_a0fb2463e805ee9181b78d2e44ae8c70d}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} object, \mbox{\hyperlink{si2dr__liberty_8h_ae5b1aca7e6553f2a53df82f2caae03b6}{si2dr\+Int32T}} lineno, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Read\+Liberty\+File \mbox{\hyperlink{si2dr__liberty_8h_a8387666c77dc9106475c6d9cccb236b9}{SI2\+\_\+\+ARGS}} ((char $\ast$filename, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Write\+Liberty\+File \mbox{\hyperlink{si2dr__liberty_8h_ad21c641f6f68011df124a4ea947983e5}{SI2\+\_\+\+ARGS}} ((char $\ast$filename, \mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, char $\ast$cellname, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+PISet\+Trace\+Mode \mbox{\hyperlink{si2dr__liberty_8h_a7530ef310823c71c38ca3544309bc7ec}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} fname, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Group\+Move\+After \mbox{\hyperlink{si2dr__liberty_8h_ad1cc77bc8037ff9a93b8b265f40e60c4}{SI2\+\_\+\+ARGS}} ((\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group\+To\+Move, \mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} target\+Group, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err))
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_ad53edf12e98c4098e41b9d91fd8d5f17}{LONG\+\_\+\+DOUBLE}} \mbox{\hyperlink{si2dr__liberty_8h_a60ff55b29e2817709ac6b4728fef2f46}{liberty\+\_\+get\+\_\+element}} (struct \mbox{\hyperlink{structliberty__value__data}{liberty\+\_\+value\+\_\+data}} $\ast$vd,...)
+\item 
+void \mbox{\hyperlink{si2dr__liberty_8h_a359ef96d64de1234d3e2f3d46a46796d}{liberty\+\_\+destroy\+\_\+value\+\_\+data}} (struct \mbox{\hyperlink{structliberty__value__data}{liberty\+\_\+value\+\_\+data}} $\ast$vd)
+\item 
+struct \mbox{\hyperlink{structliberty__value__data}{liberty\+\_\+value\+\_\+data}} $\ast$ \mbox{\hyperlink{si2dr__liberty_8h_a9e49015b07ece4fb2ce79062f78004f2}{liberty\+\_\+get\+\_\+values\+\_\+data}} (\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} table\+\_\+group)
+\item 
+void \mbox{\hyperlink{si2dr__liberty_8h_a6302aaae12249e8ea16bfdc7de892f21}{print\+\_\+version}} ()
+\item 
+void \mbox{\hyperlink{si2dr__liberty_8h_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage}} ()
+\item 
+int \mbox{\hyperlink{si2dr__liberty_8h_a18d37317a82c6c753bffcf23bd140d68}{main\+\_\+liberty\+\_\+parser}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{si2dr__liberty_8h_aafe30e5a799ccd4995fc33af8112c12a}{get\+\_\+function}} (char $\ast$filename)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{si2dr__liberty_8h_ad53edf12e98c4098e41b9d91fd8d5f17}\label{si2dr__liberty_8h_ad53edf12e98c4098e41b9d91fd8d5f17}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!LONG\_DOUBLE@{LONG\_DOUBLE}}
+\index{LONG\_DOUBLE@{LONG\_DOUBLE}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{LONG\_DOUBLE}{LONG\_DOUBLE}}
+{\footnotesize\ttfamily \#define LONG\+\_\+\+DOUBLE~long double}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00609}{609}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a7fff1a78cef671d1dad99eafc305ce38}\label{si2dr__liberty_8h_a7fff1a78cef671d1dad99eafc305ce38}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS}{SI2\_ARGS}}
+{\footnotesize\ttfamily \#define SI2\+\_\+\+ARGS(\begin{DoxyParamCaption}\item[{}]{args }\end{DoxyParamCaption})~()}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00034}{34}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a2748a5b1b402fe5b25a4c239a585d32b}\label{si2dr__liberty_8h_a2748a5b1b402fe5b25a4c239a585d32b}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_LONG\_MAX@{SI2\_LONG\_MAX}}
+\index{SI2\_LONG\_MAX@{SI2\_LONG\_MAX}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_LONG\_MAX}{SI2\_LONG\_MAX}}
+{\footnotesize\ttfamily \#define SI2\+\_\+\+LONG\+\_\+\+MAX~2147483647}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00074}{74}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ac3c0ea63ca2d6d98552e3ec1af343907}\label{si2dr__liberty_8h_ac3c0ea63ca2d6d98552e3ec1af343907}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_LONG\_MIN@{SI2\_LONG\_MIN}}
+\index{SI2\_LONG\_MIN@{SI2\_LONG\_MIN}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_LONG\_MIN}{SI2\_LONG\_MIN}}
+{\footnotesize\ttfamily \#define SI2\+\_\+\+LONG\+\_\+\+MIN~-\/2147483647}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00075}{75}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a3b50f05db706e6185e6a21ccafabbdb8}\label{si2dr__liberty_8h_a3b50f05db706e6185e6a21ccafabbdb8}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ULONG\_MAX@{SI2\_ULONG\_MAX}}
+\index{SI2\_ULONG\_MAX@{SI2\_ULONG\_MAX}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ULONG\_MAX}{SI2\_ULONG\_MAX}}
+{\footnotesize\ttfamily \#define SI2\+\_\+\+ULONG\+\_\+\+MAX~4294967295}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00076}{76}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a89cae2f1482bb485583fcf41302f39de}\label{si2dr__liberty_8h_a89cae2f1482bb485583fcf41302f39de}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_FALSE@{SI2DR\_FALSE}}
+\index{SI2DR\_FALSE@{SI2DR\_FALSE}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2DR\_FALSE}{SI2DR\_FALSE}}
+{\footnotesize\ttfamily \#define SI2\+DR\+\_\+\+FALSE~\mbox{\hyperlink{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005a38d9e5bf4d57860b971fd04f7f89b967}{SI2\+\_\+\+FALSE}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00096}{96}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a38f905a80d2386f738eeb60db5517de3}\label{si2dr__liberty_8h_a38f905a80d2386f738eeb60db5517de3}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_MAX\_FLOAT32@{SI2DR\_MAX\_FLOAT32}}
+\index{SI2DR\_MAX\_FLOAT32@{SI2DR\_MAX\_FLOAT32}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2DR\_MAX\_FLOAT32}{SI2DR\_MAX\_FLOAT32}}
+{\footnotesize\ttfamily \#define SI2\+DR\+\_\+\+MAX\+\_\+\+FLOAT32~1E+37}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00087}{87}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a14584efcc1e323a4b28ec8406cdbd08d}\label{si2dr__liberty_8h_a14584efcc1e323a4b28ec8406cdbd08d}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_MAX\_FLOAT64@{SI2DR\_MAX\_FLOAT64}}
+\index{SI2DR\_MAX\_FLOAT64@{SI2DR\_MAX\_FLOAT64}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2DR\_MAX\_FLOAT64}{SI2DR\_MAX\_FLOAT64}}
+{\footnotesize\ttfamily \#define SI2\+DR\+\_\+\+MAX\+\_\+\+FLOAT64~1.\+797693e+308}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00089}{89}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a4fef1ebede03d126f6140587f07b9af0}\label{si2dr__liberty_8h_a4fef1ebede03d126f6140587f07b9af0}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_MAX\_INT32@{SI2DR\_MAX\_INT32}}
+\index{SI2DR\_MAX\_INT32@{SI2DR\_MAX\_INT32}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2DR\_MAX\_INT32}{SI2DR\_MAX\_INT32}}
+{\footnotesize\ttfamily \#define SI2\+DR\+\_\+\+MAX\+\_\+\+INT32~2147483647}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00091}{91}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a43ce139089307b7b218c021ab5b01334}\label{si2dr__liberty_8h_a43ce139089307b7b218c021ab5b01334}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_MAX\_STRING\_LEN@{SI2DR\_MAX\_STRING\_LEN}}
+\index{SI2DR\_MAX\_STRING\_LEN@{SI2DR\_MAX\_STRING\_LEN}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2DR\_MAX\_STRING\_LEN}{SI2DR\_MAX\_STRING\_LEN}}
+{\footnotesize\ttfamily \#define SI2\+DR\+\_\+\+MAX\+\_\+\+STRING\+\_\+\+LEN~1048576 /$\ast$1024$\ast$1024$\ast$/}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00093}{93}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ad014fa20167509024047a444504a0f9f}\label{si2dr__liberty_8h_ad014fa20167509024047a444504a0f9f}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_MIN\_FLOAT32@{SI2DR\_MIN\_FLOAT32}}
+\index{SI2DR\_MIN\_FLOAT32@{SI2DR\_MIN\_FLOAT32}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2DR\_MIN\_FLOAT32}{SI2DR\_MIN\_FLOAT32}}
+{\footnotesize\ttfamily \#define SI2\+DR\+\_\+\+MIN\+\_\+\+FLOAT32~-\/1E+37}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00086}{86}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ae7521c22a129e2e366c0fcffe1e5ffff}\label{si2dr__liberty_8h_ae7521c22a129e2e366c0fcffe1e5ffff}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_MIN\_FLOAT64@{SI2DR\_MIN\_FLOAT64}}
+\index{SI2DR\_MIN\_FLOAT64@{SI2DR\_MIN\_FLOAT64}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2DR\_MIN\_FLOAT64}{SI2DR\_MIN\_FLOAT64}}
+{\footnotesize\ttfamily \#define SI2\+DR\+\_\+\+MIN\+\_\+\+FLOAT64~-\/1.\+797693e+308}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00088}{88}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a63f68af47b3b9f3863c3e3fb181ae1df}\label{si2dr__liberty_8h_a63f68af47b3b9f3863c3e3fb181ae1df}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_MIN\_INT32@{SI2DR\_MIN\_INT32}}
+\index{SI2DR\_MIN\_INT32@{SI2DR\_MIN\_INT32}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2DR\_MIN\_INT32}{SI2DR\_MIN\_INT32}}
+{\footnotesize\ttfamily \#define SI2\+DR\+\_\+\+MIN\+\_\+\+INT32~-\/2147483647}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00090}{90}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a5d22f408f249e8a5c13267d04799939b}\label{si2dr__liberty_8h_a5d22f408f249e8a5c13267d04799939b}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_TRUE@{SI2DR\_TRUE}}
+\index{SI2DR\_TRUE@{SI2DR\_TRUE}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2DR\_TRUE}{SI2DR\_TRUE}}
+{\footnotesize\ttfamily \#define SI2\+DR\+\_\+\+TRUE~\mbox{\hyperlink{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005a4f0f605d2798190c7ed0720843d2f26c}{SI2\+\_\+\+TRUE}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00095}{95}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{si2dr__liberty_8h_a0030d0bfb6c375249afa0ea24f2c1621}\label{si2dr__liberty_8h_a0030d0bfb6c375249afa0ea24f2c1621}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2BooleanT@{si2BooleanT}}
+\index{si2BooleanT@{si2BooleanT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2BooleanT}{si2BooleanT}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005}{si2\+Boolean\+Enum}} \mbox{\hyperlink{si2dr__liberty_8h_a0030d0bfb6c375249afa0ea24f2c1621}{si2\+BooleanT}}}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ace42344f01825533844e7dc1819fdca4}\label{si2dr__liberty_8h_ace42344f01825533844e7dc1819fdca4}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2DoubleT@{si2DoubleT}}
+\index{si2DoubleT@{si2DoubleT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2DoubleT}{si2DoubleT}}
+{\footnotesize\ttfamily typedef double \mbox{\hyperlink{si2dr__liberty_8h_ace42344f01825533844e7dc1819fdca4}{si2\+DoubleT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00052}{52}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a54329fa453601db101b058d6befed0ed}\label{si2dr__liberty_8h_a54329fa453601db101b058d6befed0ed}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drAttrComplexValIdT@{si2drAttrComplexValIdT}}
+\index{si2drAttrComplexValIdT@{si2drAttrComplexValIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drAttrComplexValIdT}{si2drAttrComplexValIdT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a54329fa453601db101b058d6befed0ed}{si2dr\+Attr\+Complex\+Val\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00111}{111}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}\label{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drAttrIdT@{si2drAttrIdT}}
+\index{si2drAttrIdT@{si2drAttrIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drAttrIdT}{si2drAttrIdT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00110}{110}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_aab38e2f9b2c18b8024636eb5e84d07f0}\label{si2dr__liberty_8h_aab38e2f9b2c18b8024636eb5e84d07f0}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drAttrsIdT@{si2drAttrsIdT}}
+\index{si2drAttrsIdT@{si2drAttrsIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drAttrsIdT}{si2drAttrsIdT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_aab38e2f9b2c18b8024636eb5e84d07f0}{si2dr\+Attrs\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00116}{116}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a4e62f75eb8583ab2fbd0109a2f0b82a0}\label{si2dr__liberty_8h_a4e62f75eb8583ab2fbd0109a2f0b82a0}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drAttrTypeT@{si2drAttrTypeT}}
+\index{si2drAttrTypeT@{si2drAttrTypeT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drAttrTypeT}{si2drAttrTypeT}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6}{si2dr\+Attr\+TypeT}} \mbox{\hyperlink{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6}{si2dr\+Attr\+TypeT}}}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}\label{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drBooleanT@{si2drBooleanT}}
+\index{si2drBooleanT@{si2drBooleanT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drBooleanT}{si2drBooleanT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a0030d0bfb6c375249afa0ea24f2c1621}{si2\+BooleanT}} \mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00098}{98}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}\label{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drDefineIdT@{si2drDefineIdT}}
+\index{si2drDefineIdT@{si2drDefineIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drDefineIdT}{si2drDefineIdT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00112}{112}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a75e1621f0aade36b05ed0691d252be87}\label{si2dr__liberty_8h_a75e1621f0aade36b05ed0691d252be87}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drDefinesIdT@{si2drDefinesIdT}}
+\index{si2drDefinesIdT@{si2drDefinesIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drDefinesIdT}{si2drDefinesIdT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a75e1621f0aade36b05ed0691d252be87}{si2dr\+Defines\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00117}{117}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_aedf8847d53aa6a3f4a9c87398a2a97c6}\label{si2dr__liberty_8h_aedf8847d53aa6a3f4a9c87398a2a97c6}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drErrorT@{si2drErrorT}}
+\index{si2drErrorT@{si2drErrorT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drErrorT}{si2drErrorT}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}}}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ae820cf6b4874f2cca2d5b6f9bb19967f}\label{si2dr__liberty_8h_ae820cf6b4874f2cca2d5b6f9bb19967f}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drExprT@{si2drExprT}}
+\index{si2drExprT@{si2drExprT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drExprT}{si2drExprT}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}}}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_abf65c544a6bad960866c2b478c90a12c}\label{si2dr__liberty_8h_abf65c544a6bad960866c2b478c90a12c}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drExprTypeT@{si2drExprTypeT}}
+\index{si2drExprTypeT@{si2drExprTypeT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drExprTypeT}{si2drExprTypeT}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}{si2dr\+Expr\+TypeT}} \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}{si2dr\+Expr\+TypeT}}}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a423428fc52f665568a1fd77a971d6412}\label{si2dr__liberty_8h_a423428fc52f665568a1fd77a971d6412}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drFloat32T@{si2drFloat32T}}
+\index{si2drFloat32T@{si2drFloat32T}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drFloat32T}{si2drFloat32T}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a312a809d7353ec24d4fd03a1bf14e520}{si2\+FloatT}} \mbox{\hyperlink{si2dr__liberty_8h_a423428fc52f665568a1fd77a971d6412}{si2dr\+Float32T}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00101}{101}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a5f0db5120a1990ddfb700a6ea22d4315}\label{si2dr__liberty_8h_a5f0db5120a1990ddfb700a6ea22d4315}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drFloat64T@{si2drFloat64T}}
+\index{si2drFloat64T@{si2drFloat64T}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drFloat64T}{si2drFloat64T}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_ace42344f01825533844e7dc1819fdca4}{si2\+DoubleT}} \mbox{\hyperlink{si2dr__liberty_8h_a5f0db5120a1990ddfb700a6ea22d4315}{si2dr\+Float64T}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00102}{102}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}\label{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drGroupIdT@{si2drGroupIdT}}
+\index{si2drGroupIdT@{si2drGroupIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drGroupIdT}{si2drGroupIdT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00109}{109}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a48d41689e6837664a521c0d741ae2f11}\label{si2dr__liberty_8h_a48d41689e6837664a521c0d741ae2f11}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drGroupsIdT@{si2drGroupsIdT}}
+\index{si2drGroupsIdT@{si2drGroupsIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drGroupsIdT}{si2drGroupsIdT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a48d41689e6837664a521c0d741ae2f11}{si2dr\+Groups\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00115}{115}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ae5b1aca7e6553f2a53df82f2caae03b6}\label{si2dr__liberty_8h_ae5b1aca7e6553f2a53df82f2caae03b6}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drInt32T@{si2drInt32T}}
+\index{si2drInt32T@{si2drInt32T}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drInt32T}{si2drInt32T}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a76c527c74f9a6ccc0462b4566b3ae2eb}{si2\+LongT}} \mbox{\hyperlink{si2dr__liberty_8h_ae5b1aca7e6553f2a53df82f2caae03b6}{si2dr\+Int32T}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00100}{100}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}\label{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drIterIdT@{si2drIterIdT}}
+\index{si2drIterIdT@{si2drIterIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drIterIdT}{si2drIterIdT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a404daf6221059318586eece643cc2c0c}{si2\+Iterator\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00106}{106}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ad44901a22da2d53caac456ea31628053}\label{si2dr__liberty_8h_ad44901a22da2d53caac456ea31628053}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drMessageHandlerT@{si2drMessageHandlerT}}
+\index{si2drMessageHandlerT@{si2drMessageHandlerT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drMessageHandlerT}{si2drMessageHandlerT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}}($\ast$ si2dr\+Message\+HandlerT) (\mbox{\hyperlink{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2}{si2dr\+SeverityT}} sev, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} err\+To\+Print, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} aux\+Text, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00215}{215}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_aa00384ca8ce16b17d055bcf32eb5950c}\label{si2dr__liberty_8h_aa00384ca8ce16b17d055bcf32eb5950c}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drNamesIdT@{si2drNamesIdT}}
+\index{si2drNamesIdT@{si2drNamesIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drNamesIdT}{si2drNamesIdT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_aa00384ca8ce16b17d055bcf32eb5950c}{si2dr\+Names\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00118}{118}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}\label{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drObjectIdT@{si2drObjectIdT}}
+\index{si2drObjectIdT@{si2drObjectIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drObjectIdT}{si2drObjectIdT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_af48836b75e088058bc24d90d4765405b}{si2\+Object\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00107}{107}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a9fa329ee3187c7385ba5c89d07e057d8}\label{si2dr__liberty_8h_a9fa329ee3187c7385ba5c89d07e057d8}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drObjectsIdT@{si2drObjectsIdT}}
+\index{si2drObjectsIdT@{si2drObjectsIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drObjectsIdT}{si2drObjectsIdT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a9fa329ee3187c7385ba5c89d07e057d8}{si2dr\+Objects\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00114}{114}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a3f29efb6934a281df6d40d02dfc64f3e}\label{si2dr__liberty_8h_a3f29efb6934a281df6d40d02dfc64f3e}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drObjectTypeT@{si2drObjectTypeT}}
+\index{si2drObjectTypeT@{si2drObjectTypeT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drObjectTypeT}{si2drObjectTypeT}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49}{si2dr\+Object\+TypeT}} \mbox{\hyperlink{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49}{si2dr\+Object\+TypeT}}}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a3dcdb6434d7fe8e6aadcb5eaf19d61e1}\label{si2dr__liberty_8h_a3dcdb6434d7fe8e6aadcb5eaf19d61e1}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drSeverityT@{si2drSeverityT}}
+\index{si2drSeverityT@{si2drSeverityT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drSeverityT}{si2drSeverityT}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2}{si2dr\+SeverityT}} \mbox{\hyperlink{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2}{si2dr\+SeverityT}}}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}\label{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drStringT@{si2drStringT}}
+\index{si2drStringT@{si2drStringT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drStringT}{si2drStringT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a984f4ede01e00c06c9a6c6a18a1094b1}{si2\+StringT}} \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00103}{103}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a94cf0ed4382b87c45e9b2eb0871ba3a2}\label{si2dr__liberty_8h_a94cf0ed4382b87c45e9b2eb0871ba3a2}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drValuesIdT@{si2drValuesIdT}}
+\index{si2drValuesIdT@{si2drValuesIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drValuesIdT}{si2drValuesIdT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a62ea640f676b58e55c8829239e8dabe1}{si2dr\+Iter\+IdT}} \mbox{\hyperlink{si2dr__liberty_8h_a94cf0ed4382b87c45e9b2eb0871ba3a2}{si2dr\+Values\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00119}{119}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a28f4e1a5d8db4ec328cee2af33812f27}\label{si2dr__liberty_8h_a28f4e1a5d8db4ec328cee2af33812f27}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drValueTypeT@{si2drValueTypeT}}
+\index{si2drValueTypeT@{si2drValueTypeT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drValueTypeT}{si2drValueTypeT}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}{si2dr\+Value\+TypeT}} \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}{si2dr\+Value\+TypeT}}}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}\label{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drVoidT@{si2drVoidT}}
+\index{si2drVoidT@{si2drVoidT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drVoidT}{si2drVoidT}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{si2dr__liberty_8h_a7e2f47426c30a3163bd86e07472e60ba}{si2\+VoidT}} \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00104}{104}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a312a809d7353ec24d4fd03a1bf14e520}\label{si2dr__liberty_8h_a312a809d7353ec24d4fd03a1bf14e520}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2FloatT@{si2FloatT}}
+\index{si2FloatT@{si2FloatT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2FloatT}{si2FloatT}}
+{\footnotesize\ttfamily typedef float \mbox{\hyperlink{si2dr__liberty_8h_a312a809d7353ec24d4fd03a1bf14e520}{si2\+FloatT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00051}{51}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a404daf6221059318586eece643cc2c0c}\label{si2dr__liberty_8h_a404daf6221059318586eece643cc2c0c}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2IteratorIdT@{si2IteratorIdT}}
+\index{si2IteratorIdT@{si2IteratorIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2IteratorIdT}{si2IteratorIdT}}
+{\footnotesize\ttfamily typedef void$\ast$ \mbox{\hyperlink{si2dr__liberty_8h_a404daf6221059318586eece643cc2c0c}{si2\+Iterator\+IdT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00083}{83}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a76c527c74f9a6ccc0462b4566b3ae2eb}\label{si2dr__liberty_8h_a76c527c74f9a6ccc0462b4566b3ae2eb}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2LongT@{si2LongT}}
+\index{si2LongT@{si2LongT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2LongT}{si2LongT}}
+{\footnotesize\ttfamily typedef long int \mbox{\hyperlink{si2dr__liberty_8h_a76c527c74f9a6ccc0462b4566b3ae2eb}{si2\+LongT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00050}{50}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_af48836b75e088058bc24d90d4765405b}\label{si2dr__liberty_8h_af48836b75e088058bc24d90d4765405b}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2ObjectIdT@{si2ObjectIdT}}
+\index{si2ObjectIdT@{si2ObjectIdT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2ObjectIdT}{si2ObjectIdT}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structsi2OID}{si2\+OID}} \mbox{\hyperlink{si2dr__liberty_8h_af48836b75e088058bc24d90d4765405b}{si2\+Object\+IdT}}}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a984f4ede01e00c06c9a6c6a18a1094b1}\label{si2dr__liberty_8h_a984f4ede01e00c06c9a6c6a18a1094b1}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2StringT@{si2StringT}}
+\index{si2StringT@{si2StringT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2StringT}{si2StringT}}
+{\footnotesize\ttfamily typedef char$\ast$ \mbox{\hyperlink{si2dr__liberty_8h_a984f4ede01e00c06c9a6c6a18a1094b1}{si2\+StringT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00053}{53}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a891da1ce16cf41c85bdde185fe35caac}\label{si2dr__liberty_8h_a891da1ce16cf41c85bdde185fe35caac}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2TypeT@{si2TypeT}}
+\index{si2TypeT@{si2TypeT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2TypeT}{si2TypeT}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712}{si2\+Type\+Enum}} \mbox{\hyperlink{si2dr__liberty_8h_a891da1ce16cf41c85bdde185fe35caac}{si2\+TypeT}}}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a7e2f47426c30a3163bd86e07472e60ba}\label{si2dr__liberty_8h_a7e2f47426c30a3163bd86e07472e60ba}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2VoidT@{si2VoidT}}
+\index{si2VoidT@{si2VoidT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2VoidT}{si2VoidT}}
+{\footnotesize\ttfamily typedef void \mbox{\hyperlink{si2dr__liberty_8h_a7e2f47426c30a3163bd86e07472e60ba}{si2\+VoidT}}}
+
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00054}{54}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005}\label{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2BooleanEnum@{si2BooleanEnum}}
+\index{si2BooleanEnum@{si2BooleanEnum}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2BooleanEnum}{si2BooleanEnum}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005}{si2\+Boolean\+Enum}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_FALSE@{SI2\_FALSE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_FALSE@{SI2\_FALSE}}}\mbox{\Hypertarget{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005a38d9e5bf4d57860b971fd04f7f89b967}\label{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005a38d9e5bf4d57860b971fd04f7f89b967}} 
+SI2\+\_\+\+FALSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_TRUE@{SI2\_TRUE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_TRUE@{SI2\_TRUE}}}\mbox{\Hypertarget{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005a4f0f605d2798190c7ed0720843d2f26c}\label{si2dr__liberty_8h_a01a3b60e21409fd0393d9c0bd45b5005a4f0f605d2798190c7ed0720843d2f26c}} 
+SI2\+\_\+\+TRUE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00049}{49}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6}\label{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drAttrTypeT@{si2drAttrTypeT}}
+\index{si2drAttrTypeT@{si2drAttrTypeT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drAttrTypeT}{si2drAttrTypeT}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6}{si2dr\+Attr\+TypeT}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_SIMPLE@{SI2DR\_SIMPLE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_SIMPLE@{SI2DR\_SIMPLE}}}\mbox{\Hypertarget{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6a232f5a4c564aa27afe5068d30c771ae0}\label{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6a232f5a4c564aa27afe5068d30c771ae0}} 
+SI2\+DR\+\_\+\+SIMPLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_COMPLEX@{SI2DR\_COMPLEX}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_COMPLEX@{SI2DR\_COMPLEX}}}\mbox{\Hypertarget{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6a575498901cb90f9144a41959d0b0b805}\label{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6a575498901cb90f9144a41959d0b0b805}} 
+SI2\+DR\+\_\+\+COMPLEX&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00139}{139}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drErrorT@{si2drErrorT}}
+\index{si2drErrorT@{si2drErrorT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drErrorT}{si2drErrorT}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_NO\_ERROR@{SI2DR\_NO\_ERROR}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_NO\_ERROR@{SI2DR\_NO\_ERROR}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da3a72567a407c6745afc8d0c78156b507}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da3a72567a407c6745afc8d0c78156b507}} 
+SI2\+DR\+\_\+\+NO\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_INTERNAL\_SYSTEM\_ERROR@{SI2DR\_INTERNAL\_SYSTEM\_ERROR}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_INTERNAL\_SYSTEM\_ERROR@{SI2DR\_INTERNAL\_SYSTEM\_ERROR}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da4f01e6ddcd3712f9d924fe6e1ff3de4c}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da4f01e6ddcd3712f9d924fe6e1ff3de4c}} 
+SI2\+DR\+\_\+\+INTERNAL\+\_\+\+SYSTEM\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_INVALID\_VALUE@{SI2DR\_INVALID\_VALUE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_INVALID\_VALUE@{SI2DR\_INVALID\_VALUE}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da01092b99c03508ab4a43bf34a780975b}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da01092b99c03508ab4a43bf34a780975b}} 
+SI2\+DR\+\_\+\+INVALID\+\_\+\+VALUE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_INVALID\_NAME@{SI2DR\_INVALID\_NAME}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_INVALID\_NAME@{SI2DR\_INVALID\_NAME}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789daa898645bca0f55d05bc4ce6122784cad}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789daa898645bca0f55d05bc4ce6122784cad}} 
+SI2\+DR\+\_\+\+INVALID\+\_\+\+NAME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_INVALID\_OBJECTTYPE@{SI2DR\_INVALID\_OBJECTTYPE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_INVALID\_OBJECTTYPE@{SI2DR\_INVALID\_OBJECTTYPE}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da35f2d1f2a5b82e5bb350cf24c5ee9ed5}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da35f2d1f2a5b82e5bb350cf24c5ee9ed5}} 
+SI2\+DR\+\_\+\+INVALID\+\_\+\+OBJECTTYPE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_INVALID\_ATTRTYPE@{SI2DR\_INVALID\_ATTRTYPE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_INVALID\_ATTRTYPE@{SI2DR\_INVALID\_ATTRTYPE}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789daf0102a5f730524fd4b085b17ae673ae8}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789daf0102a5f730524fd4b085b17ae673ae8}} 
+SI2\+DR\+\_\+\+INVALID\+\_\+\+ATTRTYPE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_UNUSABLE\_OID@{SI2DR\_UNUSABLE\_OID}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_UNUSABLE\_OID@{SI2DR\_UNUSABLE\_OID}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da0d749c89fd6125614171bb66bcdb6dcc}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da0d749c89fd6125614171bb66bcdb6dcc}} 
+SI2\+DR\+\_\+\+UNUSABLE\+\_\+\+OID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_OBJECT\_ALREADY\_EXISTS@{SI2DR\_OBJECT\_ALREADY\_EXISTS}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_OBJECT\_ALREADY\_EXISTS@{SI2DR\_OBJECT\_ALREADY\_EXISTS}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da1b40a60641b202624af5fbdb83640980}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da1b40a60641b202624af5fbdb83640980}} 
+SI2\+DR\+\_\+\+OBJECT\+\_\+\+ALREADY\+\_\+\+EXISTS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_OBJECT\_NOT\_FOUND@{SI2DR\_OBJECT\_NOT\_FOUND}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_OBJECT\_NOT\_FOUND@{SI2DR\_OBJECT\_NOT\_FOUND}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da7a2d9b2e06c6f34d30040e46e310ba6c}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da7a2d9b2e06c6f34d30040e46e310ba6c}} 
+SI2\+DR\+\_\+\+OBJECT\+\_\+\+NOT\+\_\+\+FOUND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_SYNTAX\_ERROR@{SI2DR\_SYNTAX\_ERROR}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_SYNTAX\_ERROR@{SI2DR\_SYNTAX\_ERROR}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789dab796381410d6543d611fbf0d42b3cf68}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789dab796381410d6543d611fbf0d42b3cf68}} 
+SI2\+DR\+\_\+\+SYNTAX\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_TRACE\_FILES\_CANNOT\_BE\_OPENED@{SI2DR\_TRACE\_FILES\_CANNOT\_BE\_OPENED}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_TRACE\_FILES\_CANNOT\_BE\_OPENED@{SI2DR\_TRACE\_FILES\_CANNOT\_BE\_OPENED}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789dab83b827d8d8eacc2a9677c8a95159f31}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789dab83b827d8d8eacc2a9677c8a95159f31}} 
+SI2\+DR\+\_\+\+TRACE\+\_\+\+FILES\+\_\+\+CANNOT\+\_\+\+BE\+\_\+\+OPENED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_PIINIT\_NOT\_CALLED@{SI2DR\_PIINIT\_NOT\_CALLED}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_PIINIT\_NOT\_CALLED@{SI2DR\_PIINIT\_NOT\_CALLED}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789dae559cf3eb5fcab974d59401ae0c28adc}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789dae559cf3eb5fcab974d59401ae0c28adc}} 
+SI2\+DR\+\_\+\+PIINIT\+\_\+\+NOT\+\_\+\+CALLED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_SEMANTIC\_ERROR@{SI2DR\_SEMANTIC\_ERROR}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_SEMANTIC\_ERROR@{SI2DR\_SEMANTIC\_ERROR}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da8561599302e4aa07d06a173be15dc184}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da8561599302e4aa07d06a173be15dc184}} 
+SI2\+DR\+\_\+\+SEMANTIC\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_REFERENCE\_ERROR@{SI2DR\_REFERENCE\_ERROR}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_REFERENCE\_ERROR@{SI2DR\_REFERENCE\_ERROR}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da7eb9083744388cad30992543a514faae}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da7eb9083744388cad30992543a514faae}} 
+SI2\+DR\+\_\+\+REFERENCE\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_MAX\_ERROR@{SI2DR\_MAX\_ERROR}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_MAX\_ERROR@{SI2DR\_MAX\_ERROR}}}\mbox{\Hypertarget{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da22ee276b28e9e50888532711dbb7c0df}\label{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789da22ee276b28e9e50888532711dbb7c0df}} 
+SI2\+DR\+\_\+\+MAX\+\_\+\+ERROR&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00190}{190}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}\label{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drExprTypeT@{si2drExprTypeT}}
+\index{si2drExprTypeT@{si2drExprTypeT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drExprTypeT}{si2drExprTypeT}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}{si2dr\+Expr\+TypeT}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_EXPR\_VAL@{SI2DR\_EXPR\_VAL}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_EXPR\_VAL@{SI2DR\_EXPR\_VAL}}}\mbox{\Hypertarget{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0aa8b12804d07dcb10896ebcfd9669cf38}\label{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0aa8b12804d07dcb10896ebcfd9669cf38}} 
+SI2\+DR\+\_\+\+EXPR\+\_\+\+VAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_EXPR\_OP\_ADD@{SI2DR\_EXPR\_OP\_ADD}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_EXPR\_OP\_ADD@{SI2DR\_EXPR\_OP\_ADD}}}\mbox{\Hypertarget{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0af997e839c29fb486cb55b7c29b15cf32}\label{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0af997e839c29fb486cb55b7c29b15cf32}} 
+SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+ADD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_EXPR\_OP\_SUB@{SI2DR\_EXPR\_OP\_SUB}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_EXPR\_OP\_SUB@{SI2DR\_EXPR\_OP\_SUB}}}\mbox{\Hypertarget{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a8b2077db1b5fe871e0fc14211d0d3b48}\label{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a8b2077db1b5fe871e0fc14211d0d3b48}} 
+SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+SUB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_EXPR\_OP\_MUL@{SI2DR\_EXPR\_OP\_MUL}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_EXPR\_OP\_MUL@{SI2DR\_EXPR\_OP\_MUL}}}\mbox{\Hypertarget{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a6a4a5915eaa431c0606038611b5fdf10}\label{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a6a4a5915eaa431c0606038611b5fdf10}} 
+SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+MUL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_EXPR\_OP\_DIV@{SI2DR\_EXPR\_OP\_DIV}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_EXPR\_OP\_DIV@{SI2DR\_EXPR\_OP\_DIV}}}\mbox{\Hypertarget{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a7da311737c6efefd75d3662ee26b7c39}\label{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a7da311737c6efefd75d3662ee26b7c39}} 
+SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+DIV&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_EXPR\_OP\_PAREN@{SI2DR\_EXPR\_OP\_PAREN}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_EXPR\_OP\_PAREN@{SI2DR\_EXPR\_OP\_PAREN}}}\mbox{\Hypertarget{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a7a780c9a00d9843453946b8eba98ec3c}\label{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a7a780c9a00d9843453946b8eba98ec3c}} 
+SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+PAREN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_EXPR\_OP\_LOG2@{SI2DR\_EXPR\_OP\_LOG2}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_EXPR\_OP\_LOG2@{SI2DR\_EXPR\_OP\_LOG2}}}\mbox{\Hypertarget{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a9847d11492e922af33080e8b8e3c19df}\label{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0a9847d11492e922af33080e8b8e3c19df}} 
+SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+LOG2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_EXPR\_OP\_LOG10@{SI2DR\_EXPR\_OP\_LOG10}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_EXPR\_OP\_LOG10@{SI2DR\_EXPR\_OP\_LOG10}}}\mbox{\Hypertarget{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0aaac44bb646fe00f625d99d7bf7c446ec}\label{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0aaac44bb646fe00f625d99d7bf7c446ec}} 
+SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+LOG10&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_EXPR\_OP\_EXP@{SI2DR\_EXPR\_OP\_EXP}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_EXPR\_OP\_EXP@{SI2DR\_EXPR\_OP\_EXP}}}\mbox{\Hypertarget{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0ae2d292a9d8c77e3798273708133fd565}\label{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0ae2d292a9d8c77e3798273708133fd565}} 
+SI2\+DR\+\_\+\+EXPR\+\_\+\+OP\+\_\+\+EXP&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00157}{157}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49}\label{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drObjectTypeT@{si2drObjectTypeT}}
+\index{si2drObjectTypeT@{si2drObjectTypeT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drObjectTypeT}{si2drObjectTypeT}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49}{si2dr\+Object\+TypeT}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_UNDEFINED\_OBJECTTYPE@{SI2DR\_UNDEFINED\_OBJECTTYPE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_UNDEFINED\_OBJECTTYPE@{SI2DR\_UNDEFINED\_OBJECTTYPE}}}\mbox{\Hypertarget{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49affa832c02b121708d9a4e52865cf1b2a}\label{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49affa832c02b121708d9a4e52865cf1b2a}} 
+SI2\+DR\+\_\+\+UNDEFINED\+\_\+\+OBJECTTYPE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_GROUP@{SI2DR\_GROUP}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_GROUP@{SI2DR\_GROUP}}}\mbox{\Hypertarget{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49a9117708f9ef1e3811709c8de22ad20ee}\label{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49a9117708f9ef1e3811709c8de22ad20ee}} 
+SI2\+DR\+\_\+\+GROUP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_ATTR@{SI2DR\_ATTR}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_ATTR@{SI2DR\_ATTR}}}\mbox{\Hypertarget{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49aeb400a595332403159e5e89eadc148e3}\label{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49aeb400a595332403159e5e89eadc148e3}} 
+SI2\+DR\+\_\+\+ATTR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_DEFINE@{SI2DR\_DEFINE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_DEFINE@{SI2DR\_DEFINE}}}\mbox{\Hypertarget{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49a08c0c9adb18becdb14c084085ad95bb4}\label{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49a08c0c9adb18becdb14c084085ad95bb4}} 
+SI2\+DR\+\_\+\+DEFINE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_COMPLEXVAL@{SI2DR\_COMPLEXVAL}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_COMPLEXVAL@{SI2DR\_COMPLEXVAL}}}\mbox{\Hypertarget{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49abb3b22f8cddc9fbdc32f0b5bb939c1f5}\label{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49abb3b22f8cddc9fbdc32f0b5bb939c1f5}} 
+SI2\+DR\+\_\+\+COMPLEXVAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_MAX\_OBJECTTYPE@{SI2DR\_MAX\_OBJECTTYPE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_MAX\_OBJECTTYPE@{SI2DR\_MAX\_OBJECTTYPE}}}\mbox{\Hypertarget{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49abbb04b6b099ca8e65d7b92aeb8e5e80c}\label{si2dr__liberty_8h_a9d48bc4745d5e860da9ac946380ddc49abbb04b6b099ca8e65d7b92aeb8e5e80c}} 
+SI2\+DR\+\_\+\+MAX\+\_\+\+OBJECTTYPE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00129}{129}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2}\label{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drSeverityT@{si2drSeverityT}}
+\index{si2drSeverityT@{si2drSeverityT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drSeverityT}{si2drSeverityT}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2}{si2dr\+SeverityT}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_SEVERITY\_NOTE@{SI2DR\_SEVERITY\_NOTE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_SEVERITY\_NOTE@{SI2DR\_SEVERITY\_NOTE}}}\mbox{\Hypertarget{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2add8bed41c0e6b9a98dae6f26ec1f512c}\label{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2add8bed41c0e6b9a98dae6f26ec1f512c}} 
+SI2\+DR\+\_\+\+SEVERITY\+\_\+\+NOTE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_SEVERITY\_WARN@{SI2DR\_SEVERITY\_WARN}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_SEVERITY\_WARN@{SI2DR\_SEVERITY\_WARN}}}\mbox{\Hypertarget{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2a8fb8b86b9f02a55882523834cc638bed}\label{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2a8fb8b86b9f02a55882523834cc638bed}} 
+SI2\+DR\+\_\+\+SEVERITY\+\_\+\+WARN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_SEVERITY\_ERR@{SI2DR\_SEVERITY\_ERR}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_SEVERITY\_ERR@{SI2DR\_SEVERITY\_ERR}}}\mbox{\Hypertarget{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2a37f78e95b08ae42c284aaf5576f70feb}\label{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2a37f78e95b08ae42c284aaf5576f70feb}} 
+SI2\+DR\+\_\+\+SEVERITY\+\_\+\+ERR&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00121}{121}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}\label{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drValueTypeT@{si2drValueTypeT}}
+\index{si2drValueTypeT@{si2drValueTypeT}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drValueTypeT}{si2drValueTypeT}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}{si2dr\+Value\+TypeT}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_UNDEFINED\_VALUETYPE@{SI2DR\_UNDEFINED\_VALUETYPE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_UNDEFINED\_VALUETYPE@{SI2DR\_UNDEFINED\_VALUETYPE}}}\mbox{\Hypertarget{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30ae2eb660dcba4321449649a44fba8ac61}\label{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30ae2eb660dcba4321449649a44fba8ac61}} 
+SI2\+DR\+\_\+\+UNDEFINED\+\_\+\+VALUETYPE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_INT32@{SI2DR\_INT32}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_INT32@{SI2DR\_INT32}}}\mbox{\Hypertarget{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a7f2cbe17928b22427b9390ef33e9315f}\label{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a7f2cbe17928b22427b9390ef33e9315f}} 
+SI2\+DR\+\_\+\+INT32&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_STRING@{SI2DR\_STRING}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_STRING@{SI2DR\_STRING}}}\mbox{\Hypertarget{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a4278686c82fbba7029b5d3f85d6d0709}\label{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a4278686c82fbba7029b5d3f85d6d0709}} 
+SI2\+DR\+\_\+\+STRING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_FLOAT64@{SI2DR\_FLOAT64}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_FLOAT64@{SI2DR\_FLOAT64}}}\mbox{\Hypertarget{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a428969fe54c2b58cd2d0554edf8803ba}\label{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a428969fe54c2b58cd2d0554edf8803ba}} 
+SI2\+DR\+\_\+\+FLOAT64&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_BOOLEAN@{SI2DR\_BOOLEAN}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_BOOLEAN@{SI2DR\_BOOLEAN}}}\mbox{\Hypertarget{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a3b864fa1f011cc4ac79ba91ab1946eb8}\label{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a3b864fa1f011cc4ac79ba91ab1946eb8}} 
+SI2\+DR\+\_\+\+BOOLEAN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_EXPR@{SI2DR\_EXPR}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_EXPR@{SI2DR\_EXPR}}}\mbox{\Hypertarget{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a22101329332b608c5127d4e3e83861e6}\label{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30a22101329332b608c5127d4e3e83861e6}} 
+SI2\+DR\+\_\+\+EXPR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2DR\_MAX\_VALUETYPE@{SI2DR\_MAX\_VALUETYPE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2DR\_MAX\_VALUETYPE@{SI2DR\_MAX\_VALUETYPE}}}\mbox{\Hypertarget{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30ae94e700903aecff09f60633c0d4e7254}\label{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30ae94e700903aecff09f60633c0d4e7254}} 
+SI2\+DR\+\_\+\+MAX\+\_\+\+VALUETYPE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00146}{146}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712}\label{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2TypeEnum@{si2TypeEnum}}
+\index{si2TypeEnum@{si2TypeEnum}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2TypeEnum}{si2TypeEnum}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712}{si2\+Type\+Enum}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_UNDEFINED\_VALUETYPE@{SI2\_UNDEFINED\_VALUETYPE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_UNDEFINED\_VALUETYPE@{SI2\_UNDEFINED\_VALUETYPE}}}\mbox{\Hypertarget{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a3df62475b1078f4a8015ea9098f96a05}\label{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a3df62475b1078f4a8015ea9098f96a05}} 
+SI2\+\_\+\+UNDEFINED\+\_\+\+VALUETYPE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_BOOLEAN@{SI2\_BOOLEAN}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_BOOLEAN@{SI2\_BOOLEAN}}}\mbox{\Hypertarget{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a57791ad4a0a83942328884b1a23fe57f}\label{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a57791ad4a0a83942328884b1a23fe57f}} 
+SI2\+\_\+\+BOOLEAN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_LONG@{SI2\_LONG}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_LONG@{SI2\_LONG}}}\mbox{\Hypertarget{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a91bc95c6cca8909b35bb967261e05bae}\label{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a91bc95c6cca8909b35bb967261e05bae}} 
+SI2\+\_\+\+LONG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_FLOAT@{SI2\_FLOAT}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_FLOAT@{SI2\_FLOAT}}}\mbox{\Hypertarget{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712ad4627ea46c48afe09df7fdadf7a277fa}\label{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712ad4627ea46c48afe09df7fdadf7a277fa}} 
+SI2\+\_\+\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_DOUBLE@{SI2\_DOUBLE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_DOUBLE@{SI2\_DOUBLE}}}\mbox{\Hypertarget{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712aefc810d820e367a7ccc630ff733ce1c2}\label{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712aefc810d820e367a7ccc630ff733ce1c2}} 
+SI2\+\_\+\+DOUBLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_STRING@{SI2\_STRING}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_STRING@{SI2\_STRING}}}\mbox{\Hypertarget{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712ab4ac9ebc95a90c536a442122929cceea}\label{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712ab4ac9ebc95a90c536a442122929cceea}} 
+SI2\+\_\+\+STRING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_VOID@{SI2\_VOID}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_VOID@{SI2\_VOID}}}\mbox{\Hypertarget{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a7e87b64a992b707a87c8a92e3c2a3f36}\label{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a7e87b64a992b707a87c8a92e3c2a3f36}} 
+SI2\+\_\+\+VOID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_OID@{SI2\_OID}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_OID@{SI2\_OID}}}\mbox{\Hypertarget{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a26ac7978726c1a4453efdd3e159cb505}\label{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a26ac7978726c1a4453efdd3e159cb505}} 
+SI2\+\_\+\+OID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_ITER@{SI2\_ITER}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ITER@{SI2\_ITER}}}\mbox{\Hypertarget{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a7e24e630536e5dd7214e6b52e68c235d}\label{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a7e24e630536e5dd7214e6b52e68c235d}} 
+SI2\+\_\+\+ITER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_EXPR@{SI2\_EXPR}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_EXPR@{SI2\_EXPR}}}\mbox{\Hypertarget{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a5c078bd74dd733f6f77e99bd1667efc5}\label{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a5c078bd74dd733f6f77e99bd1667efc5}} 
+SI2\+\_\+\+EXPR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SI2\_MAX\_VALUETYPE@{SI2\_MAX\_VALUETYPE}!si2dr\_liberty.h@{si2dr\_liberty.h}}\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_MAX\_VALUETYPE@{SI2\_MAX\_VALUETYPE}}}\mbox{\Hypertarget{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a8964c10c037ae329fecf366ecd037295}\label{si2dr__liberty_8h_ab35c3755ae1e70ae157e2f5053fe3712a8964c10c037ae329fecf366ecd037295}} 
+SI2\+\_\+\+MAX\+\_\+\+VALUETYPE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{si2dr__liberty_8h_source_l00056}{56}} of file \mbox{\hyperlink{si2dr__liberty_8h_source}{si2dr\+\_\+liberty.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{si2dr__liberty_8h_aafe30e5a799ccd4995fc33af8112c12a}\label{si2dr__liberty_8h_aafe30e5a799ccd4995fc33af8112c12a}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!get\_function@{get\_function}}
+\index{get\_function@{get\_function}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{get\_function()}{get\_function()}}
+{\footnotesize\ttfamily void get\+\_\+function (\begin{DoxyParamCaption}\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a359ef96d64de1234d3e2f3d46a46796d}\label{si2dr__liberty_8h_a359ef96d64de1234d3e2f3d46a46796d}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!liberty\_destroy\_value\_data@{liberty\_destroy\_value\_data}}
+\index{liberty\_destroy\_value\_data@{liberty\_destroy\_value\_data}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{liberty\_destroy\_value\_data()}{liberty\_destroy\_value\_data()}}
+{\footnotesize\ttfamily void liberty\+\_\+destroy\+\_\+value\+\_\+data (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structliberty__value__data}{liberty\+\_\+value\+\_\+data}} $\ast$}]{vd }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a60ff55b29e2817709ac6b4728fef2f46}\label{si2dr__liberty_8h_a60ff55b29e2817709ac6b4728fef2f46}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!liberty\_get\_element@{liberty\_get\_element}}
+\index{liberty\_get\_element@{liberty\_get\_element}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{liberty\_get\_element()}{liberty\_get\_element()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_ad53edf12e98c4098e41b9d91fd8d5f17}{LONG\+\_\+\+DOUBLE}} liberty\+\_\+get\+\_\+element (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structliberty__value__data}{liberty\+\_\+value\+\_\+data}} $\ast$}]{vd,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a9e49015b07ece4fb2ce79062f78004f2}\label{si2dr__liberty_8h_a9e49015b07ece4fb2ce79062f78004f2}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!liberty\_get\_values\_data@{liberty\_get\_values\_data}}
+\index{liberty\_get\_values\_data@{liberty\_get\_values\_data}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{liberty\_get\_values\_data()}{liberty\_get\_values\_data()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structliberty__value__data}{liberty\+\_\+value\+\_\+data}} $\ast$ liberty\+\_\+get\+\_\+values\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}}}]{table\+\_\+group }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a18d37317a82c6c753bffcf23bd140d68}\label{si2dr__liberty_8h_a18d37317a82c6c753bffcf23bd140d68}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!main\_liberty\_parser@{main\_liberty\_parser}}
+\index{main\_liberty\_parser@{main\_liberty\_parser}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{main\_liberty\_parser()}{main\_liberty\_parser()}}
+{\footnotesize\ttfamily int main\+\_\+liberty\+\_\+parser (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a6302aaae12249e8ea16bfdc7de892f21}\label{si2dr__liberty_8h_a6302aaae12249e8ea16bfdc7de892f21}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!print\_version@{print\_version}}
+\index{print\_version@{print\_version}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{print\_version()}{print\_version()}}
+{\footnotesize\ttfamily void print\+\_\+version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a8387666c77dc9106475c6d9cccb236b9}\label{si2dr__liberty_8h_a8387666c77dc9106475c6d9cccb236b9}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [1/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Read\+Liberty\+File SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(char $\ast$filename, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ad21c641f6f68011df124a4ea947983e5}\label{si2dr__liberty_8h_ad21c641f6f68011df124a4ea947983e5}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [2/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Write\+Liberty\+File SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(char $\ast$filename, \mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, char $\ast$cellname, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_aee39c0019276167926e807ac9697a9cd}\label{si2dr__liberty_8h_aee39c0019276167926e807ac9697a9cd}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [3/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Complex\+Attr\+Add\+Boolean\+Value SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}} boolval, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a0f02797717930b9abae9195aa19b8777}\label{si2dr__liberty_8h_a0f02797717930b9abae9195aa19b8777}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [4/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Simple\+Attr\+Set\+Boolean\+Value SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}} intgr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ae7d89135910b62155b5c35dd0c0f8ef3}\label{si2dr__liberty_8h_ae7d89135910b62155b5c35dd0c0f8ef3}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [5/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} si2dr\+Attr\+Get\+Comment SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a5931764b6413c053d1db1954371f8ccb}\label{si2dr__liberty_8h_a5931764b6413c053d1db1954371f8ccb}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [6/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Simple\+Attr\+Set\+Expr\+Value SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$expr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a61580aa8e965e01dc54ab869b887d944}\label{si2dr__liberty_8h_a61580aa8e965e01dc54ab869b887d944}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [7/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Simple\+Attr\+Set\+Float64\+Value SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_a5f0db5120a1990ddfb700a6ea22d4315}{si2dr\+Float64T}} float64, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a446767317a2aca8a047c97b020c7ad4a}\label{si2dr__liberty_8h_a446767317a2aca8a047c97b020c7ad4a}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [8/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Simple\+Attr\+Set\+Int32\+Value SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_ae5b1aca7e6553f2a53df82f2caae03b6}{si2dr\+Int32T}} intgr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a8255cf3d7ff29bc5440894979970a316}\label{si2dr__liberty_8h_a8255cf3d7ff29bc5440894979970a316}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [9/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Attr\+Set\+Comment SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} comment, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_af05c37230957573f0972d2fcbf7d11d9}\label{si2dr__liberty_8h_af05c37230957573f0972d2fcbf7d11d9}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [10/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Simple\+Attr\+Set\+String\+Value SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} attr, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} string, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a0440ba6e3c30f4c577e14c0f67617b1f}\label{si2dr__liberty_8h_a0440ba6e3c30f4c577e14c0f67617b1f}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [11/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+Boolean\+Val\+Expr SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}} b, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a32762fb631dd4766fae78ceb85507b56}\label{si2dr__liberty_8h_a32762fb631dd4766fae78ceb85507b56}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [12/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} si2dr\+Define\+Get\+Comment SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}} def, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_abdc3fb07eef48d2206f2a4503db23e3e}\label{si2dr__liberty_8h_abdc3fb07eef48d2206f2a4503db23e3e}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [13/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Define\+Get\+Info SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}} def, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} $\ast$name, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} $\ast$allowed\+\_\+group\+\_\+name, \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}{si2dr\+Value\+TypeT}} $\ast$valtype, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ac697dc9aaa4995eab8afa4feda7b58aa}\label{si2dr__liberty_8h_ac697dc9aaa4995eab8afa4feda7b58aa}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [14/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Define\+Set\+Comment SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}} def, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} comment, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a149c413493b89422d153d7f8c5df8837}\label{si2dr__liberty_8h_a149c413493b89422d153d7f8c5df8837}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [15/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}} si2dr\+PIGet\+Nocheck\+Mode SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a5359f07889d820053f5951818c04bab6}\label{si2dr__liberty_8h_a5359f07889d820053f5951818c04bab6}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [16/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} si2dr\+PIGet\+Error\+Text SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} error\+Code, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a73e965d704576cfdf6c0a2f77b90309c}\label{si2dr__liberty_8h_a73e965d704576cfdf6c0a2f77b90309c}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [17/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Op\+Expr\+Get\+Right\+Expr SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$expr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ad8c38c0a7ae3d29a0f4eddda52e205fc}\label{si2dr__liberty_8h_ad8c38c0a7ae3d29a0f4eddda52e205fc}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [18/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+Binary\+Op\+Expr SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$left, \mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}{si2dr\+Expr\+TypeT}} optype, \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$right, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a7604e05c724f4ba647f457b10a7625db}\label{si2dr__liberty_8h_a7604e05c724f4ba647f457b10a7625db}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [19/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+Unary\+Op\+Expr SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}{si2dr\+Expr\+TypeT}} optype, \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$expr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a16a487ffb334d082a27093765dde1985}\label{si2dr__liberty_8h_a16a487ffb334d082a27093765dde1985}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [20/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+Expr SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a37de023e26158ede80b0f169a030bec0}{si2dr\+Expr\+TypeT}} type, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_aafe4f7552f0df6467e6dc2badee88953}\label{si2dr__liberty_8h_aafe4f7552f0df6467e6dc2badee88953}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [21/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+Double\+Val\+Expr SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a5f0db5120a1990ddfb700a6ea22d4315}{si2dr\+Float64T}} d, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a7592fdb6bc609aaeccbd83fbbbf479b6}\label{si2dr__liberty_8h_a7592fdb6bc609aaeccbd83fbbbf479b6}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [22/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Check\+Liberty\+Library SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a93c982cff2950f71d6d493621aeed4df}\label{si2dr__liberty_8h_a93c982cff2950f71d6d493621aeed4df}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [23/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Group\+Set\+Comment SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} comment, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_af0a2757b79304a5a24517f2f7d5000a3}\label{si2dr__liberty_8h_af0a2757b79304a5a24517f2f7d5000a3}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [24/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a43c92f469a9d085cd7a334ac02b2cb34}{si2dr\+Attr\+IdT}} si2dr\+Group\+Create\+Attr SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_a0cb73c658abb1ec0a96c061c3550cba6}{si2dr\+Attr\+TypeT}} type, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_abc5798f63f0eb9ce44b203255c6d3f3d}\label{si2dr__liberty_8h_abc5798f63f0eb9ce44b203255c6d3f3d}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [25/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}} si2dr\+Group\+Find\+Define\+By\+Name SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a22a4679cb8f301f63a1db182cd677ba1}\label{si2dr__liberty_8h_a22a4679cb8f301f63a1db182cd677ba1}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [26/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}} si2dr\+Group\+Create\+Define SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} allowed\+\_\+group\+\_\+name, \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}{si2dr\+Value\+TypeT}} valtype, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_af116a211fb6e8d8174b7d076b2bc5942}\label{si2dr__liberty_8h_af116a211fb6e8d8174b7d076b2bc5942}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [27/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} si2dr\+Group\+Create\+Group SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} group\+\_\+type, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_aa63de32b6f5599957c195ee71c2d8063}\label{si2dr__liberty_8h_aa63de32b6f5599957c195ee71c2d8063}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [28/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} si2dr\+Group\+Find\+Group\+By\+Name SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} type, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ad1cc77bc8037ff9a93b8b265f40e60c4}\label{si2dr__liberty_8h_ad1cc77bc8037ff9a93b8b265f40e60c4}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [29/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Group\+Move\+Before SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} group\+To\+Move, \mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} target\+Group, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a9092e7f0722e32621d46ca5a2b8d0cd0}\label{si2dr__liberty_8h_a9092e7f0722e32621d46ca5a2b8d0cd0}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [30/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+Int\+Val\+Expr SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_ae5b1aca7e6553f2a53df82f2caae03b6}{si2dr\+Int32T}} i, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ad9afbd96bd3e466a13f0b990b542df9d}\label{si2dr__liberty_8h_ad9afbd96bd3e466a13f0b990b542df9d}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [31/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} si2dr\+Object\+Get\+File\+Name SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} object, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a0fb2463e805ee9181b78d2e44ae8c70d}\label{si2dr__liberty_8h_a0fb2463e805ee9181b78d2e44ae8c70d}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [32/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Object\+Set\+Line\+No SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} object, \mbox{\hyperlink{si2dr__liberty_8h_ae5b1aca7e6553f2a53df82f2caae03b6}{si2dr\+Int32T}} lineno, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a3cb44959d5ada6ad41c425844ded2f81}\label{si2dr__liberty_8h_a3cb44959d5ada6ad41c425844ded2f81}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [33/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Object\+Set\+File\+Name SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} object, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} filename, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a75dcdfabd859ba31fd84ac9a130a952d}\label{si2dr__liberty_8h_a75dcdfabd859ba31fd84ac9a130a952d}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [34/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}} si2dr\+Object\+Is\+Same SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} object1, \mbox{\hyperlink{si2dr__liberty_8h_a9ad688f55bb22b744439998103452a68}{si2dr\+Object\+IdT}} object2, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a7530ef310823c71c38ca3544309bc7ec}\label{si2dr__liberty_8h_a7530ef310823c71c38ca3544309bc7ec}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [35/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+PISet\+Trace\+Mode SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} fname, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_aed31f77aea0a779128505ce8984dec67}\label{si2dr__liberty_8h_aed31f77aea0a779128505ce8984dec67}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [36/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a6fea0fda77170ae52ce8a48907ac9a7c}{si2dr\+Define\+IdT}} si2dr\+PIFind\+Define\+By\+Name SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a8432e5fe9144922879655e9d874d8e76}\label{si2dr__liberty_8h_a8432e5fe9144922879655e9d874d8e76}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [37/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} si2dr\+PICreate\+Group SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} group\+\_\+type, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a668d4580d8814c710f143f43db6bb340}\label{si2dr__liberty_8h_a668d4580d8814c710f143f43db6bb340}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [38/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a864824bacc78d4f7c44280914b096e9a}{si2dr\+Group\+IdT}} si2dr\+PIFind\+Group\+By\+Name SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} name, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} type, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a43bc3ae66e3d22e04b05e3d0a879e1a7}\label{si2dr__liberty_8h_a43bc3ae66e3d22e04b05e3d0a879e1a7}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [39/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$si2dr\+Create\+String\+Val\+Expr SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} s, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a65df71625cea85c8c42216fc2c5146a1}\label{si2dr__liberty_8h_a65df71625cea85c8c42216fc2c5146a1}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [40/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Iter\+Quit SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a94cf0ed4382b87c45e9b2eb0871ba3a2}{si2dr\+Values\+IdT}} iter, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a7d697605f915bf8f346d47db64d6acf2}\label{si2dr__liberty_8h_a7d697605f915bf8f346d47db64d6acf2}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!SI2\_ARGS@{SI2\_ARGS}}
+\index{SI2\_ARGS@{SI2\_ARGS}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{SI2\_ARGS()}{SI2\_ARGS()}\hspace{0.1cm}{\footnotesize\ttfamily [41/41]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Iter\+Next\+Complex\+Value SI2\+\_\+\+ARGS (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{si2dr__liberty_8h_a94cf0ed4382b87c45e9b2eb0871ba3a2}{si2dr\+Values\+IdT}} iter, \mbox{\hyperlink{si2dr__liberty_8h_a61714adcee5a7d28e94e5f470112bd30}{si2dr\+Value\+TypeT}} $\ast$type, \mbox{\hyperlink{si2dr__liberty_8h_ae5b1aca7e6553f2a53df82f2caae03b6}{si2dr\+Int32T}} $\ast$intgr, \mbox{\hyperlink{si2dr__liberty_8h_a5f0db5120a1990ddfb700a6ea22d4315}{si2dr\+Float64T}} $\ast$float64, \mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}} $\ast$string, \mbox{\hyperlink{si2dr__liberty_8h_afa1d8cf01f43a1fdccd6efd0c370d025}{si2dr\+BooleanT}} $\ast$boolval, \mbox{\hyperlink{structsi2drExprT}{si2dr\+ExprT}} $\ast$$\ast$expr, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$err)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_aebe5a23c8491d476392b9262899edbc9}\label{si2dr__liberty_8h_aebe5a23c8491d476392b9262899edbc9}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drDefaultMessageHandler@{si2drDefaultMessageHandler}}
+\index{si2drDefaultMessageHandler@{si2drDefaultMessageHandler}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drDefaultMessageHandler()}{si2drDefaultMessageHandler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+Default\+Message\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{si2dr__liberty_8h_a75aa5e16469c0a346e9b93c1180260d2}{si2dr\+SeverityT}}}]{sev,  }\item[{\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}}}]{err\+To\+Print,  }\item[{\mbox{\hyperlink{si2dr__liberty_8h_a850e950687fb676bf3ab863ee324cb28}{si2dr\+StringT}}}]{aux\+Text,  }\item[{\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$}]{err }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_ad7d5f5b7591c9c86ca429b5e0f725591}\label{si2dr__liberty_8h_ad7d5f5b7591c9c86ca429b5e0f725591}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drPIGetMessageHandler@{si2drPIGetMessageHandler}}
+\index{si2drPIGetMessageHandler@{si2drPIGetMessageHandler}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drPIGetMessageHandler()}{si2drPIGetMessageHandler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_ad44901a22da2d53caac456ea31628053}{si2dr\+Message\+HandlerT}} si2dr\+PIGet\+Message\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$}]{err }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a7d9925927b275c7e81d4505c65aa2f82}\label{si2dr__liberty_8h_a7d9925927b275c7e81d4505c65aa2f82}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!si2drPISetMessageHandler@{si2drPISetMessageHandler}}
+\index{si2drPISetMessageHandler@{si2drPISetMessageHandler}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{si2drPISetMessageHandler()}{si2drPISetMessageHandler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_a7810dcf7211e12e5614c785a34c90545}{si2dr\+VoidT}} si2dr\+PISet\+Message\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{si2dr__liberty_8h_ad44901a22da2d53caac456ea31628053}{si2dr\+Message\+HandlerT}}}]{Msg\+Hand\+Func\+Ptr,  }\item[{\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} $\ast$}]{err }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{si2dr__liberty_8h_a2ef30c42cbc289d899a8be5d2d8f77d0}\label{si2dr__liberty_8h_a2ef30c42cbc289d899a8be5d2d8f77d0}} 
+\index{si2dr\_liberty.h@{si2dr\_liberty.h}!usage@{usage}}
+\index{usage@{usage}!si2dr\_liberty.h@{si2dr\_liberty.h}}
+\doxysubsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily void usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

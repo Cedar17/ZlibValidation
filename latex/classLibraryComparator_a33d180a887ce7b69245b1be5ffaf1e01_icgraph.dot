@@ -1,0 +1,15 @@
+digraph "LibraryComparator::compareCell"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [label="LibraryComparator::\lcompareCell",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Compares the output pins of a cell between a reference JSON and a comparison JSON."];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="LibraryComparator::\lgenerateReport",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibraryComparator.html#a4f150829d621ad8f199813a0f9fc8be5",tooltip="Generates a comparison report between the reference and comparison libraries."];
+  Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node3 [label="compareLibFiles",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#aefb52455235a664c6dc21709237f77a1",tooltip="Compares two library files and generates a detailed comparison report."];
+  Node3 -> Node4 [dir="back",color="steelblue1",style="solid"];
+  Node4 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97",tooltip=" "];
+}
