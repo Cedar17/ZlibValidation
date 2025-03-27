@@ -8,6 +8,14 @@ project(ZlibValidation
 set(PROJECT_AUTHOR "Song Zixuan" CACHE STRING "Project maintainer")
 set(PROJECT_CONTACT "cedar@zju.edu.cn" CACHE STRING "Contact info")
 
+# Set default build type to Release if not specified
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release)
+    message(STATUS "Build type not specified, defaulting to Release")
+    # Set specific optimization flags
+    set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+endif()
+
 # Generate version header file
 string(TIMESTAMP BUILD_TIMESTAMP "%Y-%m-%d %H:%M:%S")
 configure_file(
@@ -15,30 +23,9 @@ configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/include/version.h
 )
 
-# # Enable debug info
-# set(CMAKE_BUILD_TYPE Debug)
-
-# Set build type to Release for optimization
-set(CMAKE_BUILD_TYPE Release)
-
-# Set specific optimization flags
-set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-
-# Set C++ standard to C++20
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# Set no position independent code and no pie
-set(CMAKE_POSITION_INDEPENDENT_CODE OFF)
+# Disable Position Independent Executable (PIE) to ensure fixed memory layout
+# This may be required for certain libraries that assume absolute addressing
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -no-pie")
-
-# Set the default generator to Unix Makefiles. This is optional and can be modified if needed.
-# The CACHE INTERNAL "" FORCE parameters ensure that this setting is applied globally and cannot be overridden by the user.
-set(CMAKE_GENERATOR "Unix Makefiles" CACHE INTERNAL "" FORCE)
-
-# Enable verbose output from the makefile. This is optional and useful for debugging purposes.
-# When enabled, the makefile will print detailed information about the build process.
-set(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "ON" FORCE)
 
 # Fetch Content for dependencies
 include(FetchContent)
@@ -88,16 +75,28 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(slang)
 
-# Collect all source and header files
+# Collect all source files
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
-file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
-file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp)
+
+# Collect header files
+file(GLOB_RECURSE HEADERS 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp
+)
 
 # Add target
 add_executable(zlibvalidation ${SOURCES} ${HEADERS})
 
+# Set C++ standard at target level
+target_compile_features(zlibvalidation PRIVATE cxx_std_20)
+
 # Link libraries
-target_include_directories(zlibvalidation PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+# Configure includes and libraries
+target_include_directories(zlibvalidation PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_BINARY_DIR}/include
+)
+
 target_link_directories(zlibvalidation PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 target_link_libraries(zlibvalidation PRIVATE 
     si2dr_liberty
@@ -105,7 +104,6 @@ target_link_libraries(zlibvalidation PRIVATE
     spdlog::spdlog 
     nlohmann_json::nlohmann_json
     tabulate::tabulate
-    stdc++fs # Required for filesystem support in C++17
     slang::slang
 )
 
