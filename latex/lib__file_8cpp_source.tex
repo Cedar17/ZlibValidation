@@ -595,19 +595,20 @@
 \DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00712}00712\ \ \ \ \ \ \ \mbox{\hyperlink{classModuleRewriter}{ModuleRewriter}}\ rewriter(input\_pins,\ output\_pins,\ supercell\_entry,\ instance\_count,\ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}});}
 \DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00713}00713\ }
 \DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00714}00714\ \ \ \ \ \ \ tree\ =\ rewriter.transform(tree);}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00715}00715\ \ \ \ \ \ \ rewriter.visit(tree-\/>root());}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00716}00716\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00717}00717\ \ \ \ \ \ \ \textcolor{comment}{//\ Output\ the\ transformed\ syntax\ tree}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00718}00718\ \ \ \ \ \ \ out\ <<\ \textcolor{stringliteral}{"{}`timescale\ 1ns/1ps"{}}\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00719}00719\ \ \ \ \ \ \ out\ <<\ slang::syntax::SyntaxPrinter::printFile(*tree)\ <<\ std::endl\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00720}00720\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00721}00721\ \ \ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Failed\ to\ create\ syntax\ tree\ for\ module\ '\{\}'"{}},\ module\_name);}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00722}00722\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00723}00723\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00724}00724\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00725}00725\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00726}00726\ \ \ out.close();}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00727}00727\ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Verilog\ creation\ complete\ in\ '\{\}'"{}},\ \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.v"{}});}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00728}00728\ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00715}00715\ \ \ \ \ \ \ \textcolor{comment}{//\ Revisit\ the\ syntax\ tree\ to\ check\ architecture}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00716}00716\ \ \ \ \ \ \ \textcolor{comment}{//\ rewriter.visit(tree-\/>root());}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00717}00717\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00718}00718\ \ \ \ \ \ \ \textcolor{comment}{//\ Output\ the\ transformed\ syntax\ tree}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00719}00719\ \ \ \ \ \ \ out\ <<\ \textcolor{stringliteral}{"{}`timescale\ 1ns/1ps"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00720}00720\ \ \ \ \ \ \ out\ <<\ slang::syntax::SyntaxPrinter::printFile(*tree)\ <<\ std::endl\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00721}00721\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00722}00722\ \ \ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Failed\ to\ create\ syntax\ tree\ for\ module\ '\{\}'"{}},\ module\_name);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00723}00723\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00724}00724\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00725}00725\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00726}00726\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00727}00727\ \ \ out.close();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00728}00728\ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Verilog\ creation\ complete\ in\ '\{\}'"{}},\ \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.v"{}});}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00729}00729\ \}}
 
 \end{DoxyCode}

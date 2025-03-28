@@ -250,5 +250,9 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 
 \begin{DoxyItemize}
 \item 成功实现了在模块成员列表中插入新节点的功能。
-\item 在 {\ttfamily \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{Module\+Rewriter\+::handle}}(const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&module)} 方法中，使用 {\ttfamily insert\+At\+Back(module.\+members, new\+Data\+Node)} 函数，可以在模块成员的末尾插入链式单元所需的中间变量声明，例如 {\ttfamily wire OP\+\_\+i;}。 
+\item 在 {\ttfamily \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{Module\+Rewriter\+::handle}}(const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&module)} 方法中，使用 {\ttfamily insert\+At\+Back(module.\+members, new\+Data\+Node)} 函数，可以在模块成员的末尾插入链式单元所需的中间变量声明，例如 {\ttfamily wire OP\+\_\+i;}。
+\item 在模块内部添加了关键连接网络变量，从{\ttfamily CELLNAME\+\_\+\+\_\+X\#\+\_\+\+\_\+\+CRITICALPORT\+\_\+\+\_\+\+OUTPUTPORT}这样的格式中提取出{\ttfamily CELLNAME}和{\ttfamily OUTPUTPORT}，用于实例化端口连接。
+\item 在模块内增加了当多输出接口时的中间网络变量{\ttfamily P\+\_\+\+\_\+\+UNUSEOUTPUTPORT}，连接不需要考察的输出端口。
+\item 在模块内正确添加了模块实例化的模块名和实例名称，端口映射关系待处理。
+\item 以{\ttfamily INVD0}反相器为代表的简单组合逻辑单元和以{\ttfamily FA1\+D0}全加器为代表的复杂组合逻辑单元均能正确输出。 
 \end{DoxyItemize}

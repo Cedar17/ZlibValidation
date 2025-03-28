@@ -375,7 +375,11 @@ Development Diary</h1>
 2025-03-28</h2>
 <ul>
 <li>成功实现了在模块成员列表中插入新节点的功能。</li>
-<li>在 <code><a class="el" href="classModuleRewriter.html#aa57bf8f3d6692468013a52a0154f08e8">ModuleRewriter::handle</a>(const slang::syntax::ModuleDeclarationSyntax &amp;module)</code> 方法中，使用 <code>insertAtBack(module.members, newDataNode)</code> 函数，可以在模块成员的末尾插入链式单元所需的中间变量声明，例如 <code>wire OP_i;</code>。 </li>
+<li>在 <code><a class="el" href="classModuleRewriter.html#aa57bf8f3d6692468013a52a0154f08e8">ModuleRewriter::handle</a>(const slang::syntax::ModuleDeclarationSyntax &amp;module)</code> 方法中，使用 <code>insertAtBack(module.members, newDataNode)</code> 函数，可以在模块成员的末尾插入链式单元所需的中间变量声明，例如 <code>wire OP_i;</code>。</li>
+<li>在模块内部添加了关键连接网络变量，从<code>CELLNAME__X#__CRITICALPORT__OUTPUTPORT</code>这样的格式中提取出<code>CELLNAME</code>和<code>OUTPUTPORT</code>，用于实例化端口连接。</li>
+<li>在模块内增加了当多输出接口时的中间网络变量<code>P__UNUSEOUTPUTPORT</code>，连接不需要考察的输出端口。</li>
+<li>在模块内正确添加了模块实例化的模块名和实例名称，端口映射关系待处理。</li>
+<li>以<code>INVD0</code>反相器为代表的简单组合逻辑单元和以<code>FA1D0</code>全加器为代表的复杂组合逻辑单元均能正确输出。 </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -383,7 +387,7 @@ Development Diary</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 28 2025 12:09:32 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Fri Mar 28 2025 17:18:59 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>
