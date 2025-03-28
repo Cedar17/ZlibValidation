@@ -399,10 +399,12 @@ void ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module
   // auto &newNode = parse("\n" + this->cellName_ + " I" + this->moduleName_ + "( );");
   // logger_->debug("New node: {}", newNode.toString());
   for (int i = 0; i < instance_count_ - 1; i++) {
-    auto &newDataNode = parse("\n  wire OP_" + std::to_string(i) + ";");
-    insertAtBack(module.members, newDataNode);
+    auto &newNetNode = parse("\n  wire OP_" + std::to_string(i) + ";");
+    insertAtBack(module.members, newNetNode);
   }
 
+  // TODO: Add instance to the module
+  
 }
 
 void getAST(const std::string &verilog_file, const std::string &cell) {
