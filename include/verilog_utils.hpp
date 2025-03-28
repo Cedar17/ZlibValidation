@@ -59,9 +59,10 @@ public:
   explicit ModuleRewriter(const std::vector<std::string> &inputPins,
                           const std::vector<std::string> &outputPins,
                           const std::pair<std::string, std::string> &supercell_entry,
+                          int instance_count,
                           std::shared_ptr<spdlog::logger> logger)
       : inputPins_(inputPins), outputPins_(outputPins), cellName_(supercell_entry.first),
-        moduleName_(supercell_entry.second), logger_(logger), depth_(0) {}
+        moduleName_(supercell_entry.second), logger_(logger), depth_(0), instance_count_(instance_count) {}
   std::shared_ptr<spdlog::logger> logger_;
   void handle(const slang::syntax::SyntaxNode &node);
   void handle(const slang::syntax::ModuleDeclarationSyntax &module);
@@ -72,6 +73,7 @@ private:
   const std::string cellName_;
   const std::string moduleName_;
   int depth_;
+  int instance_count_;
 };
 
 void getAST(const std::string &verilog_file, const std::string &cell);

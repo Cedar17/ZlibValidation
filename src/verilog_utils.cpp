@@ -396,10 +396,13 @@ void ModuleRewriter::handle(const slang::syntax::SyntaxNode &node) {
 
 void ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module) {
   logger_->info("Processing module: {}", module.header->name.valueText());
-  auto &newNode = parse("\n" + this->cellName_ + " I" + this->moduleName_ + "( );");
-  logger_->debug("New node: {}", newNode.toString());
+  // auto &newNode = parse("\n" + this->cellName_ + " I" + this->moduleName_ + "( );");
+  // logger_->debug("New node: {}", newNode.toString());
+  for (int i = 0; i < instance_count_ - 1; i++) {
+    auto &newDataNode = parse("\n  wire OP_" + std::to_string(i) + ";");
+    insertAtBack(module.members, newDataNode);
+  }
 
-  // insertAfter(module.members, newNode);
 }
 
 void getAST(const std::string &verilog_file, const std::string &cell) {

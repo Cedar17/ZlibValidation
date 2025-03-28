@@ -219,13 +219,26 @@ Subcommands:
 - 进一步完善了对 UDP（如 `tsmc_dff`）端口映射关系的解析，但其内部 Entry 尚未处理。
 - 尝试了通过继承 `slang::syntax::SyntaxRewriter` 类创建自定义类 `CellExtractor`，实现了只保留目标模块、删除其他模块，并将修改后的语法树另存为新文件。使用 `slang::syntax::SyntaxPrinter::printFile()` 方法可以将 Verilog 代码输出到文件。
 - 创建了 `CellPrinter` 类，继承自 `slang::syntax::SyntaxVisitor` 类。当访问到目标模块时，使用 `module.toString()` 方法也能将 Verilog 代码输出到文件，但发现输出结果中空行会被删除。
-- 实现了 `LibFile::supercell()` 方法，该方法可以根据输入的 `cell_names` 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。
+- 修改了 `LibFile::supercell()` 方法，该方法可以根据输入的 `cell_names` 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。
 - 优化了时钟引脚的处理方式，现在时钟引脚不再被视为 supercell 的输入引脚，而是仅记录为时序单元，并跳过存入 `input_pins` 集合的步骤。
 - 引入了 Doxygen 文档生成工具，用于可视化分析项目，并生成了 Doxygen HTML 文档和 LaTeX 参考手册。
 - [ ] 尚未解决手册中文显示不正确的问题，可能需要自定义 LaTeX 头文件。
 
 ### 2025-03-27
 
-- 误操作git分支，导致了一些修改丢失！
-- LibFile::verilog方法先执行this->supercell()，然后读取map文件，提取cell映射关系到std::pair中，从lib_json_中提取出输入输出端口，送入ModuleRewriter类。
-- LibFile::verilog 目前能输出模块名和ANSI风格的端口声明。
+- **重大失误！** 误操作 Git 分支，导致部分代码修改丢失。务必牢记：**及时提交代码！**
+- 实现了 `LibFile::verilog` 方法的核心流程：
+  - 首先调用 `this->supercell()` 生成超级单元。
+  - 读取 `.map` 文件，提取单元映射关系到 `std::pair<std::string, std::string>` 中（原始单元名 -> 超级单元名/模块名）。
+  - 从 `lib_json_` 中提取单元的输入/输出端口信息。
+  - 根据是否存在时钟引脚，确定 Verilog 模块中 instance 的生成数量（时序逻辑为 1，组合逻辑等于 chain length）。
+  - 通过字符串操作生成 ANSI 风格的端口列表，并与模块名组合成完整的 `fullModuleText`。
+  - 使用 `slang::syntax::SyntaxTree::fromText` 从 `fullModuleText` 生成语法树。
+  - 将语法树传递给 `ModuleRewriter` 类，使用其 `transform` 方法遍历模块成员，并通过 `handle()` 方法进行处理。
+  - 最后，使用 `slang::syntax::SyntaxPrinter::printFile(*tree)` 将处理后的语法树输出到文件。
+- `LibFile::verilog` 目前能够正确输出模块名和 ANSI 风格的端口声明。
+
+### 2025-03-28
+
+- 成功实现了在模块成员列表中插入新节点的功能。
+- 在 `ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module)` 方法中，使用 `insertAtBack(module.members, newDataNode)` 函数，可以在模块成员的末尾插入链式单元所需的中间变量声明，例如 `wire OP_i;`。

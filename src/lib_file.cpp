@@ -446,6 +446,24 @@ void LibFile::mono(const bool is_slew) {
   }
 }
 
+/**
+ * @brief Creates supercells based on standard cells in the library file.
+ * 
+ * This method creates supercells by combining standard cells in chains.
+ * For each input-output pin pair of a cell, it creates a supercell entry
+ * with naming format: <cellname>__X<chain_length>__<input_pin>__<output_pin>.
+ * The results are written to a .map file.
+ * 
+ * For sequential cells (with clock pins), the chain length is always set to 1
+ * regardless of the requested chain length.
+ * 
+ * @param chain_length The length of the chain for combinational cells
+ * @param cell_names Vector of specific cell names to process. If empty, all cells will be processed.
+ * 
+ * @note Before creating supercells, this method checks for the existence of
+ *       a JSON representation of the Liberty file and parses it if not found.
+ * @note The method will report any requested cells that were not found in the library.
+ */
 void LibFile::supercell(const int chain_length, const std::vector<std::string> &cell_names) {
   /*
    * Supercells are named as follows:
@@ -610,7 +628,10 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
 
   // Generate verilog module for each supercell
   for (const auto &supercell_entry : supercell_entries) {
-
+    // Check if the cell is sequential
+    bool is_sequential = false;
+    // Count the number of instances will be created in verilog
+    int instance_count = 0;
     // Get original cell name from pair
     const std::string &cell_name = supercell_entry.first;
     // Get supercell name(as well as module name) from pair
@@ -634,6 +655,9 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
     std::stringstream output_pins_ss;
     if (cell_json.contains("input_pins")) {
       for (const auto &pin : cell_json["input_pins"]) {
+        if (pin.contains("clock")) {
+          is_sequential = true;
+        }
         input_pins.push_back(pin["pin_name"].get<std::string>());
         input_pins_ss << pin["pin_name"].get<std::string>() << ", ";
       }
@@ -646,6 +670,14 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
     }
     logger_->debug("Input pins set: {}", input_pins_ss.str());
     logger_->debug("Output pins set: {}", output_pins_ss.str());
+
+    // Sequential cells will have only one instance
+    // Combinational cells will have instances equal to chain length
+    if (is_sequential) {
+      instance_count = 1;
+    } else {
+      instance_count = chain_length;
+    }
 
     // Create ANSI port list
     std::string port_list_text = "(";
@@ -677,7 +709,7 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
     auto tree = slang::syntax::SyntaxTree::fromText(fullModuleText);
     if (tree) {
       // Add ports to the syntax tree
-      ModuleRewriter rewriter(input_pins, output_pins, supercell_entry, logger_);
+      ModuleRewriter rewriter(input_pins, output_pins, supercell_entry, instance_count, logger_);
 
       tree = rewriter.transform(tree);
       rewriter.visit(tree->root());
