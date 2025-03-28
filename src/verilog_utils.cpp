@@ -396,15 +396,77 @@ void ModuleRewriter::handle(const slang::syntax::SyntaxNode &node) {
 
 void ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module) {
   logger_->info("Processing module: {}", module.header->name.valueText());
-  // auto &newNode = parse("\n" + this->cellName_ + " I" + this->moduleName_ + "( );");
-  // logger_->debug("New node: {}", newNode.toString());
+
+  // Create intermediate wires for connections between instances
   for (int i = 0; i < instance_count_ - 1; i++) {
     auto &newNetNode = parse("\n  wire OP_" + std::to_string(i) + ";");
     insertAtBack(module.members, newNetNode);
+    logger_->debug("Added intermediate wire: {}", newNetNode.toString());
   }
 
-  // TODO: Add instance to the module
-  
+  // Get critical input port & output port from 
+  // the module name pattern: CELLNAME__X#__CRITICALPORT__OUTPUTPORT
+  std::string criticalInputPort = "";
+  std::string outputPort = "";
+  if (!this->moduleName_.empty()) {
+    size_t firstSep = this->moduleName_.find("__");
+    if (firstSep != std::string::npos) {
+      size_t secondSep = this->moduleName_.find("__", firstSep + 2);
+      if (secondSep != std::string::npos) {
+        size_t thirdSep = this->moduleName_.find("__", secondSep + 2);
+        if (thirdSep != std::string::npos) {
+          criticalInputPort = this->moduleName_.substr(secondSep + 2, thirdSep - (secondSep + 2));
+          outputPort = this->moduleName_.substr(thirdSep + 2);
+          logger_->debug("Extracted critical input port: {}", criticalInputPort);
+          logger_->debug("Extracted output port: {}", outputPort);
+        } else {
+          logger_->warn("Can't find thirdSep. Invalid module name pattern: {}", this->moduleName_);
+          return;
+        }
+      } else {
+        logger_->warn("Can't find secondSep. Invalid module name pattern: {}", this->moduleName_);
+        return;
+      }
+    } else {
+      logger_->warn("Can't find firstSep. Invalid module name pattern: {}", this->moduleName_);
+      return;
+    }
+  } else {
+    logger_->warn("Module name is empty. Can't extract critical input port.");
+    return;
+  }
+
+  // Add additional wires for intermediate outputs that aren't part of the chain
+  if (this->outputPins_.size() > 1) { // Only add if there are multiple output pins
+    for (int i = 1; i < instance_count_ - 1; i++) { // Skip the first and last instances
+      for (const auto &outputPin : this->outputPins_) {
+        if (outputPin != outputPort) { // Found an intermediate output pin
+          auto &newNetNode = parse("\n  wire P_" + std::to_string(i) + "__" + outputPin + ";");
+          insertAtBack(module.members, newNetNode);
+          logger_->debug("Added intermediate wire: {}", newNetNode.toString());
+        }
+      }
+    }
+  }
+
+  std::string portList = module.header->ports->toString();
+  logger_->debug("Port list: {}", portList);
+
+  // TODO: Add instance port connection
+  for (int i = 0; i < instance_count_; i++) {
+    std::string instanceName = "I_" + this->cellName_ + "__X" + std::to_string(i) + "__" +
+                               criticalInputPort + "__" + outputPort;
+    if (i == 0) {
+      auto &firstInstanceNode = parse("\n\n  " + this->cellName_ + " " + instanceName + " ();");
+      insertAtBack(module.members, firstInstanceNode);
+    } else if (i < instance_count_ - 1) {
+      auto &intermediateInstanceNode = parse("\n  " + this->cellName_ + " " + instanceName + " ();");
+      insertAtBack(module.members, intermediateInstanceNode);
+    } else {
+      auto &lastInstanceNode = parse("\n  " + this->cellName_ + " " + instanceName + " ();");
+      insertAtBack(module.members, lastInstanceNode);
+    }
+  }
 }
 
 void getAST(const std::string &verilog_file, const std::string &cell) {

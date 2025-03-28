@@ -242,3 +242,7 @@ Subcommands:
 
 - 成功实现了在模块成员列表中插入新节点的功能。
 - 在 `ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module)` 方法中，使用 `insertAtBack(module.members, newDataNode)` 函数，可以在模块成员的末尾插入链式单元所需的中间变量声明，例如 `wire OP_i;`。
+- 在模块内部添加了关键连接网络变量，从`CELLNAME__X#__CRITICALPORT__OUTPUTPORT`这样的格式中提取出`CELLNAME`和`OUTPUTPORT`，用于实例化端口连接。
+- 在模块内增加了当多输出接口时的中间网络变量`P__UNUSEOUTPUTPORT`，连接不需要考察的输出端口。
+- 在模块内正确添加了模块实例化的模块名和实例名称，端口映射关系待处理。
+- 以`INVD0`反相器为代表的简单组合逻辑单元和以`FA1D0`全加器为代表的复杂组合逻辑单元均能正确输出。

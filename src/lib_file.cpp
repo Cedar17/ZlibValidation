@@ -712,7 +712,8 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
       ModuleRewriter rewriter(input_pins, output_pins, supercell_entry, instance_count, logger_);
 
       tree = rewriter.transform(tree);
-      rewriter.visit(tree->root());
+      // Revisit the syntax tree to check architecture
+      // rewriter.visit(tree->root());
 
       // Output the transformed syntax tree
       out << "`timescale 1ns/1ps" << std::endl;
