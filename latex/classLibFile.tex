@@ -20,7 +20,7 @@ void \mbox{\hyperlink{classLibFile_a13703620c950bdf0b72882d2eda1e401}{modify}} (
 void \mbox{\hyperlink{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}{mono}} (const bool is\+\_\+slew)
 \begin{DoxyCompactList}\small\item\em Validates that lookup tables are monotonically increasing with respect to the output load. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{supercell}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates supercells based on standard cells in the library file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{verilog}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
@@ -289,7 +289,27 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00449}{449}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+Creates supercells based on standard cells in the library file. 
+
+This method creates supercells by combining standard cells in chains. For each input-\/output pin pair of a cell, it creates a supercell entry with naming format\+: $<$cellname$>${\bfseries{X$<$chain\+\_\+length$>$}}$<$input\+\_\+pin$>$\+\_\+\+\_\+$<$output\+\_\+pin$>$. The results are written to a .map file.
+
+For sequential cells (with clock pins), the chain length is always set to 1 regardless of the requested chain length.
+
+
+\begin{DoxyParams}{Parameters}
+{\em chain\+\_\+length} & The length of the chain for combinational cells \\
+\hline
+{\em cell\+\_\+names} & Vector of specific cell names to process. If empty, all cells will be processed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Before creating supercells, this method checks for the existence of a JSON representation of the Liberty file and parses it if not found. 
+
+The method will report any requested cells that were not found in the library. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00467}{467}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
 
 Here is the call graph for this function\+:
 % FIG 6
@@ -303,7 +323,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00578}{578}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00596}{596}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
 
 Here is the call graph for this function\+:
 % FIG 8

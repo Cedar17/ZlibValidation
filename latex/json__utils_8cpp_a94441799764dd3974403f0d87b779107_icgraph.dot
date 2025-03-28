@@ -28,7 +28,7 @@ digraph "parseStringToVector"
   Node11 [label="parseLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a3ac24d33b321364527447f166fd31edf",tooltip="Parses a library file and generates corresponding output."];
   Node11 -> Node10 [dir="back",color="steelblue1",style="solid"];
   Node6 -> Node12 [dir="back",color="steelblue1",style="solid"];
-  Node12 [label="LibFile::supercell",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188",tooltip=" "];
+  Node12 [label="LibFile::supercell",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188",tooltip="Creates supercells based on standard cells in the library file."];
   Node12 -> Node13 [dir="back",color="steelblue1",style="solid"];
   Node13 [label="supercellLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a0d7485f0df82adbd1671def221103a4e",tooltip="Creates supercell map structures from a Liberty library file."];
   Node13 -> Node10 [dir="back",color="steelblue1",style="solid"];

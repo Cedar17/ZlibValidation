@@ -5,7 +5,7 @@ digraph "LibFile::supercell"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node1 [label="LibFile::supercell",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="LibFile::supercell",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Creates supercells based on standard cells in the library file."];
   Node1 -> Node2 [color="steelblue1",style="solid"];
   Node2 [label="LibFile::parse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a84d29423705e2dea8a382dc6437640d9",tooltip="Parses the Liberty file and extracts library information into a JSON structure."];
   Node2 -> Node3 [color="steelblue1",style="solid"];

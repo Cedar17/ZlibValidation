@@ -7,7 +7,7 @@ digraph "LibFile::verilog"
   rankdir="LR";
   Node1 [label="LibFile::verilog",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [color="steelblue1",style="solid"];
-  Node2 [label="LibFile::supercell",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188",tooltip=" "];
+  Node2 [label="LibFile::supercell",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188",tooltip="Creates supercells based on standard cells in the library file."];
   Node2 -> Node3 [color="steelblue1",style="solid"];
   Node3 [label="LibFile::parse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a84d29423705e2dea8a382dc6437640d9",tooltip="Parses the Liberty file and extracts library information into a JSON structure."];
   Node3 -> Node4 [color="steelblue1",style="solid"];

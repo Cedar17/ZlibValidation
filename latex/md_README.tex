@@ -226,14 +226,29 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \item 进一步完善了对 UDP（如 {\ttfamily tsmc\+\_\+dff}）端口映射关系的解析，但其内部 Entry 尚未处理。
 \item 尝试了通过继承 {\ttfamily slang\+::syntax\+::\+Syntax\+Rewriter} 类创建自定义类 {\ttfamily \mbox{\hyperlink{classCellExtractor}{Cell\+Extractor}}}，实现了只保留目标模块、删除其他模块，并将修改后的语法树另存为新文件。使用 {\ttfamily slang\+::syntax\+::\+Syntax\+Printer\+::print\+File()} 方法可以将 Verilog 代码输出到文件。
 \item 创建了 {\ttfamily \mbox{\hyperlink{classCellPrinter}{Cell\+Printer}}} 类，继承自 {\ttfamily slang\+::syntax\+::\+Syntax\+Visitor} 类。当访问到目标模块时，使用 {\ttfamily module.\+to\+String()} 方法也能将 Verilog 代码输出到文件，但发现输出结果中空行会被删除。
-\item 实现了 {\ttfamily \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{Lib\+File\+::supercell()}}} 方法，该方法可以根据输入的 {\ttfamily cell\+\_\+names} 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。
+\item 修改了 {\ttfamily \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{Lib\+File\+::supercell()}}} 方法，该方法可以根据输入的 {\ttfamily cell\+\_\+names} 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。
 \item 优化了时钟引脚的处理方式，现在时钟引脚不再被视为 supercell 的输入引脚，而是仅记录为时序单元，并跳过存入 {\ttfamily input\+\_\+pins} 集合的步骤。
 \item 引入了 Doxygen 文档生成工具，用于可视化分析项目，并生成了 Doxygen HTML 文档和 La\+TeX 参考手册。
 \item \mbox{[} \mbox{]} 尚未解决手册中文显示不正确的问题，可能需要自定义 La\+TeX 头文件。
 \end{DoxyItemize}\hypertarget{md_README_autotoc_md32}{}\doxysubsection{2025-\/03-\/27}\label{md_README_autotoc_md32}
 
 \begin{DoxyItemize}
-\item 误操作git分支，导致了一些修改丢失！
-\item Lib\+File\+::verilog方法先执行this-\/\texorpdfstring{$>$}{>}supercell()，然后读取map文件，提取cell映射关系到std\+::pair中，从lib\+\_\+json\+\_\+中提取出输入输出端口，送入\+Module\+Rewriter类。
-\item \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{Lib\+File\+::verilog}} 目前能输出模块名和\+ANSI风格的端口声明。 
+\item {\bfseries{重大失误！}} 误操作 Git 分支，导致部分代码修改丢失。务必牢记：$\ast$$\ast$及时提交代码！$\ast$$\ast$
+\item 实现了 {\ttfamily \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{Lib\+File\+::verilog}}} 方法的核心流程：
+\begin{DoxyItemize}
+\item 首先调用 {\ttfamily this-\/\texorpdfstring{$>$}{>}supercell()} 生成超级单元。
+\item 读取 {\ttfamily .map} 文件，提取单元映射关系到 {\ttfamily std\+::pair\texorpdfstring{$<$}{<}std\+::string, std\+::string\texorpdfstring{$>$}{>}} 中（原始单元名 -\/\texorpdfstring{$>$}{>} 超级单元名/模块名）。
+\item 从 {\ttfamily lib\+\_\+json\+\_\+} 中提取单元的输入/输出端口信息。
+\item 根据是否存在时钟引脚，确定 Verilog 模块中 instance 的生成数量（时序逻辑为 1，组合逻辑等于 chain length）。
+\item 通过字符串操作生成 ANSI 风格的端口列表，并与模块名组合成完整的 {\ttfamily full\+Module\+Text}。
+\item 使用 {\ttfamily slang\+::syntax\+::\+Syntax\+Tree\+::from\+Text} 从 {\ttfamily full\+Module\+Text} 生成语法树。
+\item 将语法树传递给 {\ttfamily \mbox{\hyperlink{classModuleRewriter}{Module\+Rewriter}}} 类，使用其 {\ttfamily transform} 方法遍历模块成员，并通过 {\ttfamily handle()} 方法进行处理。
+\item 最后，使用 {\ttfamily slang\+::syntax\+::\+Syntax\+Printer\+::print\+File($\ast$tree)} 将处理后的语法树输出到文件。
+\end{DoxyItemize}
+\item {\ttfamily \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{Lib\+File\+::verilog}}} 目前能够正确输出模块名和 ANSI 风格的端口声明。
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md33}{}\doxysubsection{2025-\/03-\/28}\label{md_README_autotoc_md33}
+
+\begin{DoxyItemize}
+\item 成功实现了在模块成员列表中插入新节点的功能。
+\item 在 {\ttfamily \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{Module\+Rewriter\+::handle}}(const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&module)} 方法中，使用 {\ttfamily insert\+At\+Back(module.\+members, new\+Data\+Node)} 函数，可以在模块成员的末尾插入链式单元所需的中间变量声明，例如 {\ttfamily wire OP\+\_\+i;}。 
 \end{DoxyItemize}

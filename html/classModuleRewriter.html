@@ -122,8 +122,8 @@ Collaboration diagram for ModuleRewriter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a795e8de5f24b2a9831c85559c7579f15"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#a795e8de5f24b2a9831c85559c7579f15">ModuleRewriter</a> (const std::vector&lt; std::string &gt; &amp;inputPins, const std::vector&lt; std::string &gt; &amp;outputPins, const std::pair&lt; std::string, std::string &gt; &amp;supercell_entry, std::shared_ptr&lt; spdlog::logger &gt; logger)</td></tr>
-<tr class="separator:a795e8de5f24b2a9831c85559c7579f15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fc85a14d1374ad12e24eefc3802357b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#a0fc85a14d1374ad12e24eefc3802357b">ModuleRewriter</a> (const std::vector&lt; std::string &gt; &amp;inputPins, const std::vector&lt; std::string &gt; &amp;outputPins, const std::pair&lt; std::string, std::string &gt; &amp;supercell_entry, int instance_count, std::shared_ptr&lt; spdlog::logger &gt; logger)</td></tr>
+<tr class="separator:a0fc85a14d1374ad12e24eefc3802357b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa57bf8f3d6692468013a52a0154f08e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#aa57bf8f3d6692468013a52a0154f08e8">handle</a> (const slang::syntax::SyntaxNode &amp;node)</td></tr>
 <tr class="separator:aa57bf8f3d6692468013a52a0154f08e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa91fd9d45e04c0408aead2b70c359585"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#aa91fd9d45e04c0408aead2b70c359585">handle</a> (const slang::syntax::ModuleDeclarationSyntax &amp;module)</td></tr>
@@ -146,13 +146,15 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ac5bdc3d50b39f851fa1bb728d08c1bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ccaa865548fbf442969925a8f4063aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#a1ccaa865548fbf442969925a8f4063aa">depth_</a></td></tr>
 <tr class="separator:a1ccaa865548fbf442969925a8f4063aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c95bf7e5c9a2fb4b1316d830ef5cd6e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleRewriter.html#a6c95bf7e5c9a2fb4b1316d830ef5cd6e">instance_count_</a></td></tr>
+<tr class="separator:a6c95bf7e5c9a2fb4b1316d830ef5cd6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00057">57</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a795e8de5f24b2a9831c85559c7579f15" name="a795e8de5f24b2a9831c85559c7579f15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a795e8de5f24b2a9831c85559c7579f15">&#9670;&#160;</a></span>ModuleRewriter()</h2>
+<a id="a0fc85a14d1374ad12e24eefc3802357b" name="a0fc85a14d1374ad12e24eefc3802357b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fc85a14d1374ad12e24eefc3802357b">&#9670;&#160;</a></span>ModuleRewriter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -177,6 +179,12 @@ Private Attributes</h2></td></tr>
           <td></td>
           <td class="paramtype">const std::pair&lt; std::string, std::string &gt; &amp;&#160;</td>
           <td class="paramname"><em>supercell_entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>instance_count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -263,7 +271,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00072">72</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00073">73</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -287,7 +295,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00074">74</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00075">75</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -311,7 +319,31 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00070">70</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00071">71</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6c95bf7e5c9a2fb4b1316d830ef5cd6e" name="a6c95bf7e5c9a2fb4b1316d830ef5cd6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c95bf7e5c9a2fb4b1316d830ef5cd6e">&#9670;&#160;</a></span>instance_count_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ModuleRewriter::instance_count_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00076">76</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -327,7 +359,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00065">65</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00066">66</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -351,7 +383,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00073">73</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00074">74</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -375,7 +407,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00071">71</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00072">72</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -389,7 +421,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classModuleRewriter.html">ModuleRewriter</a></li>
-    <li class="footer">Generated on Thu Mar 27 2025 23:09:23 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Fri Mar 28 2025 11:07:38 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

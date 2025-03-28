@@ -57,7 +57,8 @@ var NAVTREE =
         [ "2025-03-24", "md_README.html#autotoc_md29", null ],
         [ "2025-03-25", "md_README.html#autotoc_md30", null ],
         [ "2025-03-26", "md_README.html#autotoc_md31", null ],
-        [ "2025-03-27", "md_README.html#autotoc_md32", null ]
+        [ "2025-03-27", "md_README.html#autotoc_md32", null ],
+        [ "2025-03-28", "md_README.html#autotoc_md33", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -87,7 +88,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"si2dr__liberty_8h.html#a38f905a80d2386f738eeb60db5517de3"
+"si2dr__liberty_8h.html#a37de023e26158ede80b0f169a030bec0ae2d292a9d8c77e3798273708133fd565"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

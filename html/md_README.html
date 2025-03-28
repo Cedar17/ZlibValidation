@@ -250,7 +250,7 @@ Development Diary</h1>
 <h2><a class="anchor" id="autotoc_md21"></a>
 2025-03-10</h2>
 <ul>
-<li>新增 <code>supercell</code> 子命令和 <code><a class="el" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188">LibFile::supercell</a></code> 方法，用于生成超级单元以供验证。</li>
+<li>新增 <code>supercell</code> 子命令和 <code><a class="el" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188" title="Creates supercells based on standard cells in the library file.">LibFile::supercell</a></code> 方法，用于生成超级单元以供验证。</li>
 <li>集成了 <code>zlibboost</code> 子命令，支持调用开源库特征化工具 <a href="https://github.com/skycrapers/ZlibBoost">zlibboost</a>。已与开发者取得联系。</li>
 <li>调整了子命令输出文件的位置为当前目录，避免文件混淆。</li>
 <li>添加了 <code>clear</code> 子命令，方便清理生成的 JSON 文件和日志文件。</li>
@@ -349,7 +349,7 @@ Development Diary</h1>
 <li>进一步完善了对 UDP（如 <code>tsmc_dff</code>）端口映射关系的解析，但其内部 Entry 尚未处理。</li>
 <li>尝试了通过继承 <code>slang::syntax::SyntaxRewriter</code> 类创建自定义类 <code><a class="el" href="classCellExtractor.html">CellExtractor</a></code>，实现了只保留目标模块、删除其他模块，并将修改后的语法树另存为新文件。使用 <code>slang::syntax::SyntaxPrinter::printFile()</code> 方法可以将 Verilog 代码输出到文件。</li>
 <li>创建了 <code><a class="el" href="classCellPrinter.html">CellPrinter</a></code> 类，继承自 <code>slang::syntax::SyntaxVisitor</code> 类。当访问到目标模块时，使用 <code>module.toString()</code> 方法也能将 Verilog 代码输出到文件，但发现输出结果中空行会被删除。</li>
-<li>实现了 <code><a class="el" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188">LibFile::supercell()</a></code> 方法，该方法可以根据输入的 <code>cell_names</code> 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。</li>
+<li>修改了 <code><a class="el" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188" title="Creates supercells based on standard cells in the library file.">LibFile::supercell()</a></code> 方法，该方法可以根据输入的 <code>cell_names</code> 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。</li>
 <li>优化了时钟引脚的处理方式，现在时钟引脚不再被视为 supercell 的输入引脚，而是仅记录为时序单元，并跳过存入 <code>input_pins</code> 集合的步骤。</li>
 <li>引入了 Doxygen 文档生成工具，用于可视化分析项目，并生成了 Doxygen HTML 文档和 LaTeX 参考手册。</li>
 <li>[ ] 尚未解决手册中文显示不正确的问题，可能需要自定义 LaTeX 头文件。</li>
@@ -357,9 +357,25 @@ Development Diary</h1>
 <h2><a class="anchor" id="autotoc_md32"></a>
 2025-03-27</h2>
 <ul>
-<li>误操作git分支，导致了一些修改丢失！</li>
-<li>LibFile::verilog方法先执行this-&gt;supercell()，然后读取map文件，提取cell映射关系到std::pair中，从lib_json_中提取出输入输出端口，送入ModuleRewriter类。</li>
-<li><a class="el" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd">LibFile::verilog</a> 目前能输出模块名和ANSI风格的端口声明。 </li>
+<li><b>重大失误！</b> 误操作 Git 分支，导致部分代码修改丢失。务必牢记：**及时提交代码！**</li>
+<li>实现了 <code><a class="el" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd">LibFile::verilog</a></code> 方法的核心流程：<ul>
+<li>首先调用 <code>this-&gt;supercell()</code> 生成超级单元。</li>
+<li>读取 <code>.map</code> 文件，提取单元映射关系到 <code>std::pair&lt;std::string, std::string&gt;</code> 中（原始单元名 -&gt; 超级单元名/模块名）。</li>
+<li>从 <code>lib_json_</code> 中提取单元的输入/输出端口信息。</li>
+<li>根据是否存在时钟引脚，确定 Verilog 模块中 instance 的生成数量（时序逻辑为 1，组合逻辑等于 chain length）。</li>
+<li>通过字符串操作生成 ANSI 风格的端口列表，并与模块名组合成完整的 <code>fullModuleText</code>。</li>
+<li>使用 <code>slang::syntax::SyntaxTree::fromText</code> 从 <code>fullModuleText</code> 生成语法树。</li>
+<li>将语法树传递给 <code><a class="el" href="classModuleRewriter.html">ModuleRewriter</a></code> 类，使用其 <code>transform</code> 方法遍历模块成员，并通过 <code>handle()</code> 方法进行处理。</li>
+<li>最后，使用 <code>slang::syntax::SyntaxPrinter::printFile(*tree)</code> 将处理后的语法树输出到文件。</li>
+</ul>
+</li>
+<li><code><a class="el" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd">LibFile::verilog</a></code> 目前能够正确输出模块名和 ANSI 风格的端口声明。</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md33"></a>
+2025-03-28</h2>
+<ul>
+<li>成功实现了在模块成员列表中插入新节点的功能。</li>
+<li>在 <code><a class="el" href="classModuleRewriter.html#aa57bf8f3d6692468013a52a0154f08e8">ModuleRewriter::handle</a>(const slang::syntax::ModuleDeclarationSyntax &amp;module)</code> 方法中，使用 <code>insertAtBack(module.members, newDataNode)</code> 函数，可以在模块成员的末尾插入链式单元所需的中间变量声明，例如 <code>wire OP_i;</code>。 </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -367,7 +383,7 @@ Development Diary</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Mar 27 2025 23:09:23 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Fri Mar 28 2025 11:07:38 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

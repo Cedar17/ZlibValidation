@@ -15,7 +15,7 @@ Collaboration diagram for Module\+Rewriter\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classModuleRewriter_a795e8de5f24b2a9831c85559c7579f15}{Module\+Rewriter}} (const std\+::vector$<$ std\+::string $>$ \&input\+Pins, const std\+::vector$<$ std\+::string $>$ \&output\+Pins, const std\+::pair$<$ std\+::string, std\+::string $>$ \&supercell\+\_\+entry, std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ logger)
+\mbox{\hyperlink{classModuleRewriter_a0fc85a14d1374ad12e24eefc3802357b}{Module\+Rewriter}} (const std\+::vector$<$ std\+::string $>$ \&input\+Pins, const std\+::vector$<$ std\+::string $>$ \&output\+Pins, const std\+::pair$<$ std\+::string, std\+::string $>$ \&supercell\+\_\+entry, int instance\+\_\+count, std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ logger)
 \item 
 void \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{handle}} (const slang\+::syntax\+::\+Syntax\+Node \&node)
 \item 
@@ -38,6 +38,8 @@ const std\+::string \mbox{\hyperlink{classModuleRewriter_aacc88ad73dec9641178c07
 const std\+::string \mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{module\+Name\+\_\+}}
 \item 
 int \mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{depth\+\_\+}}
+\item 
+int \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\+\_\+count\+\_\+}}
 \end{DoxyCompactItemize}
 
 
@@ -49,11 +51,11 @@ Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00057}{57}} of f
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classModuleRewriter_a795e8de5f24b2a9831c85559c7579f15}\label{classModuleRewriter_a795e8de5f24b2a9831c85559c7579f15}} 
+\mbox{\Hypertarget{classModuleRewriter_a0fc85a14d1374ad12e24eefc3802357b}\label{classModuleRewriter_a0fc85a14d1374ad12e24eefc3802357b}} 
 \index{ModuleRewriter@{ModuleRewriter}!ModuleRewriter@{ModuleRewriter}}
 \index{ModuleRewriter@{ModuleRewriter}!ModuleRewriter@{ModuleRewriter}}
 \doxysubsubsection{\texorpdfstring{ModuleRewriter()}{ModuleRewriter()}}
-{\footnotesize\ttfamily Module\+Rewriter\+::\+Module\+Rewriter (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{input\+Pins,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{output\+Pins,  }\item[{const std\+::pair$<$ std\+::string, std\+::string $>$ \&}]{supercell\+\_\+entry,  }\item[{std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$}]{logger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+{\footnotesize\ttfamily Module\+Rewriter\+::\+Module\+Rewriter (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{input\+Pins,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{output\+Pins,  }\item[{const std\+::pair$<$ std\+::string, std\+::string $>$ \&}]{supercell\+\_\+entry,  }\item[{int}]{instance\+\_\+count,  }\item[{std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$}]{logger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
 
 
 
@@ -93,7 +95,7 @@ Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00387}{387}} of 
 
 
 
-Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
 
 \mbox{\Hypertarget{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}\label{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}} 
 \index{ModuleRewriter@{ModuleRewriter}!depth\_@{depth\_}}
@@ -103,7 +105,7 @@ Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00072}{72}} of f
 
 
 
-Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
 
 \mbox{\Hypertarget{classModuleRewriter_a2f805c22fb4301d84cf005149b0a28e2}\label{classModuleRewriter_a2f805c22fb4301d84cf005149b0a28e2}} 
 \index{ModuleRewriter@{ModuleRewriter}!inputPins\_@{inputPins\_}}
@@ -113,7 +115,17 @@ Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00074}{74}} of f
 
 
 
-Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+\mbox{\Hypertarget{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}\label{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}} 
+\index{ModuleRewriter@{ModuleRewriter}!instance\_count\_@{instance\_count\_}}
+\index{instance\_count\_@{instance\_count\_}!ModuleRewriter@{ModuleRewriter}}
+\doxysubsubsection{\texorpdfstring{instance\_count\_}{instance\_count\_}}
+{\footnotesize\ttfamily int Module\+Rewriter\+::instance\+\_\+count\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00076}{76}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
 
 \mbox{\Hypertarget{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}\label{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}} 
 \index{ModuleRewriter@{ModuleRewriter}!logger\_@{logger\_}}
@@ -123,7 +135,7 @@ Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00070}{70}} of f
 
 
 
-Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00066}{66}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
 
 \mbox{\Hypertarget{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}\label{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}} 
 \index{ModuleRewriter@{ModuleRewriter}!moduleName\_@{moduleName\_}}
@@ -133,7 +145,7 @@ Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00065}{65}} of f
 
 
 
-Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00073}{73}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00074}{74}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
 
 \mbox{\Hypertarget{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}\label{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}} 
 \index{ModuleRewriter@{ModuleRewriter}!outputPins\_@{outputPins\_}}
@@ -143,7 +155,7 @@ Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00073}{73}} of f
 
 
 
-Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
 
 
 
