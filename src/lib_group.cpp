@@ -4,7 +4,7 @@ LibGroup::LibGroup(si2drGroupIdT group, si2drErrorT &err) : group_(group), err_(
 
 LibGroup::~LibGroup() {}
 
-std::string LibGroup::getName() { 
+std::string LibGroup::getName() {
   si2drNamesIdT names = si2drGroupGetNames(group_, &err_);
   si2drStringT name = si2drIterNextName(names, &err_);
   si2drIterQuit(names, &err_);

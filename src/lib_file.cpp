@@ -11,7 +11,20 @@
 #include "iterators.hpp"
 #include "json_utils.hpp"
 #include "lib_file.hpp"
+#include "verilog_utils.hpp"
 
+/**
+ * @brief Constructs a LibFile object with specified file path and logger name
+ *
+ * This constructor initializes a LibFile object with the given file path and creates
+ * a logger with the specified name. It sets up:
+ * - Two logging sinks: a colored console sink and a file sink
+ * - File path information including filename, basename, and a corresponding JSON filename
+ * - Log levels (info for console, debug for file)
+ *
+ * @param filepath The path to the file to be processed
+ * @param loggername The name for the logger and the log file
+ */
 LibFile::LibFile(const std::string &filepath, const std::string &loggername)
     : filepath_(filepath), loggername_(loggername) {
   filename_ = filepath_.string();
@@ -95,21 +108,24 @@ void LibFile::read() {
 }
 
 /**
- * @brief Parses the library file and extracts relevant information.
+ * @brief Parses the Liberty file and extracts library information into a JSON structure.
  *
- * This function performs the following tasks:
- * - Logs the start of the parsing process.
- * - Iterates through the top-level groups in the library file.
- * - Extracts and logs the library name.
- * - Iterates through the second-level groups within each top-level group.
- * - Handles cells by generating JSON representations and storing them.
- * - Handles operating conditions by extracting PVT (Process, Voltage, Temperature) attributes and
- * storing them.
+ * This method handles the parsing of a Liberty file by:
+ * 1. Initializing the SI2 parser interface error handler
+ * 2. Reading the Liberty file contents
+ * 3. Extracting the library name
+ * 4. Processing second-level groups including:
+ *    - Cell definitions, which are added to the JSON structure
+ *    - Operating conditions, extracting PVT (Process, Voltage, Temperature) values
  *
- * The extracted information is stored in the `lib_json_` member variable.
+ * The parsed data is stored in the lib_json_ member variable, with the following structure:
+ *   - "library_name": Name of the library
+ *   - "cells": Array of cell definitions
+ *   - "process": Process value
+ *   - "voltage": Voltage value (rounded to 2 decimal places)
+ *   - "temperature": Temperature value
  *
- * Logging is performed at various levels (info, warn, debug) to provide detailed information about
- * the parsing process.
+ * @note This method creates local scopes to ensure proper cleanup of SI2 iterators.
  */
 void LibFile::parse() {
   si2drPIInit(&err_); // Initialize private error handler
@@ -160,7 +176,8 @@ void LibFile::parse() {
               lib_json_["process"] = process_;
             } else if (lib_attr.getName() == "voltage") {
               voltage_ = lib_attr.getFloat();
-              lib_json_["voltage"] = voltage_;
+              // Round to 2 decimal places to avoid floating-point precision issues
+              lib_json_["voltage"] = std::round(voltage_ * 100) / 100.0;
             } else if (lib_attr.getName() == "temperature") {
               temperature_ = lib_attr.getInt();
               lib_json_["temperature"] = temperature_;
@@ -179,30 +196,25 @@ void LibFile::parse() {
 void LibFile::modify() { logger_->info("Modifying the file..."); }
 
 /**
- * @brief Checks the monotonicity of timing arc values in a given cell.
+ * @brief Checks if the values in a timing arc are monotonically increasing.
  *
- * This function verifies if the timing arc values in the provided JSON objects are monotonic.
- * It logs detailed information about the cell, pin, and related pin being checked, and reports
- * any non-monotonic values found.
+ * This function examines the values in the specified timing arc to ensure they are monotonically
+ * increasing. It checks monotonicity in two dimensions:
+ * 1. Across rows (by output load capacitance)
+ * 2. Across columns (by input slew, only if is_slew is true)
  *
- * @param cell The JSON object representing the cell.
- * @param pin The JSON object representing the pin.
- * @param arc The JSON object representing the timing arc.
- * @param timing_arc_name The name of the timing arc to check.
- * @param is_slew Flag indicating whether to check for input slew monotonicity.
- * @return true if the timing arc values are monotonic, false otherwise.
+ * The function logs detailed information about any non-monotonic values found, including
+ * cell name, pin names, and conditional statements (when clause) if present.
  *
- * The function performs the following steps:
- * 1. Logs the cell, pin, related pin, and timing arc name being checked.
- * 2. Assumes the values are monotonic initially.
- * 3. Checks if the timing arc contains the specified name and if it has a "values" array.
- * 4. Generates a matrix of values from the JSON array.
- * 5. Validates the format of the "values" array and logs errors for invalid formats.
- * 6. Checks for non-numeric values in the "values" array and logs warnings for such values.
- * 7. Checks the monotonic incrementality of rows in the matrix.
- * 8. If is_slew is true, checks the monotonic incrementality of columns in the matrix.
- * 9. Logs warnings for non-monotonic values, including the "when" key if present.
- * 10. Returns the monotonicity status.
+ * @param cell The JSON object representing the cell being checked
+ * @param pin The JSON object representing the pin being checked
+ * @param arc The JSON object representing the timing arc being checked
+ * @param timing_arc_name The name of the timing arc to check (e.g., "cell_rise", "cell_fall")
+ * @param is_slew Boolean flag indicating whether to check monotonicity across input slew values
+ *
+ * @return true if all values in the timing arc are monotonic, false otherwise
+ *
+ * @throw None, but logs errors or warnings for invalid data formats or non-monotonic values
  */
 bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, const json &arc,
                                          const std::string &timing_arc_name, const bool is_slew) {
@@ -305,6 +317,26 @@ bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, cons
   return is_monotonic;
 }
 
+/**
+ * @brief Validates that lookup tables are monotonically increasing with respect to the output load.
+ *
+ * This function checks the following timing data in the current library to ensure monotonicity:
+ * - cell_rise and retaining_rise
+ * - cell_fall and retaining_fall
+ * - rise_transition and retain_rise_slew
+ * - fall_transition and retain_fall_slew
+ * - min_pulse_width constraints (rise_constraint, fall_constraint)
+ *
+ * The function first checks if a parsed JSON representation exists. If not, it parses the Liberty
+ * file and creates the JSON file. It then evaluates each timing arc in all cells and reports
+ * the pass/fail status at the end.
+ *
+ * @param is_slew Boolean flag indicating whether to check slew values rather than delay values
+ *
+ * @details The function outputs:
+ *          - Number of cells that passed/failed the monotonicity check
+ *          - List of cells that failed the check (if any)
+ */
 void LibFile::mono(const bool is_slew) {
   /*
    * Use this command to check the following data in the current library to ensure
@@ -414,12 +446,28 @@ void LibFile::mono(const bool is_slew) {
   }
 }
 
-void LibFile::supercell(const int chain_length) {
+/**
+ * @brief Creates supercells based on standard cells in the library file.
+ * 
+ * This method creates supercells by combining standard cells in chains.
+ * For each input-output pin pair of a cell, it creates a supercell entry
+ * with naming format: <cellname>__X<chain_length>__<input_pin>__<output_pin>.
+ * The results are written to a .map file.
+ * 
+ * For sequential cells (with clock pins), the chain length is always set to 1
+ * regardless of the requested chain length.
+ * 
+ * @param chain_length The length of the chain for combinational cells
+ * @param cell_names Vector of specific cell names to process. If empty, all cells will be processed.
+ * 
+ * @note Before creating supercells, this method checks for the existence of
+ *       a JSON representation of the Liberty file and parses it if not found.
+ * @note The method will report any requested cells that were not found in the library.
+ */
+void LibFile::supercell(const int chain_length, const std::vector<std::string> &cell_names) {
   /*
    * Supercells are named as follows:
    *   <cellname>__X<chain_length>__<input_pin>__<output_pin>
-   * The netlists are stored in the directory dir/netlists.
-   * The input files for timing analysis are stored in dir/timer
    */
   logger_->info("Creating supercells for '{}'", filename_);
 
@@ -444,38 +492,237 @@ void LibFile::supercell(const int chain_length) {
     in.close();
   }
 
-  // write to <libname>.map file
+  // write to .map file
   std::ofstream out(basename_ + ".map");
   if (!out.is_open()) {
     logger_->error("Could not open file '{}' for writing", basename_ + ".map");
     return;
   }
-  // TODO: check combinational or sequential cells
+  // if celll_names is empty, create supercells for all cells
+  // else create supercells for only the specified cells
+
+  // Check if we're processing specific cells or all cells
+  bool process_all_cells = cell_names.empty();
+
+  if (process_all_cells) {
+    logger_->info("Creating supercells for ALL cells in '{}'", filename_);
+  } else {
+    logger_->info("Creating supercells for {} specified cells in '{}'", cell_names.size(), filename_);
+  }
+
+  // Create a set for faster lookups if we have specific cell names
+  std::unordered_set<std::string> cell_set;
+  std::unordered_set<std::string> found_cells;
+  if (!process_all_cells) {
+    cell_set.insert(cell_names.begin(), cell_names.end());
+  }
+
   for (const auto &cell : lib_json_["cells"]) {
+    bool is_sequential = false;
     std::string cell_name = cell["cell_name"].get<std::string>();
+
+    // Skip cells not in the specified list
+    if (!process_all_cells && cell_set.find(cell_name) == cell_set.end()) {
+      continue;
+    }
+
+    // Mark this cell as found
+    if (!process_all_cells) {
+      found_cells.insert(cell_name);
+    }
+
     logger_->debug("Creating supercells for cell: '{}'", cell_name);
 
-    std::unordered_set<std::string> output_pins;
-    std::unordered_set<std::string> input_pins;
+    std::vector<std::string> output_pins;
+    std::vector<std::string> input_pins;
+    // Extract input and output pins
     if (cell.contains("output_pins")) {
       for (const auto &pin : cell["output_pins"]) {
-        output_pins.insert(pin["pin_name"].get<std::string>());
+        output_pins.push_back(pin["pin_name"].get<std::string>());
       }
     }
     if (cell.contains("input_pins")) {
       for (const auto &pin : cell["input_pins"]) {
-        input_pins.insert(pin["pin_name"].get<std::string>());
+        if (pin.contains("clock")) {
+          is_sequential = true;
+          // clock pin not use for supercell
+          continue;
+        }
+        input_pins.push_back(pin["pin_name"].get<std::string>());
       }
     }
+
     // create supercells for all combinations of input and output pins
     for (const auto &output_pin : output_pins) {
       for (const auto &input_pin : input_pins) {
-        std::string supercell_name =
-            cell_name + "__X" + std::to_string(chain_length) + "__" + input_pin + "__" + output_pin;
-        out << cell_name << " " << supercell_name << std::endl;
+        if (is_sequential) {
+          const int chain_len = 1;
+          std::string supercell_name =
+              cell_name + "__X" + std::to_string(chain_len) + "__" + input_pin + "__" + output_pin;
+          out << cell_name << " " << supercell_name << std::endl;
+        } else {
+          std::string supercell_name =
+              cell_name + "__X" + std::to_string(chain_length) + "__" + input_pin + "__" + output_pin;
+          out << cell_name << " " << supercell_name << std::endl;
+        }
       }
     }
   }
+
+  // Check for cells that were specified but not found
+  if (!process_all_cells) {
+    std::vector<std::string> not_found_cells;
+    for (const auto &requested_cell : cell_names) {
+      if (found_cells.find(requested_cell) == found_cells.end()) {
+        not_found_cells.push_back(requested_cell);
+      }
+    }
+
+    // Output warning for cells that weren't found
+    if (!not_found_cells.empty()) {
+      std::string missing_cells = not_found_cells[0];
+      for (size_t i = 1; i < not_found_cells.size(); ++i) {
+        missing_cells += ", " + not_found_cells[i];
+      }
+      logger_->warn("{} specified cell{} not found in the library: {}", not_found_cells.size(),
+                    not_found_cells.size() > 1 ? "s were" : " was", missing_cells);
+    }
+  }
+
   out.close();
   logger_->info("Supercell creation complete in '{}'", basename_ + ".map");
+}
+
+void LibFile::verilog(const int chain_length, const std::vector<std::string> &cell_names) {
+  logger_->info("Creating Verilog for '{}'", filename_);
+
+  this->supercell(chain_length, cell_names);
+
+  // write to .v file
+  std::ofstream out(basename_ + ".v");
+  if (!out.is_open()) {
+    logger_->error("Could not open file '{}' for writing", basename_ + ".v");
+    return;
+  }
+
+  // Read the .map file into a vector to preserve all entries and their order
+  std::vector<std::pair<std::string, std::string>> supercell_entries;
+  std::ifstream in(basename_ + ".map");
+  if (!in.is_open()) {
+    logger_->error("Could not open file '{}' for reading", basename_ + ".map");
+    return;
+  }
+
+  std::string line;
+  while (std::getline(in, line)) {
+    std::istringstream iss(line);
+    std::string cell_name, supercell_name;
+    if (!(iss >> cell_name >> supercell_name)) {
+      logger_->warn("Invalid line format in map file: '{}'", line);
+      continue;
+    }
+    supercell_entries.push_back({cell_name, supercell_name});
+  }
+  in.close();
+  logger_->info("Read {} supercells from '{}'", supercell_entries.size(), basename_ + ".map");
+
+  // Generate verilog module for each supercell
+  for (const auto &supercell_entry : supercell_entries) {
+    // Check if the cell is sequential
+    bool is_sequential = false;
+    // Count the number of instances will be created in verilog
+    int instance_count = 0;
+    // Get original cell name from pair
+    const std::string &cell_name = supercell_entry.first;
+    // Get supercell name(as well as module name) from pair
+    const std::string &module_name = supercell_entry.second;
+
+    logger_->info("Creating Module: '{}' from Cell '{}", module_name, cell_name);
+
+    // Get the cell JSON object
+    json cell_json;
+    for (const auto &cell : lib_json_["cells"]) {
+      if (cell["cell_name"].get<std::string>() == cell_name) {
+        cell_json = cell;
+        break;
+      }
+    }
+
+    // Get input/output pins from the cell JSON object
+    std::vector<std::string> input_pins;
+    std::vector<std::string> output_pins;
+    std::stringstream input_pins_ss;
+    std::stringstream output_pins_ss;
+    if (cell_json.contains("input_pins")) {
+      for (const auto &pin : cell_json["input_pins"]) {
+        if (pin.contains("clock")) {
+          is_sequential = true;
+        }
+        input_pins.push_back(pin["pin_name"].get<std::string>());
+        input_pins_ss << pin["pin_name"].get<std::string>() << ", ";
+      }
+    }
+    if (cell_json.contains("output_pins")) {
+      for (const auto &pin : cell_json["output_pins"]) {
+        output_pins.push_back(pin["pin_name"].get<std::string>());
+        output_pins_ss << pin["pin_name"].get<std::string>() << ", ";
+      }
+    }
+    logger_->debug("Input pins set: {}", input_pins_ss.str());
+    logger_->debug("Output pins set: {}", output_pins_ss.str());
+
+    // Sequential cells will have only one instance
+    // Combinational cells will have instances equal to chain length
+    if (is_sequential) {
+      instance_count = 1;
+    } else {
+      instance_count = chain_length;
+    }
+
+    // Create ANSI port list
+    std::string port_list_text = "(";
+    // Add input ports
+    bool isFirstPort = true;
+    for (const auto &input_pin : input_pins) {
+      if (!isFirstPort) {
+        port_list_text += ", ";
+      }
+      port_list_text += "input " + input_pin;
+      isFirstPort = false;
+    }
+    // Add output ports
+    for (const auto &output_pin : output_pins) {
+      if (!isFirstPort) {
+        port_list_text += ", ";
+      }
+      port_list_text += "output " + output_pin;
+      isFirstPort = false;
+    }
+    port_list_text += ")";
+    logger_->debug("ANSI Port list: {}", port_list_text);
+
+    // Creat full module header text
+    std::string fullModuleText = "module " + module_name + port_list_text + ";\nendmodule";
+    logger_->debug("Full module text: {}", fullModuleText);
+
+    // Generate the syntax tree for the module using slang library
+    auto tree = slang::syntax::SyntaxTree::fromText(fullModuleText);
+    if (tree) {
+      // Add ports to the syntax tree
+      ModuleRewriter rewriter(input_pins, output_pins, supercell_entry, instance_count, logger_);
+
+      tree = rewriter.transform(tree);
+      rewriter.visit(tree->root());
+
+      // Output the transformed syntax tree
+      out << "`timescale 1ns/1ps" << std::endl;
+      out << slang::syntax::SyntaxPrinter::printFile(*tree) << std::endl << std::endl;
+    } else {
+      logger_->error("Failed to create syntax tree for module '{}'", module_name);
+      continue;
+    }
+  }
+
+  out.close();
+  logger_->info("Verilog creation complete in '{}'", basename_ + ".v");
 }

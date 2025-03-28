@@ -1,0 +1,63 @@
+name: Deploy Documentation to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 允许 action 写入仓库内容
+    env:
+      TZ: Asia/Shanghai # 设置时区为东八区（上海）
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Timezone
+        run: |
+          echo "Setting timezone to ${{ env.TZ }}"
+          sudo timedatectl set-timezone ${{ env.TZ }}
+          date # 输出当前时间以验证时区是否设置成功
+
+      - name: Set up Doxygen
+        uses: ssciwr/doxygen-install@v1 # 推荐使用这个 action 来安装 Doxygen
+        with:
+          version: '1.9.6' # 替换为你需要的 Doxygen 版本
+
+      - name: Set up Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
+  
+      - name: Generate Documentation
+        run: |
+          doxygen Doxyfile # 在根目录执行 Doxygen 命令，输出到 doc_doxygen 目录
+          ls -l
+          pwd
+          ls -l
+
+      - name: Install TeX Live and Make it
+        uses: xu-cheng/texlive-action@v2
+        with:
+          run: |
+            pwd
+            ls -l
+            which xelatex
+            cd ./doc_doxygen/latex
+            pwd
+            which xelatex
+            which make
+            make
+            pwd
+            ls -l | grep refman
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: doc_doxygen
+          clean: false
+

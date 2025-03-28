@@ -10,7 +10,8 @@ bool GroupsIterator::end() { return si2drObjectIsNull(group_, &err_); }
 
 LibGroup GroupsIterator::get() { return LibGroup(group_, err_); }
 
-AttributesIterator::AttributesIterator(si2drAttrsIdT attrs, si2drErrorT &err) : attrs_(attrs), err_(err) {
+AttributesIterator::AttributesIterator(si2drAttrsIdT attrs, si2drErrorT &err)
+    : attrs_(attrs), err_(err) {
   attr_ = si2drIterNextAttr(attrs_, &err_);
 }
 AttributesIterator::~AttributesIterator() { si2drIterQuit(attrs_, &err_); }

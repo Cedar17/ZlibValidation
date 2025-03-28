@@ -13,19 +13,22 @@ null。
 */
 
 /**
- * @brief Parses a comma-separated string into a vector of doubles.
+ * @brief Parses a string representation of a vector of doubles into a vector of doubles.
  *
- * This function takes a string containing comma-separated values and converts
- * it into a vector of doubles. Each value in the string is expected to be a
- * valid representation of a double.
+ * This function takes a string containing comma-separated numbers, cleans it by removing
+ * backslashes and newline characters, and then converts each comma-separated value into
+ * a double that is added to the resulting vector.
  *
- * @param str The input string containing comma-separated double values.
- * @return A vector of doubles parsed from the input string.
+ * @param str The input string to be parsed, containing comma-separated numbers
+ * @return std::vector<double> A vector of doubles parsed from the input string
+ *
+ * @throws std::invalid_argument If the string contains values that cannot be converted to double
+ * @throws std::out_of_range If the string contains values that are out of range for double
  */
 std::vector<double> parseStringToVector(const std::string &str) {
   std::vector<double> result;
   std::string cleaned_str;
-  
+
   // Remove backslashes and newline characters
   for (char c : str) {
     if (c != '\\' && c != '\n') {
@@ -42,17 +45,19 @@ std::vector<double> parseStringToVector(const std::string &str) {
 }
 
 /**
- * @brief Generates a JSON object representing a lookup table (LUT) from a given library group.
+ * @brief Generates a JSON object representation of a look-up table (LUT) from a LibGroup object.
  *
- * This function iterates over the attributes of the provided library group and processes
- * them to generate a JSON object. It specifically handles attributes named "index_1",
- * "index_2", and "values", converting their string representations into vectors and
- * adding them to the JSON object. If an attribute with an unknown name is encountered,
- * a warning is logged.
+ * This function iterates through the attributes of the provided LibGroup object representing
+ * a LUT and converts them into a JSON structure. It specifically handles the following attributes:
+ * - "index_1": Converted to a vector and stored in the JSON
+ * - "index_2": Converted to a vector and stored in the JSON
+ * - "values": Each value is parsed into a vector and added to an array in the JSON
  *
- * @param lib_lut_group The library group containing the LUT attributes.
- * @param err Reference to an error variable to capture any errors during attribute iteration.
- * @return A JSON object representing the LUT.
+ * Any other attributes encountered will trigger a warning message.
+ *
+ * @param lib_lut_group The LibGroup object containing the LUT data to be converted
+ * @param err Reference to an si2drErrorT object to track any errors during processing
+ * @return json A JSON object representing the LUT data with keys for "index_1", "index_2", and "values"
  */
 json generateLutJson(LibGroup &lib_lut_group, si2drErrorT &err) {
   json lut_json;
@@ -85,6 +90,19 @@ json generateLutJson(LibGroup &lib_lut_group, si2drErrorT &err) {
   return lut_json;
 }
 
+/**
+ * @brief Generates a JSON representation of timing information from a library timing group.
+ * 
+ * This function extracts timing attributes and sub-groups from a Liberty timing group
+ * and organizes them into a JSON object. It processes standard timing attributes like
+ * 'related_pin', 'timing_type', 'timing_sense', and 'when', as well as timing tables
+ * such as 'cell_fall', 'cell_rise', 'fall_transition', 'rise_transition', 
+ * 'fall_constraint', and 'rise_constraint'.
+ * 
+ * @param lib_timing_group The Liberty timing group to process
+ * @param err Reference to an si2drErrorT object for error reporting
+ * @return json A JSON object containing the extracted timing information
+ */
 json generateTimingJson(LibGroup &lib_timing_group, si2drErrorT &err) {
   json timing_json;
 
@@ -117,6 +135,22 @@ json generateTimingJson(LibGroup &lib_timing_group, si2drErrorT &err) {
   return timing_json;
 }
 
+/**
+ * @brief Converts a Liberty power group into a JSON representation
+ *
+ * This function processes a Liberty power group and converts its attributes and subgroups
+ * into a JSON object. It handles attributes like "when", "related_pin", and "related_pg_pin",
+ * as well as "rise_power" and "fall_power" subgroups.
+ *
+ * @param lib_power_group The Liberty power group to convert
+ * @param err Reference to an si2drErrorT object for error handling
+ * @return json A JSON object representing the power group data
+ *
+ * The function:
+ * - Extracts string attributes (when, related_pin, related_pg_pin)
+ * - Processes rise_power and fall_power subgroups by converting them to LUT JSON format
+ * - Logs warnings for unknown power subgroup types
+ */
 json generatePowerJson(LibGroup &lib_power_group, si2drErrorT &err) {
   json power_json;
 
@@ -149,6 +183,26 @@ json generatePowerJson(LibGroup &lib_power_group, si2drErrorT &err) {
   return power_json;
 }
 
+/**
+ * @brief Generates a JSON representation of a Liberty pin group
+ * 
+ * This function traverses a Liberty pin group, extracts relevant attributes and sub-groups,
+ * and converts them into a JSON object. It also determines the pin's direction.
+ * 
+ * Processes the following pin attributes:
+ * - direction
+ * - max_transition, capacitance, rise_capacitance, fall_capacitance, max_capacitance (float types)
+ * - function, power_down_function, related_ground_pin, related_power_pin, three_state (string types)
+ * - clock (boolean type)
+ * 
+ * Handles the following sub-groups:
+ * - internal_power: Converted using generatePowerJson()
+ * - timing: Converted using generateTimingJson()
+ * 
+ * @param lib_pin_group The Liberty pin group to process
+ * @param err Reference to an error object for tracking Liberty API errors
+ * @return A pair containing the pin direction (string) and the JSON representation of the pin
+ */
 std::pair<std::string, json> generatePinJson(LibGroup &lib_pin_group, si2drErrorT &err) {
   json pin_json;
   std::string direction;
@@ -195,6 +249,26 @@ std::pair<std::string, json> generatePinJson(LibGroup &lib_pin_group, si2drError
   return std::make_pair(direction, pin_json);
 }
 
+/**
+ * @brief Generates a JSON representation of a cell from a LibGroup object
+ * 
+ * This function processes a LibGroup representing a cell and converts it into a JSON object.
+ * It extracts the cell name and processes specific attributes such as area, cell_leakage_power,
+ * and cell_footprint. It also processes pins within the cell by categorizing them based on 
+ * their direction (input, output, internal, inout).
+ * 
+ * @param lib_cell_group The LibGroup object representing the cell
+ * @param err Reference to a si2drErrorT object for error handling
+ * @return json A JSON object containing the cell's information with the following structure:
+ *         - "cell_name": string - name of the cell
+ *         - "area": float (optional) - cell area if present
+ *         - "cell_leakage_power": float (optional) - cell leakage power if present
+ *         - "cell_footprint": string (optional) - cell footprint if present
+ *         - "input_pins": array - list of input pins
+ *         - "output_pins": array - list of output pins
+ *         - "internal_pins": array - list of internal pins
+ *         - "inout_pins": array - list of inout pins
+ */
 json generateCellJson(LibGroup &lib_cell_group, si2drErrorT &err) {
   json cell_json;
   cell_json["cell_name"] = lib_cell_group.getName();

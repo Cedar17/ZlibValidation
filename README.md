@@ -23,6 +23,7 @@ Subcommands:
   clear                       Clear the log, JSON, map, markdown files in this directory
   verilog                     Generate Verilog file for given Liberty file
   spice                       Generate SPICE file for given Liberty file
+  func                        Check functional equivalence of two Liberty files or Verilog files
 ```
 
 ## Development Diary
@@ -59,7 +60,7 @@ Subcommands:
 
 - 类的头文件改为`hpp`后缀，修改了`CMakeLists.txt`中的文件收集规则，CMake编译时间戳更新。
 - 为`LibFile`类添加了输出同名json格式文件的方法`LibFile::writeJsonToFile`，目前能输出PVT、cell_name、cell_footprint、cell_area信息。
-- [ ] voltage 浮点数误差未解决。
+- [x] voltage 浮点数误差未解决。
 
 ### 2025-02-14
 
@@ -189,3 +190,55 @@ Subcommands:
 - `checkTimingArcMonotonicity` 函数日志区分有无 when 信息，输出不同日志。
 - `checkTimingArcMonotonicity` 核心比较功能取消了等于的情况，相等情况默认为通过。
 - `checkTimingArcMonotonicity` 核心比较功能增加了判断 `related_pin` 是否等于当前 pin，不等于则跳过。最终改为：如果矩阵中当前的值小于前一个值，并且当前引脚不是相关引脚，或者当前值和前一个值都为零，那么就认为这些值不是单调递增的。
+
+### 2025-03-19
+
+- 完善supercell方法，如果有有时钟信号引脚，链式长度被设为1，再生成超级单元。
+- 解决 voltage 浮点数误差问题，std::round(voltage_ * 100) / 100.0 保留两位小数。
+
+### 2025-03-21
+
+- 新增 func 子命令，用于检查库或者Verilog文件的逻辑等价性。
+
+### 2025-03-24
+
+- 调研了 C++ 操作 Verilog 相关的库，找到了一个实用的 Verilog 库：[slang](https://github.com/MikePopoloski/slang)，它可以解析出抽象语法树 (AST)。已修改 CMakeLists 文件，将 slang 集成到项目中，目前正在研究其 API。
+
+### 2025-03-25
+
+- 新增 `verilog_utils.cpp` 和 `verilog_utils.hpp` 文件，并创建了 `VerilogVisitor` 类，用于自定义遍历 Verilog AST。
+- 验证了 slang 对不同类型逻辑单元的解析能力：
+  - 简单组合逻辑（如 `AND2D0`）、复杂时序逻辑（如 `CMPE42D1`）和基本时序逻辑（如 `DFQD1`）均能被正确解析。
+  - 用户自定义原语 (UDP)，例如 `tsmc_dff`，会被错误地识别为模块实例化，并产生 "Invalid instance declaration" 警告。
+  - 成功提取了模块名、端口方向（`input`、`output`）及名称。
+  - 能够解析命名端口连接的层次化实例化，并获取模块名、实例名称和端口映射关系。
+  - 能够解析门级原语实例化，并获取门类型、实例名称、输出端口和输入端口。
+
+### 2025-03-26
+
+- 进一步完善了对 UDP（如 `tsmc_dff`）端口映射关系的解析，但其内部 Entry 尚未处理。
+- 尝试了通过继承 `slang::syntax::SyntaxRewriter` 类创建自定义类 `CellExtractor`，实现了只保留目标模块、删除其他模块，并将修改后的语法树另存为新文件。使用 `slang::syntax::SyntaxPrinter::printFile()` 方法可以将 Verilog 代码输出到文件。
+- 创建了 `CellPrinter` 类，继承自 `slang::syntax::SyntaxVisitor` 类。当访问到目标模块时，使用 `module.toString()` 方法也能将 Verilog 代码输出到文件，但发现输出结果中空行会被删除。
+- 修改了 `LibFile::supercell()` 方法，该方法可以根据输入的 `cell_names` 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。
+- 优化了时钟引脚的处理方式，现在时钟引脚不再被视为 supercell 的输入引脚，而是仅记录为时序单元，并跳过存入 `input_pins` 集合的步骤。
+- 引入了 Doxygen 文档生成工具，用于可视化分析项目，并生成了 Doxygen HTML 文档和 LaTeX 参考手册。
+- [ ] 尚未解决手册中文显示不正确的问题，可能需要自定义 LaTeX 头文件。
+
+### 2025-03-27
+
+- **重大失误！** 误操作 Git 分支，导致部分代码修改丢失。务必牢记：**及时提交代码！**
+- 实现了 `LibFile::verilog` 方法的核心流程：
+  - 首先调用 `this->supercell()` 生成超级单元。
+  - 读取 `.map` 文件，提取单元映射关系到 `std::pair<std::string, std::string>` 中（原始单元名 -> 超级单元名/模块名）。
+  - 从 `lib_json_` 中提取单元的输入/输出端口信息。
+  - 根据是否存在时钟引脚，确定 Verilog 模块中 instance 的生成数量（时序逻辑为 1，组合逻辑等于 chain length）。
+  - 通过字符串操作生成 ANSI 风格的端口列表，并与模块名组合成完整的 `fullModuleText`。
+  - 使用 `slang::syntax::SyntaxTree::fromText` 从 `fullModuleText` 生成语法树。
+  - 将语法树传递给 `ModuleRewriter` 类，使用其 `transform` 方法遍历模块成员，并通过 `handle()` 方法进行处理。
+  - 最后，使用 `slang::syntax::SyntaxPrinter::printFile(*tree)` 将处理后的语法树输出到文件。
+- `LibFile::verilog` 目前能够正确输出模块名和 ANSI 风格的端口声明。
+
+### 2025-03-28
+
+- 成功实现了在模块成员列表中插入新节点的功能。
+- 在 `ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module)` 方法中，使用 `insertAtBack(module.members, newDataNode)` 函数，可以在模块成员的末尾插入链式单元所需的中间变量声明，例如 `wire OP_i;`。
