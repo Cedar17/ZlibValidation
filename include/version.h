@@ -9,4 +9,4 @@
 #define APP_VERSION       "0.1.0"
 #define APP_AUTHOR        "Song Zixuan"
 #define APP_CONTACT       "cedar@zju.edu.cn"
-#define BUILD_TIMESTAMP   "2025-03-28 12:02:42"
+#define BUILD_TIMESTAMP   "2025-03-29 00:15:37"

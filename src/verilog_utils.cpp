@@ -384,6 +384,15 @@ void CellPrinter::handle(const slang::syntax::ModuleDeclarationSyntax &module) {
   visitDefault(module);
 }
 
+/**
+ * @brief Processes a syntax node in the module's AST.
+ * 
+ * This method is called for each syntax node during the traversal of the AST.
+ * It logs debug information about the current node and continues processing 
+ * its child nodes by recursively calling the appropriate visit methods.
+ * 
+ * @param node The syntax node to process
+ */
 void ModuleRewriter::handle(const slang::syntax::SyntaxNode &node) {
   std::string indent(depth_ * 2, ' ');
   logger_->debug("{}Node: {}", indent, slang::syntax::toString(node.kind));
@@ -395,7 +404,7 @@ void ModuleRewriter::handle(const slang::syntax::SyntaxNode &node) {
 }
 
 void ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module) {
-  logger_->info("Processing module: {}", module.header->name.valueText());
+  logger_->debug("Processing module: {}", module.header->name.valueText());
 
   // Create intermediate wires for connections between instances
   for (int i = 0; i < instance_count_ - 1; i++) {
@@ -404,10 +413,10 @@ void ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module
     logger_->debug("Added intermediate wire: {}", newNetNode.toString());
   }
 
-  // Get critical input port & output port from 
+  // Get critical input port & output port from
   // the module name pattern: CELLNAME__X#__CRITICALPORT__OUTPUTPORT
   std::string criticalInputPort = "";
-  std::string outputPort = "";
+  std::string criticalOutputPort = "";
   if (!this->moduleName_.empty()) {
     size_t firstSep = this->moduleName_.find("__");
     if (firstSep != std::string::npos) {
@@ -416,9 +425,9 @@ void ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module
         size_t thirdSep = this->moduleName_.find("__", secondSep + 2);
         if (thirdSep != std::string::npos) {
           criticalInputPort = this->moduleName_.substr(secondSep + 2, thirdSep - (secondSep + 2));
-          outputPort = this->moduleName_.substr(thirdSep + 2);
+          criticalOutputPort = this->moduleName_.substr(thirdSep + 2);
           logger_->debug("Extracted critical input port: {}", criticalInputPort);
-          logger_->debug("Extracted output port: {}", outputPort);
+          logger_->debug("Extracted output port: {}", criticalOutputPort);
         } else {
           logger_->warn("Can't find thirdSep. Invalid module name pattern: {}", this->moduleName_);
           return;
@@ -437,10 +446,10 @@ void ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module
   }
 
   // Add additional wires for intermediate outputs that aren't part of the chain
-  if (this->outputPins_.size() > 1) { // Only add if there are multiple output pins
-    for (int i = 1; i < instance_count_ - 1; i++) { // Skip the first and last instances
+  if (this->outputPins_.size() > 1) {               // Only add if there are multiple output pins
+    for (int i = 0; i < instance_count_ - 1; i++) { // Skip the first and last instances
       for (const auto &outputPin : this->outputPins_) {
-        if (outputPin != outputPort) { // Found an intermediate output pin
+        if (outputPin != criticalOutputPort) { // Found an intermediate output pin
           auto &newNetNode = parse("\n  wire P_" + std::to_string(i) + "__" + outputPin + ";");
           insertAtBack(module.members, newNetNode);
           logger_->debug("Added intermediate wire: {}", newNetNode.toString());
@@ -449,23 +458,86 @@ void ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module
     }
   }
 
-  std::string portList = module.header->ports->toString();
-  logger_->debug("Port list: {}", portList);
+  std::string portList_str = module.header->ports->toString();
+  logger_->debug("Port list: {}", portList_str);
 
-  // TODO: Add instance port connection
+  std::vector<std::string> allPorts;
+  auto ansiPortList = module.header->ports->as_if<slang::syntax::AnsiPortListSyntax>();
+  if (!ansiPortList) {
+    logger_->warn("Port list is not ANSI style.");
+    return;
+  }
+  portInfoMap_.clear(); // Clear the port info map
+  for (const auto portMember : ansiPortList->ports) {
+    if (portMember->kind == slang::syntax::SyntaxKind::ImplicitAnsiPort) {
+      const auto implicitPort = portMember->as_if<slang::syntax::ImplicitAnsiPortSyntax>();
+      const auto &directionToken =
+          implicitPort->header->as_if<slang::syntax::VariablePortHeaderSyntax>()->direction;
+      const auto &nameToken = implicitPort->declarator->name;
+
+      std::string_view portName = nameToken.valueText();
+      std::string_view direction = directionToken.valueText();
+      portInfoMap_[std::string(portName)] = std::string(direction); // Store port info in the map
+      logger_->debug("Port Name: {}, Direction: {}", portName, direction);
+    } else {
+      logger_->warn("Port member is not ImplicitAnsiPort.");
+    }
+  }
+
   for (int i = 0; i < instance_count_; i++) {
     std::string instanceName = "I_" + this->cellName_ + "__X" + std::to_string(i) + "__" +
-                               criticalInputPort + "__" + outputPort;
-    if (i == 0) {
-      auto &firstInstanceNode = parse("\n\n  " + this->cellName_ + " " + instanceName + " ();");
-      insertAtBack(module.members, firstInstanceNode);
-    } else if (i < instance_count_ - 1) {
-      auto &intermediateInstanceNode = parse("\n  " + this->cellName_ + " " + instanceName + " ();");
-      insertAtBack(module.members, intermediateInstanceNode);
-    } else {
-      auto &lastInstanceNode = parse("\n  " + this->cellName_ + " " + instanceName + " ();");
-      insertAtBack(module.members, lastInstanceNode);
+                               criticalInputPort + "__" + criticalOutputPort;
+    std::string instanceCode = "\n  " + this->cellName_ + " " + instanceName + " (";
+    std::vector<std::string> portConnections;
+
+    for (const auto &pair : portInfoMap_) {
+      std::string portName = pair.first;
+      std::string direction = pair.second;
+      std::string connectionName;
+
+      if (portName == criticalInputPort) {
+        if (i == 0) {
+          connectionName = portName; // First instance: connect to module input port
+        } else {
+          connectionName =
+              "OP_" + std::to_string(i - 1); // Intermediate instances: connect to previous OP wire
+        }
+      } else if (portName == criticalOutputPort) {
+        if (i == instance_count_ - 1) {
+          connectionName = portName; // Last instance: connect to module output port
+        } else {
+          connectionName = "OP_" + std::to_string(i); // Intermediate instances: connect to OP wire
+        }
+      } else if (direction == "output") { // Handle other output ports
+        if (i < instance_count_ - 1) {
+          connectionName =
+              "P_" + std::to_string(i) + "__" + portName; // Connect to intermediate P_i__portName wire
+        } else {
+          connectionName = portName; // Last instance: connect to module output port
+        }
+      } else { // For input ports (and inout?), connect directly to module port
+        connectionName = portName;
+      }
+      portConnections.push_back("." + portName + "(" + connectionName + ")");
     }
+
+    // Connect all ports with comma and space
+    if (!portConnections.empty()) {
+      instanceCode += portConnections[0];
+      for (size_t i = 1; i < portConnections.size(); ++i) {
+        instanceCode += ", " + portConnections[i];
+      }
+    }
+    instanceCode += ");";
+
+    // Blank line before the first instance
+    if (i == 0) {
+      instanceCode = "\n" + instanceCode;
+    }
+
+    // Insert the instance code
+    auto &instanceNode = parse(instanceCode);
+    insertAtBack(module.members, instanceNode);
   }
 }
 

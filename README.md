@@ -240,9 +240,17 @@ Subcommands:
 
 ### 2025-03-28
 
-- 成功实现了在模块成员列表中插入新节点的功能。
-- 在 `ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module)` 方法中，使用 `insertAtBack(module.members, newDataNode)` 函数，可以在模块成员的末尾插入链式单元所需的中间变量声明，例如 `wire OP_i;`。
-- 在模块内部添加了关键连接网络变量，从`CELLNAME__X#__CRITICALPORT__OUTPUTPORT`这样的格式中提取出`CELLNAME`和`OUTPUTPORT`，用于实例化端口连接。
-- 在模块内增加了当多输出接口时的中间网络变量`P__UNUSEOUTPUTPORT`，连接不需要考察的输出端口。
-- 在模块内正确添加了模块实例化的模块名和实例名称，端口映射关系待处理。
-- 以`INVD0`反相器为代表的简单组合逻辑单元和以`FA1D0`全加器为代表的复杂组合逻辑单元均能正确输出。
+- 实现了在模块成员列表中插入新节点的功能。具体而言，在 `ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module)` 方法中，通过 `insertAtBack(module.members, newDataNode)` 函数，成功地在模块成员的末尾插入了链式单元所需的中间变量声明，例如 `wire OP_i;`。
+- 成功地在模块内部添加了关键连接网络变量。通过解析 `CELLNAME__X#__CRITICALPORT__OUTPUTPORT` 格式的字符串，提取出关键输入端口 (`critical input port`) 和输出端口 (`OUTPUTPORT`)，用于后续的实例化端口连接。
+- 增加了用于处理多输出接口的中间网络变量 `P__UNUSEOUTPUTPORT`，用于连接不需要考察的输出端口。
+- 成功地在模块内添加了模块实例化所需的模块名和实例名称，完成了端口映射关系的连接处理。
+- 验证了代码对简单组合逻辑单元（如 `INVD0` 反相器）和复杂组合逻辑单元（如 `FA1D0` 全加器）的输出能力，结果均符合预期。
+- 为 `ModuleRewriter` 类添加了私有属性 `std::map<std::string, std::string> portInfoMap_`，用于存储端口映射关系，将端口名映射到其方向（`input/output`）。
+- 完成了实例化端口连接的细节处理：
+  - 如果是关键输入端口且为第一个实例，则直接连接到输入端口；否则，连接到 `OP_(i-1)` 这样的中间网络变量。
+  - 如果是关键输出端口，且为最后一个实例，则连接到输出端口；否则，连接到 `OP_i` 中间网络变量。
+  - 如果是其他输出端口且不是最后一个实例，则连接到 `P_i__portName` 这样的中间网络变量；否则，连接名等于端口名。
+  - 其余输入端口，连接名等于端口名。
+- 文档方面，GitHub 远程仓库已开放为公开访问，并配置了 GitHub Pages。可以通过 [https://cedar17.github.io/ZlibValidation/](https://cedar17.github.io/ZlibValidation/) 访问项目文档，该页面包含 Doxygen 生成的 HTML 文档和仓库地址的链接。
+- 配置了 GitHub Actions，实现了 Doxygen 文档和 Graphviz 图的自动化构建，以及 LaTeX 参考手册的自动编译（暂不支持中文）。每次在 `dev` 和 `main` 分支的提交都会触发文档和参考手册的生成，并发布到 `gh-pages` 分支。
+- 将第三方库放置到 `include_3rd_party` 目录下，方便管理。修改了 CMakeLists 文件，将第三方库的头文件路径添加到 `include_directories` 中。修改了 Doxyfile 文件，将第三方库的头文件路径添加到 `INPUT` 中，便于文档生成工具理解第三方库函数、类的关系及使用方法。

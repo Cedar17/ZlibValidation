@@ -713,10 +713,10 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
 
       tree = rewriter.transform(tree);
       // Revisit the syntax tree to check architecture
-      // rewriter.visit(tree->root());
+      rewriter.visit(tree->root());
 
       // Output the transformed syntax tree
-      out << "`timescale 1ns/1ps" << std::endl;
+      out << "`timescale 1ns/10ps" << std::endl;
       out << slang::syntax::SyntaxPrinter::printFile(*tree) << std::endl << std::endl;
     } else {
       logger_->error("Failed to create syntax tree for module '{}'", module_name);
