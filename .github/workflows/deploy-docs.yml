@@ -59,4 +59,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: doc_doxygen
+          clean: false
 
