@@ -222,7 +222,7 @@ Subcommands:
 - 修改了 `LibFile::supercell()` 方法，该方法可以根据输入的 `cell_names` 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。
 - 优化了时钟引脚的处理方式，现在时钟引脚不再被视为 supercell 的输入引脚，而是仅记录为时序单元，并跳过存入 `input_pins` 集合的步骤。
 - 引入了 Doxygen 文档生成工具，用于可视化分析项目，并生成了 Doxygen HTML 文档和 LaTeX 参考手册。
-- [ ] 尚未解决手册中文显示不正确的问题，可能需要自定义 LaTeX 头文件。
+- [x] 尚未解决手册中文显示不正确的问题，可能需要自定义 LaTeX 头文件。
 
 ### 2025-03-27
 
@@ -254,3 +254,7 @@ Subcommands:
 - 文档方面，GitHub 远程仓库已开放为公开访问，并配置了 GitHub Pages。可以通过 [https://cedar17.github.io/ZlibValidation/](https://cedar17.github.io/ZlibValidation/) 访问项目文档，该页面包含 Doxygen 生成的 HTML 文档和仓库地址的链接。
 - 配置了 GitHub Actions，实现了 Doxygen 文档和 Graphviz 图的自动化构建，以及 LaTeX 参考手册的自动编译（暂不支持中文）。每次在 `dev` 和 `main` 分支的提交都会触发文档和参考手册的生成，并发布到 `gh-pages` 分支。
 - 将第三方库放置到 `include_3rd_party` 目录下，方便管理。修改了 CMakeLists 文件，将第三方库的头文件路径添加到 `include_directories` 中。修改了 Doxyfile 文件，将第三方库的头文件路径添加到 `INPUT` 中，便于文档生成工具理解第三方库函数、类的关系及使用方法。
+
+### 2025-03-29
+
+- 修复了 Doxygen 生成 LaTeX 参考手册时中文显示不正确的问题。通过修改 Doxyfile 文件，添加 `EXTRA_PACKAGES = ctex` 选项，并指定 `lualatex` 作为编译器，成功解决了中文显示问题。同时，从 `include_3rd_party` 目录中移除了 `Allsyntax.h` 文件，避免了由于 LaTeX 文档过大导致的 "TeX capacity exceeded, sorry [main memory size=5000000]" 内存不足问题。
