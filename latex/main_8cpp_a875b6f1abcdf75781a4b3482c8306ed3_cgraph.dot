@@ -10,4 +10,12 @@ digraph "funcLibFile"
   Node2 [label="getAST",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$verilog__utils_8cpp.html#a7ec07bd8417a22f2aee362bd59199997",tooltip=" "];
   Node2 -> Node3 [color="steelblue1",style="solid"];
   Node3 [label="CellExtractor::foundTargetCell",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classCellExtractor.html#a0a91984aface381a68def3a0a8515d57",tooltip=" "];
+  Node2 -> Node4 [color="steelblue1",style="solid"];
+  Node4 [label="slang::syntax::SyntaxRewriter\l::transform",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classslang_1_1syntax_1_1SyntaxRewriter.html#a9da1110f23efabf52212982d52d64601",tooltip=" "];
+  Node4 -> Node5 [color="steelblue1",style="solid"];
+  Node5 [label="slang::syntax::detail\l::ChangeCollection::clear",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$structslang_1_1syntax_1_1detail_1_1ChangeCollection.html#abfdbd1bff92c22bf1f51ca2dd9a72263",tooltip=" "];
+  Node4 -> Node6 [color="steelblue1",style="solid"];
+  Node6 [label="slang::syntax::detail\l::ChangeCollection::empty",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$structslang_1_1syntax_1_1detail_1_1ChangeCollection.html#aeb0d01adfda39ff92f9cae3dfcd03562",tooltip=" "];
+  Node2 -> Node7 [color="steelblue1",style="solid"];
+  Node7 [label="slang::syntax::SyntaxVisitor\l::visit",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classslang_1_1syntax_1_1SyntaxVisitor.html#aecb294b0686307633702e2bb937246b6",tooltip="Visit the provided node, of static type T."];
 }

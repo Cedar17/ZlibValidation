@@ -1,0 +1,113 @@
+\hypertarget{structslang_1_1syntax_1_1TokenOrSyntax}{}\doxysection{slang\+::syntax\+::Token\+Or\+Syntax Struct Reference}
+\label{structslang_1_1syntax_1_1TokenOrSyntax}\index{slang::syntax::TokenOrSyntax@{slang::syntax::TokenOrSyntax}}
+
+
+A token or a syntax node.  
+
+
+
+
+{\ttfamily \#include $<$Syntax\+Node.\+h$>$}
+
+
+
+Inheritance diagram for slang\+::syntax\+::Token\+Or\+Syntax\+:
+% FIG 0
+
+
+Collaboration diagram for slang\+::syntax\+::Token\+Or\+Syntax\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax_a0ea50e5a3e354ec49ae8f4526335d979}{Token\+Or\+Syntax}} (parsing\+::\+Token \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax_aa6caef85721e1d64ae5bc67c193fe274}{token}})
+\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax_a60515aee7c8632400b15e3970ba91134}{Token\+Or\+Syntax}} (\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$\mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax_a7c62379ea589c1bf2476c5467de7d713}{node}})
+\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax_abd3ef660eeae3ea67573aae42e8785c4}{Token\+Or\+Syntax}} (nullptr\+\_\+t)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax_a7c62379ea589c1bf2476c5467de7d713}{node}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax}{slang\+::syntax\+::\+Const\+Token\+Or\+Syntax}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax_ae6a9392d3aea399029d32d8f9413fc25}{Const\+Token\+Or\+Syntax}} (parsing\+::\+Token \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax_aa6caef85721e1d64ae5bc67c193fe274}{token}})
+\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax_ad40c856cb4bac6170c8bf7eb3ae85da4}{Const\+Token\+Or\+Syntax}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$\mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax_a25346ee1158ad4b62919f6cbb7559da6}{node}})
+\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax_adcf2a02b39696616d5c06d2f4102bbbd}{Const\+Token\+Or\+Syntax}} (nullptr\+\_\+t)
+\item 
+bool \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax_aa007f61791707111db1d569ae8f804d2}{is\+Token}} () const
+\item 
+bool \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax_afa696d82790d4fa7d1b0ec03ec0c24cf}{is\+Node}} () const
+\item 
+parsing\+::\+Token \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax_aa6caef85721e1d64ae5bc67c193fe274}{token}} () const
+\item 
+const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax_a25346ee1158ad4b62919f6cbb7559da6}{node}} () const
+\item 
+Source\+Range \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax_a8e2b426f06c990fa3ea03a41a555881c}{range}} () const
+\begin{DoxyCompactList}\small\item\em Gets the source range for the token or syntax node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Types inherited from \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax}{slang\+::syntax\+::\+Const\+Token\+Or\+Syntax}}}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax_ad974c59cd235729906b80778a6aa56d1}{Base}} = std\+::variant$<$ parsing\+::\+Token, const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ $>$
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A token or a syntax node. 
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00075}{75}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structslang_1_1syntax_1_1TokenOrSyntax_a0ea50e5a3e354ec49ae8f4526335d979}\label{structslang_1_1syntax_1_1TokenOrSyntax_a0ea50e5a3e354ec49ae8f4526335d979}} 
+\index{slang::syntax::TokenOrSyntax@{slang::syntax::TokenOrSyntax}!TokenOrSyntax@{TokenOrSyntax}}
+\index{TokenOrSyntax@{TokenOrSyntax}!slang::syntax::TokenOrSyntax@{slang::syntax::TokenOrSyntax}}
+\doxysubsubsection{\texorpdfstring{TokenOrSyntax()}{TokenOrSyntax()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily slang\+::syntax\+::\+Token\+Or\+Syntax\+::\+Token\+Or\+Syntax (\begin{DoxyParamCaption}\item[{parsing\+::\+Token}]{token }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00076}{76}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{structslang_1_1syntax_1_1TokenOrSyntax_a60515aee7c8632400b15e3970ba91134}\label{structslang_1_1syntax_1_1TokenOrSyntax_a60515aee7c8632400b15e3970ba91134}} 
+\index{slang::syntax::TokenOrSyntax@{slang::syntax::TokenOrSyntax}!TokenOrSyntax@{TokenOrSyntax}}
+\index{TokenOrSyntax@{TokenOrSyntax}!slang::syntax::TokenOrSyntax@{slang::syntax::TokenOrSyntax}}
+\doxysubsubsection{\texorpdfstring{TokenOrSyntax()}{TokenOrSyntax()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily slang\+::syntax\+::\+Token\+Or\+Syntax\+::\+Token\+Or\+Syntax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00077}{77}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{structslang_1_1syntax_1_1TokenOrSyntax_abd3ef660eeae3ea67573aae42e8785c4}\label{structslang_1_1syntax_1_1TokenOrSyntax_abd3ef660eeae3ea67573aae42e8785c4}} 
+\index{slang::syntax::TokenOrSyntax@{slang::syntax::TokenOrSyntax}!TokenOrSyntax@{TokenOrSyntax}}
+\index{TokenOrSyntax@{TokenOrSyntax}!slang::syntax::TokenOrSyntax@{slang::syntax::TokenOrSyntax}}
+\doxysubsubsection{\texorpdfstring{TokenOrSyntax()}{TokenOrSyntax()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily slang\+::syntax\+::\+Token\+Or\+Syntax\+::\+Token\+Or\+Syntax (\begin{DoxyParamCaption}\item[{nullptr\+\_\+t}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00078}{78}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structslang_1_1syntax_1_1TokenOrSyntax_a7c62379ea589c1bf2476c5467de7d713}\label{structslang_1_1syntax_1_1TokenOrSyntax_a7c62379ea589c1bf2476c5467de7d713}} 
+\index{slang::syntax::TokenOrSyntax@{slang::syntax::TokenOrSyntax}!node@{node}}
+\index{node@{node}!slang::syntax::TokenOrSyntax@{slang::syntax::TokenOrSyntax}}
+\doxysubsubsection{\texorpdfstring{node()}{node()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ slang\+::syntax\+::\+Token\+Or\+Syntax\+::node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Gets access to the object as a syntax node (throwing an exception if it\textquotesingle{}s not actually a syntax node). 
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00082}{82}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{SyntaxNode_8h}{Syntax\+Node.\+h}}\end{DoxyCompactItemize}

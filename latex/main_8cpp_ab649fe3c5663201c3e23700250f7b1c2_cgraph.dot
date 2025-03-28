@@ -118,4 +118,12 @@ digraph "verilogLibFile"
   Node29 [label="LibFile::read",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a070b5da7981c5b5dc049349404d2f5a4",tooltip="Reads the Liberty file specified by the filename_ member variable."];
   Node3 -> Node30 [color="steelblue1",style="solid"];
   Node30 [label="LibFile::writeJsonToFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a88de22798a64acdb38faefc0d785804f",tooltip="Writes the JSON data stored in the lib_json_ member to a file."];
+  Node2 -> Node31 [color="steelblue1",style="solid"];
+  Node31 [label="slang::syntax::SyntaxRewriter\l::transform",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classslang_1_1syntax_1_1SyntaxRewriter.html#a9da1110f23efabf52212982d52d64601",tooltip=" "];
+  Node31 -> Node32 [color="steelblue1",style="solid"];
+  Node32 [label="slang::syntax::detail\l::ChangeCollection::clear",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$structslang_1_1syntax_1_1detail_1_1ChangeCollection.html#abfdbd1bff92c22bf1f51ca2dd9a72263",tooltip=" "];
+  Node31 -> Node33 [color="steelblue1",style="solid"];
+  Node33 [label="slang::syntax::detail\l::ChangeCollection::empty",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$structslang_1_1syntax_1_1detail_1_1ChangeCollection.html#aeb0d01adfda39ff92f9cae3dfcd03562",tooltip=" "];
+  Node2 -> Node34 [color="steelblue1",style="solid"];
+  Node34 [label="slang::syntax::SyntaxVisitor\l::visit",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classslang_1_1syntax_1_1SyntaxVisitor.html#aecb294b0686307633702e2bb937246b6",tooltip="Visit the provided node, of static type T."];
 }

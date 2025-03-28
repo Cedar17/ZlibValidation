@@ -1,4 +1,4 @@
-LATEX_CMD?=xelatex
+LATEX_CMD?=lualatex
 MKIDX_CMD?=makeindex
 BIBTEX_CMD?=bibtex
 LATEX_COUNT?=8

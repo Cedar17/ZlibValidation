@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['json_0',['json',['../compare_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d',1,'json():&#160;compare.hpp'],['../json__utils_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d',1,'json():&#160;json_utils.hpp'],['../lib__file_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d',1,'json():&#160;lib_file.hpp']]]
+  ['base_0',['Base',['../structslang_1_1syntax_1_1PtrTokenOrSyntax.html#a50bce3c306a29fc93193afb978e9e941',1,'slang::syntax::PtrTokenOrSyntax::Base()'],['../structslang_1_1syntax_1_1ConstTokenOrSyntax.html#ad974c59cd235729906b80778a6aa56d1',1,'slang::syntax::ConstTokenOrSyntax::Base()']]]
 ];

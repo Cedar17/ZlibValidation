@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['targetcell_5f_0',['targetCell_',['../classVerilogVisitor.html#ad0e136294c2978685afb0ffc902a0066',1,'VerilogVisitor::targetCell_()'],['../classCellExtractor.html#ac20d39db14958d1e1b256c236b9effe1',1,'CellExtractor::targetCell_()'],['../classCellPrinter.html#a4604bd63f54266b52c4b8d80d0f16b33',1,'CellPrinter::targetCell_()']]],
-  ['temperature_5f_1',['temperature_',['../classLibFile.html#ac5372343266c4a8fc6bcedd0c524c19d',1,'LibFile']]],
-  ['type_2',['type',['../structsi2drExprT.html#ac335882008c198adf8f3f3a611c9157a',1,'si2drExprT']]]
+  ['range_0',['range',['../classslang_1_1syntax_1_1DeferredSourceRange.html#a28cdf8c3a41955941e5f37e5fe15377b',1,'slang::syntax::DeferredSourceRange']]],
+  ['ref_5fjson_5f_1',['ref_json_',['../classLibraryComparator.html#a655d87b8d6fb9714a660654ae744773e',1,'LibraryComparator']]],
+  ['ref_5flib_5fpath_5f_2',['ref_lib_path_',['../classLibraryComparator.html#a17fd7ca420dde6290d9c34162dba7f4a',1,'LibraryComparator']]],
+  ['reltol_5f_3',['reltol_',['../classLibraryComparator.html#abf28f740c7095501489ae0d6c6745e70',1,'LibraryComparator']]],
+  ['removeorreplace_4',['removeOrReplace',['../structslang_1_1syntax_1_1detail_1_1ChangeCollection.html#a0573ed38df6a4ebe92e77a4f77e1c404',1,'slang::syntax::detail::ChangeCollection']]],
+  ['right_5',['right',['../structsi2drExprT.html#ab371e646d9b794b3edae4e35fa966d16',1,'si2drExprT']]]
 ];

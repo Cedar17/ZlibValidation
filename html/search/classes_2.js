@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['groupsiterator_0',['GroupsIterator',['../classGroupsIterator.html',1,'']]]
+  ['deferredsourcerange_0',['DeferredSourceRange',['../classslang_1_1syntax_1_1DeferredSourceRange.html',1,'slang::syntax']]]
 ];

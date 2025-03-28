@@ -9,5 +9,6 @@ var classModuleRewriter =
     [ "instance_count_", "classModuleRewriter.html#a6c95bf7e5c9a2fb4b1316d830ef5cd6e", null ],
     [ "logger_", "classModuleRewriter.html#a35bc880b11364a5c980c70be72ab42ab", null ],
     [ "moduleName_", "classModuleRewriter.html#ac5bdc3d50b39f851fa1bb728d08c1bfb", null ],
-    [ "outputPins_", "classModuleRewriter.html#a8314722fe0c97d3e78953ee0eb45b0ca", null ]
+    [ "outputPins_", "classModuleRewriter.html#a8314722fe0c97d3e78953ee0eb45b0ca", null ],
+    [ "portInfoMap_", "classModuleRewriter.html#aad5df1bbd2cad9aa6cb7f842a22ae07d", null ]
 ];

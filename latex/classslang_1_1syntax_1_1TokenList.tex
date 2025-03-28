@@ -1,0 +1,279 @@
+\hypertarget{classslang_1_1syntax_1_1TokenList}{}\doxysection{slang\+::syntax\+::Token\+List Class Reference}
+\label{classslang_1_1syntax_1_1TokenList}\index{slang::syntax::TokenList@{slang::syntax::TokenList}}
+
+
+A syntax node that represents a list of child tokens.  
+
+
+
+
+{\ttfamily \#include $<$Syntax\+Node.\+h$>$}
+
+
+
+Inheritance diagram for slang\+::syntax\+::Token\+List\+:
+% FIG 0
+
+
+Collaboration diagram for slang\+::syntax\+::Token\+List\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1TokenList_a8eeddebdab19006dda6e7cbb901ab524}{Token\+List}} (nullptr\+\_\+t)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1TokenList_ac06d3bdd6a1a6ec0d59223735395d5bd}{Token\+List}} (std\+::span$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $>$ elements)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{slang\+::syntax\+::\+Syntax\+List\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_af6db34159278dd6121c69122b590b3a0}{get\+Child\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of child items in the node. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{Token\+Or\+Syntax}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_aa0ed00e4bab4839535310efa8b0d78a1}{get\+Child}} (size\+\_\+t index)=0
+\begin{DoxyCompactList}\small\item\em Gets the child (token or node) at the given index. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax}{Const\+Token\+Or\+Syntax}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_aaf2672065d6781c706f5d8f791356857}{get\+Child}} (size\+\_\+t index) const =0
+\begin{DoxyCompactList}\small\item\em Gets the child (token or node) at the given index. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structslang_1_1syntax_1_1PtrTokenOrSyntax}{Ptr\+Token\+Or\+Syntax}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_abf3b3764083e72ce6af3de3b5de915eb}{get\+Child\+Ptr}} (size\+\_\+t index)=0
+\item 
+virtual void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_a7b4adabca9c948e4b3b0e7ccca051c18}{set\+Child}} (size\+\_\+t index, \mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{Token\+Or\+Syntax}} child)=0
+\begin{DoxyCompactList}\small\item\em Sets the child (token or node) at the given index. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{Syntax\+List\+Base}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_a1ee2f3a20aaf21387dd7ac2cfd12d035}{clone}} (Bump\+Allocator \&alloc) const =0
+\begin{DoxyCompactList}\small\item\em Clones the list into a new node using the provided allocator. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_aae7ec9b3bd6967746ae57752c8ea5b20}{reset\+All}} (Bump\+Allocator \&alloc, std\+::span$<$ const \mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{Token\+Or\+Syntax}} $>$ children)=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a49f92aa33b0ae69980cbf0041e08d90d}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Print the node and all of its children to a string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a0eda672e68ef0b51610750fa423ce96c}{get\+First\+Token}} () const
+\begin{DoxyCompactList}\small\item\em Get the first leaf token in this subtree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_affe0ad63f36c19cb204b45182b513c71}{get\+Last\+Token}} () const
+\begin{DoxyCompactList}\small\item\em Get the last leaf token in this subtree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a0b8364a84e668ded18ec837accce6cc6}{get\+First\+Token\+Ptr}} ()
+\begin{DoxyCompactList}\small\item\em Get the first leaf token as a mutable pointer in this subtree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a6031ea7b45a75fd04e5936ab15f881a2}{get\+Last\+Token\+Ptr}} ()
+\begin{DoxyCompactList}\small\item\em Get the last leaf token a mutable pointer in this subtree. \end{DoxyCompactList}\item 
+Source\+Range \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a28195377267272fb5a9a9656aae1c764}{source\+Range}} () const
+\begin{DoxyCompactList}\small\item\em Get the source range of the node. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_abc32bc8c00a0b128d53d20bdc17919b0}{child\+Node}} (size\+\_\+t index) const
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a9002961f911297a67b27818a61586f65}{child\+Node}} (size\+\_\+t index)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a5b5ecf7c14d4a9281ef4acfe9a6a34d4}{child\+Token}} (size\+\_\+t index) const
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a26fb9db7a9abc00c5f79668de9a8a4bc}{child\+Token\+Ptr}} (size\+\_\+t index)
+\item 
+size\+\_\+t \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a0be73b0d841761c199f329f45f4d3ea7}{get\+Child\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of (direct) children underneath this node in the tree. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a6153cea1bb428e37ff814f7759570d30}{is\+Equivalent\+To}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&other) const
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a8a06c9e4d92fda386ed7f7765d0c5498}{as}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\const T \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aaf05c77660207e32a681505099704c06}{as}} () const
+\item 
+{\footnotesize template$<$typename T $>$ }\\T $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a7a794c49d7544de09f33bd85ae1d8fce}{as\+\_\+if}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\const T $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a382df472e5109fc88e2a515c2fa749f6}{as\+\_\+if}} () const
+\item 
+{\footnotesize template$<$typename TVisitor , typename... Args$>$ }\\decltype(auto) \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a0cedb66d8e695e4c5c69e9290652d7fa}{visit}} (TVisitor \&visitor, Args \&\&... args)
+\item 
+{\footnotesize template$<$typename TVisitor , typename... Args$>$ }\\decltype(auto) \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a803c336cceefa46cff33f077e77398a5}{visit}} (TVisitor \&visitor, Args \&\&... args) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{Token\+Or\+Syntax}} \mbox{\hyperlink{classslang_1_1syntax_1_1TokenList_ae756f5d92c35166c55be7beaa2a902b0}{get\+Child}} (size\+\_\+t index) final
+\begin{DoxyCompactList}\small\item\em Gets the child (token or node) at the given index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax}{Const\+Token\+Or\+Syntax}} \mbox{\hyperlink{classslang_1_1syntax_1_1TokenList_aeb8deee8f1c0467c1764aa4165a283e3}{get\+Child}} (size\+\_\+t index) const final
+\begin{DoxyCompactList}\small\item\em Gets the child (token or node) at the given index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1PtrTokenOrSyntax}{Ptr\+Token\+Or\+Syntax}} \mbox{\hyperlink{classslang_1_1syntax_1_1TokenList_a9fb7eed23c7c7c3a2b53d74ebc2b8970}{get\+Child\+Ptr}} (size\+\_\+t index) final
+\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1TokenList_ad68c04b07ecc0a5a7dca6fb83a0a7391}{set\+Child}} (size\+\_\+t index, \mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{Token\+Or\+Syntax}} child) final
+\begin{DoxyCompactList}\small\item\em Sets the child (token or node) at the given index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{Syntax\+List\+Base}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1TokenList_a7f2de5c171dce182c7045df7b36157bc}{clone}} (Bump\+Allocator \&alloc) const final
+\begin{DoxyCompactList}\small\item\em Clones the list into a new node using the provided allocator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1TokenList_af41f78b1de70ad2b37b279df2431e449}{reset\+All}} (Bump\+Allocator \&alloc, std\+::span$<$ const \mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{Token\+Or\+Syntax}} $>$ children) final
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Types inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} = parsing\+::\+Token
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{slang\+::syntax\+::\+Syntax\+List\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_a77e0c7b50872e3b526d43b6d5530620a}{is\+Kind}} (Syntax\+Kind \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}})
+\item 
+static bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_aeaf270e5026b7e1bdbd1f6404e4138bd}{is\+Child\+Optional}} (size\+\_\+t index)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a37cdb1f35d2760cbd3cdab4e255a3987}{is\+Kind}} (Syntax\+Kind)
+\item 
+static bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a3d353bc2793012e2fa5f3f33a8eb2cdc}{is\+Child\+Optional}} (size\+\_\+t)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+Syntax\+Kind \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}}
+\begin{DoxyCompactList}\small\item\em The kind of syntax node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a43a74c2e3b0874740abef3a5153f2c49}{parent}} = nullptr
+\item 
+const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aae6b46376d0c5cba0abfc29d57a3299c}{preview\+Node}} = nullptr
+\begin{DoxyCompactList}\small\item\em An potional pointer to a syntax node tha can be useful to know ahead of time when visiting this node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{slang\+::syntax\+::\+Syntax\+List\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_a30efdbc332ef63303f978f3f17a0feb7}{Syntax\+List\+Base}} (Syntax\+Kind \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}}, size\+\_\+t \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_af8b0130aa1f1a5f844b66e63aca7339d}{child\+Count}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ab2056678f95527a9fef77f82d1978a01}{Syntax\+Node}} (Syntax\+Kind \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{slang\+::syntax\+::\+Syntax\+List\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_af8b0130aa1f1a5f844b66e63aca7339d}{child\+Count}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A syntax node that represents a list of child tokens. 
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00352}{352}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1TokenList_a8eeddebdab19006dda6e7cbb901ab524}\label{classslang_1_1syntax_1_1TokenList_a8eeddebdab19006dda6e7cbb901ab524}} 
+\index{slang::syntax::TokenList@{slang::syntax::TokenList}!TokenList@{TokenList}}
+\index{TokenList@{TokenList}!slang::syntax::TokenList@{slang::syntax::TokenList}}
+\doxysubsubsection{\texorpdfstring{TokenList()}{TokenList()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily slang\+::syntax\+::\+Token\+List\+::\+Token\+List (\begin{DoxyParamCaption}\item[{nullptr\+\_\+t}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00354}{354}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1TokenList_ac06d3bdd6a1a6ec0d59223735395d5bd}\label{classslang_1_1syntax_1_1TokenList_ac06d3bdd6a1a6ec0d59223735395d5bd}} 
+\index{slang::syntax::TokenList@{slang::syntax::TokenList}!TokenList@{TokenList}}
+\index{TokenList@{TokenList}!slang::syntax::TokenList@{slang::syntax::TokenList}}
+\doxysubsubsection{\texorpdfstring{TokenList()}{TokenList()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily slang\+::syntax\+::\+Token\+List\+::\+Token\+List (\begin{DoxyParamCaption}\item[{std\+::span$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $>$}]{elements }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00355}{355}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1TokenList_a7f2de5c171dce182c7045df7b36157bc}\label{classslang_1_1syntax_1_1TokenList_a7f2de5c171dce182c7045df7b36157bc}} 
+\index{slang::syntax::TokenList@{slang::syntax::TokenList}!clone@{clone}}
+\index{clone@{clone}!slang::syntax::TokenList@{slang::syntax::TokenList}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{Syntax\+List\+Base}} $\ast$ slang\+::syntax\+::\+Token\+List\+::clone (\begin{DoxyParamCaption}\item[{Bump\+Allocator \&}]{alloc }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Clones the list into a new node using the provided allocator. 
+
+
+
+Implements \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_a1ee2f3a20aaf21387dd7ac2cfd12d035}{slang\+::syntax\+::\+Syntax\+List\+Base}}.
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00364}{364}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1TokenList_aeb8deee8f1c0467c1764aa4165a283e3}\label{classslang_1_1syntax_1_1TokenList_aeb8deee8f1c0467c1764aa4165a283e3}} 
+\index{slang::syntax::TokenList@{slang::syntax::TokenList}!getChild@{getChild}}
+\index{getChild@{getChild}!slang::syntax::TokenList@{slang::syntax::TokenList}}
+\doxysubsubsection{\texorpdfstring{getChild()}{getChild()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax}{Const\+Token\+Or\+Syntax}} slang\+::syntax\+::\+Token\+List\+::get\+Child (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Gets the child (token or node) at the given index. 
+
+
+
+Implements \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_aaf2672065d6781c706f5d8f791356857}{slang\+::syntax\+::\+Syntax\+List\+Base}}.
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00360}{360}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1TokenList_ae756f5d92c35166c55be7beaa2a902b0}\label{classslang_1_1syntax_1_1TokenList_ae756f5d92c35166c55be7beaa2a902b0}} 
+\index{slang::syntax::TokenList@{slang::syntax::TokenList}!getChild@{getChild}}
+\index{getChild@{getChild}!slang::syntax::TokenList@{slang::syntax::TokenList}}
+\doxysubsubsection{\texorpdfstring{getChild()}{getChild()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{Token\+Or\+Syntax}} slang\+::syntax\+::\+Token\+List\+::get\+Child (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Gets the child (token or node) at the given index. 
+
+
+
+Implements \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_aa0ed00e4bab4839535310efa8b0d78a1}{slang\+::syntax\+::\+Syntax\+List\+Base}}.
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00359}{359}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1TokenList_a9fb7eed23c7c7c3a2b53d74ebc2b8970}\label{classslang_1_1syntax_1_1TokenList_a9fb7eed23c7c7c3a2b53d74ebc2b8970}} 
+\index{slang::syntax::TokenList@{slang::syntax::TokenList}!getChildPtr@{getChildPtr}}
+\index{getChildPtr@{getChildPtr}!slang::syntax::TokenList@{slang::syntax::TokenList}}
+\doxysubsubsection{\texorpdfstring{getChildPtr()}{getChildPtr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structslang_1_1syntax_1_1PtrTokenOrSyntax}{Ptr\+Token\+Or\+Syntax}} slang\+::syntax\+::\+Token\+List\+::get\+Child\+Ptr (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_abf3b3764083e72ce6af3de3b5de915eb}{slang\+::syntax\+::\+Syntax\+List\+Base}}.
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00361}{361}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1TokenList_af41f78b1de70ad2b37b279df2431e449}\label{classslang_1_1syntax_1_1TokenList_af41f78b1de70ad2b37b279df2431e449}} 
+\index{slang::syntax::TokenList@{slang::syntax::TokenList}!resetAll@{resetAll}}
+\index{resetAll@{resetAll}!slang::syntax::TokenList@{slang::syntax::TokenList}}
+\doxysubsubsection{\texorpdfstring{resetAll()}{resetAll()}}
+{\footnotesize\ttfamily void slang\+::syntax\+::\+Token\+List\+::reset\+All (\begin{DoxyParamCaption}\item[{Bump\+Allocator \&}]{alloc,  }\item[{std\+::span$<$ const \mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{Token\+Or\+Syntax}} $>$}]{children }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+Overwrites all children with the new set of provided {\itshape children} (and making a copy with the provided allocator). 
+
+Implements \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_aae7ec9b3bd6967746ae57752c8ea5b20}{slang\+::syntax\+::\+Syntax\+List\+Base}}.
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00368}{368}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1TokenList_ad68c04b07ecc0a5a7dca6fb83a0a7391}\label{classslang_1_1syntax_1_1TokenList_ad68c04b07ecc0a5a7dca6fb83a0a7391}} 
+\index{slang::syntax::TokenList@{slang::syntax::TokenList}!setChild@{setChild}}
+\index{setChild@{setChild}!slang::syntax::TokenList@{slang::syntax::TokenList}}
+\doxysubsubsection{\texorpdfstring{setChild()}{setChild()}}
+{\footnotesize\ttfamily void slang\+::syntax\+::\+Token\+List\+::set\+Child (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index,  }\item[{\mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{Token\+Or\+Syntax}}}]{child }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Sets the child (token or node) at the given index. 
+
+
+
+Implements \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_a7b4adabca9c948e4b3b0e7ccca051c18}{slang\+::syntax\+::\+Syntax\+List\+Base}}.
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00362}{362}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{SyntaxNode_8h}{Syntax\+Node.\+h}}\end{DoxyCompactItemize}

@@ -1,841 +1,1291 @@
 \begin{theindex}
 
+  \item {$\sim$AttributesIterator}
+    \subitem {AttributesIterator}, \hyperpage{28}
   \item {$\sim$GroupsIterator}
-    \subitem {GroupsIterator}, \hyperpage{19}
+    \subitem {GroupsIterator}, \hyperpage{44}
   \item {$\sim$LibAttribute}
-    \subitem {LibAttribute}, \hyperpage{22}
+    \subitem {LibAttribute}, \hyperpage{50}
   \item {$\sim$LibFile}
-    \subitem {LibFile}, \hyperpage{26}
+    \subitem {LibFile}, \hyperpage{55}
   \item {$\sim$LibGroup}
-    \subitem {LibGroup}, \hyperpage{34}
+    \subitem {LibGroup}, \hyperpage{65}
   \item {$\sim$ValuesIterator}
-    \subitem {ValuesIterator}, \hyperpage{48}
+    \subitem {ValuesIterator}, \hyperpage{134}
 
   \indexspace
 
   \item {abstol\_}
-    \subitem {LibraryComparator}, \hyperpage{40}
+    \subitem {LibraryComparator}, \hyperpage{72}
+  \item {advance}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$::iterator\_base$<$ U $>$}, 
+		\hyperpage{47}
+  \item {alloc}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{122}
   \item {APP\_AUTHOR}
-    \subitem {version.h}, \hyperpage{93}
+    \subitem {version.h}, \hyperpage{154}
   \item {APP\_CONTACT}
-    \subitem {version.h}, \hyperpage{93}
+    \subitem {version.h}, \hyperpage{154}
   \item {APP\_NAME}
-    \subitem {version.h}, \hyperpage{93}
+    \subitem {version.h}, \hyperpage{154}
   \item {APP\_VERSION}
-    \subitem {version.h}, \hyperpage{93}
+    \subitem {version.h}, \hyperpage{154}
   \item {APP\_VERSION\_MAJOR}
-    \subitem {version.h}, \hyperpage{93}
+    \subitem {version.h}, \hyperpage{154}
   \item {APP\_VERSION\_MINOR}
-    \subitem {version.h}, \hyperpage{93}
+    \subitem {version.h}, \hyperpage{154}
   \item {APP\_VERSION\_PATCH}
-    \subitem {version.h}, \hyperpage{94}
+    \subitem {version.h}, \hyperpage{155}
+  \item {as}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{110, 111}
+  \item {as\_if}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{111}
   \item {attr\_}
-    \subitem {LibAttribute}, \hyperpage{23}
-  \item {AttributesIterator}, \hyperpage{15}
+    \subitem {AttributesIterator}, \hyperpage{29}
+    \subitem {LibAttribute}, \hyperpage{52}
+  \item {AttributesIterator}, \hyperpage{27}
+    \subitem {$\sim$AttributesIterator}, \hyperpage{28}
+    \subitem {attr\_}, \hyperpage{29}
+    \subitem {AttributesIterator}, \hyperpage{28}
+    \subitem {attrs\_}, \hyperpage{29}
+    \subitem {end}, \hyperpage{28}
+    \subitem {err\_}, \hyperpage{29}
+    \subitem {get}, \hyperpage{28}
+    \subitem {next}, \hyperpage{28}
+  \item {attrs\_}
+    \subitem {AttributesIterator}, \hyperpage{29}
 
   \indexspace
 
   \item {b}
-    \subitem {si2drExprT}, \hyperpage{44}
+    \subitem {si2drExprT}, \hyperpage{93}
+  \item {Base}
+    \subitem {slang::syntax::ConstTokenOrSyntax}, \hyperpage{38}
+    \subitem {slang::syntax::PtrTokenOrSyntax}, \hyperpage{79}
   \item {basename\_}
-    \subitem {LibFile}, \hyperpage{31}
+    \subitem {LibFile}, \hyperpage{62}
+  \item {begin}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{87}
   \item {bool\_}
-    \subitem {ValuesIterator}, \hyperpage{48}
+    \subitem {ValuesIterator}, \hyperpage{135}
   \item {BUILD\_TIMESTAMP}
-    \subitem {version.h}, \hyperpage{94}
+    \subitem {version.h}, \hyperpage{155}
 
   \indexspace
 
-  \item {CellExtractor}, \hyperpage{15}
-    \subitem {CellExtractor}, \hyperpage{16}
-    \subitem {foundTarget\_}, \hyperpage{16}
-    \subitem {foundTargetCell}, \hyperpage{16}
-    \subitem {handle}, \hyperpage{16}
-    \subitem {targetCell\_}, \hyperpage{16}
+  \item {cbegin}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{87}
+  \item {CellExtractor}, \hyperpage{30}
+    \subitem {CellExtractor}, \hyperpage{31}
+    \subitem {foundTarget\_}, \hyperpage{32}
+    \subitem {foundTargetCell}, \hyperpage{32}
+    \subitem {handle}, \hyperpage{32}
+    \subitem {targetCell\_}, \hyperpage{32}
   \item {cellName\_}
-    \subitem {ModuleRewriter}, \hyperpage{42}
-  \item {CellPrinter}, \hyperpage{17}
-    \subitem {CellPrinter}, \hyperpage{17}
-    \subitem {foundTarget\_}, \hyperpage{18}
-    \subitem {handle}, \hyperpage{18}
-    \subitem {out\_}, \hyperpage{18}
-    \subitem {targetCell\_}, \hyperpage{18}
+    \subitem {ModuleRewriter}, \hyperpage{77}
+  \item {CellPrinter}, \hyperpage{33}
+    \subitem {CellPrinter}, \hyperpage{34}
+    \subitem {foundTarget\_}, \hyperpage{34}
+    \subitem {handle}, \hyperpage{34}
+    \subitem {out\_}, \hyperpage{34}
+    \subitem {targetCell\_}, \hyperpage{35}
+  \item {cend}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{88}
   \item {checkTimingArcMonotonicity}
-    \subitem {LibFile}, \hyperpage{27}
+    \subitem {LibFile}, \hyperpage{56}
+  \item {childCount}
+    \subitem {slang::syntax::SyntaxListBase}, \hyperpage{108}
+  \item {childNode}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{111, 112}
+  \item {childToken}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{112}
+  \item {childTokenPtr}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{112}
+  \item {clear}
+    \subitem {slang::syntax::detail::ChangeCollection}, \hyperpage{36}
+  \item {clone}
+    \subitem {slang::syntax}, \hyperpage{22}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{88}
+    \subitem {slang::syntax::SyntaxList$<$ T $>$}, \hyperpage{100}
+    \subitem {slang::syntax::SyntaxListBase}, \hyperpage{105}
+    \subitem {slang::syntax::TokenList}, \hyperpage{129}
+  \item {commits}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{123}
   \item {comp\_json\_}
-    \subitem {LibraryComparator}, \hyperpage{40}
+    \subitem {LibraryComparator}, \hyperpage{72}
   \item {comp\_lib\_path\_}
-    \subitem {LibraryComparator}, \hyperpage{40}
+    \subitem {LibraryComparator}, \hyperpage{72}
   \item {compare.hpp}
-    \subitem {json}, \hyperpage{53}
+    \subitem {json}, \hyperpage{141}
   \item {compareCell}
-    \subitem {LibraryComparator}, \hyperpage{37}
+    \subitem {LibraryComparator}, \hyperpage{68}
   \item {compareLibFiles}
-    \subitem {main.cpp}, \hyperpage{116}
+    \subitem {main.cpp}, \hyperpage{227}
   \item {compareLut}
-    \subitem {LibraryComparator}, \hyperpage{37}
+    \subitem {LibraryComparator}, \hyperpage{69}
   \item {comparePin}
-    \subitem {LibraryComparator}, \hyperpage{38}
+    \subitem {LibraryComparator}, \hyperpage{70}
   \item {compareTimingArc}
-    \subitem {LibraryComparator}, \hyperpage{39}
+    \subitem {LibraryComparator}, \hyperpage{71}
+  \item {const\_iterator}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{86}
+  \item {ConstTokenOrSyntax}
+    \subitem {slang::syntax::ConstTokenOrSyntax}, \hyperpage{38, 39}
 
   \indexspace
 
   \item {d}
-    \subitem {si2drExprT}, \hyperpage{44}
+    \subitem {si2drExprT}, \hyperpage{93}
+  \item {deepClone}
+    \subitem {slang::syntax}, \hyperpage{23, 24}
+  \item {DeferredSourceRange}
+    \subitem {slang::syntax::DeferredSourceRange}, \hyperpage{41}
   \item {depth\_}
-    \subitem {ModuleRewriter}, \hyperpage{43}
-    \subitem {VerilogVisitor}, \hyperpage{52}
+    \subitem {ModuleRewriter}, \hyperpage{77}
+    \subitem {VerilogVisitor}, \hyperpage{139}
+  \item {dereference}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$::iterator\_base$<$ U $>$}, 
+		\hyperpage{48}
+  \item {DERIVED}
+    \subitem {SyntaxVisitor.h}, \hyperpage{198}
   \item {dim\_sizes}
-    \subitem {liberty\_value\_data}, \hyperpage{24}
+    \subitem {liberty\_value\_data}, \hyperpage{53}
   \item {dimensions}
-    \subitem {liberty\_value\_data}, \hyperpage{24}
+    \subitem {liberty\_value\_data}, \hyperpage{53}
+  \item {distance\_to}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$::iterator\_base$<$ U $>$}, 
+		\hyperpage{48}
 
   \indexspace
 
+  \item {elements}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{92}
+  \item {elems}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{88}
+  \item {empty}
+    \subitem {slang::syntax::detail::ChangeCollection}, \hyperpage{36}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{89}
   \item {end}
-    \subitem {GroupsIterator}, \hyperpage{19}
-    \subitem {ValuesIterator}, \hyperpage{48}
+    \subitem {AttributesIterator}, \hyperpage{28}
+    \subitem {GroupsIterator}, \hyperpage{44}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{89}
+    \subitem {ValuesIterator}, \hyperpage{134}
+  \item {equals}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$::iterator\_base$<$ U $>$}, 
+		\hyperpage{48}
   \item {err\_}
-    \subitem {GroupsIterator}, \hyperpage{20}
-    \subitem {LibAttribute}, \hyperpage{23}
-    \subitem {LibFile}, \hyperpage{31}
-    \subitem {LibGroup}, \hyperpage{35}
-    \subitem {ValuesIterator}, \hyperpage{48}
+    \subitem {AttributesIterator}, \hyperpage{29}
+    \subitem {GroupsIterator}, \hyperpage{45}
+    \subitem {LibAttribute}, \hyperpage{52}
+    \subitem {LibFile}, \hyperpage{62}
+    \subitem {LibGroup}, \hyperpage{66}
+    \subitem {ValuesIterator}, \hyperpage{135}
   \item {exprp\_}
-    \subitem {ValuesIterator}, \hyperpage{49}
+    \subitem {ValuesIterator}, \hyperpage{135}
 
   \indexspace
 
+  \item {factory}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{123}
   \item {filename\_}
-    \subitem {LibFile}, \hyperpage{31}
+    \subitem {LibFile}, \hyperpage{62}
   \item {filepath\_}
-    \subitem {LibFile}, \hyperpage{31}
+    \subitem {LibFile}, \hyperpage{62}
+  \item {first}
+    \subitem {slang::syntax::detail::SyntaxChange}, \hyperpage{96}
   \item {float\_}
-    \subitem {ValuesIterator}, \hyperpage{49}
+    \subitem {ValuesIterator}, \hyperpage{135}
   \item {foundTarget\_}
-    \subitem {CellExtractor}, \hyperpage{16}
-    \subitem {CellPrinter}, \hyperpage{18}
+    \subitem {CellExtractor}, \hyperpage{32}
+    \subitem {CellPrinter}, \hyperpage{34}
   \item {foundTargetCell}
-    \subitem {CellExtractor}, \hyperpage{16}
+    \subitem {CellExtractor}, \hyperpage{32}
   \item {funcLibFile}
-    \subitem {main.cpp}, \hyperpage{117}
+    \subitem {main.cpp}, \hyperpage{228}
 
   \indexspace
 
   \item {generateCellJson}
-    \subitem {json\_utils.cpp}, \hyperpage{100}
-    \subitem {json\_utils.hpp}, \hyperpage{56}
+    \subitem {json\_utils.cpp}, \hyperpage{208}
+    \subitem {json\_utils.hpp}, \hyperpage{144}
   \item {generateLutJson}
-    \subitem {json\_utils.cpp}, \hyperpage{101}
-    \subitem {json\_utils.hpp}, \hyperpage{56}
+    \subitem {json\_utils.cpp}, \hyperpage{209}
+    \subitem {json\_utils.hpp}, \hyperpage{145}
   \item {generatePinJson}
-    \subitem {json\_utils.cpp}, \hyperpage{101}
-    \subitem {json\_utils.hpp}, \hyperpage{57}
+    \subitem {json\_utils.cpp}, \hyperpage{209}
+    \subitem {json\_utils.hpp}, \hyperpage{146}
   \item {generatePowerJson}
-    \subitem {json\_utils.cpp}, \hyperpage{102}
-    \subitem {json\_utils.hpp}, \hyperpage{58}
+    \subitem {json\_utils.cpp}, \hyperpage{210}
+    \subitem {json\_utils.hpp}, \hyperpage{147}
   \item {generateReport}
-    \subitem {LibraryComparator}, \hyperpage{39}
+    \subitem {LibraryComparator}, \hyperpage{71}
   \item {generateTimingJson}
-    \subitem {json\_utils.cpp}, \hyperpage{103}
+    \subitem {json\_utils.cpp}, \hyperpage{211}
   \item {get}
-    \subitem {GroupsIterator}, \hyperpage{20}
+    \subitem {AttributesIterator}, \hyperpage{28}
+    \subitem {GroupsIterator}, \hyperpage{44}
+    \subitem {slang::syntax::DeferredSourceRange}, \hyperpage{42}
   \item {get\_function}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {getAST}
-    \subitem {verilog\_utils.cpp}, \hyperpage{125}
-    \subitem {verilog\_utils.hpp}, \hyperpage{91}
+    \subitem {verilog\_utils.cpp}, \hyperpage{239}
+    \subitem {verilog\_utils.hpp}, \hyperpage{152}
   \item {getAttrs}
-    \subitem {LibGroup}, \hyperpage{34}
+    \subitem {LibGroup}, \hyperpage{65}
   \item {getBoolean}
-    \subitem {LibAttribute}, \hyperpage{22}
+    \subitem {LibAttribute}, \hyperpage{50}
+  \item {getChild}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{89, 90}
+    \subitem {slang::syntax::SyntaxList$<$ T $>$}, \hyperpage{101}
+    \subitem {slang::syntax::SyntaxListBase}, \hyperpage{106}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{112}
+    \subitem {slang::syntax::TokenList}, \hyperpage{129}
+  \item {getChildCount}
+    \subitem {slang::syntax::SyntaxListBase}, \hyperpage{106}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{113}
+  \item {getChildPtr}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{90}
+    \subitem {slang::syntax::SyntaxList$<$ T $>$}, \hyperpage{101}
+    \subitem {slang::syntax::SyntaxListBase}, \hyperpage{106}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{113}
+    \subitem {slang::syntax::TokenList}, \hyperpage{130}
+  \item {getFirstToken}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{113}
+  \item {getFirstTokenPtr}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{113}
   \item {getFloat}
-    \subitem {LibAttribute}, \hyperpage{22}
+    \subitem {LibAttribute}, \hyperpage{50}
   \item {getGroups}
-    \subitem {LibGroup}, \hyperpage{34}
+    \subitem {LibGroup}, \hyperpage{65}
   \item {getInt}
-    \subitem {LibAttribute}, \hyperpage{22}
+    \subitem {LibAttribute}, \hyperpage{51}
+  \item {getLastToken}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{113}
+  \item {getLastTokenPtr}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{113}
   \item {getName}
-    \subitem {LibAttribute}, \hyperpage{22}
-    \subitem {LibGroup}, \hyperpage{34}
+    \subitem {LibAttribute}, \hyperpage{51}
+    \subitem {LibGroup}, \hyperpage{66}
   \item {getString}
-    \subitem {LibAttribute}, \hyperpage{23}
+    \subitem {LibAttribute}, \hyperpage{51}
   \item {getType}
-    \subitem {LibGroup}, \hyperpage{34}
+    \subitem {LibGroup}, \hyperpage{66}
   \item {getValues}
-    \subitem {LibAttribute}, \hyperpage{23}
+    \subitem {LibAttribute}, \hyperpage{51}
   \item {group\_}
-    \subitem {GroupsIterator}, \hyperpage{20}
-    \subitem {LibGroup}, \hyperpage{35}
+    \subitem {GroupsIterator}, \hyperpage{45}
+    \subitem {LibGroup}, \hyperpage{66}
   \item {groups\_}
-    \subitem {GroupsIterator}, \hyperpage{20}
-  \item {GroupsIterator}, \hyperpage{18}
-    \subitem {$\sim$GroupsIterator}, \hyperpage{19}
-    \subitem {end}, \hyperpage{19}
-    \subitem {err\_}, \hyperpage{20}
-    \subitem {get}, \hyperpage{20}
-    \subitem {group\_}, \hyperpage{20}
-    \subitem {groups\_}, \hyperpage{20}
-    \subitem {GroupsIterator}, \hyperpage{19}
-    \subitem {next}, \hyperpage{20}
+    \subitem {GroupsIterator}, \hyperpage{45}
+  \item {GroupsIterator}, \hyperpage{43}
+    \subitem {$\sim$GroupsIterator}, \hyperpage{44}
+    \subitem {end}, \hyperpage{44}
+    \subitem {err\_}, \hyperpage{45}
+    \subitem {get}, \hyperpage{44}
+    \subitem {group\_}, \hyperpage{45}
+    \subitem {groups\_}, \hyperpage{45}
+    \subitem {GroupsIterator}, \hyperpage{44}
+    \subitem {next}, \hyperpage{44}
 
   \indexspace
 
   \item {handle}
-    \subitem {CellExtractor}, \hyperpage{16}
-    \subitem {CellPrinter}, \hyperpage{18}
-    \subitem {ModuleRewriter}, \hyperpage{42}
-    \subitem {VerilogVisitor}, \hyperpage{51, 52}
+    \subitem {CellExtractor}, \hyperpage{32}
+    \subitem {CellPrinter}, \hyperpage{34}
+    \subitem {ModuleRewriter}, \hyperpage{76}
+    \subitem {VerilogVisitor}, \hyperpage{137, 138}
 
   \indexspace
 
   \item {i}
-    \subitem {si2drExprT}, \hyperpage{45}
-  \item {include/compare.hpp}, \hyperpage{53, 54}
-  \item {include/iterators.hpp}, \hyperpage{54}
-  \item {include/json\_utils.hpp}, \hyperpage{55}, \hyperpage{59}
-  \item {include/lib\_attribute.hpp}, \hyperpage{59}
-  \item {include/lib\_file.hpp}, \hyperpage{60}
-  \item {include/lib\_group.hpp}, \hyperpage{61}
-  \item {include/si2dr\_liberty.h}, \hyperpage{61}, \hyperpage{83}
-  \item {include/verilog\_utils.hpp}, \hyperpage{90, 91}
-  \item {include/version.h}, \hyperpage{92}, \hyperpage{94}
+    \subitem {si2drExprT}, \hyperpage{93}
+  \item {include/compare.hpp}, \hyperpage{141, 142}
+  \item {include/iterators.hpp}, \hyperpage{142, 143}
+  \item {include/json\_utils.hpp}, \hyperpage{143}, \hyperpage{148}
+  \item {include/lib\_attribute.hpp}, \hyperpage{148}
+  \item {include/lib\_file.hpp}, \hyperpage{149, 150}
+  \item {include/lib\_group.hpp}, \hyperpage{150, 151}
+  \item {include/verilog\_utils.hpp}, \hyperpage{151, 152}
+  \item {include/version.h}, \hyperpage{153}, \hyperpage{155}
+  \item {include\_3rd\_party/si2dr\_liberty.h}, \hyperpage{155}, 
+		\hyperpage{181}
+  \item {include\_3rd\_party/SyntaxNode.h}, \hyperpage{191}
+  \item {include\_3rd\_party/SyntaxVisitor.h}, \hyperpage{197, 198}
+  \item {index}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$::iterator\_base$<$ U $>$}, 
+		\hyperpage{49}
   \item {index\_info}
-    \subitem {liberty\_value\_data}, \hyperpage{24}
+    \subitem {liberty\_value\_data}, \hyperpage{53}
   \item {inputPins\_}
-    \subitem {ModuleRewriter}, \hyperpage{43}
+    \subitem {ModuleRewriter}, \hyperpage{77}
+  \item {insertAfter}
+    \subitem {slang::syntax::detail::ChangeCollection}, \hyperpage{36}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{119}
+  \item {insertAtBack}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{119}
+  \item {insertAtFront}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{119}
+  \item {insertBefore}
+    \subitem {slang::syntax::detail::ChangeCollection}, \hyperpage{36}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{120}
+  \item {InsertChangeMap}
+    \subitem {slang::syntax::detail}, \hyperpage{25}
   \item {instance\_count\_}
-    \subitem {ModuleRewriter}, \hyperpage{43}
+    \subitem {ModuleRewriter}, \hyperpage{77}
   \item {int\_}
-    \subitem {ValuesIterator}, \hyperpage{49}
+    \subitem {ValuesIterator}, \hyperpage{135}
   \item {inTargetModule\_}
-    \subitem {VerilogVisitor}, \hyperpage{52}
+    \subitem {VerilogVisitor}, \hyperpage{139}
+  \item {isChildOptional}
+    \subitem {slang::syntax::SyntaxListBase}, \hyperpage{107}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{114}
   \item {isComplex}
-    \subitem {LibAttribute}, \hyperpage{23}
+    \subitem {LibAttribute}, \hyperpage{51}
+  \item {isEquivalentTo}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{114}
+  \item {isKind}
+    \subitem {slang::syntax::SyntaxListBase}, \hyperpage{107}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{114}
+  \item {isNode}
+    \subitem {slang::syntax::ConstTokenOrSyntax}, \hyperpage{39}
+    \subitem {slang::syntax::PtrTokenOrSyntax}, \hyperpage{80}
+  \item {isToken}
+    \subitem {slang::syntax::ConstTokenOrSyntax}, \hyperpage{39}
+    \subitem {slang::syntax::PtrTokenOrSyntax}, \hyperpage{80}
+  \item {iterator}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{86}
+  \item {iterator\_base}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$::iterator\_base$<$ U $>$}, 
+		\hyperpage{47}
 
   \indexspace
 
   \item {json}
-    \subitem {compare.hpp}, \hyperpage{53}
-    \subitem {json\_utils.hpp}, \hyperpage{56}
-    \subitem {lib\_file.hpp}, \hyperpage{60}
+    \subitem {compare.hpp}, \hyperpage{141}
+    \subitem {json\_utils.hpp}, \hyperpage{144}
+    \subitem {lib\_file.hpp}, \hyperpage{149}
   \item {json\_utils.cpp}
-    \subitem {generateCellJson}, \hyperpage{100}
-    \subitem {generateLutJson}, \hyperpage{101}
-    \subitem {generatePinJson}, \hyperpage{101}
-    \subitem {generatePowerJson}, \hyperpage{102}
-    \subitem {generateTimingJson}, \hyperpage{103}
-    \subitem {parseStringToVector}, \hyperpage{103}
+    \subitem {generateCellJson}, \hyperpage{208}
+    \subitem {generateLutJson}, \hyperpage{209}
+    \subitem {generatePinJson}, \hyperpage{209}
+    \subitem {generatePowerJson}, \hyperpage{210}
+    \subitem {generateTimingJson}, \hyperpage{211}
+    \subitem {parseStringToVector}, \hyperpage{212}
   \item {json\_utils.hpp}
-    \subitem {generateCellJson}, \hyperpage{56}
-    \subitem {generateLutJson}, \hyperpage{56}
-    \subitem {generatePinJson}, \hyperpage{57}
-    \subitem {generatePowerJson}, \hyperpage{58}
-    \subitem {json}, \hyperpage{56}
+    \subitem {generateCellJson}, \hyperpage{144}
+    \subitem {generateLutJson}, \hyperpage{145}
+    \subitem {generatePinJson}, \hyperpage{146}
+    \subitem {generatePowerJson}, \hyperpage{147}
+    \subitem {json}, \hyperpage{144}
   \item {jsonname\_}
-    \subitem {LibFile}, \hyperpage{31}
+    \subitem {LibFile}, \hyperpage{62}
+
+  \indexspace
+
+  \item {kind}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{115}
 
   \indexspace
 
   \item {left}
-    \subitem {si2drExprT}, \hyperpage{45}
+    \subitem {si2drExprT}, \hyperpage{94}
   \item {lib\_file.hpp}
-    \subitem {json}, \hyperpage{60}
+    \subitem {json}, \hyperpage{149}
   \item {lib\_json\_}
-    \subitem {LibFile}, \hyperpage{32}
-  \item {LibAttribute}, \hyperpage{21}
-    \subitem {$\sim$LibAttribute}, \hyperpage{22}
-    \subitem {attr\_}, \hyperpage{23}
-    \subitem {err\_}, \hyperpage{23}
-    \subitem {getBoolean}, \hyperpage{22}
-    \subitem {getFloat}, \hyperpage{22}
-    \subitem {getInt}, \hyperpage{22}
-    \subitem {getName}, \hyperpage{22}
-    \subitem {getString}, \hyperpage{23}
-    \subitem {getValues}, \hyperpage{23}
-    \subitem {isComplex}, \hyperpage{23}
-    \subitem {LibAttribute}, \hyperpage{21}
+    \subitem {LibFile}, \hyperpage{63}
+  \item {LibAttribute}, \hyperpage{49}
+    \subitem {$\sim$LibAttribute}, \hyperpage{50}
+    \subitem {attr\_}, \hyperpage{52}
+    \subitem {err\_}, \hyperpage{52}
+    \subitem {getBoolean}, \hyperpage{50}
+    \subitem {getFloat}, \hyperpage{50}
+    \subitem {getInt}, \hyperpage{51}
+    \subitem {getName}, \hyperpage{51}
+    \subitem {getString}, \hyperpage{51}
+    \subitem {getValues}, \hyperpage{51}
+    \subitem {isComplex}, \hyperpage{51}
+    \subitem {LibAttribute}, \hyperpage{50}
   \item {liberty\_destroy\_value\_data}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {liberty\_get\_element}
-    \subitem {si2dr\_liberty.h}, \hyperpage{76}
+    \subitem {si2dr\_liberty.h}, \hyperpage{173}
   \item {liberty\_get\_values\_data}
-    \subitem {si2dr\_liberty.h}, \hyperpage{76}
-  \item {liberty\_value\_data}, \hyperpage{24}
-    \subitem {dim\_sizes}, \hyperpage{24}
-    \subitem {dimensions}, \hyperpage{24}
-    \subitem {index\_info}, \hyperpage{24}
-    \subitem {values}, \hyperpage{25}
-  \item {LibFile}, \hyperpage{25}
-    \subitem {$\sim$LibFile}, \hyperpage{26}
-    \subitem {basename\_}, \hyperpage{31}
-    \subitem {checkTimingArcMonotonicity}, \hyperpage{27}
-    \subitem {err\_}, \hyperpage{31}
-    \subitem {filename\_}, \hyperpage{31}
-    \subitem {filepath\_}, \hyperpage{31}
-    \subitem {jsonname\_}, \hyperpage{31}
-    \subitem {lib\_json\_}, \hyperpage{32}
-    \subitem {LibFile}, \hyperpage{26}
-    \subitem {libname\_}, \hyperpage{32}
-    \subitem {logger\_}, \hyperpage{32}
-    \subitem {loggername\_}, \hyperpage{32}
-    \subitem {modify}, \hyperpage{28}
-    \subitem {mono}, \hyperpage{28}
-    \subitem {parse}, \hyperpage{28}
-    \subitem {process\_}, \hyperpage{32}
-    \subitem {read}, \hyperpage{29}
-    \subitem {supercell}, \hyperpage{30}
-    \subitem {temperature\_}, \hyperpage{32}
-    \subitem {verilog}, \hyperpage{30}
-    \subitem {voltage\_}, \hyperpage{33}
-    \subitem {writeJsonToFile}, \hyperpage{30}
-  \item {LibGroup}, \hyperpage{33}
-    \subitem {$\sim$LibGroup}, \hyperpage{34}
-    \subitem {err\_}, \hyperpage{35}
-    \subitem {getAttrs}, \hyperpage{34}
-    \subitem {getGroups}, \hyperpage{34}
-    \subitem {getName}, \hyperpage{34}
-    \subitem {getType}, \hyperpage{34}
-    \subitem {group\_}, \hyperpage{35}
-    \subitem {LibGroup}, \hyperpage{33}
+    \subitem {si2dr\_liberty.h}, \hyperpage{173}
+  \item {liberty\_value\_data}, \hyperpage{52}
+    \subitem {dim\_sizes}, \hyperpage{53}
+    \subitem {dimensions}, \hyperpage{53}
+    \subitem {index\_info}, \hyperpage{53}
+    \subitem {values}, \hyperpage{53}
+  \item {LibFile}, \hyperpage{54}
+    \subitem {$\sim$LibFile}, \hyperpage{55}
+    \subitem {basename\_}, \hyperpage{62}
+    \subitem {checkTimingArcMonotonicity}, \hyperpage{56}
+    \subitem {err\_}, \hyperpage{62}
+    \subitem {filename\_}, \hyperpage{62}
+    \subitem {filepath\_}, \hyperpage{62}
+    \subitem {jsonname\_}, \hyperpage{62}
+    \subitem {lib\_json\_}, \hyperpage{63}
+    \subitem {LibFile}, \hyperpage{55}
+    \subitem {libname\_}, \hyperpage{63}
+    \subitem {logger\_}, \hyperpage{63}
+    \subitem {loggername\_}, \hyperpage{63}
+    \subitem {modify}, \hyperpage{57}
+    \subitem {mono}, \hyperpage{57}
+    \subitem {parse}, \hyperpage{58}
+    \subitem {process\_}, \hyperpage{63}
+    \subitem {read}, \hyperpage{58}
+    \subitem {supercell}, \hyperpage{59}
+    \subitem {temperature\_}, \hyperpage{64}
+    \subitem {verilog}, \hyperpage{61}
+    \subitem {voltage\_}, \hyperpage{64}
+    \subitem {writeJsonToFile}, \hyperpage{61}
+  \item {LibGroup}, \hyperpage{64}
+    \subitem {$\sim$LibGroup}, \hyperpage{65}
+    \subitem {err\_}, \hyperpage{66}
+    \subitem {getAttrs}, \hyperpage{65}
+    \subitem {getGroups}, \hyperpage{65}
+    \subitem {getName}, \hyperpage{66}
+    \subitem {getType}, \hyperpage{66}
+    \subitem {group\_}, \hyperpage{66}
+    \subitem {LibGroup}, \hyperpage{65}
   \item {libname\_}
-    \subitem {LibFile}, \hyperpage{32}
-  \item {LibraryComparator}, \hyperpage{35}
-    \subitem {abstol\_}, \hyperpage{40}
-    \subitem {comp\_json\_}, \hyperpage{40}
-    \subitem {comp\_lib\_path\_}, \hyperpage{40}
-    \subitem {compareCell}, \hyperpage{37}
-    \subitem {compareLut}, \hyperpage{37}
-    \subitem {comparePin}, \hyperpage{38}
-    \subitem {compareTimingArc}, \hyperpage{39}
-    \subitem {generateReport}, \hyperpage{39}
-    \subitem {LibraryComparator}, \hyperpage{36}
-    \subitem {ref\_json\_}, \hyperpage{40}
-    \subitem {ref\_lib\_path\_}, \hyperpage{40}
-    \subitem {reltol\_}, \hyperpage{41}
+    \subitem {LibFile}, \hyperpage{63}
+  \item {LibraryComparator}, \hyperpage{67}
+    \subitem {abstol\_}, \hyperpage{72}
+    \subitem {comp\_json\_}, \hyperpage{72}
+    \subitem {comp\_lib\_path\_}, \hyperpage{72}
+    \subitem {compareCell}, \hyperpage{68}
+    \subitem {compareLut}, \hyperpage{69}
+    \subitem {comparePin}, \hyperpage{70}
+    \subitem {compareTimingArc}, \hyperpage{71}
+    \subitem {generateReport}, \hyperpage{71}
+    \subitem {LibraryComparator}, \hyperpage{68}
+    \subitem {ref\_json\_}, \hyperpage{73}
+    \subitem {ref\_lib\_path\_}, \hyperpage{73}
+    \subitem {reltol\_}, \hyperpage{73}
+  \item {list}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$::iterator\_base$<$ U $>$}, 
+		\hyperpage{49}
+  \item {ListChangeMap}
+    \subitem {slang::syntax::detail}, \hyperpage{25}
+  \item {listInsertAtBack}
+    \subitem {slang::syntax::detail::ChangeCollection}, \hyperpage{36}
+  \item {listInsertAtFront}
+    \subitem {slang::syntax::detail::ChangeCollection}, \hyperpage{37}
   \item {logger\_}
-    \subitem {LibFile}, \hyperpage{32}
-    \subitem {ModuleRewriter}, \hyperpage{43}
+    \subitem {LibFile}, \hyperpage{63}
+    \subitem {ModuleRewriter}, \hyperpage{77}
   \item {loggername\_}
-    \subitem {LibFile}, \hyperpage{32}
+    \subitem {LibFile}, \hyperpage{63}
   \item {LONG\_DOUBLE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{64}
+    \subitem {si2dr\_liberty.h}, \hyperpage{160}
 
   \indexspace
 
   \item {main}
-    \subitem {main.cpp}, \hyperpage{117}
+    \subitem {main.cpp}, \hyperpage{228}
   \item {main.cpp}
-    \subitem {compareLibFiles}, \hyperpage{116}
-    \subitem {funcLibFile}, \hyperpage{117}
-    \subitem {main}, \hyperpage{117}
-    \subitem {monoCheckLibFile}, \hyperpage{117}
-    \subitem {parseLibFile}, \hyperpage{117}
-    \subitem {printInfo}, \hyperpage{118}
-    \subitem {supercellLibFile}, \hyperpage{118}
-    \subitem {verilogLibFile}, \hyperpage{119}
+    \subitem {compareLibFiles}, \hyperpage{227}
+    \subitem {funcLibFile}, \hyperpage{228}
+    \subitem {main}, \hyperpage{228}
+    \subitem {monoCheckLibFile}, \hyperpage{229}
+    \subitem {parseLibFile}, \hyperpage{229}
+    \subitem {printInfo}, \hyperpage{230}
+    \subitem {supercellLibFile}, \hyperpage{230}
+    \subitem {verilogLibFile}, \hyperpage{231}
   \item {main\_liberty\_parser}
-    \subitem {si2dr\_liberty.h}, \hyperpage{76}
+    \subitem {si2dr\_liberty.h}, \hyperpage{173}
+  \item {makeComma}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{120}
+  \item {makeId}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{120}
+  \item {makeToken}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{121}
   \item {modify}
-    \subitem {LibFile}, \hyperpage{28}
+    \subitem {LibFile}, \hyperpage{57}
+  \item {ModifyChangeMap}
+    \subitem {slang::syntax::detail}, \hyperpage{25}
   \item {moduleName\_}
-    \subitem {ModuleRewriter}, \hyperpage{43}
-  \item {ModuleRewriter}, \hyperpage{41}
-    \subitem {cellName\_}, \hyperpage{42}
-    \subitem {depth\_}, \hyperpage{43}
-    \subitem {handle}, \hyperpage{42}
-    \subitem {inputPins\_}, \hyperpage{43}
-    \subitem {instance\_count\_}, \hyperpage{43}
-    \subitem {logger\_}, \hyperpage{43}
-    \subitem {moduleName\_}, \hyperpage{43}
-    \subitem {ModuleRewriter}, \hyperpage{42}
-    \subitem {outputPins\_}, \hyperpage{43}
+    \subitem {ModuleRewriter}, \hyperpage{77}
+  \item {ModuleRewriter}, \hyperpage{73}
+    \subitem {cellName\_}, \hyperpage{77}
+    \subitem {depth\_}, \hyperpage{77}
+    \subitem {handle}, \hyperpage{76}
+    \subitem {inputPins\_}, \hyperpage{77}
+    \subitem {instance\_count\_}, \hyperpage{77}
+    \subitem {logger\_}, \hyperpage{77}
+    \subitem {moduleName\_}, \hyperpage{77}
+    \subitem {ModuleRewriter}, \hyperpage{75}
+    \subitem {outputPins\_}, \hyperpage{78}
+    \subitem {portInfoMap\_}, \hyperpage{78}
   \item {mono}
-    \subitem {LibFile}, \hyperpage{28}
+    \subitem {LibFile}, \hyperpage{57}
   \item {monoCheckLibFile}
-    \subitem {main.cpp}, \hyperpage{117}
+    \subitem {main.cpp}, \hyperpage{229}
 
   \indexspace
 
   \item {next}
-    \subitem {GroupsIterator}, \hyperpage{20}
-    \subitem {ValuesIterator}, \hyperpage{48}
+    \subitem {AttributesIterator}, \hyperpage{28}
+    \subitem {GroupsIterator}, \hyperpage{44}
+    \subitem {ValuesIterator}, \hyperpage{134}
+  \item {node}
+    \subitem {slang::syntax::ConstTokenOrSyntax}, \hyperpage{39}
+    \subitem {slang::syntax::DeferredSourceRange}, \hyperpage{42}
+    \subitem {slang::syntax::PtrTokenOrSyntax}, \hyperpage{80}
+    \subitem {slang::syntax::TokenOrSyntax}, \hyperpage{133}
 
   \indexspace
 
+  \item {operator$\ast$}
+    \subitem {slang::syntax::DeferredSourceRange}, \hyperpage{42}
+  \item {operator[]}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{90, 91}
   \item {out\_}
-    \subitem {CellPrinter}, \hyperpage{18}
+    \subitem {CellPrinter}, \hyperpage{34}
   \item {outputPins\_}
-    \subitem {ModuleRewriter}, \hyperpage{43}
+    \subitem {ModuleRewriter}, \hyperpage{78}
 
   \indexspace
 
+  \item {parent}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{116}
+  \item {ParentList}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$::iterator\_base$<$ U $>$}, 
+		\hyperpage{47}
   \item {parse}
-    \subitem {LibFile}, \hyperpage{28}
+    \subitem {LibFile}, \hyperpage{58}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{121}
   \item {parseLibFile}
-    \subitem {main.cpp}, \hyperpage{117}
+    \subitem {main.cpp}, \hyperpage{229}
   \item {parseStringToVector}
-    \subitem {json\_utils.cpp}, \hyperpage{103}
+    \subitem {json\_utils.cpp}, \hyperpage{212}
+  \item {portInfoMap\_}
+    \subitem {ModuleRewriter}, \hyperpage{78}
+  \item {previewNode}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{116}
   \item {print\_version}
-    \subitem {si2dr\_liberty.h}, \hyperpage{76}
+    \subitem {si2dr\_liberty.h}, \hyperpage{173}
   \item {printInfo}
-    \subitem {main.cpp}, \hyperpage{118}
+    \subitem {main.cpp}, \hyperpage{230}
   \item {process\_}
-    \subitem {LibFile}, \hyperpage{32}
+    \subitem {LibFile}, \hyperpage{63}
+  \item {PtrTokenOrSyntax}
+    \subitem {slang::syntax::PtrTokenOrSyntax}, \hyperpage{79, 80}
 
   \indexspace
 
+  \item {range}
+    \subitem {slang::syntax::ConstTokenOrSyntax}, \hyperpage{40}
+    \subitem {slang::syntax::DeferredSourceRange}, \hyperpage{43}
+    \subitem {slang::syntax::PtrTokenOrSyntax}, \hyperpage{81}
   \item {read}
-    \subitem {LibFile}, \hyperpage{29}
-  \item {README.md}, \hyperpage{94}
+    \subitem {LibFile}, \hyperpage{58}
+  \item {README.md}, \hyperpage{201}
   \item {ref\_json\_}
-    \subitem {LibraryComparator}, \hyperpage{40}
+    \subitem {LibraryComparator}, \hyperpage{73}
   \item {ref\_lib\_path\_}
-    \subitem {LibraryComparator}, \hyperpage{40}
+    \subitem {LibraryComparator}, \hyperpage{73}
   \item {reltol\_}
-    \subitem {LibraryComparator}, \hyperpage{41}
+    \subitem {LibraryComparator}, \hyperpage{73}
+  \item {remove}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{121}
+  \item {removeOrReplace}
+    \subitem {slang::syntax::detail::ChangeCollection}, \hyperpage{37}
+  \item {replace}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{121}
+  \item {resetAll}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{91}
+    \subitem {slang::syntax::SyntaxList$<$ T $>$}, \hyperpage{102}
+    \subitem {slang::syntax::SyntaxListBase}, \hyperpage{107}
+    \subitem {slang::syntax::TokenList}, \hyperpage{130}
   \item {right}
-    \subitem {si2drExprT}, \hyperpage{45}
+    \subitem {si2drExprT}, \hyperpage{94}
 
   \indexspace
 
   \item {s}
-    \subitem {si2drExprT}, \hyperpage{45}
+    \subitem {si2drExprT}, \hyperpage{94}
+  \item {second}
+    \subitem {slang::syntax::detail::SyntaxChange}, \hyperpage{96}
+  \item {SeparatedSyntaxList}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{86, 87}
+  \item {separator}
+    \subitem {slang::syntax::detail::SyntaxChange}, \hyperpage{97}
+  \item {setChild}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{91}
+    \subitem {slang::syntax::SyntaxList$<$ T $>$}, \hyperpage{102}
+    \subitem {slang::syntax::SyntaxListBase}, \hyperpage{107}
+    \subitem {slang::syntax::TokenList}, \hyperpage{130}
   \item {SI2\_ARGS}
-    \subitem {si2dr\_liberty.h}, \hyperpage{65}, \hyperpage{76--82}
+    \subitem {si2dr\_liberty.h}, \hyperpage{160}, \hyperpage{173--180}
   \item {SI2\_BOOLEAN}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2\_DOUBLE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2\_EXPR}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2\_FALSE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{169}
   \item {SI2\_FLOAT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2\_ITER}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2\_LONG}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2\_LONG\_MAX}
-    \subitem {si2dr\_liberty.h}, \hyperpage{65}
+    \subitem {si2dr\_liberty.h}, \hyperpage{160}
   \item {SI2\_LONG\_MIN}
-    \subitem {si2dr\_liberty.h}, \hyperpage{65}
+    \subitem {si2dr\_liberty.h}, \hyperpage{160}
   \item {SI2\_MAX\_VALUETYPE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2\_OID}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2\_STRING}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2\_TRUE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{169}
   \item {SI2\_ULONG\_MAX}
-    \subitem {si2dr\_liberty.h}, \hyperpage{65}
+    \subitem {si2dr\_liberty.h}, \hyperpage{161}
   \item {SI2\_UNDEFINED\_VALUETYPE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2\_VOID}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {si2BooleanEnum}
-    \subitem {si2dr\_liberty.h}, \hyperpage{72}
+    \subitem {si2dr\_liberty.h}, \hyperpage{169}
   \item {si2BooleanT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{67}
+    \subitem {si2dr\_liberty.h}, \hyperpage{163}
   \item {si2DoubleT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{67}
+    \subitem {si2dr\_liberty.h}, \hyperpage{163}
   \item {SI2DR\_ATTR}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{171}
   \item {SI2DR\_BOOLEAN}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2DR\_COMPLEX}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{169}
   \item {SI2DR\_COMPLEXVAL}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{171}
   \item {SI2DR\_DEFINE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{171}
   \item {SI2DR\_EXPR}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2DR\_EXPR\_OP\_ADD}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_EXPR\_OP\_DIV}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_EXPR\_OP\_EXP}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_EXPR\_OP\_LOG10}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_EXPR\_OP\_LOG2}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_EXPR\_OP\_MUL}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_EXPR\_OP\_PAREN}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_EXPR\_OP\_SUB}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_EXPR\_VAL}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_FALSE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{65}
+    \subitem {si2dr\_liberty.h}, \hyperpage{161}
   \item {SI2DR\_FLOAT64}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2DR\_GROUP}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{171}
   \item {SI2DR\_INT32}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2DR\_INTERNAL\_SYSTEM\_ERROR}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_INVALID\_ATTRTYPE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_INVALID\_NAME}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_INVALID\_OBJECTTYPE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_INVALID\_VALUE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {si2dr\_liberty.h}
-    \subitem {get\_function}, \hyperpage{75}
-    \subitem {liberty\_destroy\_value\_data}, \hyperpage{75}
-    \subitem {liberty\_get\_element}, \hyperpage{76}
-    \subitem {liberty\_get\_values\_data}, \hyperpage{76}
-    \subitem {LONG\_DOUBLE}, \hyperpage{64}
-    \subitem {main\_liberty\_parser}, \hyperpage{76}
-    \subitem {print\_version}, \hyperpage{76}
-    \subitem {SI2\_ARGS}, \hyperpage{65}, \hyperpage{76--82}
-    \subitem {SI2\_BOOLEAN}, \hyperpage{75}
-    \subitem {SI2\_DOUBLE}, \hyperpage{75}
-    \subitem {SI2\_EXPR}, \hyperpage{75}
-    \subitem {SI2\_FALSE}, \hyperpage{73}
-    \subitem {SI2\_FLOAT}, \hyperpage{75}
-    \subitem {SI2\_ITER}, \hyperpage{75}
-    \subitem {SI2\_LONG}, \hyperpage{75}
-    \subitem {SI2\_LONG\_MAX}, \hyperpage{65}
-    \subitem {SI2\_LONG\_MIN}, \hyperpage{65}
-    \subitem {SI2\_MAX\_VALUETYPE}, \hyperpage{75}
-    \subitem {SI2\_OID}, \hyperpage{75}
-    \subitem {SI2\_STRING}, \hyperpage{75}
-    \subitem {SI2\_TRUE}, \hyperpage{73}
-    \subitem {SI2\_ULONG\_MAX}, \hyperpage{65}
-    \subitem {SI2\_UNDEFINED\_VALUETYPE}, \hyperpage{75}
-    \subitem {SI2\_VOID}, \hyperpage{75}
-    \subitem {si2BooleanEnum}, \hyperpage{72}
-    \subitem {si2BooleanT}, \hyperpage{67}
-    \subitem {si2DoubleT}, \hyperpage{67}
-    \subitem {SI2DR\_ATTR}, \hyperpage{74}
-    \subitem {SI2DR\_BOOLEAN}, \hyperpage{75}
-    \subitem {SI2DR\_COMPLEX}, \hyperpage{73}
-    \subitem {SI2DR\_COMPLEXVAL}, \hyperpage{74}
-    \subitem {SI2DR\_DEFINE}, \hyperpage{74}
-    \subitem {SI2DR\_EXPR}, \hyperpage{75}
-    \subitem {SI2DR\_EXPR\_OP\_ADD}, \hyperpage{74}
-    \subitem {SI2DR\_EXPR\_OP\_DIV}, \hyperpage{74}
-    \subitem {SI2DR\_EXPR\_OP\_EXP}, \hyperpage{74}
-    \subitem {SI2DR\_EXPR\_OP\_LOG10}, \hyperpage{74}
-    \subitem {SI2DR\_EXPR\_OP\_LOG2}, \hyperpage{74}
-    \subitem {SI2DR\_EXPR\_OP\_MUL}, \hyperpage{74}
-    \subitem {SI2DR\_EXPR\_OP\_PAREN}, \hyperpage{74}
-    \subitem {SI2DR\_EXPR\_OP\_SUB}, \hyperpage{74}
-    \subitem {SI2DR\_EXPR\_VAL}, \hyperpage{74}
-    \subitem {SI2DR\_FALSE}, \hyperpage{65}
-    \subitem {SI2DR\_FLOAT64}, \hyperpage{75}
-    \subitem {SI2DR\_GROUP}, \hyperpage{74}
-    \subitem {SI2DR\_INT32}, \hyperpage{75}
-    \subitem {SI2DR\_INTERNAL\_SYSTEM\_ERROR}, \hyperpage{73}
-    \subitem {SI2DR\_INVALID\_ATTRTYPE}, \hyperpage{73}
-    \subitem {SI2DR\_INVALID\_NAME}, \hyperpage{73}
-    \subitem {SI2DR\_INVALID\_OBJECTTYPE}, \hyperpage{73}
-    \subitem {SI2DR\_INVALID\_VALUE}, \hyperpage{73}
-    \subitem {SI2DR\_MAX\_ERROR}, \hyperpage{73}
-    \subitem {SI2DR\_MAX\_FLOAT32}, \hyperpage{65}
-    \subitem {SI2DR\_MAX\_FLOAT64}, \hyperpage{66}
-    \subitem {SI2DR\_MAX\_INT32}, \hyperpage{66}
-    \subitem {SI2DR\_MAX\_OBJECTTYPE}, \hyperpage{74}
-    \subitem {SI2DR\_MAX\_STRING\_LEN}, \hyperpage{66}
-    \subitem {SI2DR\_MAX\_VALUETYPE}, \hyperpage{75}
-    \subitem {SI2DR\_MIN\_FLOAT32}, \hyperpage{66}
-    \subitem {SI2DR\_MIN\_FLOAT64}, \hyperpage{66}
-    \subitem {SI2DR\_MIN\_INT32}, \hyperpage{66}
-    \subitem {SI2DR\_NO\_ERROR}, \hyperpage{73}
-    \subitem {SI2DR\_OBJECT\_ALREADY\_EXISTS}, \hyperpage{73}
-    \subitem {SI2DR\_OBJECT\_NOT\_FOUND}, \hyperpage{73}
-    \subitem {SI2DR\_PIINIT\_NOT\_CALLED}, \hyperpage{73}
-    \subitem {SI2DR\_REFERENCE\_ERROR}, \hyperpage{73}
-    \subitem {SI2DR\_SEMANTIC\_ERROR}, \hyperpage{73}
-    \subitem {SI2DR\_SEVERITY\_ERR}, \hyperpage{74}
-    \subitem {SI2DR\_SEVERITY\_NOTE}, \hyperpage{74}
-    \subitem {SI2DR\_SEVERITY\_WARN}, \hyperpage{74}
-    \subitem {SI2DR\_SIMPLE}, \hyperpage{73}
-    \subitem {SI2DR\_STRING}, \hyperpage{75}
-    \subitem {SI2DR\_SYNTAX\_ERROR}, \hyperpage{73}
-    \subitem {SI2DR\_TRACE\_FILES\_CANNOT\_BE\_OPENED}, \hyperpage{73}
-    \subitem {SI2DR\_TRUE}, \hyperpage{67}
-    \subitem {SI2DR\_UNDEFINED\_OBJECTTYPE}, \hyperpage{74}
-    \subitem {SI2DR\_UNDEFINED\_VALUETYPE}, \hyperpage{75}
-    \subitem {SI2DR\_UNUSABLE\_OID}, \hyperpage{73}
-    \subitem {si2drAttrComplexValIdT}, \hyperpage{67}
-    \subitem {si2drAttrIdT}, \hyperpage{67}
-    \subitem {si2drAttrsIdT}, \hyperpage{67}
-    \subitem {si2drAttrTypeT}, \hyperpage{68}, \hyperpage{73}
-    \subitem {si2drBooleanT}, \hyperpage{68}
-    \subitem {si2drDefaultMessageHandler}, \hyperpage{82}
-    \subitem {si2drDefineIdT}, \hyperpage{68}
-    \subitem {si2drDefinesIdT}, \hyperpage{68}
-    \subitem {si2drErrorT}, \hyperpage{68}, \hyperpage{73}
-    \subitem {si2drExprT}, \hyperpage{68}
-    \subitem {si2drExprTypeT}, \hyperpage{68}, \hyperpage{73}
-    \subitem {si2drFloat32T}, \hyperpage{69}
-    \subitem {si2drFloat64T}, \hyperpage{69}
-    \subitem {si2drGroupIdT}, \hyperpage{69}
-    \subitem {si2drGroupsIdT}, \hyperpage{69}
-    \subitem {si2drInt32T}, \hyperpage{69}
-    \subitem {si2drIterIdT}, \hyperpage{69}
-    \subitem {si2drMessageHandlerT}, \hyperpage{70}
-    \subitem {si2drNamesIdT}, \hyperpage{70}
-    \subitem {si2drObjectIdT}, \hyperpage{70}
-    \subitem {si2drObjectsIdT}, \hyperpage{70}
-    \subitem {si2drObjectTypeT}, \hyperpage{70}, \hyperpage{74}
-    \subitem {si2drPIGetMessageHandler}, \hyperpage{82}
-    \subitem {si2drPISetMessageHandler}, \hyperpage{82}
-    \subitem {si2drSeverityT}, \hyperpage{70}, \hyperpage{74}
-    \subitem {si2drStringT}, \hyperpage{71}
-    \subitem {si2drValuesIdT}, \hyperpage{71}
-    \subitem {si2drValueTypeT}, \hyperpage{71}, \hyperpage{75}
-    \subitem {si2drVoidT}, \hyperpage{71}
-    \subitem {si2FloatT}, \hyperpage{71}
-    \subitem {si2IteratorIdT}, \hyperpage{71}
-    \subitem {si2LongT}, \hyperpage{72}
-    \subitem {si2ObjectIdT}, \hyperpage{72}
-    \subitem {si2StringT}, \hyperpage{72}
-    \subitem {si2TypeEnum}, \hyperpage{75}
-    \subitem {si2TypeT}, \hyperpage{72}
-    \subitem {si2VoidT}, \hyperpage{72}
-    \subitem {usage}, \hyperpage{83}
+    \subitem {get\_function}, \hyperpage{172}
+    \subitem {liberty\_destroy\_value\_data}, \hyperpage{172}
+    \subitem {liberty\_get\_element}, \hyperpage{173}
+    \subitem {liberty\_get\_values\_data}, \hyperpage{173}
+    \subitem {LONG\_DOUBLE}, \hyperpage{160}
+    \subitem {main\_liberty\_parser}, \hyperpage{173}
+    \subitem {print\_version}, \hyperpage{173}
+    \subitem {SI2\_ARGS}, \hyperpage{160}, \hyperpage{173--180}
+    \subitem {SI2\_BOOLEAN}, \hyperpage{172}
+    \subitem {SI2\_DOUBLE}, \hyperpage{172}
+    \subitem {SI2\_EXPR}, \hyperpage{172}
+    \subitem {SI2\_FALSE}, \hyperpage{169}
+    \subitem {SI2\_FLOAT}, \hyperpage{172}
+    \subitem {SI2\_ITER}, \hyperpage{172}
+    \subitem {SI2\_LONG}, \hyperpage{172}
+    \subitem {SI2\_LONG\_MAX}, \hyperpage{160}
+    \subitem {SI2\_LONG\_MIN}, \hyperpage{160}
+    \subitem {SI2\_MAX\_VALUETYPE}, \hyperpage{172}
+    \subitem {SI2\_OID}, \hyperpage{172}
+    \subitem {SI2\_STRING}, \hyperpage{172}
+    \subitem {SI2\_TRUE}, \hyperpage{169}
+    \subitem {SI2\_ULONG\_MAX}, \hyperpage{161}
+    \subitem {SI2\_UNDEFINED\_VALUETYPE}, \hyperpage{172}
+    \subitem {SI2\_VOID}, \hyperpage{172}
+    \subitem {si2BooleanEnum}, \hyperpage{169}
+    \subitem {si2BooleanT}, \hyperpage{163}
+    \subitem {si2DoubleT}, \hyperpage{163}
+    \subitem {SI2DR\_ATTR}, \hyperpage{171}
+    \subitem {SI2DR\_BOOLEAN}, \hyperpage{172}
+    \subitem {SI2DR\_COMPLEX}, \hyperpage{169}
+    \subitem {SI2DR\_COMPLEXVAL}, \hyperpage{171}
+    \subitem {SI2DR\_DEFINE}, \hyperpage{171}
+    \subitem {SI2DR\_EXPR}, \hyperpage{172}
+    \subitem {SI2DR\_EXPR\_OP\_ADD}, \hyperpage{170}
+    \subitem {SI2DR\_EXPR\_OP\_DIV}, \hyperpage{170}
+    \subitem {SI2DR\_EXPR\_OP\_EXP}, \hyperpage{170}
+    \subitem {SI2DR\_EXPR\_OP\_LOG10}, \hyperpage{170}
+    \subitem {SI2DR\_EXPR\_OP\_LOG2}, \hyperpage{170}
+    \subitem {SI2DR\_EXPR\_OP\_MUL}, \hyperpage{170}
+    \subitem {SI2DR\_EXPR\_OP\_PAREN}, \hyperpage{170}
+    \subitem {SI2DR\_EXPR\_OP\_SUB}, \hyperpage{170}
+    \subitem {SI2DR\_EXPR\_VAL}, \hyperpage{170}
+    \subitem {SI2DR\_FALSE}, \hyperpage{161}
+    \subitem {SI2DR\_FLOAT64}, \hyperpage{172}
+    \subitem {SI2DR\_GROUP}, \hyperpage{171}
+    \subitem {SI2DR\_INT32}, \hyperpage{172}
+    \subitem {SI2DR\_INTERNAL\_SYSTEM\_ERROR}, \hyperpage{170}
+    \subitem {SI2DR\_INVALID\_ATTRTYPE}, \hyperpage{170}
+    \subitem {SI2DR\_INVALID\_NAME}, \hyperpage{170}
+    \subitem {SI2DR\_INVALID\_OBJECTTYPE}, \hyperpage{170}
+    \subitem {SI2DR\_INVALID\_VALUE}, \hyperpage{170}
+    \subitem {SI2DR\_MAX\_ERROR}, \hyperpage{170}
+    \subitem {SI2DR\_MAX\_FLOAT32}, \hyperpage{161}
+    \subitem {SI2DR\_MAX\_FLOAT64}, \hyperpage{161}
+    \subitem {SI2DR\_MAX\_INT32}, \hyperpage{161}
+    \subitem {SI2DR\_MAX\_OBJECTTYPE}, \hyperpage{171}
+    \subitem {SI2DR\_MAX\_STRING\_LEN}, \hyperpage{162}
+    \subitem {SI2DR\_MAX\_VALUETYPE}, \hyperpage{172}
+    \subitem {SI2DR\_MIN\_FLOAT32}, \hyperpage{162}
+    \subitem {SI2DR\_MIN\_FLOAT64}, \hyperpage{162}
+    \subitem {SI2DR\_MIN\_INT32}, \hyperpage{162}
+    \subitem {SI2DR\_NO\_ERROR}, \hyperpage{170}
+    \subitem {SI2DR\_OBJECT\_ALREADY\_EXISTS}, \hyperpage{170}
+    \subitem {SI2DR\_OBJECT\_NOT\_FOUND}, \hyperpage{170}
+    \subitem {SI2DR\_PIINIT\_NOT\_CALLED}, \hyperpage{170}
+    \subitem {SI2DR\_REFERENCE\_ERROR}, \hyperpage{170}
+    \subitem {SI2DR\_SEMANTIC\_ERROR}, \hyperpage{170}
+    \subitem {SI2DR\_SEVERITY\_ERR}, \hyperpage{171}
+    \subitem {SI2DR\_SEVERITY\_NOTE}, \hyperpage{171}
+    \subitem {SI2DR\_SEVERITY\_WARN}, \hyperpage{171}
+    \subitem {SI2DR\_SIMPLE}, \hyperpage{169}
+    \subitem {SI2DR\_STRING}, \hyperpage{172}
+    \subitem {SI2DR\_SYNTAX\_ERROR}, \hyperpage{170}
+    \subitem {SI2DR\_TRACE\_FILES\_CANNOT\_BE\_OPENED}, \hyperpage{170}
+    \subitem {SI2DR\_TRUE}, \hyperpage{162}
+    \subitem {SI2DR\_UNDEFINED\_OBJECTTYPE}, \hyperpage{171}
+    \subitem {SI2DR\_UNDEFINED\_VALUETYPE}, \hyperpage{171}
+    \subitem {SI2DR\_UNUSABLE\_OID}, \hyperpage{170}
+    \subitem {si2drAttrComplexValIdT}, \hyperpage{163}
+    \subitem {si2drAttrIdT}, \hyperpage{163}
+    \subitem {si2drAttrsIdT}, \hyperpage{163}
+    \subitem {si2drAttrTypeT}, \hyperpage{164}, \hyperpage{169}
+    \subitem {si2drBooleanT}, \hyperpage{164}
+    \subitem {si2drDefaultMessageHandler}, \hyperpage{180}
+    \subitem {si2drDefineIdT}, \hyperpage{164}
+    \subitem {si2drDefinesIdT}, \hyperpage{164}
+    \subitem {si2drErrorT}, \hyperpage{164}, \hyperpage{169}
+    \subitem {si2drExprT}, \hyperpage{164}
+    \subitem {si2drExprTypeT}, \hyperpage{165}, \hyperpage{170}
+    \subitem {si2drFloat32T}, \hyperpage{165}
+    \subitem {si2drFloat64T}, \hyperpage{165}
+    \subitem {si2drGroupIdT}, \hyperpage{165}
+    \subitem {si2drGroupsIdT}, \hyperpage{165}
+    \subitem {si2drInt32T}, \hyperpage{165}
+    \subitem {si2drIterIdT}, \hyperpage{166}
+    \subitem {si2drMessageHandlerT}, \hyperpage{166}
+    \subitem {si2drNamesIdT}, \hyperpage{166}
+    \subitem {si2drObjectIdT}, \hyperpage{166}
+    \subitem {si2drObjectsIdT}, \hyperpage{166}
+    \subitem {si2drObjectTypeT}, \hyperpage{167}, \hyperpage{171}
+    \subitem {si2drPIGetMessageHandler}, \hyperpage{180}
+    \subitem {si2drPISetMessageHandler}, \hyperpage{181}
+    \subitem {si2drSeverityT}, \hyperpage{167}, \hyperpage{171}
+    \subitem {si2drStringT}, \hyperpage{167}
+    \subitem {si2drValuesIdT}, \hyperpage{167}
+    \subitem {si2drValueTypeT}, \hyperpage{167}, \hyperpage{171}
+    \subitem {si2drVoidT}, \hyperpage{167}
+    \subitem {si2FloatT}, \hyperpage{168}
+    \subitem {si2IteratorIdT}, \hyperpage{168}
+    \subitem {si2LongT}, \hyperpage{168}
+    \subitem {si2ObjectIdT}, \hyperpage{168}
+    \subitem {si2StringT}, \hyperpage{168}
+    \subitem {si2TypeEnum}, \hyperpage{172}
+    \subitem {si2TypeT}, \hyperpage{168}
+    \subitem {si2VoidT}, \hyperpage{169}
+    \subitem {usage}, \hyperpage{181}
   \item {SI2DR\_MAX\_ERROR}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_MAX\_FLOAT32}
-    \subitem {si2dr\_liberty.h}, \hyperpage{65}
+    \subitem {si2dr\_liberty.h}, \hyperpage{161}
   \item {SI2DR\_MAX\_FLOAT64}
-    \subitem {si2dr\_liberty.h}, \hyperpage{66}
+    \subitem {si2dr\_liberty.h}, \hyperpage{161}
   \item {SI2DR\_MAX\_INT32}
-    \subitem {si2dr\_liberty.h}, \hyperpage{66}
+    \subitem {si2dr\_liberty.h}, \hyperpage{161}
   \item {SI2DR\_MAX\_OBJECTTYPE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{171}
   \item {SI2DR\_MAX\_STRING\_LEN}
-    \subitem {si2dr\_liberty.h}, \hyperpage{66}
+    \subitem {si2dr\_liberty.h}, \hyperpage{162}
   \item {SI2DR\_MAX\_VALUETYPE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2DR\_MIN\_FLOAT32}
-    \subitem {si2dr\_liberty.h}, \hyperpage{66}
+    \subitem {si2dr\_liberty.h}, \hyperpage{162}
   \item {SI2DR\_MIN\_FLOAT64}
-    \subitem {si2dr\_liberty.h}, \hyperpage{66}
+    \subitem {si2dr\_liberty.h}, \hyperpage{162}
   \item {SI2DR\_MIN\_INT32}
-    \subitem {si2dr\_liberty.h}, \hyperpage{66}
+    \subitem {si2dr\_liberty.h}, \hyperpage{162}
   \item {SI2DR\_NO\_ERROR}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_OBJECT\_ALREADY\_EXISTS}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_OBJECT\_NOT\_FOUND}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_PIINIT\_NOT\_CALLED}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_REFERENCE\_ERROR}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_SEMANTIC\_ERROR}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_SEVERITY\_ERR}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{171}
   \item {SI2DR\_SEVERITY\_NOTE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{171}
   \item {SI2DR\_SEVERITY\_WARN}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{171}
   \item {SI2DR\_SIMPLE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{169}
   \item {SI2DR\_STRING}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {SI2DR\_SYNTAX\_ERROR}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_TRACE\_FILES\_CANNOT\_BE\_OPENED}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {SI2DR\_TRUE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{67}
+    \subitem {si2dr\_liberty.h}, \hyperpage{162}
   \item {SI2DR\_UNDEFINED\_OBJECTTYPE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{171}
   \item {SI2DR\_UNDEFINED\_VALUETYPE}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{171}
   \item {SI2DR\_UNUSABLE\_OID}
-    \subitem {si2dr\_liberty.h}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{170}
   \item {si2drAttrComplexValIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{67}
+    \subitem {si2dr\_liberty.h}, \hyperpage{163}
   \item {si2drAttrIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{67}
+    \subitem {si2dr\_liberty.h}, \hyperpage{163}
   \item {si2drAttrsIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{67}
+    \subitem {si2dr\_liberty.h}, \hyperpage{163}
   \item {si2drAttrTypeT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{68}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{164}, \hyperpage{169}
   \item {si2drBooleanT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{68}
+    \subitem {si2dr\_liberty.h}, \hyperpage{164}
   \item {si2drDefaultMessageHandler}
-    \subitem {si2dr\_liberty.h}, \hyperpage{82}
+    \subitem {si2dr\_liberty.h}, \hyperpage{180}
   \item {si2drDefineIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{68}
+    \subitem {si2dr\_liberty.h}, \hyperpage{164}
   \item {si2drDefinesIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{68}
+    \subitem {si2dr\_liberty.h}, \hyperpage{164}
   \item {si2drErrorT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{68}, \hyperpage{73}
-  \item {si2drExprT}, \hyperpage{44}
-    \subitem {b}, \hyperpage{44}
-    \subitem {d}, \hyperpage{44}
-    \subitem {i}, \hyperpage{45}
-    \subitem {left}, \hyperpage{45}
-    \subitem {right}, \hyperpage{45}
-    \subitem {s}, \hyperpage{45}
-    \subitem {si2dr\_liberty.h}, \hyperpage{68}
-    \subitem {type}, \hyperpage{45}
-    \subitem {u}, \hyperpage{45}
-    \subitem {valuetype}, \hyperpage{46}
+    \subitem {si2dr\_liberty.h}, \hyperpage{164}, \hyperpage{169}
+  \item {si2drExprT}, \hyperpage{92}
+    \subitem {b}, \hyperpage{93}
+    \subitem {d}, \hyperpage{93}
+    \subitem {i}, \hyperpage{93}
+    \subitem {left}, \hyperpage{94}
+    \subitem {right}, \hyperpage{94}
+    \subitem {s}, \hyperpage{94}
+    \subitem {si2dr\_liberty.h}, \hyperpage{164}
+    \subitem {type}, \hyperpage{94}
+    \subitem {u}, \hyperpage{94}
+    \subitem {valuetype}, \hyperpage{95}
   \item {si2drExprTypeT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{68}, \hyperpage{73}
+    \subitem {si2dr\_liberty.h}, \hyperpage{165}, \hyperpage{170}
   \item {si2drFloat32T}
-    \subitem {si2dr\_liberty.h}, \hyperpage{69}
+    \subitem {si2dr\_liberty.h}, \hyperpage{165}
   \item {si2drFloat64T}
-    \subitem {si2dr\_liberty.h}, \hyperpage{69}
+    \subitem {si2dr\_liberty.h}, \hyperpage{165}
   \item {si2drGroupIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{69}
+    \subitem {si2dr\_liberty.h}, \hyperpage{165}
   \item {si2drGroupsIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{69}
+    \subitem {si2dr\_liberty.h}, \hyperpage{165}
   \item {si2drInt32T}
-    \subitem {si2dr\_liberty.h}, \hyperpage{69}
+    \subitem {si2dr\_liberty.h}, \hyperpage{165}
   \item {si2drIterIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{69}
+    \subitem {si2dr\_liberty.h}, \hyperpage{166}
   \item {si2drMessageHandlerT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{70}
+    \subitem {si2dr\_liberty.h}, \hyperpage{166}
   \item {si2drNamesIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{70}
+    \subitem {si2dr\_liberty.h}, \hyperpage{166}
   \item {si2drObjectIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{70}
+    \subitem {si2dr\_liberty.h}, \hyperpage{166}
   \item {si2drObjectsIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{70}
+    \subitem {si2dr\_liberty.h}, \hyperpage{166}
   \item {si2drObjectTypeT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{70}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{167}, \hyperpage{171}
   \item {si2drPIGetMessageHandler}
-    \subitem {si2dr\_liberty.h}, \hyperpage{82}
+    \subitem {si2dr\_liberty.h}, \hyperpage{180}
   \item {si2drPISetMessageHandler}
-    \subitem {si2dr\_liberty.h}, \hyperpage{82}
+    \subitem {si2dr\_liberty.h}, \hyperpage{181}
   \item {si2drSeverityT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{70}, \hyperpage{74}
+    \subitem {si2dr\_liberty.h}, \hyperpage{167}, \hyperpage{171}
   \item {si2drStringT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{71}
+    \subitem {si2dr\_liberty.h}, \hyperpage{167}
   \item {si2drValuesIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{71}
+    \subitem {si2dr\_liberty.h}, \hyperpage{167}
   \item {si2drValueTypeT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{71}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{167}, \hyperpage{171}
   \item {si2drVoidT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{71}
+    \subitem {si2dr\_liberty.h}, \hyperpage{167}
   \item {si2FloatT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{71}
+    \subitem {si2dr\_liberty.h}, \hyperpage{168}
   \item {si2IteratorIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{71}
+    \subitem {si2dr\_liberty.h}, \hyperpage{168}
   \item {si2LongT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{72}
+    \subitem {si2dr\_liberty.h}, \hyperpage{168}
   \item {si2ObjectIdT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{72}
-  \item {si2OID}, \hyperpage{46}
-    \subitem {v1}, \hyperpage{46}
-    \subitem {v2}, \hyperpage{46}
+    \subitem {si2dr\_liberty.h}, \hyperpage{168}
+  \item {si2OID}, \hyperpage{95}
+    \subitem {v1}, \hyperpage{95}
+    \subitem {v2}, \hyperpage{95}
   \item {si2StringT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{72}
+    \subitem {si2dr\_liberty.h}, \hyperpage{168}
   \item {si2TypeEnum}
-    \subitem {si2dr\_liberty.h}, \hyperpage{75}
+    \subitem {si2dr\_liberty.h}, \hyperpage{172}
   \item {si2TypeT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{72}
+    \subitem {si2dr\_liberty.h}, \hyperpage{168}
   \item {si2VoidT}
-    \subitem {si2dr\_liberty.h}, \hyperpage{72}
-  \item {src/compare.cpp}, \hyperpage{94, 95}
-  \item {src/iterators.cpp}, \hyperpage{99}
-  \item {src/json\_utils.cpp}, \hyperpage{100}, \hyperpage{104}
-  \item {src/lib\_attribute.cpp}, \hyperpage{107}
-  \item {src/lib\_file.cpp}, \hyperpage{107}
-  \item {src/lib\_group.cpp}, \hyperpage{115}
-  \item {src/main.cpp}, \hyperpage{115}, \hyperpage{120}
-  \item {src/verilog\_utils.cpp}, \hyperpage{125, 126}
+    \subitem {si2dr\_liberty.h}, \hyperpage{169}
+  \item {SingleSpace}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{123}
+  \item {size}
+    \subitem {slang::syntax::SeparatedSyntaxList$<$ T $>$}, 
+		\hyperpage{91}
+  \item {slang}, \hyperpage{21}
+  \item {slang::syntax}, \hyperpage{21}
+    \subitem {clone}, \hyperpage{22}
+    \subitem {deepClone}, \hyperpage{23, 24}
+  \item {slang::syntax::ConstTokenOrSyntax}, \hyperpage{37}
+    \subitem {Base}, \hyperpage{38}
+    \subitem {ConstTokenOrSyntax}, \hyperpage{38, 39}
+    \subitem {isNode}, \hyperpage{39}
+    \subitem {isToken}, \hyperpage{39}
+    \subitem {node}, \hyperpage{39}
+    \subitem {range}, \hyperpage{40}
+    \subitem {token}, \hyperpage{40}
+  \item {slang::syntax::DeferredSourceRange}, \hyperpage{40}
+    \subitem {DeferredSourceRange}, \hyperpage{41}
+    \subitem {get}, \hyperpage{42}
+    \subitem {node}, \hyperpage{42}
+    \subitem {operator$\ast$}, \hyperpage{42}
+    \subitem {range}, \hyperpage{43}
+    \subitem {syntax}, \hyperpage{42}
+  \item {slang::syntax::detail}, \hyperpage{24}
+    \subitem {InsertChangeMap}, \hyperpage{25}
+    \subitem {ListChangeMap}, \hyperpage{25}
+    \subitem {ModifyChangeMap}, \hyperpage{25}
+    \subitem {transformTree}, \hyperpage{25}
+  \item {slang::syntax::detail::ChangeCollection}, \hyperpage{35}
+    \subitem {clear}, \hyperpage{36}
+    \subitem {empty}, \hyperpage{36}
+    \subitem {insertAfter}, \hyperpage{36}
+    \subitem {insertBefore}, \hyperpage{36}
+    \subitem {listInsertAtBack}, \hyperpage{36}
+    \subitem {listInsertAtFront}, \hyperpage{37}
+    \subitem {removeOrReplace}, \hyperpage{37}
+  \item {slang::syntax::detail::RemoveChange}, \hyperpage{81}
+  \item {slang::syntax::detail::ReplaceChange}, \hyperpage{82}
+  \item {slang::syntax::detail::SyntaxChange}, \hyperpage{96}
+    \subitem {first}, \hyperpage{96}
+    \subitem {second}, \hyperpage{96}
+    \subitem {separator}, \hyperpage{97}
+  \item {slang::syntax::PtrTokenOrSyntax}, \hyperpage{78}
+    \subitem {Base}, \hyperpage{79}
+    \subitem {isNode}, \hyperpage{80}
+    \subitem {isToken}, \hyperpage{80}
+    \subitem {node}, \hyperpage{80}
+    \subitem {PtrTokenOrSyntax}, \hyperpage{79, 80}
+    \subitem {range}, \hyperpage{81}
+    \subitem {token}, \hyperpage{81}
+  \item {slang::syntax::SeparatedSyntaxList$<$ T $>$}, \hyperpage{82}
+    \subitem {begin}, \hyperpage{87}
+    \subitem {cbegin}, \hyperpage{87}
+    \subitem {cend}, \hyperpage{88}
+    \subitem {clone}, \hyperpage{88}
+    \subitem {const\_iterator}, \hyperpage{86}
+    \subitem {elements}, \hyperpage{92}
+    \subitem {elems}, \hyperpage{88}
+    \subitem {empty}, \hyperpage{89}
+    \subitem {end}, \hyperpage{89}
+    \subitem {getChild}, \hyperpage{89, 90}
+    \subitem {getChildPtr}, \hyperpage{90}
+    \subitem {iterator}, \hyperpage{86}
+    \subitem {operator[]}, \hyperpage{90, 91}
+    \subitem {resetAll}, \hyperpage{91}
+    \subitem {SeparatedSyntaxList}, \hyperpage{86, 87}
+    \subitem {setChild}, \hyperpage{91}
+    \subitem {size}, \hyperpage{91}
+  \item {slang::syntax::SeparatedSyntaxList$<$ T $>$::iterator\_base$<$ U $>$}, 
+		\hyperpage{46}
+    \subitem {advance}, \hyperpage{47}
+    \subitem {dereference}, \hyperpage{48}
+    \subitem {distance\_to}, \hyperpage{48}
+    \subitem {equals}, \hyperpage{48}
+    \subitem {index}, \hyperpage{49}
+    \subitem {iterator\_base}, \hyperpage{47}
+    \subitem {list}, \hyperpage{49}
+    \subitem {ParentList}, \hyperpage{47}
+  \item {slang::syntax::SyntaxList$<$ T $>$}, \hyperpage{97}
+    \subitem {clone}, \hyperpage{100}
+    \subitem {getChild}, \hyperpage{101}
+    \subitem {getChildPtr}, \hyperpage{101}
+    \subitem {resetAll}, \hyperpage{102}
+    \subitem {setChild}, \hyperpage{102}
+    \subitem {SyntaxList}, \hyperpage{100}
+  \item {slang::syntax::SyntaxListBase}, \hyperpage{103}
+    \subitem {childCount}, \hyperpage{108}
+    \subitem {clone}, \hyperpage{105}
+    \subitem {getChild}, \hyperpage{106}
+    \subitem {getChildCount}, \hyperpage{106}
+    \subitem {getChildPtr}, \hyperpage{106}
+    \subitem {isChildOptional}, \hyperpage{107}
+    \subitem {isKind}, \hyperpage{107}
+    \subitem {resetAll}, \hyperpage{107}
+    \subitem {setChild}, \hyperpage{107}
+    \subitem {SyntaxListBase}, \hyperpage{105}
+  \item {slang::syntax::SyntaxNode}, \hyperpage{108}
+    \subitem {as}, \hyperpage{110, 111}
+    \subitem {as\_if}, \hyperpage{111}
+    \subitem {childNode}, \hyperpage{111, 112}
+    \subitem {childToken}, \hyperpage{112}
+    \subitem {childTokenPtr}, \hyperpage{112}
+    \subitem {getChild}, \hyperpage{112}
+    \subitem {getChildCount}, \hyperpage{113}
+    \subitem {getChildPtr}, \hyperpage{113}
+    \subitem {getFirstToken}, \hyperpage{113}
+    \subitem {getFirstTokenPtr}, \hyperpage{113}
+    \subitem {getLastToken}, \hyperpage{113}
+    \subitem {getLastTokenPtr}, \hyperpage{113}
+    \subitem {isChildOptional}, \hyperpage{114}
+    \subitem {isEquivalentTo}, \hyperpage{114}
+    \subitem {isKind}, \hyperpage{114}
+    \subitem {kind}, \hyperpage{115}
+    \subitem {parent}, \hyperpage{116}
+    \subitem {previewNode}, \hyperpage{116}
+    \subitem {sourceRange}, \hyperpage{114}
+    \subitem {SyntaxNode}, \hyperpage{110}
+    \subitem {Token}, \hyperpage{110}
+    \subitem {toString}, \hyperpage{115}
+    \subitem {visit}, \hyperpage{115}
+  \item {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{116}
+    \subitem {alloc}, \hyperpage{122}
+    \subitem {commits}, \hyperpage{123}
+    \subitem {factory}, \hyperpage{123}
+    \subitem {insertAfter}, \hyperpage{119}
+    \subitem {insertAtBack}, \hyperpage{119}
+    \subitem {insertAtFront}, \hyperpage{119}
+    \subitem {insertBefore}, \hyperpage{120}
+    \subitem {makeComma}, \hyperpage{120}
+    \subitem {makeId}, \hyperpage{120}
+    \subitem {makeToken}, \hyperpage{121}
+    \subitem {parse}, \hyperpage{121}
+    \subitem {remove}, \hyperpage{121}
+    \subitem {replace}, \hyperpage{121}
+    \subitem {SingleSpace}, \hyperpage{123}
+    \subitem {sourceManager}, \hyperpage{123}
+    \subitem {SyntaxRewriter}, \hyperpage{118}
+    \subitem {tempTrees}, \hyperpage{123}
+    \subitem {Token}, \hyperpage{118}
+    \subitem {transform}, \hyperpage{122}
+  \item {slang::syntax::SyntaxVisitor$<$ TDerived $>$}, \hyperpage{124}
+    \subitem {visit}, \hyperpage{125}
+    \subitem {visitDefault}, \hyperpage{125}
+    \subitem {visitToken}, \hyperpage{125}
+  \item {slang::syntax::TokenList}, \hyperpage{126}
+    \subitem {clone}, \hyperpage{129}
+    \subitem {getChild}, \hyperpage{129}
+    \subitem {getChildPtr}, \hyperpage{130}
+    \subitem {resetAll}, \hyperpage{130}
+    \subitem {setChild}, \hyperpage{130}
+    \subitem {TokenList}, \hyperpage{128, 129}
+  \item {slang::syntax::TokenOrSyntax}, \hyperpage{131}
+    \subitem {node}, \hyperpage{133}
+    \subitem {TokenOrSyntax}, \hyperpage{132}
+  \item {sourceManager}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{123}
+  \item {sourceRange}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{114}
+  \item {src/compare.cpp}, \hyperpage{201}
+  \item {src/iterators.cpp}, \hyperpage{207}
+  \item {src/json\_utils.cpp}, \hyperpage{207}, \hyperpage{212}
+  \item {src/lib\_attribute.cpp}, \hyperpage{216}
+  \item {src/lib\_file.cpp}, \hyperpage{216, 217}
+  \item {src/lib\_group.cpp}, \hyperpage{226}
+  \item {src/main.cpp}, \hyperpage{226}, \hyperpage{232}
+  \item {src/verilog\_utils.cpp}, \hyperpage{239}
   \item {str\_}
-    \subitem {ValuesIterator}, \hyperpage{49}
+    \subitem {ValuesIterator}, \hyperpage{136}
   \item {supercell}
-    \subitem {LibFile}, \hyperpage{30}
+    \subitem {LibFile}, \hyperpage{59}
   \item {supercellLibFile}
-    \subitem {main.cpp}, \hyperpage{118}
+    \subitem {main.cpp}, \hyperpage{230}
+  \item {syntax}
+    \subitem {slang::syntax::DeferredSourceRange}, \hyperpage{42}
+  \item {SyntaxList}
+    \subitem {slang::syntax::SyntaxList$<$ T $>$}, \hyperpage{100}
+  \item {SyntaxListBase}
+    \subitem {slang::syntax::SyntaxListBase}, \hyperpage{105}
+  \item {SyntaxNode}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{110}
+  \item {SyntaxRewriter}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{118}
+  \item {SyntaxVisitor.h}
+    \subitem {DERIVED}, \hyperpage{198}
 
   \indexspace
 
   \item {targetCell\_}
-    \subitem {CellExtractor}, \hyperpage{16}
-    \subitem {CellPrinter}, \hyperpage{18}
-    \subitem {VerilogVisitor}, \hyperpage{52}
+    \subitem {CellExtractor}, \hyperpage{32}
+    \subitem {CellPrinter}, \hyperpage{35}
+    \subitem {VerilogVisitor}, \hyperpage{139}
   \item {temperature\_}
-    \subitem {LibFile}, \hyperpage{32}
+    \subitem {LibFile}, \hyperpage{64}
+  \item {tempTrees}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{123}
+  \item {Token}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{110}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{118}
+  \item {token}
+    \subitem {slang::syntax::ConstTokenOrSyntax}, \hyperpage{40}
+    \subitem {slang::syntax::PtrTokenOrSyntax}, \hyperpage{81}
+  \item {TokenList}
+    \subitem {slang::syntax::TokenList}, \hyperpage{128, 129}
+  \item {TokenOrSyntax}
+    \subitem {slang::syntax::TokenOrSyntax}, \hyperpage{132}
+  \item {toString}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{115}
+  \item {transform}
+    \subitem {slang::syntax::SyntaxRewriter$<$ TDerived $>$}, 
+		\hyperpage{122}
+  \item {transformTree}
+    \subitem {slang::syntax::detail}, \hyperpage{25}
   \item {type}
-    \subitem {si2drExprT}, \hyperpage{45}
+    \subitem {si2drExprT}, \hyperpage{94}
 
   \indexspace
 
   \item {u}
-    \subitem {si2drExprT}, \hyperpage{45}
+    \subitem {si2drExprT}, \hyperpage{94}
   \item {usage}
-    \subitem {si2dr\_liberty.h}, \hyperpage{83}
+    \subitem {si2dr\_liberty.h}, \hyperpage{181}
 
   \indexspace
 
   \item {v1}
-    \subitem {si2OID}, \hyperpage{46}
+    \subitem {si2OID}, \hyperpage{95}
   \item {v2}
-    \subitem {si2OID}, \hyperpage{46}
+    \subitem {si2OID}, \hyperpage{95}
   \item {values}
-    \subitem {liberty\_value\_data}, \hyperpage{25}
+    \subitem {liberty\_value\_data}, \hyperpage{53}
   \item {values\_}
-    \subitem {ValuesIterator}, \hyperpage{49}
-  \item {ValuesIterator}, \hyperpage{47}
-    \subitem {$\sim$ValuesIterator}, \hyperpage{48}
-    \subitem {bool\_}, \hyperpage{48}
-    \subitem {end}, \hyperpage{48}
-    \subitem {err\_}, \hyperpage{48}
-    \subitem {exprp\_}, \hyperpage{49}
-    \subitem {float\_}, \hyperpage{49}
-    \subitem {int\_}, \hyperpage{49}
-    \subitem {next}, \hyperpage{48}
-    \subitem {str\_}, \hyperpage{49}
-    \subitem {values\_}, \hyperpage{49}
-    \subitem {ValuesIterator}, \hyperpage{47}
-    \subitem {vtype\_}, \hyperpage{49}
+    \subitem {ValuesIterator}, \hyperpage{136}
+  \item {ValuesIterator}, \hyperpage{133}
+    \subitem {$\sim$ValuesIterator}, \hyperpage{134}
+    \subitem {bool\_}, \hyperpage{135}
+    \subitem {end}, \hyperpage{134}
+    \subitem {err\_}, \hyperpage{135}
+    \subitem {exprp\_}, \hyperpage{135}
+    \subitem {float\_}, \hyperpage{135}
+    \subitem {int\_}, \hyperpage{135}
+    \subitem {next}, \hyperpage{134}
+    \subitem {str\_}, \hyperpage{136}
+    \subitem {values\_}, \hyperpage{136}
+    \subitem {ValuesIterator}, \hyperpage{134}
+    \subitem {vtype\_}, \hyperpage{136}
   \item {valuetype}
-    \subitem {si2drExprT}, \hyperpage{46}
+    \subitem {si2drExprT}, \hyperpage{95}
   \item {verilog}
-    \subitem {LibFile}, \hyperpage{30}
+    \subitem {LibFile}, \hyperpage{61}
   \item {verilog\_utils.cpp}
-    \subitem {getAST}, \hyperpage{125}
+    \subitem {getAST}, \hyperpage{239}
   \item {verilog\_utils.hpp}
-    \subitem {getAST}, \hyperpage{91}
+    \subitem {getAST}, \hyperpage{152}
   \item {verilogLibFile}
-    \subitem {main.cpp}, \hyperpage{119}
-  \item {VerilogVisitor}, \hyperpage{50}
-    \subitem {depth\_}, \hyperpage{52}
-    \subitem {handle}, \hyperpage{51, 52}
-    \subitem {inTargetModule\_}, \hyperpage{52}
-    \subitem {targetCell\_}, \hyperpage{52}
-    \subitem {VerilogVisitor}, \hyperpage{50}
+    \subitem {main.cpp}, \hyperpage{231}
+  \item {VerilogVisitor}, \hyperpage{136}
+    \subitem {depth\_}, \hyperpage{139}
+    \subitem {handle}, \hyperpage{137, 138}
+    \subitem {inTargetModule\_}, \hyperpage{139}
+    \subitem {targetCell\_}, \hyperpage{139}
+    \subitem {VerilogVisitor}, \hyperpage{137}
   \item {version.h}
-    \subitem {APP\_AUTHOR}, \hyperpage{93}
-    \subitem {APP\_CONTACT}, \hyperpage{93}
-    \subitem {APP\_NAME}, \hyperpage{93}
-    \subitem {APP\_VERSION}, \hyperpage{93}
-    \subitem {APP\_VERSION\_MAJOR}, \hyperpage{93}
-    \subitem {APP\_VERSION\_MINOR}, \hyperpage{93}
-    \subitem {APP\_VERSION\_PATCH}, \hyperpage{94}
-    \subitem {BUILD\_TIMESTAMP}, \hyperpage{94}
+    \subitem {APP\_AUTHOR}, \hyperpage{154}
+    \subitem {APP\_CONTACT}, \hyperpage{154}
+    \subitem {APP\_NAME}, \hyperpage{154}
+    \subitem {APP\_VERSION}, \hyperpage{154}
+    \subitem {APP\_VERSION\_MAJOR}, \hyperpage{154}
+    \subitem {APP\_VERSION\_MINOR}, \hyperpage{154}
+    \subitem {APP\_VERSION\_PATCH}, \hyperpage{155}
+    \subitem {BUILD\_TIMESTAMP}, \hyperpage{155}
+  \item {visit}
+    \subitem {slang::syntax::SyntaxNode}, \hyperpage{115}
+    \subitem {slang::syntax::SyntaxVisitor$<$ TDerived $>$}, 
+		\hyperpage{125}
+  \item {visitDefault}
+    \subitem {slang::syntax::SyntaxVisitor$<$ TDerived $>$}, 
+		\hyperpage{125}
+  \item {visitToken}
+    \subitem {slang::syntax::SyntaxVisitor$<$ TDerived $>$}, 
+		\hyperpage{125}
   \item {voltage\_}
-    \subitem {LibFile}, \hyperpage{33}
+    \subitem {LibFile}, \hyperpage{64}
   \item {vtype\_}
-    \subitem {ValuesIterator}, \hyperpage{49}
+    \subitem {ValuesIterator}, \hyperpage{136}
 
   \indexspace
 
   \item {writeJsonToFile}
-    \subitem {LibFile}, \hyperpage{30}
+    \subitem {LibFile}, \hyperpage{61}
 
 \end{theindex}

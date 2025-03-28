@@ -58,7 +58,16 @@ var NAVTREE =
         [ "2025-03-25", "md_README.html#autotoc_md30", null ],
         [ "2025-03-26", "md_README.html#autotoc_md31", null ],
         [ "2025-03-27", "md_README.html#autotoc_md32", null ],
-        [ "2025-03-28", "md_README.html#autotoc_md33", null ]
+        [ "2025-03-28", "md_README.html#autotoc_md33", null ],
+        [ "2025-03-29", "md_README.html#autotoc_md34", null ]
+      ] ]
+    ] ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -66,9 +75,10 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -87,8 +97,10 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"si2dr__liberty_8h.html#a37de023e26158ede80b0f169a030bec0ae2d292a9d8c77e3798273708133fd565"
+"SyntaxNode_8h.html",
+"classslang_1_1syntax_1_1SyntaxListBase.html#a1ee2f3a20aaf21387dd7ac2cfd12d035",
+"md_README.html#autotoc_md24",
+"structslang_1_1syntax_1_1PtrTokenOrSyntax.html#a85f1ff5dc99fdbe1c9e27124ece28db2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
