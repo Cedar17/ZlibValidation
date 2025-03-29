@@ -2,604 +2,604 @@
 \label{verilog__utils_8cpp_source}\index{src/verilog\_utils.cpp@{src/verilog\_utils.cpp}}
 \mbox{\hyperlink{verilog__utils_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00002}00002\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}spdlog/spdlog.h"{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00004}00004\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{verilog__utils_8hpp}{verilog\_utils.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00006}00006\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00007}00007\ \textcolor{comment}{//\ Adding\ a\ generic\ handler\ method\ to\ record\ all\ visited\ nodes\ and\ increment\ the\ depth\ counter}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00008}\mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{00008}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{VerilogVisitor::handle}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang::syntax::SyntaxNode}}\ \&node)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00009}00009\ \ \ std::string\ indent(\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}\ *\ 2,\ \textcolor{charliteral}{'\ '});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00010}00010\ \ \ spdlog::debug(\textcolor{stringliteral}{"{}\{\}Node:\ \{\}"{}},\ indent,\ slang::syntax::toString(node.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}}));}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00011}00011\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00012}00012\ \ \ \textcolor{comment}{//\ Increase\ depth,\ visit\ child\ nodes,\ then\ decrease\ depth}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00013}00013\ \ \ \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}++;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00014}00014\ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(node);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00015}00015\ \ \ \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}-\/-\/;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00016}00016\ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00017}00017\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00018}00018\ \textcolor{comment}{//\ Handle\ module\ declarations}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00019}\mbox{\hyperlink{classVerilogVisitor_a3c8090f52629bb499c335bb7eeb52c2b}{00019}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{VerilogVisitor::handle}}(\textcolor{keyword}{const}\ slang::syntax::ModuleDeclarationSyntax\ \&module)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00020}00020\ \ \ std::string\ indent(\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}\ *\ 2,\ \textcolor{charliteral}{'\ '});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00021}00021\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00022}00022\ \ \ \textcolor{keywordflow}{if}\ (module.header\ \&\&\ module.header-\/>name.valid())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00023}00023\ \ \ \ \ std::string\_view\ moduleName\ =\ module.header-\/>name.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00024}00024\ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}Module\ Name:\{\}"{}},\ indent,\ moduleName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00025}00025\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}}\ =\ !\mbox{\hyperlink{classVerilogVisitor_ad0e136294c2978685afb0ffc902a0066}{targetCell\_}}.empty()\ \&\&\ moduleName\ ==\ \mbox{\hyperlink{classVerilogVisitor_ad0e136294c2978685afb0ffc902a0066}{targetCell\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}})\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00028}00028\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00029}00029\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00030}00030\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ If\ a\ specific\ module\ name\ is\ specified,\ check\ if\ it\ matches}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}})\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00033}00033\ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}Found\ target\ module:\ \{\}"{}},\ indent,\ \mbox{\hyperlink{classVerilogVisitor_ad0e136294c2978685afb0ffc902a0066}{targetCell\_}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00034}00034\ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ the\ module\ ports}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00035}00035\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (module.header-\/>ports)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}Ports:\ \{\}"{}},\ indent,\ module.header-\/>ports-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00037}00037\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00038}00038\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00039}00039\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00040}00040\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00041}00041\ \ \ \textcolor{comment}{//\ Continue\ processing\ child\ nodes}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00042}00042\ \ \ \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}++;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00043}00043\ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00044}00044\ \ \ \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}-\/-\/;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00045}00045\ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00046}00046\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00047}00047\ \textcolor{comment}{//\ Handle\ port\ declarations}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00048}\mbox{\hyperlink{classVerilogVisitor_a0e06d5808ad0020176ee1d299b4b7b1a}{00048}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{VerilogVisitor::handle}}(\textcolor{keyword}{const}\ slang::syntax::PortDeclarationSyntax\ \&portDecl)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00049}00049\ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}})\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00051}00051\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00052}00052\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00053}00053\ \ \ std::string\ indent\ =\ std::string(\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}\ *\ 2,\ \textcolor{charliteral}{'\ '});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00054}00054\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00055}00055\ \ \ \textcolor{comment}{//\ Get\ port\ direction}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00056}00056\ \ \ std::string\ direction\ =\ \textcolor{stringliteral}{"{}unknown"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00057}00057\ \ \ \textcolor{keywordflow}{if}\ (portDecl.header)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Try\ to\ convert\ the\ header\ to\ different\ types\ of\ port\ headers}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *varPort\ =\ portDecl.header-\/>as\_if<slang::syntax::VariablePortHeaderSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00060}00060\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (varPort-\/>direction)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ direction\ =\ varPort-\/>direction.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00062}00062\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00063}00063\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *netPort\ =\ portDecl.header-\/>as\_if<slang::syntax::NetPortHeaderSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00064}00064\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (netPort-\/>direction)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ direction\ =\ netPort-\/>direction.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00066}00066\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00067}00067\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00068}00068\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Get\ port\ name}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&declarator\ :\ portDecl.declarators)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00071}00071\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (declarator-\/>name.valid())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ std::string\_view\ portName\ =\ declarator-\/>name.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}Port\ Name:\ \{\}\ (\{\})"{}},\ indent,\ portName,\ direction);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00074}00074\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00075}00075\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00076}00076\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00077}00077\ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00078}00078\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00079}00079\ \textcolor{comment}{//\ Handle\ hierarchical\ instantiation\ (module\ instance)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00080}\mbox{\hyperlink{classVerilogVisitor_af5e0328ace8dfeefa687ae35c858f94a}{00080}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{VerilogVisitor::handle}}(\textcolor{keyword}{const}\ slang::syntax::HierarchyInstantiationSyntax\ \&hierarchyInst)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00081}00081\ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}})\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00083}00083\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00084}00084\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00085}00085\ \ \ std::string\ indent(\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}\ *\ 2,\ \textcolor{charliteral}{'\ '});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00086}00086\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00087}00087\ \ \ \textcolor{keywordflow}{if}\ (hierarchyInst.type.valid())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00088}00088\ \ \ \ \ std::string\_view\ instType\ =\ hierarchyInst.type.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00089}00089\ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}Hierarchy\ Instance\ Type:\ \{\}"{}},\ indent,\ instType);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00090}00090\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//\ Safely\ print\ parameter\ values\ (if\ any)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00093}00093\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hierarchyInst.parameters)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}Parameters:"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&param\ :\ hierarchyInst.parameters-\/>parameters)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!param)}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};\ \textcolor{comment}{//\ Null\ pointer\ check}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00098}00098\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *orderedParam\ =\ param-\/>as\_if<slang::syntax::OrderedParamAssignmentSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orderedParam-\/>expr)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ Parameter:\ \{\}"{}},\ indent,\ orderedParam-\/>expr-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *namedParam\ =\ param-\/>as\_if<slang::syntax::NamedParamAssignmentSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (namedParam-\/>name.valid()\ \&\&\ namedParam-\/>expr)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ Parameter\ \{\}:\ \{\}"{}},\ indent,\ namedParam-\/>name.valueText(),}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ namedParam-\/>expr-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00110}00110\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00111}00111\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00112}00112\ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}\{\}Exception\ while\ processing\ parameters:\ \{\}"{}},\ indent,\ e.what());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00113}00113\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00114}00114\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ Safely\ handle\ instances}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00117}00117\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&instance\ :\ hierarchyInst.instances)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!instance)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}\{\}Invalid\ instance"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!instance-\/>decl)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}\{\}Invalid\ instance\ declaration"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ continue;}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (instance-\/>decl-\/>name.valid())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\_view\ instName\ =\ instance-\/>decl-\/>name.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}Instance\ Name:\ \{\}"{}},\ indent,\ instName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::debug(\textcolor{stringliteral}{"{}\{\}Error\ printing\ name"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00133}00133\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Safely\ print\ dimensions}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!instance-\/>decl-\/>dimensions.empty())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ Dimensions:\ \{\}"{}},\ indent,\ instance-\/>decl-\/>dimensions.toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::debug(\textcolor{stringliteral}{"{}\{\}Error\ printing\ dimensions"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00143}00143\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Safely\ print\ port\ connections}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ Port\ connections:"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&conn\ :\ instance-\/>connections)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!conn)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}\{\}\ \ \ \ Null\ connection"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};\ \textcolor{comment}{//\ Null\ pointer\ check}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00151}00151\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ as\_if\ method\ for\ safe\ type\ conversion}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *ordered\ =\ conn-\/>as\_if<slang::syntax::OrderedPortConnectionSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ordered-\/>expr)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ \ \ Ordered\ connection:\ \{\}"{}},\ indent,\ ordered-\/>expr-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ \ \ Ordered\ connection:\ <empty>"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *named\ =\ conn-\/>as\_if<slang::syntax::NamedPortConnectionSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (named-\/>name.valid())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ exprStr\ =\ named-\/>expr\ ?\ named-\/>expr-\/>toString()\ :\ \textcolor{stringliteral}{"{}<empty>"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ \ \ .\{\}(\{\})"{}},\ indent,\ named-\/>name.valueText(),\ exprStr);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (conn-\/>as\_if<slang::syntax::EmptyPortConnectionSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ \ \ <empty\ connection>"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (conn-\/>as\_if<slang::syntax::WildcardPortConnectionSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ \ \ .*\ (wildcard\ connection)"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ \ \ Unknown\ connection\ type:\ \{\}"{}},\ indent,}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ slang::syntax::toString(conn-\/>kind));}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}\{\}Exception\ processing\ connection:\ \{\}"{}},\ indent,\ e.what());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}\{\}Unknown\ exception\ processing\ connection"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00179}00179\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00180}00180\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00181}00181\ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}\{\}Exception\ while\ processing\ instances:\ \{\}"{}},\ indent,\ e.what());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00182}00182\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00183}00183\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00184}00184\ \ \ \ \ \textcolor{comment}{//\ Continue\ processing\ child\ nodes}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00185}00185\ \ \ \ \ \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}++;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00186}00186\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(hierarchyInst);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00187}00187\ \ \ \ \ \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}-\/-\/;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00188}00188\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00189}00189\ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00190}00190\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00191}00191\ \textcolor{comment}{//\ Handle\ primitive\ gate\ instantiation}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00192}\mbox{\hyperlink{classVerilogVisitor_a83efa9d3ed71da29db3f14227de84c9f}{00192}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{VerilogVisitor::handle}}(\textcolor{keyword}{const}\ slang::syntax::PrimitiveInstantiationSyntax\ \&primitiveInst)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00193}00193\ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}})\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00194}00194\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00195}00195\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00196}00196\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00197}00197\ \ \ std::string\ indent(\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}\ *\ 2,\ \textcolor{charliteral}{'\ '});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00198}00198\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00199}00199\ \ \ \textcolor{comment}{//\ Get\ primitive\ gate\ type}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00200}00200\ \ \ \textcolor{keywordflow}{if}\ (primitiveInst.type.valid())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00201}00201\ \ \ \ \ std::string\_view\ gateType\ =\ primitiveInst.type.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00202}00202\ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}Primitive\ Gate:\ \{\}"{}},\ indent,\ gateType);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00203}00203\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00204}00204\ \ \ \ \ \textcolor{comment}{//\ Print\ delay\ information\ (if\ any)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00205}00205\ \ \ \ \ \textcolor{keywordflow}{if}\ (primitiveInst.delay)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00206}00206\ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}Delay:\ \{\}"{}},\ indent,\ primitiveInst.delay-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00207}00207\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00208}00208\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00209}00209\ \ \ \ \ \textcolor{comment}{//\ Print\ strength\ information\ (if\ any)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00210}00210\ \ \ \ \ \textcolor{keywordflow}{if}\ (primitiveInst.strength)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00211}00211\ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}Strength:\ \{\}"{}},\ indent,\ primitiveInst.strength-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00212}00212\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00213}00213\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00214}00214\ \ \ \ \ \textcolor{comment}{//\ Print\ each\ instance}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00215}00215\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&instance\ :\ primitiveInst.instances)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00216}00216\ \ \ \ \ \ \ \textcolor{comment}{//\ Primitive\ gates\ usually\ don't\ have\ names,\ but\ if\ they\ do,\ print\ them}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00217}00217\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (instance-\/>decl\ \&\&\ instance-\/>decl-\/>name.valid())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ std::string\_view\ instName\ =\ instance-\/>decl-\/>name.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ Gate\ instance:\ \{\}"{}},\ indent,\ instName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00220}00220\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00221}00221\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00222}00222\ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ connections}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00223}00223\ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ Gate\ connections:"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00224}00224\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ instance-\/>connections.size();\ ++i)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&conn\ =\ instance-\/>connections[i];}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ For\ gate-\/level\ instantiation,\ connections\ are\ usually\ ordered}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *ordered\ =\ conn-\/>as\_if<slang::syntax::OrderedPortConnectionSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ordered-\/>expr)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ first\ is\ usually\ the\ output,\ the\ rest\ are\ inputs}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ portType\ =\ (i\ ==\ 0)\ ?\ \textcolor{stringliteral}{"{}output"{}}\ :\ \textcolor{stringliteral}{"{}input"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ \ \ \{\}\ \{\}:\ \{\}"{}},\ indent,\ portType,\ i,\ ordered-\/>expr-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00234}00234\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00235}00235\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00236}00236\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00237}00237\ \ \ \ \ \textcolor{comment}{//\ Continue\ to\ traverse\ deeper\ when\ specific\ standard\ gate\ type}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00238}00238\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ set\ of\ safe\ standard\ gate\ types}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00239}00239\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::unordered\_set<std::string\_view>\ safeGateTypes\ =\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}and"{}},\ \ \ \ \textcolor{stringliteral}{"{}or"{}},\ \ \ \ \ \textcolor{stringliteral}{"{}nand"{}},\ \ \ \textcolor{stringliteral}{"{}nor"{}},\ \ \ \ \textcolor{stringliteral}{"{}xor"{}},\ \ \ \ \ \ \textcolor{stringliteral}{"{}xnor"{}},\ \ \ \ \textcolor{stringliteral}{"{}not"{}},\ \ \ \ \ \ \textcolor{stringliteral}{"{}buf"{}},\ \ \ \ \ \textcolor{stringliteral}{"{}bufif0"{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}bufif1"{}},\ \textcolor{stringliteral}{"{}notif0"{}},\ \textcolor{stringliteral}{"{}notif1"{}},\ \textcolor{stringliteral}{"{}pullup"{}},\ \textcolor{stringliteral}{"{}pulldown"{}},\ \textcolor{stringliteral}{"{}cmos"{}},\ \ \ \ \textcolor{stringliteral}{"{}rcmos"{}},\ \ \ \ \textcolor{stringliteral}{"{}nmos"{}},\ \ \ \ \textcolor{stringliteral}{"{}pmos"{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}rnmos"{}},\ \ \textcolor{stringliteral}{"{}rpmos"{}},\ \ \textcolor{stringliteral}{"{}tran"{}},\ \ \ \textcolor{stringliteral}{"{}rtran"{}},\ \ \textcolor{stringliteral}{"{}tranif0"{}},\ \ \textcolor{stringliteral}{"{}tranif1"{}},\ \textcolor{stringliteral}{"{}rtranif0"{}},\ \textcolor{stringliteral}{"{}rtranif1"{}}\};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00243}00243\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00244}00244\ \ \ \ \ \textcolor{keywordflow}{if}\ (safeGateTypes.find(gateType)\ !=\ safeGateTypes.end())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00245}00245\ \ \ \ \ \ \ \textcolor{comment}{//\ Continue\ processing\ child\ nodes}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00246}00246\ \ \ \ \ \ \ \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}++;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00247}00247\ \ \ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(primitiveInst);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00248}00248\ \ \ \ \ \ \ \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}-\/-\/;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00249}00249\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00250}00250\ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}\{\}Skipping\ deeper\ traversal\ of\ primitive:\ \{\}"{}},\ indent,\ gateType);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00251}00251\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00252}00252\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00253}00253\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00254}00254\ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}\{\}Primitive\ instantiation\ missing\ gate\ type"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00255}00255\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00256}00256\ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00257}00257\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00258}00258\ \textcolor{comment}{//\ Handle\ specify\ block}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00259}\mbox{\hyperlink{classVerilogVisitor_ab207043b3b3d22b318a50bcde98b9f37}{00259}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{VerilogVisitor::handle}}(\textcolor{keyword}{const}\ slang::syntax::SpecifyBlockSyntax\ \&specifyBlock)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00260}00260\ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}})\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00261}00261\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00262}00262\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00263}00263\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00264}00264\ \ \ std::string\ indent(\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}\ *\ 2,\ \textcolor{charliteral}{'\ '});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00265}00265\ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}Specify\ Block:"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00266}00266\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00267}00267\ \ \ \textcolor{comment}{//\ Iterate\ through\ all\ path\ declarations}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00268}00268\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&item\ :\ specifyBlock.items)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00269}00269\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *pathDecl\ =\ item-\/>as\_if<slang::syntax::PathDeclarationSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00270}00270\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pathDecl-\/>desc)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ std::string\ pathSrc;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ std::string\ pathDst;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00273}00273\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ path\ source}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!pathDecl-\/>desc-\/>inputs.empty())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ first\ input}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *identifier\ =}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathDecl-\/>desc-\/>inputs[0]-\/>as\_if<slang::syntax::IdentifierNameSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (identifier-\/>identifier.valid())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathSrc\ =\ identifier-\/>identifier.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00284}00284\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ path\ destination}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pathDecl-\/>desc-\/>suffix)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *simpleSuffix\ =}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathDecl-\/>desc-\/>suffix-\/>as\_if<slang::syntax::SimplePathSuffixSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!simpleSuffix-\/>outputs.empty())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *identifier\ =}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ simpleSuffix-\/>outputs[0]-\/>as\_if<slang::syntax::IdentifierNameSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (identifier-\/>identifier.valid())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathDst\ =\ identifier-\/>identifier.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *edgeSuffix\ =\ pathDecl-\/>desc-\/>suffix}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/>as\_if<slang::syntax::EdgeSensitivePathSuffixSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!edgeSuffix-\/>outputs.empty())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *identifier\ =}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ edgeSuffix-\/>outputs[0]-\/>as\_if<slang::syntax::IdentifierNameSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (identifier-\/>identifier.valid())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathDst\ =\ identifier-\/>identifier.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00308}00308\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ path\ string}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ std::string\ pathStr\ =\ pathSrc\ +\ \textcolor{stringliteral}{"{}\ =>\ "{}}\ +\ pathDst;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00311}00311\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ path\ delay}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ std::string\ delayStr\ =\ \textcolor{stringliteral}{"{}("{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ pathDecl-\/>delays.size();\ ++i)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >\ 0)}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ delayStr\ +=\ \textcolor{stringliteral}{"{},\ "{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ delayStr\ +=\ pathDecl-\/>delays[i]-\/>toString();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ delayStr\ +=\ \textcolor{stringliteral}{"{})"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00320}00320\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ Path:\ \{\}\ =\ \{\}"{}},\ indent,\ pathStr,\ delayStr);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00323}00323\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00324}00324\ \ \ \ \ \ \ \textcolor{comment}{//\ Can\ add\ handling\ for\ ConditionalPathDeclarationSyntax\ and\ IfNonePathDeclarationSyntax}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00325}00325\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *condPath\ =\ item-\/>as\_if<slang::syntax::ConditionalPathDeclarationSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (condPath-\/>path\ \&\&\ condPath-\/>predicate)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ Conditional\ Path\ (if\ \{\})"{}},\ indent,\ condPath-\/>predicate-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Recursively\ handle\ internal\ path}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(*condPath-\/>path);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00331}00331\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ *ifNonePath\ =\ item-\/>as\_if<slang::syntax::IfNonePathDeclarationSyntax>())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ifNonePath-\/>path)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}\{\}\ \ If-\/None\ Path"{}},\ indent);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Recursively\ handle\ internal\ path}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(*ifNonePath-\/>path);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00337}00337\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00338}00338\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00339}00339\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00340}00340\ \ \ \ \ \textcolor{comment}{//\ Continue\ processing\ child\ nodes}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00341}00341\ \ \ \ \ \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}++;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00342}00342\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(specifyBlock);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00343}00343\ \ \ \ \ \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}-\/-\/;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00344}00344\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00345}00345\ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00346}00346\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00347}00347\ \textcolor{comment}{//\ Handle\ module\ declarations,\ only\ keep\ the\ target\ module}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00348}\mbox{\hyperlink{classCellExtractor_a47f5b76a6876f10dbbbd278625f95e6a}{00348}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellExtractor_a47f5b76a6876f10dbbbd278625f95e6a}{CellExtractor::handle}}(\textcolor{keyword}{const}\ slang::syntax::ModuleDeclarationSyntax\ \&module)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00349}00349\ \ \ \textcolor{keywordflow}{if}\ (module.header\ \&\&\ module.header-\/>name.valid())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00350}00350\ \ \ \ \ std::string\_view\ moduleName\ =\ module.header-\/>name.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00351}00351\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00352}00352\ \ \ \ \ \textcolor{comment}{//\ If\ it\ is\ the\ target\ module,\ mark\ as\ found,\ otherwise\ remove\ it}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00353}00353\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}{targetCell\_}}.empty()\ \&\&\ moduleName\ ==\ \mbox{\hyperlink{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}{targetCell\_}})\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00354}00354\ \ \ \ \ \ \ \mbox{\hyperlink{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}{foundTarget\_}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00355}00355\ \ \ \ \ \ \ \textcolor{comment}{//\ Do\ not\ modify,\ keep\ this\ module}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00356}00356\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00357}00357\ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ non-\/target\ modules}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00358}00358\ \ \ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ac7c9f8d4bc01e65e4eaa0afd6cec31e2}{remove}}(module);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00359}00359\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00360}00360\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00361}00361\ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00362}00362\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00363}00363\ \textcolor{comment}{//\ Get\ result}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00364}\mbox{\hyperlink{classCellExtractor_a0a91984aface381a68def3a0a8515d57}{00364}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCellExtractor_a0a91984aface381a68def3a0a8515d57}{CellExtractor::foundTargetCell}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}{foundTarget\_}};\ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00365}00365\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00366}00366\ \textcolor{comment}{//\ Handle\ module\ declarations}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00367}\mbox{\hyperlink{classCellPrinter_a44367253e5186ea1eb98cef83cd01d03}{00367}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCellPrinter_a44367253e5186ea1eb98cef83cd01d03}{CellPrinter::handle}}(\textcolor{keyword}{const}\ slang::syntax::ModuleDeclarationSyntax\ \&module)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00368}00368\ \ \ \textcolor{keywordflow}{if}\ (module.header\ \&\&\ module.header-\/>name.valid())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00369}00369\ \ \ \ \ std::string\_view\ moduleName\ =\ module.header-\/>name.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00370}00370\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00371}00371\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ it\ is\ the\ target\ module}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00372}00372\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classCellPrinter_a4604bd63f54266b52c4b8d80d0f16b33}{targetCell\_}}.empty()\ \&\&\ moduleName\ ==\ \mbox{\hyperlink{classCellPrinter_a4604bd63f54266b52c4b8d80d0f16b33}{targetCell\_}})\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00373}00373\ \ \ \ \ \ \ \mbox{\hyperlink{classCellPrinter_ad5c4bf574314659bff25f4ae13874b38}{foundTarget\_}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00374}00374\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00375}00375\ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ module\ definition}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00376}00376\ \ \ \ \ \ \ \mbox{\hyperlink{classCellPrinter_a08457c6555215e8a21a5a2decca84ca1}{out\_}}\ <<\ \textcolor{stringliteral}{"{}`timescale\ 1ns/10ps\(\backslash\)n"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00377}00377\ \ \ \ \ \ \ \mbox{\hyperlink{classCellPrinter_a08457c6555215e8a21a5a2decca84ca1}{out\_}}\ <<\ module.toString();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00378}00378\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00379}00379\ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ Do\ not\ traverse\ further}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00380}00380\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00381}00381\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00382}00382\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00383}00383\ \ \ \textcolor{comment}{//\ Continue\ traversing\ other\ modules}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00384}00384\ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00385}00385\ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00386}00386\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00396}\mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{00396}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{ModuleRewriter::handle}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang::syntax::SyntaxNode}}\ \&node)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00397}00397\ \ \ std::string\ indent(\mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{depth\_}}\ *\ 2,\ \textcolor{charliteral}{'\ '});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00398}00398\ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}\{\}Node:\ \{\}"{}},\ indent,\ slang::syntax::toString(node.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}}));}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00399}00399\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00400}00400\ \ \ \textcolor{comment}{//\ Continue\ processing\ child\ nodes}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00401}00401\ \ \ \mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{depth\_}}++;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00402}00402\ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(node);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00403}00403\ \ \ \mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{depth\_}}-\/-\/;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00404}00404\ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00405}00405\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00406}\mbox{\hyperlink{classModuleRewriter_aa91fd9d45e04c0408aead2b70c359585}{00406}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{ModuleRewriter::handle}}(\textcolor{keyword}{const}\ slang::syntax::ModuleDeclarationSyntax\ \&module)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00407}00407\ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Processing\ module:\ \{\}"{}},\ module.header-\/>name.valueText());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00408}00408\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00409}00409\ \ \ \textcolor{comment}{//\ Create\ intermediate\ wires\ for\ connections\ between\ instances}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00410}00410\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}}\ -\/\ 1;\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00411}00411\ \ \ \ \ \textcolor{keyword}{auto}\ \&newNetNode\ =\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ae75ddbcab869a09077dc1fa0ef01bbcb}{parse}}(\textcolor{stringliteral}{"{}\(\backslash\)n\ \ wire\ OP\_"{}}\ +\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{};"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00412}00412\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_aabf4247f8c732f9423585d65ee42f642}{insertAtBack}}(module.members,\ newNetNode);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00413}00413\ \ \ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Added\ intermediate\ wire:\ \{\}"{}},\ newNetNode.toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00414}00414\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00415}00415\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00416}00416\ \ \ \textcolor{comment}{//\ Get\ critical\ input\ port\ \&\ output\ port\ from}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00417}00417\ \ \ \textcolor{comment}{//\ the\ module\ name\ pattern:\ CELLNAME\_\_X\#\_\_CRITICALPORT\_\_OUTPUTPORT}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00418}00418\ \ \ std::string\ criticalInputPort\ =\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00419}00419\ \ \ std::string\ criticalOutputPort\ =\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00420}00420\ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}.empty())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00421}00421\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ firstSep\ =\ this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}.find(\textcolor{stringliteral}{"{}\_\_"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00422}00422\ \ \ \ \ \textcolor{keywordflow}{if}\ (firstSep\ !=\ std::string::npos)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00423}00423\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ secondSep\ =\ this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}.find(\textcolor{stringliteral}{"{}\_\_"{}},\ firstSep\ +\ 2);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00424}00424\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (secondSep\ !=\ std::string::npos)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ thirdSep\ =\ this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}.find(\textcolor{stringliteral}{"{}\_\_"{}},\ secondSep\ +\ 2);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00426}00426\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (thirdSep\ !=\ std::string::npos)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00427}00427\ \ \ \ \ \ \ \ \ \ \ criticalInputPort\ =\ this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}.substr(secondSep\ +\ 2,\ thirdSep\ -\/\ (secondSep\ +\ 2));}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ criticalOutputPort\ =\ this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}.substr(thirdSep\ +\ 2);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Extracted\ critical\ input\ port:\ \{\}"{}},\ criticalInputPort);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Extracted\ output\ port:\ \{\}"{}},\ criticalOutputPort);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00432}00432\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Can't\ find\ thirdSep.\ Invalid\ module\ name\ pattern:\ \{\}"{}},\ this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00435}00435\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00436}00436\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Can't\ find\ secondSep.\ Invalid\ module\ name\ pattern:\ \{\}"{}},\ this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00437}00437\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00438}00438\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00439}00439\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00440}00440\ \ \ \ \ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Can't\ find\ firstSep.\ Invalid\ module\ name\ pattern:\ \{\}"{}},\ this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00441}00441\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00442}00442\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00443}00443\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00444}00444\ \ \ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Module\ name\ is\ empty.\ Can't\ extract\ critical\ input\ port."{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00445}00445\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00446}00446\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00447}00447\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00448}00448\ \ \ \textcolor{comment}{//\ Add\ additional\ wires\ for\ intermediate\ outputs\ that\ aren't\ part\ of\ the\ chain}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00449}00449\ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}{outputPins\_}}.size()\ >\ 1)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Only\ add\ if\ there\ are\ multiple\ output\ pins}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00450}00450\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}}\ -\/\ 1;\ i++)\ \{\ \textcolor{comment}{//\ Skip\ the\ first\ and\ last\ instances}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00451}00451\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&outputPin\ :\ this-\/>\mbox{\hyperlink{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}{outputPins\_}})\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (outputPin\ !=\ criticalOutputPort)\ \{\ \textcolor{comment}{//\ Found\ an\ intermediate\ output\ pin}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&newNetNode\ =\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ae75ddbcab869a09077dc1fa0ef01bbcb}{parse}}(\textcolor{stringliteral}{"{}\(\backslash\)n\ \ wire\ P\_"{}}\ +\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{}\_\_"{}}\ +\ outputPin\ +\ \textcolor{stringliteral}{"{};"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_aabf4247f8c732f9423585d65ee42f642}{insertAtBack}}(module.members,\ newNetNode);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Added\ intermediate\ wire:\ \{\}"{}},\ newNetNode.toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00456}00456\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00457}00457\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00458}00458\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00459}00459\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00460}00460\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00461}00461\ \ \ std::string\ portList\_str\ =\ module.header-\/>ports-\/>toString();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00462}00462\ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Port\ list:\ \{\}"{}},\ portList\_str);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00463}00463\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00464}00464\ \ \ std::vector<std::string>\ allPorts;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00465}00465\ \ \ \textcolor{keyword}{auto}\ ansiPortList\ =\ module.header-\/>ports-\/>as\_if<slang::syntax::AnsiPortListSyntax>();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00466}00466\ \ \ \textcolor{keywordflow}{if}\ (!ansiPortList)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00467}00467\ \ \ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Port\ list\ is\ not\ ANSI\ style."{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00468}00468\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00469}00469\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00470}00470\ \ \ \mbox{\hyperlink{classModuleRewriter_aad5df1bbd2cad9aa6cb7f842a22ae07d}{portInfoMap\_}}.clear();\ \textcolor{comment}{//\ Clear\ the\ port\ info\ map}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00471}00471\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ portMember\ :\ ansiPortList-\/>ports)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00472}00472\ \ \ \ \ \textcolor{keywordflow}{if}\ (portMember-\/>kind\ ==\ slang::syntax::SyntaxKind::ImplicitAnsiPort)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00473}00473\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ implicitPort\ =\ portMember-\/>as\_if<slang::syntax::ImplicitAnsiPortSyntax>();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00474}00474\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&directionToken\ =}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ implicitPort-\/>header-\/>as\_if<slang::syntax::VariablePortHeaderSyntax>()-\/>direction;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00476}00476\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&nameToken\ =\ implicitPort-\/>declarator-\/>name;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00477}00477\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00478}00478\ \ \ \ \ \ \ std::string\_view\ portName\ =\ nameToken.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00479}00479\ \ \ \ \ \ \ std::string\_view\ direction\ =\ directionToken.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00480}00480\ \ \ \ \ \ \ \mbox{\hyperlink{classModuleRewriter_aad5df1bbd2cad9aa6cb7f842a22ae07d}{portInfoMap\_}}[std::string(portName)]\ =\ std::string(direction);\ \textcolor{comment}{//\ Store\ port\ info\ in\ the\ map}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00481}00481\ \ \ \ \ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Port\ Name:\ \{\},\ Direction:\ \{\}"{}},\ portName,\ direction);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00482}00482\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00483}00483\ \ \ \ \ \ \ \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Port\ member\ is\ not\ ImplicitAnsiPort."{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00484}00484\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00485}00485\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00486}00486\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00487}00487\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}};\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00488}00488\ \ \ \ \ std::string\ instanceName\ =\ \textcolor{stringliteral}{"{}I\_"{}}\ +\ this-\/>\mbox{\hyperlink{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}{cellName\_}}\ +\ \textcolor{stringliteral}{"{}\_\_X"{}}\ +\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{}\_\_"{}}\ +}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ criticalInputPort\ +\ \textcolor{stringliteral}{"{}\_\_"{}}\ +\ criticalOutputPort;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00490}00490\ \ \ \ \ std::string\ instanceCode\ =\ \textcolor{stringliteral}{"{}\(\backslash\)n\ \ "{}}\ +\ this-\/>\mbox{\hyperlink{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}{cellName\_}}\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ instanceName\ +\ \textcolor{stringliteral}{"{}\ ("{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00491}00491\ \ \ \ \ std::vector<std::string>\ portConnections;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00492}00492\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00493}00493\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&pair\ :\ \mbox{\hyperlink{classModuleRewriter_aad5df1bbd2cad9aa6cb7f842a22ae07d}{portInfoMap\_}})\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00494}00494\ \ \ \ \ \ \ std::string\ portName\ =\ pair.first;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00495}00495\ \ \ \ \ \ \ std::string\ direction\ =\ pair.second;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00496}00496\ \ \ \ \ \ \ std::string\ connectionName;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00497}00497\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00498}00498\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (portName\ ==\ criticalInputPort)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ connectionName\ =\ portName;\ \textcolor{comment}{//\ First\ instance:\ connect\ to\ module\ input\ port}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ connectionName\ =}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}OP\_"{}}\ +\ std::to\_string(i\ -\/\ 1);\ \textcolor{comment}{//\ Intermediate\ instances:\ connect\ to\ previous\ OP\ wire}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00505}00505\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (portName\ ==\ criticalOutputPort)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}}\ -\/\ 1)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ connectionName\ =\ portName;\ \textcolor{comment}{//\ Last\ instance:\ connect\ to\ module\ output\ port}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00508}00508\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ connectionName\ =\ \textcolor{stringliteral}{"{}OP\_"{}}\ +\ std::to\_string(i);\ \textcolor{comment}{//\ Intermediate\ instances:\ connect\ to\ OP\ wire}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00510}00510\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00511}00511\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (direction\ ==\ \textcolor{stringliteral}{"{}output"{}})\ \{\ \textcolor{comment}{//\ Handle\ other\ output\ ports}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00512}00512\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}}\ -\/\ 1)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00513}00513\ \ \ \ \ \ \ \ \ \ \ connectionName\ =}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}P\_"{}}\ +\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{}\_\_"{}}\ +\ portName;\ \textcolor{comment}{//\ Connect\ to\ intermediate\ P\_i\_\_portName\ wire}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00516}00516\ \ \ \ \ \ \ \ \ \ \ connectionName\ =\ portName;\ \textcolor{comment}{//\ Last\ instance:\ connect\ to\ module\ output\ port}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00518}00518\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ For\ input\ ports\ (and\ inout?),\ connect\ directly\ to\ module\ port}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ connectionName\ =\ portName;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00520}00520\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00521}00521\ \ \ \ \ \ \ portConnections.push\_back(\textcolor{stringliteral}{"{}."{}}\ +\ portName\ +\ \textcolor{stringliteral}{"{}("{}}\ +\ connectionName\ +\ \textcolor{stringliteral}{"{})"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00522}00522\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00523}00523\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00524}00524\ \ \ \ \ \textcolor{comment}{//\ Connect\ all\ ports\ with\ comma\ and\ space}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00525}00525\ \ \ \ \ \textcolor{keywordflow}{if}\ (!portConnections.empty())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00526}00526\ \ \ \ \ \ \ instanceCode\ +=\ portConnections[0];}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00527}00527\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 1;\ i\ <\ portConnections.size();\ ++i)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00528}00528\ \ \ \ \ \ \ \ \ instanceCode\ +=\ \textcolor{stringliteral}{"{},\ "{}}\ +\ portConnections[i];}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00529}00529\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00530}00530\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00531}00531\ \ \ \ \ instanceCode\ +=\ \textcolor{stringliteral}{"{});"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00532}00532\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00533}00533\ \ \ \ \ \textcolor{comment}{//\ Blank\ line\ before\ the\ first\ instance}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00534}00534\ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00535}00535\ \ \ \ \ \ \ instanceCode\ =\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}\ +\ instanceCode;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00536}00536\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00537}00537\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00538}00538\ \ \ \ \ \textcolor{comment}{//\ Insert\ the\ instance\ code}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00539}00539\ \ \ \ \ \textcolor{keyword}{auto}\ \&instanceNode\ =\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ae75ddbcab869a09077dc1fa0ef01bbcb}{parse}}(instanceCode);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00540}00540\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_aabf4247f8c732f9423585d65ee42f642}{insertAtBack}}(module.members,\ instanceNode);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00541}00541\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00542}00542\ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00543}00543\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00544}\mbox{\hyperlink{verilog__utils_8hpp_a7ec07bd8417a22f2aee362bd59199997}{00544}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{verilog__utils_8cpp_a7ec07bd8417a22f2aee362bd59199997}{getAST}}(\textcolor{keyword}{const}\ std::string\ \&verilog\_file,\ \textcolor{keyword}{const}\ std::string\ \&cell)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00545}00545\ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00546}00546\ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}Starting\ get\ AST\ from\ Verilog\ file:\ '\{\}'"{}},\ verilog\_file);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00547}00547\ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aee79423807e68c2a5cca99281285dbc0}{slang::syntax::SyntaxTree::fromFile}}(verilog\_file);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00548}00548\ \ \ \ \ \textcolor{keywordflow}{if}\ (result)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00549}00549\ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}Successfully\ parsed\ Verilog\ file."{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00550}00550\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00551}00551\ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00552}00552\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ First,\ use\ the\ visitor\ to\ print\ basic\ information}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00553}00553\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVerilogVisitor}{VerilogVisitor}}\ visitor(cell);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00554}00554\ \ \ \ \ \ \ \ \ visitor.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_aecb294b0686307633702e2bb937246b6}{visit}}(result.value()-\/>root());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00555}00555\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00556}00556\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ a\ target\ cell\ is\ specified,\ use\ the\ rewriter\ to\ extract\ the\ relevant\ code}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00557}00557\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!cell.empty())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00558}00558\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ rewriter\ to\ only\ keep\ the\ target\ cell\ related\ code}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00559}00559\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCellExtractor}{CellExtractor}}\ extractor(cell);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00560}00560\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ extractedTree\ =\ extractor.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a9da1110f23efabf52212982d52d64601}{transform}}(result.value());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00561}00561\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (extractor.\mbox{\hyperlink{classCellExtractor_a0a91984aface381a68def3a0a8515d57}{foundTargetCell}}())\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00563}00563\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ SyntaxPrinter\ to\ print\ the\ extracted\ code}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ extractedCode\ =\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{slang::syntax::SyntaxPrinter::printFile}}(*extractedTree);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00565}00565\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Save\ to\ a\ file\ named\ after\ the\ cell\ name}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ outputFile\ =\ cell\ +\ \textcolor{stringliteral}{"{}.v"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00568}00568\ \ \ \ \ \ \ \ \ \ \ \ \ std::ofstream\ cellOut(outputFile);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cellOut)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellOut\ <<\ extractedCode;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00571}00571\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellOut.close();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00572}00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}Extracted\ '\{\}'\ cell\ code\ to\ '\{\}'"{}},\ cell,\ outputFile);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00573}00573\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00574}00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::error(\textcolor{stringliteral}{"{}Failed\ to\ write\ extracted\ cell\ code\ to\ '\{\}'"{}},\ outputFile);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00575}00575\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00576}00576\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00577}00577\ \ \ \ \ \ \ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}Target\ cell\ '\{\}'\ not\ found\ in\ the\ Verilog\ file"{}},\ cell);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00578}00578\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00579}00579\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00580}00580\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00581}00581\ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}Print\ full\ source\ code\ to\ 'full\_source\_code.v'"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00582}00582\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Optionally\ save\ the\ entire\ syntax\ tree}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00583}00583\ \ \ \ \ \ \ \ \ std::string\ fullOutput\ =\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{slang::syntax::SyntaxPrinter::printFile}}(*result.value());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00584}00584\ \ \ \ \ \ \ \ \ std::ofstream\ out(\textcolor{stringliteral}{"{}full\_source\_code.v"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00585}00585\ \ \ \ \ \ \ \ \ out\ <<\ fullOutput;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00586}00586\ \ \ \ \ \ \ \ \ out.close();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00587}00587\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00588}00588\ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}Print\ target\ cell\ code\ to\ 'cell\_code.v'"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00589}00589\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ CellPrinter\ to\ print\ the\ target\ cell's\ code}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00590}00590\ \ \ \ \ \ \ \ \ std::ofstream\ cellOut(\textcolor{stringliteral}{"{}cell\_code.v"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00591}00591\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCellPrinter}{CellPrinter}}\ cellPrinter(cell,\ cellOut);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00592}00592\ \ \ \ \ \ \ \ \ cellPrinter.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_aecb294b0686307633702e2bb937246b6}{visit}}(result.value()-\/>root());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00593}00593\ \ \ \ \ \ \ \ \ cellOut.close();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00594}00594\ }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00595}00595\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00596}00596\ \ \ \ \ \ \ \ \ spdlog::error(\textcolor{stringliteral}{"{}Exception\ during\ AST\ traversal:\ \{\}"{}},\ e.what());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00597}00597\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00598}00598\ \ \ \ \ \ \ \ \ spdlog::error(\textcolor{stringliteral}{"{}Unknown\ exception\ during\ AST\ traversal"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00599}00599\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00600}00600\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00601}00601\ \ \ \ \ \ \ spdlog::error(\textcolor{stringliteral}{"{}Error\ parsing\ Verilog\ file."{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00602}00602\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00603}00603\ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00604}00604\ \ \ \ \ spdlog::error(\textcolor{stringliteral}{"{}Exception\ during\ Verilog\ parsing:\ \{\}"{}},\ e.what());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00605}00605\ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00606}00606\ \ \ \ \ spdlog::error(\textcolor{stringliteral}{"{}Unknown\ exception\ during\ Verilog\ parsing"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00607}00607\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00608}00608\ \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}spdlog/spdlog.h"{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{verilog__utils_8hpp}{verilog\_utils.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00007}00007 \textcolor{comment}{// Adding a generic handler method to record all visited nodes and increment the depth counter}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00008}\mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{00008}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{VerilogVisitor::handle}}(\textcolor{keyword}{const} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang::syntax::SyntaxNode}} \&node) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00009}00009   std::string indent(\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}} * 2, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00010}00010   spdlog::debug(\textcolor{stringliteral}{"{}\{\}Node: \{\}"{}}, indent, slang::syntax::toString(node.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}}));}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00012}00012   \textcolor{comment}{// Increase depth, visit child nodes, then decrease depth}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00013}00013   \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}++;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00014}00014   \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(node);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00015}00015   \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00016}00016 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00018}00018 \textcolor{comment}{// Handle module declarations}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00019}\mbox{\hyperlink{classVerilogVisitor_a3c8090f52629bb499c335bb7eeb52c2b}{00019}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{VerilogVisitor::handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00020}00020   std::string indent(\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}} * 2, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00022}00022   \textcolor{keywordflow}{if} (module.header \&\& module.header-\/>name.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00023}00023     std::string\_view moduleName = module.header-\/>name.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00024}00024     spdlog::info(\textcolor{stringliteral}{"{}\{\}Module Name:\{\}"{}}, indent, moduleName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00026}00026     \mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}} = !\mbox{\hyperlink{classVerilogVisitor_ad0e136294c2978685afb0ffc902a0066}{targetCell\_}}.empty() \&\& moduleName == \mbox{\hyperlink{classVerilogVisitor_ad0e136294c2978685afb0ffc902a0066}{targetCell\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00027}00027     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00028}00028       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00029}00029     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00031}00031     \textcolor{comment}{// If a specific module name is specified, check if it matches}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00032}00032     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00033}00033       spdlog::info(\textcolor{stringliteral}{"{}\{\}Found target module: \{\}"{}}, indent, \mbox{\hyperlink{classVerilogVisitor_ad0e136294c2978685afb0ffc902a0066}{targetCell\_}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00034}00034       \textcolor{comment}{// Print the module ports}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00035}00035       \textcolor{keywordflow}{if} (module.header-\/>ports) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00036}00036         spdlog::info(\textcolor{stringliteral}{"{}\{\}Ports: \{\}"{}}, indent, module.header-\/>ports-\/>toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00037}00037       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00038}00038     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00039}00039   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00041}00041   \textcolor{comment}{// Continue processing child nodes}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00042}00042   \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}++;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00043}00043   \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00044}00044   \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00045}00045 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00047}00047 \textcolor{comment}{// Handle port declarations}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00048}\mbox{\hyperlink{classVerilogVisitor_a0e06d5808ad0020176ee1d299b4b7b1a}{00048}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{VerilogVisitor::handle}}(\textcolor{keyword}{const} slang::syntax::PortDeclarationSyntax \&portDecl) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00049}00049   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00050}00050     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00051}00051   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00053}00053   std::string indent = std::string(\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}} * 2, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00055}00055   \textcolor{comment}{// Get port direction}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00056}00056   std::string direction = \textcolor{stringliteral}{"{}unknown"{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00057}00057   \textcolor{keywordflow}{if} (portDecl.header) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00058}00058     \textcolor{comment}{// Try to convert the header to different types of port headers}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00059}00059     \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *varPort = portDecl.header-\/>as\_if<slang::syntax::VariablePortHeaderSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00060}00060       \textcolor{keywordflow}{if} (varPort-\/>direction) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00061}00061         direction = varPort-\/>direction.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00062}00062       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00063}00063     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *netPort = portDecl.header-\/>as\_if<slang::syntax::NetPortHeaderSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00064}00064       \textcolor{keywordflow}{if} (netPort-\/>direction) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00065}00065         direction = netPort-\/>direction.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00066}00066       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00067}00067     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00069}00069     \textcolor{comment}{// Get port name}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00070}00070     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&declarator : portDecl.declarators) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00071}00071       \textcolor{keywordflow}{if} (declarator-\/>name.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00072}00072         std::string\_view portName = declarator-\/>name.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00073}00073         spdlog::info(\textcolor{stringliteral}{"{}\{\}Port Name: \{\} (\{\})"{}}, indent, portName, direction);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00074}00074       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00075}00075     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00076}00076   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00077}00077 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00079}00079 \textcolor{comment}{// Handle hierarchical instantiation (module instance)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00080}\mbox{\hyperlink{classVerilogVisitor_af5e0328ace8dfeefa687ae35c858f94a}{00080}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{VerilogVisitor::handle}}(\textcolor{keyword}{const} slang::syntax::HierarchyInstantiationSyntax \&hierarchyInst) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00081}00081   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00082}00082     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00083}00083   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00085}00085   std::string indent(\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}} * 2, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00087}00087   \textcolor{keywordflow}{if} (hierarchyInst.type.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00088}00088     std::string\_view instType = hierarchyInst.type.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00089}00089     spdlog::info(\textcolor{stringliteral}{"{}\{\}Hierarchy Instance Type: \{\}"{}}, indent, instType);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00091}00091     \textcolor{comment}{// Safely print parameter values (if any)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00092}00092     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00093}00093       \textcolor{keywordflow}{if} (hierarchyInst.parameters) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00094}00094         spdlog::info(\textcolor{stringliteral}{"{}\{\}Parameters:"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00095}00095         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&param : hierarchyInst.parameters-\/>parameters) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00096}00096           \textcolor{keywordflow}{if} (!param)}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00097}00097             \textcolor{keywordflow}{continue}; \textcolor{comment}{// Null pointer check}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00099}00099           \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *orderedParam = param-\/>as\_if<slang::syntax::OrderedParamAssignmentSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00100}00100             \textcolor{keywordflow}{if} (orderedParam-\/>expr) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00101}00101               spdlog::info(\textcolor{stringliteral}{"{}\{\}  Parameter: \{\}"{}}, indent, orderedParam-\/>expr-\/>toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00102}00102             \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00103}00103           \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *namedParam = param-\/>as\_if<slang::syntax::NamedParamAssignmentSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00104}00104             \textcolor{keywordflow}{if} (namedParam-\/>name.valid() \&\& namedParam-\/>expr) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00105}00105               spdlog::info(\textcolor{stringliteral}{"{}\{\}  Parameter \{\}: \{\}"{}}, indent, namedParam-\/>name.valueText(),}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00106}00106                            namedParam-\/>expr-\/>toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00107}00107             \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00108}00108           \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00109}00109         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00110}00110       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00111}00111     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception \&e) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00112}00112       spdlog::warn(\textcolor{stringliteral}{"{}\{\}Exception while processing parameters: \{\}"{}}, indent, e.what());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00113}00113     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00115}00115     \textcolor{comment}{// Safely handle instances}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00116}00116     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00117}00117       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&instance : hierarchyInst.instances) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00118}00118         \textcolor{keywordflow}{if} (!instance) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00119}00119           spdlog::warn(\textcolor{stringliteral}{"{}\{\}Invalid instance"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00120}00120           \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00121}00121         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!instance-\/>decl) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00122}00122           spdlog::warn(\textcolor{stringliteral}{"{}\{\}Invalid instance declaration"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00123}00123           \textcolor{comment}{// continue;}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00124}00124         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00125}00125           \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00126}00126             \textcolor{keywordflow}{if} (instance-\/>decl-\/>name.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00127}00127               std::string\_view instName = instance-\/>decl-\/>name.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00128}00128               spdlog::info(\textcolor{stringliteral}{"{}\{\}Instance Name: \{\}"{}}, indent, instName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00129}00129             \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00130}00130           \} \textcolor{keywordflow}{catch} (...) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00131}00131             spdlog::debug(\textcolor{stringliteral}{"{}\{\}Error printing name"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00132}00132           \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00134}00134           \textcolor{comment}{// Safely print dimensions}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00135}00135           \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00136}00136             \textcolor{keywordflow}{if} (!instance-\/>decl-\/>dimensions.empty()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00137}00137               spdlog::info(\textcolor{stringliteral}{"{}\{\}  Dimensions: \{\}"{}}, indent, instance-\/>decl-\/>dimensions.toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00138}00138             \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00139}00139           \} \textcolor{keywordflow}{catch} (...) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00140}00140             spdlog::debug(\textcolor{stringliteral}{"{}\{\}Error printing dimensions"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00141}00141           \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00142}00142         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00144}00144         \textcolor{comment}{// Safely print port connections}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00145}00145         spdlog::info(\textcolor{stringliteral}{"{}\{\}  Port connections:"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00146}00146         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&conn : instance-\/>connections) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00147}00147           \textcolor{keywordflow}{if} (!conn) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00148}00148             spdlog::warn(\textcolor{stringliteral}{"{}\{\}    Null connection"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00149}00149             \textcolor{keywordflow}{continue}; \textcolor{comment}{// Null pointer check}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00150}00150           \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00152}00152           \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00153}00153             \textcolor{comment}{// Use as\_if method for safe type conversion}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00154}00154             \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *ordered = conn-\/>as\_if<slang::syntax::OrderedPortConnectionSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00155}00155               \textcolor{keywordflow}{if} (ordered-\/>expr) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00156}00156                 spdlog::info(\textcolor{stringliteral}{"{}\{\}    Ordered connection: \{\}"{}}, indent, ordered-\/>expr-\/>toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00157}00157               \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00158}00158                 spdlog::info(\textcolor{stringliteral}{"{}\{\}    Ordered connection: <empty>"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00159}00159               \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00160}00160             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *named = conn-\/>as\_if<slang::syntax::NamedPortConnectionSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00161}00161               \textcolor{keywordflow}{if} (named-\/>name.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00162}00162                 std::string exprStr = named-\/>expr ? named-\/>expr-\/>toString() : \textcolor{stringliteral}{"{}<empty>"{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00163}00163                 spdlog::info(\textcolor{stringliteral}{"{}\{\}    .\{\}(\{\})"{}}, indent, named-\/>name.valueText(), exprStr);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00164}00164               \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00165}00165             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (conn-\/>as\_if<slang::syntax::EmptyPortConnectionSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00166}00166               spdlog::info(\textcolor{stringliteral}{"{}\{\}    <empty connection>"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00167}00167             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (conn-\/>as\_if<slang::syntax::WildcardPortConnectionSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00168}00168               spdlog::info(\textcolor{stringliteral}{"{}\{\}    .* (wildcard connection)"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00169}00169             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00170}00170               spdlog::info(\textcolor{stringliteral}{"{}\{\}    Unknown connection type: \{\}"{}}, indent,}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00171}00171                            slang::syntax::toString(conn-\/>kind));}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00172}00172             \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00173}00173           \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception \&e) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00174}00174             spdlog::warn(\textcolor{stringliteral}{"{}\{\}Exception processing connection: \{\}"{}}, indent, e.what());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00175}00175           \} \textcolor{keywordflow}{catch} (...) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00176}00176             spdlog::warn(\textcolor{stringliteral}{"{}\{\}Unknown exception processing connection"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00177}00177           \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00178}00178         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00179}00179       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00180}00180     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception \&e) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00181}00181       spdlog::warn(\textcolor{stringliteral}{"{}\{\}Exception while processing instances: \{\}"{}}, indent, e.what());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00182}00182     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00184}00184     \textcolor{comment}{// Continue processing child nodes}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00185}00185     \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}++;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00186}00186     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(hierarchyInst);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00187}00187     \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00188}00188   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00189}00189 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00191}00191 \textcolor{comment}{// Handle primitive gate instantiation}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00192}\mbox{\hyperlink{classVerilogVisitor_a83efa9d3ed71da29db3f14227de84c9f}{00192}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{VerilogVisitor::handle}}(\textcolor{keyword}{const} slang::syntax::PrimitiveInstantiationSyntax \&primitiveInst) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00193}00193   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00194}00194     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00195}00195   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00197}00197   std::string indent(\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}} * 2, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00199}00199   \textcolor{comment}{// Get primitive gate type}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00200}00200   \textcolor{keywordflow}{if} (primitiveInst.type.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00201}00201     std::string\_view gateType = primitiveInst.type.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00202}00202     spdlog::info(\textcolor{stringliteral}{"{}\{\}Primitive Gate: \{\}"{}}, indent, gateType);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00203}00203 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00204}00204     \textcolor{comment}{// Print delay information (if any)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00205}00205     \textcolor{keywordflow}{if} (primitiveInst.delay) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00206}00206       spdlog::info(\textcolor{stringliteral}{"{}\{\}Delay: \{\}"{}}, indent, primitiveInst.delay-\/>toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00207}00207     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00208}00208 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00209}00209     \textcolor{comment}{// Print strength information (if any)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00210}00210     \textcolor{keywordflow}{if} (primitiveInst.strength) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00211}00211       spdlog::info(\textcolor{stringliteral}{"{}\{\}Strength: \{\}"{}}, indent, primitiveInst.strength-\/>toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00212}00212     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00213}00213 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00214}00214     \textcolor{comment}{// Print each instance}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00215}00215     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&instance : primitiveInst.instances) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00216}00216       \textcolor{comment}{// Primitive gates usually don't have names, but if they do, print them}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00217}00217       \textcolor{keywordflow}{if} (instance-\/>decl \&\& instance-\/>decl-\/>name.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00218}00218         std::string\_view instName = instance-\/>decl-\/>name.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00219}00219         spdlog::info(\textcolor{stringliteral}{"{}\{\}  Gate instance: \{\}"{}}, indent, instName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00220}00220       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00221}00221 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00222}00222       \textcolor{comment}{// Print connections}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00223}00223       spdlog::info(\textcolor{stringliteral}{"{}\{\}  Gate connections:"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00224}00224       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < instance-\/>connections.size(); ++i) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00225}00225         \textcolor{keyword}{const} \textcolor{keyword}{auto} \&conn = instance-\/>connections[i];}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00226}00226         \textcolor{comment}{// For gate-\/level instantiation, connections are usually ordered}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00227}00227         \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *ordered = conn-\/>as\_if<slang::syntax::OrderedPortConnectionSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00228}00228           \textcolor{keywordflow}{if} (ordered-\/>expr) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00229}00229             \textcolor{comment}{// The first is usually the output, the rest are inputs}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00230}00230             std::string portType = (i == 0) ? \textcolor{stringliteral}{"{}output"{}} : \textcolor{stringliteral}{"{}input"{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00231}00231             spdlog::info(\textcolor{stringliteral}{"{}\{\}    \{\} \{\}: \{\}"{}}, indent, portType, i, ordered-\/>expr-\/>toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00232}00232           \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00233}00233         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00234}00234       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00235}00235     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00236}00236 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00237}00237     \textcolor{comment}{// Continue to traverse deeper when specific standard gate type}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00238}00238     \textcolor{comment}{// Create a set of safe standard gate types}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00239}00239     \textcolor{keyword}{static} \textcolor{keyword}{const} std::unordered\_set<std::string\_view> safeGateTypes = \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00240}00240         \textcolor{stringliteral}{"{}and"{}},    \textcolor{stringliteral}{"{}or"{}},     \textcolor{stringliteral}{"{}nand"{}},   \textcolor{stringliteral}{"{}nor"{}},    \textcolor{stringliteral}{"{}xor"{}},      \textcolor{stringliteral}{"{}xnor"{}},    \textcolor{stringliteral}{"{}not"{}},      \textcolor{stringliteral}{"{}buf"{}},     \textcolor{stringliteral}{"{}bufif0"{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00241}00241         \textcolor{stringliteral}{"{}bufif1"{}}, \textcolor{stringliteral}{"{}notif0"{}}, \textcolor{stringliteral}{"{}notif1"{}}, \textcolor{stringliteral}{"{}pullup"{}}, \textcolor{stringliteral}{"{}pulldown"{}}, \textcolor{stringliteral}{"{}cmos"{}},    \textcolor{stringliteral}{"{}rcmos"{}},    \textcolor{stringliteral}{"{}nmos"{}},    \textcolor{stringliteral}{"{}pmos"{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00242}00242         \textcolor{stringliteral}{"{}rnmos"{}},  \textcolor{stringliteral}{"{}rpmos"{}},  \textcolor{stringliteral}{"{}tran"{}},   \textcolor{stringliteral}{"{}rtran"{}},  \textcolor{stringliteral}{"{}tranif0"{}},  \textcolor{stringliteral}{"{}tranif1"{}}, \textcolor{stringliteral}{"{}rtranif0"{}}, \textcolor{stringliteral}{"{}rtranif1"{}}\};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00244}00244     \textcolor{keywordflow}{if} (safeGateTypes.find(gateType) != safeGateTypes.end()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00245}00245       \textcolor{comment}{// Continue processing child nodes}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00246}00246       \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}++;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00247}00247       \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(primitiveInst);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00248}00248       \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00249}00249     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00250}00250       spdlog::warn(\textcolor{stringliteral}{"{}\{\}Skipping deeper traversal of primitive: \{\}"{}}, indent, gateType);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00251}00251     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00252}00252 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00253}00253   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00254}00254     spdlog::warn(\textcolor{stringliteral}{"{}\{\}Primitive instantiation missing gate type"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00255}00255   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00256}00256 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00257}00257 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00258}00258 \textcolor{comment}{// Handle specify block}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00259}\mbox{\hyperlink{classVerilogVisitor_ab207043b3b3d22b318a50bcde98b9f37}{00259}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{VerilogVisitor::handle}}(\textcolor{keyword}{const} slang::syntax::SpecifyBlockSyntax \&specifyBlock) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00260}00260   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00261}00261     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00262}00262   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00263}00263 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00264}00264   std::string indent(\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}} * 2, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00265}00265   spdlog::info(\textcolor{stringliteral}{"{}\{\}Specify Block:"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00266}00266 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00267}00267   \textcolor{comment}{// Iterate through all path declarations}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00268}00268   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&item : specifyBlock.items) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00269}00269     \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *pathDecl = item-\/>as\_if<slang::syntax::PathDeclarationSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00270}00270       \textcolor{keywordflow}{if} (pathDecl-\/>desc) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00271}00271         std::string pathSrc;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00272}00272         std::string pathDst;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00273}00273 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00274}00274         \textcolor{comment}{// Get path source}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00275}00275         \textcolor{keywordflow}{if} (!pathDecl-\/>desc-\/>inputs.empty()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00276}00276           \textcolor{comment}{// Get the first input}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00277}00277           \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *identifier =}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00278}00278                   pathDecl-\/>desc-\/>inputs[0]-\/>as\_if<slang::syntax::IdentifierNameSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00279}00279             \textcolor{keywordflow}{if} (identifier-\/>identifier.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00280}00280               pathSrc = identifier-\/>identifier.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00281}00281             \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00282}00282           \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00283}00283         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00284}00284 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00285}00285         \textcolor{comment}{// Get path destination}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00286}00286         \textcolor{keywordflow}{if} (pathDecl-\/>desc-\/>suffix) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00287}00287           \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *simpleSuffix =}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00288}00288                   pathDecl-\/>desc-\/>suffix-\/>as\_if<slang::syntax::SimplePathSuffixSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00289}00289             \textcolor{keywordflow}{if} (!simpleSuffix-\/>outputs.empty()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00290}00290               \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *identifier =}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00291}00291                       simpleSuffix-\/>outputs[0]-\/>as\_if<slang::syntax::IdentifierNameSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00292}00292                 \textcolor{keywordflow}{if} (identifier-\/>identifier.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00293}00293                   pathDst = identifier-\/>identifier.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00294}00294                 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00295}00295               \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00296}00296             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *edgeSuffix = pathDecl-\/>desc-\/>suffix}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00297}00297                                               -\/>as\_if<slang::syntax::EdgeSensitivePathSuffixSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00298}00298               \textcolor{keywordflow}{if} (!edgeSuffix-\/>outputs.empty()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00299}00299                 \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *identifier =}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00300}00300                         edgeSuffix-\/>outputs[0]-\/>as\_if<slang::syntax::IdentifierNameSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00301}00301                   \textcolor{keywordflow}{if} (identifier-\/>identifier.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00302}00302                     pathDst = identifier-\/>identifier.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00303}00303                   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00304}00304                 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00305}00305               \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00306}00306             \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00307}00307           \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00308}00308 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00309}00309           \textcolor{comment}{// Construct path string}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00310}00310           std::string pathStr = pathSrc + \textcolor{stringliteral}{"{} => "{}} + pathDst;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00312}00312           \textcolor{comment}{// Get path delay}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00313}00313           std::string delayStr = \textcolor{stringliteral}{"{}("{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00314}00314           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < pathDecl-\/>delays.size(); ++i) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00315}00315             \textcolor{keywordflow}{if} (i > 0)}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00316}00316               delayStr += \textcolor{stringliteral}{"{}, "{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00317}00317             delayStr += pathDecl-\/>delays[i]-\/>toString();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00318}00318           \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00319}00319           delayStr += \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00320}00320 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00321}00321           spdlog::info(\textcolor{stringliteral}{"{}\{\}  Path: \{\} = \{\}"{}}, indent, pathStr, delayStr);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00322}00322         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00323}00323       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00324}00324       \textcolor{comment}{// Can add handling for ConditionalPathDeclarationSyntax and IfNonePathDeclarationSyntax}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00325}00325       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *condPath = item-\/>as\_if<slang::syntax::ConditionalPathDeclarationSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00326}00326         \textcolor{keywordflow}{if} (condPath-\/>path \&\& condPath-\/>predicate) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00327}00327           spdlog::info(\textcolor{stringliteral}{"{}\{\}  Conditional Path (if \{\})"{}}, indent, condPath-\/>predicate-\/>toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00328}00328           \textcolor{comment}{// Recursively handle internal path}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00329}00329           \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(*condPath-\/>path);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00330}00330         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00331}00331       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} *ifNonePath = item-\/>as\_if<slang::syntax::IfNonePathDeclarationSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00332}00332         \textcolor{keywordflow}{if} (ifNonePath-\/>path) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00333}00333           spdlog::info(\textcolor{stringliteral}{"{}\{\}  If-\/None Path"{}}, indent);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00334}00334           \textcolor{comment}{// Recursively handle internal path}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00335}00335           \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(*ifNonePath-\/>path);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00336}00336         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00337}00337       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00338}00338     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00339}00339 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00340}00340     \textcolor{comment}{// Continue processing child nodes}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00341}00341     \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}++;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00342}00342     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(specifyBlock);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00343}00343     \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00344}00344   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00345}00345 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00346}00346 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00347}00347 \textcolor{comment}{// Handle module declarations, only keep the target module}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00348}\mbox{\hyperlink{classCellExtractor_a47f5b76a6876f10dbbbd278625f95e6a}{00348}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellExtractor_a47f5b76a6876f10dbbbd278625f95e6a}{CellExtractor::handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00349}00349   \textcolor{keywordflow}{if} (module.header \&\& module.header-\/>name.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00350}00350     std::string\_view moduleName = module.header-\/>name.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00351}00351 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00352}00352     \textcolor{comment}{// If it is the target module, mark as found, otherwise remove it}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00353}00353     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}{targetCell\_}}.empty() \&\& moduleName == \mbox{\hyperlink{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}{targetCell\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00354}00354       \mbox{\hyperlink{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}{foundTarget\_}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00355}00355       \textcolor{comment}{// Do not modify, keep this module}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00356}00356     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00357}00357       \textcolor{comment}{// Remove non-\/target modules}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00358}00358       \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ac7c9f8d4bc01e65e4eaa0afd6cec31e2}{remove}}(module);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00359}00359     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00360}00360   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00361}00361 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00362}00362 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00363}00363 \textcolor{comment}{// Get result}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00364}\mbox{\hyperlink{classCellExtractor_a0a91984aface381a68def3a0a8515d57}{00364}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCellExtractor_a0a91984aface381a68def3a0a8515d57}{CellExtractor::foundTargetCell}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}{foundTarget\_}}; \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00365}00365 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00366}00366 \textcolor{comment}{// Handle module declarations}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00367}\mbox{\hyperlink{classCellPrinter_a44367253e5186ea1eb98cef83cd01d03}{00367}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellPrinter_a44367253e5186ea1eb98cef83cd01d03}{CellPrinter::handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00368}00368   \textcolor{keywordflow}{if} (module.header \&\& module.header-\/>name.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00369}00369     std::string\_view moduleName = module.header-\/>name.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00370}00370 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00371}00371     \textcolor{comment}{// Check if it is the target module}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00372}00372     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classCellPrinter_a4604bd63f54266b52c4b8d80d0f16b33}{targetCell\_}}.empty() \&\& moduleName == \mbox{\hyperlink{classCellPrinter_a4604bd63f54266b52c4b8d80d0f16b33}{targetCell\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00373}00373       \mbox{\hyperlink{classCellPrinter_ad5c4bf574314659bff25f4ae13874b38}{foundTarget\_}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00374}00374 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00375}00375       \textcolor{comment}{// Print module definition}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00376}00376       \mbox{\hyperlink{classCellPrinter_a08457c6555215e8a21a5a2decca84ca1}{out\_}} << \textcolor{stringliteral}{"{}`timescale 1ns/10ps\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00377}00377       \mbox{\hyperlink{classCellPrinter_a08457c6555215e8a21a5a2decca84ca1}{out\_}} << module.toString();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00378}00378 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00379}00379       \textcolor{keywordflow}{return}; \textcolor{comment}{// Do not traverse further}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00380}00380     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00381}00381   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00382}00382 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00383}00383   \textcolor{comment}{// Continue traversing other modules}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00384}00384   \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00385}00385 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00386}00386 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00396}\mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{00396}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{ModuleRewriter::handle}}(\textcolor{keyword}{const} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang::syntax::SyntaxNode}} \&node) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00397}00397   std::string indent(\mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{depth\_}} * 2, \textcolor{charliteral}{' '});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00398}00398   \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}\{\}Node: \{\}"{}}, indent, slang::syntax::toString(node.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}}));}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00399}00399 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00400}00400   \textcolor{comment}{// Continue processing child nodes}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00401}00401   \mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{depth\_}}++;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00402}00402   \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(node);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00403}00403   \mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{depth\_}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00404}00404 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00405}00405 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00406}\mbox{\hyperlink{classModuleRewriter_aa91fd9d45e04c0408aead2b70c359585}{00406}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{ModuleRewriter::handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00407}00407   \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Processing module: \{\}"{}}, module.header-\/>name.valueText());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00408}00408 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00409}00409   \textcolor{comment}{// Create intermediate wires for connections between instances}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00410}00410   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}} -\/ 1; i++) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00411}00411     \textcolor{keyword}{auto} \&newNetNode = \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ae75ddbcab869a09077dc1fa0ef01bbcb}{parse}}(\textcolor{stringliteral}{"{}\(\backslash\)n  wire OP\_"{}} + std::to\_string(i) + \textcolor{stringliteral}{"{};"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00412}00412     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_aabf4247f8c732f9423585d65ee42f642}{insertAtBack}}(module.members, newNetNode);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00413}00413     \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Added intermediate wire: \{\}"{}}, newNetNode.toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00414}00414   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00415}00415 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00416}00416   \textcolor{comment}{// Get critical input port \& output port from}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00417}00417   \textcolor{comment}{// the module name pattern: CELLNAME\_\_X\#\_\_CRITICALPORT\_\_OUTPUTPORT}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00418}00418   std::string criticalInputPort = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00419}00419   std::string criticalOutputPort = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00420}00420   \textcolor{keywordflow}{if} (!this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}.empty()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00421}00421     \textcolor{keywordtype}{size\_t} firstSep = this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}.find(\textcolor{stringliteral}{"{}\_\_"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00422}00422     \textcolor{keywordflow}{if} (firstSep != std::string::npos) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00423}00423       \textcolor{keywordtype}{size\_t} secondSep = this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}.find(\textcolor{stringliteral}{"{}\_\_"{}}, firstSep + 2);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00424}00424       \textcolor{keywordflow}{if} (secondSep != std::string::npos) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00425}00425         \textcolor{keywordtype}{size\_t} thirdSep = this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}.find(\textcolor{stringliteral}{"{}\_\_"{}}, secondSep + 2);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00426}00426         \textcolor{keywordflow}{if} (thirdSep != std::string::npos) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00427}00427           criticalInputPort = this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}.substr(secondSep + 2, thirdSep -\/ (secondSep + 2));}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00428}00428           criticalOutputPort = this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}.substr(thirdSep + 2);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00429}00429           \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Extracted critical input port: \{\}"{}}, criticalInputPort);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00430}00430           \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Extracted output port: \{\}"{}}, criticalOutputPort);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00431}00431         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00432}00432           \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Can't find thirdSep. Invalid module name pattern: \{\}"{}}, this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00433}00433           \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00434}00434         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00435}00435       \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00436}00436         \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Can't find secondSep. Invalid module name pattern: \{\}"{}}, this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00437}00437         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00438}00438       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00439}00439     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00440}00440       \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Can't find firstSep. Invalid module name pattern: \{\}"{}}, this-\/>\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00441}00441       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00442}00442     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00443}00443   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00444}00444     \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Module name is empty. Can't extract critical input port."{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00445}00445     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00446}00446   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00447}00447 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00448}00448   \textcolor{comment}{// Add additional wires for intermediate outputs that aren't part of the chain}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00449}00449   \textcolor{keywordflow}{if} (this-\/>\mbox{\hyperlink{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}{outputPins\_}}.size() > 1) \{               \textcolor{comment}{// Only add if there are multiple output pins}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00450}00450     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}} -\/ 1; i++) \{ \textcolor{comment}{// Skip the first and last instances}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00451}00451       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&outputPin : this-\/>\mbox{\hyperlink{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}{outputPins\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00452}00452         \textcolor{keywordflow}{if} (outputPin != criticalOutputPort) \{ \textcolor{comment}{// Found an intermediate output pin}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00453}00453           \textcolor{keyword}{auto} \&newNetNode = \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ae75ddbcab869a09077dc1fa0ef01bbcb}{parse}}(\textcolor{stringliteral}{"{}\(\backslash\)n  wire P\_"{}} + std::to\_string(i) + \textcolor{stringliteral}{"{}\_\_"{}} + outputPin + \textcolor{stringliteral}{"{};"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00454}00454           \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_aabf4247f8c732f9423585d65ee42f642}{insertAtBack}}(module.members, newNetNode);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00455}00455           \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Added intermediate wire: \{\}"{}}, newNetNode.toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00456}00456         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00457}00457       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00458}00458     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00459}00459   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00460}00460 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00461}00461   std::string portList\_str = module.header-\/>ports-\/>toString();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00462}00462   \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Port list: \{\}"{}}, portList\_str);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00463}00463 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00464}00464   std::vector<std::string> allPorts;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00465}00465   \textcolor{keyword}{auto} ansiPortList = module.header-\/>ports-\/>as\_if<slang::syntax::AnsiPortListSyntax>();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00466}00466   \textcolor{keywordflow}{if} (!ansiPortList) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00467}00467     \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Port list is not ANSI style."{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00468}00468     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00469}00469   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00470}00470   \mbox{\hyperlink{classModuleRewriter_aad5df1bbd2cad9aa6cb7f842a22ae07d}{portInfoMap\_}}.clear(); \textcolor{comment}{// Clear the port info map}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00471}00471   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} portMember : ansiPortList-\/>ports) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00472}00472     \textcolor{keywordflow}{if} (portMember-\/>kind == slang::syntax::SyntaxKind::ImplicitAnsiPort) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00473}00473       \textcolor{keyword}{const} \textcolor{keyword}{auto} implicitPort = portMember-\/>as\_if<slang::syntax::ImplicitAnsiPortSyntax>();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00474}00474       \textcolor{keyword}{const} \textcolor{keyword}{auto} \&directionToken =}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00475}00475           implicitPort-\/>header-\/>as\_if<slang::syntax::VariablePortHeaderSyntax>()-\/>direction;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00476}00476       \textcolor{keyword}{const} \textcolor{keyword}{auto} \&nameToken = implicitPort-\/>declarator-\/>name;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00477}00477 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00478}00478       std::string\_view portName = nameToken.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00479}00479       std::string\_view direction = directionToken.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00480}00480       \mbox{\hyperlink{classModuleRewriter_aad5df1bbd2cad9aa6cb7f842a22ae07d}{portInfoMap\_}}[std::string(portName)] = std::string(direction); \textcolor{comment}{// Store port info in the map}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00481}00481       \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Port Name: \{\}, Direction: \{\}"{}}, portName, direction);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00482}00482     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00483}00483       \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Port member is not ImplicitAnsiPort."{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00484}00484     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00485}00485   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00486}00486 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00487}00487   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00488}00488     std::string instanceName = \textcolor{stringliteral}{"{}I\_"{}} + this-\/>\mbox{\hyperlink{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}{cellName\_}} + \textcolor{stringliteral}{"{}\_\_X"{}} + std::to\_string(i) + \textcolor{stringliteral}{"{}\_\_"{}} +}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00489}00489                                criticalInputPort + \textcolor{stringliteral}{"{}\_\_"{}} + criticalOutputPort;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00490}00490     std::string instanceCode = \textcolor{stringliteral}{"{}\(\backslash\)n  "{}} + this-\/>\mbox{\hyperlink{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}{cellName\_}} + \textcolor{stringliteral}{"{} "{}} + instanceName + \textcolor{stringliteral}{"{} ("{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00491}00491     std::vector<std::string> portConnections;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00492}00492 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00493}00493     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pair : \mbox{\hyperlink{classModuleRewriter_aad5df1bbd2cad9aa6cb7f842a22ae07d}{portInfoMap\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00494}00494       std::string portName = pair.first;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00495}00495       std::string direction = pair.second;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00496}00496       std::string connectionName;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00497}00497 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00498}00498       \textcolor{keywordflow}{if} (portName == criticalInputPort) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00499}00499         \textcolor{keywordflow}{if} (i == 0) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00500}00500           connectionName = portName; \textcolor{comment}{// First instance: connect to module input port}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00501}00501         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00502}00502           connectionName =}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00503}00503               \textcolor{stringliteral}{"{}OP\_"{}} + std::to\_string(i -\/ 1); \textcolor{comment}{// Intermediate instances: connect to previous OP wire}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00504}00504         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00505}00505       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (portName == criticalOutputPort) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00506}00506         \textcolor{keywordflow}{if} (i == \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}} -\/ 1) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00507}00507           connectionName = portName; \textcolor{comment}{// Last instance: connect to module output port}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00508}00508         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00509}00509           connectionName = \textcolor{stringliteral}{"{}OP\_"{}} + std::to\_string(i); \textcolor{comment}{// Intermediate instances: connect to OP wire}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00510}00510         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00511}00511       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}output"{}}) \{ \textcolor{comment}{// Handle other output ports}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00512}00512         \textcolor{keywordflow}{if} (i < \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}} -\/ 1) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00513}00513           connectionName =}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00514}00514               \textcolor{stringliteral}{"{}P\_"{}} + std::to\_string(i) + \textcolor{stringliteral}{"{}\_\_"{}} + portName; \textcolor{comment}{// Connect to intermediate P\_i\_\_portName wire}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00515}00515         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00516}00516           connectionName = portName; \textcolor{comment}{// Last instance: connect to module output port}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00517}00517         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00518}00518       \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{// For input ports (and inout?), connect directly to module port}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00519}00519         connectionName = portName;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00520}00520       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00521}00521       portConnections.push\_back(\textcolor{stringliteral}{"{}."{}} + portName + \textcolor{stringliteral}{"{}("{}} + connectionName + \textcolor{stringliteral}{"{})"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00522}00522     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00523}00523 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00524}00524     \textcolor{comment}{// Connect all ports with comma and space}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00525}00525     \textcolor{keywordflow}{if} (!portConnections.empty()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00526}00526       instanceCode += portConnections[0];}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00527}00527       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i < portConnections.size(); ++i) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00528}00528         instanceCode += \textcolor{stringliteral}{"{}, "{}} + portConnections[i];}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00529}00529       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00530}00530     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00531}00531     instanceCode += \textcolor{stringliteral}{"{});"{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00532}00532 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00533}00533     \textcolor{comment}{// Blank line before the first instance}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00534}00534     \textcolor{keywordflow}{if} (i == 0) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00535}00535       instanceCode = \textcolor{stringliteral}{"{}\(\backslash\)n"{}} + instanceCode;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00536}00536     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00537}00537 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00538}00538     \textcolor{comment}{// Insert the instance code}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00539}00539     \textcolor{keyword}{auto} \&instanceNode = \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ae75ddbcab869a09077dc1fa0ef01bbcb}{parse}}(instanceCode);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00540}00540     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_aabf4247f8c732f9423585d65ee42f642}{insertAtBack}}(module.members, instanceNode);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00541}00541   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00542}00542 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00543}00543 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00544}\mbox{\hyperlink{verilog__utils_8hpp_a7ec07bd8417a22f2aee362bd59199997}{00544}} \textcolor{keywordtype}{void} \mbox{\hyperlink{verilog__utils_8cpp_a7ec07bd8417a22f2aee362bd59199997}{getAST}}(\textcolor{keyword}{const} std::string \&verilog\_file, \textcolor{keyword}{const} std::string \&cell) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00545}00545   \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00546}00546     spdlog::info(\textcolor{stringliteral}{"{}Starting get AST from Verilog file: '\{\}'"{}}, verilog\_file);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00547}00547     \textcolor{keyword}{auto} result = \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aee79423807e68c2a5cca99281285dbc0}{slang::syntax::SyntaxTree::fromFile}}(verilog\_file);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00548}00548     \textcolor{keywordflow}{if} (result) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00549}00549       spdlog::info(\textcolor{stringliteral}{"{}Successfully parsed Verilog file."{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00550}00550 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00551}00551       \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00552}00552         \textcolor{comment}{// First, use the visitor to print basic information}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00553}00553         \mbox{\hyperlink{classVerilogVisitor}{VerilogVisitor}} visitor(cell);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00554}00554         visitor.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_aecb294b0686307633702e2bb937246b6}{visit}}(result.value()-\/>root());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00555}00555 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00556}00556         \textcolor{comment}{// If a target cell is specified, use the rewriter to extract the relevant code}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00557}00557         \textcolor{keywordflow}{if} (!cell.empty()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00558}00558           \textcolor{comment}{// Create a rewriter to only keep the target cell related code}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00559}00559           \mbox{\hyperlink{classCellExtractor}{CellExtractor}} extractor(cell);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00560}00560           \textcolor{keyword}{auto} extractedTree = extractor.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a9da1110f23efabf52212982d52d64601}{transform}}(result.value());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00561}00561 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00562}00562           \textcolor{keywordflow}{if} (extractor.\mbox{\hyperlink{classCellExtractor_a0a91984aface381a68def3a0a8515d57}{foundTargetCell}}()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00563}00563             \textcolor{comment}{// Use SyntaxPrinter to print the extracted code}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00564}00564             std::string extractedCode = \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{slang::syntax::SyntaxPrinter::printFile}}(*extractedTree);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00565}00565 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00566}00566             \textcolor{comment}{// Save to a file named after the cell name}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00567}00567             std::string outputFile = cell + \textcolor{stringliteral}{"{}.v"{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00568}00568             std::ofstream cellOut(outputFile);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00569}00569             \textcolor{keywordflow}{if} (cellOut) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00570}00570               cellOut << extractedCode;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00571}00571               cellOut.close();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00572}00572               spdlog::info(\textcolor{stringliteral}{"{}Extracted '\{\}' cell code to '\{\}'"{}}, cell, outputFile);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00573}00573             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00574}00574               spdlog::error(\textcolor{stringliteral}{"{}Failed to write extracted cell code to '\{\}'"{}}, outputFile);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00575}00575             \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00576}00576           \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00577}00577             spdlog::warn(\textcolor{stringliteral}{"{}Target cell '\{\}' not found in the Verilog file"{}}, cell);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00578}00578           \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00579}00579         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00580}00580 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00581}00581         spdlog::info(\textcolor{stringliteral}{"{}Print full source code to 'full\_source\_code.v'"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00582}00582         \textcolor{comment}{// Optionally save the entire syntax tree}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00583}00583         std::string fullOutput = \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{slang::syntax::SyntaxPrinter::printFile}}(*result.value());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00584}00584         std::ofstream out(\textcolor{stringliteral}{"{}full\_source\_code.v"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00585}00585         out << fullOutput;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00586}00586         out.close();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00587}00587 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00588}00588         spdlog::info(\textcolor{stringliteral}{"{}Print target cell code to 'cell\_code.v'"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00589}00589         \textcolor{comment}{// Use CellPrinter to print the target cell's code}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00590}00590         std::ofstream cellOut(\textcolor{stringliteral}{"{}cell\_code.v"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00591}00591         \mbox{\hyperlink{classCellPrinter}{CellPrinter}} cellPrinter(cell, cellOut);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00592}00592         cellPrinter.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_aecb294b0686307633702e2bb937246b6}{visit}}(result.value()-\/>root());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00593}00593         cellOut.close();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00594}00594 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00595}00595       \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception \&e) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00596}00596         spdlog::error(\textcolor{stringliteral}{"{}Exception during AST traversal: \{\}"{}}, e.what());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00597}00597       \} \textcolor{keywordflow}{catch} (...) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00598}00598         spdlog::error(\textcolor{stringliteral}{"{}Unknown exception during AST traversal"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00599}00599       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00600}00600     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00601}00601       spdlog::error(\textcolor{stringliteral}{"{}Error parsing Verilog file."{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00602}00602     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00603}00603   \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception \&e) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00604}00604     spdlog::error(\textcolor{stringliteral}{"{}Exception during Verilog parsing: \{\}"{}}, e.what());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00605}00605   \} \textcolor{keywordflow}{catch} (...) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00606}00606     spdlog::error(\textcolor{stringliteral}{"{}Unknown exception during Verilog parsing"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00607}00607   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00608}00608 \}}
 
 \end{DoxyCode}

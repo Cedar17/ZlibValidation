@@ -13,7 +13,7 @@ digraph "LibAttribute::getBoolean"
   Node3 -> Node4 [dir="back",color="steelblue1",style="solid"];
   Node4 [label="LibFile::parse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a84d29423705e2dea8a382dc6437640d9",tooltip="Parses the Liberty file and extracts library information into a JSON structure."];
   Node4 -> Node5 [dir="back",color="steelblue1",style="solid"];
-  Node5 [label="LibraryComparator::\lLibraryComparator",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibraryComparator.html#a3b1cf4c12188388533050cc7f2804444",tooltip="Constructs a LibraryComparator object."];
+  Node5 [label="LibraryComparator::\lLibraryComparator",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibraryComparator.html#a3b1cf4c12188388533050cc7f2804444",tooltip="Constructor for the LibraryComparator class."];
   Node4 -> Node6 [dir="back",color="steelblue1",style="solid"];
   Node6 [label="LibFile::mono",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe",tooltip="Validates that lookup tables are monotonically increasing with respect to the output load."];
   Node6 -> Node7 [dir="back",color="steelblue1",style="solid"];

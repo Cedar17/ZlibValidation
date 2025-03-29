@@ -2,223 +2,223 @@
 \label{json__utils_8cpp_source}\index{src/json\_utils.cpp@{src/json\_utils.cpp}}
 \mbox{\hyperlink{json__utils_8cpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}spdlog/spdlog.h"{}}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00002}00002\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{iterators_8hpp}{iterators.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{json__utils_8hpp}{json\_utils.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00005}00005\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00006}00006\ \textcolor{comment}{/*}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00007}00007\ \textcolor{comment}{json\ 类型的值可以是以下几种类型之一：}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00008}00008\ \textcolor{comment}{方括号\ []：用于包含一组有序的值（数组）。}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00009}00009\ \textcolor{comment}{数组中的每个值可以是任意类型的\ JSON\ 值，包括对象、数组、字符串、数字、布尔值或\ null。}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00010}00010\ \textcolor{comment}{花括号\ \{\}：用于包含一组键值对（对象）。}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00011}00011\ \textcolor{comment}{对象中的每个键都是一个字符串，值可以是任意类型的\ JSON\ 值，包括对象、数组、字符串、数字、布尔值或}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00012}00012\ \textcolor{comment}{null。}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00013}00013\ \textcolor{comment}{*/}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00014}00014\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00028}\mbox{\hyperlink{json__utils_8cpp_a94441799764dd3974403f0d87b779107}{00028}}\ std::vector<double>\ \mbox{\hyperlink{json__utils_8cpp_a94441799764dd3974403f0d87b779107}{parseStringToVector}}(\textcolor{keyword}{const}\ std::string\ \&str)\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00029}00029\ \ \ std::vector<double>\ result;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00030}00030\ \ \ std::string\ cleaned\_str;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00031}00031\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00032}00032\ \ \ \textcolor{comment}{//\ Remove\ backslashes\ and\ newline\ characters}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00033}00033\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ c\ :\ str)\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ !=\ \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'}\ \&\&\ c\ !=\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00035}00035\ \ \ \ \ \ \ cleaned\_str\ +=\ c;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00036}00036\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00037}00037\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00038}00038\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00039}00039\ \ \ std::stringstream\ ss(cleaned\_str);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00040}00040\ \ \ std::string\ item;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00041}00041\ \ \ \textcolor{keywordflow}{while}\ (std::getline(ss,\ item,\ \textcolor{charliteral}{','}))\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00042}00042\ \ \ \ \ result.push\_back(std::stod(item));}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00043}00043\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00044}00044\ \ \ \textcolor{keywordflow}{return}\ result;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00045}00045\ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00046}00046\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00062}\mbox{\hyperlink{json__utils_8hpp_a16e025c5ce211b3636e7cc7f41960997}{00062}}\ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ \mbox{\hyperlink{json__utils_8cpp_a16e025c5ce211b3636e7cc7f41960997}{generateLutJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}}\ \&lib\_lut\_group,\ \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}}\ \&err)\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00063}00063\ \ \ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ lut\_json;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00064}00064\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00065}00065\ \ \ \mbox{\hyperlink{classAttributesIterator}{AttributesIterator}}\ attr\_iter(lib\_lut\_group.\mbox{\hyperlink{classLibGroup_a0f6b465a7bf0fa6947940de5d8f38ce2}{getAttrs}}(),\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00066}00066\ \ \ \textcolor{keywordflow}{for}\ (;\ !attr\_iter.\mbox{\hyperlink{classAttributesIterator_a8c620baba68e823cbc3a60b339b8529b}{end}}();\ attr\_iter.\mbox{\hyperlink{classAttributesIterator_a9325c74720b2abce090e7f4cb853e5c4}{next}}())\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00067}00067\ \ \ \ \ \mbox{\hyperlink{classLibAttribute}{LibAttribute}}\ lib\_attr\ =\ attr\_iter.\mbox{\hyperlink{classAttributesIterator_a04b774fcda3d9e6a6ef5858b3d9a5088}{get}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00068}00068\ \ \ \ \ std::string\ lut\_attr\_name\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_af1ea12ff0eae79e5303b2a6fd0ac2c52}{getName}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00069}00069\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ spdlog::debug("{}LUT\ Attribute\ Name:\ \{\}"{},\ lib\_attr.getName());}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ spdlog::debug("{}Is\ Complex?\ \{\}"{},\ lib\_attr.isComplex());}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00072}00072\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keywordflow}{if}\ (lut\_attr\_name\ ==\ \textcolor{stringliteral}{"{}index\_1"{}}\ ||\ lut\_attr\_name\ ==\ \textcolor{stringliteral}{"{}index\_2"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00074}00074\ \ \ \ \ \ \ \mbox{\hyperlink{classValuesIterator}{ValuesIterator}}\ values\_iter(lib\_attr.\mbox{\hyperlink{classLibAttribute_a1e75b7b406371300da5ed2b8722c56a7}{getValues}}(),\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00075}00075\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ !values\_iter.\mbox{\hyperlink{classValuesIterator_a2c0dd82837f22199fc993a6fabf93759}{end}}();\ values\_iter.\mbox{\hyperlink{classValuesIterator_a85a2ea0228c13127706dc6dd00d713d5}{next}}())\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ spdlog::debug("{}Type:\ \{\}"{},\ int(values\_iter.vtype\_));\ //\ 5\ is\ string}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ spdlog::debug("{}Str:\ \{\}"{},\ values\_iter.str\_);}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ lut\_json[lut\_attr\_name]\ =\ \mbox{\hyperlink{json__utils_8cpp_a94441799764dd3974403f0d87b779107}{parseStringToVector}}(std::string(values\_iter.\mbox{\hyperlink{classValuesIterator_aa7e3c1f2bf00ce93f55f807aaf0b11d3}{str\_}}));}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00079}00079\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00080}00080\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (lut\_attr\_name\ ==\ \textcolor{stringliteral}{"{}values"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00081}00081\ \ \ \ \ \ \ \mbox{\hyperlink{classValuesIterator}{ValuesIterator}}\ values\_iter(lib\_attr.\mbox{\hyperlink{classLibAttribute_a1e75b7b406371300da5ed2b8722c56a7}{getValues}}(),\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00082}00082\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ !values\_iter.\mbox{\hyperlink{classValuesIterator_a2c0dd82837f22199fc993a6fabf93759}{end}}();\ values\_iter.\mbox{\hyperlink{classValuesIterator_a85a2ea0228c13127706dc6dd00d713d5}{next}}())\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ spdlog::debug("{}\{\}"{},\ values\_iter.str\_);}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ lut\_json[\textcolor{stringliteral}{"{}values"{}}].push\_back(\mbox{\hyperlink{json__utils_8cpp_a94441799764dd3974403f0d87b779107}{parseStringToVector}}(std::string(values\_iter.\mbox{\hyperlink{classValuesIterator_aa7e3c1f2bf00ce93f55f807aaf0b11d3}{str\_}})));}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00085}00085\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00086}00086\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00087}00087\ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}Unknown\ LUT\ attribute\ name:\ \{\}"{}},\ lut\_attr\_name);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00088}00088\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00089}00089\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00090}00090\ \ \ \textcolor{keywordflow}{return}\ lut\_json;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00091}00091\ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00092}00092\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00106}\mbox{\hyperlink{json__utils_8cpp_a5e9ad899597e6dbfdcefa9c5eb2f36d9}{00106}}\ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ \mbox{\hyperlink{json__utils_8cpp_a5e9ad899597e6dbfdcefa9c5eb2f36d9}{generateTimingJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}}\ \&lib\_timing\_group,\ \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}}\ \&err)\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00107}00107\ \ \ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ timing\_json;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00108}00108\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00109}00109\ \ \ \mbox{\hyperlink{classAttributesIterator}{AttributesIterator}}\ attr\_iter(lib\_timing\_group.\mbox{\hyperlink{classLibGroup_a0f6b465a7bf0fa6947940de5d8f38ce2}{getAttrs}}(),\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00110}00110\ \ \ \textcolor{keywordflow}{for}\ (;\ !attr\_iter.\mbox{\hyperlink{classAttributesIterator_a8c620baba68e823cbc3a60b339b8529b}{end}}();\ attr\_iter.\mbox{\hyperlink{classAttributesIterator_a9325c74720b2abce090e7f4cb853e5c4}{next}}())\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00111}00111\ \ \ \ \ \mbox{\hyperlink{classLibAttribute}{LibAttribute}}\ lib\_attr\ =\ attr\_iter.\mbox{\hyperlink{classAttributesIterator_a04b774fcda3d9e6a6ef5858b3d9a5088}{get}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00112}00112\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00113}00113\ \ \ \ \ std::string\ attr\_name\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_af1ea12ff0eae79e5303b2a6fd0ac2c52}{getName}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{if}\ (attr\_name\ ==\ \textcolor{stringliteral}{"{}related\_pin"{}}\ ||\ attr\_name\ ==\ \textcolor{stringliteral}{"{}timing\_type"{}}\ ||\ attr\_name\ ==\ \textcolor{stringliteral}{"{}timing\_sense"{}}\ ||}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ attr\_name\ ==\ \textcolor{stringliteral}{"{}when"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00116}00116\ \ \ \ \ \ \ timing\_json[attr\_name]\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_aa3cb7b40fb5997fd0f9bd2992e3809e6}{getString}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00117}00117\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{comment}{//\ More\ timing\ attributes\ can\ be\ added\ here}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00119}00119\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00120}00120\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00121}00121\ \ \ \mbox{\hyperlink{classGroupsIterator}{GroupsIterator}}\ timing\_sub\_group\_iter(lib\_timing\_group.\mbox{\hyperlink{classLibGroup_a31fe51d52babdc9bbf06a54d97d1495a}{getGroups}}(),\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00122}00122\ \ \ \textcolor{keywordflow}{for}\ (;\ !timing\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_a4391410c34cdfcc26a0540310ea48ad7}{end}}();\ timing\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_aa858689ef1027248ac7884e494304367}{next}}())\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00123}00123\ \ \ \ \ \mbox{\hyperlink{classLibGroup}{LibGroup}}\ lib\_timing\_sub\_group\ =\ timing\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_abe58a28edfca75c35f079f6ef37f3ddd}{get}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00124}00124\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00125}00125\ \ \ \ \ std::string\ timing\_sub\_group\_type\ =\ lib\_timing\_sub\_group.\mbox{\hyperlink{classLibGroup_a276eb509d5bc526c08feb562ce182f4d}{getType}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{comment}{//\ std::string\ timing\_sub\_group\_name\ =\ lib\_timing\_sub\_group.getName();}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{if}\ (timing\_sub\_group\_type\ ==\ \textcolor{stringliteral}{"{}cell\_fall"{}}\ ||\ timing\_sub\_group\_type\ ==\ \textcolor{stringliteral}{"{}cell\_rise"{}}\ ||}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ timing\_sub\_group\_type\ ==\ \textcolor{stringliteral}{"{}fall\_transition"{}}\ ||\ timing\_sub\_group\_type\ ==\ \textcolor{stringliteral}{"{}rise\_transition"{}}\ ||}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ timing\_sub\_group\_type\ ==\ \textcolor{stringliteral}{"{}fall\_constraint"{}}\ ||\ timing\_sub\_group\_type\ ==\ \textcolor{stringliteral}{"{}rise\_constraint"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00130}00130\ \ \ \ \ \ \ timing\_json[timing\_sub\_group\_type]\ =\ \mbox{\hyperlink{json__utils_8cpp_a16e025c5ce211b3636e7cc7f41960997}{generateLutJson}}(lib\_timing\_sub\_group,\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00131}00131\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00132}00132\ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}Unknown\ timing\ sub\ group\ type:\ \{\}"{}},\ timing\_sub\_group\_type);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00133}00133\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00134}00134\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00135}00135\ \ \ \textcolor{keywordflow}{return}\ timing\_json;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00136}00136\ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00137}00137\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00154}\mbox{\hyperlink{json__utils_8hpp_acd5d5dc8f66dcf29d0676d347c651942}{00154}}\ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ \mbox{\hyperlink{json__utils_8cpp_acd5d5dc8f66dcf29d0676d347c651942}{generatePowerJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}}\ \&lib\_power\_group,\ \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}}\ \&err)\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00155}00155\ \ \ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ power\_json;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00156}00156\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00157}00157\ \ \ \mbox{\hyperlink{classAttributesIterator}{AttributesIterator}}\ attr\_iter(lib\_power\_group.\mbox{\hyperlink{classLibGroup_a0f6b465a7bf0fa6947940de5d8f38ce2}{getAttrs}}(),\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00158}00158\ \ \ \textcolor{keywordflow}{for}\ (;\ !attr\_iter.\mbox{\hyperlink{classAttributesIterator_a8c620baba68e823cbc3a60b339b8529b}{end}}();\ attr\_iter.\mbox{\hyperlink{classAttributesIterator_a9325c74720b2abce090e7f4cb853e5c4}{next}}())\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00159}00159\ \ \ \ \ \mbox{\hyperlink{classLibAttribute}{LibAttribute}}\ lib\_attr\ =\ attr\_iter.\mbox{\hyperlink{classAttributesIterator_a04b774fcda3d9e6a6ef5858b3d9a5088}{get}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00160}00160\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00161}00161\ \ \ \ \ std::string\ attr\_name\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_af1ea12ff0eae79e5303b2a6fd0ac2c52}{getName}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00162}00162\ \ \ \ \ \textcolor{keywordflow}{if}\ (attr\_name\ ==\ \textcolor{stringliteral}{"{}when"{}}\ ||\ attr\_name\ ==\ \textcolor{stringliteral}{"{}related\_pin"{}}\ ||\ attr\_name\ ==\ \textcolor{stringliteral}{"{}related\_pg\_pin"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00163}00163\ \ \ \ \ \ \ power\_json[attr\_name]\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_aa3cb7b40fb5997fd0f9bd2992e3809e6}{getString}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00164}00164\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00165}00165\ \ \ \ \ \textcolor{comment}{//\ More\ power\ attributes\ can\ be\ added\ here}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00166}00166\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00167}00167\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00168}00168\ \ \ \mbox{\hyperlink{classGroupsIterator}{GroupsIterator}}\ power\_sub\_group\_iter(lib\_power\_group.\mbox{\hyperlink{classLibGroup_a31fe51d52babdc9bbf06a54d97d1495a}{getGroups}}(),\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00169}00169\ \ \ \textcolor{keywordflow}{for}\ (;\ !power\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_a4391410c34cdfcc26a0540310ea48ad7}{end}}();\ power\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_aa858689ef1027248ac7884e494304367}{next}}())\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00170}00170\ \ \ \ \ \mbox{\hyperlink{classLibGroup}{LibGroup}}\ lib\_power\_sub\_group\ =\ power\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_abe58a28edfca75c35f079f6ef37f3ddd}{get}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00171}00171\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00172}00172\ \ \ \ \ std::string\ power\_sub\_group\_type\ =\ lib\_power\_sub\_group.\mbox{\hyperlink{classLibGroup_a276eb509d5bc526c08feb562ce182f4d}{getType}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00173}00173\ \ \ \ \ \textcolor{comment}{//\ std::string\ power\_sub\_group\_name\ =\ lib\_power\_sub\_group.getName();}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00174}00174\ \ \ \ \ \textcolor{keywordflow}{if}\ (power\_sub\_group\_type\ ==\ \textcolor{stringliteral}{"{}rise\_power"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00175}00175\ \ \ \ \ \ \ \textcolor{comment}{//\ spdlog::debug("{}Rise\ Power:\ \{\}"{},\ power\_sub\_group\_name);}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00176}00176\ \ \ \ \ \ \ power\_json[\textcolor{stringliteral}{"{}rise\_power"{}}]\ =\ \mbox{\hyperlink{json__utils_8cpp_a16e025c5ce211b3636e7cc7f41960997}{generateLutJson}}(lib\_power\_sub\_group,\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00177}00177\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (power\_sub\_group\_type\ ==\ \textcolor{stringliteral}{"{}fall\_power"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00178}00178\ \ \ \ \ \ \ power\_json[\textcolor{stringliteral}{"{}fall\_power"{}}]\ =\ \mbox{\hyperlink{json__utils_8cpp_a16e025c5ce211b3636e7cc7f41960997}{generateLutJson}}(lib\_power\_sub\_group,\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00179}00179\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00180}00180\ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}Unknown\ power\ sub\ group\ type:\ \{\}"{}},\ power\_sub\_group\_type);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00181}00181\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00182}00182\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00183}00183\ \ \ \textcolor{keywordflow}{return}\ power\_json;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00184}00184\ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00185}00185\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00206}\mbox{\hyperlink{json__utils_8hpp_a614db1dd3c56489cb8ef36abb7a46ab8}{00206}}\ std::pair<std::string,\ json>\ \mbox{\hyperlink{json__utils_8cpp_a614db1dd3c56489cb8ef36abb7a46ab8}{generatePinJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}}\ \&lib\_pin\_group,\ \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}}\ \&err)\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00207}00207\ \ \ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ pin\_json;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00208}00208\ \ \ std::string\ direction;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00209}00209\ \ \ pin\_json[\textcolor{stringliteral}{"{}pin\_name"{}}]\ =\ lib\_pin\_group.\mbox{\hyperlink{classLibGroup_a5de2a5c697f684c1d809c3e944cf6db0}{getName}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00210}00210\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00211}00211\ \ \ \mbox{\hyperlink{classAttributesIterator}{AttributesIterator}}\ attr\_iter(lib\_pin\_group.\mbox{\hyperlink{classLibGroup_a0f6b465a7bf0fa6947940de5d8f38ce2}{getAttrs}}(),\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00212}00212\ \ \ \textcolor{keywordflow}{for}\ (;\ !attr\_iter.\mbox{\hyperlink{classAttributesIterator_a8c620baba68e823cbc3a60b339b8529b}{end}}();\ attr\_iter.\mbox{\hyperlink{classAttributesIterator_a9325c74720b2abce090e7f4cb853e5c4}{next}}())\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00213}00213\ \ \ \ \ \mbox{\hyperlink{classLibAttribute}{LibAttribute}}\ lib\_attr\ =\ attr\_iter.\mbox{\hyperlink{classAttributesIterator_a04b774fcda3d9e6a6ef5858b3d9a5088}{get}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00214}00214\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00215}00215\ \ \ \ \ std::string\ attr\_name\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_af1ea12ff0eae79e5303b2a6fd0ac2c52}{getName}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00216}00216\ \ \ \ \ \textcolor{keywordflow}{if}\ (attr\_name\ ==\ \textcolor{stringliteral}{"{}direction"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00217}00217\ \ \ \ \ \ \ direction\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_aa3cb7b40fb5997fd0f9bd2992e3809e6}{getString}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00218}00218\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (attr\_name\ ==\ \textcolor{stringliteral}{"{}max\_transition"{}}\ ||\ attr\_name\ ==\ \textcolor{stringliteral}{"{}capacitance"{}}\ ||}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attr\_name\ ==\ \textcolor{stringliteral}{"{}rise\_capacitance"{}}\ ||\ attr\_name\ ==\ \textcolor{stringliteral}{"{}fall\_capacitance"{}}\ ||}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attr\_name\ ==\ \textcolor{stringliteral}{"{}max\_capacitance"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00221}00221\ \ \ \ \ \ \ pin\_json[attr\_name]\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_ac5684f33d89bbf8edcf9b7309132eb43}{getFloat}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00222}00222\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (attr\_name\ ==\ \textcolor{stringliteral}{"{}function"{}}\ ||\ attr\_name\ ==\ \textcolor{stringliteral}{"{}power\_down\_function"{}}\ ||}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attr\_name\ ==\ \textcolor{stringliteral}{"{}related\_ground\_pin"{}}\ ||\ attr\_name\ ==\ \textcolor{stringliteral}{"{}related\_power\_pin"{}}\ ||}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attr\_name\ ==\ \textcolor{stringliteral}{"{}three\_state"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00225}00225\ \ \ \ \ \ \ pin\_json[attr\_name]\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_aa3cb7b40fb5997fd0f9bd2992e3809e6}{getString}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00226}00226\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (attr\_name\ ==\ \textcolor{stringliteral}{"{}clock"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00227}00227\ \ \ \ \ \ \ pin\_json[attr\_name]\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_aaa23459c87e8e0a89b48bd424e78ea67}{getBoolean}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00228}00228\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00229}00229\ \ \ \ \ \textcolor{comment}{//\ More\ pin\ attributes\ can\ be\ added\ here}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00230}00230\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00231}00231\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00232}00232\ \ \ \mbox{\hyperlink{classGroupsIterator}{GroupsIterator}}\ pin\_sub\_group\_iter(lib\_pin\_group.\mbox{\hyperlink{classLibGroup_a31fe51d52babdc9bbf06a54d97d1495a}{getGroups}}(),\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00233}00233\ \ \ \textcolor{keywordflow}{for}\ (;\ !pin\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_a4391410c34cdfcc26a0540310ea48ad7}{end}}();\ pin\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_aa858689ef1027248ac7884e494304367}{next}}())\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00234}00234\ \ \ \ \ \mbox{\hyperlink{classLibGroup}{LibGroup}}\ lib\_pin\_sub\_group\ =\ pin\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_abe58a28edfca75c35f079f6ef37f3ddd}{get}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00235}00235\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00236}00236\ \ \ \ \ std::string\ pin\_sub\_group\_type\ =\ lib\_pin\_sub\_group.\mbox{\hyperlink{classLibGroup_a276eb509d5bc526c08feb562ce182f4d}{getType}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00237}00237\ \ \ \ \ \textcolor{comment}{//\ std::string\ pin\_sub\_group\_name\ =\ lib\_pin\_sub\_group.getName();}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00238}00238\ \ \ \ \ \textcolor{keywordflow}{if}\ (pin\_sub\_group\_type\ ==\ \textcolor{stringliteral}{"{}internal\_power"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00239}00239\ \ \ \ \ \ \ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ power\_json\ =\ \mbox{\hyperlink{json__utils_8cpp_acd5d5dc8f66dcf29d0676d347c651942}{generatePowerJson}}(lib\_pin\_sub\_group,\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00240}00240\ \ \ \ \ \ \ pin\_json[\textcolor{stringliteral}{"{}power\_arcs"{}}].push\_back(power\_json);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00241}00241\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (pin\_sub\_group\_type\ ==\ \textcolor{stringliteral}{"{}timing"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00242}00242\ \ \ \ \ \ \ \textcolor{comment}{//\ spdlog::debug("{}Has\ Timing:\ \{\}"{},\ lib\_pin\_group.getName());}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00243}00243\ \ \ \ \ \ \ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ timing\_json\ =\ \mbox{\hyperlink{json__utils_8cpp_a5e9ad899597e6dbfdcefa9c5eb2f36d9}{generateTimingJson}}(lib\_pin\_sub\_group,\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00244}00244\ \ \ \ \ \ \ pin\_json[\textcolor{stringliteral}{"{}timing\_arcs"{}}].push\_back(timing\_json);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00245}00245\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00246}00246\ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}Unknown\ pin\ sub\ group\ type:\ \{\}"{}},\ pin\_sub\_group\_type);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00247}00247\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00248}00248\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00249}00249\ \ \ \textcolor{keywordflow}{return}\ std::make\_pair(direction,\ pin\_json);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00250}00250\ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00251}00251\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00272}\mbox{\hyperlink{json__utils_8hpp_a46effb948eb4bbf9858c4b32a2ccf730}{00272}}\ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ \mbox{\hyperlink{json__utils_8cpp_a46effb948eb4bbf9858c4b32a2ccf730}{generateCellJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}}\ \&lib\_cell\_group,\ \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}}\ \&err)\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00273}00273\ \ \ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ cell\_json;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00274}00274\ \ \ cell\_json[\textcolor{stringliteral}{"{}cell\_name"{}}]\ =\ lib\_cell\_group.\mbox{\hyperlink{classLibGroup_a5de2a5c697f684c1d809c3e944cf6db0}{getName}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00275}00275\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00276}00276\ \ \ \mbox{\hyperlink{classAttributesIterator}{AttributesIterator}}\ attr\_iter(lib\_cell\_group.\mbox{\hyperlink{classLibGroup_a0f6b465a7bf0fa6947940de5d8f38ce2}{getAttrs}}(),\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00277}00277\ \ \ \textcolor{keywordflow}{for}\ (;\ !attr\_iter.\mbox{\hyperlink{classAttributesIterator_a8c620baba68e823cbc3a60b339b8529b}{end}}();\ attr\_iter.\mbox{\hyperlink{classAttributesIterator_a9325c74720b2abce090e7f4cb853e5c4}{next}}())\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00278}00278\ \ \ \ \ \mbox{\hyperlink{classLibAttribute}{LibAttribute}}\ lib\_attr\ =\ attr\_iter.\mbox{\hyperlink{classAttributesIterator_a04b774fcda3d9e6a6ef5858b3d9a5088}{get}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00279}00279\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00280}00280\ \ \ \ \ std::string\ attr\_name\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_af1ea12ff0eae79e5303b2a6fd0ac2c52}{getName}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00281}00281\ \ \ \ \ \textcolor{keywordflow}{if}\ (attr\_name\ ==\ \textcolor{stringliteral}{"{}area"{}}\ ||\ attr\_name\ ==\ \textcolor{stringliteral}{"{}cell\_leakage\_power"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00282}00282\ \ \ \ \ \ \ cell\_json[attr\_name]\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_ac5684f33d89bbf8edcf9b7309132eb43}{getFloat}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00283}00283\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (attr\_name\ ==\ \textcolor{stringliteral}{"{}cell\_footprint"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00284}00284\ \ \ \ \ \ \ cell\_json[attr\_name]\ =\ lib\_attr.\mbox{\hyperlink{classLibAttribute_aa3cb7b40fb5997fd0f9bd2992e3809e6}{getString}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00285}00285\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00286}00286\ \ \ \ \ \textcolor{comment}{//\ More\ cell\ attributes\ can\ be\ added\ here}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00287}00287\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00288}00288\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00289}00289\ \ \ \mbox{\hyperlink{classGroupsIterator}{GroupsIterator}}\ cell\_sub\_group\_iter(lib\_cell\_group.\mbox{\hyperlink{classLibGroup_a31fe51d52babdc9bbf06a54d97d1495a}{getGroups}}(),\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00290}00290\ \ \ \textcolor{keywordflow}{for}\ (;\ !cell\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_a4391410c34cdfcc26a0540310ea48ad7}{end}}();\ cell\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_aa858689ef1027248ac7884e494304367}{next}}())\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00291}00291\ \ \ \ \ \mbox{\hyperlink{classLibGroup}{LibGroup}}\ lib\_cell\_sub\_group\ =\ cell\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_abe58a28edfca75c35f079f6ef37f3ddd}{get}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00292}00292\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00293}00293\ \ \ \ \ std::string\ cell\_sub\_group\_type\ =\ lib\_cell\_sub\_group.\mbox{\hyperlink{classLibGroup_a276eb509d5bc526c08feb562ce182f4d}{getType}}();}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00294}00294\ \ \ \ \ \textcolor{comment}{//\ std::string\ cell\_sub\_group\_name\ =\ lib\_cell\_sub\_group.getName();}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00295}00295\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00296}00296\ \ \ \ \ \textcolor{comment}{//\ spdlog::debug("{}Cell\ Sub\ Group\ Type:\ \{\}"{},\ cell\_sub\_group\_type);}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00297}00297\ \ \ \ \ \textcolor{comment}{//\ spdlog::debug("{}Cell\ Sub\ Group\ Name:\ \{\}"{},\ cell\_sub\_group\_name);}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00298}00298\ }
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00299}00299\ \ \ \ \ \textcolor{keywordflow}{if}\ (cell\_sub\_group\_type\ ==\ \textcolor{stringliteral}{"{}pin"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00300}00300\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ [direction,\ pin\_json]\ =\ \mbox{\hyperlink{json__utils_8cpp_a614db1dd3c56489cb8ef36abb7a46ab8}{generatePinJson}}(lib\_cell\_sub\_group,\ err);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00301}00301\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (direction\ ==\ \textcolor{stringliteral}{"{}input"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ cell\_json[\textcolor{stringliteral}{"{}input\_pins"{}}].push\_back(pin\_json);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00303}00303\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (direction\ ==\ \textcolor{stringliteral}{"{}output"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ cell\_json[\textcolor{stringliteral}{"{}output\_pins"{}}].push\_back(pin\_json);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00305}00305\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (direction\ ==\ \textcolor{stringliteral}{"{}internal"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ cell\_json[\textcolor{stringliteral}{"{}internal\_pins"{}}].push\_back(pin\_json);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00307}00307\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (direction\ ==\ \textcolor{stringliteral}{"{}inout"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ cell\_json[\textcolor{stringliteral}{"{}inout\_pins"{}}].push\_back(pin\_json);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00309}00309\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ spdlog::warn(\textcolor{stringliteral}{"{}Unknown\ direction:\ \{\}"{}},\ direction);}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00311}00311\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00312}00312\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00313}00313\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00314}00314\ \ \ \textcolor{keywordflow}{return}\ cell\_json;}
-\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00315}00315\ \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}spdlog/spdlog.h"{}}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{iterators_8hpp}{iterators.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{json__utils_8hpp}{json\_utils.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00006}00006 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00007}00007 \textcolor{comment}{json 类型的值可以是以下几种类型之一：}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00008}00008 \textcolor{comment}{方括号 []：用于包含一组有序的值（数组）。}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00009}00009 \textcolor{comment}{数组中的每个值可以是任意类型的 JSON 值，包括对象、数组、字符串、数字、布尔值或 null。}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00010}00010 \textcolor{comment}{花括号 \{\}：用于包含一组键值对（对象）。}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00011}00011 \textcolor{comment}{对象中的每个键都是一个字符串，值可以是任意类型的 JSON 值，包括对象、数组、字符串、数字、布尔值或}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00012}00012 \textcolor{comment}{null。}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00013}00013 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00028}\mbox{\hyperlink{json__utils_8cpp_a94441799764dd3974403f0d87b779107}{00028}} std::vector<double> \mbox{\hyperlink{json__utils_8cpp_a94441799764dd3974403f0d87b779107}{parseStringToVector}}(\textcolor{keyword}{const} std::string \&str) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00029}00029   std::vector<double> result;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00030}00030   std::string cleaned\_str;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00032}00032   \textcolor{comment}{// Remove backslashes and newline characters}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00033}00033   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{char} c : str) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00034}00034     \textcolor{keywordflow}{if} (c != \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'} \&\& c != \textcolor{charliteral}{'\(\backslash\)n'}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00035}00035       cleaned\_str += c;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00036}00036     \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00037}00037   \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00039}00039   std::stringstream ss(cleaned\_str);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00040}00040   std::string item;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00041}00041   \textcolor{keywordflow}{while} (std::getline(ss, item, \textcolor{charliteral}{','})) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00042}00042     result.push\_back(std::stod(item));}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00043}00043   \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00044}00044   \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00045}00045 \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00062}\mbox{\hyperlink{json__utils_8hpp_a16e025c5ce211b3636e7cc7f41960997}{00062}} \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{json__utils_8cpp_a16e025c5ce211b3636e7cc7f41960997}{generateLutJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}} \&lib\_lut\_group, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}} \&err) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00063}00063   \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} lut\_json;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00065}00065   \mbox{\hyperlink{classAttributesIterator}{AttributesIterator}} attr\_iter(lib\_lut\_group.\mbox{\hyperlink{classLibGroup_a0f6b465a7bf0fa6947940de5d8f38ce2}{getAttrs}}(), err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00066}00066   \textcolor{keywordflow}{for} (; !attr\_iter.\mbox{\hyperlink{classAttributesIterator_a8c620baba68e823cbc3a60b339b8529b}{end}}(); attr\_iter.\mbox{\hyperlink{classAttributesIterator_a9325c74720b2abce090e7f4cb853e5c4}{next}}()) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00067}00067     \mbox{\hyperlink{classLibAttribute}{LibAttribute}} lib\_attr = attr\_iter.\mbox{\hyperlink{classAttributesIterator_a04b774fcda3d9e6a6ef5858b3d9a5088}{get}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00068}00068     std::string lut\_attr\_name = lib\_attr.\mbox{\hyperlink{classLibAttribute_af1ea12ff0eae79e5303b2a6fd0ac2c52}{getName}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00070}00070     \textcolor{comment}{// spdlog::debug("{}LUT Attribute Name: \{\}"{}, lib\_attr.getName());}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00071}00071     \textcolor{comment}{// spdlog::debug("{}Is Complex? \{\}"{}, lib\_attr.isComplex());}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00073}00073     \textcolor{keywordflow}{if} (lut\_attr\_name == \textcolor{stringliteral}{"{}index\_1"{}} || lut\_attr\_name == \textcolor{stringliteral}{"{}index\_2"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00074}00074       \mbox{\hyperlink{classValuesIterator}{ValuesIterator}} values\_iter(lib\_attr.\mbox{\hyperlink{classLibAttribute_a1e75b7b406371300da5ed2b8722c56a7}{getValues}}(), err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00075}00075       \textcolor{keywordflow}{for} (; !values\_iter.\mbox{\hyperlink{classValuesIterator_a2c0dd82837f22199fc993a6fabf93759}{end}}(); values\_iter.\mbox{\hyperlink{classValuesIterator_a85a2ea0228c13127706dc6dd00d713d5}{next}}()) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00076}00076         \textcolor{comment}{// spdlog::debug("{}Type: \{\}"{}, int(values\_iter.vtype\_)); // 5 is string}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00077}00077         \textcolor{comment}{// spdlog::debug("{}Str: \{\}"{}, values\_iter.str\_);}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00078}00078         lut\_json[lut\_attr\_name] = \mbox{\hyperlink{json__utils_8cpp_a94441799764dd3974403f0d87b779107}{parseStringToVector}}(std::string(values\_iter.\mbox{\hyperlink{classValuesIterator_aa7e3c1f2bf00ce93f55f807aaf0b11d3}{str\_}}));}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00079}00079       \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00080}00080     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (lut\_attr\_name == \textcolor{stringliteral}{"{}values"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00081}00081       \mbox{\hyperlink{classValuesIterator}{ValuesIterator}} values\_iter(lib\_attr.\mbox{\hyperlink{classLibAttribute_a1e75b7b406371300da5ed2b8722c56a7}{getValues}}(), err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00082}00082       \textcolor{keywordflow}{for} (; !values\_iter.\mbox{\hyperlink{classValuesIterator_a2c0dd82837f22199fc993a6fabf93759}{end}}(); values\_iter.\mbox{\hyperlink{classValuesIterator_a85a2ea0228c13127706dc6dd00d713d5}{next}}()) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00083}00083         \textcolor{comment}{// spdlog::debug("{}\{\}"{}, values\_iter.str\_);}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00084}00084         lut\_json[\textcolor{stringliteral}{"{}values"{}}].push\_back(\mbox{\hyperlink{json__utils_8cpp_a94441799764dd3974403f0d87b779107}{parseStringToVector}}(std::string(values\_iter.\mbox{\hyperlink{classValuesIterator_aa7e3c1f2bf00ce93f55f807aaf0b11d3}{str\_}})));}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00085}00085       \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00086}00086     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00087}00087       spdlog::warn(\textcolor{stringliteral}{"{}Unknown LUT attribute name: \{\}"{}}, lut\_attr\_name);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00088}00088     \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00089}00089   \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00090}00090   \textcolor{keywordflow}{return} lut\_json;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00091}00091 \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00106}\mbox{\hyperlink{json__utils_8cpp_a5e9ad899597e6dbfdcefa9c5eb2f36d9}{00106}} \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{json__utils_8cpp_a5e9ad899597e6dbfdcefa9c5eb2f36d9}{generateTimingJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}} \&lib\_timing\_group, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}} \&err) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00107}00107   \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} timing\_json;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00109}00109   \mbox{\hyperlink{classAttributesIterator}{AttributesIterator}} attr\_iter(lib\_timing\_group.\mbox{\hyperlink{classLibGroup_a0f6b465a7bf0fa6947940de5d8f38ce2}{getAttrs}}(), err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00110}00110   \textcolor{keywordflow}{for} (; !attr\_iter.\mbox{\hyperlink{classAttributesIterator_a8c620baba68e823cbc3a60b339b8529b}{end}}(); attr\_iter.\mbox{\hyperlink{classAttributesIterator_a9325c74720b2abce090e7f4cb853e5c4}{next}}()) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00111}00111     \mbox{\hyperlink{classLibAttribute}{LibAttribute}} lib\_attr = attr\_iter.\mbox{\hyperlink{classAttributesIterator_a04b774fcda3d9e6a6ef5858b3d9a5088}{get}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00113}00113     std::string attr\_name = lib\_attr.\mbox{\hyperlink{classLibAttribute_af1ea12ff0eae79e5303b2a6fd0ac2c52}{getName}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00114}00114     \textcolor{keywordflow}{if} (attr\_name == \textcolor{stringliteral}{"{}related\_pin"{}} || attr\_name == \textcolor{stringliteral}{"{}timing\_type"{}} || attr\_name == \textcolor{stringliteral}{"{}timing\_sense"{}} ||}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00115}00115         attr\_name == \textcolor{stringliteral}{"{}when"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00116}00116       timing\_json[attr\_name] = lib\_attr.\mbox{\hyperlink{classLibAttribute_aa3cb7b40fb5997fd0f9bd2992e3809e6}{getString}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00117}00117     \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00118}00118     \textcolor{comment}{// More timing attributes can be added here}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00119}00119   \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00121}00121   \mbox{\hyperlink{classGroupsIterator}{GroupsIterator}} timing\_sub\_group\_iter(lib\_timing\_group.\mbox{\hyperlink{classLibGroup_a31fe51d52babdc9bbf06a54d97d1495a}{getGroups}}(), err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00122}00122   \textcolor{keywordflow}{for} (; !timing\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_a4391410c34cdfcc26a0540310ea48ad7}{end}}(); timing\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_aa858689ef1027248ac7884e494304367}{next}}()) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00123}00123     \mbox{\hyperlink{classLibGroup}{LibGroup}} lib\_timing\_sub\_group = timing\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_abe58a28edfca75c35f079f6ef37f3ddd}{get}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00125}00125     std::string timing\_sub\_group\_type = lib\_timing\_sub\_group.\mbox{\hyperlink{classLibGroup_a276eb509d5bc526c08feb562ce182f4d}{getType}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00126}00126     \textcolor{comment}{// std::string timing\_sub\_group\_name = lib\_timing\_sub\_group.getName();}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00127}00127     \textcolor{keywordflow}{if} (timing\_sub\_group\_type == \textcolor{stringliteral}{"{}cell\_fall"{}} || timing\_sub\_group\_type == \textcolor{stringliteral}{"{}cell\_rise"{}} ||}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00128}00128         timing\_sub\_group\_type == \textcolor{stringliteral}{"{}fall\_transition"{}} || timing\_sub\_group\_type == \textcolor{stringliteral}{"{}rise\_transition"{}} ||}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00129}00129         timing\_sub\_group\_type == \textcolor{stringliteral}{"{}fall\_constraint"{}} || timing\_sub\_group\_type == \textcolor{stringliteral}{"{}rise\_constraint"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00130}00130       timing\_json[timing\_sub\_group\_type] = \mbox{\hyperlink{json__utils_8cpp_a16e025c5ce211b3636e7cc7f41960997}{generateLutJson}}(lib\_timing\_sub\_group, err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00131}00131     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00132}00132       spdlog::warn(\textcolor{stringliteral}{"{}Unknown timing sub group type: \{\}"{}}, timing\_sub\_group\_type);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00133}00133     \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00134}00134   \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00135}00135   \textcolor{keywordflow}{return} timing\_json;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00136}00136 \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00137}00137 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00154}\mbox{\hyperlink{json__utils_8hpp_acd5d5dc8f66dcf29d0676d347c651942}{00154}} \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{json__utils_8cpp_acd5d5dc8f66dcf29d0676d347c651942}{generatePowerJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}} \&lib\_power\_group, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}} \&err) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00155}00155   \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} power\_json;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00157}00157   \mbox{\hyperlink{classAttributesIterator}{AttributesIterator}} attr\_iter(lib\_power\_group.\mbox{\hyperlink{classLibGroup_a0f6b465a7bf0fa6947940de5d8f38ce2}{getAttrs}}(), err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00158}00158   \textcolor{keywordflow}{for} (; !attr\_iter.\mbox{\hyperlink{classAttributesIterator_a8c620baba68e823cbc3a60b339b8529b}{end}}(); attr\_iter.\mbox{\hyperlink{classAttributesIterator_a9325c74720b2abce090e7f4cb853e5c4}{next}}()) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00159}00159     \mbox{\hyperlink{classLibAttribute}{LibAttribute}} lib\_attr = attr\_iter.\mbox{\hyperlink{classAttributesIterator_a04b774fcda3d9e6a6ef5858b3d9a5088}{get}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00161}00161     std::string attr\_name = lib\_attr.\mbox{\hyperlink{classLibAttribute_af1ea12ff0eae79e5303b2a6fd0ac2c52}{getName}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00162}00162     \textcolor{keywordflow}{if} (attr\_name == \textcolor{stringliteral}{"{}when"{}} || attr\_name == \textcolor{stringliteral}{"{}related\_pin"{}} || attr\_name == \textcolor{stringliteral}{"{}related\_pg\_pin"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00163}00163       power\_json[attr\_name] = lib\_attr.\mbox{\hyperlink{classLibAttribute_aa3cb7b40fb5997fd0f9bd2992e3809e6}{getString}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00164}00164     \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00165}00165     \textcolor{comment}{// More power attributes can be added here}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00166}00166   \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00168}00168   \mbox{\hyperlink{classGroupsIterator}{GroupsIterator}} power\_sub\_group\_iter(lib\_power\_group.\mbox{\hyperlink{classLibGroup_a31fe51d52babdc9bbf06a54d97d1495a}{getGroups}}(), err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00169}00169   \textcolor{keywordflow}{for} (; !power\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_a4391410c34cdfcc26a0540310ea48ad7}{end}}(); power\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_aa858689ef1027248ac7884e494304367}{next}}()) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00170}00170     \mbox{\hyperlink{classLibGroup}{LibGroup}} lib\_power\_sub\_group = power\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_abe58a28edfca75c35f079f6ef37f3ddd}{get}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00171}00171 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00172}00172     std::string power\_sub\_group\_type = lib\_power\_sub\_group.\mbox{\hyperlink{classLibGroup_a276eb509d5bc526c08feb562ce182f4d}{getType}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00173}00173     \textcolor{comment}{// std::string power\_sub\_group\_name = lib\_power\_sub\_group.getName();}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00174}00174     \textcolor{keywordflow}{if} (power\_sub\_group\_type == \textcolor{stringliteral}{"{}rise\_power"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00175}00175       \textcolor{comment}{// spdlog::debug("{}Rise Power: \{\}"{}, power\_sub\_group\_name);}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00176}00176       power\_json[\textcolor{stringliteral}{"{}rise\_power"{}}] = \mbox{\hyperlink{json__utils_8cpp_a16e025c5ce211b3636e7cc7f41960997}{generateLutJson}}(lib\_power\_sub\_group, err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00177}00177     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (power\_sub\_group\_type == \textcolor{stringliteral}{"{}fall\_power"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00178}00178       power\_json[\textcolor{stringliteral}{"{}fall\_power"{}}] = \mbox{\hyperlink{json__utils_8cpp_a16e025c5ce211b3636e7cc7f41960997}{generateLutJson}}(lib\_power\_sub\_group, err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00179}00179     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00180}00180       spdlog::warn(\textcolor{stringliteral}{"{}Unknown power sub group type: \{\}"{}}, power\_sub\_group\_type);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00181}00181     \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00182}00182   \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00183}00183   \textcolor{keywordflow}{return} power\_json;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00184}00184 \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00206}\mbox{\hyperlink{json__utils_8hpp_a614db1dd3c56489cb8ef36abb7a46ab8}{00206}} std::pair<std::string, json> \mbox{\hyperlink{json__utils_8cpp_a614db1dd3c56489cb8ef36abb7a46ab8}{generatePinJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}} \&lib\_pin\_group, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}} \&err) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00207}00207   \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} pin\_json;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00208}00208   std::string direction;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00209}00209   pin\_json[\textcolor{stringliteral}{"{}pin\_name"{}}] = lib\_pin\_group.\mbox{\hyperlink{classLibGroup_a5de2a5c697f684c1d809c3e944cf6db0}{getName}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00210}00210 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00211}00211   \mbox{\hyperlink{classAttributesIterator}{AttributesIterator}} attr\_iter(lib\_pin\_group.\mbox{\hyperlink{classLibGroup_a0f6b465a7bf0fa6947940de5d8f38ce2}{getAttrs}}(), err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00212}00212   \textcolor{keywordflow}{for} (; !attr\_iter.\mbox{\hyperlink{classAttributesIterator_a8c620baba68e823cbc3a60b339b8529b}{end}}(); attr\_iter.\mbox{\hyperlink{classAttributesIterator_a9325c74720b2abce090e7f4cb853e5c4}{next}}()) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00213}00213     \mbox{\hyperlink{classLibAttribute}{LibAttribute}} lib\_attr = attr\_iter.\mbox{\hyperlink{classAttributesIterator_a04b774fcda3d9e6a6ef5858b3d9a5088}{get}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00214}00214 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00215}00215     std::string attr\_name = lib\_attr.\mbox{\hyperlink{classLibAttribute_af1ea12ff0eae79e5303b2a6fd0ac2c52}{getName}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00216}00216     \textcolor{keywordflow}{if} (attr\_name == \textcolor{stringliteral}{"{}direction"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00217}00217       direction = lib\_attr.\mbox{\hyperlink{classLibAttribute_aa3cb7b40fb5997fd0f9bd2992e3809e6}{getString}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00218}00218     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (attr\_name == \textcolor{stringliteral}{"{}max\_transition"{}} || attr\_name == \textcolor{stringliteral}{"{}capacitance"{}} ||}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00219}00219                attr\_name == \textcolor{stringliteral}{"{}rise\_capacitance"{}} || attr\_name == \textcolor{stringliteral}{"{}fall\_capacitance"{}} ||}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00220}00220                attr\_name == \textcolor{stringliteral}{"{}max\_capacitance"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00221}00221       pin\_json[attr\_name] = lib\_attr.\mbox{\hyperlink{classLibAttribute_ac5684f33d89bbf8edcf9b7309132eb43}{getFloat}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00222}00222     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (attr\_name == \textcolor{stringliteral}{"{}function"{}} || attr\_name == \textcolor{stringliteral}{"{}power\_down\_function"{}} ||}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00223}00223                attr\_name == \textcolor{stringliteral}{"{}related\_ground\_pin"{}} || attr\_name == \textcolor{stringliteral}{"{}related\_power\_pin"{}} ||}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00224}00224                attr\_name == \textcolor{stringliteral}{"{}three\_state"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00225}00225       pin\_json[attr\_name] = lib\_attr.\mbox{\hyperlink{classLibAttribute_aa3cb7b40fb5997fd0f9bd2992e3809e6}{getString}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00226}00226     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (attr\_name == \textcolor{stringliteral}{"{}clock"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00227}00227       pin\_json[attr\_name] = lib\_attr.\mbox{\hyperlink{classLibAttribute_aaa23459c87e8e0a89b48bd424e78ea67}{getBoolean}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00228}00228     \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00229}00229     \textcolor{comment}{// More pin attributes can be added here}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00230}00230   \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00231}00231 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00232}00232   \mbox{\hyperlink{classGroupsIterator}{GroupsIterator}} pin\_sub\_group\_iter(lib\_pin\_group.\mbox{\hyperlink{classLibGroup_a31fe51d52babdc9bbf06a54d97d1495a}{getGroups}}(), err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00233}00233   \textcolor{keywordflow}{for} (; !pin\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_a4391410c34cdfcc26a0540310ea48ad7}{end}}(); pin\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_aa858689ef1027248ac7884e494304367}{next}}()) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00234}00234     \mbox{\hyperlink{classLibGroup}{LibGroup}} lib\_pin\_sub\_group = pin\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_abe58a28edfca75c35f079f6ef37f3ddd}{get}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00235}00235 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00236}00236     std::string pin\_sub\_group\_type = lib\_pin\_sub\_group.\mbox{\hyperlink{classLibGroup_a276eb509d5bc526c08feb562ce182f4d}{getType}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00237}00237     \textcolor{comment}{// std::string pin\_sub\_group\_name = lib\_pin\_sub\_group.getName();}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00238}00238     \textcolor{keywordflow}{if} (pin\_sub\_group\_type == \textcolor{stringliteral}{"{}internal\_power"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00239}00239       \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} power\_json = \mbox{\hyperlink{json__utils_8cpp_acd5d5dc8f66dcf29d0676d347c651942}{generatePowerJson}}(lib\_pin\_sub\_group, err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00240}00240       pin\_json[\textcolor{stringliteral}{"{}power\_arcs"{}}].push\_back(power\_json);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00241}00241     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (pin\_sub\_group\_type == \textcolor{stringliteral}{"{}timing"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00242}00242       \textcolor{comment}{// spdlog::debug("{}Has Timing: \{\}"{}, lib\_pin\_group.getName());}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00243}00243       \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} timing\_json = \mbox{\hyperlink{json__utils_8cpp_a5e9ad899597e6dbfdcefa9c5eb2f36d9}{generateTimingJson}}(lib\_pin\_sub\_group, err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00244}00244       pin\_json[\textcolor{stringliteral}{"{}timing\_arcs"{}}].push\_back(timing\_json);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00245}00245     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00246}00246       spdlog::warn(\textcolor{stringliteral}{"{}Unknown pin sub group type: \{\}"{}}, pin\_sub\_group\_type);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00247}00247     \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00248}00248   \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00249}00249   \textcolor{keywordflow}{return} std::make\_pair(direction, pin\_json);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00250}00250 \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00251}00251 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00272}\mbox{\hyperlink{json__utils_8hpp_a46effb948eb4bbf9858c4b32a2ccf730}{00272}} \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{json__utils_8cpp_a46effb948eb4bbf9858c4b32a2ccf730}{generateCellJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}} \&lib\_cell\_group, \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}} \&err) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00273}00273   \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} cell\_json;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00274}00274   cell\_json[\textcolor{stringliteral}{"{}cell\_name"{}}] = lib\_cell\_group.\mbox{\hyperlink{classLibGroup_a5de2a5c697f684c1d809c3e944cf6db0}{getName}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00275}00275 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00276}00276   \mbox{\hyperlink{classAttributesIterator}{AttributesIterator}} attr\_iter(lib\_cell\_group.\mbox{\hyperlink{classLibGroup_a0f6b465a7bf0fa6947940de5d8f38ce2}{getAttrs}}(), err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00277}00277   \textcolor{keywordflow}{for} (; !attr\_iter.\mbox{\hyperlink{classAttributesIterator_a8c620baba68e823cbc3a60b339b8529b}{end}}(); attr\_iter.\mbox{\hyperlink{classAttributesIterator_a9325c74720b2abce090e7f4cb853e5c4}{next}}()) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00278}00278     \mbox{\hyperlink{classLibAttribute}{LibAttribute}} lib\_attr = attr\_iter.\mbox{\hyperlink{classAttributesIterator_a04b774fcda3d9e6a6ef5858b3d9a5088}{get}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00279}00279 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00280}00280     std::string attr\_name = lib\_attr.\mbox{\hyperlink{classLibAttribute_af1ea12ff0eae79e5303b2a6fd0ac2c52}{getName}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00281}00281     \textcolor{keywordflow}{if} (attr\_name == \textcolor{stringliteral}{"{}area"{}} || attr\_name == \textcolor{stringliteral}{"{}cell\_leakage\_power"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00282}00282       cell\_json[attr\_name] = lib\_attr.\mbox{\hyperlink{classLibAttribute_ac5684f33d89bbf8edcf9b7309132eb43}{getFloat}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00283}00283     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (attr\_name == \textcolor{stringliteral}{"{}cell\_footprint"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00284}00284       cell\_json[attr\_name] = lib\_attr.\mbox{\hyperlink{classLibAttribute_aa3cb7b40fb5997fd0f9bd2992e3809e6}{getString}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00285}00285     \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00286}00286     \textcolor{comment}{// More cell attributes can be added here}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00287}00287   \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00288}00288 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00289}00289   \mbox{\hyperlink{classGroupsIterator}{GroupsIterator}} cell\_sub\_group\_iter(lib\_cell\_group.\mbox{\hyperlink{classLibGroup_a31fe51d52babdc9bbf06a54d97d1495a}{getGroups}}(), err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00290}00290   \textcolor{keywordflow}{for} (; !cell\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_a4391410c34cdfcc26a0540310ea48ad7}{end}}(); cell\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_aa858689ef1027248ac7884e494304367}{next}}()) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00291}00291     \mbox{\hyperlink{classLibGroup}{LibGroup}} lib\_cell\_sub\_group = cell\_sub\_group\_iter.\mbox{\hyperlink{classGroupsIterator_abe58a28edfca75c35f079f6ef37f3ddd}{get}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00292}00292 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00293}00293     std::string cell\_sub\_group\_type = lib\_cell\_sub\_group.\mbox{\hyperlink{classLibGroup_a276eb509d5bc526c08feb562ce182f4d}{getType}}();}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00294}00294     \textcolor{comment}{// std::string cell\_sub\_group\_name = lib\_cell\_sub\_group.getName();}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00295}00295 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00296}00296     \textcolor{comment}{// spdlog::debug("{}Cell Sub Group Type: \{\}"{}, cell\_sub\_group\_type);}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00297}00297     \textcolor{comment}{// spdlog::debug("{}Cell Sub Group Name: \{\}"{}, cell\_sub\_group\_name);}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00298}00298 }
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00299}00299     \textcolor{keywordflow}{if} (cell\_sub\_group\_type == \textcolor{stringliteral}{"{}pin"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00300}00300       \textcolor{keyword}{auto} [direction, pin\_json] = \mbox{\hyperlink{json__utils_8cpp_a614db1dd3c56489cb8ef36abb7a46ab8}{generatePinJson}}(lib\_cell\_sub\_group, err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00301}00301       \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}input"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00302}00302         cell\_json[\textcolor{stringliteral}{"{}input\_pins"{}}].push\_back(pin\_json);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00303}00303       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}output"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00304}00304         cell\_json[\textcolor{stringliteral}{"{}output\_pins"{}}].push\_back(pin\_json);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00305}00305       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}internal"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00306}00306         cell\_json[\textcolor{stringliteral}{"{}internal\_pins"{}}].push\_back(pin\_json);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00307}00307       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}inout"{}}) \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00308}00308         cell\_json[\textcolor{stringliteral}{"{}inout\_pins"{}}].push\_back(pin\_json);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00309}00309       \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00310}00310         spdlog::warn(\textcolor{stringliteral}{"{}Unknown direction: \{\}"{}}, direction);}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00311}00311       \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00312}00312     \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00313}00313   \}}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00314}00314   \textcolor{keywordflow}{return} cell\_json;}
+\DoxyCodeLine{\Hypertarget{json__utils_8cpp_source_l00315}00315 \}}
 
 \end{DoxyCode}

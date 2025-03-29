@@ -12,7 +12,7 @@
 \mbox{\hyperlink{classLibFile_ae6956feb0dd50065d6abf8f3cd46bb80}{$\sim$\+Lib\+File}} ()
 \item 
 void \mbox{\hyperlink{classLibFile_a88de22798a64acdb38faefc0d785804f}{write\+Json\+To\+File}} ()
-\begin{DoxyCompactList}\small\item\em Writes the JSON data stored in the lib\+\_\+json\+\_\+ member to a file. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Writes the JSON data stored in the object to a file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLibFile_a84d29423705e2dea8a382dc6437640d9}{parse}} ()
 \begin{DoxyCompactList}\small\item\em Parses the Liberty file and extracts library information into a JSON structure. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLibFile_a13703620c950bdf0b72882d2eda1e401}{modify}} ()
@@ -366,15 +366,15 @@ Here is the caller graph for this function\+:
 
 
 
-Writes the JSON data stored in the lib\+\_\+json\+\_\+ member to a file. 
+Writes the JSON data stored in the object to a file. 
 
-This function attempts to open the specified file for writing. If the file cannot be opened, an error message is logged. If the file is successfully opened, the JSON data is written to the file with an indentation of 2 spaces. After writing, the file is closed and a success message is logged.
+This method opens the file specified by jsonname\+\_\+ and writes the content of lib\+\_\+json\+\_\+ with an indentation of 2 spaces. If the file cannot be opened, an error message is logged. Upon successful writing, an informational message is logged.
 
 
-\begin{DoxyParams}{Parameters}
-{\em jsonname\+\_\+} & The name of the file to which the JSON data will be written. \\
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & directly, but std\+::ofstream operations may throw exceptions \\
 \hline
-\end{DoxyParams}
+\end{DoxyExceptions}
 
 
 Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.

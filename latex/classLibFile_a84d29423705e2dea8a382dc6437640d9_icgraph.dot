@@ -7,7 +7,7 @@ digraph "LibFile::parse"
   rankdir="RL";
   Node1 [label="LibFile::parse",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Parses the Liberty file and extracts library information into a JSON structure."];
   Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
-  Node2 [label="LibraryComparator::\lLibraryComparator",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibraryComparator.html#a3b1cf4c12188388533050cc7f2804444",tooltip="Constructs a LibraryComparator object."];
+  Node2 [label="LibraryComparator::\lLibraryComparator",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibraryComparator.html#a3b1cf4c12188388533050cc7f2804444",tooltip="Constructor for the LibraryComparator class."];
   Node1 -> Node3 [dir="back",color="steelblue1",style="solid"];
   Node3 [label="LibFile::mono",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe",tooltip="Validates that lookup tables are monotonically increasing with respect to the output load."];
   Node3 -> Node4 [dir="back",color="steelblue1",style="solid"];

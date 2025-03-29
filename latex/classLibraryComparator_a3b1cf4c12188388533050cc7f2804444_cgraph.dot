@@ -5,7 +5,7 @@ digraph "LibraryComparator::LibraryComparator"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node1 [label="LibraryComparator::\lLibraryComparator",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Constructs a LibraryComparator object."];
+  Node1 [label="LibraryComparator::\lLibraryComparator",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Constructor for the LibraryComparator class."];
   Node1 -> Node2 [color="steelblue1",style="solid"];
   Node2 [label="LibFile::parse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a84d29423705e2dea8a382dc6437640d9",tooltip="Parses the Liberty file and extracts library information into a JSON structure."];
   Node2 -> Node3 [color="steelblue1",style="solid"];
@@ -113,5 +113,5 @@ digraph "LibraryComparator::LibraryComparator"
   Node2 -> Node27 [color="steelblue1",style="solid"];
   Node27 [label="LibFile::read",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a070b5da7981c5b5dc049349404d2f5a4",tooltip="Reads the Liberty file specified by the filename_ member variable."];
   Node1 -> Node28 [color="steelblue1",style="solid"];
-  Node28 [label="LibFile::writeJsonToFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a88de22798a64acdb38faefc0d785804f",tooltip="Writes the JSON data stored in the lib_json_ member to a file."];
+  Node28 [label="LibFile::writeJsonToFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a88de22798a64acdb38faefc0d785804f",tooltip="Writes the JSON data stored in the object to a file."];
 }

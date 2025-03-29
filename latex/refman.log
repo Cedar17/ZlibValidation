@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2025.3.1)  29 MAR 2025 07:52
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2025.3.1)  29 MAR 2025 14:48
  restricted system commands enabled.
 **refman
 (./refman.tex
@@ -540,12 +540,6 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutvoffset=\dimen197
 \Gm@dimlist=\toks35
 )
-(/opt/texlive/texdir/texmf-dist/tex/latex/changepage/changepage.sty
-Package: changepage 2009/10/20 v1.0c check page and change page layout
-\c@cp@cntr=\count328
-\cp@tempcnt=\count329
-LaTeX Info: Redefining \checkoddpage on input line 59.
-)
 (/opt/texlive/texdir/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 
@@ -570,7 +564,7 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip98
 \bibsep=\skip99
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count330
+\c@NAT@ctr=\count328
 )
 (/opt/texlive/texdir/texmf-dist/tex/latex/tocloft/tocloft.sty
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
@@ -604,8 +598,8 @@ Package tocloft Info: The document has chapter divisions on input line 51.
 \cftbeforefigskip=\skip126
 \cftfigindent=\skip127
 \cftfignumwidth=\skip128
-\c@lofdepth=\count331
-\c@lotdepth=\count332
+\c@lofdepth=\count329
+\c@lotdepth=\count330
 \cftbeforelottitleskip=\skip129
 \cftafterlottitleskip=\skip130
 \cftbeforetabskip=\skip131
@@ -623,7 +617,7 @@ Package: expl3 2025-01-18 L3 programming layer (loader)
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2024-05-08 L3 backend support: PDF output (LuaTeX)
-\l__color_backend_stack_int=\count333
+\l__color_backend_stack_int=\count331
 Inserting `l3color' in `luaotfload.parse_color'.
 \l__pdf_internal_box=\box122
 ))
@@ -643,11 +637,11 @@ Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 ))
-\l__ctex_tmp_int=\count334
+\l__ctex_tmp_int=\count332
 \l__ctex_tmp_box=\box123
 \l__ctex_tmp_dim=\dimen198
-\g__ctex_section_depth_int=\count335
-\g__ctex_font_size_int=\count336
+\g__ctex_section_depth_int=\count333
+\g__ctex_font_size_int=\count334
 \g__cctab_next_cctab=\catcodetable15
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/ctex/config/ctexopts.cfg
@@ -667,7 +661,7 @@ Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX
 
 (/opt/texlive/texdir/texmf-dist/tex/luatex/ctablestack/ctablestack.sty
 Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
-\@catcodetablestackcnt=\count337
+\@catcodetablestackcnt=\count335
 )
 \CatcodeTableOther=\catcodetable16
 \CatcodeTableExpl=\catcodetable17
@@ -696,7 +690,7 @@ X primitives.
 \everyvbox=\toks42
 \everycr=\toks43
 )
-\ltjlineendcomment=\count338
+\ltjlineendcomment=\count336
 \ltj@dimen@zw=\dimen199
 \ltj@dimen@zh=\dimen256
 \ltj@dimen@jQ=\dimen257
@@ -715,10 +709,10 @@ X primitives.
 \ltj@vert@ori=\attribute16
 \ltj@dir=\attribute17
 \ltj@@japanese=\language2
-\ltj@tempcnta=\count339
+\ltj@tempcnta=\count337
 \ltj@tempdima=\dimen258
-\ltj@@stack=\count340
-\ltj@@group@level=\count341
+\ltj@@stack=\count338
+\ltj@@group@level=\count339
 \ltj@kcat0=\attribute18
 \ltj@kcat1=\attribute19
 \ltj@kcat2=\attribute20
@@ -818,8 +812,8 @@ Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
 Inserting `ltj.create_dir_whatsit' in `hpack_filter'.
 (/opt/texlive/texdir/texmf-dist/tex/luatex/luatexja/ltj-base.sty
 Package: ltj-base 2021-03-16
-\ltj@tempcntb=\count342
-\ltj@tempcntc=\count343
+\ltj@tempcntb=\count340
+\ltj@tempcntc=\count341
 \ltj@afbox=\box124
 )
 \ltj@@italic@inner=\luafunction29
@@ -862,8 +856,8 @@ LaTeX Info: Package 'ltj-latex.sty' has been disabled.
 (/opt/texlive/texdir/texmf-dist/tex/luatex/luatexja/luatexja-compat.sty
 Package: luatexja-compat 2020-08-08 Compatibility with pTeX
 (load cache: ltj-jisx0208.luc)
-\hour=\count344
-\minute=\count345
+\hour=\count342
+\minute=\count343
 ))
 (/opt/texlive/texdir/texmf-dist/tex/latex/fontspec/fontspec.sty
 (/opt/texlive/texdir/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
@@ -874,17 +868,17 @@ Lua module: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
 (/opt/texlive/texdir/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 Package: fontspec-luatex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaT
 eX
-\l__fontspec_script_int=\count346
-\l__fontspec_language_int=\count347
-\l__fontspec_strnum_int=\count348
-\l__fontspec_tmp_int=\count349
-\l__fontspec_tmpa_int=\count350
-\l__fontspec_tmpb_int=\count351
-\l__fontspec_tmpc_int=\count352
-\l__fontspec_em_int=\count353
-\l__fontspec_emdef_int=\count354
-\l__fontspec_strong_int=\count355
-\l__fontspec_strongdef_int=\count356
+\l__fontspec_script_int=\count344
+\l__fontspec_language_int=\count345
+\l__fontspec_strnum_int=\count346
+\l__fontspec_tmp_int=\count347
+\l__fontspec_tmpa_int=\count348
+\l__fontspec_tmpb_int=\count349
+\l__fontspec_tmpc_int=\count350
+\l__fontspec_em_int=\count351
+\l__fontspec_emdef_int=\count352
+\l__fontspec_strong_int=\count353
+\l__fontspec_strongdef_int=\count354
 \l__fontspec_tmpa_dim=\dimen259
 \l__fontspec_tmpb_dim=\dimen260
 \l__fontspec_tmpc_dim=\dimen261
@@ -913,7 +907,7 @@ Lua function ctex_ltj_zero_globaldefs: = 67
 \symCJKmath=\mathgroup7
 LaTeX Font Info:    Overwriting symbol font `CJKmath' in version `bold'
 (Font)                  LTJY3/song/m/n --> LTJY3/song/b/n on input line 471.
-\g__ctex_ltj_family_int=\count357
+\g__ctex_ltj_family_int=\count355
 \ccwd=\dimen262
 \l__ctex_ccglue_skip=\skip134
 (load cache: ltj-cid-auto-adobe-gb1.luc)
@@ -927,8 +921,8 @@ Lua function ctex_update_kanjisize: = 68)
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/zhnumber/zhnumber.sty
 Package: zhnumber 2022/07/14 v3.0 Typesetting numbers with Chinese glyphs
-\l__zhnum_scale_int=\count358
-\l__zhnum_tmp_int=\count359
+\l__zhnum_scale_int=\count356
+\l__zhnum_tmp_int=\count357
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg
 File: zhnumber-utf8.cfg 2022/07/14 v3.0 Chinese numerals with UTF8 encoding
@@ -1004,20 +998,20 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (/opt/texlive/texdir/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count360
+\c@section@level=\count358
 )
 (/opt/texlive/texdir/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
 \@linkdim=\dimen267
-\Hy@linkcounter=\count361
-\Hy@pagecounter=\count362
+\Hy@linkcounter=\count359
+\Hy@pagecounter=\count360
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count363
+\Hy@SavedSpaceFactor=\count361
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
@@ -1052,7 +1046,7 @@ Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 ))
-\c@Hy@tempcnt=\count364
+\c@Hy@tempcnt=\count362
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
@@ -1064,7 +1058,7 @@ LaTeX Info: Redefining \url on input line 4763.
 (/opt/texlive/texdir/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 )
-\Fld@menulength=\count365
+\Fld@menulength=\count363
 \Field@Width=\dimen269
 \Fld@charsize=\dimen270
 Package hyperref Info: Hyper figures OFF on input line 6042.
@@ -1079,9 +1073,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count366
-\c@Item=\count367
-\c@Hfootnote=\count368
+\Hy@abspage=\count364
+\c@Item=\count365
+\c@Hfootnote=\count366
 
 
 LaTeX Warning: Command \LT@p@ftntext  has changed.
@@ -1096,12 +1090,12 @@ Package hyperref Warning: Wrong driver `hpdftex.def';
 Package hyperref Info: Driver: hluatex.
 (/opt/texlive/texdir/texmf-dist/tex/latex/hyperref/hluatex.def
 File: hluatex.def 2024-11-05 v7.01l Hyperref driver for luaTeX
-\Fld@listcount=\count369
-\c@bookmark@seq@number=\count370
+\Fld@listcount=\count367
+\c@bookmark@seq@number=\count368
 \Hy@SectionHShift=\skip136
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 139.
-Package hyperref Info: Option `unicode' set `true' on input line 139.
+Package hyperref Info: Option `colorlinks' set `true' on input line 138.
+Package hyperref Info: Option `unicode' set `true' on input line 138.
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
@@ -1118,11 +1112,8 @@ Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@hangindent=\dimen278
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count371
-\c@continuedfloat=\count372
-Package caption Info: changepage package is loaded.
-\caption@adjustwidth@hsize=\dimen279
-\caption@adjustwidth@linewidth=\dimen280
+\c@caption@flags=\count369
+\c@continuedfloat=\count370
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: longtable package is loaded.
@@ -1133,7 +1124,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 (/opt/texlive/texdir/texmf-dist/tex/latex/etoc/etoc.sty
 Package: etoc 2023/10/29 v1.2d Completely customisable TOCs (JFB)
 \Etoc@toctoks=\toks44
-\c@etoc@tocid=\count373
+\c@etoc@tocid=\count371
 \etoc@framed@titlebox=\box125
 \etoc@framed@contentsbox=\box126
 )(load cache: extra_fandolhei-regular.luc)(load cache: extra_fandolhei-bold.luc)
@@ -1154,54 +1145,54 @@ ge=dflt;jfm=zh_CN/quanjiao;"
 (fontspec)             <->"[FandolHei-Bold.otf]:mode=node;script=latn;language=
 dflt;jfm=zh_CN/quanjiao;"
 
-LaTeX Font Info:    Redeclaring symbol font `CJKmath' on input line 155.
+LaTeX Font Info:    Redeclaring symbol font `CJKmath' on input line 154.
 LaTeX Font Info:    Overwriting symbol font `CJKmath' in version `normal'
 (Font)                  LTJY3/song/m/n --> LTJY3/FandolHei-Regular(0)/m/n on in
-put line 155.
+put line 154.
 LaTeX Font Info:    Overwriting symbol font `CJKmath' in version `bold'
 (Font)                  LTJY3/song/b/n --> LTJY3/FandolHei-Regular(0)/m/n on in
-put line 155.
+put line 154.
 LaTeX Font Info:    Overwriting symbol font `CJKmath' in version `bold'
 (Font)                  LTJY3/FandolHei-Regular(0)/m/n --> LTJY3/FandolHei-Regu
-lar(0)/b/n on input line 155.
+lar(0)/b/n on input line 154.
  (./refman.aux)
 \openout1 = refman.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for LTJY3/song/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 155.
-LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for LTJY3/song/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
 
 (/opt/texlive/texdir/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count374
-\scratchdimen=\dimen281
+\scratchcounter=\count372
+\scratchdimen=\dimen279
 \scratchbox=\box127
-\nofMPsegments=\count375
-\nofMParguments=\count376
+\nofMPsegments=\count373
+\nofMParguments=\count374
 \everyMPshowfont=\toks45
-\MPscratchCnt=\count377
-\MPscratchDim=\dimen282
-\MPnumerator=\count378
-\makeMPintoPDFobject=\count379
+\MPscratchCnt=\count375
+\MPscratchDim=\dimen280
+\MPnumerator=\count376
+\makeMPintoPDFobject=\count377
 \everyMPtoPDFconversion=\toks46
 ) (/opt/texlive/texdir/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1253,60 +1244,60 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup8
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 155.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 155.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 155.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 155.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 155.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 155.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 155.
-LaTeX Font Info:    Redeclaring math accent \check on input line 155.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 155.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 155.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \colon on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 155.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 155.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 155.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 154.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 154.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 154.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 154.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 154.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 154.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 154.
+LaTeX Font Info:    Redeclaring math accent \check on input line 154.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 154.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 154.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 154.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 154.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 155.
+(Font)              `operators' in the math version `normal' on input line 154.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 155.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 154.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 155.
+(Font)              `operators' in the math version `bold' on input line 154.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 155.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 154.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 155.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 155.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 155.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 155.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 155.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 154.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 155.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 155.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 155.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 154.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 155.
-Package backref Info: ** backref set up for natbib ** on input line 155.
-Package hyperref Info: Link coloring ON on input line 155.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 154.
+Package backref Info: ** backref set up for natbib ** on input line 154.
+Package hyperref Info: Link coloring ON on input line 154.
 (./refman.out) (./refman.out)
 \@outlinefile=\write5
 
@@ -1314,33 +1305,33 @@ Package hyperref Info: Link coloring ON on input line 155.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 \Etoc@tf=\read4
-Package hyperref Info: Option `pageanchor' set `false' on input line 163.
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 163.
+Package hyperref Info: Option `pageanchor' set `false' on input line 162.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 162.
 
-Package hyperref Info: Option `unicode' set `true' on input line 163.
+Package hyperref Info: Option `unicode' set `true' on input line 162.
 (load cache: extra_lmsans12-regular.luc)(load cache: extra_lmroman7-regular.luc)
 (load cache: extra_lmroman5-regular.luc)
-LaTeX Font Info:    Trying to load font information for U+msa on input line 168
+LaTeX Font Info:    Trying to load font information for U+msa on input line 167
 .
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 168
+LaTeX Font Info:    Trying to load font information for U+msb on input line 167
 .
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+wasy on input line 16
-8.
+7.
 
 (/opt/texlive/texdir/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 )
 
 LaTeX Font Warning: Font shape `U/wasy/m/n' in size <6.52437> not available
-(Font)              size <7> substituted on input line 168.
+(Font)              size <7> substituted on input line 167.
 
 (load cache: extra_lmsans9-regular.luc)
 
@@ -1358,22 +1349,22 @@ LaTeX Font Warning: Font shape `U/wasy/m/n' in size <6.52437> not available
 LaTeX Font Info:    Font shape `LTJY3/FandolHei-Regular(0)/bx/n' in size <10.53
 937> not available
 (Font)              Font shape `LTJY3/FandolHei-Regular(0)/b/n' tried instead o
-n input line 178.
+n input line 177.
 LaTeX Font Info:    Font shape `LTJY3/FandolHei-Regular(0)/bx/n' in size <6.524
 37> not available
 (Font)              Font shape `LTJY3/FandolHei-Regular(0)/b/n' tried instead o
-n input line 178.
+n input line 177.
 
 
 LaTeX Font Warning: Font shape `U/wasy/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 178.
+(Font)              size <10.95> substituted on input line 177.
 
 
 
 LaTeX Font Info:    Font shape `LTJY3/FandolHei-Regular(0)/bx/n' in size <10> n
 ot available
 (Font)              Font shape `LTJY3/FandolHei-Regular(0)/b/n' tried instead o
-n input line 178.
+n input line 177.
 [1](load cache: extra_fandolfang-regular.luc)(load cache: extra_lmmono10-regular
 .luc)
 
@@ -1439,27 +1430,27 @@ age=dflt;jfm=zh_CN/quanjiao;"
 [24
 
 ]
-Package hyperref Info: Option `pageanchor' set `true' on input line 181.
+Package hyperref Info: Option `pageanchor' set `true' on input line 180.
 
 Chapter 1.
 (load cache: extra_lmsans17-regular.luc)
 LaTeX Font Info:    Font shape `LTJY3/FandolHei-Regular(0)/bx/n' in size <22.08
 249> not available
 (Font)              Font shape `LTJY3/FandolHei-Regular(0)/b/n' tried instead o
-n input line 183.
+n input line 182.
 
 LaTeX Font Warning: Font shape `TU/lmss/bc/n' undefined
-(Font)              using `TU/lmss/m/n' instead on input line 183.
+(Font)              using `TU/lmss/m/n' instead on input line 182.
 
 
 LaTeX Font Warning: Font shape `LTJY3/FandolHei-Regular(0)/bc/n' undefined
 (Font)              using `LTJY3/FandolHei-Regular(0)/m/n' instead on input lin
-e 183.
+e 182.
 
 LaTeX Font Info:    Font shape `LTJY3/FandolHei-Regular(0)/bx/n' in size <26.09
 749> not available
 (Font)              Font shape `LTJY3/FandolHei-Regular(0)/b/n' tried instead o
-n input line 183.
+n input line 182.
 (./md_README.tex
 LaTeX Font Info:    Font shape `LTJY3/FandolHei-Regular(0)/bx/n' in size <15.05
 624> not available
@@ -1606,39 +1597,34 @@ Chapter 7.
 [28]) (./classCellExtractor.tex
 
 [29]
-LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <6.52437> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 59.
-(load cache: extra_lmsans8-oblique.luc)
 
-[30]
+[30]) (./classCellPrinter.tex
 
-[31]) (./classCellPrinter.tex
+[31]
 
-[32]
+[32]) (./structslang_1_1syntax_1_1detail_1_1ChangeCollection.tex
 
 [33]
 
-[34]) (./structslang_1_1syntax_1_1detail_1_1ChangeCollection.tex
+[34]) (./structslang_1_1syntax_1_1ConstTokenOrSyntax.tex
 
 [35]
 
-[36]) (./structslang_1_1syntax_1_1ConstTokenOrSyntax.tex
+[36]
 
-[37]
+[37]) (./classslang_1_1syntax_1_1DeferredSourceRange.tex
 
 [38]
 
-[39]) (./classslang_1_1syntax_1_1DeferredSourceRange.tex
+[39]
 
-[40]
+[40]) (./classGroupsIterator.tex
 
 [41]
 
-[42]) (./classGroupsIterator.tex
+[42]
 
-[43]
-
-[44]) (./classslang_1_1syntax_1_1SeparatedSyntaxList_1_1iterator__base.tex(load 
+[43]) (./classslang_1_1syntax_1_1SeparatedSyntaxList_1_1iterator__base.tex(load 
 cache: extra_lmroman17-regular.luc)(load cache: extra_lmroman12-regular.luc)(loa
 d cache: extra_lmroman9-regular.luc)
 
@@ -1647,25 +1633,30 @@ LaTeX Font Warning: Font shape `U/wasy/m/n' in size <15.05624> not available
 
 
 
+[44]
+
 [45]
 
-[46]
+[46]) (./classLibAttribute.tex
 
 [47]
 
-[48]) (./classLibAttribute.tex
+[48]
 
-[49]
+[49]) (./structliberty__value__data.tex
 
-[50]
+[50]) (./classLibFile.tex
 
-[51]) (./structliberty__value__data.tex
+[51]
+LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <6.52437> not available
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 11.
+(load cache: extra_lmsans8-oblique.luc)
 
-[52]) (./classLibFile.tex
+[52](load cache: extra_lmsans10-oblique.luc)
 
 [53]
 
-[54](load cache: extra_lmsans10-oblique.luc)
+[54]
 
 [55]
 
@@ -1680,54 +1671,47 @@ LaTeX Font Warning: Font shape `U/wasy/m/n' in size <15.05624> not available
 [60]
 
 [61]
-Overfull \hbox (2.03183pt too wide) in paragraph at lines 1--1
-[]\TU/lmss/m/sl/10.53937 jsonname[] 
- []
 
+[62]) (./classLibGroup.tex
 
-
-[62]
-
-[63]) (./classLibGroup.tex
+[63]
 
 [64]
 
-[65]
+[65]) (./classLibraryComparator.tex
 
-[66]) (./classLibraryComparator.tex
+[66]
 
 [67]
 
-[68]
-
-[69]
+[68] [69]
 
 [70]
 
 [71]
 
-[72]
+[72]) (./classModuleRewriter.tex
 
-[73]) (./classModuleRewriter.tex
+[73]
 
 [74]
 
 [75]
 
-[76]
+[76]) (./structslang_1_1syntax_1_1PtrTokenOrSyntax.tex
 
 [77]
 
-[78]) (./structslang_1_1syntax_1_1PtrTokenOrSyntax.tex
+[78]
 
-[79]
-
-[80]
-
-[81]) (./structslang_1_1syntax_1_1detail_1_1RemoveChange.tex)
+[79]) (./structslang_1_1syntax_1_1detail_1_1RemoveChange.tex)
 (./structslang_1_1syntax_1_1detail_1_1ReplaceChange.tex
 
-[82]) (./classslang_1_1syntax_1_1SeparatedSyntaxList.tex
+[80]) (./classslang_1_1syntax_1_1SeparatedSyntaxList.tex
+
+[81]
+
+[82]
 
 [83]
 
@@ -1737,80 +1721,80 @@ Overfull \hbox (2.03183pt too wide) in paragraph at lines 1--1
 
 [86]
 
-[87]
+[87]) (./structsi2drExprT.tex
 
 [88]
 
 [89]
 
-[90]
+[90]) (./structsi2OID.tex)
+(./structslang_1_1syntax_1_1detail_1_1SyntaxChange.tex
 
 [91]
 
-[92]) (./structsi2drExprT.tex
+[92]) (./classslang_1_1syntax_1_1SyntaxList.tex
 
 [93]
 
 [94]
 
-[95]) (./structsi2OID.tex)
-(./structslang_1_1syntax_1_1detail_1_1SyntaxChange.tex
+[95]) (./classslang_1_1syntax_1_1SyntaxListBase.tex
 
 [96]
 
-[97]) (./classslang_1_1syntax_1_1SyntaxList.tex
+[97]
+Overfull \hbox (71.57172pt too wide) in paragraph at lines 90--91
+[]\TU/lmss/bc/n/10.53937 Im-ple-mented in [], [], and []. 
+ []
+
+
+Overfull \hbox (71.57172pt too wide) in paragraph at lines 104--105
+[]\TU/lmss/bc/n/10.53937 Im-ple-mented in [], [], and []. 
+ []
+
+
 
 [98]
+Overfull \hbox (71.57172pt too wide) in paragraph at lines 118--119
+[]\TU/lmss/bc/n/10.53937 Im-ple-mented in [], [], and []. 
+ []
+
+
+Overfull \hbox (71.57172pt too wide) in paragraph at lines 142--143
+[]\TU/lmss/bc/n/10.53937 Im-ple-mented in [], [], and []. 
+ []
+
+
+Overfull \hbox (71.57172pt too wide) in paragraph at lines 164--165
+[]\TU/lmss/bc/n/10.53937 Im-ple-mented in [], [], and []. 
+ []
+
+
 
 [99]
+Overfull \hbox (71.57172pt too wide) in paragraph at lines 178--179
+[]\TU/lmss/bc/n/10.53937 Im-ple-mented in [], [], and []. 
+ []
+
+) (./classslang_1_1syntax_1_1SyntaxNode.tex
 
 [100]
 
 [101]
 
-[102]) (./classslang_1_1syntax_1_1SyntaxListBase.tex
+[102]
 
 [103]
 
 [104]
 
 [105]
-Overfull \hbox (71.57172pt too wide) in paragraph at lines 155--156
-[]\TU/lmss/bc/n/10.53937 Im-ple-mented in [], [], and []. 
- []
-
-
 
 [106]
-Overfull \hbox (71.57172pt too wide) in paragraph at lines 169--170
-[]\TU/lmss/bc/n/10.53937 Im-ple-mented in [], [], and []. 
- []
 
+[107]) (./classslang_1_1syntax_1_1SyntaxPrinter.tex
 
-Overfull \hbox (71.57172pt too wide) in paragraph at lines 183--184
-[]\TU/lmss/bc/n/10.53937 Im-ple-mented in [], [], and []. 
- []
-
-
-Overfull \hbox (71.57172pt too wide) in paragraph at lines 207--208
-[]\TU/lmss/bc/n/10.53937 Im-ple-mented in [], [], and []. 
- []
-
-
-
-[107]
-Overfull \hbox (71.57172pt too wide) in paragraph at lines 229--230
-[]\TU/lmss/bc/n/10.53937 Im-ple-mented in [], [], and []. 
- []
-
-
-Overfull \hbox (71.57172pt too wide) in paragraph at lines 243--244
-[]\TU/lmss/bc/n/10.53937 Im-ple-mented in [], [], and []. 
- []
-
-
-
-[108]) (./classslang_1_1syntax_1_1SyntaxNode.tex
+[108]
 
 [109]
 
@@ -1824,9 +1808,9 @@ Overfull \hbox (71.57172pt too wide) in paragraph at lines 243--244
 
 [114]
 
-[115]
+[115]) (./classslang_1_1syntax_1_1SyntaxRewriter.tex
 
-[116]) (./classslang_1_1syntax_1_1SyntaxPrinter.tex
+[116]
 
 [117]
 
@@ -1840,9 +1824,9 @@ Overfull \hbox (71.57172pt too wide) in paragraph at lines 243--244
 
 [122]
 
-[123]
+[123]) (./classslang_1_1syntax_1_1SyntaxTree.tex
 
-[124]) (./classslang_1_1syntax_1_1SyntaxRewriter.tex
+[124]
 
 [125]
 
@@ -1858,7 +1842,7 @@ Overfull \hbox (71.57172pt too wide) in paragraph at lines 243--244
 
 [131]
 
-[132]) (./classslang_1_1syntax_1_1SyntaxTree.tex
+[132]
 
 [133]
 
@@ -1868,27 +1852,27 @@ Overfull \hbox (71.57172pt too wide) in paragraph at lines 243--244
 
 [136]
 
-[137]
+[137]) (./classslang_1_1syntax_1_1SyntaxVisitor.tex
 
 [138]
 
-[139]
+[139]) (./classslang_1_1syntax_1_1TokenList.tex
 
 [140]
 
 [141]
 
-[142]
+[142]) (./structslang_1_1syntax_1_1TokenOrSyntax.tex
 
 [143]
 
-[144]
+[144]) (./classValuesIterator.tex
 
-[145]) (./classslang_1_1syntax_1_1SyntaxVisitor.tex
+[145]
 
 [146]
 
-[147]) (./classslang_1_1syntax_1_1TokenList.tex
+[147]) (./classVerilogVisitor.tex
 
 [148]
 
@@ -1896,13 +1880,17 @@ Overfull \hbox (71.57172pt too wide) in paragraph at lines 243--244
 
 [150]
 
-[151]
+[151])
 
-[152]) (./structslang_1_1syntax_1_1TokenOrSyntax.tex
+[152]
+Chapter 8.
+(./compare_8hpp.tex) (./compare_8hpp_source.tex
 
-[153]
+[153
 
-[154]) (./classValuesIterator.tex
+]) (./iterators_8hpp.tex) (./iterators_8hpp_source.tex
+
+[154]) (./json__utils_8hpp.tex
 
 [155]
 
@@ -1910,53 +1898,29 @@ Overfull \hbox (71.57172pt too wide) in paragraph at lines 243--244
 
 [157]
 
-[158]) (./classVerilogVisitor.tex
+[158]) (./json__utils_8hpp_source.tex
 
-[159]
+[159]) (./lib__attribute_8hpp.tex) (./lib__attribute_8hpp_source.tex
 
-[160]
+[160]) (./lib__file_8hpp.tex) (./lib__file_8hpp_source.tex
 
-[161])
+[161]) (./lib__group_8hpp.tex) (./lib__group_8hpp_source.tex
 
-[162]
-Chapter 8.
-(./compare_8hpp.tex) (./compare_8hpp_source.tex
+[162]) (./verilog__utils_8hpp.tex
 
-[163
+[163]) (./verilog__utils_8hpp_source.tex
 
-]) (./iterators_8hpp.tex) (./iterators_8hpp_source.tex
-
-[164]) (./json__utils_8hpp.tex
+[164]) (./version_8h.tex
 
 [165]
 
-[166]
+[166]) (./version_8h_source.tex) (./si2dr__liberty_8h.tex
 
 [167]
 
-[168]) (./json__utils_8hpp_source.tex
+[168]
 
-[169]) (./lib__attribute_8hpp.tex) (./lib__attribute_8hpp_source.tex
-
-[170]) (./lib__file_8hpp.tex) (./lib__file_8hpp_source.tex
-
-[171]) (./lib__group_8hpp.tex) (./lib__group_8hpp_source.tex
-
-[172]) (./verilog__utils_8hpp.tex
-
-[173]) (./verilog__utils_8hpp_source.tex
-
-[174]) (./version_8h.tex
-
-[175]
-
-[176]) (./version_8h_source.tex) (./si2dr__liberty_8h.tex
-
-[177]
-
-[178]
-
-[179]
+[169]
 Overfull \hbox (28.21198pt too wide) in paragraph at lines 185--205
 [] \TU/lmss/bc/n/10.53937 = 6 , [] = 10 , []
  []
@@ -1968,13 +1932,31 @@ Overfull \hbox (110.42955pt too wide) in paragraph at lines 185--205
 
 
 
+[170]
+
+[171]
+
+[172]
+
+[173]
+
+[174]
+
+[175]
+
+[176]
+
+[177]
+
+[178]
+
+[179]
+
 [180]
 
 [181]
 
-[182]
-
-[183]
+[182] [183]
 
 [184]
 
@@ -1992,7 +1974,9 @@ Overfull \hbox (110.42955pt too wide) in paragraph at lines 185--205
 
 [191]
 
-[192] [193]
+[192]) (./si2dr__liberty_8h_source.tex
+
+[193]
 
 [194]
 
@@ -2008,9 +1992,9 @@ Overfull \hbox (110.42955pt too wide) in paragraph at lines 185--205
 
 [200]
 
-[201]
+[201]) (./SyntaxNode_8h.tex
 
-[202]) (./si2dr__liberty_8h_source.tex
+[202]) (./SyntaxNode_8h_source.tex
 
 [203]
 
@@ -2022,59 +2006,59 @@ Overfull \hbox (110.42955pt too wide) in paragraph at lines 185--205
 
 [207]
 
-[208]
+[208]) (./SyntaxPrinter_8h.tex) (./SyntaxPrinter_8h_source.tex
 
 [209]
 
-[210]
+[210]) (./SyntaxTree_8h.tex) (./SyntaxTree_8h_source.tex
 
-[211]) (./SyntaxNode_8h.tex
+[211]
 
-[212]) (./SyntaxNode_8h_source.tex
+[212]
 
-[213]
+[213]) (./SyntaxVisitor_8h.tex
 
-[214]
+[214]) (./SyntaxVisitor_8h_source.tex
 
 [215]
 
 [216]
 
-[217]
+[217]) (./README_8md.tex) (./compare_8cpp.tex) (./compare_8cpp_source.tex
 
-[218]) (./SyntaxPrinter_8h.tex) (./SyntaxPrinter_8h_source.tex
+[218]
 
 [219]
 
-[220]) (./SyntaxTree_8h.tex) (./SyntaxTree_8h_source.tex
+[220]
 
 [221]
 
 [222]
 
-[223]) (./SyntaxVisitor_8h.tex
+[223]) (./iterators_8cpp.tex) (./iterators_8cpp_source.tex
 
-[224]) (./SyntaxVisitor_8h_source.tex
+[224]) (./json__utils_8cpp.tex
 
 [225]
 
 [226]
 
-[227]) (./README_8md.tex) (./compare_8cpp.tex) (./compare_8cpp_source.tex
+[227]
 
 [228]
 
-[229]
+[229]) (./json__utils_8cpp_source.tex
 
 [230]
 
 [231]
 
-[232]
+[232]) (./lib__attribute_8cpp.tex) (./lib__attribute_8cpp_source.tex
 
-[233]) (./iterators_8cpp.tex) (./iterators_8cpp_source.tex
+[233]) (./lib__file_8cpp.tex) (./lib__file_8cpp_source.tex
 
-[234]) (./json__utils_8cpp.tex
+[234]
 
 [235]
 
@@ -2084,17 +2068,17 @@ Overfull \hbox (110.42955pt too wide) in paragraph at lines 185--205
 
 [238]
 
-[239]) (./json__utils_8cpp_source.tex
+[239]
 
 [240]
 
 [241]
 
-[242]) (./lib__attribute_8cpp.tex) (./lib__attribute_8cpp_source.tex
+[242]
 
-[243]) (./lib__file_8cpp.tex) (./lib__file_8cpp_source.tex
+[243]
 
-[244]
+[244]) (./lib__group_8cpp.tex) (./lib__group_8cpp_source.tex) (./main_8cpp.tex
 
 [245]
 
@@ -2106,7 +2090,7 @@ Overfull \hbox (110.42955pt too wide) in paragraph at lines 185--205
 
 [249]
 
-[250]
+[250]) (./main_8cpp_source.tex
 
 [251]
 
@@ -2114,19 +2098,19 @@ Overfull \hbox (110.42955pt too wide) in paragraph at lines 185--205
 
 [253]
 
-[254]) (./lib__group_8cpp.tex) (./lib__group_8cpp_source.tex) (./main_8cpp.tex
+[254]
 
 [255]
 
 [256]
 
-[257]
+[257]) (./verilog__utils_8cpp.tex) (./verilog__utils_8cpp_source.tex
 
 [258]
 
 [259]
 
-[260]) (./main_8cpp_source.tex
+[260]
 
 [261]
 
@@ -2138,37 +2122,17 @@ Overfull \hbox (110.42955pt too wide) in paragraph at lines 185--205
 
 [265]
 
-[266]
+[266])
 
-[267]) (./verilog__utils_8cpp.tex) (./verilog__utils_8cpp_source.tex
+[267]
 
-[268]
-
-[269]
-
-[270]
-
-[271]
-
-[272]
-
-[273]
-
-[274]
-
-[275]
-
-[276])
-
-[277]
-
-[278
+[268
 
 ] (./refman.ind
 
 
 
-[279
+[269
 
 
 ]
@@ -2182,7 +2146,129 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
 
+[270]
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.40004pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.40004pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
+
+[271]
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.40004pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.40004pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
+
+[272]
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.40004pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.40004pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
+
+[273]
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.40004pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.40004pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
+
+[274]
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.40004pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.40004pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
+
+[275]
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.40004pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.40004pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
+
+[276]
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.40004pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.40004pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
+
+[277]
+
+
+Overfull \hbox (23.56328pt too wide) in paragraph at lines 903--904
+[]| \TU/lmss/bc/n/10.53937 SI2DR_TRACE_FILES_CAN-NOT_BE_OPENED,
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.40004pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.40004pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
+
+[278]
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.40004pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.40004pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
+
+[279]
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.40004pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.40004pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
+
 [280]
+
+
+Overfull \hbox (29.49261pt too wide) in paragraph at lines 1157--1159
+[]\TU/lmss/bc/n/10.53937 slang::syntax::SeparatedSyntaxList$\OML/cmm/m/it/10.53
+937 <$ \TU/lmss/bc/n/10.53937 T $\OML/cmm/m/it/10.53937 >$\TU/lmss/bc/n/10.5393
+7 ::iterator_base$\OML/cmm/m/it/10.53937 <$
+ []
 
 
 
@@ -2237,129 +2323,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
 
-[285]
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.40004pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.40004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
-
-[286]
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.40004pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.40004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
-
-[287]
-
-
-Overfull \hbox (23.56328pt too wide) in paragraph at lines 903--904
-[]| \TU/lmss/bc/n/10.53937 SI2DR_TRACE_FILES_CAN-NOT_BE_OPENED,
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.40004pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.40004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
-
-[288]
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.40004pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.40004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
-
-[289]
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.40004pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.40004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
-
-[290]
-
-
-Overfull \hbox (29.49261pt too wide) in paragraph at lines 1157--1159
-[]\TU/lmss/bc/n/10.53937 slang::syntax::SeparatedSyntaxList$\OML/cmm/m/it/10.53
-937 <$ \TU/lmss/bc/n/10.53937 T $\OML/cmm/m/it/10.53937 >$\TU/lmss/bc/n/10.5393
-7 ::iterator_base$\OML/cmm/m/it/10.53937 <$
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.40004pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.40004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
-
-[291]
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.40004pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.40004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
-
-[292]
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.40004pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.40004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
-
-[293]
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.40004pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.40004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
-
-[294]
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.40004pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.40004pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
-
-[295
+[285
 
 ]) (./refman.aux)
  ***********
@@ -2375,19 +2339,19 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 09971B2704D2FC08B239DDD2A1DE2405;154007.
+(rerunfilecheck)             Checksum: 18590A9AD141637EBCB26E295EF69266;154007.
 
 )
 
 Here is how much of LuaTeX's memory you used:
- 31341 strings out of 475512
- 381689,1648299 words of node,token memory allocated
- 1615 words of node memory still in use:
-   5 hlist, 1 vlist, 2 rule, 2 glue, 3 kern, 1 glyph, 235 attribute, 113 glue_sp
-ec, 73 attribute_list, 2 write, 62 user_defined, 1 pdf_action nodes
-   avail lists: 1:37,2:91104,3:886,4:1884,5:1108,6:333,7:10155,8:19,9:2614,10:40
-,11:842,12:28
- 47203 multiletter control sequences out of 65536+600000
+ 31235 strings out of 475512
+ 381830,1648299 words of node,token memory allocated
+ 1639 words of node memory still in use:
+   5 hlist, 1 vlist, 2 rule, 2 glue, 3 kern, 1 glyph, 246 attribute, 113 glue_sp
+ec, 74 attribute_list, 2 write, 62 user_defined, 1 pdf_action nodes
+   avail lists: 1:22,2:91105,3:895,4:1882,5:1108,6:342,7:10155,8:25,9:2614,10:40
+,11:842,12:29
+ 47156 multiletter control sequences out of 65536+600000
  152 fonts using 73610719 bytes
  101i,16n,115p,1231b,850s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/texlive/texdir/texmf-dist/fonts/opentype/public/fandol/FandolFang-Regular.
@@ -2412,10 +2376,10 @@ ublic/amsfonts/cm/cmmi7.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy10.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmsy6.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy7.pfb>
-Output written on refman.pdf (321 pages, 1469727 bytes).
+Output written on refman.pdf (311 pages, 1428251 bytes).
 
-PDF statistics: 17819 PDF objects out of 18468 (max. 8388607)
- 17261 compressed objects within 173 object streams
- 6140 named destinations out of 6186 (max. 131072)
+PDF statistics: 17348 PDF objects out of 18468 (max. 8388607)
+ 16804 compressed objects within 169 object streams
+ 6086 named destinations out of 6186 (max. 131072)
  6025 words of extra memory for PDF output out of 10000 (max. 100000000)
 

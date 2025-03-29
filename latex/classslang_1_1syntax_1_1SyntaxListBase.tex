@@ -34,45 +34,6 @@ virtual \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{Syntax\+List\+B
 \begin{DoxyCompactList}\small\item\em Clones the list into a new node using the provided allocator. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_aae7ec9b3bd6967746ae57752c8ea5b20}{reset\+All}} (Bump\+Allocator \&alloc, std\+::span$<$ const \mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{Token\+Or\+Syntax}} $>$ children)=0
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}}}
-\begin{DoxyCompactItemize}
-\item 
-std\+::string \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a49f92aa33b0ae69980cbf0041e08d90d}{to\+String}} () const
-\begin{DoxyCompactList}\small\item\em Print the node and all of its children to a string. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a0eda672e68ef0b51610750fa423ce96c}{get\+First\+Token}} () const
-\begin{DoxyCompactList}\small\item\em Get the first leaf token in this subtree. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_affe0ad63f36c19cb204b45182b513c71}{get\+Last\+Token}} () const
-\begin{DoxyCompactList}\small\item\em Get the last leaf token in this subtree. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a0b8364a84e668ded18ec837accce6cc6}{get\+First\+Token\+Ptr}} ()
-\begin{DoxyCompactList}\small\item\em Get the first leaf token as a mutable pointer in this subtree. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a6031ea7b45a75fd04e5936ab15f881a2}{get\+Last\+Token\+Ptr}} ()
-\begin{DoxyCompactList}\small\item\em Get the last leaf token a mutable pointer in this subtree. \end{DoxyCompactList}\item 
-Source\+Range \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a28195377267272fb5a9a9656aae1c764}{source\+Range}} () const
-\begin{DoxyCompactList}\small\item\em Get the source range of the node. \end{DoxyCompactList}\item 
-const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_abc32bc8c00a0b128d53d20bdc17919b0}{child\+Node}} (size\+\_\+t index) const
-\item 
-\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a9002961f911297a67b27818a61586f65}{child\+Node}} (size\+\_\+t index)
-\item 
-\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a5b5ecf7c14d4a9281ef4acfe9a6a34d4}{child\+Token}} (size\+\_\+t index) const
-\item 
-\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a26fb9db7a9abc00c5f79668de9a8a4bc}{child\+Token\+Ptr}} (size\+\_\+t index)
-\item 
-size\+\_\+t \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a0be73b0d841761c199f329f45f4d3ea7}{get\+Child\+Count}} () const
-\begin{DoxyCompactList}\small\item\em Gets the number of (direct) children underneath this node in the tree. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a6153cea1bb428e37ff814f7759570d30}{is\+Equivalent\+To}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&other) const
-\item 
-{\footnotesize template$<$typename T $>$ }\\T \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a8a06c9e4d92fda386ed7f7765d0c5498}{as}} ()
-\item 
-{\footnotesize template$<$typename T $>$ }\\const T \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aaf05c77660207e32a681505099704c06}{as}} () const
-\item 
-{\footnotesize template$<$typename T $>$ }\\T $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a7a794c49d7544de09f33bd85ae1d8fce}{as\+\_\+if}} ()
-\item 
-{\footnotesize template$<$typename T $>$ }\\const T $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a382df472e5109fc88e2a515c2fa749f6}{as\+\_\+if}} () const
-\item 
-{\footnotesize template$<$typename TVisitor , typename... Args$>$ }\\decltype(auto) \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a0cedb66d8e695e4c5c69e9290652d7fa}{visit}} (TVisitor \&visitor, Args \&\&... args)
-\item 
-{\footnotesize template$<$typename TVisitor , typename... Args$>$ }\\decltype(auto) \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a803c336cceefa46cff33f077e77398a5}{visit}} (TVisitor \&visitor, Args \&\&... args) const
-\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -80,22 +41,10 @@ static bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_a77e0c7b5087
 \item 
 static bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_aeaf270e5026b7e1bdbd1f6404e4138bd}{is\+Child\+Optional}} (size\+\_\+t index)
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}}}
-\begin{DoxyCompactItemize}
-\item 
-static bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a37cdb1f35d2760cbd3cdab4e255a3987}{is\+Kind}} (Syntax\+Kind)
-\item 
-static bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a3d353bc2793012e2fa5f3f33a8eb2cdc}{is\+Child\+Optional}} (size\+\_\+t)
-\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_a30efdbc332ef63303f978f3f17a0feb7}{Syntax\+List\+Base}} (Syntax\+Kind \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}}, size\+\_\+t \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_af8b0130aa1f1a5f844b66e63aca7339d}{child\+Count}})
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}}}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ab2056678f95527a9fef77f82d1978a01}{Syntax\+Node}} (Syntax\+Kind \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}})
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -103,20 +52,6 @@ static bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a3d353bc2793012e
 size\+\_\+t \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase_af8b0130aa1f1a5f844b66e63aca7339d}{child\+Count}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
-\doxysubsubsection*{Public Types inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}}}
-\begin{DoxyCompactItemize}
-\item 
-using \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} = parsing\+::\+Token
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}}}
-\begin{DoxyCompactItemize}
-\item 
-Syntax\+Kind \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}}
-\begin{DoxyCompactList}\small\item\em The kind of syntax node. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a43a74c2e3b0874740abef3a5153f2c49}{parent}} = nullptr
-\item 
-const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aae6b46376d0c5cba0abfc29d57a3299c}{preview\+Node}} = nullptr
-\begin{DoxyCompactList}\small\item\em An potional pointer to a syntax node tha can be useful to know ahead of time when visiting this node. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

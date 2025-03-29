@@ -2,92 +2,92 @@
 \label{SyntaxPrinter_8h_source}\index{include\_3rd\_party/SyntaxPrinter.h@{include\_3rd\_party/SyntaxPrinter.h}}
 \mbox{\hyperlink{SyntaxPrinter_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00001}00001\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00004}00004\ \textcolor{comment}{}\textcolor{comment}{//}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00005}00005\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ Michael\ Popoloski}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00006}00006\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00007}00007\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00008}00008\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00009}00009\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00011}00011\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}slang/parsing/Token.h"{}}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00013}00013\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00014}00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceslang}{slang}}\ \{}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00015}00015\ \textcolor{keyword}{class\ }SourceManager;}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00016}00016\ \}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00017}00017\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00018}00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceslang_1_1syntax}{slang::syntax}}\ \{}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00019}00019\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00020}00020\ \textcolor{keyword}{class\ }SyntaxNode;}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00021}00021\ \textcolor{keyword}{class\ }SyntaxTree;}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00022}00022\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00025}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{00025}}\ \textcolor{keyword}{class\ }SLANG\_EXPORT\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\ \{}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00026}00026\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00027}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a47e9fc898a804518d6c33498df90fb52}{00027}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a47e9fc898a804518d6c33498df90fb52}{SyntaxPrinter}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00028}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a7f9cae533a6dc23c999a4995ffcfd571}{00028}}\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a7f9cae533a6dc23c999a4995ffcfd571}{SyntaxPrinter}}(\textcolor{keyword}{const}\ SourceManager\&\ sourceManager);}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00029}00029\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00032}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8214b2cf01cc7653fc5b3268b78307e2}{00032}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8214b2cf01cc7653fc5b3268b78307e2}{append}}(std::string\_view\ text);}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00033}00033\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00036}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_af4832e9a2233940f2d2970c93318f52e}{00036}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_af4832e9a2233940f2d2970c93318f52e}{print}}(parsing::Trivia\ trivia);}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00037}00037\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00040}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_afb6e5b5ba2941a4c4dc0fc54fa02f2fd}{00040}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_afb6e5b5ba2941a4c4dc0fc54fa02f2fd}{print}}(parsing::Token\ token);}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00041}00041\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00044}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a951be5d8283d3a12dbf9fd505d9c444c}{00044}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a951be5d8283d3a12dbf9fd505d9c444c}{print}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{SyntaxNode}}\&\ node);}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00045}00045\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00048}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abdbd945057bf62e92146f77ada2ae7f1}{00048}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abdbd945057bf62e92146f77ada2ae7f1}{print}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{SyntaxTree}}\&\ tree);}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00049}00049\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00052}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a60cd9c72add260f01bd45f8bb4e62cb3}{00052}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a60cd9c72add260f01bd45f8bb4e62cb3}{setIncludeTrivia}}(\textcolor{keywordtype}{bool}\ include)\ \{}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ includeTrivia\ =\ include;}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00055}00055\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00056}00056\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00059}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a4cef7da2258598172a79cecd1c6dcaab}{00059}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a4cef7da2258598172a79cecd1c6dcaab}{setIncludeMissing}}(\textcolor{keywordtype}{bool}\ include)\ \{}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ includeMissing\ =\ include;}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00062}00062\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00063}00063\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00066}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a7605ebf7e46eeb3cdc459282b8177490}{00066}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a7605ebf7e46eeb3cdc459282b8177490}{setIncludeSkipped}}(\textcolor{keywordtype}{bool}\ include)\ \{}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ includeSkipped\ =\ include;}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00069}00069\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00070}00070\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00073}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_af80fcfa24e1fcccfd9610151af4c5869}{00073}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_af80fcfa24e1fcccfd9610151af4c5869}{setIncludeDirectives}}(\textcolor{keywordtype}{bool}\ include)\ \{}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ includeDirectives\ =\ include;}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00076}00076\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00077}00077\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00080}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ad304f46f1280d75d42faaf18671d3d4f}{00080}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ad304f46f1280d75d42faaf18671d3d4f}{setIncludePreprocessed}}(\textcolor{keywordtype}{bool}\ include)\ \{}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ includePreprocessed\ =\ include;}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00083}00083\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00084}00084\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00087}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a6437b9b775ad425e0aa0fddd6c245275}{00087}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a6437b9b775ad425e0aa0fddd6c245275}{setIncludeComments}}(\textcolor{keywordtype}{bool}\ include)\ \{}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00088}00088\ \ \ \ \ \ \ \ \ includeComments\ =\ include;}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00090}00090\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00091}00091\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00094}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abcabb37f57db5565ed5d172d419c0c2d}{00094}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abcabb37f57db5565ed5d172d419c0c2d}{setSquashNewlines}}(\textcolor{keywordtype}{bool}\ include)\ \{}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ squashNewlines\ =\ include;}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00097}00097\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00098}00098\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00100}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a09b3251eed8b0f6714551947af55742c}{00100}}\ \ \ \ \ std::string\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a09b3251eed8b0f6714551947af55742c}{str}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ buffer;\ \}}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00101}00101\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00105}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{00105}}\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{printFile}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{SyntaxTree}}\&\ tree);}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00106}00106\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00107}00107\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00108}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8d67e0618b6da4d89b5cdfce0b821e27}{00108}}\ \ \ \ \ std::string\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8d67e0618b6da4d89b5cdfce0b821e27}{buffer}};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00109}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a60edc72f4f8deb99bd1c31e7a6cbf1a7}{00109}}\ \ \ \ \ \textcolor{keyword}{const}\ SourceManager*\ sourceManager\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00110}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a6abf99f956952cac7ec11d77928db568}{00110}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ includeTrivia\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00111}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_adc01ad669be4a30f261fba09f7de7b22}{00111}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ includeMissing\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00112}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abad540111d3b426de5e65c22b54ff208}{00112}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ includeSkipped\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00113}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a294d6fe782d86aead552b851f82817ae}{00113}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ includeDirectives\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00114}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_aaec60c67a664f7ff1151ae3b0d00209c}{00114}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ includePreprocessed\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00115}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ac4dc9f19fb95531ec5f1373cd12c8ed4}{00115}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ includeComments\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00116}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8cbd84965abf749734dbb5346920c644}{00116}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ squashNewlines\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00117}00117\ \};}
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00118}00118\ }
-\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00119}00119\ \}\ \textcolor{comment}{//\ namespace\ slang::syntax}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00001}00001 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00004}00004 \textcolor{comment}{}\textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00005}00005 \textcolor{comment}{// SPDX-\/FileCopyrightText: Michael Popoloski}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00006}00006 \textcolor{comment}{// SPDX-\/License-\/Identifier: MIT}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00007}00007 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00008}00008 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00010}00010 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00012}00012 \textcolor{preprocessor}{\#include "{}slang/parsing/Token.h"{}}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00014}00014 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceslang}{slang}} \{}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00015}00015 \textcolor{keyword}{class }SourceManager;}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00016}00016 \}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00018}00018 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceslang_1_1syntax}{slang::syntax}} \{}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00020}00020 \textcolor{keyword}{class }SyntaxNode;}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00021}00021 \textcolor{keyword}{class }SyntaxTree;}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00025}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{00025}} \textcolor{keyword}{class }SLANG\_EXPORT \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}} \{}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00026}00026 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00027}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a47e9fc898a804518d6c33498df90fb52}{00027}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a47e9fc898a804518d6c33498df90fb52}{SyntaxPrinter}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00028}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a7f9cae533a6dc23c999a4995ffcfd571}{00028}}     \textcolor{keyword}{explicit} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a7f9cae533a6dc23c999a4995ffcfd571}{SyntaxPrinter}}(\textcolor{keyword}{const} SourceManager\& sourceManager);}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00032}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8214b2cf01cc7653fc5b3268b78307e2}{00032}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8214b2cf01cc7653fc5b3268b78307e2}{append}}(std::string\_view text);}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00036}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_af4832e9a2233940f2d2970c93318f52e}{00036}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_af4832e9a2233940f2d2970c93318f52e}{print}}(parsing::Trivia trivia);}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00040}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_afb6e5b5ba2941a4c4dc0fc54fa02f2fd}{00040}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_afb6e5b5ba2941a4c4dc0fc54fa02f2fd}{print}}(parsing::Token token);}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00044}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a951be5d8283d3a12dbf9fd505d9c444c}{00044}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a951be5d8283d3a12dbf9fd505d9c444c}{print}}(\textcolor{keyword}{const} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{SyntaxNode}}\& node);}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00048}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abdbd945057bf62e92146f77ada2ae7f1}{00048}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abdbd945057bf62e92146f77ada2ae7f1}{print}}(\textcolor{keyword}{const} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{SyntaxTree}}\& tree);}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00052}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a60cd9c72add260f01bd45f8bb4e62cb3}{00052}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a60cd9c72add260f01bd45f8bb4e62cb3}{setIncludeTrivia}}(\textcolor{keywordtype}{bool} include) \{}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00053}00053         includeTrivia = include;}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00054}00054         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00055}00055     \}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00059}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a4cef7da2258598172a79cecd1c6dcaab}{00059}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a4cef7da2258598172a79cecd1c6dcaab}{setIncludeMissing}}(\textcolor{keywordtype}{bool} include) \{}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00060}00060         includeMissing = include;}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00061}00061         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00062}00062     \}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00066}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a7605ebf7e46eeb3cdc459282b8177490}{00066}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a7605ebf7e46eeb3cdc459282b8177490}{setIncludeSkipped}}(\textcolor{keywordtype}{bool} include) \{}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00067}00067         includeSkipped = include;}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00068}00068         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00069}00069     \}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00073}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_af80fcfa24e1fcccfd9610151af4c5869}{00073}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_af80fcfa24e1fcccfd9610151af4c5869}{setIncludeDirectives}}(\textcolor{keywordtype}{bool} include) \{}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00074}00074         includeDirectives = include;}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00075}00075         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00076}00076     \}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00080}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ad304f46f1280d75d42faaf18671d3d4f}{00080}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ad304f46f1280d75d42faaf18671d3d4f}{setIncludePreprocessed}}(\textcolor{keywordtype}{bool} include) \{}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00081}00081         includePreprocessed = include;}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00082}00082         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00083}00083     \}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00087}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a6437b9b775ad425e0aa0fddd6c245275}{00087}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a6437b9b775ad425e0aa0fddd6c245275}{setIncludeComments}}(\textcolor{keywordtype}{bool} include) \{}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00088}00088         includeComments = include;}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00089}00089         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00090}00090     \}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00094}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abcabb37f57db5565ed5d172d419c0c2d}{00094}}     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{SyntaxPrinter}}\& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abcabb37f57db5565ed5d172d419c0c2d}{setSquashNewlines}}(\textcolor{keywordtype}{bool} include) \{}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00095}00095         squashNewlines = include;}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00096}00096         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00097}00097     \}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00100}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a09b3251eed8b0f6714551947af55742c}{00100}}     std::string \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a09b3251eed8b0f6714551947af55742c}{str}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} buffer; \}}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00105}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{00105}}     \textcolor{keyword}{static} std::string \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{printFile}}(\textcolor{keyword}{const} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{SyntaxTree}}\& tree);}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00107}00107 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00108}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8d67e0618b6da4d89b5cdfce0b821e27}{00108}}     std::string \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8d67e0618b6da4d89b5cdfce0b821e27}{buffer}};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00109}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a60edc72f4f8deb99bd1c31e7a6cbf1a7}{00109}}     \textcolor{keyword}{const} SourceManager* sourceManager = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00110}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a6abf99f956952cac7ec11d77928db568}{00110}}     \textcolor{keywordtype}{bool} includeTrivia = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00111}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_adc01ad669be4a30f261fba09f7de7b22}{00111}}     \textcolor{keywordtype}{bool} includeMissing = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00112}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abad540111d3b426de5e65c22b54ff208}{00112}}     \textcolor{keywordtype}{bool} includeSkipped = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00113}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a294d6fe782d86aead552b851f82817ae}{00113}}     \textcolor{keywordtype}{bool} includeDirectives = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00114}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_aaec60c67a664f7ff1151ae3b0d00209c}{00114}}     \textcolor{keywordtype}{bool} includePreprocessed = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00115}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ac4dc9f19fb95531ec5f1373cd12c8ed4}{00115}}     \textcolor{keywordtype}{bool} includeComments = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00116}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8cbd84965abf749734dbb5346920c644}{00116}}     \textcolor{keywordtype}{bool} squashNewlines = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00117}00117 \};}
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{SyntaxPrinter_8h_source_l00119}00119 \} \textcolor{comment}{// namespace slang::syntax}}
 
 \end{DoxyCode}
