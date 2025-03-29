@@ -268,5 +268,13 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \end{DoxyItemize}\hypertarget{md_README_autotoc_md34}{}\doxysubsection{2025-\/03-\/29}\label{md_README_autotoc_md34}
 
 \begin{DoxyItemize}
-\item 修复了 Doxygen 生成 La\+TeX 参考手册时中文显示不正确的问题。通过修改 Doxyfile 文件，添加 {\ttfamily EXTRA\+\_\+\+PACKAGES = ctex} 选项，并指定 {\ttfamily lualatex} 作为编译器，成功解决了中文显示问题。同时，从 {\ttfamily include\+\_\+3rd\+\_\+party} 目录中移除了 {\ttfamily Allsyntax.\+h} 文件，避免了由于 La\+TeX 文档过大导致的 \char`\"{}\+Te\+X capacity exceeded, sorry \mbox{[}main memory size=5000000\mbox{]}\char`\"{} 内存不足问题。 
+\item 修复了 Doxygen 生成 La\+TeX 参考手册时中文显示不正确的问题。通过修改 Doxyfile 文件，添加 {\ttfamily EXTRA\+\_\+\+PACKAGES = ctex} 选项，并指定 {\ttfamily lualatex} 作为编译器，成功解决了中文显示问题。同时，从 {\ttfamily include\+\_\+3rd\+\_\+party} 目录中移除了 {\ttfamily Allsyntax.\+h} 文件，避免了由于 La\+TeX 文档过大导致的 \char`\"{}\+Te\+X capacity exceeded, sorry \mbox{[}main memory size=5000000\mbox{]}\char`\"{} 内存不足问题。
+\item 实现了 Verilog 文件的顶层模块生成功能，采用非 ANSI 风格的端口声明方式，格式与 {\ttfamily liberate\+\_\+lv} 工具生成的完全一致。实现过程如下：
+\begin{DoxyItemize}
+\item 首先将各模块的 Verilog 代码存放到临时文件中。
+\item 在处理模块的过程中，使用 {\ttfamily std\+::vector\texorpdfstring{$<$}{<}std\+::string\texorpdfstring{$>$}{>}} 收集每个模块的 {\ttfamily input\+\_\+pins} 和 {\ttfamily output\+\_\+pins}。
+\item 遍历所有模块名称列表，拼接模块名和引脚名，生成顶层模块的 {\ttfamily all\+\_\+input\+\_\+ports} 和 {\ttfamily all\+\_\+output\+\_\+ports}。
+\item 使用字符串拼接方式构建 {\ttfamily validate\+\_\+top} 模块的完整代码。
+\item 最后将临时文件内容与顶层模块代码合并，输出到最终的 Verilog 文件中。 
+\end{DoxyItemize}
 \end{DoxyItemize}

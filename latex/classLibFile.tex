@@ -22,7 +22,7 @@ void \mbox{\hyperlink{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}{mono}} (co
 void \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{supercell}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
 \begin{DoxyCompactList}\small\item\em Creates supercells based on standard cells in the library file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{verilog}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generates Verilog files for cell validation based on the library file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -323,7 +323,36 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00596}{596}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+Generates Verilog files for cell validation based on the library file. 
+
+This function creates Verilog modules for each cell in the specified chain and generates a top-\/level module that connects them all together. The process involves\+:
+
+
+\begin{DoxyEnumerate}
+\item Creating supercells based on the specified chain length and cell names
+\item Reading the mapping file to identify supercell name relationships
+\item Generating individual Verilog modules for each supercell, handling both sequential and combinational cells differently
+\item Creating ANSI-\/style port definitions for each module
+\item Using the slang library to build proper syntax trees for Verilog modules
+\item Creating a top-\/level module that instantiates all the individual modules
+\item Writing the complete Verilog output to the output file
+\end{DoxyEnumerate}
+
+Sequential cells are instantiated once, while combinational cells are instantiated multiple times based on the specified chain length.
+
+
+\begin{DoxyParams}{Parameters}
+{\em chain\+\_\+length} & The number of times to chain combinational cells together \\
+\hline
+{\em cell\+\_\+names} & Vector of cell names to include in the Verilog generation\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function writes a temporary file during processing that might not be removed when the function completes (commented out cleanup code). 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00620}{620}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
 
 Here is the call graph for this function\+:
 % FIG 8

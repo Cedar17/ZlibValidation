@@ -27,7 +27,7 @@ digraph "LibGroup::getType"
   Node10 [label="supercellLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a0d7485f0df82adbd1671def221103a4e",tooltip="Creates supercell map structures from a Liberty library file."];
   Node10 -> Node7 [dir="back",color="steelblue1",style="solid"];
   Node9 -> Node11 [dir="back",color="steelblue1",style="solid"];
-  Node11 [label="LibFile::verilog",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a92ef7304afa302f98a69bd371b7955dd",tooltip=" "];
+  Node11 [label="LibFile::verilog",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a92ef7304afa302f98a69bd371b7955dd",tooltip="Generates Verilog files for cell validation based on the library file."];
   Node11 -> Node12 [dir="back",color="steelblue1",style="solid"];
   Node12 [label="verilogLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2",tooltip="Generates Verilog files from a library file for specified cells."];
   Node12 -> Node7 [dir="back",color="steelblue1",style="solid"];

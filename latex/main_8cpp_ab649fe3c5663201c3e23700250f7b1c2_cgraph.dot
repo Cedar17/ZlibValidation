@@ -7,7 +7,7 @@ digraph "verilogLibFile"
   rankdir="LR";
   Node1 [label="verilogLibFile",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Generates Verilog files from a library file for specified cells."];
   Node1 -> Node2 [color="steelblue1",style="solid"];
-  Node2 [label="LibFile::verilog",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a92ef7304afa302f98a69bd371b7955dd",tooltip=" "];
+  Node2 [label="LibFile::verilog",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a92ef7304afa302f98a69bd371b7955dd",tooltip="Generates Verilog files for cell validation based on the library file."];
   Node2 -> Node3 [color="steelblue1",style="solid"];
   Node3 [label="slang::syntax::SyntaxTree\l::fromText",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classslang_1_1syntax_1_1SyntaxTree.html#a51378e0851d9dc03ab4b75e94b061fb6",tooltip=" "];
   Node2 -> Node4 [color="steelblue1",style="solid"];

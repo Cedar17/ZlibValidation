@@ -358,7 +358,7 @@ Development Diary</h1>
 2025-03-27</h2>
 <ul>
 <li><b>重大失误！</b> 误操作 Git 分支，导致部分代码修改丢失。务必牢记：**及时提交代码！**</li>
-<li>实现了 <code><a class="el" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd">LibFile::verilog</a></code> 方法的核心流程：<ul>
+<li>实现了 <code><a class="el" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file.">LibFile::verilog</a></code> 方法的核心流程：<ul>
 <li>首先调用 <code>this-&gt;supercell()</code> 生成超级单元。</li>
 <li>读取 <code>.map</code> 文件，提取单元映射关系到 <code>std::pair&lt;std::string, std::string&gt;</code> 中（原始单元名 -&gt; 超级单元名/模块名）。</li>
 <li>从 <code>lib_json_</code> 中提取单元的输入/输出端口信息。</li>
@@ -369,7 +369,7 @@ Development Diary</h1>
 <li>最后，使用 <code>slang::syntax::SyntaxPrinter::printFile(*tree)</code> 将处理后的语法树输出到文件。</li>
 </ul>
 </li>
-<li><code><a class="el" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd">LibFile::verilog</a></code> 目前能够正确输出模块名和 ANSI 风格的端口声明。</li>
+<li><code><a class="el" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file.">LibFile::verilog</a></code> 目前能够正确输出模块名和 ANSI 风格的端口声明。</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md33"></a>
 2025-03-28</h2>
@@ -394,7 +394,15 @@ Development Diary</h1>
 <h2><a class="anchor" id="autotoc_md34"></a>
 2025-03-29</h2>
 <ul>
-<li>修复了 Doxygen 生成 LaTeX 参考手册时中文显示不正确的问题。通过修改 Doxyfile 文件，添加 <code>EXTRA_PACKAGES = ctex</code> 选项，并指定 <code>lualatex</code> 作为编译器，成功解决了中文显示问题。同时，从 <code>include_3rd_party</code> 目录中移除了 <code>Allsyntax.h</code> 文件，避免了由于 LaTeX 文档过大导致的 "TeX capacity exceeded, sorry [main memory size=5000000]" 内存不足问题。 </li>
+<li>修复了 Doxygen 生成 LaTeX 参考手册时中文显示不正确的问题。通过修改 Doxyfile 文件，添加 <code>EXTRA_PACKAGES = ctex</code> 选项，并指定 <code>lualatex</code> 作为编译器，成功解决了中文显示问题。同时，从 <code>include_3rd_party</code> 目录中移除了 <code>Allsyntax.h</code> 文件，避免了由于 LaTeX 文档过大导致的 "TeX capacity exceeded, sorry [main memory size=5000000]" 内存不足问题。</li>
+<li>实现了 Verilog 文件的顶层模块生成功能，采用非 ANSI 风格的端口声明方式，格式与 <code>liberate_lv</code> 工具生成的完全一致。实现过程如下：<ul>
+<li>首先将各模块的 Verilog 代码存放到临时文件中。</li>
+<li>在处理模块的过程中，使用 <code>std::vector&lt;std::string&gt;</code> 收集每个模块的 <code>input_pins</code> 和 <code>output_pins</code>。</li>
+<li>遍历所有模块名称列表，拼接模块名和引脚名，生成顶层模块的 <code>all_input_ports</code> 和 <code>all_output_ports</code>。</li>
+<li>使用字符串拼接方式构建 <code>validate_top</code> 模块的完整代码。</li>
+<li>最后将临时文件内容与顶层模块代码合并，输出到最终的 Verilog 文件中。 </li>
+</ul>
+</li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -402,7 +410,7 @@ Development Diary</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Mar 29 2025 13:47:37 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Mar 29 2025 14:12:01 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

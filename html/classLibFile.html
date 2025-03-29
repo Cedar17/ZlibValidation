@@ -125,6 +125,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ace2977ea0c9cd5fa0ada4c3277500188"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates supercells based on standard cells in the library file.  <br /></td></tr>
 <tr class="separator:ace2977ea0c9cd5fa0ada4c3277500188"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92ef7304afa302f98a69bd371b7955dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd">verilog</a> (const int chain_length, const std::vector&lt; std::string &gt; &amp;cell_names)</td></tr>
+<tr class="memdesc:a92ef7304afa302f98a69bd371b7955dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates Verilog files for cell validation based on the library file.  <br /></td></tr>
 <tr class="separator:a92ef7304afa302f98a69bd371b7955dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -512,7 +513,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="main_8cpp.html#aebef9d1797be7b2aafcbc107bcc513cb" title="Performs a monotonicity check on a library file." alt="" coords="108,70,249,95"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,145,60,170"/>
 <area shape="rect" href="main_8cpp.html#a0d7485f0df82adbd1671def221103a4e" title="Creates supercell map structures from a Liberty library file." alt="" coords="297,171,420,197"/>
-<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title=" " alt="" coords="300,221,417,246"/>
+<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file." alt="" coords="300,221,417,246"/>
 <area shape="rect" href="main_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2" title="Generates Verilog files from a library file for specified cells." alt="" coords="124,221,233,246"/>
 </map>
 </div>
@@ -574,7 +575,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="main_8cpp.html#aebef9d1797be7b2aafcbc107bcc513cb" title="Performs a monotonicity check on a library file." alt="" coords="108,70,249,95"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,145,60,170"/>
 <area shape="rect" href="main_8cpp.html#a0d7485f0df82adbd1671def221103a4e" title="Creates supercell map structures from a Liberty library file." alt="" coords="297,171,420,197"/>
-<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title=" " alt="" coords="300,221,417,246"/>
+<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file." alt="" coords="300,221,417,246"/>
 <area shape="rect" href="main_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2" title="Generates Verilog files from a library file for specified cells." alt="" coords="124,221,233,246"/>
 </map>
 </div>
@@ -664,7 +665,7 @@ Here is the caller graph for this function:</div>
 <map name="aclassLibFile_ace2977ea0c9cd5fa0ada4c3277500188_icgraph" id="aclassLibFile_ace2977ea0c9cd5fa0ada4c3277500188_icgraph">
 <area shape="rect" title="Creates supercells based on standard cells in the library file." alt="" coords="444,29,575,55"/>
 <area shape="rect" href="main_8cpp.html#a0d7485f0df82adbd1671def221103a4e" title="Creates supercell map structures from a Liberty library file." alt="" coords="108,5,231,31"/>
-<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title=" " alt="" coords="279,55,396,80"/>
+<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file." alt="" coords="279,55,396,80"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,60,56"/>
 <area shape="rect" href="main_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2" title="Generates Verilog files from a library file for specified cells." alt="" coords="115,55,224,80"/>
 </map>
@@ -698,13 +699,34 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lib__file_8cpp_source.html#l00596">596</a> of file <a class="el" href="lib__file_8cpp_source.html">lib_file.cpp</a>.</p>
+<p>Generates Verilog files for cell validation based on the library file. </p>
+<p>This function creates Verilog modules for each cell in the specified chain and generates a top-level module that connects them all together. The process involves:</p>
+<ol type="1">
+<li>Creating supercells based on the specified chain length and cell names</li>
+<li>Reading the mapping file to identify supercell name relationships</li>
+<li>Generating individual Verilog modules for each supercell, handling both sequential and combinational cells differently</li>
+<li>Creating ANSI-style port definitions for each module</li>
+<li>Using the slang library to build proper syntax trees for Verilog modules</li>
+<li>Creating a top-level module that instantiates all the individual modules</li>
+<li>Writing the complete Verilog output to the output file</li>
+</ol>
+<p>Sequential cells are instantiated once, while combinational cells are instantiated multiple times based on the specified chain length.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chain_length</td><td>The number of times to chain combinational cells together </td></tr>
+    <tr><td class="paramname">cell_names</td><td>Vector of cell names to include in the Verilog generation</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The function writes a temporary file during processing that might not be removed when the function completes (commented out cleanup code). </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="lib__file_8cpp_source.html#l00620">620</a> of file <a class="el" href="lib__file_8cpp_source.html">lib_file.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLibFile_a92ef7304afa302f98a69bd371b7955dd_cgraph.png" border="0" usemap="#aclassLibFile_a92ef7304afa302f98a69bd371b7955dd_cgraph" alt=""/></div>
 <map name="aclassLibFile_a92ef7304afa302f98a69bd371b7955dd_cgraph" id="aclassLibFile_a92ef7304afa302f98a69bd371b7955dd_cgraph">
-<area shape="rect" title=" " alt="" coords="5,1535,123,1561"/>
+<area shape="rect" title="Generates Verilog files for cell validation based on the library file." alt="" coords="5,1535,123,1561"/>
 <area shape="rect" href="classslang_1_1syntax_1_1SyntaxTree.html#a51378e0851d9dc03ab4b75e94b061fb6" title=" " alt="" coords="185,1407,374,1447"/>
 <area shape="rect" href="classslang_1_1syntax_1_1SyntaxPrinter.html#ae767f71421811693eac4c5e708faf196" title=" " alt="" coords="177,1471,382,1511"/>
 <area shape="rect" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188" title="Creates supercells based on standard cells in the library file." alt="" coords="214,1535,345,1561"/>
@@ -746,7 +768,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLibFile_a92ef7304afa302f98a69bd371b7955dd_icgraph.png" border="0" usemap="#aclassLibFile_a92ef7304afa302f98a69bd371b7955dd_icgraph" alt=""/></div>
 <map name="aclassLibFile_a92ef7304afa302f98a69bd371b7955dd_icgraph" id="aclassLibFile_a92ef7304afa302f98a69bd371b7955dd_icgraph">
-<area shape="rect" title=" " alt="" coords="265,5,383,31"/>
+<area shape="rect" title="Generates Verilog files for cell validation based on the library file." alt="" coords="265,5,383,31"/>
 <area shape="rect" href="main_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2" title="Generates Verilog files from a library file for specified cells." alt="" coords="108,5,217,31"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
 </map>
@@ -792,7 +814,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="main_8cpp.html#aebef9d1797be7b2aafcbc107bcc513cb" title="Performs a monotonicity check on a library file." alt="" coords="108,70,249,95"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,145,60,170"/>
 <area shape="rect" href="main_8cpp.html#a0d7485f0df82adbd1671def221103a4e" title="Creates supercell map structures from a Liberty library file." alt="" coords="297,171,420,197"/>
-<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title=" " alt="" coords="300,221,417,246"/>
+<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file." alt="" coords="300,221,417,246"/>
 <area shape="rect" href="main_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2" title="Generates Verilog files from a library file for specified cells." alt="" coords="124,221,233,246"/>
 </map>
 </div>
@@ -1034,7 +1056,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classLibFile.html">LibFile</a></li>
-    <li class="footer">Generated on Sat Mar 29 2025 13:47:37 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Mar 29 2025 14:12:01 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

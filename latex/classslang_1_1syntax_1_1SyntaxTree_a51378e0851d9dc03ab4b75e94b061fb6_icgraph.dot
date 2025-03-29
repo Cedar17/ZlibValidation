@@ -9,7 +9,7 @@ digraph "slang::syntax::SyntaxTree::fromText"
   Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
   Node2 [label="slang::syntax::SyntaxRewriter\l::parse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classslang_1_1syntax_1_1SyntaxRewriter.html#ae75ddbcab869a09077dc1fa0ef01bbcb",tooltip="A helper for derived classes that parses some text into syntax nodes."];
   Node1 -> Node3 [dir="back",color="steelblue1",style="solid"];
-  Node3 [label="LibFile::verilog",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a92ef7304afa302f98a69bd371b7955dd",tooltip=" "];
+  Node3 [label="LibFile::verilog",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a92ef7304afa302f98a69bd371b7955dd",tooltip="Generates Verilog files for cell validation based on the library file."];
   Node3 -> Node4 [dir="back",color="steelblue1",style="solid"];
   Node4 [label="verilogLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2",tooltip="Generates Verilog files from a library file for specified cells."];
   Node4 -> Node5 [dir="back",color="steelblue1",style="solid"];

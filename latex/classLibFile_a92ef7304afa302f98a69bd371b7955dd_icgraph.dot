@@ -5,7 +5,7 @@ digraph "LibFile::verilog"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="RL";
-  Node1 [label="LibFile::verilog",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="LibFile::verilog",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Generates Verilog files for cell validation based on the library file."];
   Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
   Node2 [label="verilogLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2",tooltip="Generates Verilog files from a library file for specified cells."];
   Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
