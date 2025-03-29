@@ -13,3 +13,66 @@ Base class and utilities for syntax nodes.
 {\ttfamily \#include \char`\"{}slang/util/\+Pointer\+Int\+Pair.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}slang/util/\+Small\+Vector.\+h\char`\"{}}\newline
 Include dependency graph for Syntax\+Node.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SyntaxNode_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structslang_1_1syntax_1_1PtrTokenOrSyntax}{slang\+::syntax\+::\+Ptr\+Token\+Or\+Syntax}}
+\begin{DoxyCompactList}\small\item\em A token pointer or a syntax node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax}{slang\+::syntax\+::\+Const\+Token\+Or\+Syntax}}
+\begin{DoxyCompactList}\small\item\em A token or a constant syntax node. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{slang\+::syntax\+::\+Token\+Or\+Syntax}}
+\begin{DoxyCompactList}\small\item\em A token or a syntax node. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}}
+\begin{DoxyCompactList}\small\item\em Base class for all syntax nodes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange}{slang\+::syntax\+::\+Deferred\+Source\+Range}}
+\item 
+class \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{slang\+::syntax\+::\+Syntax\+List\+Base}}
+\begin{DoxyCompactList}\small\item\em A base class for syntax nodes that represent a list of items. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxList}{slang\+::syntax\+::\+Syntax\+List$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em A syntax node that represents a list of child syntax nodes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classslang_1_1syntax_1_1TokenList}{slang\+::syntax\+::\+Token\+List}}
+\begin{DoxyCompactList}\small\item\em A syntax node that represents a list of child tokens. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classslang_1_1syntax_1_1SeparatedSyntaxList}{slang\+::syntax\+::\+Separated\+Syntax\+List$<$ T $>$}}
+\item 
+class \mbox{\hyperlink{classslang_1_1syntax_1_1SeparatedSyntaxList_1_1iterator__base}{slang\+::syntax\+::\+Separated\+Syntax\+List$<$ T $>$\+::iterator\+\_\+base$<$ U $>$}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceslang}{slang}}
+\item 
+namespace \mbox{\hyperlink{namespaceslang_1_1syntax}{slang\+::syntax}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+SLANG\+\_\+\+EXPORT Syntax\+Node $\ast$ \mbox{\hyperlink{namespaceslang_1_1syntax_a55b360dcb149427bfb5003bcd526d4a0}{slang\+::syntax\+::clone}} (const Syntax\+Node \&node, Bump\+Allocator \&alloc)
+\begin{DoxyCompactList}\small\item\em Performs a shallow clone of the given syntax node. \end{DoxyCompactList}\item 
+SLANG\+\_\+\+EXPORT Syntax\+Node $\ast$ \mbox{\hyperlink{namespaceslang_1_1syntax_a64ae8be7377ab96dec97152764da0230}{slang\+::syntax\+::deep\+Clone}} (const Syntax\+Node \&node, Bump\+Allocator \&alloc)
+\begin{DoxyCompactList}\small\item\em Performs a deep clone of the given syntax node. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::derived\+\_\+from$<$ Syntax\+Node $>$ T$>$ }\\T $\ast$ \mbox{\hyperlink{namespaceslang_1_1syntax_afdb51032d1283195312107028371738b}{slang\+::syntax\+::clone}} (const T \&node, Bump\+Allocator \&alloc)
+\begin{DoxyCompactList}\small\item\em Performs a shallow clone of the given syntax node. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::derived\+\_\+from$<$ Syntax\+Node $>$ T$>$ }\\T $\ast$ \mbox{\hyperlink{namespaceslang_1_1syntax_af0ff1b8e9fa89e14205f35d445c888ad}{slang\+::syntax\+::deep\+Clone}} (const T \&node, Bump\+Allocator \&alloc)
+\begin{DoxyCompactList}\small\item\em Performs a deep clone of the given syntax node. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\Syntax\+List$<$ T $>$ $\ast$ \mbox{\hyperlink{namespaceslang_1_1syntax_a49ab820c78e0d80bfc4d57c3b76670f4}{slang\+::syntax\+::deep\+Clone}} (const Syntax\+List$<$ T $>$ \&node, Bump\+Allocator \&alloc)
+\item 
+{\footnotesize template$<$typename T $>$ }\\Separated\+Syntax\+List$<$ T $>$ $\ast$ \mbox{\hyperlink{namespaceslang_1_1syntax_adf05ebfa399c41c943c0187e714fddb2}{slang\+::syntax\+::deep\+Clone}} (const Separated\+Syntax\+List$<$ T $>$ \&node, Bump\+Allocator \&alloc)
+\item 
+Token\+List $\ast$ \mbox{\hyperlink{namespaceslang_1_1syntax_aae88a7c831407e6ea2826bec906d41cf}{slang\+::syntax\+::deep\+Clone}} (const Token\+List \&node, Bump\+Allocator \&alloc)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class and utilities for syntax nodes. 
+
+
+
+Definition in file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
