@@ -39,11 +39,15 @@ jobs:
 
       - name: Install TeX Live
         run: |
-          wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-          tar -xzvf install-tl-unx.tar.gz
-          cd install-tl-*
-          ./install-tl --profile=/dev/null --repository=https://mirror.ctan.org/systems/texlive/tlnet
-          export PATH=$PWD/bin/x86_64-linux:$PATH
+          # Install TeX Live with basic scheme (much faster)
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra lmodern texlive-luatex
+          
+          # Verify installation
+          which pdflatex
+          which lualatex
+          latex --version
+          lualatex --version
 
       # - name: Setup Graphviz
       #   uses: ts-graphviz/setup-graphviz@v2
