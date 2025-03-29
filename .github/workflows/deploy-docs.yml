@@ -76,7 +76,6 @@ jobs:
             pwd
             ls -l | grep refman
             pwd
-            ls -l | grep tmp
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
