@@ -44,14 +44,15 @@ jobs:
           run: |
             pwd
             ls -l
-            which xelatex
             cd ./doc_doxygen/latex
             pwd
-            which xelatex
             which make
+            make clean
+            ls -l | grep tmp
             make
             pwd
             ls -l | grep refman
+            ls -l | grep tmp
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
