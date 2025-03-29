@@ -400,7 +400,17 @@ Development Diary</h1>
 <li>在处理模块的过程中，使用 <code>std::vector&lt;std::string&gt;</code> 收集每个模块的 <code>input_pins</code> 和 <code>output_pins</code>。</li>
 <li>遍历所有模块名称列表，拼接模块名和引脚名，生成顶层模块的 <code>all_input_ports</code> 和 <code>all_output_ports</code>。</li>
 <li>使用字符串拼接方式构建 <code>validate_top</code> 模块的完整代码。</li>
-<li>最后将临时文件内容与顶层模块代码合并，输出到最终的 Verilog 文件中。 </li>
+<li>最后将临时文件内容与顶层模块代码合并，输出到最终的 Verilog 文件中。</li>
+</ul>
+</li>
+<li>更改<code>deploy-docs.yml</code>，修复了 GitHub Action 生成的 LaTeX 参考手册中的图像显示问题。具体步骤如下：<ul>
+<li>设置系统时区为 Asia/Shanghai (东八区)。</li>
+<li>安装 miniconda 并更新 conda。</li>
+<li>通过 conda 安装 1.9.5 版本的 Doxygen，并安装 graphviz 以解决依赖关系，确保每个 dot 图都能正确编译出 pdf 文件。</li>
+<li>使用 <code>doxygen</code> 命令生成 HTML 文档和 tex 文件。</li>
+<li>采用 action marketplace 提供的 <code>xu-cheng/texlive-action@v2</code> 安装全量的 texlive2024。</li>
+<li>进入 <code>./doc_doxygen/latex</code> 目录，运行 <code>make</code> 命令使用 lualatex 编译 tex 文件，生成 pdf 文件。</li>
+<li>使用 <code>JamesIves/github-pages-deploy-action@v4</code> 将生成的 pdf 文件上传到 GitHub Pages 发布，并保留 <code><a class="el" href="README_8md.html">README.md</a></code> 和 <code>index.html</code> 文件。 </li>
 </ul>
 </li>
 </ul>
@@ -410,7 +420,7 @@ Development Diary</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Mar 29 2025 23:51:18 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sun Mar 30 2025 00:08:05 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

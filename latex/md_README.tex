@@ -275,6 +275,16 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \item 在处理模块的过程中，使用 {\ttfamily std\+::vector\texorpdfstring{$<$}{<}std\+::string\texorpdfstring{$>$}{>}} 收集每个模块的 {\ttfamily input\+\_\+pins} 和 {\ttfamily output\+\_\+pins}。
 \item 遍历所有模块名称列表，拼接模块名和引脚名，生成顶层模块的 {\ttfamily all\+\_\+input\+\_\+ports} 和 {\ttfamily all\+\_\+output\+\_\+ports}。
 \item 使用字符串拼接方式构建 {\ttfamily validate\+\_\+top} 模块的完整代码。
-\item 最后将临时文件内容与顶层模块代码合并，输出到最终的 Verilog 文件中。 
+\item 最后将临时文件内容与顶层模块代码合并，输出到最终的 Verilog 文件中。
+\end{DoxyItemize}
+\item 更改{\ttfamily deploy-\/docs.\+yml}，修复了 Git\+Hub Action 生成的 La\+TeX 参考手册中的图像显示问题。具体步骤如下：
+\begin{DoxyItemize}
+\item 设置系统时区为 Asia/\+Shanghai (东八区)。
+\item 安装 miniconda 并更新 conda。
+\item 通过 conda 安装 1.\+9.\+5 版本的 Doxygen，并安装 graphviz 以解决依赖关系，确保每个 dot 图都能正确编译出 pdf 文件。
+\item 使用 {\ttfamily doxygen} 命令生成 HTML 文档和 tex 文件。
+\item 采用 action marketplace 提供的 {\ttfamily xu-\/cheng/texlive-\/action@v2} 安装全量的 texlive2024。
+\item 进入 {\ttfamily ./doc\+\_\+doxygen/latex} 目录，运行 {\ttfamily make} 命令使用 lualatex 编译 tex 文件，生成 pdf 文件。
+\item 使用 {\ttfamily James\+Ives/github-\/pages-\/deploy-\/action@v4} 将生成的 pdf 文件上传到 Git\+Hub Pages 发布，并保留 {\ttfamily \mbox{\hyperlink{README_8md}{README.\+md}}} 和 {\ttfamily index.\+html} 文件。 
 \end{DoxyItemize}
 \end{DoxyItemize}
