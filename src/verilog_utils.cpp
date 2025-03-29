@@ -386,11 +386,11 @@ void CellPrinter::handle(const slang::syntax::ModuleDeclarationSyntax &module) {
 
 /**
  * @brief Processes a syntax node in the module's AST.
- * 
+ *
  * This method is called for each syntax node during the traversal of the AST.
- * It logs debug information about the current node and continues processing 
+ * It logs debug information about the current node and continues processing
  * its child nodes by recursively calling the appropriate visit methods.
- * 
+ *
  * @param node The syntax node to process
  */
 void ModuleRewriter::handle(const slang::syntax::SyntaxNode &node) {
