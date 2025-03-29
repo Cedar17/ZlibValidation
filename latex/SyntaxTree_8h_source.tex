@@ -1,0 +1,147 @@
+\hypertarget{SyntaxTree_8h_source}{}\doxysection{Syntax\+Tree.\+h}
+\label{SyntaxTree_8h_source}\index{include\_3rd\_party/SyntaxTree.h@{include\_3rd\_party/SyntaxTree.h}}
+\mbox{\hyperlink{SyntaxTree_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00001}00001\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00004}00004\ \textcolor{comment}{}\textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00005}00005\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ Michael\ Popoloski}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00006}00006\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00007}00007\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00008}00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <expected.hpp>}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}slang/diagnostics/Diagnostics.h"{}}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}slang/parsing/ParserMetadata.h"{}}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}slang/util/Bag.h"{}}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}slang/util/BumpAllocator.h"{}}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00018}00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceslang}{slang}}\ \{}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00020}00020\ \textcolor{keyword}{class\ }SourceManager;}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00021}00021\ \textcolor{keyword}{struct\ }SourceBuffer;}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00023}00023\ \}\ \textcolor{comment}{//\ namespace\ slang}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00025}\mbox{\hyperlink{namespaceslang_1_1parsing}{00025}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceslang_1_1parsing}{slang::parsing}}\ \{}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00026}00026\ \textcolor{keyword}{struct\ }ParserMetadata;}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00029}00029\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceslang_1_1syntax}{slang::syntax}}\ \{}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00031}00031\ \textcolor{keyword}{class\ }SyntaxNode;}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00032}00032\ \textcolor{keyword}{struct\ }DefineDirectiveSyntax;}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00039}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{00039}}\ \textcolor{keyword}{class\ }SLANG\_EXPORT\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{SyntaxTree}}\ \{}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00040}00040\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00041}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a0c5371bd6d8e285a80415363a05c0078}{00041}}\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a0c5371bd6d8e285a80415363a05c0078}{TreeOrError}}\ =}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ nonstd::expected<std::shared\_ptr<SyntaxTree>,\ std::pair<std::error\_code,\ std::string\_view>>;}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00043}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_af526ac591a6cd1d105b1b4ae0c908217}{00043}}\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_af526ac591a6cd1d105b1b4ae0c908217}{MacroList}}\ =\ std::span<const\ DefineDirectiveSyntax*\ const>;}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00047}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a65589176c3908c0ca5b69c6172a5f1a6}{00047}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ isLibraryUnit\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00049}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a3888b210165c9a417bcaca4c7bd44932}{00049}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a3888b210165c9a417bcaca4c7bd44932}{SyntaxTree}}(\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{SyntaxNode}}*\ root,\ SourceManager\&\ sourceManager,\ BumpAllocator\&\&\ alloc,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SourceLibrary*\ library,\ \textcolor{keyword}{const}\ std::shared\_ptr<SyntaxTree>\&\ parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00052}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a012b02a0973b34630fa774f6bea159c2}{00052}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a012b02a0973b34630fa774f6bea159c2}{SyntaxTree}}(\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{SyntaxTree}}\&\&\ other)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00053}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a99648a33781788e365358df6e90707b6}{00053}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a99648a33781788e365358df6e90707b6}{\string~SyntaxTree}}();}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00058}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aee79423807e68c2a5cca99281285dbc0}{00058}}\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a0c5371bd6d8e285a80415363a05c0078}{TreeOrError}}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aee79423807e68c2a5cca99281285dbc0}{fromFile}}(std::string\_view\ path);}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00066}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_addd3c45853d79bed569db8fa1e97b9b5}{00066}}\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a0c5371bd6d8e285a80415363a05c0078}{TreeOrError}}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_addd3c45853d79bed569db8fa1e97b9b5}{fromFile}}(std::string\_view\ path,\ SourceManager\&\ sourceManager,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Bag\&\ options\ =\ \{\});}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00073}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a9eb64dacd3208199d5d300adbc12a55c}{00073}}\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a0c5371bd6d8e285a80415363a05c0078}{TreeOrError}}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a9eb64dacd3208199d5d300adbc12a55c}{fromFiles}}(std::span<const\ std::string\_view>\ paths);}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00081}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a6efa60d76f73d210b348b14809708327}{00081}}\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a0c5371bd6d8e285a80415363a05c0078}{TreeOrError}}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a6efa60d76f73d210b348b14809708327}{fromFiles}}(std::span<const\ std::string\_view>\ paths,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SourceManager\&\ sourceManager,\ \textcolor{keyword}{const}\ Bag\&\ options\ =\ \{\});}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00089}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a51378e0851d9dc03ab4b75e94b061fb6}{00089}}\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<SyntaxTree>\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a51378e0851d9dc03ab4b75e94b061fb6}{fromText}}(std::string\_view\ text,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\_view\ name\ =\ \textcolor{stringliteral}{"{}source"{}},}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\_view\ path\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00099}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a87841d1fe03c283712aad0a7c5bfecd6}{00099}}\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<SyntaxTree>\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a87841d1fe03c283712aad0a7c5bfecd6}{fromText}}(std::string\_view\ text,\ \textcolor{keyword}{const}\ Bag\&\ options,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\_view\ name\ =\ \textcolor{stringliteral}{"{}source"{}}sv,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\_view\ path\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00111}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a6f4a11148eb71cd37f84a34b0459219a}{00111}}\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<SyntaxTree>\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a6f4a11148eb71cd37f84a34b0459219a}{fromText}}(std::string\_view\ text,\ SourceManager\&\ sourceManager,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\_view\ name\ =\ \textcolor{stringliteral}{"{}source"{}}sv,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\_view\ path\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ Bag\&\ options\ =\ \{\},}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SourceLibrary*\ library\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00123}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a1f62a707c0b27263d78de624007bab95}{00123}}\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<SyntaxTree>\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a1f62a707c0b27263d78de624007bab95}{fromFileInMemory}}(std::string\_view\ text,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SourceManager\&\ sourceManager,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\_view\ name\ =\ \textcolor{stringliteral}{"{}source"{}}sv,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\_view\ path\ =\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Bag\&\ options\ =\ \{\});}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00135}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a31ed87d2949172bcb3b8d4892b35cd85}{00135}}\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<SyntaxTree>\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a31ed87d2949172bcb3b8d4892b35cd85}{fromBuffer}}(\textcolor{keyword}{const}\ SourceBuffer\&\ buffer,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SourceManager\&\ sourceManager,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Bag\&\ options\ =\ \{\},}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MacroList\ inheritedMacros\ =\ \{\});}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00147}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_af9e4bea2c59df17e778bf1e797b6150a}{00147}}\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<SyntaxTree>\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_af9e4bea2c59df17e778bf1e797b6150a}{fromBuffers}}(std::span<const\ SourceBuffer>\ buffers,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SourceManager\&\ sourceManager,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Bag\&\ options\ =\ \{\},}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MacroList\ inheritedMacros\ =\ \{\});}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00157}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_ae1b1004c8bd2a1246bc600d7b77a738f}{00157}}\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<SyntaxTree>\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_ae1b1004c8bd2a1246bc600d7b77a738f}{fromLibraryMapFile}}(std::string\_view\ path,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SourceManager\&\ sourceManager,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Bag\&\ options\ =\ \{\});}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00168}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_ac9db8487d624c34a3dd3c6d208bff4ed}{00168}}\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<SyntaxTree>\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_ac9db8487d624c34a3dd3c6d208bff4ed}{fromLibraryMapText}}(std::string\_view\ text,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SourceManager\&\ sourceManager,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\_view\ name\ =\ \textcolor{stringliteral}{"{}source"{}}sv,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\_view\ path\ =\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Bag\&\ options\ =\ \{\});}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00179}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aac1d7c4d2493c4e0b45512a303cc3300}{00179}}\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<SyntaxTree>\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aac1d7c4d2493c4e0b45512a303cc3300}{fromLibraryMapBuffer}}(\textcolor{keyword}{const}\ SourceBuffer\&\ buffer,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SourceManager\&\ sourceManager,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Bag\&\ options\ =\ \{\});}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00184}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a5afdd762c70295225497bc47e569711d}{00184}}\ \ \ \ \ Diagnostics\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a5afdd762c70295225497bc47e569711d}{diagnostics}}()\ \{\ \textcolor{keywordflow}{return}\ diagnosticsBuffer;\ \}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00187}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a305cbac5c09458c7772ff59eab97f931}{00187}}\ \ \ \ \ BumpAllocator\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a305cbac5c09458c7772ff59eab97f931}{allocator}}()\ \{\ \textcolor{keywordflow}{return}\ alloc;\ \}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00190}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a54ef002c265c1952926cbfff6375c4bb}{00190}}\ \ \ \ \ SourceManager\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a54ef002c265c1952926cbfff6375c4bb}{sourceManager}}()\ \{\ \textcolor{keywordflow}{return}\ sourceMan;\ \}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00193}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a390850c6f3428a9705d8c14fc9526499}{00193}}\ \ \ \ \ \textcolor{keyword}{const}\ SourceManager\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a390850c6f3428a9705d8c14fc9526499}{sourceManager}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ sourceMan;\ \}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00196}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_adfb240a7e54274c7a92587491f6606e4}{00196}}\ \ \ \ \ \textcolor{keyword}{const}\ SourceLibrary*\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_adfb240a7e54274c7a92587491f6606e4}{getSourceLibrary}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ library;\ \}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00199}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_ae52727a3e63aa45f47b62d9cfd7774b4}{00199}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{SyntaxNode}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_ae52727a3e63aa45f47b62d9cfd7774b4}{root}}()\ \{\ \textcolor{keywordflow}{return}\ *rootNode;\ \}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00202}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a846c817ae2eb1b7660eedb18bcd86b39}{00202}}\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{SyntaxNode}}\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a846c817ae2eb1b7660eedb18bcd86b39}{root}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ *rootNode;\ \}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00205}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a2be68362147bebef68f7273280b5c810}{00205}}\ \ \ \ \ \textcolor{keyword}{const}\ Bag\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a2be68362147bebef68f7273280b5c810}{options}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ options\_;\ \}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00208}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a0a669466bd2985a119db6c4473923a47}{00208}}\ \ \ \ \ \textcolor{keyword}{const}\ parsing::ParserMetadata\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a0a669466bd2985a119db6c4473923a47}{getMetadata}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ *metadata;\ \}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00211}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_ab61abfa44ba8cc3af921544bc1023ee3}{00211}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_af526ac591a6cd1d105b1b4ae0c908217}{MacroList}}\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_ab61abfa44ba8cc3af921544bc1023ee3}{getDefinedMacros}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ macros;\ \}}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00217}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a4c38857d6f1bdcbd43e4c06079d4ef12}{00217}}\ \ \ \ \ \textcolor{keyword}{static}\ SourceManager\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a4c38857d6f1bdcbd43e4c06079d4ef12}{getDefaultSourceManager}}();}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00219}00219\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00220}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aea549c33db15fdb2257f0a944daed188}{00220}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aea549c33db15fdb2257f0a944daed188}{SyntaxTree}}(\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{SyntaxNode}}*\ root,\ \textcolor{keyword}{const}\ SourceLibrary*\ library,\ SourceManager\&\ sourceManager,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BumpAllocator\&\&\ alloc,\ Diagnostics\&\&\ diagnostics,\ parsing::ParserMetadata\&\&\ metadata,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<const\ DefineDirectiveSyntax*>\&\&\ macros,\ Bag\ options);}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00224}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a33ad95da62cc51c0f17526521b92b278}{00224}}\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<SyntaxTree>\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a33ad95da62cc51c0f17526521b92b278}{create}}(SourceManager\&\ sourceManager,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::span<const\ SourceBuffer>\ source,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Bag\&\ options,\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_af526ac591a6cd1d105b1b4ae0c908217}{MacroList}}\ inheritedMacros,}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ guess);}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00229}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a3e7b65517d8d1411a24cfd0dc4de59f4}{00229}}\ \ \ \ \ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{SyntaxNode}}*\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a3e7b65517d8d1411a24cfd0dc4de59f4}{rootNode}};}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00230}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aa1c1b3f430d82c330d76eb82d7fa2691}{00230}}\ \ \ \ \ \textcolor{keyword}{const}\ SourceLibrary*\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aa1c1b3f430d82c330d76eb82d7fa2691}{library}};}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00231}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a20bb2b86471fa44d9a47a28676e4a408}{00231}}\ \ \ \ \ SourceManager\&\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a20bb2b86471fa44d9a47a28676e4a408}{sourceMan}};}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00232}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a1b606f61db579e161456a4bb0deda85f}{00232}}\ \ \ \ \ BumpAllocator\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a1b606f61db579e161456a4bb0deda85f}{alloc}};}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00233}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a919ff5c50160ccb90e83e9d5709ffd1a}{00233}}\ \ \ \ \ Diagnostics\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a919ff5c50160ccb90e83e9d5709ffd1a}{diagnosticsBuffer}};}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00234}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a86f7509607ec045b299441ab6afaf95f}{00234}}\ \ \ \ \ Bag\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a86f7509607ec045b299441ab6afaf95f}{options\_}};}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00235}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a22a4f70f1a148fe00ad4beee24c53955}{00235}}\ \ \ \ \ std::unique\_ptr<parsing::ParserMetadata>\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a22a4f70f1a148fe00ad4beee24c53955}{metadata}};}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00236}\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a82980e68654cb5a61aae45b6b7c57de3}{00236}}\ \ \ \ \ std::vector<const\ DefineDirectiveSyntax*>\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a82980e68654cb5a61aae45b6b7c57de3}{macros}};}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00237}00237\ \};}
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{SyntaxTree_8h_source_l00239}00239\ \}\ \textcolor{comment}{//\ namespace\ slang::syntax}}
+
+\end{DoxyCode}

@@ -1,0 +1,25 @@
+\hypertarget{json__utils_8hpp_source}{}\doxysection{json\+\_\+utils.\+hpp}
+\label{json__utils_8hpp_source}\index{include/json\_utils.hpp@{include/json\_utils.hpp}}
+\mbox{\hyperlink{json__utils_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ JSON\_UTILS\_HPP}}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ JSON\_UTILS\_HPP}}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}nlohmann/json.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{si2dr__liberty_8h}{si2dr\_liberty.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{lib__group_8hpp}{lib\_group.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00012}\mbox{\hyperlink{json__utils_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{00012}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ =\ nlohmann::json;}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00014}00014\ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ \mbox{\hyperlink{json__utils_8hpp_a16e025c5ce211b3636e7cc7f41960997}{generateLutJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}}\ \&lib\_lut\_group,\ \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}}\ \&err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00015}00015\ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ \mbox{\hyperlink{json__utils_8hpp_acd5d5dc8f66dcf29d0676d347c651942}{generatePowerJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}}\ \&lib\_power\_group,\ \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}}\ \&err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00016}00016\ std::pair<std::string,\ json>\ \mbox{\hyperlink{json__utils_8hpp_a614db1dd3c56489cb8ef36abb7a46ab8}{generatePinJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}}\ \&lib\_pin\_group,\ \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}}\ \&err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00017}00017\ \mbox{\hyperlink{compare_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ \mbox{\hyperlink{json__utils_8hpp_a46effb948eb4bbf9858c4b32a2ccf730}{generateCellJson}}(\mbox{\hyperlink{classLibGroup}{LibGroup}}\ \&lib\_cell\_group,\ \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}}\ \&err);}
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{json__utils_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ JSON\_UTILS\_HPP}}
+
+\end{DoxyCode}

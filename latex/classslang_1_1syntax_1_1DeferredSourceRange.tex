@@ -1,0 +1,141 @@
+\hypertarget{classslang_1_1syntax_1_1DeferredSourceRange}{}\doxysection{slang\+::syntax\+::Deferred\+Source\+Range Class Reference}
+\label{classslang_1_1syntax_1_1DeferredSourceRange}\index{slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}}
+
+
+{\ttfamily \#include $<$Syntax\+Node.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_afc572124dcad2b73267b0f1c56ddf36b}{Deferred\+Source\+Range}} ()=default
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_a20107ffb6271c0d6fd2efee13bddc5d0}{Deferred\+Source\+Range}} (Source\+Range \mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_a28cdf8c3a41955941e5f37e5fe15377b}{range}})
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_aaac1c234f8f13c2405253e575d29e990}{Deferred\+Source\+Range}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&\mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_a4c8826c5b6a2d02531b11bf71fb038b6}{node}})
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_a92f814e5477cdd398d5013079fe55714}{Deferred\+Source\+Range}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&\mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_a4c8826c5b6a2d02531b11bf71fb038b6}{node}}, Source\+Range \mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_a28cdf8c3a41955941e5f37e5fe15377b}{range}})
+\item 
+Source\+Range \mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_a1d93db4f349db1cba03a44a799777af6}{get}} () const
+\item 
+Source\+Range \mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_aa3426eef3739da87a3f8dab565a70141}{operator$\ast$}} () const
+\item 
+const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_a0821440e8a4609aa518f830bd96c1ae3}{syntax}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Source\+Range \mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_a28cdf8c3a41955941e5f37e5fe15377b}{range}}
+\item 
+Pointer\+Int\+Pair$<$ const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$, 1, 1, bool $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1DeferredSourceRange_a4c8826c5b6a2d02531b11bf71fb038b6}{node}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a source range or a way to get one by materializing it from a syntax node. This exists to avoid computing the source range of a node unless it\textquotesingle{}s actually needed. 
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00250}{250}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1DeferredSourceRange_afc572124dcad2b73267b0f1c56ddf36b}\label{classslang_1_1syntax_1_1DeferredSourceRange_afc572124dcad2b73267b0f1c56ddf36b}} 
+\index{slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}!DeferredSourceRange@{DeferredSourceRange}}
+\index{DeferredSourceRange@{DeferredSourceRange}!slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}}
+\doxysubsubsection{\texorpdfstring{DeferredSourceRange()}{DeferredSourceRange()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily slang\+::syntax\+::\+Deferred\+Source\+Range\+::\+Deferred\+Source\+Range (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1DeferredSourceRange_a20107ffb6271c0d6fd2efee13bddc5d0}\label{classslang_1_1syntax_1_1DeferredSourceRange_a20107ffb6271c0d6fd2efee13bddc5d0}} 
+\index{slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}!DeferredSourceRange@{DeferredSourceRange}}
+\index{DeferredSourceRange@{DeferredSourceRange}!slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}}
+\doxysubsubsection{\texorpdfstring{DeferredSourceRange()}{DeferredSourceRange()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily slang\+::syntax\+::\+Deferred\+Source\+Range\+::\+Deferred\+Source\+Range (\begin{DoxyParamCaption}\item[{Source\+Range}]{range }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00253}{253}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1DeferredSourceRange_aaac1c234f8f13c2405253e575d29e990}\label{classslang_1_1syntax_1_1DeferredSourceRange_aaac1c234f8f13c2405253e575d29e990}} 
+\index{slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}!DeferredSourceRange@{DeferredSourceRange}}
+\index{DeferredSourceRange@{DeferredSourceRange}!slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}}
+\doxysubsubsection{\texorpdfstring{DeferredSourceRange()}{DeferredSourceRange()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily slang\+::syntax\+::\+Deferred\+Source\+Range\+::\+Deferred\+Source\+Range (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00254}{254}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1DeferredSourceRange_a92f814e5477cdd398d5013079fe55714}\label{classslang_1_1syntax_1_1DeferredSourceRange_a92f814e5477cdd398d5013079fe55714}} 
+\index{slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}!DeferredSourceRange@{DeferredSourceRange}}
+\index{DeferredSourceRange@{DeferredSourceRange}!slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}}
+\doxysubsubsection{\texorpdfstring{DeferredSourceRange()}{DeferredSourceRange()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily slang\+::syntax\+::\+Deferred\+Source\+Range\+::\+Deferred\+Source\+Range (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{node,  }\item[{Source\+Range}]{range }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00255}{255}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1DeferredSourceRange_a1d93db4f349db1cba03a44a799777af6}\label{classslang_1_1syntax_1_1DeferredSourceRange_a1d93db4f349db1cba03a44a799777af6}} 
+\index{slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}!get@{get}}
+\index{get@{get}!slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily Source\+Range slang\+::syntax\+::\+Deferred\+Source\+Range\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00258}{258}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{classslang_1_1syntax_1_1DeferredSourceRange_aa3426eef3739da87a3f8dab565a70141}\label{classslang_1_1syntax_1_1DeferredSourceRange_aa3426eef3739da87a3f8dab565a70141}} 
+\index{slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily Source\+Range slang\+::syntax\+::\+Deferred\+Source\+Range\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00267}{267}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+Here is the call graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{classslang_1_1syntax_1_1DeferredSourceRange_a0821440e8a4609aa518f830bd96c1ae3}\label{classslang_1_1syntax_1_1DeferredSourceRange_a0821440e8a4609aa518f830bd96c1ae3}} 
+\index{slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}!syntax@{syntax}}
+\index{syntax@{syntax}!slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}}
+\doxysubsubsection{\texorpdfstring{syntax()}{syntax()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ slang\+::syntax\+::\+Deferred\+Source\+Range\+::syntax (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00269}{269}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1DeferredSourceRange_a4c8826c5b6a2d02531b11bf71fb038b6}\label{classslang_1_1syntax_1_1DeferredSourceRange_a4c8826c5b6a2d02531b11bf71fb038b6}} 
+\index{slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}!node@{node}}
+\index{node@{node}!slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}}
+\doxysubsubsection{\texorpdfstring{node}{node}}
+{\footnotesize\ttfamily Pointer\+Int\+Pair$<$const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}}$\ast$, 1, 1, bool$>$ slang\+::syntax\+::\+Deferred\+Source\+Range\+::node\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00273}{273}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1DeferredSourceRange_a28cdf8c3a41955941e5f37e5fe15377b}\label{classslang_1_1syntax_1_1DeferredSourceRange_a28cdf8c3a41955941e5f37e5fe15377b}} 
+\index{slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}!range@{range}}
+\index{range@{range}!slang::syntax::DeferredSourceRange@{slang::syntax::DeferredSourceRange}}
+\doxysubsubsection{\texorpdfstring{range}{range}}
+{\footnotesize\ttfamily Source\+Range slang\+::syntax\+::\+Deferred\+Source\+Range\+::range\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00272}{272}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{SyntaxNode_8h}{Syntax\+Node.\+h}}\end{DoxyCompactItemize}

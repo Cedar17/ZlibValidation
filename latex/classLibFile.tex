@@ -1,0 +1,512 @@
+\hypertarget{classLibFile}{}\doxysection{Lib\+File Class Reference}
+\label{classLibFile}\index{LibFile@{LibFile}}
+
+
+{\ttfamily \#include $<$lib\+\_\+file.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLibFile_a92a5efdef532776c5c2d60bc49dbe104}{Lib\+File}} (const std\+::string \&filepath, const std\+::string \&loggername)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classLibFile}{Lib\+File}} object with specified file path and logger name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLibFile_ae6956feb0dd50065d6abf8f3cd46bb80}{$\sim$\+Lib\+File}} ()
+\item 
+void \mbox{\hyperlink{classLibFile_a88de22798a64acdb38faefc0d785804f}{write\+Json\+To\+File}} ()
+\begin{DoxyCompactList}\small\item\em Writes the JSON data stored in the lib\+\_\+json\+\_\+ member to a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLibFile_a84d29423705e2dea8a382dc6437640d9}{parse}} ()
+\begin{DoxyCompactList}\small\item\em Parses the Liberty file and extracts library information into a JSON structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLibFile_a13703620c950bdf0b72882d2eda1e401}{modify}} ()
+\item 
+void \mbox{\hyperlink{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}{mono}} (const bool is\+\_\+slew)
+\begin{DoxyCompactList}\small\item\em Validates that lookup tables are monotonically increasing with respect to the output load. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{supercell}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
+\begin{DoxyCompactList}\small\item\em Creates supercells based on standard cells in the library file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{verilog}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
+\begin{DoxyCompactList}\small\item\em Generates Verilog files for cell validation based on the library file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\+\_\+}}
+\item 
+std\+::filesystem\+::path \mbox{\hyperlink{classLibFile_aa5974662e41fd9d2368ccfccaa7e5ff6}{filepath\+\_\+}}
+\item 
+std\+::string \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\+\_\+}}
+\item 
+std\+::string \mbox{\hyperlink{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}{filename\+\_\+}}
+\item 
+std\+::string \mbox{\hyperlink{classLibFile_a20994ad220fbf032ca4ccb519fe7e704}{libname\+\_\+}} = \char`\"{}\char`\"{}
+\item 
+std\+::string \mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\+\_\+}} = \char`\"{}\char`\"{}
+\item 
+std\+::string \mbox{\hyperlink{classLibFile_ac603785bfcf7fb11172603e0777b3332}{loggername\+\_\+}} = \char`\"{}\char`\"{}
+\item 
+\mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\+\_\+json\+\_\+}} = json\+::object()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classLibFile_a070b5da7981c5b5dc049349404d2f5a4}{read}} ()
+\begin{DoxyCompactList}\small\item\em Reads the Liberty file specified by the filename\+\_\+ member variable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLibFile_acffc39bf8d1206b2efb2111229c57827}{check\+Timing\+Arc\+Monotonicity}} (const \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&cell, const \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&pin, const \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&arc, const std\+::string \&type, bool is\+\_\+slew)
+\begin{DoxyCompactList}\small\item\em Checks if the values in a timing arc are monotonically increasing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} \mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{err\+\_\+}}
+\item 
+int \mbox{\hyperlink{classLibFile_a83c339b99f96a9692a500a6470208059}{process\+\_\+}} = 0
+\item 
+float \mbox{\hyperlink{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}{voltage\+\_\+}} = 0.\+0
+\item 
+int \mbox{\hyperlink{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}{temperature\+\_\+}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00013}{13}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLibFile_a92a5efdef532776c5c2d60bc49dbe104}\label{classLibFile_a92a5efdef532776c5c2d60bc49dbe104}} 
+\index{LibFile@{LibFile}!LibFile@{LibFile}}
+\index{LibFile@{LibFile}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{LibFile()}{LibFile()}}
+{\footnotesize\ttfamily Lib\+File\+::\+Lib\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{const std\+::string \&}]{loggername }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{classLibFile}{Lib\+File}} object with specified file path and logger name. 
+
+This constructor initializes a \mbox{\hyperlink{classLibFile}{Lib\+File}} object with the given file path and creates a logger with the specified name. It sets up\+:
+\begin{DoxyItemize}
+\item Two logging sinks\+: a colored console sink and a file sink
+\item File path information including filename, basename, and a corresponding JSON filename
+\item Log levels (info for console, debug for file)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & The path to the file to be processed \\
+\hline
+{\em loggername} & The name for the logger and the log file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+
+\mbox{\Hypertarget{classLibFile_ae6956feb0dd50065d6abf8f3cd46bb80}\label{classLibFile_ae6956feb0dd50065d6abf8f3cd46bb80}} 
+\index{LibFile@{LibFile}!````~LibFile@{$\sim$LibFile}}
+\index{````~LibFile@{$\sim$LibFile}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{$\sim$LibFile()}{~LibFile()}}
+{\footnotesize\ttfamily Lib\+File\+::$\sim$\+Lib\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLibFile_acffc39bf8d1206b2efb2111229c57827}\label{classLibFile_acffc39bf8d1206b2efb2111229c57827}} 
+\index{LibFile@{LibFile}!checkTimingArcMonotonicity@{checkTimingArcMonotonicity}}
+\index{checkTimingArcMonotonicity@{checkTimingArcMonotonicity}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{checkTimingArcMonotonicity()}{checkTimingArcMonotonicity()}}
+{\footnotesize\ttfamily bool Lib\+File\+::check\+Timing\+Arc\+Monotonicity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{cell,  }\item[{const \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{pin,  }\item[{const \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{arc,  }\item[{const std\+::string \&}]{timing\+\_\+arc\+\_\+name,  }\item[{bool}]{is\+\_\+slew }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks if the values in a timing arc are monotonically increasing. 
+
+This function examines the values in the specified timing arc to ensure they are monotonically increasing. It checks monotonicity in two dimensions\+:
+\begin{DoxyEnumerate}
+\item Across rows (by output load capacitance)
+\item Across columns (by input slew, only if is\+\_\+slew is true)
+\end{DoxyEnumerate}
+
+The function logs detailed information about any non-\/monotonic values found, including cell name, pin names, and conditional statements (when clause) if present.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cell} & The JSON object representing the cell being checked \\
+\hline
+{\em pin} & The JSON object representing the pin being checked \\
+\hline
+{\em arc} & The JSON object representing the timing arc being checked \\
+\hline
+{\em timing\+\_\+arc\+\_\+name} & The name of the timing arc to check (e.\+g., \char`\"{}cell\+\_\+rise\char`\"{}, \char`\"{}cell\+\_\+fall\char`\"{}) \\
+\hline
+{\em is\+\_\+slew} & Boolean flag indicating whether to check monotonicity across input slew values\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if all values in the timing arc are monotonic, false otherwise
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None,but} & logs errors or warnings for invalid data formats or non-\/monotonic values \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00219}{219}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{classLibFile_a13703620c950bdf0b72882d2eda1e401}\label{classLibFile_a13703620c950bdf0b72882d2eda1e401}} 
+\index{LibFile@{LibFile}!modify@{modify}}
+\index{modify@{modify}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{modify()}{modify()}}
+{\footnotesize\ttfamily void Lib\+File\+::modify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00196}{196}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+
+\mbox{\Hypertarget{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}\label{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}} 
+\index{LibFile@{LibFile}!mono@{mono}}
+\index{mono@{mono}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{mono()}{mono()}}
+{\footnotesize\ttfamily void Lib\+File\+::mono (\begin{DoxyParamCaption}\item[{const bool}]{is\+\_\+slew }\end{DoxyParamCaption})}
+
+
+
+Validates that lookup tables are monotonically increasing with respect to the output load. 
+
+This function checks the following timing data in the current library to ensure monotonicity\+:
+\begin{DoxyItemize}
+\item cell\+\_\+rise and retaining\+\_\+rise
+\item cell\+\_\+fall and retaining\+\_\+fall
+\item rise\+\_\+transition and retain\+\_\+rise\+\_\+slew
+\item fall\+\_\+transition and retain\+\_\+fall\+\_\+slew
+\item min\+\_\+pulse\+\_\+width constraints (rise\+\_\+constraint, fall\+\_\+constraint)
+\end{DoxyItemize}
+
+The function first checks if a parsed JSON representation exists. If not, it parses the Liberty file and creates the JSON file. It then evaluates each timing arc in all cells and reports the pass/fail status at the end.
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+\_\+slew} & Boolean flag indicating whether to check slew values rather than delay values\\
+\hline
+\end{DoxyParams}
+The function outputs\+:
+\begin{DoxyItemize}
+\item Number of cells that passed/failed the monotonicity check
+\item List of cells that failed the check (if any) 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00340}{340}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classLibFile_a84d29423705e2dea8a382dc6437640d9}\label{classLibFile_a84d29423705e2dea8a382dc6437640d9}} 
+\index{LibFile@{LibFile}!parse@{parse}}
+\index{parse@{parse}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily void Lib\+File\+::parse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the Liberty file and extracts library information into a JSON structure. 
+
+This method handles the parsing of a Liberty file by\+:
+\begin{DoxyEnumerate}
+\item Initializing the SI2 parser interface error handler
+\item Reading the Liberty file contents
+\item Extracting the library name
+\item Processing second-\/level groups including\+:
+\begin{DoxyItemize}
+\item Cell definitions, which are added to the JSON structure
+\item Operating conditions, extracting PVT (Process, Voltage, Temperature) values
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+The parsed data is stored in the lib\+\_\+json\+\_\+ member variable, with the following structure\+:
+\begin{DoxyItemize}
+\item \char`\"{}library\+\_\+name\char`\"{}\+: Name of the library
+\item \char`\"{}cells\char`\"{}\+: Array of cell definitions
+\item \char`\"{}process\char`\"{}\+: Process value
+\item \char`\"{}voltage\char`\"{}\+: Voltage value (rounded to 2 decimal places)
+\item \char`\"{}temperature\char`\"{}\+: Temperature value
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This method creates local scopes to ensure proper cleanup of SI2 iterators. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{classLibFile_a070b5da7981c5b5dc049349404d2f5a4}\label{classLibFile_a070b5da7981c5b5dc049349404d2f5a4}} 
+\index{LibFile@{LibFile}!read@{read}}
+\index{read@{read}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily void Lib\+File\+::read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reads the Liberty file specified by the filename\+\_\+ member variable. 
+
+This function attempts to read a Liberty file and logs the process. It measures the time taken to read the file and logs any errors encountered during the read operation. If an error occurs, the function logs the error and terminates the program.
+
+
+\begin{DoxyItemize}
+\item Logs the start of the read operation.
+\item Measures the duration of the read operation.
+\item Checks for specific errors (invalid name or syntax error) and logs them.
+\item Terminates the program with specific exit codes if errors are detected.
+\item Logs the completion of the read operation and the time taken.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This function uses the spdlog library for logging and the si2dr\+Read\+Liberty\+File function for reading the Liberty file.
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em This} & function will terminate the program with exit codes 301 or 401 if specific errors are encountered. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}\label{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}} 
+\index{LibFile@{LibFile}!supercell@{supercell}}
+\index{supercell@{supercell}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{supercell()}{supercell()}}
+{\footnotesize\ttfamily void Lib\+File\+::supercell (\begin{DoxyParamCaption}\item[{const int}]{chain\+\_\+length,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{cell\+\_\+names }\end{DoxyParamCaption})}
+
+
+
+Creates supercells based on standard cells in the library file. 
+
+This method creates supercells by combining standard cells in chains. For each input-\/output pin pair of a cell, it creates a supercell entry with naming format\+: $<$cellname$>${\bfseries{X$<$chain\+\_\+length$>$}}$<$input\+\_\+pin$>$\+\_\+\+\_\+$<$output\+\_\+pin$>$. The results are written to a .map file.
+
+For sequential cells (with clock pins), the chain length is always set to 1 regardless of the requested chain length.
+
+
+\begin{DoxyParams}{Parameters}
+{\em chain\+\_\+length} & The length of the chain for combinational cells \\
+\hline
+{\em cell\+\_\+names} & Vector of specific cell names to process. If empty, all cells will be processed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Before creating supercells, this method checks for the existence of a JSON representation of the Liberty file and parses it if not found. 
+
+The method will report any requested cells that were not found in the library. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00467}{467}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{classLibFile_a92ef7304afa302f98a69bd371b7955dd}\label{classLibFile_a92ef7304afa302f98a69bd371b7955dd}} 
+\index{LibFile@{LibFile}!verilog@{verilog}}
+\index{verilog@{verilog}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{verilog()}{verilog()}}
+{\footnotesize\ttfamily void Lib\+File\+::verilog (\begin{DoxyParamCaption}\item[{const int}]{chain\+\_\+length,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{cell\+\_\+names }\end{DoxyParamCaption})}
+
+
+
+Generates Verilog files for cell validation based on the library file. 
+
+This function creates Verilog modules for each cell in the specified chain and generates a top-\/level module that connects them all together. The process involves\+:
+
+
+\begin{DoxyEnumerate}
+\item Creating supercells based on the specified chain length and cell names
+\item Reading the mapping file to identify supercell name relationships
+\item Generating individual Verilog modules for each supercell, handling both sequential and combinational cells differently
+\item Creating ANSI-\/style port definitions for each module
+\item Using the slang library to build proper syntax trees for Verilog modules
+\item Creating a top-\/level module that instantiates all the individual modules
+\item Writing the complete Verilog output to the output file
+\end{DoxyEnumerate}
+
+Sequential cells are instantiated once, while combinational cells are instantiated multiple times based on the specified chain length.
+
+
+\begin{DoxyParams}{Parameters}
+{\em chain\+\_\+length} & The number of times to chain combinational cells together \\
+\hline
+{\em cell\+\_\+names} & Vector of cell names to include in the Verilog generation\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function writes a temporary file during processing that might not be removed when the function completes (commented out cleanup code). 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00620}{620}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{classLibFile_a88de22798a64acdb38faefc0d785804f}\label{classLibFile_a88de22798a64acdb38faefc0d785804f}} 
+\index{LibFile@{LibFile}!writeJsonToFile@{writeJsonToFile}}
+\index{writeJsonToFile@{writeJsonToFile}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{writeJsonToFile()}{writeJsonToFile()}}
+{\footnotesize\ttfamily void Lib\+File\+::write\+Json\+To\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Writes the JSON data stored in the lib\+\_\+json\+\_\+ member to a file. 
+
+This function attempts to open the specified file for writing. If the file cannot be opened, an error message is logged. If the file is successfully opened, the JSON data is written to the file with an indentation of 2 spaces. After writing, the file is closed and a success message is logged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em jsonname\+\_\+} & The name of the file to which the JSON data will be written. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}\label{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}} 
+\index{LibFile@{LibFile}!basename\_@{basename\_}}
+\index{basename\_@{basename\_}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{basename\_}{basename\_}}
+{\footnotesize\ttfamily std\+::string Lib\+File\+::basename\+\_\+}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00019}{19}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+\mbox{\Hypertarget{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}\label{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}} 
+\index{LibFile@{LibFile}!err\_@{err\_}}
+\index{err\_@{err\_}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{err\_}{err\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2dr\+ErrorT}} Lib\+File\+::err\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+\mbox{\Hypertarget{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}\label{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}} 
+\index{LibFile@{LibFile}!filename\_@{filename\_}}
+\index{filename\_@{filename\_}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{filename\_}{filename\_}}
+{\footnotesize\ttfamily std\+::string Lib\+File\+::filename\+\_\+}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00020}{20}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+\mbox{\Hypertarget{classLibFile_aa5974662e41fd9d2368ccfccaa7e5ff6}\label{classLibFile_aa5974662e41fd9d2368ccfccaa7e5ff6}} 
+\index{LibFile@{LibFile}!filepath\_@{filepath\_}}
+\index{filepath\_@{filepath\_}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{filepath\_}{filepath\_}}
+{\footnotesize\ttfamily std\+::filesystem\+::path Lib\+File\+::filepath\+\_\+}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00018}{18}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+\mbox{\Hypertarget{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}\label{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}} 
+\index{LibFile@{LibFile}!jsonname\_@{jsonname\_}}
+\index{jsonname\_@{jsonname\_}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{jsonname\_}{jsonname\_}}
+{\footnotesize\ttfamily std\+::string Lib\+File\+::jsonname\+\_\+ = \char`\"{}\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+\mbox{\Hypertarget{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}\label{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}} 
+\index{LibFile@{LibFile}!lib\_json\_@{lib\_json\_}}
+\index{lib\_json\_@{lib\_json\_}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{lib\_json\_}{lib\_json\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} Lib\+File\+::lib\+\_\+json\+\_\+ = json\+::object()}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+\mbox{\Hypertarget{classLibFile_a20994ad220fbf032ca4ccb519fe7e704}\label{classLibFile_a20994ad220fbf032ca4ccb519fe7e704}} 
+\index{LibFile@{LibFile}!libname\_@{libname\_}}
+\index{libname\_@{libname\_}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{libname\_}{libname\_}}
+{\footnotesize\ttfamily std\+::string Lib\+File\+::libname\+\_\+ = \char`\"{}\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+\mbox{\Hypertarget{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}\label{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}} 
+\index{LibFile@{LibFile}!logger\_@{logger\_}}
+\index{logger\_@{logger\_}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{logger\_}{logger\_}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$spdlog\+::logger$>$ Lib\+File\+::logger\+\_\+}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00017}{17}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+\mbox{\Hypertarget{classLibFile_ac603785bfcf7fb11172603e0777b3332}\label{classLibFile_ac603785bfcf7fb11172603e0777b3332}} 
+\index{LibFile@{LibFile}!loggername\_@{loggername\_}}
+\index{loggername\_@{loggername\_}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{loggername\_}{loggername\_}}
+{\footnotesize\ttfamily std\+::string Lib\+File\+::loggername\+\_\+ = \char`\"{}\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+\mbox{\Hypertarget{classLibFile_a83c339b99f96a9692a500a6470208059}\label{classLibFile_a83c339b99f96a9692a500a6470208059}} 
+\index{LibFile@{LibFile}!process\_@{process\_}}
+\index{process\_@{process\_}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{process\_}{process\_}}
+{\footnotesize\ttfamily int Lib\+File\+::process\+\_\+ = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+\mbox{\Hypertarget{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}\label{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}} 
+\index{LibFile@{LibFile}!temperature\_@{temperature\_}}
+\index{temperature\_@{temperature\_}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{temperature\_}{temperature\_}}
+{\footnotesize\ttfamily int Lib\+File\+::temperature\+\_\+ = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+\mbox{\Hypertarget{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}\label{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}} 
+\index{LibFile@{LibFile}!voltage\_@{voltage\_}}
+\index{voltage\_@{voltage\_}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{voltage\_}{voltage\_}}
+{\footnotesize\ttfamily float Lib\+File\+::voltage\+\_\+ = 0.\+0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{lib__file_8hpp}{lib\+\_\+file.\+hpp}}\item 
+src/\mbox{\hyperlink{lib__file_8cpp}{lib\+\_\+file.\+cpp}}\end{DoxyCompactItemize}

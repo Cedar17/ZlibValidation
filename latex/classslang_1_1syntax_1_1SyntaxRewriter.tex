@@ -1,0 +1,375 @@
+\hypertarget{classslang_1_1syntax_1_1SyntaxRewriter}{}\doxysection{slang\+::syntax\+::Syntax\+Rewriter\texorpdfstring{$<$}{<} TDerived \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classslang_1_1syntax_1_1SyntaxRewriter}\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+
+
+{\ttfamily \#include $<$Syntax\+Visitor.\+h$>$}
+
+
+
+Inheritance diagram for slang\+::syntax\+::Syntax\+Rewriter\texorpdfstring{$<$}{<} TDerived \texorpdfstring{$>$}{>}\+:
+% FIG 0
+
+
+Collaboration diagram for slang\+::syntax\+::Syntax\+Rewriter\texorpdfstring{$<$}{<} TDerived \texorpdfstring{$>$}{>}\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_aee8572992e44b0cea52bd72ee1e66c5b}{Syntax\+Rewriter}} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a9da1110f23efabf52212982d52d64601}{transform}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} $>$ \&tree, const Source\+Library $\ast$library=nullptr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor}{slang\+::syntax\+::\+Syntax\+Visitor$<$ TDerived $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_aecb294b0686307633702e2bb937246b6}{visit}} (T \&\&t)
+\begin{DoxyCompactList}\small\item\em Visit the provided node, of static type T. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visit\+Default}} (T \&\&node)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} = parsing\+::\+Token
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ae75ddbcab869a09077dc1fa0ef01bbcb}{parse}} (std\+::string\+\_\+view text)
+\begin{DoxyCompactList}\small\item\em A helper for derived classes that parses some text into syntax nodes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ac7c9f8d4bc01e65e4eaa0afd6cec31e2}{remove}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&old\+Node)
+\begin{DoxyCompactList}\small\item\em Register a removal for the given syntax node from the tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_af813c09cb3221658fb4531e5242ff77d}{replace}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&old\+Node, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&new\+Node)
+\begin{DoxyCompactList}\small\item\em Replace the given {\itshape old\+Node} with {\itshape new\+Node} in the rewritten tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ad995d654a9bcf7228ee205b0b3acc104}{insert\+Before}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&old\+Node, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&new\+Node)
+\begin{DoxyCompactList}\small\item\em Insert {\itshape new\+Node} before {\itshape old\+Node} in the rewritten tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_abc4bfb5d46e0e37169d378da14cd99cb}{insert\+After}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&old\+Node, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&new\+Node)
+\begin{DoxyCompactList}\small\item\em Insert {\itshape new\+Node} after {\itshape old\+Node} in the rewritten tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a1d78a3cc6335811b437ddbb0c88f10a9}{insert\+At\+Front}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{Syntax\+List\+Base}} \&list, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&new\+Node, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} separator=\{\})
+\begin{DoxyCompactList}\small\item\em Insert {\itshape new\+Node} at the front of {\itshape list} in the rewritten tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_aabf4247f8c732f9423585d65ee42f642}{insert\+At\+Back}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{Syntax\+List\+Base}} \&list, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&new\+Node, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} separator=\{\})
+\begin{DoxyCompactList}\small\item\em Insert {\itshape new\+Node} at the back of {\itshape list} in the rewritten tree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_abe3f1325c14b70989602daff6685f635}{make\+Token}} (parsing\+::\+Token\+Kind kind, std\+::string\+\_\+view text, std\+::span$<$ const parsing\+::\+Trivia $>$ trivia=\{\})
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_acb8d1208e542a0c84e60228ff64dc84f}{make\+Id}} (std\+::string\+\_\+view text, std\+::span$<$ const parsing\+::\+Trivia $>$ trivia=\{\})
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ae67f64340782e6e4aff06624d519c1aa}{make\+Id}} (std\+::string\+\_\+view text, parsing\+::\+Trivia trivia)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_af38fe4bcda5af458d30d4eae78c97942}{make\+Comma}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Bump\+Allocator \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a8bbab1516b8cb803868f77134892de96}{alloc}}
+\item 
+Syntax\+Factory \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a5e76140cb2d7ab7217f9377a36b17e83}{factory}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const parsing\+::\+Trivia \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a8074c74f143366160869f3f032a79183}{Single\+Space}} \{parsing\+::\+Trivia\+Kind\+::\+Whitespace, \char`\"{} \char`\"{}sv\}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Source\+Manager $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_af313018a71febc89f7f2f19733360922}{source\+Manager}} = nullptr
+\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1detail_1_1ChangeCollection}{detail\+::\+Change\+Collection}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ab1cb6b63bf6c21049a64a20e36eaf40f}{commits}}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} $>$ $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ac0cb782635b2d91603cb9d174be77e5a}{temp\+Trees}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename TDerived$>$\newline
+class slang\+::syntax\+::\+Syntax\+Rewriter$<$ TDerived $>$}
+A helper class that assists in rewriting syntax trees -- useful for automated refactoring tools. 
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00102}{102}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}\label{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!Token@{Token}}
+\index{Token@{Token}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{Token}{Token}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+using \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::\+Token =  parsing\+::\+Token\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00131}{131}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_aee8572992e44b0cea52bd72ee1e66c5b}\label{classslang_1_1syntax_1_1SyntaxRewriter_aee8572992e44b0cea52bd72ee1e66c5b}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!SyntaxRewriter@{SyntaxRewriter}}
+\index{SyntaxRewriter@{SyntaxRewriter}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{SyntaxRewriter()}{SyntaxRewriter()}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::\+Syntax\+Rewriter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00104}{104}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_abc4bfb5d46e0e37169d378da14cd99cb}\label{classslang_1_1syntax_1_1SyntaxRewriter_abc4bfb5d46e0e37169d378da14cd99cb}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!insertAfter@{insertAfter}}
+\index{insertAfter@{insertAfter}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{insertAfter()}{insertAfter()}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::insert\+After (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{old\+Node,  }\item[{\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{new\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Insert {\itshape new\+Node} after {\itshape old\+Node} in the rewritten tree. 
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00163}{163}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_aabf4247f8c732f9423585d65ee42f642}\label{classslang_1_1syntax_1_1SyntaxRewriter_aabf4247f8c732f9423585d65ee42f642}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!insertAtBack@{insertAtBack}}
+\index{insertAtBack@{insertAtBack}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{insertAtBack()}{insertAtBack()}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::insert\+At\+Back (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{Syntax\+List\+Base}} \&}]{list,  }\item[{\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{new\+Node,  }\item[{\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}}}]{separator = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Insert {\itshape new\+Node} at the back of {\itshape list} in the rewritten tree. 
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00173}{173}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_a1d78a3cc6335811b437ddbb0c88f10a9}\label{classslang_1_1syntax_1_1SyntaxRewriter_a1d78a3cc6335811b437ddbb0c88f10a9}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!insertAtFront@{insertAtFront}}
+\index{insertAtFront@{insertAtFront}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{insertAtFront()}{insertAtFront()}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::insert\+At\+Front (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{Syntax\+List\+Base}} \&}]{list,  }\item[{\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{new\+Node,  }\item[{\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}}}]{separator = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Insert {\itshape new\+Node} at the front of {\itshape list} in the rewritten tree. 
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00168}{168}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_ad995d654a9bcf7228ee205b0b3acc104}\label{classslang_1_1syntax_1_1SyntaxRewriter_ad995d654a9bcf7228ee205b0b3acc104}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!insertBefore@{insertBefore}}
+\index{insertBefore@{insertBefore}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{insertBefore()}{insertBefore()}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::insert\+Before (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{old\+Node,  }\item[{\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{new\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Insert {\itshape new\+Node} before {\itshape old\+Node} in the rewritten tree. 
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00158}{158}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_af38fe4bcda5af458d30d4eae78c97942}\label{classslang_1_1syntax_1_1SyntaxRewriter_af38fe4bcda5af458d30d4eae78c97942}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!makeComma@{makeComma}}
+\index{makeComma@{makeComma}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{makeComma()}{makeComma()}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::make\+Comma (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00191}{191}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_ae67f64340782e6e4aff06624d519c1aa}\label{classslang_1_1syntax_1_1SyntaxRewriter_ae67f64340782e6e4aff06624d519c1aa}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!makeId@{makeId}}
+\index{makeId@{makeId}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{makeId()}{makeId()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::make\+Id (\begin{DoxyParamCaption}\item[{std\+::string\+\_\+view}]{text,  }\item[{parsing\+::\+Trivia}]{trivia }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00186}{186}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_acb8d1208e542a0c84e60228ff64dc84f}\label{classslang_1_1syntax_1_1SyntaxRewriter_acb8d1208e542a0c84e60228ff64dc84f}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!makeId@{makeId}}
+\index{makeId@{makeId}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{makeId()}{makeId()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::make\+Id (\begin{DoxyParamCaption}\item[{std\+::string\+\_\+view}]{text,  }\item[{std\+::span$<$ const parsing\+::\+Trivia $>$}]{trivia = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00182}{182}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_abe3f1325c14b70989602daff6685f635}\label{classslang_1_1syntax_1_1SyntaxRewriter_abe3f1325c14b70989602daff6685f635}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!makeToken@{makeToken}}
+\index{makeToken@{makeToken}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{makeToken()}{makeToken()}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::make\+Token (\begin{DoxyParamCaption}\item[{parsing\+::\+Token\+Kind}]{kind,  }\item[{std\+::string\+\_\+view}]{text,  }\item[{std\+::span$<$ const parsing\+::\+Trivia $>$}]{trivia = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00177}{177}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_ae75ddbcab869a09077dc1fa0ef01bbcb}\label{classslang_1_1syntax_1_1SyntaxRewriter_ae75ddbcab869a09077dc1fa0ef01bbcb}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!parse@{parse}}
+\index{parse@{parse}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::parse (\begin{DoxyParamCaption}\item[{std\+::string\+\_\+view}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+A helper for derived classes that parses some text into syntax nodes. 
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00134}{134}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_ac7c9f8d4bc01e65e4eaa0afd6cec31e2}\label{classslang_1_1syntax_1_1SyntaxRewriter_ac7c9f8d4bc01e65e4eaa0afd6cec31e2}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!remove@{remove}}
+\index{remove@{remove}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::remove (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{old\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Register a removal for the given syntax node from the tree. 
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00140}{140}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_af813c09cb3221658fb4531e5242ff77d}\label{classslang_1_1syntax_1_1SyntaxRewriter_af813c09cb3221658fb4531e5242ff77d}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!replace@{replace}}
+\index{replace@{replace}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{replace()}{replace()}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::replace (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{old\+Node,  }\item[{\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{new\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Replace the given {\itshape old\+Node} with {\itshape new\+Node} in the rewritten tree. 
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00149}{149}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_a9da1110f23efabf52212982d52d64601}\label{classslang_1_1syntax_1_1SyntaxRewriter_a9da1110f23efabf52212982d52d64601}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!transform@{transform}}
+\index{transform@{transform}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::transform (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} $>$ \&}]{tree,  }\item[{const Source\+Library $\ast$}]{library = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Transforms the given syntax tree using the rewriter. The tree will be visited in order and each node will be given a chance to be rewritten (by providing \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_aecb294b0686307633702e2bb937246b6}{visit()}} implementations in the derived class).
+
+\begin{DoxyReturn}{Returns}
+if no changes are requested, returns the original syntax tree. Otherwise, the changes are applied and the newly rewritten syntax tree is returned.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+lifetimes of new and old trees are independent from each other. If you shallow clone something from old tree into new one, you have to make sure that shared\+\_\+ptr to original doesn\textquotesingle{}t go out of scope too early. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00116}{116}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_a8bbab1516b8cb803868f77134892de96}\label{classslang_1_1syntax_1_1SyntaxRewriter_a8bbab1516b8cb803868f77134892de96}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!alloc@{alloc}}
+\index{alloc@{alloc}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{alloc}{alloc}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+Bump\+Allocator \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::alloc\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00193}{193}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_ab1cb6b63bf6c21049a64a20e36eaf40f}\label{classslang_1_1syntax_1_1SyntaxRewriter_ab1cb6b63bf6c21049a64a20e36eaf40f}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!commits@{commits}}
+\index{commits@{commits}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{commits}{commits}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+\mbox{\hyperlink{structslang_1_1syntax_1_1detail_1_1ChangeCollection}{detail\+::\+Change\+Collection}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::commits\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00200}{200}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_a5e76140cb2d7ab7217f9377a36b17e83}\label{classslang_1_1syntax_1_1SyntaxRewriter_a5e76140cb2d7ab7217f9377a36b17e83}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!factory@{factory}}
+\index{factory@{factory}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{factory}{factory}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+Syntax\+Factory \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::factory\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00194}{194}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_a8074c74f143366160869f3f032a79183}\label{classslang_1_1syntax_1_1SyntaxRewriter_a8074c74f143366160869f3f032a79183}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!SingleSpace@{SingleSpace}}
+\index{SingleSpace@{SingleSpace}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{SingleSpace}{SingleSpace}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+const parsing\+::\+Trivia \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::\+Single\+Space \{parsing\+::\+Trivia\+Kind\+::\+Whitespace, \char`\"{} \char`\"{}sv\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00196}{196}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_af313018a71febc89f7f2f19733360922}\label{classslang_1_1syntax_1_1SyntaxRewriter_af313018a71febc89f7f2f19733360922}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!sourceManager@{sourceManager}}
+\index{sourceManager@{sourceManager}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{sourceManager}{sourceManager}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+Source\+Manager$\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::source\+Manager = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00199}{199}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_ac0cb782635b2d91603cb9d174be77e5a}\label{classslang_1_1syntax_1_1SyntaxRewriter_ac0cb782635b2d91603cb9d174be77e5a}} 
+\index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!tempTrees@{tempTrees}}
+\index{tempTrees@{tempTrees}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
+\doxysubsubsection{\texorpdfstring{tempTrees}{tempTrees}}
+{\footnotesize\ttfamily template$<$typename TDerived $>$ \\
+std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}}$>$ $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::temp\+Trees\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00201}{201}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{SyntaxVisitor_8h}{Syntax\+Visitor.\+h}}\end{DoxyCompactItemize}

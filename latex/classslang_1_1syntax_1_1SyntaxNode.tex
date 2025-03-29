@@ -1,0 +1,373 @@
+\hypertarget{classslang_1_1syntax_1_1SyntaxNode}{}\doxysection{slang\+::syntax\+::Syntax\+Node Class Reference}
+\label{classslang_1_1syntax_1_1SyntaxNode}\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+
+
+Base class for all syntax nodes.  
+
+
+
+
+{\ttfamily \#include $<$Syntax\+Node.\+h$>$}
+
+
+
+Inheritance diagram for slang\+::syntax\+::Syntax\+Node\+:
+% FIG 0
+
+
+Collaboration diagram for slang\+::syntax\+::Syntax\+Node\+:
+% FIG 1
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} = parsing\+::\+Token
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a49f92aa33b0ae69980cbf0041e08d90d}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Print the node and all of its children to a string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a0eda672e68ef0b51610750fa423ce96c}{get\+First\+Token}} () const
+\begin{DoxyCompactList}\small\item\em Get the first leaf token in this subtree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_affe0ad63f36c19cb204b45182b513c71}{get\+Last\+Token}} () const
+\begin{DoxyCompactList}\small\item\em Get the last leaf token in this subtree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a0b8364a84e668ded18ec837accce6cc6}{get\+First\+Token\+Ptr}} ()
+\begin{DoxyCompactList}\small\item\em Get the first leaf token as a mutable pointer in this subtree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a6031ea7b45a75fd04e5936ab15f881a2}{get\+Last\+Token\+Ptr}} ()
+\begin{DoxyCompactList}\small\item\em Get the last leaf token a mutable pointer in this subtree. \end{DoxyCompactList}\item 
+Source\+Range \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a28195377267272fb5a9a9656aae1c764}{source\+Range}} () const
+\begin{DoxyCompactList}\small\item\em Get the source range of the node. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_abc32bc8c00a0b128d53d20bdc17919b0}{child\+Node}} (size\+\_\+t index) const
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a9002961f911297a67b27818a61586f65}{child\+Node}} (size\+\_\+t index)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a5b5ecf7c14d4a9281ef4acfe9a6a34d4}{child\+Token}} (size\+\_\+t index) const
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a26fb9db7a9abc00c5f79668de9a8a4bc}{child\+Token\+Ptr}} (size\+\_\+t index)
+\item 
+size\+\_\+t \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a0be73b0d841761c199f329f45f4d3ea7}{get\+Child\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of (direct) children underneath this node in the tree. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a6153cea1bb428e37ff814f7759570d30}{is\+Equivalent\+To}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&other) const
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a8a06c9e4d92fda386ed7f7765d0c5498}{as}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\const T \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aaf05c77660207e32a681505099704c06}{as}} () const
+\item 
+{\footnotesize template$<$typename T $>$ }\\T $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a7a794c49d7544de09f33bd85ae1d8fce}{as\+\_\+if}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\const T $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a382df472e5109fc88e2a515c2fa749f6}{as\+\_\+if}} () const
+\item 
+{\footnotesize template$<$typename TVisitor , typename... Args$>$ }\\decltype(auto) \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a0cedb66d8e695e4c5c69e9290652d7fa}{visit}} (TVisitor \&visitor, Args \&\&... args)
+\item 
+{\footnotesize template$<$typename TVisitor , typename... Args$>$ }\\decltype(auto) \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a803c336cceefa46cff33f077e77398a5}{visit}} (TVisitor \&visitor, Args \&\&... args) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a37cdb1f35d2760cbd3cdab4e255a3987}{is\+Kind}} (Syntax\+Kind)
+\item 
+static bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a3d353bc2793012e2fa5f3f33a8eb2cdc}{is\+Child\+Optional}} (size\+\_\+t)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Syntax\+Kind \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}}
+\begin{DoxyCompactList}\small\item\em The kind of syntax node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a43a74c2e3b0874740abef3a5153f2c49}{parent}} = nullptr
+\item 
+const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aae6b46376d0c5cba0abfc29d57a3299c}{preview\+Node}} = nullptr
+\begin{DoxyCompactList}\small\item\em An potional pointer to a syntax node tha can be useful to know ahead of time when visiting this node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ab2056678f95527a9fef77f82d1978a01}{Syntax\+Node}} (Syntax\+Kind \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}{kind}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax}{Const\+Token\+Or\+Syntax}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_ace8f5f9f05452789372d849ef1cbf8f1}{get\+Child}} (size\+\_\+t index) const
+\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{Token\+Or\+Syntax}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a31ac100ed338bdf11902699d5870b7cf}{get\+Child}} (size\+\_\+t index)
+\item 
+\mbox{\hyperlink{structslang_1_1syntax_1_1PtrTokenOrSyntax}{Ptr\+Token\+Or\+Syntax}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_a115fe7e8bea68a6fd2d7f24fe076f586}{get\+Child\+Ptr}} (size\+\_\+t index)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all syntax nodes. 
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00090}{90}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}\label{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!Token@{Token}}
+\index{Token@{Token}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{Token}{Token}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{slang\+::syntax\+::\+Syntax\+Node\+::\+Token}} =  parsing\+::\+Token}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00092}{92}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_ab2056678f95527a9fef77f82d1978a01}\label{classslang_1_1syntax_1_1SyntaxNode_ab2056678f95527a9fef77f82d1978a01}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!SyntaxNode@{SyntaxNode}}
+\index{SyntaxNode@{SyntaxNode}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{SyntaxNode()}{SyntaxNode()}}
+{\footnotesize\ttfamily slang\+::syntax\+::\+Syntax\+Node\+::\+Syntax\+Node (\begin{DoxyParamCaption}\item[{Syntax\+Kind}]{kind }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00207}{207}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a8a06c9e4d92fda386ed7f7765d0c5498}\label{classslang_1_1syntax_1_1SyntaxNode_a8a06c9e4d92fda386ed7f7765d0c5498}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!as@{as}}
+\index{as@{as}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{as()}{as()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& slang\+::syntax\+::\+Syntax\+Node\+::as (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Reinterprets this node as being of type T. In debug this will assert that the dynamic kind is appropriate for the specified static type. 
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00158}{158}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_aaf05c77660207e32a681505099704c06}\label{classslang_1_1syntax_1_1SyntaxNode_aaf05c77660207e32a681505099704c06}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!as@{as}}
+\index{as@{as}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{as()}{as()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const T \& slang\+::syntax\+::\+Syntax\+Node\+::as (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Reinterprets this node as being of type T. In debug this will assert that the dynamic kind is appropriate for the specified static type. 
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00166}{166}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a7a794c49d7544de09f33bd85ae1d8fce}\label{classslang_1_1syntax_1_1SyntaxNode_a7a794c49d7544de09f33bd85ae1d8fce}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!as\_if@{as\_if}}
+\index{as\_if@{as\_if}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{as\_if()}{as\_if()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T $\ast$ slang\+::syntax\+::\+Syntax\+Node\+::as\+\_\+if (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00173}{173}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a382df472e5109fc88e2a515c2fa749f6}\label{classslang_1_1syntax_1_1SyntaxNode_a382df472e5109fc88e2a515c2fa749f6}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!as\_if@{as\_if}}
+\index{as\_if@{as\_if}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{as\_if()}{as\_if()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const T $\ast$ slang\+::syntax\+::\+Syntax\+Node\+::as\+\_\+if (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00181}{181}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a9002961f911297a67b27818a61586f65}\label{classslang_1_1syntax_1_1SyntaxNode_a9002961f911297a67b27818a61586f65}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!childNode@{childNode}}
+\index{childNode@{childNode}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{childNode()}{childNode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ slang\+::syntax\+::\+Syntax\+Node\+::child\+Node (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+Gets the child syntax node at the specified index. If the child at the given index is not a node (probably a token) then this returns null. \mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_abc32bc8c00a0b128d53d20bdc17919b0}\label{classslang_1_1syntax_1_1SyntaxNode_abc32bc8c00a0b128d53d20bdc17919b0}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!childNode@{childNode}}
+\index{childNode@{childNode}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{childNode()}{childNode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} $\ast$ slang\+::syntax\+::\+Syntax\+Node\+::child\+Node (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption}) const}
+
+Gets the child syntax node at the specified index. If the child at the given index is not a node (probably a token) then this returns null. \mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a5b5ecf7c14d4a9281ef4acfe9a6a34d4}\label{classslang_1_1syntax_1_1SyntaxNode_a5b5ecf7c14d4a9281ef4acfe9a6a34d4}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!childToken@{childToken}}
+\index{childToken@{childToken}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{childToken()}{childToken()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} slang\+::syntax\+::\+Syntax\+Node\+::child\+Token (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption}) const}
+
+Gets the child token at the specified index. If the child at the given index is not a token (probably a node) then this returns an empty Token. \mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a26fb9db7a9abc00c5f79668de9a8a4bc}\label{classslang_1_1syntax_1_1SyntaxNode_a26fb9db7a9abc00c5f79668de9a8a4bc}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!childTokenPtr@{childTokenPtr}}
+\index{childTokenPtr@{childTokenPtr}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{childTokenPtr()}{childTokenPtr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $\ast$ slang\+::syntax\+::\+Syntax\+Node\+::child\+Token\+Ptr (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+Gets a pointer to the child token at the specified index. If the child at the given index is not a token (probably a node) then this returns null. \mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a31ac100ed338bdf11902699d5870b7cf}\label{classslang_1_1syntax_1_1SyntaxNode_a31ac100ed338bdf11902699d5870b7cf}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!getChild@{getChild}}
+\index{getChild@{getChild}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{getChild()}{getChild()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structslang_1_1syntax_1_1TokenOrSyntax}{Token\+Or\+Syntax}} slang\+::syntax\+::\+Syntax\+Node\+::get\+Child (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_ace8f5f9f05452789372d849ef1cbf8f1}\label{classslang_1_1syntax_1_1SyntaxNode_ace8f5f9f05452789372d849ef1cbf8f1}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!getChild@{getChild}}
+\index{getChild@{getChild}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{getChild()}{getChild()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structslang_1_1syntax_1_1ConstTokenOrSyntax}{Const\+Token\+Or\+Syntax}} slang\+::syntax\+::\+Syntax\+Node\+::get\+Child (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a0be73b0d841761c199f329f45f4d3ea7}\label{classslang_1_1syntax_1_1SyntaxNode_a0be73b0d841761c199f329f45f4d3ea7}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!getChildCount@{getChildCount}}
+\index{getChildCount@{getChildCount}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{getChildCount()}{getChildCount()}}
+{\footnotesize\ttfamily size\+\_\+t slang\+::syntax\+::\+Syntax\+Node\+::get\+Child\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the number of (direct) children underneath this node in the tree. 
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a115fe7e8bea68a6fd2d7f24fe076f586}\label{classslang_1_1syntax_1_1SyntaxNode_a115fe7e8bea68a6fd2d7f24fe076f586}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!getChildPtr@{getChildPtr}}
+\index{getChildPtr@{getChildPtr}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{getChildPtr()}{getChildPtr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structslang_1_1syntax_1_1PtrTokenOrSyntax}{Ptr\+Token\+Or\+Syntax}} slang\+::syntax\+::\+Syntax\+Node\+::get\+Child\+Ptr (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a0eda672e68ef0b51610750fa423ce96c}\label{classslang_1_1syntax_1_1SyntaxNode_a0eda672e68ef0b51610750fa423ce96c}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!getFirstToken@{getFirstToken}}
+\index{getFirstToken@{getFirstToken}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{getFirstToken()}{getFirstToken()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} slang\+::syntax\+::\+Syntax\+Node\+::get\+First\+Token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the first leaf token in this subtree. 
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a0b8364a84e668ded18ec837accce6cc6}\label{classslang_1_1syntax_1_1SyntaxNode_a0b8364a84e668ded18ec837accce6cc6}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!getFirstTokenPtr@{getFirstTokenPtr}}
+\index{getFirstTokenPtr@{getFirstTokenPtr}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{getFirstTokenPtr()}{getFirstTokenPtr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $\ast$ slang\+::syntax\+::\+Syntax\+Node\+::get\+First\+Token\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the first leaf token as a mutable pointer in this subtree. 
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_affe0ad63f36c19cb204b45182b513c71}\label{classslang_1_1syntax_1_1SyntaxNode_affe0ad63f36c19cb204b45182b513c71}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!getLastToken@{getLastToken}}
+\index{getLastToken@{getLastToken}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{getLastToken()}{getLastToken()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} slang\+::syntax\+::\+Syntax\+Node\+::get\+Last\+Token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the last leaf token in this subtree. 
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a6031ea7b45a75fd04e5936ab15f881a2}\label{classslang_1_1syntax_1_1SyntaxNode_a6031ea7b45a75fd04e5936ab15f881a2}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!getLastTokenPtr@{getLastTokenPtr}}
+\index{getLastTokenPtr@{getLastTokenPtr}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{getLastTokenPtr()}{getLastTokenPtr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode_aafde229a54d136f66a71d9bda70619af}{Token}} $\ast$ slang\+::syntax\+::\+Syntax\+Node\+::get\+Last\+Token\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the last leaf token a mutable pointer in this subtree. 
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a3d353bc2793012e2fa5f3f33a8eb2cdc}\label{classslang_1_1syntax_1_1SyntaxNode_a3d353bc2793012e2fa5f3f33a8eb2cdc}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!isChildOptional@{isChildOptional}}
+\index{isChildOptional@{isChildOptional}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{isChildOptional()}{isChildOptional()}}
+{\footnotesize\ttfamily static bool slang\+::syntax\+::\+Syntax\+Node\+::is\+Child\+Optional (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Derived nodes should implement this and return true if child at provided index is pointer not wrapped in not\+\_\+null. 
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00204}{204}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a6153cea1bb428e37ff814f7759570d30}\label{classslang_1_1syntax_1_1SyntaxNode_a6153cea1bb428e37ff814f7759570d30}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!isEquivalentTo@{isEquivalentTo}}
+\index{isEquivalentTo@{isEquivalentTo}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{isEquivalentTo()}{isEquivalentTo()}}
+{\footnotesize\ttfamily bool slang\+::syntax\+::\+Syntax\+Node\+::is\+Equivalent\+To (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{other }\end{DoxyParamCaption}) const}
+
+Returns true if this syntax node is \char`\"{}equivalent\char`\"{} to the other provided syntax node. Equivalence here is determined by the entire subtrees having the same kinds of syntax nodes in the same order and all leaf tokens having the same kinds and value text. \mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a37cdb1f35d2760cbd3cdab4e255a3987}\label{classslang_1_1syntax_1_1SyntaxNode_a37cdb1f35d2760cbd3cdab4e255a3987}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!isKind@{isKind}}
+\index{isKind@{isKind}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{isKind()}{isKind()}}
+{\footnotesize\ttfamily static bool slang\+::syntax\+::\+Syntax\+Node\+::is\+Kind (\begin{DoxyParamCaption}\item[{Syntax\+Kind}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+A base implemention of the method that checks correctness of dynamic casting. Derived nodes should reimplement this and return true if the provided syntax kind is compatible with the static type of the object. 
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00200}{200}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a28195377267272fb5a9a9656aae1c764}\label{classslang_1_1syntax_1_1SyntaxNode_a28195377267272fb5a9a9656aae1c764}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!sourceRange@{sourceRange}}
+\index{sourceRange@{sourceRange}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{sourceRange()}{sourceRange()}}
+{\footnotesize\ttfamily Source\+Range slang\+::syntax\+::\+Syntax\+Node\+::source\+Range (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the source range of the node. 
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a49f92aa33b0ae69980cbf0041e08d90d}\label{classslang_1_1syntax_1_1SyntaxNode_a49f92aa33b0ae69980cbf0041e08d90d}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!toString@{toString}}
+\index{toString@{toString}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string slang\+::syntax\+::\+Syntax\+Node\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Print the node and all of its children to a string. 
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a0cedb66d8e695e4c5c69e9290652d7fa}\label{classslang_1_1syntax_1_1SyntaxNode_a0cedb66d8e695e4c5c69e9290652d7fa}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!visit@{visit}}
+\index{visit@{visit}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{visit()}{visit()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename TVisitor , typename... Args$>$ \\
+decltype(auto) slang\+::syntax\+::\+Syntax\+Node\+::visit (\begin{DoxyParamCaption}\item[{TVisitor \&}]{visitor,  }\item[{Args \&\&...}]{args }\end{DoxyParamCaption})}
+
+Applies a visitor object to this node by dispatching based on the dynamic kind. The given {\itshape args} are forwarded to the visitor. \mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a803c336cceefa46cff33f077e77398a5}\label{classslang_1_1syntax_1_1SyntaxNode_a803c336cceefa46cff33f077e77398a5}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!visit@{visit}}
+\index{visit@{visit}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{visit()}{visit()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename TVisitor , typename... Args$>$ \\
+decltype(auto) slang\+::syntax\+::\+Syntax\+Node\+::visit (\begin{DoxyParamCaption}\item[{TVisitor \&}]{visitor,  }\item[{Args \&\&...}]{args }\end{DoxyParamCaption}) const}
+
+Applies a visitor object to this node by dispatching based on the dynamic kind. The given {\itshape args} are forwarded to the visitor. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}\label{classslang_1_1syntax_1_1SyntaxNode_ac893a4d23a77a55eb8eb17d67099ac43}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!kind@{kind}}
+\index{kind@{kind}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{kind}{kind}}
+{\footnotesize\ttfamily Syntax\+Kind slang\+::syntax\+::\+Syntax\+Node\+::kind}
+
+
+
+The kind of syntax node. 
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00095}{95}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_a43a74c2e3b0874740abef3a5153f2c49}\label{classslang_1_1syntax_1_1SyntaxNode_a43a74c2e3b0874740abef3a5153f2c49}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!parent@{parent}}
+\index{parent@{parent}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}}$\ast$ slang\+::syntax\+::\+Syntax\+Node\+::parent = nullptr}
+
+The parent node of this syntax node. The root of the syntax tree does not have a parent (will be nullptr). 
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00099}{99}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxNode_aae6b46376d0c5cba0abfc29d57a3299c}\label{classslang_1_1syntax_1_1SyntaxNode_aae6b46376d0c5cba0abfc29d57a3299c}} 
+\index{slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}!previewNode@{previewNode}}
+\index{previewNode@{previewNode}!slang::syntax::SyntaxNode@{slang::syntax::SyntaxNode}}
+\doxysubsubsection{\texorpdfstring{previewNode}{previewNode}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}}$\ast$ slang\+::syntax\+::\+Syntax\+Node\+::preview\+Node = nullptr}
+
+
+
+An potional pointer to a syntax node tha can be useful to know ahead of time when visiting this node. 
+
+The node, if set, is underneath this node in the syntax tree.
+
+For example, an enum declaration deep inside an expression tree needs to be known up front to add its members to its parent scope. 
+
+Definition at line \mbox{\hyperlink{SyntaxNode_8h_source_l00108}{108}} of file \mbox{\hyperlink{SyntaxNode_8h_source}{Syntax\+Node.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{SyntaxNode_8h}{Syntax\+Node.\+h}}\end{DoxyCompactItemize}

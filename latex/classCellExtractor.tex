@@ -1,0 +1,163 @@
+\hypertarget{classCellExtractor}{}\doxysection{Cell\+Extractor Class Reference}
+\label{classCellExtractor}\index{CellExtractor@{CellExtractor}}
+
+
+{\ttfamily \#include $<$verilog\+\_\+utils.\+hpp$>$}
+
+
+
+Inheritance diagram for Cell\+Extractor\+:
+% FIG 0
+
+
+Collaboration diagram for Cell\+Extractor\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCellExtractor_ab8b425b3ed88f8a3d778b082299f9b9e}{Cell\+Extractor}} (const std\+::string \&target\+Cell)
+\item 
+void \mbox{\hyperlink{classCellExtractor_a47f5b76a6876f10dbbbd278625f95e6a}{handle}} (const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&module)
+\item 
+bool \mbox{\hyperlink{classCellExtractor_a0a91984aface381a68def3a0a8515d57}{found\+Target\+Cell}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter$<$ Cell\+Extractor $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_aee8572992e44b0cea52bd72ee1e66c5b}{Syntax\+Rewriter}} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a9da1110f23efabf52212982d52d64601}{transform}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} $>$ \&tree, const Source\+Library $\ast$library=nullptr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor}{slang\+::syntax\+::\+Syntax\+Visitor$<$ TDerived $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_aecb294b0686307633702e2bb937246b6}{visit}} (T \&\&t)
+\begin{DoxyCompactList}\small\item\em Visit the provided node, of static type T. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visit\+Default}} (T \&\&node)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string \& \mbox{\hyperlink{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}{target\+Cell\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}{found\+Target\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Types inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter$<$ Cell\+Extractor $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} = parsing\+::\+Token
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter$<$ Cell\+Extractor $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ae75ddbcab869a09077dc1fa0ef01bbcb}{parse}} (std\+::string\+\_\+view text)
+\begin{DoxyCompactList}\small\item\em A helper for derived classes that parses some text into syntax nodes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ac7c9f8d4bc01e65e4eaa0afd6cec31e2}{remove}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&old\+Node)
+\begin{DoxyCompactList}\small\item\em Register a removal for the given syntax node from the tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_af813c09cb3221658fb4531e5242ff77d}{replace}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&old\+Node, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&new\+Node)
+\begin{DoxyCompactList}\small\item\em Replace the given {\itshape old\+Node} with {\itshape new\+Node} in the rewritten tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ad995d654a9bcf7228ee205b0b3acc104}{insert\+Before}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&old\+Node, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&new\+Node)
+\begin{DoxyCompactList}\small\item\em Insert {\itshape new\+Node} before {\itshape old\+Node} in the rewritten tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_abc4bfb5d46e0e37169d378da14cd99cb}{insert\+After}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&old\+Node, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&new\+Node)
+\begin{DoxyCompactList}\small\item\em Insert {\itshape new\+Node} after {\itshape old\+Node} in the rewritten tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a1d78a3cc6335811b437ddbb0c88f10a9}{insert\+At\+Front}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{Syntax\+List\+Base}} \&list, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&new\+Node, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} separator=\{\})
+\begin{DoxyCompactList}\small\item\em Insert {\itshape new\+Node} at the front of {\itshape list} in the rewritten tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_aabf4247f8c732f9423585d65ee42f642}{insert\+At\+Back}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxListBase}{Syntax\+List\+Base}} \&list, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&new\+Node, \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} separator=\{\})
+\begin{DoxyCompactList}\small\item\em Insert {\itshape new\+Node} at the back of {\itshape list} in the rewritten tree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_abe3f1325c14b70989602daff6685f635}{make\+Token}} (parsing\+::\+Token\+Kind kind, std\+::string\+\_\+view text, std\+::span$<$ const parsing\+::\+Trivia $>$ trivia=\{\})
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_acb8d1208e542a0c84e60228ff64dc84f}{make\+Id}} (std\+::string\+\_\+view text, std\+::span$<$ const parsing\+::\+Trivia $>$ trivia=\{\})
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ae67f64340782e6e4aff06624d519c1aa}{make\+Id}} (std\+::string\+\_\+view text, parsing\+::\+Trivia trivia)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a449c59a8d4ac3ffede95f996598dbb40}{Token}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_af38fe4bcda5af458d30d4eae78c97942}{make\+Comma}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter$<$ Cell\+Extractor $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+Bump\+Allocator \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a8bbab1516b8cb803868f77134892de96}{alloc}}
+\item 
+Syntax\+Factory \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a5e76140cb2d7ab7217f9377a36b17e83}{factory}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter$<$ Cell\+Extractor $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+static const parsing\+::\+Trivia \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a8074c74f143366160869f3f032a79183}{Single\+Space}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCellExtractor_ab8b425b3ed88f8a3d778b082299f9b9e}\label{classCellExtractor_ab8b425b3ed88f8a3d778b082299f9b9e}} 
+\index{CellExtractor@{CellExtractor}!CellExtractor@{CellExtractor}}
+\index{CellExtractor@{CellExtractor}!CellExtractor@{CellExtractor}}
+\doxysubsubsection{\texorpdfstring{CellExtractor()}{CellExtractor()}}
+{\footnotesize\ttfamily Cell\+Extractor\+::\+Cell\+Extractor (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{target\+Cell }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCellExtractor_a0a91984aface381a68def3a0a8515d57}\label{classCellExtractor_a0a91984aface381a68def3a0a8515d57}} 
+\index{CellExtractor@{CellExtractor}!foundTargetCell@{foundTargetCell}}
+\index{foundTargetCell@{foundTargetCell}!CellExtractor@{CellExtractor}}
+\doxysubsubsection{\texorpdfstring{foundTargetCell()}{foundTargetCell()}}
+{\footnotesize\ttfamily bool Cell\+Extractor\+::found\+Target\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00364}{364}} of file \mbox{\hyperlink{verilog__utils_8cpp_source}{verilog\+\_\+utils.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classCellExtractor_a47f5b76a6876f10dbbbd278625f95e6a}\label{classCellExtractor_a47f5b76a6876f10dbbbd278625f95e6a}} 
+\index{CellExtractor@{CellExtractor}!handle@{handle}}
+\index{handle@{handle}!CellExtractor@{CellExtractor}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}}
+{\footnotesize\ttfamily void Cell\+Extractor\+::handle (\begin{DoxyParamCaption}\item[{const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&}]{module }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00348}{348}} of file \mbox{\hyperlink{verilog__utils_8cpp_source}{verilog\+\_\+utils.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}\label{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}} 
+\index{CellExtractor@{CellExtractor}!foundTarget\_@{foundTarget\_}}
+\index{foundTarget\_@{foundTarget\_}!CellExtractor@{CellExtractor}}
+\doxysubsubsection{\texorpdfstring{foundTarget\_}{foundTarget\_}}
+{\footnotesize\ttfamily bool Cell\+Extractor\+::found\+Target\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+\mbox{\Hypertarget{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}\label{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}} 
+\index{CellExtractor@{CellExtractor}!targetCell\_@{targetCell\_}}
+\index{targetCell\_@{targetCell\_}!CellExtractor@{CellExtractor}}
+\doxysubsubsection{\texorpdfstring{targetCell\_}{targetCell\_}}
+{\footnotesize\ttfamily const std\+::string\& Cell\+Extractor\+::target\+Cell\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00039}{39}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{verilog__utils_8hpp}{verilog\+\_\+utils.\+hpp}}\item 
+src/\mbox{\hyperlink{verilog__utils_8cpp}{verilog\+\_\+utils.\+cpp}}\end{DoxyCompactItemize}
