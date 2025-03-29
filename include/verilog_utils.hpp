@@ -7,7 +7,7 @@
 #include <unordered_set>
 
 #include "slang/syntax/SyntaxPrinter.h"
-#include "slang/syntax/SyntaxTree.h"
+// #include "slang/syntax/SyntaxTree.h"
 #include "slang/syntax/SyntaxVisitor.h"
 
 // Creating custom visitor class
@@ -72,6 +72,7 @@ private:
   const std::vector<std::string> &outputPins_;
   const std::string cellName_;
   const std::string moduleName_;
+  std::map<std::string, std::string> portInfoMap_; // Map from port name to direction
   int depth_;
   int instance_count_;
 };

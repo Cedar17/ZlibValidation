@@ -23,35 +23,54 @@ jobs:
           sudo timedatectl set-timezone ${{ env.TZ }}
           date # 输出当前时间以验证时区是否设置成功
 
-      - name: Set up Doxygen
-        uses: ssciwr/doxygen-install@v1 # 推荐使用这个 action 来安装 Doxygen
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v3
         with:
-          version: '1.9.6' # 替换为你需要的 Doxygen 版本
-
-      - name: Set up Graphviz
-        uses: ts-graphviz/setup-graphviz@v1
-  
-      - name: Generate Documentation
+          auto-activate-base: true
+          activate-environment: ""
+      
+      - name: Install GraphViz and Doxygen via Conda
+        shell: bash -el {0}  # Important to properly activate conda env
         run: |
-          doxygen Doxyfile # 在根目录执行 Doxygen 命令，输出到 doc_doxygen 目录
+          conda update --all
+          conda --version
+          conda install -y -c conda-forge doxygen=1.9.5
+          which doxygen
+          doxygen -V
           ls -l
+          conda install -y -c conda-forge graphviz
+          # Verify installation
+          which dot
+          dot -V
+
+      - name: Generate Documentation
+        shell: bash -el {0}  # Important to properly activate conda env
+        run: |
+          which doxygen # 确保 Doxygen 已安装
+          which dot # 确保 Graphviz 已安装
+          doxygen -V # 输出 Doxygen 版本
+          dot -V # 输出 Graphviz 版本
           pwd
+          ls -l
+          doxygen Doxyfile # 在根目录执行 Doxygen 命令，输出到 doc_doxygen 目录
           ls -l
 
       - name: Install TeX Live and Make it
         uses: xu-cheng/texlive-action@v2
         with:
+          scheme: full
+          texlive_version: 2024
           run: |
             pwd
             ls -l
-            which xelatex
             cd ./doc_doxygen/latex
             pwd
-            which xelatex
             which make
+            which lualatex
             make
             pwd
             ls -l | grep refman
+            pwd
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
@@ -59,5 +78,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: doc_doxygen
-          clean: false
-
+          clean: true
+          clean-exclude: |
+            .gitignore
+            .nojekyll
+            README.md
+            index.html

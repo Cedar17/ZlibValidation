@@ -222,7 +222,7 @@ Subcommands:
 - 修改了 `LibFile::supercell()` 方法，该方法可以根据输入的 `cell_names` 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。
 - 优化了时钟引脚的处理方式，现在时钟引脚不再被视为 supercell 的输入引脚，而是仅记录为时序单元，并跳过存入 `input_pins` 集合的步骤。
 - 引入了 Doxygen 文档生成工具，用于可视化分析项目，并生成了 Doxygen HTML 文档和 LaTeX 参考手册。
-- [ ] 尚未解决手册中文显示不正确的问题，可能需要自定义 LaTeX 头文件。
+- [x] 尚未解决手册中文显示不正确的问题，可能需要自定义 LaTeX 头文件。
 
 ### 2025-03-27
 
@@ -240,5 +240,35 @@ Subcommands:
 
 ### 2025-03-28
 
-- 成功实现了在模块成员列表中插入新节点的功能。
-- 在 `ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module)` 方法中，使用 `insertAtBack(module.members, newDataNode)` 函数，可以在模块成员的末尾插入链式单元所需的中间变量声明，例如 `wire OP_i;`。
+- 实现了在模块成员列表中插入新节点的功能。具体而言，在 `ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module)` 方法中，通过 `insertAtBack(module.members, newDataNode)` 函数，成功地在模块成员的末尾插入了链式单元所需的中间变量声明，例如 `wire OP_i;`。
+- 成功地在模块内部添加了关键连接网络变量。通过解析 `CELLNAME__X#__CRITICALPORT__OUTPUTPORT` 格式的字符串，提取出关键输入端口 (`critical input port`) 和输出端口 (`OUTPUTPORT`)，用于后续的实例化端口连接。
+- 增加了用于处理多输出接口的中间网络变量 `P__UNUSEOUTPUTPORT`，用于连接不需要考察的输出端口。
+- 成功地在模块内添加了模块实例化所需的模块名和实例名称，完成了端口映射关系的连接处理。
+- 验证了代码对简单组合逻辑单元（如 `INVD0` 反相器）和复杂组合逻辑单元（如 `FA1D0` 全加器）的输出能力，结果均符合预期。
+- 为 `ModuleRewriter` 类添加了私有属性 `std::map<std::string, std::string> portInfoMap_`，用于存储端口映射关系，将端口名映射到其方向（`input/output`）。
+- 完成了实例化端口连接的细节处理：
+  - 如果是关键输入端口且为第一个实例，则直接连接到输入端口；否则，连接到 `OP_(i-1)` 这样的中间网络变量。
+  - 如果是关键输出端口，且为最后一个实例，则连接到输出端口；否则，连接到 `OP_i` 中间网络变量。
+  - 如果是其他输出端口且不是最后一个实例，则连接到 `P_i__portName` 这样的中间网络变量；否则，连接名等于端口名。
+  - 其余输入端口，连接名等于端口名。
+- 文档方面，GitHub 远程仓库已开放为公开访问，并配置了 GitHub Pages。可以通过 [https://cedar17.github.io/ZlibValidation/](https://cedar17.github.io/ZlibValidation/) 访问项目文档，该页面包含 Doxygen 生成的 HTML 文档和仓库地址的链接。
+- 配置了 GitHub Actions，实现了 Doxygen 文档和 Graphviz 图的自动化构建，以及 LaTeX 参考手册的自动编译（暂不支持中文）。每次在 `dev` 和 `main` 分支的提交都会触发文档和参考手册的生成，并发布到 `gh-pages` 分支。
+- 将第三方库放置到 `include_3rd_party` 目录下，方便管理。修改了 CMakeLists 文件，将第三方库的头文件路径添加到 `include_directories` 中。修改了 Doxyfile 文件，将第三方库的头文件路径添加到 `INPUT` 中，便于文档生成工具理解第三方库函数、类的关系及使用方法。
+
+### 2025-03-29
+
+- 修复了 Doxygen 生成 LaTeX 参考手册时中文显示不正确的问题。通过修改 Doxyfile 文件，添加 `EXTRA_PACKAGES = ctex` 选项，并指定 `lualatex` 作为编译器，成功解决了中文显示问题。同时，从 `include_3rd_party` 目录中移除了 `Allsyntax.h` 文件，避免了由于 LaTeX 文档过大导致的 "TeX capacity exceeded, sorry [main memory size=5000000]" 内存不足问题。
+- 实现了 Verilog 文件的顶层模块生成功能，采用非 ANSI 风格的端口声明方式，格式与 `liberate_lv` 工具生成的完全一致。实现过程如下：
+  - 首先将各模块的 Verilog 代码存放到临时文件中。
+  - 在处理模块的过程中，使用 `std::vector<std::string>` 收集每个模块的 `input_pins` 和 `output_pins`。
+  - 遍历所有模块名称列表，拼接模块名和引脚名，生成顶层模块的 `all_input_ports` 和 `all_output_ports`。
+  - 使用字符串拼接方式构建 `validate_top` 模块的完整代码。
+  - 最后将临时文件内容与顶层模块代码合并，输出到最终的 Verilog 文件中。
+- 更改`deploy-docs.yml`，修复了 GitHub Action 生成的 LaTeX 参考手册中的图像显示问题。具体步骤如下：
+  - 设置系统时区为 Asia/Shanghai (东八区)。
+  - 安装 miniconda 并更新 conda。
+  - 通过 conda 安装 1.9.5 版本的 Doxygen，并安装 graphviz 以解决依赖关系，确保每个 dot 图都能正确编译出 pdf 文件。
+  - 使用 `doxygen` 命令生成 HTML 文档和 tex 文件。
+  - 采用 action marketplace 提供的 `xu-cheng/texlive-action@v2` 安装全量的 texlive2024。
+  - 进入 `./doc_doxygen/latex` 目录，运行 `make` 命令使用 lualatex 编译 tex 文件，生成 pdf 文件。
+  - 使用 `JamesIves/github-pages-deploy-action@v4` 将生成的 pdf 文件上传到 GitHub Pages 发布，并保留 `README.md` 和 `index.html` 文件。

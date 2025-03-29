@@ -82,6 +82,8 @@ file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 file(GLOB_RECURSE HEADERS 
     ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include_3rd_party/*.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include_3rd_party/*.hpp
 )
 
 # Add target
@@ -90,13 +92,11 @@ add_executable(zlibvalidation ${SOURCES} ${HEADERS})
 # Set C++ standard at target level
 target_compile_features(zlibvalidation PRIVATE cxx_std_20)
 
-# Link libraries
-# Configure includes and libraries
-target_include_directories(zlibvalidation PRIVATE 
+# Configure includes and links
+target_include_directories(zlibvalidation PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${CMAKE_BINARY_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include_3rd_party
 )
-
 target_link_directories(zlibvalidation PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 target_link_libraries(zlibvalidation PRIVATE 
     si2dr_liberty

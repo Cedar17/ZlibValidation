@@ -47,15 +47,15 @@ LibFile::LibFile(const std::string &filepath, const std::string &loggername)
 
 LibFile::~LibFile() { logger_->info("Closing file: '{}'", filename_); }
 
+
 /**
- * @brief Writes the JSON data stored in the lib_json_ member to a file.
+ * @brief Writes the JSON data stored in the object to a file.
  *
- * This function attempts to open the specified file for writing. If the file
- * cannot be opened, an error message is logged. If the file is successfully
- * opened, the JSON data is written to the file with an indentation of 2 spaces.
- * After writing, the file is closed and a success message is logged.
+ * This method opens the file specified by jsonname_ and writes the content of lib_json_
+ * with an indentation of 2 spaces. If the file cannot be opened, an error message is logged.
+ * Upon successful writing, an informational message is logged.
  *
- * @param jsonname_ The name of the file to which the JSON data will be written.
+ * @throws None directly, but std::ofstream operations may throw exceptions
  */
 void LibFile::writeJsonToFile() {
   std::ofstream out(jsonname_);
@@ -448,18 +448,18 @@ void LibFile::mono(const bool is_slew) {
 
 /**
  * @brief Creates supercells based on standard cells in the library file.
- * 
+ *
  * This method creates supercells by combining standard cells in chains.
  * For each input-output pin pair of a cell, it creates a supercell entry
  * with naming format: <cellname>__X<chain_length>__<input_pin>__<output_pin>.
  * The results are written to a .map file.
- * 
+ *
  * For sequential cells (with clock pins), the chain length is always set to 1
  * regardless of the requested chain length.
- * 
+ *
  * @param chain_length The length of the chain for combinational cells
  * @param cell_names Vector of specific cell names to process. If empty, all cells will be processed.
- * 
+ *
  * @note Before creating supercells, this method checks for the existence of
  *       a JSON representation of the Liberty file and parses it if not found.
  * @note The method will report any requested cells that were not found in the library.
@@ -593,15 +593,40 @@ void LibFile::supercell(const int chain_length, const std::vector<std::string> &
   logger_->info("Supercell creation complete in '{}'", basename_ + ".map");
 }
 
+/**
+ * @brief Generates Verilog files for cell validation based on the library file.
+ *
+ * This function creates Verilog modules for each cell in the specified chain and
+ * generates a top-level module that connects them all together. The process involves:
+ *
+ * 1. Creating supercells based on the specified chain length and cell names
+ * 2. Reading the mapping file to identify supercell name relationships
+ * 3. Generating individual Verilog modules for each supercell, handling both
+ *    sequential and combinational cells differently
+ * 4. Creating ANSI-style port definitions for each module
+ * 5. Using the slang library to build proper syntax trees for Verilog modules
+ * 6. Creating a top-level module that instantiates all the individual modules
+ * 7. Writing the complete Verilog output to the output file
+ *
+ * Sequential cells are instantiated once, while combinational cells are instantiated
+ * multiple times based on the specified chain length.
+ *
+ * @param chain_length The number of times to chain combinational cells together
+ * @param cell_names Vector of cell names to include in the Verilog generation
+ *
+ * @note The function writes a temporary file during processing that might not be removed
+ *       when the function completes (commented out cleanup code).
+ */
 void LibFile::verilog(const int chain_length, const std::vector<std::string> &cell_names) {
   logger_->info("Creating Verilog for '{}'", filename_);
 
   this->supercell(chain_length, cell_names);
 
-  // write to .v file
-  std::ofstream out(basename_ + ".v");
+  // Create a temporary file for individual modules
+  std::string temp_file = basename_ + "_temp.v";
+  std::ofstream out(temp_file);
   if (!out.is_open()) {
-    logger_->error("Could not open file '{}' for writing", basename_ + ".v");
+    logger_->error("Could not open temp file '{}' for writing", temp_file);
     return;
   }
 
@@ -626,6 +651,11 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
   in.close();
   logger_->info("Read {} supercells from '{}'", supercell_entries.size(), basename_ + ".map");
 
+  // Store module information for top-level creation
+  std::vector<std::string> module_names;
+  std::map<std::string, std::vector<std::string>> module_inputs;
+  std::map<std::string, std::vector<std::string>> module_outputs;
+
   // Generate verilog module for each supercell
   for (const auto &supercell_entry : supercell_entries) {
     // Check if the cell is sequential
@@ -636,6 +666,9 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
     const std::string &cell_name = supercell_entry.first;
     // Get supercell name(as well as module name) from pair
     const std::string &module_name = supercell_entry.second;
+
+    // Store module name for top-level creation
+    module_names.push_back(module_name);
 
     logger_->info("Creating Module: '{}' from Cell '{}", module_name, cell_name);
 
@@ -658,14 +691,22 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
         if (pin.contains("clock")) {
           is_sequential = true;
         }
-        input_pins.push_back(pin["pin_name"].get<std::string>());
-        input_pins_ss << pin["pin_name"].get<std::string>() << ", ";
+        std::string pin_name = pin["pin_name"].get<std::string>();
+        input_pins.push_back(pin_name);
+        input_pins_ss << pin_name << ", ";
+
+        // Store input pin name for top-level creation
+        module_inputs[module_name].push_back(pin_name);
       }
     }
     if (cell_json.contains("output_pins")) {
       for (const auto &pin : cell_json["output_pins"]) {
-        output_pins.push_back(pin["pin_name"].get<std::string>());
-        output_pins_ss << pin["pin_name"].get<std::string>() << ", ";
+        std::string pin_name = pin["pin_name"].get<std::string>();
+        output_pins.push_back(pin_name);
+        output_pins_ss << pin_name << ", ";
+
+        // Store output pin name for top-level creation
+        module_outputs[module_name].push_back(pin_name);
       }
     }
     logger_->debug("Input pins set: {}", input_pins_ss.str());
@@ -712,10 +753,11 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
       ModuleRewriter rewriter(input_pins, output_pins, supercell_entry, instance_count, logger_);
 
       tree = rewriter.transform(tree);
+      // Revisit the syntax tree to check architecture
       rewriter.visit(tree->root());
 
       // Output the transformed syntax tree
-      out << "`timescale 1ns/1ps" << std::endl;
+      out << "`timescale 1ns/10ps" << std::endl;
       out << slang::syntax::SyntaxPrinter::printFile(*tree) << std::endl << std::endl;
     } else {
       logger_->error("Failed to create syntax tree for module '{}'", module_name);
@@ -724,5 +766,117 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
   }
 
   out.close();
+
+  // Create the top-level module
+  std::ofstream final_out(basename_ + ".v");
+  if (!final_out.is_open()) {
+    logger_->error("Could not open file '{}' for writing", basename_ + ".v");
+    return;
+  }
+
+  // Collect all port names separately for inputs and outputs
+  std::vector<std::string> all_input_ports;
+  std::vector<std::string> all_output_ports;
+  std::stringstream top_instances;
+
+  // First pass: collect all port names
+  for (const auto &module_name : module_names) {
+    // Collect input port names
+    for (const auto &pin : module_inputs[module_name]) {
+      all_input_ports.push_back(module_name + "__" + pin);
+    }
+
+    // Collect output port names
+    for (const auto &pin : module_outputs[module_name]) {
+      all_output_ports.push_back(module_name + "__" + pin);
+    }
+
+    // Create instance
+    std::string instance_name = "I_" + module_name.substr(0, module_name.find("__X"));
+    for (size_t i = module_name.find("__X") + 3; i < module_name.length(); i++) {
+      if (module_name[i] == '_' && module_name[i + 1] == '_') {
+        instance_name += "__" + module_name.substr(i + 2);
+        break;
+      }
+    }
+
+    // Generate port connections for this instance
+    std::stringstream instance_ports;
+    for (const auto &pin : module_inputs[module_name]) {
+      instance_ports << "." << pin << "(" << module_name << "__" << pin << "), ";
+    }
+    for (const auto &pin : module_outputs[module_name]) {
+      instance_ports << "." << pin << "(" << module_name << "__" << pin << "), ";
+    }
+
+    // Remove last comma and space
+    std::string instance_ports_str = instance_ports.str();
+    if (!instance_ports_str.empty()) {
+      instance_ports_str = instance_ports_str.substr(0, instance_ports_str.length() - 2);
+    }
+
+    top_instances << "  " << module_name << "  " << instance_name << " (" << instance_ports_str
+                  << ");\n";
+  }
+
+  // Now generate the port list with all inputs first, then all outputs
+  std::stringstream top_ports;
+
+  // Add all input ports first
+  for (size_t i = 0; i < all_input_ports.size(); ++i) {
+    top_ports << all_input_ports[i];
+    if (i < all_input_ports.size() - 1 || !all_output_ports.empty()) {
+      top_ports << ", ";
+    }
+  }
+
+  // Then add all output ports
+  for (size_t i = 0; i < all_output_ports.size(); ++i) {
+    top_ports << all_output_ports[i];
+    if (i < all_output_ports.size() - 1) {
+      top_ports << ", ";
+    }
+  }
+
+  // Generate input and output declarations
+  std::stringstream top_inputs;
+  std::stringstream top_outputs;
+
+  // Generate input declarations
+  for (const auto &port : all_input_ports) {
+    top_inputs << "  input " << port << ";\n";
+  }
+
+  // Generate output declarations
+  for (const auto &port : all_output_ports) {
+    top_outputs << "  output " << port << ";\n";
+  }
+
+  // Write the top module
+  final_out << "`timescale 1ns/10ps" << std::endl;
+  final_out << "module validate_top ( " << top_ports.str() << " );" << std::endl;
+  final_out << std::endl; // Add newline before port declarations
+  final_out << top_inputs.str();
+  final_out << top_outputs.str();
+  final_out << std::endl;
+  final_out << top_instances.str();
+  final_out << "endmodule" << std::endl << std::endl;
+
+  // Append the module definitions from the temporary file
+  std::ifstream temp_in(temp_file);
+  if (temp_in.is_open()) {
+    final_out << temp_in.rdbuf();
+    temp_in.close();
+  } else {
+    logger_->error("Could not open temp file '{}' for reading", temp_file);
+  }
+
+  final_out.close();
+
+  // Remove temporary file
+  // if (std::filesystem::exists(temp_file)) {
+  //   std::filesystem::remove(temp_file);
+  // }
+
   logger_->info("Verilog creation complete in '{}'", basename_ + ".v");
 }
