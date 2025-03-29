@@ -264,3 +264,11 @@ Subcommands:
   - 遍历所有模块名称列表，拼接模块名和引脚名，生成顶层模块的 `all_input_ports` 和 `all_output_ports`。
   - 使用字符串拼接方式构建 `validate_top` 模块的完整代码。
   - 最后将临时文件内容与顶层模块代码合并，输出到最终的 Verilog 文件中。
+- 更改`deploy-docs.yml`，修复了 GitHub Action 生成的 LaTeX 参考手册中的图像显示问题。具体步骤如下：
+  - 设置系统时区为 Asia/Shanghai (东八区)。
+  - 安装 miniconda 并更新 conda。
+  - 通过 conda 安装 1.9.5 版本的 Doxygen，并安装 graphviz 以解决依赖关系，确保每个 dot 图都能正确编译出 pdf 文件。
+  - 使用 `doxygen` 命令生成 HTML 文档和 tex 文件。
+  - 采用 action marketplace 提供的 `xu-cheng/texlive-action@v2` 安装全量的 texlive2024。
+  - 进入 `./doc_doxygen/latex` 目录，运行 `make` 命令使用 lualatex 编译 tex 文件，生成 pdf 文件。
+  - 使用 `JamesIves/github-pages-deploy-action@v4` 将生成的 pdf 文件上传到 GitHub Pages 发布，并保留 `README.md` 和 `index.html` 文件。
