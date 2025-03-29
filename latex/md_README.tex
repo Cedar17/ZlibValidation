@@ -224,7 +224,7 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 
 \begin{DoxyItemize}
 \item 进一步完善了对 UDP（如 {\ttfamily tsmc\+\_\+dff}）端口映射关系的解析，但其内部 Entry 尚未处理。
-\item 尝试了通过继承 {\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}} 类创建自定义类 {\ttfamily \mbox{\hyperlink{classCellExtractor}{Cell\+Extractor}}}，实现了只保留目标模块、删除其他模块，并将修改后的语法树另存为新文件。使用 {\ttfamily slang\+::syntax\+::\+Syntax\+Printer\+::print\+File()} 方法可以将 Verilog 代码输出到文件。
+\item 尝试了通过继承 {\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}} 类创建自定义类 {\ttfamily \mbox{\hyperlink{classCellExtractor}{Cell\+Extractor}}}，实现了只保留目标模块、删除其他模块，并将修改后的语法树另存为新文件。使用 {\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{slang\+::syntax\+::\+Syntax\+Printer\+::print\+File()}}} 方法可以将 Verilog 代码输出到文件。
 \item 创建了 {\ttfamily \mbox{\hyperlink{classCellPrinter}{Cell\+Printer}}} 类，继承自 {\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor}{slang\+::syntax\+::\+Syntax\+Visitor}}} 类。当访问到目标模块时，使用 {\ttfamily module.\+to\+String()} 方法也能将 Verilog 代码输出到文件，但发现输出结果中空行会被删除。
 \item 修改了 {\ttfamily \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{Lib\+File\+::supercell()}}} 方法，该方法可以根据输入的 {\ttfamily cell\+\_\+names} 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。
 \item 优化了时钟引脚的处理方式，现在时钟引脚不再被视为 supercell 的输入引脚，而是仅记录为时序单元，并跳过存入 {\ttfamily input\+\_\+pins} 集合的步骤。
@@ -241,7 +241,7 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \item 从 {\ttfamily lib\+\_\+json\+\_\+} 中提取单元的输入/输出端口信息。
 \item 根据是否存在时钟引脚，确定 Verilog 模块中 instance 的生成数量（时序逻辑为 1，组合逻辑等于 chain length）。
 \item 通过字符串操作生成 ANSI 风格的端口列表，并与模块名组合成完整的 {\ttfamily full\+Module\+Text}。
-\item 使用 {\ttfamily slang\+::syntax\+::\+Syntax\+Tree\+::from\+Text} 从 {\ttfamily full\+Module\+Text} 生成语法树。
+\item 使用 {\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a51378e0851d9dc03ab4b75e94b061fb6}{slang\+::syntax\+::\+Syntax\+Tree\+::from\+Text}}} 从 {\ttfamily full\+Module\+Text} 生成语法树。
 \item 将语法树传递给 {\ttfamily \mbox{\hyperlink{classModuleRewriter}{Module\+Rewriter}}} 类，使用其 {\ttfamily transform} 方法遍历模块成员，并通过 {\ttfamily handle()} 方法进行处理。
 \item 最后，使用 {\ttfamily slang\+::syntax\+::\+Syntax\+Printer\+::print\+File($\ast$tree)} 将处理后的语法树输出到文件。
 \end{DoxyItemize}

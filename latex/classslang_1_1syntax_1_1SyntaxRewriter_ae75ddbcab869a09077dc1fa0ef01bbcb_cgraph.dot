@@ -1,0 +1,11 @@
+digraph "slang::syntax::SyntaxRewriter::parse"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [label="slang::syntax::SyntaxRewriter\l::parse",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="A helper for derived classes that parses some text into syntax nodes."];
+  Node1 -> Node2 [color="steelblue1",style="solid"];
+  Node2 [label="slang::syntax::SyntaxTree\l::fromText",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classslang_1_1syntax_1_1SyntaxTree.html#a51378e0851d9dc03ab4b75e94b061fb6",tooltip=" "];
+}

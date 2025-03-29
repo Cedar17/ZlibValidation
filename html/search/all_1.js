@@ -5,5 +5,6 @@ var searchData=
   ['basename_5f_2',['basename_',['../classLibFile.html#a167d7e2669926e724247cdd7e7bf48f4',1,'LibFile']]],
   ['begin_3',['begin',['../classslang_1_1syntax_1_1SeparatedSyntaxList.html#a519700b1427763a0fc0d26277f9e236a',1,'slang::syntax::SeparatedSyntaxList::begin()'],['../classslang_1_1syntax_1_1SeparatedSyntaxList.html#afb46214217ee1b88ac53e14ebc683b29',1,'slang::syntax::SeparatedSyntaxList::begin() const']]],
   ['bool_5f_4',['bool_',['../classValuesIterator.html#a22e4e00c4c8750c88381fb97ab020152',1,'ValuesIterator']]],
-  ['build_5ftimestamp_5',['BUILD_TIMESTAMP',['../version_8h.html#a50e40f98b0a2e1338e46f50d178434c1',1,'version.h']]]
+  ['buffer_5',['buffer',['../classslang_1_1syntax_1_1SyntaxPrinter.html#a8d67e0618b6da4d89b5cdfce0b821e27',1,'slang::syntax::SyntaxPrinter']]],
+  ['build_5ftimestamp_6',['BUILD_TIMESTAMP',['../version_8h.html#a50e40f98b0a2e1338e46f50d178434c1',1,'version.h']]]
 ];

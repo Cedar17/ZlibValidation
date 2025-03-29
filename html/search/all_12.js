@@ -10,5 +10,6 @@ var searchData=
   ['tostring_7',['toString',['../classslang_1_1syntax_1_1SyntaxNode.html#a49f92aa33b0ae69980cbf0041e08d90d',1,'slang::syntax::SyntaxNode']]],
   ['transform_8',['transform',['../classslang_1_1syntax_1_1SyntaxRewriter.html#a9da1110f23efabf52212982d52d64601',1,'slang::syntax::SyntaxRewriter']]],
   ['transformtree_9',['transformTree',['../namespaceslang_1_1syntax_1_1detail.html#a95f288851bc85f7bb605cc092c7d0e31',1,'slang::syntax::detail']]],
-  ['type_10',['type',['../structsi2drExprT.html#ac335882008c198adf8f3f3a611c9157a',1,'si2drExprT']]]
+  ['treeorerror_10',['TreeOrError',['../classslang_1_1syntax_1_1SyntaxTree.html#a0c5371bd6d8e285a80415363a05c0078',1,'slang::syntax::SyntaxTree']]],
+  ['type_11',['type',['../structsi2drExprT.html#ac335882008c198adf8f3f3a611c9157a',1,'si2drExprT']]]
 ];

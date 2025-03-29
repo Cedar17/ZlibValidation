@@ -5,5 +5,6 @@ var searchData=
   ['_7elibattribute_2',['~LibAttribute',['../classLibAttribute.html#a530116e44eeaa2d6579eaf010f64cd03',1,'LibAttribute']]],
   ['_7elibfile_3',['~LibFile',['../classLibFile.html#ae6956feb0dd50065d6abf8f3cd46bb80',1,'LibFile']]],
   ['_7elibgroup_4',['~LibGroup',['../classLibGroup.html#a6da7f779ef13a1671ca3e0ade3244995',1,'LibGroup']]],
-  ['_7evaluesiterator_5',['~ValuesIterator',['../classValuesIterator.html#a4148907d9ade5fba49302dce79c0525b',1,'ValuesIterator']]]
+  ['_7esyntaxtree_5',['~SyntaxTree',['../classslang_1_1syntax_1_1SyntaxTree.html#a99648a33781788e365358df6e90707b6',1,'slang::syntax::SyntaxTree']]],
+  ['_7evaluesiterator_6',['~ValuesIterator',['../classValuesIterator.html#a4148907d9ade5fba49302dce79c0525b',1,'ValuesIterator']]]
 ];

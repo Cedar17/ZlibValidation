@@ -4,6 +4,8 @@ var searchData=
   ['second_1',['second',['../structslang_1_1syntax_1_1detail_1_1SyntaxChange.html#a3b8c3bd34cfa2157fd3b24925a7dea37',1,'slang::syntax::detail::SyntaxChange']]],
   ['separator_2',['separator',['../structslang_1_1syntax_1_1detail_1_1SyntaxChange.html#aefedd8f2b382bbcdb8643543633f49d6',1,'slang::syntax::detail::SyntaxChange']]],
   ['singlespace_3',['SingleSpace',['../classslang_1_1syntax_1_1SyntaxRewriter.html#a8074c74f143366160869f3f032a79183',1,'slang::syntax::SyntaxRewriter']]],
-  ['sourcemanager_4',['sourceManager',['../classslang_1_1syntax_1_1SyntaxRewriter.html#af313018a71febc89f7f2f19733360922',1,'slang::syntax::SyntaxRewriter']]],
-  ['str_5f_5',['str_',['../classValuesIterator.html#aa7e3c1f2bf00ce93f55f807aaf0b11d3',1,'ValuesIterator']]]
+  ['sourceman_4',['sourceMan',['../classslang_1_1syntax_1_1SyntaxTree.html#a20bb2b86471fa44d9a47a28676e4a408',1,'slang::syntax::SyntaxTree']]],
+  ['sourcemanager_5',['sourceManager',['../classslang_1_1syntax_1_1SyntaxPrinter.html#a60edc72f4f8deb99bd1c31e7a6cbf1a7',1,'slang::syntax::SyntaxPrinter::sourceManager()'],['../classslang_1_1syntax_1_1SyntaxRewriter.html#af313018a71febc89f7f2f19733360922',1,'slang::syntax::SyntaxRewriter::sourceManager()']]],
+  ['squashnewlines_6',['squashNewlines',['../classslang_1_1syntax_1_1SyntaxPrinter.html#a8cbd84965abf749734dbb5346920c644',1,'slang::syntax::SyntaxPrinter']]],
+  ['str_5f_7',['str_',['../classValuesIterator.html#aa7e3c1f2bf00ce93f55f807aaf0b11d3',1,'ValuesIterator']]]
 ];

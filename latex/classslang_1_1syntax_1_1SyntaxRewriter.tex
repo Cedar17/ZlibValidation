@@ -17,7 +17,7 @@ Collaboration diagram for slang\+::syntax\+::Syntax\+Rewriter\texorpdfstring{$<$
 \item 
 \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_aee8572992e44b0cea52bd72ee1e66c5b}{Syntax\+Rewriter}} ()
 \item 
-std\+::shared\+\_\+ptr$<$ Syntax\+Tree $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a9da1110f23efabf52212982d52d64601}{transform}} (const std\+::shared\+\_\+ptr$<$ Syntax\+Tree $>$ \&tree, const Source\+Library $\ast$library=nullptr)
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a9da1110f23efabf52212982d52d64601}{transform}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} $>$ \&tree, const Source\+Library $\ast$library=nullptr)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor}{slang\+::syntax\+::\+Syntax\+Visitor$<$ TDerived $>$}}}
 \begin{DoxyCompactItemize}
@@ -75,7 +75,7 @@ Source\+Manager $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a
 \item 
 \mbox{\hyperlink{structslang_1_1syntax_1_1detail_1_1ChangeCollection}{detail\+::\+Change\+Collection}} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ab1cb6b63bf6c21049a64a20e36eaf40f}{commits}}
 \item 
-std\+::vector$<$ std\+::shared\+\_\+ptr$<$ Syntax\+Tree $>$ $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ac0cb782635b2d91603cb9d174be77e5a}{temp\+Trees}}
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} $>$ $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_ac0cb782635b2d91603cb9d174be77e5a}{temp\+Trees}}
 \end{DoxyCompactItemize}
 
 
@@ -244,6 +244,8 @@ A helper for derived classes that parses some text into syntax nodes.
 
 Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00134}{134}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
 
+Here is the call graph for this function\+:
+% FIG 6
 \mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxRewriter_ac7c9f8d4bc01e65e4eaa0afd6cec31e2}\label{classslang_1_1syntax_1_1SyntaxRewriter_ac7c9f8d4bc01e65e4eaa0afd6cec31e2}} 
 \index{slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}!remove@{remove}}
 \index{remove@{remove}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
@@ -279,7 +281,7 @@ Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00149}{149}} of fil
 \index{transform@{transform}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
 \doxysubsubsection{\texorpdfstring{transform()}{transform()}}
 {\footnotesize\ttfamily template$<$typename TDerived $>$ \\
-std\+::shared\+\_\+ptr$<$ Syntax\+Tree $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::transform (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ Syntax\+Tree $>$ \&}]{tree,  }\item[{const Source\+Library $\ast$}]{library = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::transform (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} $>$ \&}]{tree,  }\item[{const Source\+Library $\ast$}]{library = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Transforms the given syntax tree using the rewriter. The tree will be visited in order and each node will be given a chance to be rewritten (by providing \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_aecb294b0686307633702e2bb937246b6}{visit()}} implementations in the derived class).
 
@@ -294,9 +296,9 @@ lifetimes of new and old trees are independent from each other. If you shallow c
 Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00116}{116}} of file \mbox{\hyperlink{SyntaxVisitor_8h_source}{Syntax\+Visitor.\+h}}.
 
 Here is the call graph for this function\+:
-% FIG 6
-Here is the caller graph for this function\+:
 % FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
 
 
 \doxysubsection{Member Data Documentation}
@@ -360,7 +362,7 @@ Definition at line \mbox{\hyperlink{SyntaxVisitor_8h_source_l00199}{199}} of fil
 \index{tempTrees@{tempTrees}!slang::syntax::SyntaxRewriter$<$ TDerived $>$@{slang::syntax::SyntaxRewriter$<$ TDerived $>$}}
 \doxysubsubsection{\texorpdfstring{tempTrees}{tempTrees}}
 {\footnotesize\ttfamily template$<$typename TDerived $>$ \\
-std\+::vector$<$std\+::shared\+\_\+ptr$<$Syntax\+Tree$>$ $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::temp\+Trees\hspace{0.3cm}{\ttfamily [private]}}
+std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}}$>$ $>$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang\+::syntax\+::\+Syntax\+Rewriter}}$<$ TDerived $>$\+::temp\+Trees\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

@@ -1,0 +1,345 @@
+\hypertarget{classslang_1_1syntax_1_1SyntaxPrinter}{}\doxysection{slang\+::syntax\+::Syntax\+Printer Class Reference}
+\label{classslang_1_1syntax_1_1SyntaxPrinter}\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+
+
+{\ttfamily \#include $<$Syntax\+Printer.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a47e9fc898a804518d6c33498df90fb52}{Syntax\+Printer}} ()=default
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a7f9cae533a6dc23c999a4995ffcfd571}{Syntax\+Printer}} (const Source\+Manager \&\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a60edc72f4f8deb99bd1c31e7a6cbf1a7}{source\+Manager}})
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8214b2cf01cc7653fc5b3268b78307e2}{append}} (std\+::string\+\_\+view text)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_af4832e9a2233940f2d2970c93318f52e}{print}} (parsing\+::\+Trivia trivia)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_afb6e5b5ba2941a4c4dc0fc54fa02f2fd}{print}} (parsing\+::\+Token token)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a951be5d8283d3a12dbf9fd505d9c444c}{print}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&node)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abdbd945057bf62e92146f77ada2ae7f1}{print}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} \&tree)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a60cd9c72add260f01bd45f8bb4e62cb3}{set\+Include\+Trivia}} (bool include)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a4cef7da2258598172a79cecd1c6dcaab}{set\+Include\+Missing}} (bool include)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a7605ebf7e46eeb3cdc459282b8177490}{set\+Include\+Skipped}} (bool include)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_af80fcfa24e1fcccfd9610151af4c5869}{set\+Include\+Directives}} (bool include)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ad304f46f1280d75d42faaf18671d3d4f}{set\+Include\+Preprocessed}} (bool include)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a6437b9b775ad425e0aa0fddd6c245275}{set\+Include\+Comments}} (bool include)
+\item 
+\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abcabb37f57db5565ed5d172d419c0c2d}{set\+Squash\+Newlines}} (bool include)
+\item 
+std\+::string \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a09b3251eed8b0f6714551947af55742c}{str}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{print\+File}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} \&tree)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8d67e0618b6da4d89b5cdfce0b821e27}{buffer}}
+\item 
+const Source\+Manager $\ast$ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a60edc72f4f8deb99bd1c31e7a6cbf1a7}{source\+Manager}} = nullptr
+\item 
+bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a6abf99f956952cac7ec11d77928db568}{include\+Trivia}} = true
+\item 
+bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_adc01ad669be4a30f261fba09f7de7b22}{include\+Missing}} = false
+\item 
+bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_abad540111d3b426de5e65c22b54ff208}{include\+Skipped}} = false
+\item 
+bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a294d6fe782d86aead552b851f82817ae}{include\+Directives}} = false
+\item 
+bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_aaec60c67a664f7ff1151ae3b0d00209c}{include\+Preprocessed}} = true
+\item 
+bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ac4dc9f19fb95531ec5f1373cd12c8ed4}{include\+Comments}} = true
+\item 
+bool \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_a8cbd84965abf749734dbb5346920c644}{squash\+Newlines}} = true
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides support for printing tokens, trivia, or whole syntax trees back to source code. 
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00025}{25}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a47e9fc898a804518d6c33498df90fb52}\label{classslang_1_1syntax_1_1SyntaxPrinter_a47e9fc898a804518d6c33498df90fb52}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!SyntaxPrinter@{SyntaxPrinter}}
+\index{SyntaxPrinter@{SyntaxPrinter}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{SyntaxPrinter()}{SyntaxPrinter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily slang\+::syntax\+::\+Syntax\+Printer\+::\+Syntax\+Printer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a7f9cae533a6dc23c999a4995ffcfd571}\label{classslang_1_1syntax_1_1SyntaxPrinter_a7f9cae533a6dc23c999a4995ffcfd571}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!SyntaxPrinter@{SyntaxPrinter}}
+\index{SyntaxPrinter@{SyntaxPrinter}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{SyntaxPrinter()}{SyntaxPrinter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily slang\+::syntax\+::\+Syntax\+Printer\+::\+Syntax\+Printer (\begin{DoxyParamCaption}\item[{const Source\+Manager \&}]{source\+Manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a8214b2cf01cc7653fc5b3268b78307e2}\label{classslang_1_1syntax_1_1SyntaxPrinter_a8214b2cf01cc7653fc5b3268b78307e2}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!append@{append}}
+\index{append@{append}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{append()}{append()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& slang\+::syntax\+::\+Syntax\+Printer\+::append (\begin{DoxyParamCaption}\item[{std\+::string\+\_\+view}]{text }\end{DoxyParamCaption})}
+
+Append raw text to the buffer. \begin{DoxyReturn}{Returns}
+a reference to this object, to allow chaining additional method calls. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a951be5d8283d3a12dbf9fd505d9c444c}\label{classslang_1_1syntax_1_1SyntaxPrinter_a951be5d8283d3a12dbf9fd505d9c444c}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!print@{print}}
+\index{print@{print}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& slang\+::syntax\+::\+Syntax\+Printer\+::print (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{Syntax\+Node}} \&}]{node }\end{DoxyParamCaption})}
+
+Print the provided {\itshape node} to the internal buffer. \begin{DoxyReturn}{Returns}
+a reference to this object, to allow chaining additional method calls. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_abdbd945057bf62e92146f77ada2ae7f1}\label{classslang_1_1syntax_1_1SyntaxPrinter_abdbd945057bf62e92146f77ada2ae7f1}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!print@{print}}
+\index{print@{print}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& slang\+::syntax\+::\+Syntax\+Printer\+::print (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} \&}]{tree }\end{DoxyParamCaption})}
+
+Print the provided {\itshape tree} to the internal buffer. \begin{DoxyReturn}{Returns}
+a reference to this object, to allow chaining additional method calls. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_afb6e5b5ba2941a4c4dc0fc54fa02f2fd}\label{classslang_1_1syntax_1_1SyntaxPrinter_afb6e5b5ba2941a4c4dc0fc54fa02f2fd}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!print@{print}}
+\index{print@{print}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& slang\+::syntax\+::\+Syntax\+Printer\+::print (\begin{DoxyParamCaption}\item[{parsing\+::\+Token}]{token }\end{DoxyParamCaption})}
+
+Print the provided {\itshape token} to the internal buffer. \begin{DoxyReturn}{Returns}
+a reference to this object, to allow chaining additional method calls. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_af4832e9a2233940f2d2970c93318f52e}\label{classslang_1_1syntax_1_1SyntaxPrinter_af4832e9a2233940f2d2970c93318f52e}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!print@{print}}
+\index{print@{print}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& slang\+::syntax\+::\+Syntax\+Printer\+::print (\begin{DoxyParamCaption}\item[{parsing\+::\+Trivia}]{trivia }\end{DoxyParamCaption})}
+
+Print the provided {\itshape trivia} to the internal buffer. \begin{DoxyReturn}{Returns}
+a reference to this object, to allow chaining additional method calls. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}\label{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!printFile@{printFile}}
+\index{printFile@{printFile}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{printFile()}{printFile()}}
+{\footnotesize\ttfamily static std\+::string slang\+::syntax\+::\+Syntax\+Printer\+::print\+File (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree}{Syntax\+Tree}} \&}]{tree }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+A helper method that assists in printing an entire syntax tree back to source text. A \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} with useful defaults is constructed, the tree is printed, and the resulting text is returned. Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a6437b9b775ad425e0aa0fddd6c245275}\label{classslang_1_1syntax_1_1SyntaxPrinter_a6437b9b775ad425e0aa0fddd6c245275}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!setIncludeComments@{setIncludeComments}}
+\index{setIncludeComments@{setIncludeComments}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{setIncludeComments()}{setIncludeComments()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& slang\+::syntax\+::\+Syntax\+Printer\+::set\+Include\+Comments (\begin{DoxyParamCaption}\item[{bool}]{include }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets whether to include comments when printing syntax. \begin{DoxyReturn}{Returns}
+a reference to this object, to allow chaining additional method calls. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00087}{87}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_af80fcfa24e1fcccfd9610151af4c5869}\label{classslang_1_1syntax_1_1SyntaxPrinter_af80fcfa24e1fcccfd9610151af4c5869}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!setIncludeDirectives@{setIncludeDirectives}}
+\index{setIncludeDirectives@{setIncludeDirectives}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{setIncludeDirectives()}{setIncludeDirectives()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& slang\+::syntax\+::\+Syntax\+Printer\+::set\+Include\+Directives (\begin{DoxyParamCaption}\item[{bool}]{include }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets whether to include preprocessor directives when printing syntax. \begin{DoxyReturn}{Returns}
+a reference to this object, to allow chaining additional method calls. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00073}{73}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a4cef7da2258598172a79cecd1c6dcaab}\label{classslang_1_1syntax_1_1SyntaxPrinter_a4cef7da2258598172a79cecd1c6dcaab}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!setIncludeMissing@{setIncludeMissing}}
+\index{setIncludeMissing@{setIncludeMissing}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{setIncludeMissing()}{setIncludeMissing()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& slang\+::syntax\+::\+Syntax\+Printer\+::set\+Include\+Missing (\begin{DoxyParamCaption}\item[{bool}]{include }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets whether to include missing (automatically inserted) nodes when printing syntax. \begin{DoxyReturn}{Returns}
+a reference to this object, to allow chaining additional method calls. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00059}{59}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_ad304f46f1280d75d42faaf18671d3d4f}\label{classslang_1_1syntax_1_1SyntaxPrinter_ad304f46f1280d75d42faaf18671d3d4f}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!setIncludePreprocessed@{setIncludePreprocessed}}
+\index{setIncludePreprocessed@{setIncludePreprocessed}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{setIncludePreprocessed()}{setIncludePreprocessed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& slang\+::syntax\+::\+Syntax\+Printer\+::set\+Include\+Preprocessed (\begin{DoxyParamCaption}\item[{bool}]{include }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets whether to include preprocessor-\/expanded tokens when printing syntax. \begin{DoxyReturn}{Returns}
+a reference to this object, to allow chaining additional method calls. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00080}{80}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a7605ebf7e46eeb3cdc459282b8177490}\label{classslang_1_1syntax_1_1SyntaxPrinter_a7605ebf7e46eeb3cdc459282b8177490}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!setIncludeSkipped@{setIncludeSkipped}}
+\index{setIncludeSkipped@{setIncludeSkipped}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{setIncludeSkipped()}{setIncludeSkipped()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& slang\+::syntax\+::\+Syntax\+Printer\+::set\+Include\+Skipped (\begin{DoxyParamCaption}\item[{bool}]{include }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets whether to include skipped (due to some sort of error) nodes when printing syntax. \begin{DoxyReturn}{Returns}
+a reference to this object, to allow chaining additional method calls. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00066}{66}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a60cd9c72add260f01bd45f8bb4e62cb3}\label{classslang_1_1syntax_1_1SyntaxPrinter_a60cd9c72add260f01bd45f8bb4e62cb3}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!setIncludeTrivia@{setIncludeTrivia}}
+\index{setIncludeTrivia@{setIncludeTrivia}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{setIncludeTrivia()}{setIncludeTrivia()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& slang\+::syntax\+::\+Syntax\+Printer\+::set\+Include\+Trivia (\begin{DoxyParamCaption}\item[{bool}]{include }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets whether to include trivia when printing syntax. \begin{DoxyReturn}{Returns}
+a reference to this object, to allow chaining additional method calls. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00052}{52}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_abcabb37f57db5565ed5d172d419c0c2d}\label{classslang_1_1syntax_1_1SyntaxPrinter_abcabb37f57db5565ed5d172d419c0c2d}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!setSquashNewlines@{setSquashNewlines}}
+\index{setSquashNewlines@{setSquashNewlines}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{setSquashNewlines()}{setSquashNewlines()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter}{Syntax\+Printer}} \& slang\+::syntax\+::\+Syntax\+Printer\+::set\+Squash\+Newlines (\begin{DoxyParamCaption}\item[{bool}]{include }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets whether to squash adjacent newlines down into one when printing syntax. \begin{DoxyReturn}{Returns}
+a reference to this object, to allow chaining additional method calls. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00094}{94}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a09b3251eed8b0f6714551947af55742c}\label{classslang_1_1syntax_1_1SyntaxPrinter_a09b3251eed8b0f6714551947af55742c}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!str@{str}}
+\index{str@{str}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{str()}{str()}}
+{\footnotesize\ttfamily std\+::string slang\+::syntax\+::\+Syntax\+Printer\+::str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+a copy of the internal text buffer. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00100}{100}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a8d67e0618b6da4d89b5cdfce0b821e27}\label{classslang_1_1syntax_1_1SyntaxPrinter_a8d67e0618b6da4d89b5cdfce0b821e27}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!buffer@{buffer}}
+\index{buffer@{buffer}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily std\+::string slang\+::syntax\+::\+Syntax\+Printer\+::buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00108}{108}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_ac4dc9f19fb95531ec5f1373cd12c8ed4}\label{classslang_1_1syntax_1_1SyntaxPrinter_ac4dc9f19fb95531ec5f1373cd12c8ed4}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!includeComments@{includeComments}}
+\index{includeComments@{includeComments}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{includeComments}{includeComments}}
+{\footnotesize\ttfamily bool slang\+::syntax\+::\+Syntax\+Printer\+::include\+Comments = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00115}{115}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a294d6fe782d86aead552b851f82817ae}\label{classslang_1_1syntax_1_1SyntaxPrinter_a294d6fe782d86aead552b851f82817ae}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!includeDirectives@{includeDirectives}}
+\index{includeDirectives@{includeDirectives}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{includeDirectives}{includeDirectives}}
+{\footnotesize\ttfamily bool slang\+::syntax\+::\+Syntax\+Printer\+::include\+Directives = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00113}{113}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_adc01ad669be4a30f261fba09f7de7b22}\label{classslang_1_1syntax_1_1SyntaxPrinter_adc01ad669be4a30f261fba09f7de7b22}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!includeMissing@{includeMissing}}
+\index{includeMissing@{includeMissing}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{includeMissing}{includeMissing}}
+{\footnotesize\ttfamily bool slang\+::syntax\+::\+Syntax\+Printer\+::include\+Missing = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00111}{111}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_aaec60c67a664f7ff1151ae3b0d00209c}\label{classslang_1_1syntax_1_1SyntaxPrinter_aaec60c67a664f7ff1151ae3b0d00209c}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!includePreprocessed@{includePreprocessed}}
+\index{includePreprocessed@{includePreprocessed}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{includePreprocessed}{includePreprocessed}}
+{\footnotesize\ttfamily bool slang\+::syntax\+::\+Syntax\+Printer\+::include\+Preprocessed = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00114}{114}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_abad540111d3b426de5e65c22b54ff208}\label{classslang_1_1syntax_1_1SyntaxPrinter_abad540111d3b426de5e65c22b54ff208}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!includeSkipped@{includeSkipped}}
+\index{includeSkipped@{includeSkipped}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{includeSkipped}{includeSkipped}}
+{\footnotesize\ttfamily bool slang\+::syntax\+::\+Syntax\+Printer\+::include\+Skipped = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00112}{112}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a6abf99f956952cac7ec11d77928db568}\label{classslang_1_1syntax_1_1SyntaxPrinter_a6abf99f956952cac7ec11d77928db568}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!includeTrivia@{includeTrivia}}
+\index{includeTrivia@{includeTrivia}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{includeTrivia}{includeTrivia}}
+{\footnotesize\ttfamily bool slang\+::syntax\+::\+Syntax\+Printer\+::include\+Trivia = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00110}{110}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a60edc72f4f8deb99bd1c31e7a6cbf1a7}\label{classslang_1_1syntax_1_1SyntaxPrinter_a60edc72f4f8deb99bd1c31e7a6cbf1a7}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!sourceManager@{sourceManager}}
+\index{sourceManager@{sourceManager}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{sourceManager}{sourceManager}}
+{\footnotesize\ttfamily const Source\+Manager$\ast$ slang\+::syntax\+::\+Syntax\+Printer\+::source\+Manager = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00109}{109}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+\mbox{\Hypertarget{classslang_1_1syntax_1_1SyntaxPrinter_a8cbd84965abf749734dbb5346920c644}\label{classslang_1_1syntax_1_1SyntaxPrinter_a8cbd84965abf749734dbb5346920c644}} 
+\index{slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}!squashNewlines@{squashNewlines}}
+\index{squashNewlines@{squashNewlines}!slang::syntax::SyntaxPrinter@{slang::syntax::SyntaxPrinter}}
+\doxysubsubsection{\texorpdfstring{squashNewlines}{squashNewlines}}
+{\footnotesize\ttfamily bool slang\+::syntax\+::\+Syntax\+Printer\+::squash\+Newlines = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{SyntaxPrinter_8h_source_l00116}{116}} of file \mbox{\hyperlink{SyntaxPrinter_8h_source}{Syntax\+Printer.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{SyntaxPrinter_8h}{Syntax\+Printer.\+h}}\end{DoxyCompactItemize}

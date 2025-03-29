@@ -2,6 +2,7 @@ var searchData=
 [
   ['d_0',['d',['../structsi2drExprT.html#a8e9664d14ea76875deb2cee0ff4a613b',1,'si2drExprT']]],
   ['depth_5f_1',['depth_',['../classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741',1,'VerilogVisitor::depth_()'],['../classModuleRewriter.html#a1ccaa865548fbf442969925a8f4063aa',1,'ModuleRewriter::depth_()']]],
-  ['dim_5fsizes_2',['dim_sizes',['../structliberty__value__data.html#aed724ff27971f5f13c0d2325b64d65e0',1,'liberty_value_data']]],
-  ['dimensions_3',['dimensions',['../structliberty__value__data.html#aed74bb159b3ab2f65189d54a297e61e5',1,'liberty_value_data']]]
+  ['diagnosticsbuffer_2',['diagnosticsBuffer',['../classslang_1_1syntax_1_1SyntaxTree.html#a919ff5c50160ccb90e83e9d5709ffd1a',1,'slang::syntax::SyntaxTree']]],
+  ['dim_5fsizes_3',['dim_sizes',['../structliberty__value__data.html#aed724ff27971f5f13c0d2325b64d65e0',1,'liberty_value_data']]],
+  ['dimensions_4',['dimensions',['../structliberty__value__data.html#aed74bb159b3ab2f65189d54a297e61e5',1,'liberty_value_data']]]
 ];

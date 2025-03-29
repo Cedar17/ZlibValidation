@@ -1,12 +1,19 @@
 var searchData=
 [
   ['i_0',['i',['../structsi2drExprT.html#aaf88241d32d530d8c3847d8fce168ad5',1,'si2drExprT']]],
-  ['index_1',['index',['../classslang_1_1syntax_1_1SeparatedSyntaxList_1_1iterator__base.html#aea8f448712fb822c55633e6631cc1ce5',1,'slang::syntax::SeparatedSyntaxList::iterator_base']]],
-  ['index_5finfo_2',['index_info',['../structliberty__value__data.html#a1bf4ca7f074e3a3659feca81404b56f2',1,'liberty_value_data']]],
-  ['inputpins_5f_3',['inputPins_',['../classModuleRewriter.html#a2f805c22fb4301d84cf005149b0a28e2',1,'ModuleRewriter']]],
-  ['insertafter_4',['insertAfter',['../structslang_1_1syntax_1_1detail_1_1ChangeCollection.html#ac0cb0b31e7551995db554b7f5b589fe3',1,'slang::syntax::detail::ChangeCollection']]],
-  ['insertbefore_5',['insertBefore',['../structslang_1_1syntax_1_1detail_1_1ChangeCollection.html#aa07d094c1b04242261d4d38333a66266',1,'slang::syntax::detail::ChangeCollection']]],
-  ['instance_5fcount_5f_6',['instance_count_',['../classModuleRewriter.html#a6c95bf7e5c9a2fb4b1316d830ef5cd6e',1,'ModuleRewriter']]],
-  ['int_5f_7',['int_',['../classValuesIterator.html#a161b8a1427913012c3bbff8b2ec1dddc',1,'ValuesIterator']]],
-  ['intargetmodule_5f_8',['inTargetModule_',['../classVerilogVisitor.html#a165c448e0c16f0c688eed1bd23f38b8e',1,'VerilogVisitor']]]
+  ['includecomments_1',['includeComments',['../classslang_1_1syntax_1_1SyntaxPrinter.html#ac4dc9f19fb95531ec5f1373cd12c8ed4',1,'slang::syntax::SyntaxPrinter']]],
+  ['includedirectives_2',['includeDirectives',['../classslang_1_1syntax_1_1SyntaxPrinter.html#a294d6fe782d86aead552b851f82817ae',1,'slang::syntax::SyntaxPrinter']]],
+  ['includemissing_3',['includeMissing',['../classslang_1_1syntax_1_1SyntaxPrinter.html#adc01ad669be4a30f261fba09f7de7b22',1,'slang::syntax::SyntaxPrinter']]],
+  ['includepreprocessed_4',['includePreprocessed',['../classslang_1_1syntax_1_1SyntaxPrinter.html#aaec60c67a664f7ff1151ae3b0d00209c',1,'slang::syntax::SyntaxPrinter']]],
+  ['includeskipped_5',['includeSkipped',['../classslang_1_1syntax_1_1SyntaxPrinter.html#abad540111d3b426de5e65c22b54ff208',1,'slang::syntax::SyntaxPrinter']]],
+  ['includetrivia_6',['includeTrivia',['../classslang_1_1syntax_1_1SyntaxPrinter.html#a6abf99f956952cac7ec11d77928db568',1,'slang::syntax::SyntaxPrinter']]],
+  ['index_7',['index',['../classslang_1_1syntax_1_1SeparatedSyntaxList_1_1iterator__base.html#aea8f448712fb822c55633e6631cc1ce5',1,'slang::syntax::SeparatedSyntaxList::iterator_base']]],
+  ['index_5finfo_8',['index_info',['../structliberty__value__data.html#a1bf4ca7f074e3a3659feca81404b56f2',1,'liberty_value_data']]],
+  ['inputpins_5f_9',['inputPins_',['../classModuleRewriter.html#a2f805c22fb4301d84cf005149b0a28e2',1,'ModuleRewriter']]],
+  ['insertafter_10',['insertAfter',['../structslang_1_1syntax_1_1detail_1_1ChangeCollection.html#ac0cb0b31e7551995db554b7f5b589fe3',1,'slang::syntax::detail::ChangeCollection']]],
+  ['insertbefore_11',['insertBefore',['../structslang_1_1syntax_1_1detail_1_1ChangeCollection.html#aa07d094c1b04242261d4d38333a66266',1,'slang::syntax::detail::ChangeCollection']]],
+  ['instance_5fcount_5f_12',['instance_count_',['../classModuleRewriter.html#a6c95bf7e5c9a2fb4b1316d830ef5cd6e',1,'ModuleRewriter']]],
+  ['int_5f_13',['int_',['../classValuesIterator.html#a161b8a1427913012c3bbff8b2ec1dddc',1,'ValuesIterator']]],
+  ['intargetmodule_5f_14',['inTargetModule_',['../classVerilogVisitor.html#a165c448e0c16f0c688eed1bd23f38b8e',1,'VerilogVisitor']]],
+  ['islibraryunit_15',['isLibraryUnit',['../classslang_1_1syntax_1_1SyntaxTree.html#a65589176c3908c0ca5b69c6172a5f1a6',1,'slang::syntax::SyntaxTree']]]
 ];

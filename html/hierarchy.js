@@ -29,6 +29,8 @@ var hierarchy =
         [ "slang::syntax::TokenList", "classslang_1_1syntax_1_1TokenList.html", null ]
       ] ]
     ] ],
+    [ "slang::syntax::SyntaxPrinter", "classslang_1_1syntax_1_1SyntaxPrinter.html", null ],
+    [ "slang::syntax::SyntaxTree", "classslang_1_1syntax_1_1SyntaxTree.html", null ],
     [ "slang::syntax::SyntaxVisitor< TDerived >", "classslang_1_1syntax_1_1SyntaxVisitor.html", [
       [ "slang::syntax::SyntaxRewriter< CellExtractor >", "classslang_1_1syntax_1_1SyntaxRewriter.html", [
         [ "CellExtractor", "classCellExtractor.html", null ]

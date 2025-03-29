@@ -539,7 +539,7 @@
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00544}\mbox{\hyperlink{verilog__utils_8hpp_a7ec07bd8417a22f2aee362bd59199997}{00544}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{verilog__utils_8cpp_a7ec07bd8417a22f2aee362bd59199997}{getAST}}(\textcolor{keyword}{const}\ std::string\ \&verilog\_file,\ \textcolor{keyword}{const}\ std::string\ \&cell)\ \{}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00545}00545\ \ \ \textcolor{keywordflow}{try}\ \{}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00546}00546\ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}Starting\ get\ AST\ from\ Verilog\ file:\ '\{\}'"{}},\ verilog\_file);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00547}00547\ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ slang::syntax::SyntaxTree::fromFile(verilog\_file);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00547}00547\ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aee79423807e68c2a5cca99281285dbc0}{slang::syntax::SyntaxTree::fromFile}}(verilog\_file);}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00548}00548\ \ \ \ \ \textcolor{keywordflow}{if}\ (result)\ \{}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00549}00549\ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}Successfully\ parsed\ Verilog\ file."{}});}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00550}00550\ }
@@ -556,7 +556,7 @@
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00561}00561\ }
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (extractor.\mbox{\hyperlink{classCellExtractor_a0a91984aface381a68def3a0a8515d57}{foundTargetCell}}())\ \{}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00563}00563\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ SyntaxPrinter\ to\ print\ the\ extracted\ code}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ extractedCode\ =\ slang::syntax::SyntaxPrinter::printFile(*extractedTree);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ extractedCode\ =\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{slang::syntax::SyntaxPrinter::printFile}}(*extractedTree);}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00565}00565\ }
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Save\ to\ a\ file\ named\ after\ the\ cell\ name}}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ outputFile\ =\ cell\ +\ \textcolor{stringliteral}{"{}.v"{}};}
@@ -575,7 +575,7 @@
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00580}00580\ }
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00581}00581\ \ \ \ \ \ \ \ \ spdlog::info(\textcolor{stringliteral}{"{}Print\ full\ source\ code\ to\ 'full\_source\_code.v'"{}});}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00582}00582\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Optionally\ save\ the\ entire\ syntax\ tree}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00583}00583\ \ \ \ \ \ \ \ \ std::string\ fullOutput\ =\ slang::syntax::SyntaxPrinter::printFile(*result.value());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00583}00583\ \ \ \ \ \ \ \ \ std::string\ fullOutput\ =\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{slang::syntax::SyntaxPrinter::printFile}}(*result.value());}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00584}00584\ \ \ \ \ \ \ \ \ std::ofstream\ out(\textcolor{stringliteral}{"{}full\_source\_code.v"{}});}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00585}00585\ \ \ \ \ \ \ \ \ out\ <<\ fullOutput;}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00586}00586\ \ \ \ \ \ \ \ \ out.close();}

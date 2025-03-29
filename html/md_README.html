@@ -347,7 +347,7 @@ Development Diary</h1>
 2025-03-26</h2>
 <ul>
 <li>进一步完善了对 UDP（如 <code>tsmc_dff</code>）端口映射关系的解析，但其内部 Entry 尚未处理。</li>
-<li>尝试了通过继承 <code><a class="el" href="classslang_1_1syntax_1_1SyntaxRewriter.html">slang::syntax::SyntaxRewriter</a></code> 类创建自定义类 <code><a class="el" href="classCellExtractor.html">CellExtractor</a></code>，实现了只保留目标模块、删除其他模块，并将修改后的语法树另存为新文件。使用 <code>slang::syntax::SyntaxPrinter::printFile()</code> 方法可以将 Verilog 代码输出到文件。</li>
+<li>尝试了通过继承 <code><a class="el" href="classslang_1_1syntax_1_1SyntaxRewriter.html">slang::syntax::SyntaxRewriter</a></code> 类创建自定义类 <code><a class="el" href="classCellExtractor.html">CellExtractor</a></code>，实现了只保留目标模块、删除其他模块，并将修改后的语法树另存为新文件。使用 <code><a class="el" href="classslang_1_1syntax_1_1SyntaxPrinter.html#ae767f71421811693eac4c5e708faf196">slang::syntax::SyntaxPrinter::printFile()</a></code> 方法可以将 Verilog 代码输出到文件。</li>
 <li>创建了 <code><a class="el" href="classCellPrinter.html">CellPrinter</a></code> 类，继承自 <code><a class="el" href="classslang_1_1syntax_1_1SyntaxVisitor.html">slang::syntax::SyntaxVisitor</a></code> 类。当访问到目标模块时，使用 <code>module.toString()</code> 方法也能将 Verilog 代码输出到文件，但发现输出结果中空行会被删除。</li>
 <li>修改了 <code><a class="el" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188" title="Creates supercells based on standard cells in the library file.">LibFile::supercell()</a></code> 方法，该方法可以根据输入的 <code>cell_names</code> 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。</li>
 <li>优化了时钟引脚的处理方式，现在时钟引脚不再被视为 supercell 的输入引脚，而是仅记录为时序单元，并跳过存入 <code>input_pins</code> 集合的步骤。</li>
@@ -364,7 +364,7 @@ Development Diary</h1>
 <li>从 <code>lib_json_</code> 中提取单元的输入/输出端口信息。</li>
 <li>根据是否存在时钟引脚，确定 Verilog 模块中 instance 的生成数量（时序逻辑为 1，组合逻辑等于 chain length）。</li>
 <li>通过字符串操作生成 ANSI 风格的端口列表，并与模块名组合成完整的 <code>fullModuleText</code>。</li>
-<li>使用 <code>slang::syntax::SyntaxTree::fromText</code> 从 <code>fullModuleText</code> 生成语法树。</li>
+<li>使用 <code><a class="el" href="classslang_1_1syntax_1_1SyntaxTree.html#a51378e0851d9dc03ab4b75e94b061fb6">slang::syntax::SyntaxTree::fromText</a></code> 从 <code>fullModuleText</code> 生成语法树。</li>
 <li>将语法树传递给 <code><a class="el" href="classModuleRewriter.html">ModuleRewriter</a></code> 类，使用其 <code>transform</code> 方法遍历模块成员，并通过 <code>handle()</code> 方法进行处理。</li>
 <li>最后，使用 <code>slang::syntax::SyntaxPrinter::printFile(*tree)</code> 将处理后的语法树输出到文件。</li>
 </ul>
@@ -402,7 +402,7 @@ Development Diary</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Mar 29 2025 02:10:39 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Mar 29 2025 12:42:29 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>
