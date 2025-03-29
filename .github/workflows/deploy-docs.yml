@@ -39,13 +39,14 @@ jobs:
         run: |
           conda update --all
           conda --version
-          conda install -y -c conda-forge graphviz=4.0.0 doxygen=1.9.5
-          # Verify installation
-          which dot
-          dot -V
+          conda install -y -c conda-forge doxygen=1.9.5
           which doxygen
           doxygen -V
           ls -l
+          conda install -y -c conda-forge graphviz
+          # Verify installation
+          which dot
+          dot -V
 
       - name: Generate Documentation
         shell: bash -el {0}  # Important to properly activate conda env
