@@ -91,7 +91,7 @@ jobs:
           branch: gh-pages
           folder: doc_doxygen
           clean: true
-          clean_exclude: |
+          clean-exclude: |
             .gitignore
             .nojekyll
             README.md
