@@ -47,15 +47,15 @@ LibFile::LibFile(const std::string &filepath, const std::string &loggername)
 
 LibFile::~LibFile() { logger_->info("Closing file: '{}'", filename_); }
 
+
 /**
- * @brief Writes the JSON data stored in the lib_json_ member to a file.
+ * @brief Writes the JSON data stored in the object to a file.
  *
- * This function attempts to open the specified file for writing. If the file
- * cannot be opened, an error message is logged. If the file is successfully
- * opened, the JSON data is written to the file with an indentation of 2 spaces.
- * After writing, the file is closed and a success message is logged.
+ * This method opens the file specified by jsonname_ and writes the content of lib_json_
+ * with an indentation of 2 spaces. If the file cannot be opened, an error message is logged.
+ * Upon successful writing, an informational message is logged.
  *
- * @param jsonname_ The name of the file to which the JSON data will be written.
+ * @throws None directly, but std::ofstream operations may throw exceptions
  */
 void LibFile::writeJsonToFile() {
   std::ofstream out(jsonname_);

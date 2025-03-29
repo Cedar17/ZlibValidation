@@ -28,10 +28,16 @@ jobs:
       #   with:
       #     version: '1.9.6' # 替换为你需要的 Doxygen 版本
 
-      - name: Install GraphViz Doxygen
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          auto-activate-base: true
+          activate-environment: ""
+      
+      - name: Install GraphViz and Doxygen via Conda
+        shell: bash -el {0}  # Important to properly activate conda env
         run: |
-          sudo apt-get update
-          sudo apt-get install -y graphviz graphviz-dev doxygen
+          conda install -y -c conda-forge graphviz doxygen
           # Verify installation
           which dot
           dot -V
@@ -90,7 +96,6 @@ jobs:
           ls -l
           which make
           which lualatex
-          make clean
           make
           pwd
           ls -l | grep refman
