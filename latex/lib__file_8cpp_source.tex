@@ -481,134 +481,240 @@
 \DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00598}00598\ }
 \DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00599}00599\ \ \ this-\/>\mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{supercell}}(chain\_length,\ cell\_names);}
 \DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00600}00600\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00601}00601\ \ \ \textcolor{comment}{//\ write\ to\ .v\ file}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00602}00602\ \ \ std::ofstream\ out(\mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.v"{}});}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00603}00603\ \ \ \textcolor{keywordflow}{if}\ (!out.is\_open())\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00604}00604\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could\ not\ open\ file\ '\{\}'\ for\ writing"{}},\ \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.v"{}});}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00605}00605\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00606}00606\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00607}00607\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00608}00608\ \ \ \textcolor{comment}{//\ Read\ the\ .map\ file\ into\ a\ vector\ to\ preserve\ all\ entries\ and\ their\ order}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00609}00609\ \ \ std::vector<std::pair<std::string,\ std::string>>\ supercell\_entries;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00610}00610\ \ \ std::ifstream\ in(\mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.map"{}});}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00611}00611\ \ \ \textcolor{keywordflow}{if}\ (!in.is\_open())\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00612}00612\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could\ not\ open\ file\ '\{\}'\ for\ reading"{}},\ \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.map"{}});}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00613}00613\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00614}00614\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00615}00615\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00616}00616\ \ \ std::string\ line;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00617}00617\ \ \ \textcolor{keywordflow}{while}\ (std::getline(in,\ line))\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00618}00618\ \ \ \ \ std::istringstream\ iss(line);}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00619}00619\ \ \ \ \ std::string\ cell\_name,\ supercell\_name;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00620}00620\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(iss\ >>\ cell\_name\ >>\ supercell\_name))\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00621}00621\ \ \ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Invalid\ line\ format\ in\ map\ file:\ '\{\}'"{}},\ line);}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00622}00622\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00623}00623\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00624}00624\ \ \ \ \ supercell\_entries.push\_back(\{cell\_name,\ supercell\_name\});}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00625}00625\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00626}00626\ \ \ in.close();}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00627}00627\ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Read\ \{\}\ supercells\ from\ '\{\}'"{}},\ supercell\_entries.size(),\ \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.map"{}});}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00628}00628\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00629}00629\ \ \ \textcolor{comment}{//\ Generate\ verilog\ module\ for\ each\ supercell}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00630}00630\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&supercell\_entry\ :\ supercell\_entries)\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00631}00631\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ cell\ is\ sequential}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00632}00632\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_sequential\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00633}00633\ \ \ \ \ \textcolor{comment}{//\ Count\ the\ number\ of\ instances\ will\ be\ created\ in\ verilog}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00634}00634\ \ \ \ \ \textcolor{keywordtype}{int}\ instance\_count\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00635}00635\ \ \ \ \ \textcolor{comment}{//\ Get\ original\ cell\ name\ from\ pair}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00636}00636\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&cell\_name\ =\ supercell\_entry.first;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00637}00637\ \ \ \ \ \textcolor{comment}{//\ Get\ supercell\ name(as\ well\ as\ module\ name)\ from\ pair}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00638}00638\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&module\_name\ =\ supercell\_entry.second;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00639}00639\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00640}00640\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Creating\ Module:\ '\{\}'\ from\ Cell\ '\{\}"{}},\ module\_name,\ cell\_name);}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00641}00641\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00642}00642\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ cell\ JSON\ object}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00643}00643\ \ \ \ \ \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ cell\_json;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00644}00644\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&cell\ :\ \mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\_json\_}}[\textcolor{stringliteral}{"{}cells"{}}])\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00645}00645\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cell[\textcolor{stringliteral}{"{}cell\_name"{}}].get<std::string>()\ ==\ cell\_name)\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00646}00646\ \ \ \ \ \ \ \ \ cell\_json\ =\ cell;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00647}00647\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00648}00648\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00649}00649\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00601}00601\ \ \ \textcolor{comment}{//\ Create\ a\ temporary\ file\ for\ individual\ modules}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00602}00602\ \ \ std::string\ temp\_file\ =\ \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}\_temp.v"{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00603}00603\ \ \ std::ofstream\ out(temp\_file);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00604}00604\ \ \ \textcolor{keywordflow}{if}\ (!out.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00605}00605\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could\ not\ open\ temp\ file\ '\{\}'\ for\ writing"{}},\ temp\_file);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00606}00606\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00607}00607\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00608}00608\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00609}00609\ \ \ \textcolor{comment}{//\ Read\ the\ .map\ file\ into\ a\ vector\ to\ preserve\ all\ entries\ and\ their\ order}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00610}00610\ \ \ std::vector<std::pair<std::string,\ std::string>>\ supercell\_entries;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00611}00611\ \ \ std::ifstream\ in(\mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.map"{}});}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00612}00612\ \ \ \textcolor{keywordflow}{if}\ (!in.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00613}00613\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could\ not\ open\ file\ '\{\}'\ for\ reading"{}},\ \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.map"{}});}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00614}00614\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00615}00615\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00616}00616\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00617}00617\ \ \ std::string\ line;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00618}00618\ \ \ \textcolor{keywordflow}{while}\ (std::getline(in,\ line))\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00619}00619\ \ \ \ \ std::istringstream\ iss(line);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00620}00620\ \ \ \ \ std::string\ cell\_name,\ supercell\_name;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00621}00621\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(iss\ >>\ cell\_name\ >>\ supercell\_name))\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00622}00622\ \ \ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Invalid\ line\ format\ in\ map\ file:\ '\{\}'"{}},\ line);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00623}00623\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00624}00624\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00625}00625\ \ \ \ \ supercell\_entries.push\_back(\{cell\_name,\ supercell\_name\});}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00626}00626\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00627}00627\ \ \ in.close();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00628}00628\ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Read\ \{\}\ supercells\ from\ '\{\}'"{}},\ supercell\_entries.size(),\ \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.map"{}});}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00629}00629\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00630}00630\ \ \ \textcolor{comment}{//\ Store\ module\ information\ for\ top-\/level\ creation}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00631}00631\ \ \ std::vector<std::string>\ module\_names;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00632}00632\ \ \ std::map<std::string,\ std::vector<std::string>>\ module\_inputs;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00633}00633\ \ \ std::map<std::string,\ std::vector<std::string>>\ module\_outputs;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00634}00634\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00635}00635\ \ \ \textcolor{comment}{//\ Generate\ verilog\ module\ for\ each\ supercell}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00636}00636\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&supercell\_entry\ :\ supercell\_entries)\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00637}00637\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ cell\ is\ sequential}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00638}00638\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_sequential\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00639}00639\ \ \ \ \ \textcolor{comment}{//\ Count\ the\ number\ of\ instances\ will\ be\ created\ in\ verilog}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00640}00640\ \ \ \ \ \textcolor{keywordtype}{int}\ instance\_count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00641}00641\ \ \ \ \ \textcolor{comment}{//\ Get\ original\ cell\ name\ from\ pair}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00642}00642\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&cell\_name\ =\ supercell\_entry.first;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00643}00643\ \ \ \ \ \textcolor{comment}{//\ Get\ supercell\ name(as\ well\ as\ module\ name)\ from\ pair}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00644}00644\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&module\_name\ =\ supercell\_entry.second;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00645}00645\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00646}00646\ \ \ \ \ \textcolor{comment}{//\ Store\ module\ name\ for\ top-\/level\ creation}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00647}00647\ \ \ \ \ module\_names.push\_back(module\_name);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00648}00648\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00649}00649\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Creating\ Module:\ '\{\}'\ from\ Cell\ '\{\}"{}},\ module\_name,\ cell\_name);}
 \DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00650}00650\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00651}00651\ \ \ \ \ \textcolor{comment}{//\ Get\ input/output\ pins\ from\ the\ cell\ JSON\ object}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00652}00652\ \ \ \ \ std::vector<std::string>\ input\_pins;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00653}00653\ \ \ \ \ std::vector<std::string>\ output\_pins;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00654}00654\ \ \ \ \ std::stringstream\ input\_pins\_ss;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00655}00655\ \ \ \ \ std::stringstream\ output\_pins\_ss;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00656}00656\ \ \ \ \ \textcolor{keywordflow}{if}\ (cell\_json.contains(\textcolor{stringliteral}{"{}input\_pins"{}}))\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00657}00657\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&pin\ :\ cell\_json[\textcolor{stringliteral}{"{}input\_pins"{}}])\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00658}00658\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pin.contains(\textcolor{stringliteral}{"{}clock"{}}))\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00659}00659\ \ \ \ \ \ \ \ \ \ \ is\_sequential\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00660}00660\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00661}00661\ \ \ \ \ \ \ \ \ input\_pins.push\_back(pin[\textcolor{stringliteral}{"{}pin\_name"{}}].get<std::string>());}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00662}00662\ \ \ \ \ \ \ \ \ input\_pins\_ss\ <<\ pin[\textcolor{stringliteral}{"{}pin\_name"{}}].get<std::string>()\ <<\ \textcolor{stringliteral}{"{},\ "{}};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00663}00663\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00664}00664\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00665}00665\ \ \ \ \ \textcolor{keywordflow}{if}\ (cell\_json.contains(\textcolor{stringliteral}{"{}output\_pins"{}}))\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00666}00666\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&pin\ :\ cell\_json[\textcolor{stringliteral}{"{}output\_pins"{}}])\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00667}00667\ \ \ \ \ \ \ \ \ output\_pins.push\_back(pin[\textcolor{stringliteral}{"{}pin\_name"{}}].get<std::string>());}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00668}00668\ \ \ \ \ \ \ \ \ output\_pins\_ss\ <<\ pin[\textcolor{stringliteral}{"{}pin\_name"{}}].get<std::string>()\ <<\ \textcolor{stringliteral}{"{},\ "{}};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00669}00669\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00670}00670\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00671}00671\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Input\ pins\ set:\ \{\}"{}},\ input\_pins\_ss.str());}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00672}00672\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Output\ pins\ set:\ \{\}"{}},\ output\_pins\_ss.str());}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00673}00673\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00674}00674\ \ \ \ \ \textcolor{comment}{//\ Sequential\ cells\ will\ have\ only\ one\ instance}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00675}00675\ \ \ \ \ \textcolor{comment}{//\ Combinational\ cells\ will\ have\ instances\ equal\ to\ chain\ length}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00676}00676\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_sequential)\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00677}00677\ \ \ \ \ \ \ instance\_count\ =\ 1;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00678}00678\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00679}00679\ \ \ \ \ \ \ instance\_count\ =\ chain\_length;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00680}00680\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00681}00681\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00682}00682\ \ \ \ \ \textcolor{comment}{//\ Create\ ANSI\ port\ list}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00683}00683\ \ \ \ \ std::string\ port\_list\_text\ =\ \textcolor{stringliteral}{"{}("{}};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00684}00684\ \ \ \ \ \textcolor{comment}{//\ Add\ input\ ports}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00685}00685\ \ \ \ \ \textcolor{keywordtype}{bool}\ isFirstPort\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00686}00686\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&input\_pin\ :\ input\_pins)\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00687}00687\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isFirstPort)\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00688}00688\ \ \ \ \ \ \ \ \ port\_list\_text\ +=\ \textcolor{stringliteral}{"{},\ "{}};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00689}00689\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00690}00690\ \ \ \ \ \ \ port\_list\_text\ +=\ \textcolor{stringliteral}{"{}input\ "{}}\ +\ input\_pin;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00691}00691\ \ \ \ \ \ \ isFirstPort\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00692}00692\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00693}00693\ \ \ \ \ \textcolor{comment}{//\ Add\ output\ ports}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00694}00694\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&output\_pin\ :\ output\_pins)\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00695}00695\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isFirstPort)\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00696}00696\ \ \ \ \ \ \ \ \ port\_list\_text\ +=\ \textcolor{stringliteral}{"{},\ "{}};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00697}00697\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00698}00698\ \ \ \ \ \ \ port\_list\_text\ +=\ \textcolor{stringliteral}{"{}output\ "{}}\ +\ output\_pin;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00699}00699\ \ \ \ \ \ \ isFirstPort\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00700}00700\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00701}00701\ \ \ \ \ port\_list\_text\ +=\ \textcolor{stringliteral}{"{})"{}};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00702}00702\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}ANSI\ Port\ list:\ \{\}"{}},\ port\_list\_text);}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00703}00703\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00704}00704\ \ \ \ \ \textcolor{comment}{//\ Creat\ full\ module\ header\ text}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00705}00705\ \ \ \ \ std::string\ fullModuleText\ =\ \textcolor{stringliteral}{"{}module\ "{}}\ +\ module\_name\ +\ port\_list\_text\ +\ \textcolor{stringliteral}{"{};\(\backslash\)nendmodule"{}};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00706}00706\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Full\ module\ text:\ \{\}"{}},\ fullModuleText);}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00707}00707\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00708}00708\ \ \ \ \ \textcolor{comment}{//\ Generate\ the\ syntax\ tree\ for\ the\ module\ using\ slang\ library}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00709}00709\ \ \ \ \ \textcolor{keyword}{auto}\ tree\ =\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a51378e0851d9dc03ab4b75e94b061fb6}{slang::syntax::SyntaxTree::fromText}}(fullModuleText);}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00710}00710\ \ \ \ \ \textcolor{keywordflow}{if}\ (tree)\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00711}00711\ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ ports\ to\ the\ syntax\ tree}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00712}00712\ \ \ \ \ \ \ \mbox{\hyperlink{classModuleRewriter}{ModuleRewriter}}\ rewriter(input\_pins,\ output\_pins,\ supercell\_entry,\ instance\_count,\ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}});}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00713}00713\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00714}00714\ \ \ \ \ \ \ tree\ =\ rewriter.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a9da1110f23efabf52212982d52d64601}{transform}}(tree);}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00715}00715\ \ \ \ \ \ \ \textcolor{comment}{//\ Revisit\ the\ syntax\ tree\ to\ check\ architecture}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00716}00716\ \ \ \ \ \ \ rewriter.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_aecb294b0686307633702e2bb937246b6}{visit}}(tree-\/>root());}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00717}00717\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00718}00718\ \ \ \ \ \ \ \textcolor{comment}{//\ Output\ the\ transformed\ syntax\ tree}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00719}00719\ \ \ \ \ \ \ out\ <<\ \textcolor{stringliteral}{"{}`timescale\ 1ns/10ps"{}}\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00720}00720\ \ \ \ \ \ \ out\ <<\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{slang::syntax::SyntaxPrinter::printFile}}(*tree)\ <<\ std::endl\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00721}00721\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00722}00722\ \ \ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Failed\ to\ create\ syntax\ tree\ for\ module\ '\{\}'"{}},\ module\_name);}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00723}00723\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00724}00724\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00725}00725\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00726}00726\ }
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00727}00727\ \ \ out.close();}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00728}00728\ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Verilog\ creation\ complete\ in\ '\{\}'"{}},\ \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.v"{}});}
-\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00729}00729\ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00651}00651\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ cell\ JSON\ object}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00652}00652\ \ \ \ \ \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ cell\_json;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00653}00653\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&cell\ :\ \mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\_json\_}}[\textcolor{stringliteral}{"{}cells"{}}])\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00654}00654\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cell[\textcolor{stringliteral}{"{}cell\_name"{}}].get<std::string>()\ ==\ cell\_name)\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00655}00655\ \ \ \ \ \ \ \ \ cell\_json\ =\ cell;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00656}00656\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00657}00657\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00658}00658\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00659}00659\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00660}00660\ \ \ \ \ \textcolor{comment}{//\ Get\ input/output\ pins\ from\ the\ cell\ JSON\ object}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00661}00661\ \ \ \ \ std::vector<std::string>\ input\_pins;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00662}00662\ \ \ \ \ std::vector<std::string>\ output\_pins;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00663}00663\ \ \ \ \ std::stringstream\ input\_pins\_ss;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00664}00664\ \ \ \ \ std::stringstream\ output\_pins\_ss;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00665}00665\ \ \ \ \ \textcolor{keywordflow}{if}\ (cell\_json.contains(\textcolor{stringliteral}{"{}input\_pins"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00666}00666\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&pin\ :\ cell\_json[\textcolor{stringliteral}{"{}input\_pins"{}}])\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00667}00667\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pin.contains(\textcolor{stringliteral}{"{}clock"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00668}00668\ \ \ \ \ \ \ \ \ \ \ is\_sequential\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00669}00669\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00670}00670\ \ \ \ \ \ \ \ \ std::string\ pin\_name\ =\ pin[\textcolor{stringliteral}{"{}pin\_name"{}}].get<std::string>();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00671}00671\ \ \ \ \ \ \ \ \ input\_pins.push\_back(pin\_name);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00672}00672\ \ \ \ \ \ \ \ \ input\_pins\_ss\ <<\ pin\_name\ <<\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00673}00673\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00674}00674\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Store\ input\ pin\ name\ for\ top-\/level\ creation}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00675}00675\ \ \ \ \ \ \ \ \ module\_inputs[module\_name].push\_back(pin\_name);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00676}00676\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00677}00677\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00678}00678\ \ \ \ \ \textcolor{keywordflow}{if}\ (cell\_json.contains(\textcolor{stringliteral}{"{}output\_pins"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00679}00679\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&pin\ :\ cell\_json[\textcolor{stringliteral}{"{}output\_pins"{}}])\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00680}00680\ \ \ \ \ \ \ \ \ std::string\ pin\_name\ =\ pin[\textcolor{stringliteral}{"{}pin\_name"{}}].get<std::string>();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00681}00681\ \ \ \ \ \ \ \ \ output\_pins.push\_back(pin\_name);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00682}00682\ \ \ \ \ \ \ \ \ output\_pins\_ss\ <<\ pin\_name\ <<\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00683}00683\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00684}00684\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Store\ output\ pin\ name\ for\ top-\/level\ creation}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00685}00685\ \ \ \ \ \ \ \ \ module\_outputs[module\_name].push\_back(pin\_name);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00686}00686\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00687}00687\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00688}00688\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Input\ pins\ set:\ \{\}"{}},\ input\_pins\_ss.str());}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00689}00689\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Output\ pins\ set:\ \{\}"{}},\ output\_pins\_ss.str());}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00690}00690\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00691}00691\ \ \ \ \ \textcolor{comment}{//\ Sequential\ cells\ will\ have\ only\ one\ instance}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00692}00692\ \ \ \ \ \textcolor{comment}{//\ Combinational\ cells\ will\ have\ instances\ equal\ to\ chain\ length}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00693}00693\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_sequential)\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00694}00694\ \ \ \ \ \ \ instance\_count\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00695}00695\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00696}00696\ \ \ \ \ \ \ instance\_count\ =\ chain\_length;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00697}00697\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00698}00698\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00699}00699\ \ \ \ \ \textcolor{comment}{//\ Create\ ANSI\ port\ list}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00700}00700\ \ \ \ \ std::string\ port\_list\_text\ =\ \textcolor{stringliteral}{"{}("{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00701}00701\ \ \ \ \ \textcolor{comment}{//\ Add\ input\ ports}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00702}00702\ \ \ \ \ \textcolor{keywordtype}{bool}\ isFirstPort\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00703}00703\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&input\_pin\ :\ input\_pins)\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00704}00704\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isFirstPort)\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00705}00705\ \ \ \ \ \ \ \ \ port\_list\_text\ +=\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00706}00706\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00707}00707\ \ \ \ \ \ \ port\_list\_text\ +=\ \textcolor{stringliteral}{"{}input\ "{}}\ +\ input\_pin;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00708}00708\ \ \ \ \ \ \ isFirstPort\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00709}00709\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00710}00710\ \ \ \ \ \textcolor{comment}{//\ Add\ output\ ports}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00711}00711\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&output\_pin\ :\ output\_pins)\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00712}00712\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isFirstPort)\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00713}00713\ \ \ \ \ \ \ \ \ port\_list\_text\ +=\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00714}00714\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00715}00715\ \ \ \ \ \ \ port\_list\_text\ +=\ \textcolor{stringliteral}{"{}output\ "{}}\ +\ output\_pin;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00716}00716\ \ \ \ \ \ \ isFirstPort\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00717}00717\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00718}00718\ \ \ \ \ port\_list\_text\ +=\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00719}00719\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}ANSI\ Port\ list:\ \{\}"{}},\ port\_list\_text);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00720}00720\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00721}00721\ \ \ \ \ \textcolor{comment}{//\ Creat\ full\ module\ header\ text}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00722}00722\ \ \ \ \ std::string\ fullModuleText\ =\ \textcolor{stringliteral}{"{}module\ "{}}\ +\ module\_name\ +\ port\_list\_text\ +\ \textcolor{stringliteral}{"{};\(\backslash\)nendmodule"{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00723}00723\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Full\ module\ text:\ \{\}"{}},\ fullModuleText);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00724}00724\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00725}00725\ \ \ \ \ \textcolor{comment}{//\ Generate\ the\ syntax\ tree\ for\ the\ module\ using\ slang\ library}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00726}00726\ \ \ \ \ \textcolor{keyword}{auto}\ tree\ =\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a51378e0851d9dc03ab4b75e94b061fb6}{slang::syntax::SyntaxTree::fromText}}(fullModuleText);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00727}00727\ \ \ \ \ \textcolor{keywordflow}{if}\ (tree)\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00728}00728\ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ ports\ to\ the\ syntax\ tree}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00729}00729\ \ \ \ \ \ \ \mbox{\hyperlink{classModuleRewriter}{ModuleRewriter}}\ rewriter(input\_pins,\ output\_pins,\ supercell\_entry,\ instance\_count,\ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}});}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00730}00730\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00731}00731\ \ \ \ \ \ \ tree\ =\ rewriter.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a9da1110f23efabf52212982d52d64601}{transform}}(tree);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00732}00732\ \ \ \ \ \ \ \textcolor{comment}{//\ Revisit\ the\ syntax\ tree\ to\ check\ architecture}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00733}00733\ \ \ \ \ \ \ rewriter.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_aecb294b0686307633702e2bb937246b6}{visit}}(tree-\/>root());}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00734}00734\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00735}00735\ \ \ \ \ \ \ \textcolor{comment}{//\ Output\ the\ transformed\ syntax\ tree}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00736}00736\ \ \ \ \ \ \ out\ <<\ \textcolor{stringliteral}{"{}`timescale\ 1ns/10ps"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00737}00737\ \ \ \ \ \ \ out\ <<\ \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{slang::syntax::SyntaxPrinter::printFile}}(*tree)\ <<\ std::endl\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00738}00738\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00739}00739\ \ \ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Failed\ to\ create\ syntax\ tree\ for\ module\ '\{\}'"{}},\ module\_name);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00740}00740\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00741}00741\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00742}00742\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00743}00743\ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00744}00744\ \ \ out.close();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00745}00745\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00746}00746\ \ \ \textcolor{comment}{//\ Create\ the\ top-\/level\ module}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00747}00747\ \ \ std::ofstream\ final\_out(\mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.v"{}});}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00748}00748\ \ \ \textcolor{keywordflow}{if}\ (!final\_out.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00749}00749\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could\ not\ open\ file\ '\{\}'\ for\ writing"{}},\ \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.v"{}});}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00750}00750\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00751}00751\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00752}00752\ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00753}00753\ \ \ \textcolor{comment}{//\ Generate\ the\ top-\/level\ module}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00754}00754\ \ \ std::stringstream\ top\_ports;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00755}00755\ \ \ std::stringstream\ top\_inputs;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00756}00756\ \ \ std::stringstream\ top\_outputs;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00757}00757\ \ \ std::stringstream\ top\_instances;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00758}00758\ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00759}00759\ \ \ \textcolor{comment}{//\ First\ collect\ all\ port\ names\ for\ the\ top\ module}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00760}00760\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&module\_name\ :\ module\_names)\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00761}00761\ \ \ \ \ \textcolor{comment}{//\ Add\ module\ input\ ports}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00762}00762\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&pin\ :\ module\_inputs[module\_name])\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00763}00763\ \ \ \ \ \ \ std::string\ port\_name\ =\ module\_name\ +\ \textcolor{stringliteral}{"{}\_\_"{}}\ +\ pin;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00764}00764\ \ \ \ \ \ \ top\_ports\ <<\ port\_name\ <<\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00765}00765\ \ \ \ \ \ \ top\_inputs\ <<\ \textcolor{stringliteral}{"{}\ \ input\ "{}}\ <<\ port\_name\ <<\ \textcolor{stringliteral}{"{};\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00766}00766\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00767}00767\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00768}00768\ \ \ \ \ \textcolor{comment}{//\ Add\ module\ output\ ports}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00769}00769\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&pin\ :\ module\_outputs[module\_name])\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00770}00770\ \ \ \ \ \ \ std::string\ port\_name\ =\ module\_name\ +\ \textcolor{stringliteral}{"{}\_\_"{}}\ +\ pin;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00771}00771\ \ \ \ \ \ \ top\_ports\ <<\ port\_name\ <<\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00772}00772\ \ \ \ \ \ \ top\_outputs\ <<\ \textcolor{stringliteral}{"{}\ \ output\ "{}}\ <<\ port\_name\ <<\ \textcolor{stringliteral}{"{};\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00773}00773\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00774}00774\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00775}00775\ \ \ \ \ \textcolor{comment}{//\ Create\ instance}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00776}00776\ \ \ \ \ std::string\ instance\_name\ =\ \textcolor{stringliteral}{"{}I\_"{}}\ +\ module\_name.substr(0,\ module\_name.find(\textcolor{stringliteral}{"{}\_\_X"{}}));}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00777}00777\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ module\_name.find(\textcolor{stringliteral}{"{}\_\_X"{}})\ +\ 3;\ i\ <\ module\_name.length();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00778}00778\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (module\_name[i]\ ==\ \textcolor{charliteral}{'\_'}\ \&\&\ module\_name[i+1]\ ==\ \textcolor{charliteral}{'\_'})\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00779}00779\ \ \ \ \ \ \ \ \ instance\_name\ +=\ \textcolor{stringliteral}{"{}\_\_"{}}\ +\ module\_name.substr(i+2);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00780}00780\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00781}00781\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00782}00782\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00783}00783\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00784}00784\ \ \ \ \ \textcolor{comment}{//\ Generate\ port\ connections\ for\ this\ instance}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00785}00785\ \ \ \ \ std::stringstream\ instance\_ports;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00786}00786\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&pin\ :\ module\_inputs[module\_name])\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00787}00787\ \ \ \ \ \ \ instance\_ports\ <<\ \textcolor{stringliteral}{"{}."{}}\ <<\ pin\ <<\ \textcolor{stringliteral}{"{}("{}}\ <<\ module\_name\ <<\ \textcolor{stringliteral}{"{}\_\_"{}}\ <<\ pin\ <<\ \textcolor{stringliteral}{"{}),\ "{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00788}00788\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00789}00789\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&pin\ :\ module\_outputs[module\_name])\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00790}00790\ \ \ \ \ \ \ instance\_ports\ <<\ \textcolor{stringliteral}{"{}."{}}\ <<\ pin\ <<\ \textcolor{stringliteral}{"{}("{}}\ <<\ module\_name\ <<\ \textcolor{stringliteral}{"{}\_\_"{}}\ <<\ pin\ <<\ \textcolor{stringliteral}{"{}),\ "{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00791}00791\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00792}00792\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00793}00793\ \ \ \ \ \textcolor{comment}{//\ Remove\ last\ comma\ and\ space}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00794}00794\ \ \ \ \ std::string\ instance\_ports\_str\ =\ instance\_ports.str();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00795}00795\ \ \ \ \ \textcolor{keywordflow}{if}\ (!instance\_ports\_str.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00796}00796\ \ \ \ \ \ \ instance\_ports\_str\ =\ instance\_ports\_str.substr(0,\ instance\_ports\_str.length()\ -\/\ 2);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00797}00797\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00798}00798\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00799}00799\ \ \ \ \ top\_instances\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ module\_name\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ instance\_name\ <<\ \textcolor{stringliteral}{"{}\ ("{}}\ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00800}00800\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ instance\_ports\_str\ <<\ \textcolor{stringliteral}{"{});\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00801}00801\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00802}00802\ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00803}00803\ \ \ \textcolor{comment}{//\ Remove\ last\ comma\ and\ space\ from\ top\_ports}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00804}00804\ \ \ std::string\ top\_ports\_str\ =\ top\_ports.str();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00805}00805\ \ \ \textcolor{keywordflow}{if}\ (!top\_ports\_str.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00806}00806\ \ \ \ \ top\_ports\_str\ =\ top\_ports\_str.substr(0,\ top\_ports\_str.length()\ -\/\ 2);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00807}00807\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00808}00808\ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00809}00809\ \ \ \textcolor{comment}{//\ Write\ the\ top\ module}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00810}00810\ \ \ final\_out\ <<\ \textcolor{stringliteral}{"{}`timescale\ 1ns/10ps"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00811}00811\ \ \ final\_out\ <<\ \textcolor{stringliteral}{"{}module\ validate\_top\ (\ "{}}\ <<\ top\_ports\_str\ <<\ \textcolor{stringliteral}{"{}\ );"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00812}00812\ \ \ final\_out\ <<\ top\_inputs.str();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00813}00813\ \ \ final\_out\ <<\ top\_outputs.str();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00814}00814\ \ \ final\_out\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00815}00815\ \ \ final\_out\ <<\ top\_instances.str();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00816}00816\ \ \ final\_out\ <<\ \textcolor{stringliteral}{"{}endmodule"{}}\ <<\ std::endl\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00817}00817\ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00818}00818\ \ \ \textcolor{comment}{//\ Append\ the\ module\ definitions\ from\ the\ temporary\ file}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00819}00819\ \ \ std::ifstream\ temp\_in(temp\_file);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00820}00820\ \ \ \textcolor{keywordflow}{if}\ (temp\_in.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00821}00821\ \ \ \ \ final\_out\ <<\ temp\_in.rdbuf();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00822}00822\ \ \ \ \ temp\_in.close();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00823}00823\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00824}00824\ \ \ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could\ not\ open\ temp\ file\ '\{\}'\ for\ reading"{}},\ temp\_file);}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00825}00825\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00826}00826\ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00827}00827\ \ \ final\_out.close();}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00828}00828\ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00829}00829\ \ \ \textcolor{comment}{//\ Remove\ temporary\ file}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00830}00830\ \ \ \textcolor{comment}{//\ if\ (std::filesystem::exists(temp\_file))\ \{}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00831}00831\ \ \ \textcolor{comment}{//\ \ \ std::filesystem::remove(temp\_file);}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00832}00832\ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00833}00833\ \ \ }
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00834}00834\ \ \ \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Verilog\ creation\ complete\ in\ '\{\}'"{}},\ \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}}\ +\ \textcolor{stringliteral}{"{}.v"{}});}
+\DoxyCodeLine{\Hypertarget{lib__file_8cpp_source_l00835}00835\ \}}
 
 \end{DoxyCode}
