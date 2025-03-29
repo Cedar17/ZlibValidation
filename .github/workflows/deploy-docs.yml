@@ -28,9 +28,19 @@ jobs:
         with:
           version: '1.9.6' # 替换为你需要的 Doxygen 版本
 
-      - name: Set up Graphviz
-        uses: ts-graphviz/setup-graphviz@v1
-  
+      - name: Set up Conda
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          auto-activate-base: true
+          activate-environment: ""
+
+      - name: Install Graphviz via Conda
+        run: |
+          conda install -c conda-forge graphviz=4.0.0
+          # 验证路径
+          which dot
+          dot -V  
+
       - name: Generate Documentation
         run: |
           which doxygen # 确保 Doxygen 已安装
