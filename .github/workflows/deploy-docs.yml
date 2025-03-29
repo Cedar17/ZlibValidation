@@ -63,12 +63,13 @@ jobs:
       - name: Install TeX Live and Make it
         uses: xu-cheng/texlive-action@v2
         with:
+          scheme: full
+          texlive_version: 2024
           run: |
             pwd
             ls -l
             cd ./doc_doxygen/latex
             pwd
-            ls -l
             which make
             which lualatex
             make
