@@ -36,6 +36,7 @@ jobs:
           which dot
           dot -V
           which doxygen
+          doxygen -V
 
       - name: Install TeX Live
         run: |
