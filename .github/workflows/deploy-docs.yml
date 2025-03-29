@@ -28,14 +28,15 @@ jobs:
       #   with:
       #     version: '1.9.6' # 替换为你需要的 Doxygen 版本
 
-      - name: Install GraphViz with Development Libraries
+      - name: Install GraphViz Doxygen and Texlive
         run: |
           sudo apt-get update
-          sudo apt-get install -y graphviz graphviz-dev doxygen
+          sudo apt-get install -y graphviz graphviz-dev doxygen texlive-full
           # Verify installation
           which dot
           dot -V
           which doxygen
+          which lualatex
 
       # - name: Setup Graphviz
       #   uses: ts-graphviz/setup-graphviz@v2
@@ -69,21 +70,19 @@ jobs:
           ls -l
 
       - name: Install TeX Live and Make it
-        uses: xu-cheng/texlive-action@v2
-        with:
-          run: |
-            pwd
-            ls -l
-            cd ./doc_doxygen/latex
-            pwd
-            ls -l
-            which make
-            make clean
-            make
-            pwd
-            ls -l | grep refman
-            pwd
-            ls -l | grep tmp
+        run: |
+          pwd
+          ls -l
+          cd ./doc_doxygen/latex
+          pwd
+          ls -l
+          which make
+          make clean
+          make
+          pwd
+          ls -l | grep refman
+          pwd
+          ls -l | grep tmp
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
