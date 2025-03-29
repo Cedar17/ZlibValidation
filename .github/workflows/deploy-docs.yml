@@ -23,18 +23,19 @@ jobs:
           sudo timedatectl set-timezone ${{ env.TZ }}
           date # 输出当前时间以验证时区是否设置成功
 
-      - name: Set up Doxygen
-        uses: ssciwr/doxygen-install@v1 # 推荐使用这个 action 来安装 Doxygen
-        with:
-          version: '1.9.6' # 替换为你需要的 Doxygen 版本
+      # - name: Set up Doxygen
+      #   uses: ssciwr/doxygen-install@v1 # 推荐使用这个 action 来安装 Doxygen
+      #   with:
+      #     version: '1.9.6' # 替换为你需要的 Doxygen 版本
 
       - name: Install GraphViz with Development Libraries
         run: |
           sudo apt-get update
-          sudo apt-get install -y graphviz graphviz-dev
+          sudo apt-get install -y graphviz graphviz-dev doxygen
           # Verify installation
           which dot
           dot -V
+          which doxygen
 
       # - name: Setup Graphviz
       #   uses: ts-graphviz/setup-graphviz@v2
