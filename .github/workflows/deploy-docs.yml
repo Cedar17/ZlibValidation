@@ -46,50 +46,18 @@ jobs:
           which doxygen
           doxygen -V
           ls -l
-          doxygen Doxyfile
 
-      # - name: Install TeX Live
-      #   run: |
-      #     # Install TeX Live with basic scheme (much faster)
-      #     sudo apt-get update
-      #     sudo apt-get install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra lmodern texlive-luatex
-          
-      #     # Verify installation
-      #     which pdflatex
-      #     which lualatex
-      #     latex --version
-      #     lualatex --version
-
-      # - name: Setup Graphviz
-      #   uses: ts-graphviz/setup-graphviz@v2
-      #   with:
-      #     # graphviz version on Ubuntu.
-      #     ubuntu-graphviz-version: '2.42.2-3build2'
-      #     # libgraphviz-dev version on Ubuntu.
-      #     ubuntu-libgraphvizdev-version: '2.42.2-3build2'
-
-      # - name: Set up Conda
-      #   uses: conda-incubator/setup-miniconda@v3
-      #   with:
-      #     auto-activate-base: true
-      #     activate-environment: ""
-
-      # - name: Install Graphviz via Conda
-      #   run: |
-      #     conda install -c conda-forge graphviz=4.0.0
-      #     # 验证路径
-      #     which dot
-      #     dot -V  
-
-      # - name: Generate Documentation
-      #  run: |
-      #    which doxygen # 确保 Doxygen 已安装
-      #    which dot # 确保 Graphviz 已安装
-      #    dot -V # 输出 Graphviz 版本
-      #    pwd
-      #    ls -l
-      #    doxygen Doxyfile # 在根目录执行 Doxygen 命令，输出到 doc_doxygen 目录
-      #    ls -l
+      - name: Generate Documentation
+        shell: bash -el {0}  # Important to properly activate conda env
+        run: |
+          which doxygen # 确保 Doxygen 已安装
+          which dot # 确保 Graphviz 已安装
+          doxygen -V # 输出 Doxygen 版本
+          dot -V # 输出 Graphviz 版本
+          pwd
+          ls -l
+          doxygen Doxyfile # 在根目录执行 Doxygen 命令，输出到 doc_doxygen 目录
+          ls -l
 
       - name: Install TeX Live and Make it
         uses: xu-cheng/texlive-action@v2
