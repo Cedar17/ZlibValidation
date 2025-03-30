@@ -47,7 +47,6 @@ LibFile::LibFile(const std::string &filepath, const std::string &loggername)
 
 LibFile::~LibFile() { logger_->info("Closing file: '{}'", filename_); }
 
-
 /**
  * @brief Writes the JSON data stored in the object to a file.
  *
@@ -219,10 +218,10 @@ void LibFile::modify() { logger_->info("Modifying the file..."); }
 bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, const json &arc,
                                          const std::string &timing_arc_name, const bool is_slew) {
   if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
-    logger_->debug("Checking cell: '{}', pin: '{}', related_pin: '{}', timing_arc: '{}', when: '{}'",
-                   cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
-                   arc["related_pin"].get<std::string>(), timing_arc_name,
-                   arc["when"].get<std::string>());
+    logger_->debug(
+        "Checking cell: '{}', pin: '{}', related_pin: '{}', timing_arc: '{}', when: '{}'",
+        cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
+        arc["related_pin"].get<std::string>(), timing_arc_name, arc["when"].get<std::string>());
   } else {
     logger_->debug("Checking cell: '{}', pin: '{}', related_pin: '{}', timing_arc: '{}'",
                    cell["cell_name"].get<std::string>(), pin["pin_name"].get<std::string>(),
@@ -260,20 +259,23 @@ bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, cons
       // Check the monotonic incrementality of rows (by output load capacitance, index 2)
       for (size_t i = 0; i < value_matrix.size(); ++i) {
         for (size_t j = 1; j < value_matrix[i].size(); ++j) {
-          if ((value_matrix[i][j] < value_matrix[i][j - 1] && pin["pin_name"] != arc["related_pin"]) ||
+          if ((value_matrix[i][j] < value_matrix[i][j - 1] &&
+               pin["pin_name"] != arc["related_pin"]) ||
               (value_matrix[i][j] == 0 && value_matrix[i][j - 1] == 0)) {
             // If contains "when" key, log the when value
             if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
               logger_->warn("Non-monotonic (by load) '{}' values: ({}, {}) {} < ({}, {}) {} "
                             "for Cell: {} Pin: {}->{} when: \"{}\"",
-                            timing_arc_name, i, j, value_matrix[i][j], i, j - 1, value_matrix[i][j - 1],
-                            cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
+                            timing_arc_name, i, j, value_matrix[i][j], i, j - 1,
+                            value_matrix[i][j - 1], cell["cell_name"].get<std::string>(),
+                            arc["related_pin"].get<std::string>(),
                             pin["pin_name"].get<std::string>(), arc["when"].get<std::string>());
             } else {
               logger_->warn("Non-monotonic (by load) '{}' values: ({}, {}) {} < ({}, {}) {} "
                             "for Cell: {} Pin: {}->{}",
-                            timing_arc_name, i, j, value_matrix[i][j], i, j - 1, value_matrix[i][j - 1],
-                            cell["cell_name"].get<std::string>(), arc["related_pin"].get<std::string>(),
+                            timing_arc_name, i, j, value_matrix[i][j], i, j - 1,
+                            value_matrix[i][j - 1], cell["cell_name"].get<std::string>(),
+                            arc["related_pin"].get<std::string>(),
                             pin["pin_name"].get<std::string>());
             }
             is_monotonic = false;
@@ -284,7 +286,8 @@ bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, cons
         // Check the monotonic incrementality of columns (by input slew, index 1)
         for (size_t j = 0; j < value_matrix[0].size(); ++j) {
           for (size_t i = 1; i < value_matrix.size(); ++i) {
-            if ((value_matrix[i][j] < value_matrix[i - 1][j] && pin["pin_name"] != arc["related_pin"]) ||
+            if ((value_matrix[i][j] < value_matrix[i - 1][j] &&
+                 pin["pin_name"] != arc["related_pin"]) ||
                 (value_matrix[i][j] == 0 && value_matrix[i - 1][j] == 0)) {
               // If contains "when" key, log the when value
               if (arc.contains("when") && !arc["when"].get<std::string>().empty()) {
@@ -292,14 +295,15 @@ bool LibFile::checkTimingArcMonotonicity(const json &cell, const json &pin, cons
                               "for Cell: {} Pin: {}->{} when: \"{}\"",
                               timing_arc_name, i, j, value_matrix[i][j], i - 1, j,
                               value_matrix[i - 1][j], cell["cell_name"].get<std::string>(),
-                              arc["related_pin"].get<std::string>(), pin["pin_name"].get<std::string>(),
-                              arc["when"].get<std::string>());
+                              arc["related_pin"].get<std::string>(),
+                              pin["pin_name"].get<std::string>(), arc["when"].get<std::string>());
               } else {
                 logger_->warn("Non-monotonic (by slew) '{}' values: ({}, {}) {} < ({}, {}) {} "
                               "for Cell: {} Pin: {}->{}",
                               timing_arc_name, i, j, value_matrix[i][j], i - 1, j,
                               value_matrix[i - 1][j], cell["cell_name"].get<std::string>(),
-                              arc["related_pin"].get<std::string>(), pin["pin_name"].get<std::string>());
+                              arc["related_pin"].get<std::string>(),
+                              pin["pin_name"].get<std::string>());
               }
               is_monotonic = false;
             }
@@ -389,7 +393,8 @@ void LibFile::mono(const bool is_slew) {
         if (pin.contains("timing_arcs")) {
           for (const auto &arc : pin["timing_arcs"]) {
             // Check 4 timing arc names and accumulate monotonicity status
-            for (const auto &name : {"cell_rise", "cell_fall", "rise_transition", "fall_transition"}) {
+            for (const auto &name :
+                 {"cell_rise", "cell_fall", "rise_transition", "fall_transition"}) {
               if (!checkTimingArcMonotonicity(cell, pin, arc, name, is_slew)) {
                 cell_is_monotonic = false;
               }
@@ -458,7 +463,8 @@ void LibFile::mono(const bool is_slew) {
  * regardless of the requested chain length.
  *
  * @param chain_length The length of the chain for combinational cells
- * @param cell_names Vector of specific cell names to process. If empty, all cells will be processed.
+ * @param cell_names Vector of specific cell names to process. If empty, all cells will be
+ * processed.
  *
  * @note Before creating supercells, this method checks for the existence of
  *       a JSON representation of the Liberty file and parses it if not found.
@@ -507,7 +513,8 @@ void LibFile::supercell(const int chain_length, const std::vector<std::string> &
   if (process_all_cells) {
     logger_->info("Creating supercells for ALL cells in '{}'", filename_);
   } else {
-    logger_->info("Creating supercells for {} specified cells in '{}'", cell_names.size(), filename_);
+    logger_->info("Creating supercells for {} specified cells in '{}'", cell_names.size(),
+                  filename_);
   }
 
   // Create a set for faster lookups if we have specific cell names
@@ -561,8 +568,8 @@ void LibFile::supercell(const int chain_length, const std::vector<std::string> &
               cell_name + "__X" + std::to_string(chain_len) + "__" + input_pin + "__" + output_pin;
           out << cell_name << " " << supercell_name << std::endl;
         } else {
-          std::string supercell_name =
-              cell_name + "__X" + std::to_string(chain_length) + "__" + input_pin + "__" + output_pin;
+          std::string supercell_name = cell_name + "__X" + std::to_string(chain_length) + "__" +
+                                       input_pin + "__" + output_pin;
           out << cell_name << " " << supercell_name << std::endl;
         }
       }
@@ -879,4 +886,63 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
   // }
 
   logger_->info("Verilog creation complete in '{}'", basename_ + ".v");
+}
+
+std::map<std::string, std::string> LibFile::logic(const std::string &cell_name) {
+  std::map<std::string, std::string> logic_map = {};
+
+  logger_->info("Getting output pin logic function for '{}'", filename_);
+
+  if (!std::filesystem::exists(jsonname_)) {
+    logger_->info("JSON file not found. Parsing Liberty file first.");
+    this->parse();
+    this->writeJsonToFile();
+  } else {
+    // Read the JSON file into json object
+    std::ifstream in(jsonname_);
+    if (!in.is_open()) {
+      logger_->error("Could not open file '{}' for reading", jsonname_);
+      return logic_map;
+    }
+    try {
+      lib_json_ = json::parse(in);
+    } catch (const json::parse_error &e) {
+      logger_->error("JSON parsing error in file '{}': {}", jsonname_, e.what());
+      in.close();
+      return logic_map;
+    }
+    in.close();
+  }
+
+  // Check if the cell name exists in the JSON object
+  for (const auto &cell : lib_json_["cells"]) {
+    if (cell["cell_name"].get<std::string>() == cell_name) {
+      logger_->debug("Found cell: '{}'", cell_name);
+
+      // Tranverse all output pins
+      if (cell.contains("output_pins")) {
+        for (const auto &pin : cell["output_pins"]) {
+          std::string pin_name = pin["pin_name"].get<std::string>();
+          // Check if the pin has a "timing_arcs" attribute
+          if (pin.contains("function")) {
+            std::string function = pin["function"].get<std::string>();
+            logic_map[pin_name] = function;
+            logger_->debug("Pin: '{}' Logic Function: '{}'", pin_name, function);
+          } else {
+            logger_->warn("Pin: '{}' does not have a 'function' attribute", pin_name);
+          }
+        }
+      }
+    }
+  }
+  if (logic_map.empty()) {
+    logger_->warn("No logic functions found for cell: '{}'", cell_name);
+  } else {
+    logger_->info("Found {} Logic functions for cell: '{}'", logic_map.size(), cell_name);
+    // Print the logic functions
+    for (const auto &pair : logic_map) {
+      logger_->info("Pin: '{}', Logic Function: '{}'", pair.first, pair.second);
+    }
+  }
+  return logic_map;
 }

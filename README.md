@@ -272,3 +272,16 @@ Subcommands:
   - 采用 action marketplace 提供的 `xu-cheng/texlive-action@v2` 安装全量的 texlive2024。
   - 进入 `./doc_doxygen/latex` 目录，运行 `make` 命令使用 lualatex 编译 tex 文件，生成 pdf 文件。
   - 使用 `JamesIves/github-pages-deploy-action@v4` 将生成的 pdf 文件上传到 GitHub Pages 发布，并保留 `README.md` 和 `index.html` 文件。
+
+### 2025-03-30
+
+- 完成了 `LibFile::logic(const std::string &cell_name)` 方法，该方法返回指定 cell_name 所有输出引脚对应的逻辑表达式，以 `std::map<std::string, std::string>` 的形式返回，存储输出引脚名称到其逻辑表达式字符串的映射关系.
+- 实现了 `func` 子命令的基本框架，用于检查库或 Verilog 文件的逻辑等价性。
+  - 完善了 `funcLibFile` 函数，能够处理 Liberty 文件和 Verilog 文件作为参考和比较对象。
+  - 增加了文件类型判断，根据文件扩展名选择不同的处理方式。
+  - 实现了对 `.lib` 文件的解析，并提取指定 cell 的逻辑表达式。
+  - 目前仅支持 Liberty 文件的逻辑表达式提取，Verilog 文件的逻辑表达式提取功能尚未完成（TODO）。
+  - 增加了对 report 文件名的检查，确保其以 `.md` 或 `.txt` 结尾。若不符合，则给出警告并自动添加 `.md` 后缀。
+  - 实现了从 Liberty 文件中提取逻辑表达式的功能，使用了 `LibFile::logic` 方法。
+  - 增加了日志输出，记录每个 cell 的逻辑表达式提取和比较过程。
+  - 逻辑比较部分目前为空，待实现（TODO）。

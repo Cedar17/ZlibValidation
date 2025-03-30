@@ -80,21 +80,22 @@ void parseLibFile(const std::string &library_path, const std::string log_file_na
 }
 
 /**
- * @brief Performs a monotonicity check on a library file
+ * @brief Performs monotonicity check on a library file
  *
- * This function loads a library file and performs monotonicity validation on it.
- * Results are logged to a file. If no log file name is provided, it generates one
- * based on the library file name.
+ * This function validates the monotonicity of timing data in a library file.
+ * It creates a log file to record the results of the check and handles any
+ * exceptions that occur during the process.
  *
  * @param library_path Path to the library file to check
- * @param log_file_name Name of the log file (optional - if empty, generates a name based on library
- * file)
- * @param is_slew Boolean flag indicating whether to check slew monotonicity (true) or other parameters
- * (false)
+ * @param log_file_name Name of the log file to create (optional). If empty,
+ *                      a default name will be generated from the library file name
+ * @param is_slew Flag indicating whether to check input slew monotonicity (true)
+ *                or output load monotonicity (false)
  *
- * @throws Any exceptions from the monotonicity check are caught and logged
+ * @throws The function catches and logs any exceptions but does not rethrow them
  */
-void monoCheckLibFile(const std::string &library_path, const std::string log_file_name, bool is_slew) {
+void monoCheckLibFile(const std::string &library_path, const std::string log_file_name,
+                      bool is_slew) {
   std::string logname = log_file_name.empty()
                             ? std::filesystem::path(library_path).stem().string() + ".mono.log"
                             : log_file_name;
@@ -107,7 +108,8 @@ void monoCheckLibFile(const std::string &library_path, const std::string log_fil
     libfile.mono(is_slew);
     libfile.logger_->info("Successfully completed monotonicity check for file: '{}'", library_path);
   } catch (const std::exception &e) {
-    libfile.logger_->error("Error during monotonicity check for file '{}': {}", library_path, e.what());
+    libfile.logger_->error("Error during monotonicity check for file '{}': {}", library_path,
+                           e.what());
   }
 }
 
@@ -168,8 +170,8 @@ void supercellLibFile(const std::string &library_path, const std::string &log_fi
  *
  * @throws Catches any exceptions from the verilog generation process and logs them
  */
-void verilogLibFile(const std::string &library_path, const std::string &log_file_name, int chain_length,
-                    const std::vector<std::string> &cell_names) {
+void verilogLibFile(const std::string &library_path, const std::string &log_file_name,
+                    int chain_length, const std::vector<std::string> &cell_names) {
   std::string logname = log_file_name.empty()
                             ? std::filesystem::path(library_path).stem().string() + ".verilog.log"
                             : log_file_name;
@@ -190,7 +192,8 @@ void verilogLibFile(const std::string &library_path, const std::string &log_file
     libfile.verilog(chain_length, cell_names);
     libfile.logger_->info("Successfully generated Verilog for file: '{}'", library_path);
   } catch (const std::exception &e) {
-    libfile.logger_->error("Error during Verilog generation for file '{}': {}", library_path, e.what());
+    libfile.logger_->error("Error during Verilog generation for file '{}': {}", library_path,
+                           e.what());
   }
 }
 
@@ -224,6 +227,8 @@ void compareLibFiles(const std::string &ref_lib, const std::string &comp_lib, co
     spdlog::error("Invalid relative tolerance: {}. Relative tolerance must be >= 0.0.", reltol);
     return;
   }
+
+  // Check the report file name
   if (report_file_name.empty()) {
     report_file_name = comp_libfile.basename_ + ".cmp.md";
   } else if (std::filesystem::path(report_file_name).extension() != ".txt" &&
@@ -240,21 +245,86 @@ void compareLibFiles(const std::string &ref_lib, const std::string &comp_lib, co
 }
 
 void funcLibFile(const std::string &ref_file, const std::string &comp_file,
-                 const std::vector<std::string> &cell_names) {
+                 const std::vector<std::string> &cell_names, std::string &report_file_name) {
   // Check if the files are Liberty or Verilog
   std::string ref_ext = std::filesystem::path(ref_file).extension();
   std::string comp_ext = std::filesystem::path(comp_file).extension();
+  std::string ref_logname = std::filesystem::path(ref_file).stem().string() + ".cmp.log";
+  std::string comp_logname = std::filesystem::path(comp_file).stem().string() + ".cmp.log";
+
+  // Pre cell names check
+  if (cell_names.empty()) {
+    spdlog::error("No cell names provided for functional equivalence check.");
+    return;
+  }
+
+  // Check the report file name
+  if (report_file_name.empty()) {
+    report_file_name = std::filesystem::path(comp_file).stem().string() + ".cmp.md";
+  } else if (std::filesystem::path(report_file_name).extension() != ".txt" &&
+             std::filesystem::path(report_file_name).extension() != ".md") {
+    // report file name not end in .txt or .md, warn user and append .md
+    report_file_name = report_file_name + ".md";
+    spdlog::warn("Report file name does not end in .txt or .md. Report will be written to '{}'",
+                 report_file_name);
+  }
+
+  // Declare LibFile objects as pointers, initialized to nullptr
+  LibFile *ref_libfile = nullptr;
+  LibFile *comp_libfile = nullptr;
+
+  // Check the reference file extension
+  if (ref_ext == ".v") {
+    spdlog::info("Reference file in Verilog format.");
+    // getAST(ref_file, cell);
+  } else if (ref_ext == ".lib") {
+    spdlog::info("Reference file in Liberty format.");
+    ref_libfile = new LibFile(ref_file, ref_logname);
+  } else {
+    spdlog::error("Unsupported reference file format: '{}'", ref_ext);
+    return;
+  }
+  // Check the comparison file extension
+  if (comp_ext == ".v") {
+    spdlog::info("Comparison file in Verilog format.");
+    // getAST(comp_file, cell);
+  } else if (comp_ext == ".lib") {
+    spdlog::info("Comparison file in Liberty format.");
+    comp_libfile = new LibFile(comp_file, comp_logname);
+  } else {
+    spdlog::error("Unsupported comparison file format: '{}'", comp_ext);
+    return;
+  }
+
+  // Tranverse the cell names and check functional equivalence
   for (const auto &cell : cell_names) {
     spdlog::info("Checking functional equivalence for cell: '{}'", cell);
+    std::map<std::string, std::string> ref_outpin_map;
+    std::map<std::string, std::string> comp_outpin_map;
+
     if (ref_ext == ".v") {
-      spdlog::info("Reference file in Verilog format.");
-      getAST(ref_file, cell);
+      // TODO get logic expression from Verilog file
+      // ref_outpin_map = getLogic(ref_file, cell);
+    } else if (ref_ext == ".lib") {
+      ref_outpin_map = ref_libfile->logic(cell);
     }
+
     if (comp_ext == ".v") {
-      spdlog::info("Comparison file in Verilog format.");
-      getAST(comp_file, cell);
+      // comp_outpin_map = getLogic(comp_file, cell);
+    } else if (comp_ext == ".lib") {
+      comp_outpin_map = comp_libfile->logic(cell);
     }
+
+    spdlog::info("Logic function expressions collected for cell: '{}'", cell);
+    spdlog::info("Starting logic comparison ...");
+
+    // TODO Perform functional equivalence check
+    // LogicComparator comparator(ref_outpin_map, comp_outpin_map, cell);
+    // comparator.generateReport(report_file_name);
+    spdlog::info("Functional equivalence check completed for cell: '{}'", cell);
   }
+  spdlog::info("Functional equivalence check completed for all cells,");
+  spdlog::info("Report written to: '{}'", report_file_name);
 }
 
 int main(int argc, char *argv[]) {
@@ -267,7 +337,8 @@ int main(int argc, char *argv[]) {
   app.set_version_flag("-v,--version", APP_VERSION);
 
   // Add subcommand for parse mode
-  CLI::App *parse_cmd = app.add_subcommand("parse", "Parse the Liberty file and write JSON to a file");
+  CLI::App *parse_cmd =
+      app.add_subcommand("parse", "Parse the Liberty file and write JSON to a file");
   parse_cmd->add_option("library_path", library_paths, "Specify the library file to process")
       ->check(CLI::ExistingFile)
       ->required();
@@ -296,7 +367,8 @@ int main(int argc, char *argv[]) {
       ->required();
   mono_cmd->add_option("-l,--log", log_file_name,
                        "Specify the log file name. Default: <basename>.mono.log");
-  mono_cmd->add_flag("-s,--slew", is_slew, "Specify that monotonicity checks also include input slew.");
+  mono_cmd->add_flag("-s,--slew", is_slew,
+                     "Specify that monotonicity checks also include input slew.");
   mono_cmd->callback([&] {
     printInfo();
     // Check if multi files
@@ -306,7 +378,8 @@ int main(int argc, char *argv[]) {
 
       // Sequential json file check
       for (const auto &library_path : library_paths) {
-        if (!std::filesystem::exists(std::filesystem::path(library_path).stem().string() + ".json")) {
+        if (!std::filesystem::exists(std::filesystem::path(library_path).stem().string() +
+                                     ".json")) {
           spdlog::info("JSON file not found for '{}'. Parsing Liberty file first.", library_path);
           parseLibFile(library_path, log_file_name = "");
         }
@@ -329,7 +402,8 @@ int main(int argc, char *argv[]) {
   // Add subcommand for compare mode
   std::string ref_lib, comp_lib, report_file_name;
   CLI::App *compare_cmd = app.add_subcommand(
-      "compare", "Compare the comparison library against the reference library and report differences");
+      "compare",
+      "Compare the comparison library against the reference library and report differences");
   compare_cmd->add_option("--ref", ref_lib, "Specify the reference library file")
       ->check(CLI::ExistingFile)
       ->required();
@@ -361,17 +435,20 @@ int main(int argc, char *argv[]) {
   supercell_cmd->add_option("-c,--chain", chain_length,
                             "Specify the chain length for supercell generation. Default: 1");
   std::vector<std::string> cell_names = {}; // "CMPE42D1" "AN2D0", "DFQD1"
-  supercell_cmd->add_option("--cells", cell_names, "Specify the cell names to generate supercells for");
+  supercell_cmd->add_option("--cells", cell_names,
+                            "Specify the cell names to generate supercells for");
   supercell_cmd->callback([&] {
     printInfo();
     // Check if multi files
     if (library_paths.size() > 1) {
-      spdlog::info("Running multi-threaded supercell generation for {} files.", library_paths.size());
+      spdlog::info("Running multi-threaded supercell generation for {} files.",
+                   library_paths.size());
       spdlog::info("Each library will write to its own log file.");
 
       // Sequential json file check
       for (const auto &library_path : library_paths) {
-        if (!std::filesystem::exists(std::filesystem::path(library_path).stem().string() + ".json")) {
+        if (!std::filesystem::exists(std::filesystem::path(library_path).stem().string() +
+                                     ".json")) {
           spdlog::info("JSON file not found for '{}'. Parsing Liberty file first.", library_path);
           parseLibFile(library_path, log_file_name = "");
         }
@@ -404,9 +481,9 @@ int main(int argc, char *argv[]) {
   zlibboost_cmd->add_option(
       "--python", python_dir,
       "Specify the python directory. Default: /home/guocj/anaconda3/envs/myenv/bin/python");
-  zlibboost_cmd->add_option(
-      "--main", main_py_dir,
-      "Specify the main python script directory. Default: /home/songzx/Projects/zlibboost/zlibboost.py");
+  zlibboost_cmd->add_option("--main", main_py_dir,
+                            "Specify the main python script directory. Default: "
+                            "/home/songzx/Projects/zlibboost/zlibboost.py");
   zlibboost_cmd->callback([&] {
     printInfo();
     // Run the ZlibBoost tool
@@ -437,7 +514,8 @@ int main(int argc, char *argv[]) {
   });
 
   // Add subcommand for Verilog generation
-  CLI::App *verilog_cmd = app.add_subcommand("verilog", "Generate Verilog file for given Liberty file");
+  CLI::App *verilog_cmd =
+      app.add_subcommand("verilog", "Generate Verilog file for given Liberty file");
   verilog_cmd->add_option("library_path", library_paths, "Specify the library file to process")
       ->check(CLI::ExistingFile)
       ->required();
@@ -455,7 +533,8 @@ int main(int argc, char *argv[]) {
 
       // Sequential json file check
       for (const auto &library_path : library_paths) {
-        if (!std::filesystem::exists(std::filesystem::path(library_path).stem().string() + ".json")) {
+        if (!std::filesystem::exists(std::filesystem::path(library_path).stem().string() +
+                                     ".json")) {
           spdlog::info("JSON file not found for '{}'. Parsing Liberty file first.", library_path);
           parseLibFile(library_path, log_file_name = "");
         }
@@ -464,7 +543,8 @@ int main(int argc, char *argv[]) {
       // Parallel Verilog generation
       std::vector<std::thread> threads;
       for (const auto &library_path : library_paths) {
-        threads.emplace_back(verilogLibFile, library_path, log_file_name = "", chain_length, cell_names);
+        threads.emplace_back(verilogLibFile, library_path, log_file_name = "", chain_length,
+                             cell_names);
       }
       for (auto &thread : threads) {
         thread.join();
@@ -492,7 +572,8 @@ int main(int argc, char *argv[]) {
 
       // Sequential json file check
       for (const auto &library_path : library_paths) {
-        if (!std::filesystem::exists(std::filesystem::path(library_path).stem().string() + ".json")) {
+        if (!std::filesystem::exists(std::filesystem::path(library_path).stem().string() +
+                                     ".json")) {
           spdlog::info("JSON file not found for '{}'. Parsing Liberty file first.", library_path);
           parseLibFile(library_path, log_file_name = "");
         }
@@ -513,8 +594,8 @@ int main(int argc, char *argv[]) {
   });
 
   // Add subcommand for funtional equivalence check
-  CLI::App *func_cmd =
-      app.add_subcommand("func", "Check functional equivalence of two Liberty files or Verilog files");
+  CLI::App *func_cmd = app.add_subcommand(
+      "func", "Check functional equivalence of two Liberty files or Verilog files");
   std::string ref_file, comp_file;
   func_cmd->add_option("--ref", ref_file, "Specify the reference Liberty or Verilog file")
       ->check(CLI::ExistingFile)
@@ -524,9 +605,12 @@ int main(int argc, char *argv[]) {
       ->required();
   func_cmd->add_option("--cells", cell_names,
                        "Specify the cell names to check functional equivalence for");
+  func_cmd->add_option("--report", report_file_name,
+                       "Specify the report file name. Default: <comp_lib>.cmp.md");
+
   func_cmd->callback([&] {
     printInfo();
-    funcLibFile(ref_file, comp_file, cell_names);
+    funcLibFile(ref_file, comp_file, cell_names, report_file_name);
   });
 
   CLI11_PARSE(app, argc, argv);

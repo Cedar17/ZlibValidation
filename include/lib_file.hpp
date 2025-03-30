@@ -28,6 +28,7 @@ public:
   void mono(const bool is_slew);
   void supercell(const int chain_length, const std::vector<std::string> &cell_names);
   void verilog(const int chain_length, const std::vector<std::string> &cell_names);
+  std::map<std::string, std::string> logic(const std::string &cell_name);
 
 private:
   si2drErrorT err_;
