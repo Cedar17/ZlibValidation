@@ -6,5 +6,6 @@ var searchData=
   ['liberty_5fget_5fvalues_5fdata_3',['liberty_get_values_data',['../si2dr__liberty_8h.html#a9e49015b07ece4fb2ce79062f78004f2',1,'si2dr_liberty.h']]],
   ['libfile_4',['LibFile',['../classLibFile.html#a92a5efdef532776c5c2d60bc49dbe104',1,'LibFile']]],
   ['libgroup_5',['LibGroup',['../classLibGroup.html#a1af97874abe20591db9eb0f81700869b',1,'LibGroup']]],
-  ['librarycomparator_6',['LibraryComparator',['../classLibraryComparator.html#a3b1cf4c12188388533050cc7f2804444',1,'LibraryComparator']]]
+  ['librarycomparator_6',['LibraryComparator',['../classLibraryComparator.html#a3b1cf4c12188388533050cc7f2804444',1,'LibraryComparator']]],
+  ['logic_7',['logic',['../classLibFile.html#a90b6274f928d77388864ba61583a030f',1,'LibFile']]]
 ];

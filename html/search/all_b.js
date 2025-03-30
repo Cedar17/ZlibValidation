@@ -24,5 +24,6 @@ var searchData=
   ['listinsertatfront_21',['listInsertAtFront',['../structslang_1_1syntax_1_1detail_1_1ChangeCollection.html#adb68c1d5282f4cd32eafa8ae46b74ecf',1,'slang::syntax::detail::ChangeCollection']]],
   ['logger_5f_22',['logger_',['../classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d',1,'LibFile::logger_()'],['../classModuleRewriter.html#a35bc880b11364a5c980c70be72ab42ab',1,'ModuleRewriter::logger_()']]],
   ['loggername_5f_23',['loggername_',['../classLibFile.html#ac603785bfcf7fb11172603e0777b3332',1,'LibFile']]],
-  ['long_5fdouble_24',['LONG_DOUBLE',['../si2dr__liberty_8h.html#ad53edf12e98c4098e41b9d91fd8d5f17',1,'si2dr_liberty.h']]]
+  ['logic_24',['logic',['../classLibFile.html#a90b6274f928d77388864ba61583a030f',1,'LibFile']]],
+  ['long_5fdouble_25',['LONG_DOUBLE',['../si2dr__liberty_8h.html#ad53edf12e98c4098e41b9d91fd8d5f17',1,'si2dr_liberty.h']]]
 ];

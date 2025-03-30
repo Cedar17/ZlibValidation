@@ -30,14 +30,14 @@ void \mbox{\hyperlink{main_8cpp_a2dbaf5580b5305d54cff6848ae7deb30}{print\+Info}}
 void \mbox{\hyperlink{main_8cpp_a3ac24d33b321364527447f166fd31edf}{parse\+Lib\+File}} (const std\+::string \&library\+\_\+path, const std\+::string log\+\_\+file\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Parses a library file and generates corresponding output. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{main_8cpp_aebef9d1797be7b2aafcbc107bcc513cb}{mono\+Check\+Lib\+File}} (const std\+::string \&library\+\_\+path, const std\+::string log\+\_\+file\+\_\+name, bool is\+\_\+slew)
-\begin{DoxyCompactList}\small\item\em Performs a monotonicity check on a library file. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Performs monotonicity check on a library file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{main_8cpp_a0d7485f0df82adbd1671def221103a4e}{supercell\+Lib\+File}} (const std\+::string \&library\+\_\+path, const std\+::string \&log\+\_\+file\+\_\+name, int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
 \begin{DoxyCompactList}\small\item\em Creates supercell map structures from a Liberty library file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{main_8cpp_ab649fe3c5663201c3e23700250f7b1c2}{verilog\+Lib\+File}} (const std\+::string \&library\+\_\+path, const std\+::string \&log\+\_\+file\+\_\+name, int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
 \begin{DoxyCompactList}\small\item\em Generates Verilog files from a library file for specified cells. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{main_8cpp_aefb52455235a664c6dc21709237f77a1}{compare\+Lib\+Files}} (const std\+::string \&ref\+\_\+lib, const std\+::string \&comp\+\_\+lib, const double reltol, const double abstol, std\+::string \&report\+\_\+file\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Compares two library files and generates a detailed comparison report. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{main_8cpp_a875b6f1abcdf75781a4b3482c8306ed3}{func\+Lib\+File}} (const std\+::string \&ref\+\_\+file, const std\+::string \&comp\+\_\+file, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
+void \mbox{\hyperlink{main_8cpp_a56d944f0ea8b38f2f61c046c7fb44476}{func\+Lib\+File}} (const std\+::string \&ref\+\_\+file, const std\+::string \&comp\+\_\+file, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names, std\+::string \&report\+\_\+file\+\_\+name)
 \item 
 int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \end{DoxyCompactItemize}
@@ -78,7 +78,7 @@ The function uses the \mbox{\hyperlink{classLibraryComparator}{Library\+Comparat
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00216}{216}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00219}{219}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -96,22 +96,22 @@ Here is the caller graph for this function\+:
 \includegraphics[width=253pt]{main_8cpp_aefb52455235a664c6dc21709237f77a1_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{main_8cpp_a875b6f1abcdf75781a4b3482c8306ed3}\label{main_8cpp_a875b6f1abcdf75781a4b3482c8306ed3}} 
+\mbox{\Hypertarget{main_8cpp_a56d944f0ea8b38f2f61c046c7fb44476}\label{main_8cpp_a56d944f0ea8b38f2f61c046c7fb44476}} 
 \index{main.cpp@{main.cpp}!funcLibFile@{funcLibFile}}
 \index{funcLibFile@{funcLibFile}!main.cpp@{main.cpp}}
 \doxysubsubsection{\texorpdfstring{funcLibFile()}{funcLibFile()}}
-{\footnotesize\ttfamily void func\+Lib\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{ref\+\_\+file,  }\item[{const std\+::string \&}]{comp\+\_\+file,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{cell\+\_\+names }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void func\+Lib\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{ref\+\_\+file,  }\item[{const std\+::string \&}]{comp\+\_\+file,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{cell\+\_\+names,  }\item[{std\+::string \&}]{report\+\_\+file\+\_\+name }\end{DoxyParamCaption})}
 
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00242}{242}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00247}{247}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{main_8cpp_a875b6f1abcdf75781a4b3482c8306ed3_cgraph}
+\includegraphics[width=350pt]{main_8cpp_a56d944f0ea8b38f2f61c046c7fb44476_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -119,7 +119,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=226pt]{main_8cpp_a875b6f1abcdf75781a4b3482c8306ed3_icgraph}
+\includegraphics[width=226pt]{main_8cpp_a56d944f0ea8b38f2f61c046c7fb44476_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
@@ -130,7 +130,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00260}{260}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00330}{330}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -148,22 +148,22 @@ Here is the call graph for this function\+:
 
 
 
-Performs a monotonicity check on a library file. 
+Performs monotonicity check on a library file. 
 
-This function loads a library file and performs monotonicity validation on it. Results are logged to a file. If no log file name is provided, it generates one based on the library file name.
+This function validates the monotonicity of timing data in a library file. It creates a log file to record the results of the check and handles any exceptions that occur during the process.
 
 
 \begin{DoxyParams}{Parameters}
 {\em library\+\_\+path} & Path to the library file to check \\
 \hline
-{\em log\+\_\+file\+\_\+name} & Name of the log file (optional -\/ if empty, generates a name based on library file) \\
+{\em log\+\_\+file\+\_\+name} & Name of the log file to create (optional). If empty, a default name will be generated from the library file name \\
 \hline
-{\em is\+\_\+slew} & Boolean flag indicating whether to check slew monotonicity (true) or other parameters (false)\\
+{\em is\+\_\+slew} & Flag indicating whether to check input slew monotonicity (true) or output load monotonicity (false)\\
 \hline
 \end{DoxyParams}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em Any} & exceptions from the monotonicity check are caught and logged \\
+{\em The} & function catches and logs any exceptions but does not rethrow them \\
 \hline
 \end{DoxyExceptions}
 
@@ -303,7 +303,7 @@ The function validates the chain length and logs all activities including errors
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00132}{132}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -351,7 +351,7 @@ This function processes a library file and generates Verilog representation for 
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00171}{171}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00173}{173}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak

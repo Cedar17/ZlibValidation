@@ -32,17 +32,18 @@
 \DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00028}00028   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}{mono}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} is\_slew);}
 \DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00029}00029   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{supercell}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} chain\_length, \textcolor{keyword}{const} std::vector<std::string> \&cell\_names);}
 \DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00030}00030   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{verilog}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} chain\_length, \textcolor{keyword}{const} std::vector<std::string> \&cell\_names);}
-\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00031}00031 }
-\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00032}00032 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00033}\mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{00033}}   \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}} \mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{err\_}};}
-\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00034}\mbox{\hyperlink{classLibFile_a83c339b99f96a9692a500a6470208059}{00034}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classLibFile_a83c339b99f96a9692a500a6470208059}{process\_}} = 0;}
-\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00035}\mbox{\hyperlink{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}{00035}}   \textcolor{keywordtype}{float} \mbox{\hyperlink{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}{voltage\_}} = 0.0;}
-\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00036}\mbox{\hyperlink{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}{00036}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}{temperature\_}} = 0;}
-\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00037}00037   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a070b5da7981c5b5dc049349404d2f5a4}{read}}();}
-\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00038}00038   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLibFile_acffc39bf8d1206b2efb2111229c57827}{checkTimingArcMonotonicity}}(\textcolor{keyword}{const} \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&cell, \textcolor{keyword}{const} \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&pin, \textcolor{keyword}{const} \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&arc,}
-\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00039}00039                                   \textcolor{keyword}{const} std::string \&type, \textcolor{keywordtype}{bool} is\_slew);}
-\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00040}00040 \};}
-\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00041}00041 }
-\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00042}00042 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LIB\_FILE\_H}}
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00031}00031   std::map<std::string, std::string> \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{logic}}(\textcolor{keyword}{const} std::string \&cell\_name);}
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00033}00033 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00034}\mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{00034}}   \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789d}{si2drErrorT}} \mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{err\_}};}
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00035}\mbox{\hyperlink{classLibFile_a83c339b99f96a9692a500a6470208059}{00035}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classLibFile_a83c339b99f96a9692a500a6470208059}{process\_}} = 0;}
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00036}\mbox{\hyperlink{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}{00036}}   \textcolor{keywordtype}{float} \mbox{\hyperlink{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}{voltage\_}} = 0.0;}
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00037}\mbox{\hyperlink{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}{00037}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}{temperature\_}} = 0;}
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00038}00038   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a070b5da7981c5b5dc049349404d2f5a4}{read}}();}
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00039}00039   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLibFile_acffc39bf8d1206b2efb2111229c57827}{checkTimingArcMonotonicity}}(\textcolor{keyword}{const} \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&cell, \textcolor{keyword}{const} \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&pin, \textcolor{keyword}{const} \mbox{\hyperlink{lib__file_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&arc,}
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00040}00040                                   \textcolor{keyword}{const} std::string \&type, \textcolor{keywordtype}{bool} is\_slew);}
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00041}00041 \};}
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{lib__file_8hpp_source_l00043}00043 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LIB\_FILE\_H}}
 
 \end{DoxyCode}

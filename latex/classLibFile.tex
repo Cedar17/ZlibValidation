@@ -22,7 +22,9 @@ void \mbox{\hyperlink{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}{mono}} (co
 void \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{supercell}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
 \begin{DoxyCompactList}\small\item\em Creates supercells based on standard cells in the library file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{verilog}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
-\begin{DoxyCompactList}\small\item\em Generates Verilog files for cell validation based on the library file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generates Verilog files for cell validation based on the library file. \end{DoxyCompactList}\item 
+std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{logic}} (const std\+::string \&cell\+\_\+name)
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -152,7 +154,7 @@ true if all values in the timing arc are monotonic, false otherwise
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00219}{219}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00218}{218}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
 
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -160,6 +162,32 @@ Here is the caller graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classLibFile_acffc39bf8d1206b2efb2111229c57827_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLibFile_a90b6274f928d77388864ba61583a030f}\label{classLibFile_a90b6274f928d77388864ba61583a030f}} 
+\index{LibFile@{LibFile}!logic@{logic}}
+\index{logic@{logic}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{logic()}{logic()}}
+{\footnotesize\ttfamily std\+::map$<$ std\+::string, std\+::string $>$ Lib\+File\+::logic (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{cell\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00891}{891}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLibFile_a90b6274f928d77388864ba61583a030f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{classLibFile_a90b6274f928d77388864ba61583a030f_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classLibFile_a13703620c950bdf0b72882d2eda1e401}\label{classLibFile_a13703620c950bdf0b72882d2eda1e401}} 
@@ -170,7 +198,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00196}{196}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00195}{195}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
 
 \mbox{\Hypertarget{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}\label{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}} 
 \index{LibFile@{LibFile}!mono@{mono}}
@@ -204,7 +232,7 @@ The function outputs\+:
 \item List of cells that failed the check (if any) 
 \end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00340}{340}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00344}{344}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -258,7 +286,7 @@ This method creates local scopes to ensure proper cleanup of SI2 iterators.
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00129}{129}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -307,7 +335,7 @@ This function uses the spdlog library for logging and the si2dr\+Read\+Liberty\+
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
 
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -345,7 +373,7 @@ The method will report any requested cells that were not found in the library.
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00467}{467}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00473}{473}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -400,7 +428,7 @@ The function writes a temporary file during processing that might not be removed
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00620}{620}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00627}{627}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -437,7 +465,7 @@ This method opens the file specified by jsonname\+\_\+ and writes the content of
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{lib__file_8cpp_source}{lib\+\_\+file.\+cpp}}.
 
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -468,7 +496,7 @@ Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00019}{19}} of file \
 
 
 
-Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
 
 \mbox{\Hypertarget{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}\label{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}} 
 \index{LibFile@{LibFile}!filename\_@{filename\_}}
@@ -548,7 +576,7 @@ Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00023}{23}} of file \
 
 
 
-Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
 
 \mbox{\Hypertarget{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}\label{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}} 
 \index{LibFile@{LibFile}!temperature\_@{temperature\_}}
@@ -558,7 +586,7 @@ Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00034}{34}} of file \
 
 
 
-Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
 
 \mbox{\Hypertarget{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}\label{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}} 
 \index{LibFile@{LibFile}!voltage\_@{voltage\_}}
@@ -568,7 +596,7 @@ Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00036}{36}} of file \
 
 
 
-Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
+Definition at line \mbox{\hyperlink{lib__file_8hpp_source_l00036}{36}} of file \mbox{\hyperlink{lib__file_8hpp_source}{lib\+\_\+file.\+hpp}}.
 
 
 

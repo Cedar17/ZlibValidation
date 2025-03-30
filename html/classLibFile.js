@@ -3,6 +3,7 @@ var classLibFile =
     [ "LibFile", "classLibFile.html#a92a5efdef532776c5c2d60bc49dbe104", null ],
     [ "~LibFile", "classLibFile.html#ae6956feb0dd50065d6abf8f3cd46bb80", null ],
     [ "checkTimingArcMonotonicity", "classLibFile.html#acffc39bf8d1206b2efb2111229c57827", null ],
+    [ "logic", "classLibFile.html#a90b6274f928d77388864ba61583a030f", null ],
     [ "modify", "classLibFile.html#a13703620c950bdf0b72882d2eda1e401", null ],
     [ "mono", "classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe", null ],
     [ "parse", "classLibFile.html#a84d29423705e2dea8a382dc6437640d9", null ],

@@ -285,6 +285,21 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \item 使用 {\ttfamily doxygen} 命令生成 HTML 文档和 tex 文件。
 \item 采用 action marketplace 提供的 {\ttfamily xu-\/cheng/texlive-\/action@v2} 安装全量的 texlive2024。
 \item 进入 {\ttfamily ./doc\+\_\+doxygen/latex} 目录，运行 {\ttfamily make} 命令使用 lualatex 编译 tex 文件，生成 pdf 文件。
-\item 使用 {\ttfamily James\+Ives/github-\/pages-\/deploy-\/action@v4} 将生成的 pdf 文件上传到 Git\+Hub Pages 发布，并保留 {\ttfamily \mbox{\hyperlink{README_8md}{README.\+md}}} 和 {\ttfamily index.\+html} 文件。 
+\item 使用 {\ttfamily James\+Ives/github-\/pages-\/deploy-\/action@v4} 将生成的 pdf 文件上传到 Git\+Hub Pages 发布，并保留 {\ttfamily \mbox{\hyperlink{README_8md}{README.\+md}}} 和 {\ttfamily index.\+html} 文件。
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md35}{}\doxysubsection{2025-\/03-\/30}\label{md_README_autotoc_md35}
+
+\begin{DoxyItemize}
+\item 完成了 {\ttfamily \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{Lib\+File\+::logic}}(const std\+::string \&cell\+\_\+name)} 方法，该方法返回指定 cell\+\_\+name 所有输出引脚对应的逻辑表达式，以 {\ttfamily std\+::map\texorpdfstring{$<$}{<}std\+::string, std\+::string\texorpdfstring{$>$}{>}} 的形式返回，存储输出引脚名称到其逻辑表达式字符串的映射关系.
+\item 实现了 {\ttfamily func} 子命令的基本框架，用于检查库或 Verilog 文件的逻辑等价性。
+\begin{DoxyItemize}
+\item 完善了 {\ttfamily func\+Lib\+File} 函数，能够处理 Liberty 文件和 Verilog 文件作为参考和比较对象。
+\item 增加了文件类型判断，根据文件扩展名选择不同的处理方式。
+\item 实现了对 {\ttfamily .lib} 文件的解析，并提取指定 cell 的逻辑表达式。
+\item 目前仅支持 Liberty 文件的逻辑表达式提取，\+Verilog 文件的逻辑表达式提取功能尚未完成（\+TODO）。
+\item 增加了对 report 文件名的检查，确保其以 {\ttfamily .md} 或 {\ttfamily .txt} 结尾。若不符合，则给出警告并自动添加 {\ttfamily .md} 后缀。
+\item 实现了从 Liberty 文件中提取逻辑表达式的功能，使用了 {\ttfamily \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{Lib\+File\+::logic}}} 方法。
+\item 增加了日志输出，记录每个 cell 的逻辑表达式提取和比较过程。
+\item 逻辑比较部分目前为空，待实现（\+TODO）。 
 \end{DoxyItemize}
 \end{DoxyItemize}
