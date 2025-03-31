@@ -13,6 +13,7 @@ var hierarchy =
     [ "LibFile", "classLibFile.html", null ],
     [ "LibGroup", "classLibGroup.html", null ],
     [ "LibraryComparator", "classLibraryComparator.html", null ],
+    [ "LogicComparator", "classLogicComparator.html", null ],
     [ "si2drExprT", "structsi2drExprT.html", null ],
     [ "si2OID", "structsi2OID.html", null ],
     [ "std::span", null, [

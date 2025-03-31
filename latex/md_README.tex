@@ -330,5 +330,6 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \item 实现了 {\ttfamily extract\+And\+Print\+Netlist\+Info(const std\+::string \&verilog\+\_\+file, const std\+::string \&cell)} 函数，用于提取并打印网表信息，包括输入、输出、线网和门级单元。
 \item 实现了 {\ttfamily extract\+Logic\+From\+Verilog(const std\+::string \&verilog\+\_\+file, const std\+::string \&cell)} 函数，用于从 Verilog 文件中提取指定 cell 的逻辑表达式，并以 {\ttfamily std\+::map\texorpdfstring{$<$}{<}std\+::string, std\+::string\texorpdfstring{$>$}{>}} 的形式返回。
 \end{DoxyItemize}
-\item 为了更好地组织代码结构，将 {\ttfamily \mbox{\hyperlink{classLogicExtractor}{Logic\+Extractor}}} 类从 {\ttfamily \mbox{\hyperlink{verilog__utils_8hpp}{verilog\+\_\+utils.\+hpp}}} 和 {\ttfamily \mbox{\hyperlink{verilog__utils_8cpp}{verilog\+\_\+utils.\+cpp}}} 中分离出来，并创建了独立的 {\ttfamily \mbox{\hyperlink{LogicExtractor_8hpp}{Logic\+Extractor.\+hpp}}} 和 {\ttfamily \mbox{\hyperlink{LogicExtractor_8cpp}{Logic\+Extractor.\+cpp}}} 文件。同时，统一了所有 hpp 和 cpp 文件的命名规范，使其与对应的类名保持一致。 
+\item 为了更好地组织代码结构，将 {\ttfamily \mbox{\hyperlink{classLogicExtractor}{Logic\+Extractor}}} 类从 {\ttfamily \mbox{\hyperlink{verilog__utils_8hpp}{verilog\+\_\+utils.\+hpp}}} 和 {\ttfamily \mbox{\hyperlink{verilog__utils_8cpp}{verilog\+\_\+utils.\+cpp}}} 中分离出来，并创建了独立的 {\ttfamily \mbox{\hyperlink{LogicExtractor_8hpp}{Logic\+Extractor.\+hpp}}} 和 {\ttfamily \mbox{\hyperlink{LogicExtractor_8cpp}{Logic\+Extractor.\+cpp}}} 文件。同时，统一了所有 hpp 和 cpp 文件的命名规范，使其与对应的类名保持一致。
+\item 新增 {\ttfamily \mbox{\hyperlink{classLogicComparator}{Logic\+Comparator}}} 类及其头文件、源文件，用于比较两个逻辑表达式的等价性，并生成比较报告。 
 \end{DoxyItemize}

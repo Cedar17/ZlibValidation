@@ -8,6 +8,8 @@ var searchData=
   ['libgroup_2ehpp_5',['LibGroup.hpp',['../LibGroup_8hpp.html',1,'']]],
   ['librarycomparator_2ecpp_6',['LibraryComparator.cpp',['../LibraryComparator_8cpp.html',1,'']]],
   ['librarycomparator_2ehpp_7',['LibraryComparator.hpp',['../LibraryComparator_8hpp.html',1,'']]],
-  ['logicextractor_2ecpp_8',['LogicExtractor.cpp',['../LogicExtractor_8cpp.html',1,'']]],
-  ['logicextractor_2ehpp_9',['LogicExtractor.hpp',['../LogicExtractor_8hpp.html',1,'']]]
+  ['logiccomparator_2ecpp_8',['LogicComparator.cpp',['../LogicComparator_8cpp.html',1,'']]],
+  ['logiccomparator_2ehpp_9',['LogicComparator.hpp',['../LogicComparator_8hpp.html',1,'']]],
+  ['logicextractor_2ecpp_10',['LogicExtractor.cpp',['../LogicExtractor_8cpp.html',1,'']]],
+  ['logicextractor_2ehpp_11',['LogicExtractor.hpp',['../LogicExtractor_8hpp.html',1,'']]]
 ];

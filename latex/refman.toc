@@ -252,550 +252,565 @@
 \contentsline {subsubsection}{\numberline {7.14.4.4}ref\_json\_}{94}{subsubsection.7.14.4.4}%
 \contentsline {subsubsection}{\numberline {7.14.4.5}ref\_lib\_path\_}{95}{subsubsection.7.14.4.5}%
 \contentsline {subsubsection}{\numberline {7.14.4.6}reltol\_}{95}{subsubsection.7.14.4.6}%
-\contentsline {section}{\numberline {7.15}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor Class Reference}{95}{section.7.15}%
-\contentsline {subsection}{\numberline {7.15.1}Detailed Description}{97}{subsection.7.15.1}%
-\contentsline {subsection}{\numberline {7.15.2}Constructor \& Destructor Documentation}{97}{subsection.7.15.2}%
-\contentsline {subsubsection}{\numberline {7.15.2.1}LogicExtractor()}{97}{subsubsection.7.15.2.1}%
-\contentsline {subsection}{\numberline {7.15.3}Member Function Documentation}{97}{subsection.7.15.3}%
-\contentsline {subsubsection}{\numberline {7.15.3.1}deriveLogicRecursive()}{97}{subsubsection.7.15.3.1}%
-\contentsline {subsubsection}{\numberline {7.15.3.2}formatExpression()}{98}{subsubsection.7.15.3.2}%
-\contentsline {subsubsection}{\numberline {7.15.3.3}getExtractedGates()}{98}{subsubsection.7.15.3.3}%
-\contentsline {subsubsection}{\numberline {7.15.3.4}getInternalWires()}{98}{subsubsection.7.15.3.4}%
-\contentsline {subsubsection}{\numberline {7.15.3.5}getLogicExpressions()}{99}{subsubsection.7.15.3.5}%
-\contentsline {subsubsection}{\numberline {7.15.3.6}getPrimaryInputs()}{99}{subsubsection.7.15.3.6}%
-\contentsline {subsubsection}{\numberline {7.15.3.7}getPrimaryOutputs()}{100}{subsubsection.7.15.3.7}%
-\contentsline {subsubsection}{\numberline {7.15.3.8}handle()\hspace {0.1cm}{\footnotesize \ttfamily [1/5]}}{100}{subsubsection.7.15.3.8}%
-\contentsline {subsubsection}{\numberline {7.15.3.9}handle()\hspace {0.1cm}{\footnotesize \ttfamily [2/5]}}{101}{subsubsection.7.15.3.9}%
-\contentsline {subsubsection}{\numberline {7.15.3.10}handle()\hspace {0.1cm}{\footnotesize \ttfamily [3/5]}}{101}{subsubsection.7.15.3.10}%
-\contentsline {subsubsection}{\numberline {7.15.3.11}handle()\hspace {0.1cm}{\footnotesize \ttfamily [4/5]}}{101}{subsubsection.7.15.3.11}%
-\contentsline {subsubsection}{\numberline {7.15.3.12}handle()\hspace {0.1cm}{\footnotesize \ttfamily [5/5]}}{101}{subsubsection.7.15.3.12}%
-\contentsline {subsection}{\numberline {7.15.4}Member Data Documentation}{101}{subsection.7.15.4}%
-\contentsline {subsubsection}{\numberline {7.15.4.1}gateOutputDrivers\_}{102}{subsubsection.7.15.4.1}%
-\contentsline {subsubsection}{\numberline {7.15.4.2}inTargetModule\_}{102}{subsubsection.7.15.4.2}%
-\contentsline {subsubsection}{\numberline {7.15.4.3}internalWires\_}{102}{subsubsection.7.15.4.3}%
-\contentsline {subsubsection}{\numberline {7.15.4.4}logicCache\_}{102}{subsubsection.7.15.4.4}%
-\contentsline {subsubsection}{\numberline {7.15.4.5}parsingComplete\_}{102}{subsubsection.7.15.4.5}%
-\contentsline {subsubsection}{\numberline {7.15.4.6}portDirections\_}{103}{subsubsection.7.15.4.6}%
-\contentsline {subsubsection}{\numberline {7.15.4.7}primaryInputs\_}{103}{subsubsection.7.15.4.7}%
-\contentsline {subsubsection}{\numberline {7.15.4.8}primaryOutputs\_}{103}{subsubsection.7.15.4.8}%
-\contentsline {subsubsection}{\numberline {7.15.4.9}targetCell\_}{103}{subsubsection.7.15.4.9}%
-\contentsline {section}{\numberline {7.16}Module\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rewriter Class Reference}{104}{section.7.16}%
-\contentsline {subsection}{\numberline {7.16.1}Detailed Description}{105}{subsection.7.16.1}%
-\contentsline {subsection}{\numberline {7.16.2}Constructor \& Destructor Documentation}{105}{subsection.7.16.2}%
-\contentsline {subsubsection}{\numberline {7.16.2.1}ModuleRewriter()}{105}{subsubsection.7.16.2.1}%
-\contentsline {subsection}{\numberline {7.16.3}Member Function Documentation}{106}{subsection.7.16.3}%
-\contentsline {subsubsection}{\numberline {7.16.3.1}handle()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{106}{subsubsection.7.16.3.1}%
-\contentsline {subsubsection}{\numberline {7.16.3.2}handle()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{106}{subsubsection.7.16.3.2}%
-\contentsline {subsection}{\numberline {7.16.4}Member Data Documentation}{107}{subsection.7.16.4}%
-\contentsline {subsubsection}{\numberline {7.16.4.1}cellName\_}{107}{subsubsection.7.16.4.1}%
-\contentsline {subsubsection}{\numberline {7.16.4.2}depth\_}{107}{subsubsection.7.16.4.2}%
-\contentsline {subsubsection}{\numberline {7.16.4.3}inputPins\_}{107}{subsubsection.7.16.4.3}%
-\contentsline {subsubsection}{\numberline {7.16.4.4}instance\_count\_}{107}{subsubsection.7.16.4.4}%
-\contentsline {subsubsection}{\numberline {7.16.4.5}logger\_}{108}{subsubsection.7.16.4.5}%
-\contentsline {subsubsection}{\numberline {7.16.4.6}moduleName\_}{108}{subsubsection.7.16.4.6}%
-\contentsline {subsubsection}{\numberline {7.16.4.7}outputPins\_}{108}{subsubsection.7.16.4.7}%
-\contentsline {subsubsection}{\numberline {7.16.4.8}portInfoMap\_}{108}{subsubsection.7.16.4.8}%
-\contentsline {section}{\numberline {7.17}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Ptr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Token\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Or\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax Struct Reference}{109}{section.7.17}%
-\contentsline {subsection}{\numberline {7.17.1}Detailed Description}{110}{subsection.7.17.1}%
-\contentsline {subsection}{\numberline {7.17.2}Member Typedef Documentation}{110}{subsection.7.17.2}%
-\contentsline {subsubsection}{\numberline {7.17.2.1}Base}{110}{subsubsection.7.17.2.1}%
-\contentsline {subsection}{\numberline {7.17.3}Constructor \& Destructor Documentation}{110}{subsection.7.17.3}%
-\contentsline {subsubsection}{\numberline {7.17.3.1}PtrTokenOrSyntax()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{110}{subsubsection.7.17.3.1}%
-\contentsline {subsubsection}{\numberline {7.17.3.2}PtrTokenOrSyntax()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{111}{subsubsection.7.17.3.2}%
-\contentsline {subsubsection}{\numberline {7.17.3.3}PtrTokenOrSyntax()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{111}{subsubsection.7.17.3.3}%
-\contentsline {subsection}{\numberline {7.17.4}Member Function Documentation}{111}{subsection.7.17.4}%
-\contentsline {subsubsection}{\numberline {7.17.4.1}isNode()}{111}{subsubsection.7.17.4.1}%
-\contentsline {subsubsection}{\numberline {7.17.4.2}isToken()}{111}{subsubsection.7.17.4.2}%
-\contentsline {subsubsection}{\numberline {7.17.4.3}node()}{112}{subsubsection.7.17.4.3}%
-\contentsline {subsubsection}{\numberline {7.17.4.4}range()}{112}{subsubsection.7.17.4.4}%
-\contentsline {subsubsection}{\numberline {7.17.4.5}token()}{112}{subsubsection.7.17.4.5}%
-\contentsline {section}{\numberline {7.18}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::detail\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Remove\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Change Struct Reference}{113}{section.7.18}%
-\contentsline {subsection}{\numberline {7.18.1}Detailed Description}{113}{subsection.7.18.1}%
-\contentsline {section}{\numberline {7.19}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::detail\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Replace\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Change Struct Reference}{114}{section.7.19}%
-\contentsline {subsection}{\numberline {7.19.1}Detailed Description}{115}{subsection.7.19.1}%
-\contentsline {section}{\numberline {7.20}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Separated\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}List$<$ T $>$ Class Template Reference}{115}{section.7.20}%
+\contentsline {section}{\numberline {7.15}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator Class Reference}{95}{section.7.15}%
+\contentsline {subsection}{\numberline {7.15.1}Detailed Description}{95}{subsection.7.15.1}%
+\contentsline {subsection}{\numberline {7.15.2}Constructor \& Destructor Documentation}{96}{subsection.7.15.2}%
+\contentsline {subsubsection}{\numberline {7.15.2.1}LogicComparator()}{96}{subsubsection.7.15.2.1}%
+\contentsline {subsection}{\numberline {7.15.3}Member Function Documentation}{96}{subsection.7.15.3}%
+\contentsline {subsubsection}{\numberline {7.15.3.1}generateReport()}{96}{subsubsection.7.15.3.1}%
+\contentsline {subsection}{\numberline {7.15.4}Member Data Documentation}{96}{subsection.7.15.4}%
+\contentsline {subsubsection}{\numberline {7.15.4.1}cell\_name\_}{97}{subsubsection.7.15.4.1}%
+\contentsline {subsubsection}{\numberline {7.15.4.2}comp\_outpin\_map\_}{97}{subsubsection.7.15.4.2}%
+\contentsline {subsubsection}{\numberline {7.15.4.3}ref\_outpin\_map\_}{97}{subsubsection.7.15.4.3}%
+\contentsline {subsubsection}{\numberline {7.15.4.4}table\_}{97}{subsubsection.7.15.4.4}%
+\contentsline {section}{\numberline {7.16}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor Class Reference}{98}{section.7.16}%
+\contentsline {subsection}{\numberline {7.16.1}Detailed Description}{99}{subsection.7.16.1}%
+\contentsline {subsection}{\numberline {7.16.2}Constructor \& Destructor Documentation}{99}{subsection.7.16.2}%
+\contentsline {subsubsection}{\numberline {7.16.2.1}LogicExtractor()}{99}{subsubsection.7.16.2.1}%
+\contentsline {subsection}{\numberline {7.16.3}Member Function Documentation}{99}{subsection.7.16.3}%
+\contentsline {subsubsection}{\numberline {7.16.3.1}deriveLogicRecursive()}{100}{subsubsection.7.16.3.1}%
+\contentsline {subsubsection}{\numberline {7.16.3.2}formatExpression()}{100}{subsubsection.7.16.3.2}%
+\contentsline {subsubsection}{\numberline {7.16.3.3}getExtractedGates()}{101}{subsubsection.7.16.3.3}%
+\contentsline {subsubsection}{\numberline {7.16.3.4}getInternalWires()}{101}{subsubsection.7.16.3.4}%
+\contentsline {subsubsection}{\numberline {7.16.3.5}getLogicExpressions()}{101}{subsubsection.7.16.3.5}%
+\contentsline {subsubsection}{\numberline {7.16.3.6}getPrimaryInputs()}{102}{subsubsection.7.16.3.6}%
+\contentsline {subsubsection}{\numberline {7.16.3.7}getPrimaryOutputs()}{102}{subsubsection.7.16.3.7}%
+\contentsline {subsubsection}{\numberline {7.16.3.8}handle()\hspace {0.1cm}{\footnotesize \ttfamily [1/5]}}{103}{subsubsection.7.16.3.8}%
+\contentsline {subsubsection}{\numberline {7.16.3.9}handle()\hspace {0.1cm}{\footnotesize \ttfamily [2/5]}}{103}{subsubsection.7.16.3.9}%
+\contentsline {subsubsection}{\numberline {7.16.3.10}handle()\hspace {0.1cm}{\footnotesize \ttfamily [3/5]}}{104}{subsubsection.7.16.3.10}%
+\contentsline {subsubsection}{\numberline {7.16.3.11}handle()\hspace {0.1cm}{\footnotesize \ttfamily [4/5]}}{104}{subsubsection.7.16.3.11}%
+\contentsline {subsubsection}{\numberline {7.16.3.12}handle()\hspace {0.1cm}{\footnotesize \ttfamily [5/5]}}{104}{subsubsection.7.16.3.12}%
+\contentsline {subsection}{\numberline {7.16.4}Member Data Documentation}{104}{subsection.7.16.4}%
+\contentsline {subsubsection}{\numberline {7.16.4.1}gateOutputDrivers\_}{104}{subsubsection.7.16.4.1}%
+\contentsline {subsubsection}{\numberline {7.16.4.2}inTargetModule\_}{104}{subsubsection.7.16.4.2}%
+\contentsline {subsubsection}{\numberline {7.16.4.3}internalWires\_}{105}{subsubsection.7.16.4.3}%
+\contentsline {subsubsection}{\numberline {7.16.4.4}logicCache\_}{105}{subsubsection.7.16.4.4}%
+\contentsline {subsubsection}{\numberline {7.16.4.5}parsingComplete\_}{105}{subsubsection.7.16.4.5}%
+\contentsline {subsubsection}{\numberline {7.16.4.6}portDirections\_}{105}{subsubsection.7.16.4.6}%
+\contentsline {subsubsection}{\numberline {7.16.4.7}primaryInputs\_}{105}{subsubsection.7.16.4.7}%
+\contentsline {subsubsection}{\numberline {7.16.4.8}primaryOutputs\_}{106}{subsubsection.7.16.4.8}%
+\contentsline {subsubsection}{\numberline {7.16.4.9}targetCell\_}{106}{subsubsection.7.16.4.9}%
+\contentsline {section}{\numberline {7.17}Module\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rewriter Class Reference}{106}{section.7.17}%
+\contentsline {subsection}{\numberline {7.17.1}Detailed Description}{108}{subsection.7.17.1}%
+\contentsline {subsection}{\numberline {7.17.2}Constructor \& Destructor Documentation}{108}{subsection.7.17.2}%
+\contentsline {subsubsection}{\numberline {7.17.2.1}ModuleRewriter()}{108}{subsubsection.7.17.2.1}%
+\contentsline {subsection}{\numberline {7.17.3}Member Function Documentation}{108}{subsection.7.17.3}%
+\contentsline {subsubsection}{\numberline {7.17.3.1}handle()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{108}{subsubsection.7.17.3.1}%
+\contentsline {subsubsection}{\numberline {7.17.3.2}handle()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{109}{subsubsection.7.17.3.2}%
+\contentsline {subsection}{\numberline {7.17.4}Member Data Documentation}{109}{subsection.7.17.4}%
+\contentsline {subsubsection}{\numberline {7.17.4.1}cellName\_}{109}{subsubsection.7.17.4.1}%
+\contentsline {subsubsection}{\numberline {7.17.4.2}depth\_}{109}{subsubsection.7.17.4.2}%
+\contentsline {subsubsection}{\numberline {7.17.4.3}inputPins\_}{110}{subsubsection.7.17.4.3}%
+\contentsline {subsubsection}{\numberline {7.17.4.4}instance\_count\_}{110}{subsubsection.7.17.4.4}%
+\contentsline {subsubsection}{\numberline {7.17.4.5}logger\_}{110}{subsubsection.7.17.4.5}%
+\contentsline {subsubsection}{\numberline {7.17.4.6}moduleName\_}{110}{subsubsection.7.17.4.6}%
+\contentsline {subsubsection}{\numberline {7.17.4.7}outputPins\_}{110}{subsubsection.7.17.4.7}%
+\contentsline {subsubsection}{\numberline {7.17.4.8}portInfoMap\_}{111}{subsubsection.7.17.4.8}%
+\contentsline {section}{\numberline {7.18}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Ptr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Token\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Or\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax Struct Reference}{111}{section.7.18}%
+\contentsline {subsection}{\numberline {7.18.1}Detailed Description}{112}{subsection.7.18.1}%
+\contentsline {subsection}{\numberline {7.18.2}Member Typedef Documentation}{112}{subsection.7.18.2}%
+\contentsline {subsubsection}{\numberline {7.18.2.1}Base}{112}{subsubsection.7.18.2.1}%
+\contentsline {subsection}{\numberline {7.18.3}Constructor \& Destructor Documentation}{112}{subsection.7.18.3}%
+\contentsline {subsubsection}{\numberline {7.18.3.1}PtrTokenOrSyntax()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{113}{subsubsection.7.18.3.1}%
+\contentsline {subsubsection}{\numberline {7.18.3.2}PtrTokenOrSyntax()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{113}{subsubsection.7.18.3.2}%
+\contentsline {subsubsection}{\numberline {7.18.3.3}PtrTokenOrSyntax()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{113}{subsubsection.7.18.3.3}%
+\contentsline {subsection}{\numberline {7.18.4}Member Function Documentation}{113}{subsection.7.18.4}%
+\contentsline {subsubsection}{\numberline {7.18.4.1}isNode()}{113}{subsubsection.7.18.4.1}%
+\contentsline {subsubsection}{\numberline {7.18.4.2}isToken()}{114}{subsubsection.7.18.4.2}%
+\contentsline {subsubsection}{\numberline {7.18.4.3}node()}{114}{subsubsection.7.18.4.3}%
+\contentsline {subsubsection}{\numberline {7.18.4.4}range()}{114}{subsubsection.7.18.4.4}%
+\contentsline {subsubsection}{\numberline {7.18.4.5}token()}{115}{subsubsection.7.18.4.5}%
+\contentsline {section}{\numberline {7.19}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::detail\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Remove\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Change Struct Reference}{115}{section.7.19}%
+\contentsline {subsection}{\numberline {7.19.1}Detailed Description}{116}{subsection.7.19.1}%
+\contentsline {section}{\numberline {7.20}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::detail\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Replace\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Change Struct Reference}{116}{section.7.20}%
 \contentsline {subsection}{\numberline {7.20.1}Detailed Description}{117}{subsection.7.20.1}%
-\contentsline {subsection}{\numberline {7.20.2}Member Typedef Documentation}{117}{subsection.7.20.2}%
-\contentsline {subsubsection}{\numberline {7.20.2.1}const\_iterator}{117}{subsubsection.7.20.2.1}%
-\contentsline {subsubsection}{\numberline {7.20.2.2}iterator}{118}{subsubsection.7.20.2.2}%
-\contentsline {subsection}{\numberline {7.20.3}Constructor \& Destructor Documentation}{118}{subsection.7.20.3}%
-\contentsline {subsubsection}{\numberline {7.20.3.1}SeparatedSyntaxList()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{118}{subsubsection.7.20.3.1}%
-\contentsline {subsubsection}{\numberline {7.20.3.2}SeparatedSyntaxList()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{118}{subsubsection.7.20.3.2}%
-\contentsline {subsection}{\numberline {7.20.4}Member Function Documentation}{118}{subsection.7.20.4}%
-\contentsline {subsubsection}{\numberline {7.20.4.1}begin()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{118}{subsubsection.7.20.4.1}%
-\contentsline {subsubsection}{\numberline {7.20.4.2}begin()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{119}{subsubsection.7.20.4.2}%
-\contentsline {subsubsection}{\numberline {7.20.4.3}cbegin()}{119}{subsubsection.7.20.4.3}%
-\contentsline {subsubsection}{\numberline {7.20.4.4}cend()}{119}{subsubsection.7.20.4.4}%
-\contentsline {subsubsection}{\numberline {7.20.4.5}clone()}{119}{subsubsection.7.20.4.5}%
-\contentsline {subsubsection}{\numberline {7.20.4.6}elems()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{120}{subsubsection.7.20.4.6}%
-\contentsline {subsubsection}{\numberline {7.20.4.7}elems()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{120}{subsubsection.7.20.4.7}%
-\contentsline {subsubsection}{\numberline {7.20.4.8}empty()}{120}{subsubsection.7.20.4.8}%
-\contentsline {subsubsection}{\numberline {7.20.4.9}end()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{121}{subsubsection.7.20.4.9}%
-\contentsline {subsubsection}{\numberline {7.20.4.10}end()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{121}{subsubsection.7.20.4.10}%
-\contentsline {subsubsection}{\numberline {7.20.4.11}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{121}{subsubsection.7.20.4.11}%
-\contentsline {subsubsection}{\numberline {7.20.4.12}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{121}{subsubsection.7.20.4.12}%
-\contentsline {subsubsection}{\numberline {7.20.4.13}getChildPtr()}{122}{subsubsection.7.20.4.13}%
-\contentsline {subsubsection}{\numberline {7.20.4.14}operator[]()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{122}{subsubsection.7.20.4.14}%
-\contentsline {subsubsection}{\numberline {7.20.4.15}operator[]()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{122}{subsubsection.7.20.4.15}%
-\contentsline {subsubsection}{\numberline {7.20.4.16}resetAll()}{123}{subsubsection.7.20.4.16}%
-\contentsline {subsubsection}{\numberline {7.20.4.17}setChild()}{123}{subsubsection.7.20.4.17}%
-\contentsline {subsubsection}{\numberline {7.20.4.18}size()}{123}{subsubsection.7.20.4.18}%
-\contentsline {subsection}{\numberline {7.20.5}Member Data Documentation}{124}{subsection.7.20.5}%
-\contentsline {subsubsection}{\numberline {7.20.5.1}elements}{124}{subsubsection.7.20.5.1}%
-\contentsline {section}{\numberline {7.21}si2dr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}ExprT Struct Reference}{124}{section.7.21}%
-\contentsline {subsection}{\numberline {7.21.1}Detailed Description}{125}{subsection.7.21.1}%
-\contentsline {subsection}{\numberline {7.21.2}Member Data Documentation}{125}{subsection.7.21.2}%
-\contentsline {subsubsection}{\numberline {7.21.2.1}b}{125}{subsubsection.7.21.2.1}%
-\contentsline {subsubsection}{\numberline {7.21.2.2}d}{125}{subsubsection.7.21.2.2}%
-\contentsline {subsubsection}{\numberline {7.21.2.3}i}{125}{subsubsection.7.21.2.3}%
-\contentsline {subsubsection}{\numberline {7.21.2.4}left}{125}{subsubsection.7.21.2.4}%
-\contentsline {subsubsection}{\numberline {7.21.2.5}right}{126}{subsubsection.7.21.2.5}%
-\contentsline {subsubsection}{\numberline {7.21.2.6}s}{126}{subsubsection.7.21.2.6}%
-\contentsline {subsubsection}{\numberline {7.21.2.7}type}{126}{subsubsection.7.21.2.7}%
-\contentsline {subsubsection}{\numberline {7.21.2.8}}{126}{subsubsection.7.21.2.8}%
-\contentsline {subsubsection}{\numberline {7.21.2.9}valuetype}{126}{subsubsection.7.21.2.9}%
-\contentsline {section}{\numberline {7.22}si2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}OID Struct Reference}{127}{section.7.22}%
-\contentsline {subsection}{\numberline {7.22.1}Detailed Description}{127}{subsection.7.22.1}%
-\contentsline {subsection}{\numberline {7.22.2}Member Data Documentation}{127}{subsection.7.22.2}%
-\contentsline {subsubsection}{\numberline {7.22.2.1}v1}{127}{subsubsection.7.22.2.1}%
-\contentsline {subsubsection}{\numberline {7.22.2.2}v2}{127}{subsubsection.7.22.2.2}%
-\contentsline {section}{\numberline {7.23}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::detail\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Change Struct Reference}{128}{section.7.23}%
-\contentsline {subsection}{\numberline {7.23.1}Detailed Description}{128}{subsection.7.23.1}%
-\contentsline {subsection}{\numberline {7.23.2}Member Data Documentation}{129}{subsection.7.23.2}%
-\contentsline {subsubsection}{\numberline {7.23.2.1}first}{129}{subsubsection.7.23.2.1}%
-\contentsline {subsubsection}{\numberline {7.23.2.2}second}{129}{subsubsection.7.23.2.2}%
-\contentsline {subsubsection}{\numberline {7.23.2.3}separator}{129}{subsubsection.7.23.2.3}%
-\contentsline {section}{\numberline {7.24}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}List$<$ T $>$ Class Template Reference}{130}{section.7.24}%
+\contentsline {section}{\numberline {7.21}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Separated\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}List$<$ T $>$ Class Template Reference}{118}{section.7.21}%
+\contentsline {subsection}{\numberline {7.21.1}Detailed Description}{120}{subsection.7.21.1}%
+\contentsline {subsection}{\numberline {7.21.2}Member Typedef Documentation}{120}{subsection.7.21.2}%
+\contentsline {subsubsection}{\numberline {7.21.2.1}const\_iterator}{120}{subsubsection.7.21.2.1}%
+\contentsline {subsubsection}{\numberline {7.21.2.2}iterator}{120}{subsubsection.7.21.2.2}%
+\contentsline {subsection}{\numberline {7.21.3}Constructor \& Destructor Documentation}{120}{subsection.7.21.3}%
+\contentsline {subsubsection}{\numberline {7.21.3.1}SeparatedSyntaxList()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{121}{subsubsection.7.21.3.1}%
+\contentsline {subsubsection}{\numberline {7.21.3.2}SeparatedSyntaxList()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{121}{subsubsection.7.21.3.2}%
+\contentsline {subsection}{\numberline {7.21.4}Member Function Documentation}{121}{subsection.7.21.4}%
+\contentsline {subsubsection}{\numberline {7.21.4.1}begin()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{121}{subsubsection.7.21.4.1}%
+\contentsline {subsubsection}{\numberline {7.21.4.2}begin()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{121}{subsubsection.7.21.4.2}%
+\contentsline {subsubsection}{\numberline {7.21.4.3}cbegin()}{122}{subsubsection.7.21.4.3}%
+\contentsline {subsubsection}{\numberline {7.21.4.4}cend()}{122}{subsubsection.7.21.4.4}%
+\contentsline {subsubsection}{\numberline {7.21.4.5}clone()}{122}{subsubsection.7.21.4.5}%
+\contentsline {subsubsection}{\numberline {7.21.4.6}elems()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{122}{subsubsection.7.21.4.6}%
+\contentsline {subsubsection}{\numberline {7.21.4.7}elems()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{123}{subsubsection.7.21.4.7}%
+\contentsline {subsubsection}{\numberline {7.21.4.8}empty()}{123}{subsubsection.7.21.4.8}%
+\contentsline {subsubsection}{\numberline {7.21.4.9}end()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{123}{subsubsection.7.21.4.9}%
+\contentsline {subsubsection}{\numberline {7.21.4.10}end()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{124}{subsubsection.7.21.4.10}%
+\contentsline {subsubsection}{\numberline {7.21.4.11}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{124}{subsubsection.7.21.4.11}%
+\contentsline {subsubsection}{\numberline {7.21.4.12}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{124}{subsubsection.7.21.4.12}%
+\contentsline {subsubsection}{\numberline {7.21.4.13}getChildPtr()}{125}{subsubsection.7.21.4.13}%
+\contentsline {subsubsection}{\numberline {7.21.4.14}operator[]()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{125}{subsubsection.7.21.4.14}%
+\contentsline {subsubsection}{\numberline {7.21.4.15}operator[]()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{125}{subsubsection.7.21.4.15}%
+\contentsline {subsubsection}{\numberline {7.21.4.16}resetAll()}{126}{subsubsection.7.21.4.16}%
+\contentsline {subsubsection}{\numberline {7.21.4.17}setChild()}{126}{subsubsection.7.21.4.17}%
+\contentsline {subsubsection}{\numberline {7.21.4.18}size()}{126}{subsubsection.7.21.4.18}%
+\contentsline {subsection}{\numberline {7.21.5}Member Data Documentation}{127}{subsection.7.21.5}%
+\contentsline {subsubsection}{\numberline {7.21.5.1}elements}{127}{subsubsection.7.21.5.1}%
+\contentsline {section}{\numberline {7.22}si2dr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}ExprT Struct Reference}{127}{section.7.22}%
+\contentsline {subsection}{\numberline {7.22.1}Detailed Description}{128}{subsection.7.22.1}%
+\contentsline {subsection}{\numberline {7.22.2}Member Data Documentation}{128}{subsection.7.22.2}%
+\contentsline {subsubsection}{\numberline {7.22.2.1}b}{128}{subsubsection.7.22.2.1}%
+\contentsline {subsubsection}{\numberline {7.22.2.2}d}{128}{subsubsection.7.22.2.2}%
+\contentsline {subsubsection}{\numberline {7.22.2.3}i}{128}{subsubsection.7.22.2.3}%
+\contentsline {subsubsection}{\numberline {7.22.2.4}left}{128}{subsubsection.7.22.2.4}%
+\contentsline {subsubsection}{\numberline {7.22.2.5}right}{129}{subsubsection.7.22.2.5}%
+\contentsline {subsubsection}{\numberline {7.22.2.6}s}{129}{subsubsection.7.22.2.6}%
+\contentsline {subsubsection}{\numberline {7.22.2.7}type}{129}{subsubsection.7.22.2.7}%
+\contentsline {subsubsection}{\numberline {7.22.2.8}}{129}{subsubsection.7.22.2.8}%
+\contentsline {subsubsection}{\numberline {7.22.2.9}valuetype}{129}{subsubsection.7.22.2.9}%
+\contentsline {section}{\numberline {7.23}si2\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}OID Struct Reference}{130}{section.7.23}%
+\contentsline {subsection}{\numberline {7.23.1}Detailed Description}{130}{subsection.7.23.1}%
+\contentsline {subsection}{\numberline {7.23.2}Member Data Documentation}{130}{subsection.7.23.2}%
+\contentsline {subsubsection}{\numberline {7.23.2.1}v1}{130}{subsubsection.7.23.2.1}%
+\contentsline {subsubsection}{\numberline {7.23.2.2}v2}{130}{subsubsection.7.23.2.2}%
+\contentsline {section}{\numberline {7.24}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::detail\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Change Struct Reference}{131}{section.7.24}%
 \contentsline {subsection}{\numberline {7.24.1}Detailed Description}{131}{subsection.7.24.1}%
-\contentsline {subsection}{\numberline {7.24.2}Constructor \& Destructor Documentation}{131}{subsection.7.24.2}%
-\contentsline {subsubsection}{\numberline {7.24.2.1}SyntaxList()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{131}{subsubsection.7.24.2.1}%
-\contentsline {subsubsection}{\numberline {7.24.2.2}SyntaxList()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{132}{subsubsection.7.24.2.2}%
-\contentsline {subsection}{\numberline {7.24.3}Member Function Documentation}{132}{subsection.7.24.3}%
-\contentsline {subsubsection}{\numberline {7.24.3.1}clone()}{132}{subsubsection.7.24.3.1}%
-\contentsline {subsubsection}{\numberline {7.24.3.2}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{132}{subsubsection.7.24.3.2}%
-\contentsline {subsubsection}{\numberline {7.24.3.3}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{133}{subsubsection.7.24.3.3}%
-\contentsline {subsubsection}{\numberline {7.24.3.4}getChildPtr()}{133}{subsubsection.7.24.3.4}%
-\contentsline {subsubsection}{\numberline {7.24.3.5}resetAll()}{133}{subsubsection.7.24.3.5}%
-\contentsline {subsubsection}{\numberline {7.24.3.6}setChild()}{134}{subsubsection.7.24.3.6}%
-\contentsline {section}{\numberline {7.25}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}List\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Base Class Reference}{134}{section.7.25}%
-\contentsline {subsection}{\numberline {7.25.1}Detailed Description}{135}{subsection.7.25.1}%
-\contentsline {subsection}{\numberline {7.25.2}Constructor \& Destructor Documentation}{135}{subsection.7.25.2}%
-\contentsline {subsubsection}{\numberline {7.25.2.1}SyntaxListBase()}{136}{subsubsection.7.25.2.1}%
-\contentsline {subsection}{\numberline {7.25.3}Member Function Documentation}{136}{subsection.7.25.3}%
-\contentsline {subsubsection}{\numberline {7.25.3.1}clone()}{136}{subsubsection.7.25.3.1}%
-\contentsline {subsubsection}{\numberline {7.25.3.2}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{136}{subsubsection.7.25.3.2}%
+\contentsline {subsection}{\numberline {7.24.2}Member Data Documentation}{132}{subsection.7.24.2}%
+\contentsline {subsubsection}{\numberline {7.24.2.1}first}{132}{subsubsection.7.24.2.1}%
+\contentsline {subsubsection}{\numberline {7.24.2.2}second}{132}{subsubsection.7.24.2.2}%
+\contentsline {subsubsection}{\numberline {7.24.2.3}separator}{132}{subsubsection.7.24.2.3}%
+\contentsline {section}{\numberline {7.25}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}List$<$ T $>$ Class Template Reference}{133}{section.7.25}%
+\contentsline {subsection}{\numberline {7.25.1}Detailed Description}{134}{subsection.7.25.1}%
+\contentsline {subsection}{\numberline {7.25.2}Constructor \& Destructor Documentation}{134}{subsection.7.25.2}%
+\contentsline {subsubsection}{\numberline {7.25.2.1}SyntaxList()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{134}{subsubsection.7.25.2.1}%
+\contentsline {subsubsection}{\numberline {7.25.2.2}SyntaxList()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{135}{subsubsection.7.25.2.2}%
+\contentsline {subsection}{\numberline {7.25.3}Member Function Documentation}{135}{subsection.7.25.3}%
+\contentsline {subsubsection}{\numberline {7.25.3.1}clone()}{135}{subsubsection.7.25.3.1}%
+\contentsline {subsubsection}{\numberline {7.25.3.2}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{135}{subsubsection.7.25.3.2}%
 \contentsline {subsubsection}{\numberline {7.25.3.3}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{136}{subsubsection.7.25.3.3}%
-\contentsline {subsubsection}{\numberline {7.25.3.4}getChildCount()}{137}{subsubsection.7.25.3.4}%
-\contentsline {subsubsection}{\numberline {7.25.3.5}getChildPtr()}{137}{subsubsection.7.25.3.5}%
-\contentsline {subsubsection}{\numberline {7.25.3.6}isChildOptional()}{137}{subsubsection.7.25.3.6}%
-\contentsline {subsubsection}{\numberline {7.25.3.7}isKind()}{137}{subsubsection.7.25.3.7}%
-\contentsline {subsubsection}{\numberline {7.25.3.8}resetAll()}{137}{subsubsection.7.25.3.8}%
-\contentsline {subsubsection}{\numberline {7.25.3.9}setChild()}{138}{subsubsection.7.25.3.9}%
-\contentsline {subsection}{\numberline {7.25.4}Member Data Documentation}{138}{subsection.7.25.4}%
-\contentsline {subsubsection}{\numberline {7.25.4.1}childCount}{138}{subsubsection.7.25.4.1}%
-\contentsline {section}{\numberline {7.26}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node Class Reference}{138}{section.7.26}%
-\contentsline {subsection}{\numberline {7.26.1}Detailed Description}{140}{subsection.7.26.1}%
-\contentsline {subsection}{\numberline {7.26.2}Member Typedef Documentation}{140}{subsection.7.26.2}%
-\contentsline {subsubsection}{\numberline {7.26.2.1}Token}{141}{subsubsection.7.26.2.1}%
-\contentsline {subsection}{\numberline {7.26.3}Constructor \& Destructor Documentation}{141}{subsection.7.26.3}%
-\contentsline {subsubsection}{\numberline {7.26.3.1}SyntaxNode()}{141}{subsubsection.7.26.3.1}%
-\contentsline {subsection}{\numberline {7.26.4}Member Function Documentation}{141}{subsection.7.26.4}%
-\contentsline {subsubsection}{\numberline {7.26.4.1}as()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{141}{subsubsection.7.26.4.1}%
-\contentsline {subsubsection}{\numberline {7.26.4.2}as()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{141}{subsubsection.7.26.4.2}%
-\contentsline {subsubsection}{\numberline {7.26.4.3}as\_if()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{142}{subsubsection.7.26.4.3}%
-\contentsline {subsubsection}{\numberline {7.26.4.4}as\_if()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{142}{subsubsection.7.26.4.4}%
-\contentsline {subsubsection}{\numberline {7.26.4.5}childNode()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{142}{subsubsection.7.26.4.5}%
-\contentsline {subsubsection}{\numberline {7.26.4.6}childNode()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{142}{subsubsection.7.26.4.6}%
-\contentsline {subsubsection}{\numberline {7.26.4.7}childToken()}{142}{subsubsection.7.26.4.7}%
-\contentsline {subsubsection}{\numberline {7.26.4.8}childTokenPtr()}{143}{subsubsection.7.26.4.8}%
-\contentsline {subsubsection}{\numberline {7.26.4.9}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{143}{subsubsection.7.26.4.9}%
-\contentsline {subsubsection}{\numberline {7.26.4.10}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{143}{subsubsection.7.26.4.10}%
-\contentsline {subsubsection}{\numberline {7.26.4.11}getChildCount()}{143}{subsubsection.7.26.4.11}%
-\contentsline {subsubsection}{\numberline {7.26.4.12}getChildPtr()}{143}{subsubsection.7.26.4.12}%
-\contentsline {subsubsection}{\numberline {7.26.4.13}getFirstToken()}{143}{subsubsection.7.26.4.13}%
-\contentsline {subsubsection}{\numberline {7.26.4.14}getFirstTokenPtr()}{144}{subsubsection.7.26.4.14}%
-\contentsline {subsubsection}{\numberline {7.26.4.15}getLastToken()}{144}{subsubsection.7.26.4.15}%
-\contentsline {subsubsection}{\numberline {7.26.4.16}getLastTokenPtr()}{144}{subsubsection.7.26.4.16}%
-\contentsline {subsubsection}{\numberline {7.26.4.17}isChildOptional()}{144}{subsubsection.7.26.4.17}%
-\contentsline {subsubsection}{\numberline {7.26.4.18}isEquivalentTo()}{144}{subsubsection.7.26.4.18}%
-\contentsline {subsubsection}{\numberline {7.26.4.19}isKind()}{145}{subsubsection.7.26.4.19}%
-\contentsline {subsubsection}{\numberline {7.26.4.20}sourceRange()}{145}{subsubsection.7.26.4.20}%
-\contentsline {subsubsection}{\numberline {7.26.4.21}toString()}{145}{subsubsection.7.26.4.21}%
-\contentsline {subsubsection}{\numberline {7.26.4.22}visit()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{145}{subsubsection.7.26.4.22}%
-\contentsline {subsubsection}{\numberline {7.26.4.23}visit()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{146}{subsubsection.7.26.4.23}%
-\contentsline {subsection}{\numberline {7.26.5}Member Data Documentation}{146}{subsection.7.26.5}%
-\contentsline {subsubsection}{\numberline {7.26.5.1}kind}{146}{subsubsection.7.26.5.1}%
-\contentsline {subsubsection}{\numberline {7.26.5.2}parent}{146}{subsubsection.7.26.5.2}%
-\contentsline {subsubsection}{\numberline {7.26.5.3}previewNode}{146}{subsubsection.7.26.5.3}%
-\contentsline {section}{\numberline {7.27}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Printer Class Reference}{147}{section.7.27}%
-\contentsline {subsection}{\numberline {7.27.1}Detailed Description}{148}{subsection.7.27.1}%
-\contentsline {subsection}{\numberline {7.27.2}Constructor \& Destructor Documentation}{148}{subsection.7.27.2}%
-\contentsline {subsubsection}{\numberline {7.27.2.1}SyntaxPrinter()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{148}{subsubsection.7.27.2.1}%
-\contentsline {subsubsection}{\numberline {7.27.2.2}SyntaxPrinter()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{148}{subsubsection.7.27.2.2}%
-\contentsline {subsection}{\numberline {7.27.3}Member Function Documentation}{148}{subsection.7.27.3}%
-\contentsline {subsubsection}{\numberline {7.27.3.1}append()}{148}{subsubsection.7.27.3.1}%
-\contentsline {subsubsection}{\numberline {7.27.3.2}print()\hspace {0.1cm}{\footnotesize \ttfamily [1/4]}}{149}{subsubsection.7.27.3.2}%
-\contentsline {subsubsection}{\numberline {7.27.3.3}print()\hspace {0.1cm}{\footnotesize \ttfamily [2/4]}}{149}{subsubsection.7.27.3.3}%
-\contentsline {subsubsection}{\numberline {7.27.3.4}print()\hspace {0.1cm}{\footnotesize \ttfamily [3/4]}}{149}{subsubsection.7.27.3.4}%
-\contentsline {subsubsection}{\numberline {7.27.3.5}print()\hspace {0.1cm}{\footnotesize \ttfamily [4/4]}}{150}{subsubsection.7.27.3.5}%
-\contentsline {subsubsection}{\numberline {7.27.3.6}printFile()}{150}{subsubsection.7.27.3.6}%
-\contentsline {subsubsection}{\numberline {7.27.3.7}setIncludeComments()}{150}{subsubsection.7.27.3.7}%
-\contentsline {subsubsection}{\numberline {7.27.3.8}setIncludeDirectives()}{151}{subsubsection.7.27.3.8}%
-\contentsline {subsubsection}{\numberline {7.27.3.9}setIncludeMissing()}{151}{subsubsection.7.27.3.9}%
-\contentsline {subsubsection}{\numberline {7.27.3.10}setIncludePreprocessed()}{151}{subsubsection.7.27.3.10}%
-\contentsline {subsubsection}{\numberline {7.27.3.11}setIncludeSkipped()}{152}{subsubsection.7.27.3.11}%
-\contentsline {subsubsection}{\numberline {7.27.3.12}setIncludeTrivia()}{152}{subsubsection.7.27.3.12}%
-\contentsline {subsubsection}{\numberline {7.27.3.13}setSquashNewlines()}{152}{subsubsection.7.27.3.13}%
-\contentsline {subsubsection}{\numberline {7.27.3.14}str()}{153}{subsubsection.7.27.3.14}%
-\contentsline {subsection}{\numberline {7.27.4}Member Data Documentation}{153}{subsection.7.27.4}%
-\contentsline {subsubsection}{\numberline {7.27.4.1}buffer}{153}{subsubsection.7.27.4.1}%
-\contentsline {subsubsection}{\numberline {7.27.4.2}includeComments}{153}{subsubsection.7.27.4.2}%
-\contentsline {subsubsection}{\numberline {7.27.4.3}includeDirectives}{153}{subsubsection.7.27.4.3}%
-\contentsline {subsubsection}{\numberline {7.27.4.4}includeMissing}{154}{subsubsection.7.27.4.4}%
-\contentsline {subsubsection}{\numberline {7.27.4.5}includePreprocessed}{154}{subsubsection.7.27.4.5}%
-\contentsline {subsubsection}{\numberline {7.27.4.6}includeSkipped}{154}{subsubsection.7.27.4.6}%
-\contentsline {subsubsection}{\numberline {7.27.4.7}includeTrivia}{154}{subsubsection.7.27.4.7}%
-\contentsline {subsubsection}{\numberline {7.27.4.8}sourceManager}{154}{subsubsection.7.27.4.8}%
-\contentsline {subsubsection}{\numberline {7.27.4.9}squashNewlines}{155}{subsubsection.7.27.4.9}%
-\contentsline {section}{\numberline {7.28}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rewriter$<$ TDerived $>$ Class Template Reference}{155}{section.7.28}%
-\contentsline {subsection}{\numberline {7.28.1}Detailed Description}{157}{subsection.7.28.1}%
-\contentsline {subsection}{\numberline {7.28.2}Member Typedef Documentation}{157}{subsection.7.28.2}%
-\contentsline {subsubsection}{\numberline {7.28.2.1}Token}{157}{subsubsection.7.28.2.1}%
-\contentsline {subsection}{\numberline {7.28.3}Constructor \& Destructor Documentation}{157}{subsection.7.28.3}%
-\contentsline {subsubsection}{\numberline {7.28.3.1}SyntaxRewriter()}{157}{subsubsection.7.28.3.1}%
-\contentsline {subsection}{\numberline {7.28.4}Member Function Documentation}{157}{subsection.7.28.4}%
-\contentsline {subsubsection}{\numberline {7.28.4.1}insertAfter()}{158}{subsubsection.7.28.4.1}%
-\contentsline {subsubsection}{\numberline {7.28.4.2}insertAtBack()}{158}{subsubsection.7.28.4.2}%
-\contentsline {subsubsection}{\numberline {7.28.4.3}insertAtFront()}{158}{subsubsection.7.28.4.3}%
-\contentsline {subsubsection}{\numberline {7.28.4.4}insertBefore()}{159}{subsubsection.7.28.4.4}%
-\contentsline {subsubsection}{\numberline {7.28.4.5}makeComma()}{159}{subsubsection.7.28.4.5}%
-\contentsline {subsubsection}{\numberline {7.28.4.6}makeId()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{159}{subsubsection.7.28.4.6}%
-\contentsline {subsubsection}{\numberline {7.28.4.7}makeId()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{160}{subsubsection.7.28.4.7}%
-\contentsline {subsubsection}{\numberline {7.28.4.8}makeToken()}{160}{subsubsection.7.28.4.8}%
-\contentsline {subsubsection}{\numberline {7.28.4.9}parse()}{161}{subsubsection.7.28.4.9}%
-\contentsline {subsubsection}{\numberline {7.28.4.10}remove()}{161}{subsubsection.7.28.4.10}%
-\contentsline {subsubsection}{\numberline {7.28.4.11}replace()}{162}{subsubsection.7.28.4.11}%
-\contentsline {subsubsection}{\numberline {7.28.4.12}transform()}{162}{subsubsection.7.28.4.12}%
-\contentsline {subsection}{\numberline {7.28.5}Member Data Documentation}{163}{subsection.7.28.5}%
-\contentsline {subsubsection}{\numberline {7.28.5.1}alloc}{163}{subsubsection.7.28.5.1}%
-\contentsline {subsubsection}{\numberline {7.28.5.2}commits}{163}{subsubsection.7.28.5.2}%
-\contentsline {subsubsection}{\numberline {7.28.5.3}factory}{163}{subsubsection.7.28.5.3}%
-\contentsline {subsubsection}{\numberline {7.28.5.4}SingleSpace}{164}{subsubsection.7.28.5.4}%
-\contentsline {subsubsection}{\numberline {7.28.5.5}sourceManager}{164}{subsubsection.7.28.5.5}%
-\contentsline {subsubsection}{\numberline {7.28.5.6}tempTrees}{164}{subsubsection.7.28.5.6}%
-\contentsline {section}{\numberline {7.29}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree Class Reference}{164}{section.7.29}%
-\contentsline {subsection}{\numberline {7.29.1}Detailed Description}{167}{subsection.7.29.1}%
-\contentsline {subsection}{\numberline {7.29.2}Member Typedef Documentation}{167}{subsection.7.29.2}%
-\contentsline {subsubsection}{\numberline {7.29.2.1}MacroList}{167}{subsubsection.7.29.2.1}%
-\contentsline {subsubsection}{\numberline {7.29.2.2}TreeOrError}{167}{subsubsection.7.29.2.2}%
-\contentsline {subsection}{\numberline {7.29.3}Constructor \& Destructor Documentation}{168}{subsection.7.29.3}%
-\contentsline {subsubsection}{\numberline {7.29.3.1}SyntaxTree()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{168}{subsubsection.7.29.3.1}%
-\contentsline {subsubsection}{\numberline {7.29.3.2}SyntaxTree()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{168}{subsubsection.7.29.3.2}%
-\contentsline {subsubsection}{\numberline {7.29.3.3}$\sim $SyntaxTree()}{168}{subsubsection.7.29.3.3}%
-\contentsline {subsubsection}{\numberline {7.29.3.4}SyntaxTree()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{168}{subsubsection.7.29.3.4}%
-\contentsline {subsection}{\numberline {7.29.4}Member Function Documentation}{169}{subsection.7.29.4}%
-\contentsline {subsubsection}{\numberline {7.29.4.1}allocator()}{169}{subsubsection.7.29.4.1}%
-\contentsline {subsubsection}{\numberline {7.29.4.2}create()}{169}{subsubsection.7.29.4.2}%
-\contentsline {subsubsection}{\numberline {7.29.4.3}diagnostics()}{169}{subsubsection.7.29.4.3}%
-\contentsline {subsubsection}{\numberline {7.29.4.4}fromBuffer()}{170}{subsubsection.7.29.4.4}%
-\contentsline {subsubsection}{\numberline {7.29.4.5}fromBuffers()}{170}{subsubsection.7.29.4.5}%
-\contentsline {subsubsection}{\numberline {7.29.4.6}fromFile()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{171}{subsubsection.7.29.4.6}%
-\contentsline {subsubsection}{\numberline {7.29.4.7}fromFile()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{171}{subsubsection.7.29.4.7}%
-\contentsline {subsubsection}{\numberline {7.29.4.8}fromFileInMemory()}{172}{subsubsection.7.29.4.8}%
-\contentsline {subsubsection}{\numberline {7.29.4.9}fromFiles()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{172}{subsubsection.7.29.4.9}%
-\contentsline {subsubsection}{\numberline {7.29.4.10}fromFiles()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{172}{subsubsection.7.29.4.10}%
-\contentsline {subsubsection}{\numberline {7.29.4.11}fromLibraryMapBuffer()}{173}{subsubsection.7.29.4.11}%
-\contentsline {subsubsection}{\numberline {7.29.4.12}fromLibraryMapFile()}{173}{subsubsection.7.29.4.12}%
-\contentsline {subsubsection}{\numberline {7.29.4.13}fromLibraryMapText()}{173}{subsubsection.7.29.4.13}%
-\contentsline {subsubsection}{\numberline {7.29.4.14}fromText()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{174}{subsubsection.7.29.4.14}%
-\contentsline {subsubsection}{\numberline {7.29.4.15}fromText()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{174}{subsubsection.7.29.4.15}%
-\contentsline {subsubsection}{\numberline {7.29.4.16}fromText()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{175}{subsubsection.7.29.4.16}%
-\contentsline {subsubsection}{\numberline {7.29.4.17}getDefaultSourceManager()}{175}{subsubsection.7.29.4.17}%
-\contentsline {subsubsection}{\numberline {7.29.4.18}getDefinedMacros()}{175}{subsubsection.7.29.4.18}%
-\contentsline {subsubsection}{\numberline {7.29.4.19}getMetadata()}{176}{subsubsection.7.29.4.19}%
-\contentsline {subsubsection}{\numberline {7.29.4.20}getSourceLibrary()}{176}{subsubsection.7.29.4.20}%
-\contentsline {subsubsection}{\numberline {7.29.4.21}options()}{176}{subsubsection.7.29.4.21}%
-\contentsline {subsubsection}{\numberline {7.29.4.22}root()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{176}{subsubsection.7.29.4.22}%
-\contentsline {subsubsection}{\numberline {7.29.4.23}root()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{177}{subsubsection.7.29.4.23}%
-\contentsline {subsubsection}{\numberline {7.29.4.24}sourceManager()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{177}{subsubsection.7.29.4.24}%
-\contentsline {subsubsection}{\numberline {7.29.4.25}sourceManager()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{177}{subsubsection.7.29.4.25}%
-\contentsline {subsection}{\numberline {7.29.5}Member Data Documentation}{177}{subsection.7.29.5}%
-\contentsline {subsubsection}{\numberline {7.29.5.1}alloc}{177}{subsubsection.7.29.5.1}%
-\contentsline {subsubsection}{\numberline {7.29.5.2}diagnosticsBuffer}{178}{subsubsection.7.29.5.2}%
-\contentsline {subsubsection}{\numberline {7.29.5.3}isLibraryUnit}{178}{subsubsection.7.29.5.3}%
-\contentsline {subsubsection}{\numberline {7.29.5.4}library}{178}{subsubsection.7.29.5.4}%
-\contentsline {subsubsection}{\numberline {7.29.5.5}macros}{178}{subsubsection.7.29.5.5}%
-\contentsline {subsubsection}{\numberline {7.29.5.6}metadata}{178}{subsubsection.7.29.5.6}%
-\contentsline {subsubsection}{\numberline {7.29.5.7}options\_}{179}{subsubsection.7.29.5.7}%
-\contentsline {subsubsection}{\numberline {7.29.5.8}rootNode}{179}{subsubsection.7.29.5.8}%
-\contentsline {subsubsection}{\numberline {7.29.5.9}sourceMan}{179}{subsubsection.7.29.5.9}%
-\contentsline {section}{\numberline {7.30}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visitor$<$ TDerived $>$ Class Template Reference}{179}{section.7.30}%
-\contentsline {subsection}{\numberline {7.30.1}Detailed Description}{180}{subsection.7.30.1}%
-\contentsline {subsection}{\numberline {7.30.2}Member Function Documentation}{180}{subsection.7.30.2}%
-\contentsline {subsubsection}{\numberline {7.30.2.1}visit()}{180}{subsubsection.7.30.2.1}%
-\contentsline {subsubsection}{\numberline {7.30.2.2}visitDefault()}{181}{subsubsection.7.30.2.2}%
-\contentsline {subsubsection}{\numberline {7.30.2.3}visitToken()}{181}{subsubsection.7.30.2.3}%
-\contentsline {section}{\numberline {7.31}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Token\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}List Class Reference}{182}{section.7.31}%
+\contentsline {subsubsection}{\numberline {7.25.3.4}getChildPtr()}{136}{subsubsection.7.25.3.4}%
+\contentsline {subsubsection}{\numberline {7.25.3.5}resetAll()}{136}{subsubsection.7.25.3.5}%
+\contentsline {subsubsection}{\numberline {7.25.3.6}setChild()}{137}{subsubsection.7.25.3.6}%
+\contentsline {section}{\numberline {7.26}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}List\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Base Class Reference}{137}{section.7.26}%
+\contentsline {subsection}{\numberline {7.26.1}Detailed Description}{138}{subsection.7.26.1}%
+\contentsline {subsection}{\numberline {7.26.2}Constructor \& Destructor Documentation}{138}{subsection.7.26.2}%
+\contentsline {subsubsection}{\numberline {7.26.2.1}SyntaxListBase()}{139}{subsubsection.7.26.2.1}%
+\contentsline {subsection}{\numberline {7.26.3}Member Function Documentation}{139}{subsection.7.26.3}%
+\contentsline {subsubsection}{\numberline {7.26.3.1}clone()}{139}{subsubsection.7.26.3.1}%
+\contentsline {subsubsection}{\numberline {7.26.3.2}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{139}{subsubsection.7.26.3.2}%
+\contentsline {subsubsection}{\numberline {7.26.3.3}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{139}{subsubsection.7.26.3.3}%
+\contentsline {subsubsection}{\numberline {7.26.3.4}getChildCount()}{140}{subsubsection.7.26.3.4}%
+\contentsline {subsubsection}{\numberline {7.26.3.5}getChildPtr()}{140}{subsubsection.7.26.3.5}%
+\contentsline {subsubsection}{\numberline {7.26.3.6}isChildOptional()}{140}{subsubsection.7.26.3.6}%
+\contentsline {subsubsection}{\numberline {7.26.3.7}isKind()}{140}{subsubsection.7.26.3.7}%
+\contentsline {subsubsection}{\numberline {7.26.3.8}resetAll()}{140}{subsubsection.7.26.3.8}%
+\contentsline {subsubsection}{\numberline {7.26.3.9}setChild()}{141}{subsubsection.7.26.3.9}%
+\contentsline {subsection}{\numberline {7.26.4}Member Data Documentation}{141}{subsection.7.26.4}%
+\contentsline {subsubsection}{\numberline {7.26.4.1}childCount}{141}{subsubsection.7.26.4.1}%
+\contentsline {section}{\numberline {7.27}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node Class Reference}{141}{section.7.27}%
+\contentsline {subsection}{\numberline {7.27.1}Detailed Description}{143}{subsection.7.27.1}%
+\contentsline {subsection}{\numberline {7.27.2}Member Typedef Documentation}{143}{subsection.7.27.2}%
+\contentsline {subsubsection}{\numberline {7.27.2.1}Token}{144}{subsubsection.7.27.2.1}%
+\contentsline {subsection}{\numberline {7.27.3}Constructor \& Destructor Documentation}{144}{subsection.7.27.3}%
+\contentsline {subsubsection}{\numberline {7.27.3.1}SyntaxNode()}{144}{subsubsection.7.27.3.1}%
+\contentsline {subsection}{\numberline {7.27.4}Member Function Documentation}{144}{subsection.7.27.4}%
+\contentsline {subsubsection}{\numberline {7.27.4.1}as()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{144}{subsubsection.7.27.4.1}%
+\contentsline {subsubsection}{\numberline {7.27.4.2}as()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{144}{subsubsection.7.27.4.2}%
+\contentsline {subsubsection}{\numberline {7.27.4.3}as\_if()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{145}{subsubsection.7.27.4.3}%
+\contentsline {subsubsection}{\numberline {7.27.4.4}as\_if()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{145}{subsubsection.7.27.4.4}%
+\contentsline {subsubsection}{\numberline {7.27.4.5}childNode()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{145}{subsubsection.7.27.4.5}%
+\contentsline {subsubsection}{\numberline {7.27.4.6}childNode()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{145}{subsubsection.7.27.4.6}%
+\contentsline {subsubsection}{\numberline {7.27.4.7}childToken()}{145}{subsubsection.7.27.4.7}%
+\contentsline {subsubsection}{\numberline {7.27.4.8}childTokenPtr()}{146}{subsubsection.7.27.4.8}%
+\contentsline {subsubsection}{\numberline {7.27.4.9}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{146}{subsubsection.7.27.4.9}%
+\contentsline {subsubsection}{\numberline {7.27.4.10}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{146}{subsubsection.7.27.4.10}%
+\contentsline {subsubsection}{\numberline {7.27.4.11}getChildCount()}{146}{subsubsection.7.27.4.11}%
+\contentsline {subsubsection}{\numberline {7.27.4.12}getChildPtr()}{146}{subsubsection.7.27.4.12}%
+\contentsline {subsubsection}{\numberline {7.27.4.13}getFirstToken()}{146}{subsubsection.7.27.4.13}%
+\contentsline {subsubsection}{\numberline {7.27.4.14}getFirstTokenPtr()}{147}{subsubsection.7.27.4.14}%
+\contentsline {subsubsection}{\numberline {7.27.4.15}getLastToken()}{147}{subsubsection.7.27.4.15}%
+\contentsline {subsubsection}{\numberline {7.27.4.16}getLastTokenPtr()}{147}{subsubsection.7.27.4.16}%
+\contentsline {subsubsection}{\numberline {7.27.4.17}isChildOptional()}{147}{subsubsection.7.27.4.17}%
+\contentsline {subsubsection}{\numberline {7.27.4.18}isEquivalentTo()}{147}{subsubsection.7.27.4.18}%
+\contentsline {subsubsection}{\numberline {7.27.4.19}isKind()}{148}{subsubsection.7.27.4.19}%
+\contentsline {subsubsection}{\numberline {7.27.4.20}sourceRange()}{148}{subsubsection.7.27.4.20}%
+\contentsline {subsubsection}{\numberline {7.27.4.21}toString()}{148}{subsubsection.7.27.4.21}%
+\contentsline {subsubsection}{\numberline {7.27.4.22}visit()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{148}{subsubsection.7.27.4.22}%
+\contentsline {subsubsection}{\numberline {7.27.4.23}visit()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{149}{subsubsection.7.27.4.23}%
+\contentsline {subsection}{\numberline {7.27.5}Member Data Documentation}{149}{subsection.7.27.5}%
+\contentsline {subsubsection}{\numberline {7.27.5.1}kind}{149}{subsubsection.7.27.5.1}%
+\contentsline {subsubsection}{\numberline {7.27.5.2}parent}{149}{subsubsection.7.27.5.2}%
+\contentsline {subsubsection}{\numberline {7.27.5.3}previewNode}{149}{subsubsection.7.27.5.3}%
+\contentsline {section}{\numberline {7.28}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Printer Class Reference}{150}{section.7.28}%
+\contentsline {subsection}{\numberline {7.28.1}Detailed Description}{151}{subsection.7.28.1}%
+\contentsline {subsection}{\numberline {7.28.2}Constructor \& Destructor Documentation}{151}{subsection.7.28.2}%
+\contentsline {subsubsection}{\numberline {7.28.2.1}SyntaxPrinter()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{151}{subsubsection.7.28.2.1}%
+\contentsline {subsubsection}{\numberline {7.28.2.2}SyntaxPrinter()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{151}{subsubsection.7.28.2.2}%
+\contentsline {subsection}{\numberline {7.28.3}Member Function Documentation}{151}{subsection.7.28.3}%
+\contentsline {subsubsection}{\numberline {7.28.3.1}append()}{151}{subsubsection.7.28.3.1}%
+\contentsline {subsubsection}{\numberline {7.28.3.2}print()\hspace {0.1cm}{\footnotesize \ttfamily [1/4]}}{152}{subsubsection.7.28.3.2}%
+\contentsline {subsubsection}{\numberline {7.28.3.3}print()\hspace {0.1cm}{\footnotesize \ttfamily [2/4]}}{152}{subsubsection.7.28.3.3}%
+\contentsline {subsubsection}{\numberline {7.28.3.4}print()\hspace {0.1cm}{\footnotesize \ttfamily [3/4]}}{152}{subsubsection.7.28.3.4}%
+\contentsline {subsubsection}{\numberline {7.28.3.5}print()\hspace {0.1cm}{\footnotesize \ttfamily [4/4]}}{153}{subsubsection.7.28.3.5}%
+\contentsline {subsubsection}{\numberline {7.28.3.6}printFile()}{153}{subsubsection.7.28.3.6}%
+\contentsline {subsubsection}{\numberline {7.28.3.7}setIncludeComments()}{153}{subsubsection.7.28.3.7}%
+\contentsline {subsubsection}{\numberline {7.28.3.8}setIncludeDirectives()}{154}{subsubsection.7.28.3.8}%
+\contentsline {subsubsection}{\numberline {7.28.3.9}setIncludeMissing()}{154}{subsubsection.7.28.3.9}%
+\contentsline {subsubsection}{\numberline {7.28.3.10}setIncludePreprocessed()}{154}{subsubsection.7.28.3.10}%
+\contentsline {subsubsection}{\numberline {7.28.3.11}setIncludeSkipped()}{155}{subsubsection.7.28.3.11}%
+\contentsline {subsubsection}{\numberline {7.28.3.12}setIncludeTrivia()}{155}{subsubsection.7.28.3.12}%
+\contentsline {subsubsection}{\numberline {7.28.3.13}setSquashNewlines()}{155}{subsubsection.7.28.3.13}%
+\contentsline {subsubsection}{\numberline {7.28.3.14}str()}{156}{subsubsection.7.28.3.14}%
+\contentsline {subsection}{\numberline {7.28.4}Member Data Documentation}{156}{subsection.7.28.4}%
+\contentsline {subsubsection}{\numberline {7.28.4.1}buffer}{156}{subsubsection.7.28.4.1}%
+\contentsline {subsubsection}{\numberline {7.28.4.2}includeComments}{156}{subsubsection.7.28.4.2}%
+\contentsline {subsubsection}{\numberline {7.28.4.3}includeDirectives}{156}{subsubsection.7.28.4.3}%
+\contentsline {subsubsection}{\numberline {7.28.4.4}includeMissing}{157}{subsubsection.7.28.4.4}%
+\contentsline {subsubsection}{\numberline {7.28.4.5}includePreprocessed}{157}{subsubsection.7.28.4.5}%
+\contentsline {subsubsection}{\numberline {7.28.4.6}includeSkipped}{157}{subsubsection.7.28.4.6}%
+\contentsline {subsubsection}{\numberline {7.28.4.7}includeTrivia}{157}{subsubsection.7.28.4.7}%
+\contentsline {subsubsection}{\numberline {7.28.4.8}sourceManager}{157}{subsubsection.7.28.4.8}%
+\contentsline {subsubsection}{\numberline {7.28.4.9}squashNewlines}{158}{subsubsection.7.28.4.9}%
+\contentsline {section}{\numberline {7.29}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rewriter$<$ TDerived $>$ Class Template Reference}{158}{section.7.29}%
+\contentsline {subsection}{\numberline {7.29.1}Detailed Description}{160}{subsection.7.29.1}%
+\contentsline {subsection}{\numberline {7.29.2}Member Typedef Documentation}{160}{subsection.7.29.2}%
+\contentsline {subsubsection}{\numberline {7.29.2.1}Token}{160}{subsubsection.7.29.2.1}%
+\contentsline {subsection}{\numberline {7.29.3}Constructor \& Destructor Documentation}{160}{subsection.7.29.3}%
+\contentsline {subsubsection}{\numberline {7.29.3.1}SyntaxRewriter()}{160}{subsubsection.7.29.3.1}%
+\contentsline {subsection}{\numberline {7.29.4}Member Function Documentation}{160}{subsection.7.29.4}%
+\contentsline {subsubsection}{\numberline {7.29.4.1}insertAfter()}{161}{subsubsection.7.29.4.1}%
+\contentsline {subsubsection}{\numberline {7.29.4.2}insertAtBack()}{161}{subsubsection.7.29.4.2}%
+\contentsline {subsubsection}{\numberline {7.29.4.3}insertAtFront()}{161}{subsubsection.7.29.4.3}%
+\contentsline {subsubsection}{\numberline {7.29.4.4}insertBefore()}{162}{subsubsection.7.29.4.4}%
+\contentsline {subsubsection}{\numberline {7.29.4.5}makeComma()}{162}{subsubsection.7.29.4.5}%
+\contentsline {subsubsection}{\numberline {7.29.4.6}makeId()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{162}{subsubsection.7.29.4.6}%
+\contentsline {subsubsection}{\numberline {7.29.4.7}makeId()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{163}{subsubsection.7.29.4.7}%
+\contentsline {subsubsection}{\numberline {7.29.4.8}makeToken()}{163}{subsubsection.7.29.4.8}%
+\contentsline {subsubsection}{\numberline {7.29.4.9}parse()}{164}{subsubsection.7.29.4.9}%
+\contentsline {subsubsection}{\numberline {7.29.4.10}remove()}{164}{subsubsection.7.29.4.10}%
+\contentsline {subsubsection}{\numberline {7.29.4.11}replace()}{165}{subsubsection.7.29.4.11}%
+\contentsline {subsubsection}{\numberline {7.29.4.12}transform()}{165}{subsubsection.7.29.4.12}%
+\contentsline {subsection}{\numberline {7.29.5}Member Data Documentation}{166}{subsection.7.29.5}%
+\contentsline {subsubsection}{\numberline {7.29.5.1}alloc}{166}{subsubsection.7.29.5.1}%
+\contentsline {subsubsection}{\numberline {7.29.5.2}commits}{166}{subsubsection.7.29.5.2}%
+\contentsline {subsubsection}{\numberline {7.29.5.3}factory}{166}{subsubsection.7.29.5.3}%
+\contentsline {subsubsection}{\numberline {7.29.5.4}SingleSpace}{167}{subsubsection.7.29.5.4}%
+\contentsline {subsubsection}{\numberline {7.29.5.5}sourceManager}{167}{subsubsection.7.29.5.5}%
+\contentsline {subsubsection}{\numberline {7.29.5.6}tempTrees}{167}{subsubsection.7.29.5.6}%
+\contentsline {section}{\numberline {7.30}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree Class Reference}{167}{section.7.30}%
+\contentsline {subsection}{\numberline {7.30.1}Detailed Description}{170}{subsection.7.30.1}%
+\contentsline {subsection}{\numberline {7.30.2}Member Typedef Documentation}{170}{subsection.7.30.2}%
+\contentsline {subsubsection}{\numberline {7.30.2.1}MacroList}{170}{subsubsection.7.30.2.1}%
+\contentsline {subsubsection}{\numberline {7.30.2.2}TreeOrError}{170}{subsubsection.7.30.2.2}%
+\contentsline {subsection}{\numberline {7.30.3}Constructor \& Destructor Documentation}{171}{subsection.7.30.3}%
+\contentsline {subsubsection}{\numberline {7.30.3.1}SyntaxTree()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{171}{subsubsection.7.30.3.1}%
+\contentsline {subsubsection}{\numberline {7.30.3.2}SyntaxTree()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{171}{subsubsection.7.30.3.2}%
+\contentsline {subsubsection}{\numberline {7.30.3.3}$\sim $SyntaxTree()}{171}{subsubsection.7.30.3.3}%
+\contentsline {subsubsection}{\numberline {7.30.3.4}SyntaxTree()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{171}{subsubsection.7.30.3.4}%
+\contentsline {subsection}{\numberline {7.30.4}Member Function Documentation}{172}{subsection.7.30.4}%
+\contentsline {subsubsection}{\numberline {7.30.4.1}allocator()}{172}{subsubsection.7.30.4.1}%
+\contentsline {subsubsection}{\numberline {7.30.4.2}create()}{172}{subsubsection.7.30.4.2}%
+\contentsline {subsubsection}{\numberline {7.30.4.3}diagnostics()}{172}{subsubsection.7.30.4.3}%
+\contentsline {subsubsection}{\numberline {7.30.4.4}fromBuffer()}{173}{subsubsection.7.30.4.4}%
+\contentsline {subsubsection}{\numberline {7.30.4.5}fromBuffers()}{173}{subsubsection.7.30.4.5}%
+\contentsline {subsubsection}{\numberline {7.30.4.6}fromFile()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{174}{subsubsection.7.30.4.6}%
+\contentsline {subsubsection}{\numberline {7.30.4.7}fromFile()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{174}{subsubsection.7.30.4.7}%
+\contentsline {subsubsection}{\numberline {7.30.4.8}fromFileInMemory()}{175}{subsubsection.7.30.4.8}%
+\contentsline {subsubsection}{\numberline {7.30.4.9}fromFiles()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{175}{subsubsection.7.30.4.9}%
+\contentsline {subsubsection}{\numberline {7.30.4.10}fromFiles()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{175}{subsubsection.7.30.4.10}%
+\contentsline {subsubsection}{\numberline {7.30.4.11}fromLibraryMapBuffer()}{176}{subsubsection.7.30.4.11}%
+\contentsline {subsubsection}{\numberline {7.30.4.12}fromLibraryMapFile()}{176}{subsubsection.7.30.4.12}%
+\contentsline {subsubsection}{\numberline {7.30.4.13}fromLibraryMapText()}{176}{subsubsection.7.30.4.13}%
+\contentsline {subsubsection}{\numberline {7.30.4.14}fromText()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{177}{subsubsection.7.30.4.14}%
+\contentsline {subsubsection}{\numberline {7.30.4.15}fromText()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{177}{subsubsection.7.30.4.15}%
+\contentsline {subsubsection}{\numberline {7.30.4.16}fromText()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{178}{subsubsection.7.30.4.16}%
+\contentsline {subsubsection}{\numberline {7.30.4.17}getDefaultSourceManager()}{178}{subsubsection.7.30.4.17}%
+\contentsline {subsubsection}{\numberline {7.30.4.18}getDefinedMacros()}{178}{subsubsection.7.30.4.18}%
+\contentsline {subsubsection}{\numberline {7.30.4.19}getMetadata()}{179}{subsubsection.7.30.4.19}%
+\contentsline {subsubsection}{\numberline {7.30.4.20}getSourceLibrary()}{179}{subsubsection.7.30.4.20}%
+\contentsline {subsubsection}{\numberline {7.30.4.21}options()}{179}{subsubsection.7.30.4.21}%
+\contentsline {subsubsection}{\numberline {7.30.4.22}root()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{179}{subsubsection.7.30.4.22}%
+\contentsline {subsubsection}{\numberline {7.30.4.23}root()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{180}{subsubsection.7.30.4.23}%
+\contentsline {subsubsection}{\numberline {7.30.4.24}sourceManager()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{180}{subsubsection.7.30.4.24}%
+\contentsline {subsubsection}{\numberline {7.30.4.25}sourceManager()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{180}{subsubsection.7.30.4.25}%
+\contentsline {subsection}{\numberline {7.30.5}Member Data Documentation}{180}{subsection.7.30.5}%
+\contentsline {subsubsection}{\numberline {7.30.5.1}alloc}{180}{subsubsection.7.30.5.1}%
+\contentsline {subsubsection}{\numberline {7.30.5.2}diagnosticsBuffer}{181}{subsubsection.7.30.5.2}%
+\contentsline {subsubsection}{\numberline {7.30.5.3}isLibraryUnit}{181}{subsubsection.7.30.5.3}%
+\contentsline {subsubsection}{\numberline {7.30.5.4}library}{181}{subsubsection.7.30.5.4}%
+\contentsline {subsubsection}{\numberline {7.30.5.5}macros}{181}{subsubsection.7.30.5.5}%
+\contentsline {subsubsection}{\numberline {7.30.5.6}metadata}{181}{subsubsection.7.30.5.6}%
+\contentsline {subsubsection}{\numberline {7.30.5.7}options\_}{182}{subsubsection.7.30.5.7}%
+\contentsline {subsubsection}{\numberline {7.30.5.8}rootNode}{182}{subsubsection.7.30.5.8}%
+\contentsline {subsubsection}{\numberline {7.30.5.9}sourceMan}{182}{subsubsection.7.30.5.9}%
+\contentsline {section}{\numberline {7.31}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visitor$<$ TDerived $>$ Class Template Reference}{182}{section.7.31}%
 \contentsline {subsection}{\numberline {7.31.1}Detailed Description}{183}{subsection.7.31.1}%
-\contentsline {subsection}{\numberline {7.31.2}Constructor \& Destructor Documentation}{183}{subsection.7.31.2}%
-\contentsline {subsubsection}{\numberline {7.31.2.1}TokenList()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{183}{subsubsection.7.31.2.1}%
-\contentsline {subsubsection}{\numberline {7.31.2.2}TokenList()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{183}{subsubsection.7.31.2.2}%
-\contentsline {subsection}{\numberline {7.31.3}Member Function Documentation}{184}{subsection.7.31.3}%
-\contentsline {subsubsection}{\numberline {7.31.3.1}clone()}{184}{subsubsection.7.31.3.1}%
-\contentsline {subsubsection}{\numberline {7.31.3.2}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{184}{subsubsection.7.31.3.2}%
-\contentsline {subsubsection}{\numberline {7.31.3.3}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{184}{subsubsection.7.31.3.3}%
-\contentsline {subsubsection}{\numberline {7.31.3.4}getChildPtr()}{185}{subsubsection.7.31.3.4}%
-\contentsline {subsubsection}{\numberline {7.31.3.5}resetAll()}{185}{subsubsection.7.31.3.5}%
-\contentsline {subsubsection}{\numberline {7.31.3.6}setChild()}{185}{subsubsection.7.31.3.6}%
-\contentsline {section}{\numberline {7.32}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Token\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Or\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax Struct Reference}{186}{section.7.32}%
-\contentsline {subsection}{\numberline {7.32.1}Detailed Description}{187}{subsection.7.32.1}%
-\contentsline {subsection}{\numberline {7.32.2}Constructor \& Destructor Documentation}{187}{subsection.7.32.2}%
-\contentsline {subsubsection}{\numberline {7.32.2.1}TokenOrSyntax()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{187}{subsubsection.7.32.2.1}%
-\contentsline {subsubsection}{\numberline {7.32.2.2}TokenOrSyntax()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{187}{subsubsection.7.32.2.2}%
-\contentsline {subsubsection}{\numberline {7.32.2.3}TokenOrSyntax()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{187}{subsubsection.7.32.2.3}%
-\contentsline {subsection}{\numberline {7.32.3}Member Function Documentation}{188}{subsection.7.32.3}%
-\contentsline {subsubsection}{\numberline {7.32.3.1}node()}{188}{subsubsection.7.32.3.1}%
-\contentsline {section}{\numberline {7.33}Values\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Iterator Class Reference}{188}{section.7.33}%
-\contentsline {subsection}{\numberline {7.33.1}Detailed Description}{189}{subsection.7.33.1}%
-\contentsline {subsection}{\numberline {7.33.2}Constructor \& Destructor Documentation}{189}{subsection.7.33.2}%
-\contentsline {subsubsection}{\numberline {7.33.2.1}ValuesIterator()}{189}{subsubsection.7.33.2.1}%
-\contentsline {subsubsection}{\numberline {7.33.2.2}$\sim $ValuesIterator()}{189}{subsubsection.7.33.2.2}%
-\contentsline {subsection}{\numberline {7.33.3}Member Function Documentation}{189}{subsection.7.33.3}%
-\contentsline {subsubsection}{\numberline {7.33.3.1}end()}{190}{subsubsection.7.33.3.1}%
-\contentsline {subsubsection}{\numberline {7.33.3.2}next()}{190}{subsubsection.7.33.3.2}%
-\contentsline {subsection}{\numberline {7.33.4}Member Data Documentation}{190}{subsection.7.33.4}%
-\contentsline {subsubsection}{\numberline {7.33.4.1}bool\_}{190}{subsubsection.7.33.4.1}%
-\contentsline {subsubsection}{\numberline {7.33.4.2}err\_}{191}{subsubsection.7.33.4.2}%
-\contentsline {subsubsection}{\numberline {7.33.4.3}exprp\_}{191}{subsubsection.7.33.4.3}%
-\contentsline {subsubsection}{\numberline {7.33.4.4}float\_}{191}{subsubsection.7.33.4.4}%
-\contentsline {subsubsection}{\numberline {7.33.4.5}int\_}{191}{subsubsection.7.33.4.5}%
-\contentsline {subsubsection}{\numberline {7.33.4.6}str\_}{191}{subsubsection.7.33.4.6}%
-\contentsline {subsubsection}{\numberline {7.33.4.7}values\_}{192}{subsubsection.7.33.4.7}%
-\contentsline {subsubsection}{\numberline {7.33.4.8}vtype\_}{192}{subsubsection.7.33.4.8}%
-\contentsline {section}{\numberline {7.34}Verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visitor Class Reference}{192}{section.7.34}%
-\contentsline {subsection}{\numberline {7.34.1}Detailed Description}{193}{subsection.7.34.1}%
-\contentsline {subsection}{\numberline {7.34.2}Constructor \& Destructor Documentation}{193}{subsection.7.34.2}%
-\contentsline {subsubsection}{\numberline {7.34.2.1}VerilogVisitor()}{194}{subsubsection.7.34.2.1}%
-\contentsline {subsection}{\numberline {7.34.3}Member Function Documentation}{194}{subsection.7.34.3}%
-\contentsline {subsubsection}{\numberline {7.34.3.1}handle()\hspace {0.1cm}{\footnotesize \ttfamily [1/5]}}{194}{subsubsection.7.34.3.1}%
-\contentsline {subsubsection}{\numberline {7.34.3.2}handle()\hspace {0.1cm}{\footnotesize \ttfamily [2/5]}}{194}{subsubsection.7.34.3.2}%
-\contentsline {subsubsection}{\numberline {7.34.3.3}handle()\hspace {0.1cm}{\footnotesize \ttfamily [3/5]}}{195}{subsubsection.7.34.3.3}%
-\contentsline {subsubsection}{\numberline {7.34.3.4}handle()\hspace {0.1cm}{\footnotesize \ttfamily [4/5]}}{195}{subsubsection.7.34.3.4}%
-\contentsline {subsubsection}{\numberline {7.34.3.5}handle()\hspace {0.1cm}{\footnotesize \ttfamily [5/5]}}{195}{subsubsection.7.34.3.5}%
-\contentsline {subsection}{\numberline {7.34.4}Member Data Documentation}{196}{subsection.7.34.4}%
-\contentsline {subsubsection}{\numberline {7.34.4.1}depth\_}{196}{subsubsection.7.34.4.1}%
-\contentsline {subsubsection}{\numberline {7.34.4.2}inTargetModule\_}{196}{subsubsection.7.34.4.2}%
-\contentsline {subsubsection}{\numberline {7.34.4.3}targetCell\_}{196}{subsubsection.7.34.4.3}%
-\contentsline {chapter}{\numberline {8}File Documentation}{197}{chapter.8}%
-\contentsline {section}{\numberline {8.1}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Iterators.hpp File Reference}{197}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Iterators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{198}{section.8.2}%
-\contentsline {section}{\numberline {8.3}include/json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.hpp File Reference}{199}{section.8.3}%
-\contentsline {subsection}{\numberline {8.3.1}Typedef Documentation}{200}{subsection.8.3.1}%
-\contentsline {subsubsection}{\numberline {8.3.1.1}json}{200}{subsubsection.8.3.1.1}%
-\contentsline {subsection}{\numberline {8.3.2}Function Documentation}{200}{subsection.8.3.2}%
-\contentsline {subsubsection}{\numberline {8.3.2.1}generateCellJson()}{201}{subsubsection.8.3.2.1}%
-\contentsline {subsubsection}{\numberline {8.3.2.2}generateLutJson()}{203}{subsubsection.8.3.2.2}%
-\contentsline {subsubsection}{\numberline {8.3.2.3}generatePinJson()}{204}{subsubsection.8.3.2.3}%
-\contentsline {subsubsection}{\numberline {8.3.2.4}generatePowerJson()}{207}{subsubsection.8.3.2.4}%
-\contentsline {section}{\numberline {8.4}json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{208}{section.8.4}%
-\contentsline {section}{\numberline {8.5}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Attribute.hpp File Reference}{209}{section.8.5}%
-\contentsline {section}{\numberline {8.6}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Attribute.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{210}{section.8.6}%
-\contentsline {section}{\numberline {8.7}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.hpp File Reference}{210}{section.8.7}%
-\contentsline {subsection}{\numberline {8.7.1}Typedef Documentation}{211}{subsection.8.7.1}%
-\contentsline {subsubsection}{\numberline {8.7.1.1}json}{211}{subsubsection.8.7.1.1}%
-\contentsline {section}{\numberline {8.8}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{212}{section.8.8}%
-\contentsline {section}{\numberline {8.9}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.hpp File Reference}{212}{section.8.9}%
-\contentsline {section}{\numberline {8.10}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{213}{section.8.10}%
-\contentsline {section}{\numberline {8.11}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.hpp File Reference}{214}{section.8.11}%
-\contentsline {subsection}{\numberline {8.11.1}Typedef Documentation}{215}{subsection.8.11.1}%
-\contentsline {subsubsection}{\numberline {8.11.1.1}json}{215}{subsubsection.8.11.1.1}%
-\contentsline {section}{\numberline {8.12}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{215}{section.8.12}%
-\contentsline {section}{\numberline {8.13}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.hpp File Reference}{216}{section.8.13}%
-\contentsline {subsection}{\numberline {8.13.1}Function Documentation}{217}{subsection.8.13.1}%
-\contentsline {subsubsection}{\numberline {8.13.1.1}extractAndPrintNetlistInfo()}{217}{subsubsection.8.13.1.1}%
-\contentsline {subsubsection}{\numberline {8.13.1.2}extractLogicFromVerilog()}{217}{subsubsection.8.13.1.2}%
-\contentsline {section}{\numberline {8.14}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{218}{section.8.14}%
-\contentsline {section}{\numberline {8.15}include/verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.hpp File Reference}{220}{section.8.15}%
-\contentsline {subsection}{\numberline {8.15.1}Function Documentation}{221}{subsection.8.15.1}%
-\contentsline {subsubsection}{\numberline {8.15.1.1}getAST()}{221}{subsubsection.8.15.1.1}%
-\contentsline {section}{\numberline {8.16}verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{221}{section.8.16}%
-\contentsline {section}{\numberline {8.17}include/version.h File Reference}{223}{section.8.17}%
-\contentsline {subsection}{\numberline {8.17.1}Macro Definition Documentation}{223}{subsection.8.17.1}%
-\contentsline {subsubsection}{\numberline {8.17.1.1}APP\_AUTHOR}{223}{subsubsection.8.17.1.1}%
-\contentsline {subsubsection}{\numberline {8.17.1.2}APP\_CONTACT}{224}{subsubsection.8.17.1.2}%
-\contentsline {subsubsection}{\numberline {8.17.1.3}APP\_NAME}{224}{subsubsection.8.17.1.3}%
-\contentsline {subsubsection}{\numberline {8.17.1.4}APP\_VERSION}{224}{subsubsection.8.17.1.4}%
-\contentsline {subsubsection}{\numberline {8.17.1.5}APP\_VERSION\_MAJOR}{224}{subsubsection.8.17.1.5}%
-\contentsline {subsubsection}{\numberline {8.17.1.6}APP\_VERSION\_MINOR}{224}{subsubsection.8.17.1.6}%
-\contentsline {subsubsection}{\numberline {8.17.1.7}APP\_VERSION\_PATCH}{225}{subsubsection.8.17.1.7}%
-\contentsline {subsubsection}{\numberline {8.17.1.8}BUILD\_TIMESTAMP}{225}{subsubsection.8.17.1.8}%
-\contentsline {section}{\numberline {8.18}version.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{225}{section.8.18}%
-\contentsline {section}{\numberline {8.19}include\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}3rd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}party/si2dr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}liberty.h File Reference}{225}{section.8.19}%
-\contentsline {subsection}{\numberline {8.19.1}Macro Definition Documentation}{230}{subsection.8.19.1}%
-\contentsline {subsubsection}{\numberline {8.19.1.1}LONG\_DOUBLE}{230}{subsubsection.8.19.1.1}%
-\contentsline {subsubsection}{\numberline {8.19.1.2}SI2\_ARGS}{230}{subsubsection.8.19.1.2}%
-\contentsline {subsubsection}{\numberline {8.19.1.3}SI2\_LONG\_MAX}{230}{subsubsection.8.19.1.3}%
-\contentsline {subsubsection}{\numberline {8.19.1.4}SI2\_LONG\_MIN}{231}{subsubsection.8.19.1.4}%
-\contentsline {subsubsection}{\numberline {8.19.1.5}SI2\_ULONG\_MAX}{231}{subsubsection.8.19.1.5}%
-\contentsline {subsubsection}{\numberline {8.19.1.6}SI2DR\_FALSE}{231}{subsubsection.8.19.1.6}%
-\contentsline {subsubsection}{\numberline {8.19.1.7}SI2DR\_MAX\_FLOAT32}{231}{subsubsection.8.19.1.7}%
-\contentsline {subsubsection}{\numberline {8.19.1.8}SI2DR\_MAX\_FLOAT64}{231}{subsubsection.8.19.1.8}%
-\contentsline {subsubsection}{\numberline {8.19.1.9}SI2DR\_MAX\_INT32}{232}{subsubsection.8.19.1.9}%
-\contentsline {subsubsection}{\numberline {8.19.1.10}SI2DR\_MAX\_STRING\_LEN}{232}{subsubsection.8.19.1.10}%
-\contentsline {subsubsection}{\numberline {8.19.1.11}SI2DR\_MIN\_FLOAT32}{232}{subsubsection.8.19.1.11}%
-\contentsline {subsubsection}{\numberline {8.19.1.12}SI2DR\_MIN\_FLOAT64}{232}{subsubsection.8.19.1.12}%
-\contentsline {subsubsection}{\numberline {8.19.1.13}SI2DR\_MIN\_INT32}{232}{subsubsection.8.19.1.13}%
-\contentsline {subsubsection}{\numberline {8.19.1.14}SI2DR\_TRUE}{233}{subsubsection.8.19.1.14}%
-\contentsline {subsection}{\numberline {8.19.2}Typedef Documentation}{233}{subsection.8.19.2}%
-\contentsline {subsubsection}{\numberline {8.19.2.1}si2BooleanT}{233}{subsubsection.8.19.2.1}%
-\contentsline {subsubsection}{\numberline {8.19.2.2}si2DoubleT}{233}{subsubsection.8.19.2.2}%
-\contentsline {subsubsection}{\numberline {8.19.2.3}si2drAttrComplexValIdT}{233}{subsubsection.8.19.2.3}%
-\contentsline {subsubsection}{\numberline {8.19.2.4}si2drAttrIdT}{233}{subsubsection.8.19.2.4}%
-\contentsline {subsubsection}{\numberline {8.19.2.5}si2drAttrsIdT}{234}{subsubsection.8.19.2.5}%
-\contentsline {subsubsection}{\numberline {8.19.2.6}si2drAttrTypeT}{234}{subsubsection.8.19.2.6}%
-\contentsline {subsubsection}{\numberline {8.19.2.7}si2drBooleanT}{234}{subsubsection.8.19.2.7}%
-\contentsline {subsubsection}{\numberline {8.19.2.8}si2drDefineIdT}{234}{subsubsection.8.19.2.8}%
-\contentsline {subsubsection}{\numberline {8.19.2.9}si2drDefinesIdT}{234}{subsubsection.8.19.2.9}%
-\contentsline {subsubsection}{\numberline {8.19.2.10}si2drErrorT}{234}{subsubsection.8.19.2.10}%
-\contentsline {subsubsection}{\numberline {8.19.2.11}si2drExprT}{235}{subsubsection.8.19.2.11}%
-\contentsline {subsubsection}{\numberline {8.19.2.12}si2drExprTypeT}{235}{subsubsection.8.19.2.12}%
-\contentsline {subsubsection}{\numberline {8.19.2.13}si2drFloat32T}{235}{subsubsection.8.19.2.13}%
-\contentsline {subsubsection}{\numberline {8.19.2.14}si2drFloat64T}{235}{subsubsection.8.19.2.14}%
-\contentsline {subsubsection}{\numberline {8.19.2.15}si2drGroupIdT}{235}{subsubsection.8.19.2.15}%
-\contentsline {subsubsection}{\numberline {8.19.2.16}si2drGroupsIdT}{235}{subsubsection.8.19.2.16}%
-\contentsline {subsubsection}{\numberline {8.19.2.17}si2drInt32T}{236}{subsubsection.8.19.2.17}%
-\contentsline {subsubsection}{\numberline {8.19.2.18}si2drIterIdT}{236}{subsubsection.8.19.2.18}%
-\contentsline {subsubsection}{\numberline {8.19.2.19}si2drMessageHandlerT}{236}{subsubsection.8.19.2.19}%
-\contentsline {subsubsection}{\numberline {8.19.2.20}si2drNamesIdT}{236}{subsubsection.8.19.2.20}%
-\contentsline {subsubsection}{\numberline {8.19.2.21}si2drObjectIdT}{236}{subsubsection.8.19.2.21}%
-\contentsline {subsubsection}{\numberline {8.19.2.22}si2drObjectsIdT}{237}{subsubsection.8.19.2.22}%
-\contentsline {subsubsection}{\numberline {8.19.2.23}si2drObjectTypeT}{237}{subsubsection.8.19.2.23}%
-\contentsline {subsubsection}{\numberline {8.19.2.24}si2drSeverityT}{237}{subsubsection.8.19.2.24}%
-\contentsline {subsubsection}{\numberline {8.19.2.25}si2drStringT}{237}{subsubsection.8.19.2.25}%
-\contentsline {subsubsection}{\numberline {8.19.2.26}si2drValuesIdT}{237}{subsubsection.8.19.2.26}%
-\contentsline {subsubsection}{\numberline {8.19.2.27}si2drValueTypeT}{237}{subsubsection.8.19.2.27}%
-\contentsline {subsubsection}{\numberline {8.19.2.28}si2drVoidT}{238}{subsubsection.8.19.2.28}%
-\contentsline {subsubsection}{\numberline {8.19.2.29}si2FloatT}{238}{subsubsection.8.19.2.29}%
-\contentsline {subsubsection}{\numberline {8.19.2.30}si2IteratorIdT}{238}{subsubsection.8.19.2.30}%
-\contentsline {subsubsection}{\numberline {8.19.2.31}si2LongT}{238}{subsubsection.8.19.2.31}%
-\contentsline {subsubsection}{\numberline {8.19.2.32}si2ObjectIdT}{238}{subsubsection.8.19.2.32}%
-\contentsline {subsubsection}{\numberline {8.19.2.33}si2StringT}{238}{subsubsection.8.19.2.33}%
-\contentsline {subsubsection}{\numberline {8.19.2.34}si2TypeT}{239}{subsubsection.8.19.2.34}%
-\contentsline {subsubsection}{\numberline {8.19.2.35}si2VoidT}{239}{subsubsection.8.19.2.35}%
-\contentsline {subsection}{\numberline {8.19.3}Enumeration Type Documentation}{239}{subsection.8.19.3}%
-\contentsline {subsubsection}{\numberline {8.19.3.1}si2BooleanEnum}{239}{subsubsection.8.19.3.1}%
-\contentsline {subsubsection}{\numberline {8.19.3.2}si2drAttrTypeT}{239}{subsubsection.8.19.3.2}%
-\contentsline {subsubsection}{\numberline {8.19.3.3}si2drErrorT}{240}{subsubsection.8.19.3.3}%
-\contentsline {subsubsection}{\numberline {8.19.3.4}si2drExprTypeT}{240}{subsubsection.8.19.3.4}%
-\contentsline {subsubsection}{\numberline {8.19.3.5}si2drObjectTypeT}{241}{subsubsection.8.19.3.5}%
-\contentsline {subsubsection}{\numberline {8.19.3.6}si2drSeverityT}{241}{subsubsection.8.19.3.6}%
-\contentsline {subsubsection}{\numberline {8.19.3.7}si2drValueTypeT}{241}{subsubsection.8.19.3.7}%
-\contentsline {subsubsection}{\numberline {8.19.3.8}si2TypeEnum}{242}{subsubsection.8.19.3.8}%
-\contentsline {subsection}{\numberline {8.19.4}Function Documentation}{242}{subsection.8.19.4}%
-\contentsline {subsubsection}{\numberline {8.19.4.1}get\_function()}{242}{subsubsection.8.19.4.1}%
-\contentsline {subsubsection}{\numberline {8.19.4.2}liberty\_destroy\_value\_data()}{243}{subsubsection.8.19.4.2}%
-\contentsline {subsubsection}{\numberline {8.19.4.3}liberty\_get\_element()}{243}{subsubsection.8.19.4.3}%
-\contentsline {subsubsection}{\numberline {8.19.4.4}liberty\_get\_values\_data()}{243}{subsubsection.8.19.4.4}%
-\contentsline {subsubsection}{\numberline {8.19.4.5}main\_liberty\_parser()}{243}{subsubsection.8.19.4.5}%
-\contentsline {subsubsection}{\numberline {8.19.4.6}print\_version()}{243}{subsubsection.8.19.4.6}%
-\contentsline {subsubsection}{\numberline {8.19.4.7}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [1/41]}}{243}{subsubsection.8.19.4.7}%
-\contentsline {subsubsection}{\numberline {8.19.4.8}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [2/41]}}{244}{subsubsection.8.19.4.8}%
-\contentsline {subsubsection}{\numberline {8.19.4.9}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [3/41]}}{244}{subsubsection.8.19.4.9}%
-\contentsline {subsubsection}{\numberline {8.19.4.10}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [4/41]}}{244}{subsubsection.8.19.4.10}%
-\contentsline {subsubsection}{\numberline {8.19.4.11}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [5/41]}}{244}{subsubsection.8.19.4.11}%
-\contentsline {subsubsection}{\numberline {8.19.4.12}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [6/41]}}{244}{subsubsection.8.19.4.12}%
-\contentsline {subsubsection}{\numberline {8.19.4.13}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [7/41]}}{244}{subsubsection.8.19.4.13}%
-\contentsline {subsubsection}{\numberline {8.19.4.14}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [8/41]}}{245}{subsubsection.8.19.4.14}%
-\contentsline {subsubsection}{\numberline {8.19.4.15}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [9/41]}}{245}{subsubsection.8.19.4.15}%
-\contentsline {subsubsection}{\numberline {8.19.4.16}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [10/41]}}{245}{subsubsection.8.19.4.16}%
-\contentsline {subsubsection}{\numberline {8.19.4.17}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [11/41]}}{245}{subsubsection.8.19.4.17}%
-\contentsline {subsubsection}{\numberline {8.19.4.18}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [12/41]}}{245}{subsubsection.8.19.4.18}%
-\contentsline {subsubsection}{\numberline {8.19.4.19}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [13/41]}}{245}{subsubsection.8.19.4.19}%
-\contentsline {subsubsection}{\numberline {8.19.4.20}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [14/41]}}{246}{subsubsection.8.19.4.20}%
-\contentsline {subsubsection}{\numberline {8.19.4.21}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [15/41]}}{246}{subsubsection.8.19.4.21}%
-\contentsline {subsubsection}{\numberline {8.19.4.22}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [16/41]}}{246}{subsubsection.8.19.4.22}%
-\contentsline {subsubsection}{\numberline {8.19.4.23}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [17/41]}}{246}{subsubsection.8.19.4.23}%
-\contentsline {subsubsection}{\numberline {8.19.4.24}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [18/41]}}{246}{subsubsection.8.19.4.24}%
-\contentsline {subsubsection}{\numberline {8.19.4.25}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [19/41]}}{246}{subsubsection.8.19.4.25}%
-\contentsline {subsubsection}{\numberline {8.19.4.26}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [20/41]}}{247}{subsubsection.8.19.4.26}%
-\contentsline {subsubsection}{\numberline {8.19.4.27}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [21/41]}}{247}{subsubsection.8.19.4.27}%
-\contentsline {subsubsection}{\numberline {8.19.4.28}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [22/41]}}{247}{subsubsection.8.19.4.28}%
-\contentsline {subsubsection}{\numberline {8.19.4.29}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [23/41]}}{247}{subsubsection.8.19.4.29}%
-\contentsline {subsubsection}{\numberline {8.19.4.30}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [24/41]}}{247}{subsubsection.8.19.4.30}%
-\contentsline {subsubsection}{\numberline {8.19.4.31}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [25/41]}}{247}{subsubsection.8.19.4.31}%
-\contentsline {subsubsection}{\numberline {8.19.4.32}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [26/41]}}{248}{subsubsection.8.19.4.32}%
-\contentsline {subsubsection}{\numberline {8.19.4.33}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [27/41]}}{248}{subsubsection.8.19.4.33}%
-\contentsline {subsubsection}{\numberline {8.19.4.34}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [28/41]}}{248}{subsubsection.8.19.4.34}%
-\contentsline {subsubsection}{\numberline {8.19.4.35}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [29/41]}}{248}{subsubsection.8.19.4.35}%
-\contentsline {subsubsection}{\numberline {8.19.4.36}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [30/41]}}{248}{subsubsection.8.19.4.36}%
-\contentsline {subsubsection}{\numberline {8.19.4.37}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [31/41]}}{248}{subsubsection.8.19.4.37}%
-\contentsline {subsubsection}{\numberline {8.19.4.38}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [32/41]}}{249}{subsubsection.8.19.4.38}%
-\contentsline {subsubsection}{\numberline {8.19.4.39}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [33/41]}}{249}{subsubsection.8.19.4.39}%
-\contentsline {subsubsection}{\numberline {8.19.4.40}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [34/41]}}{249}{subsubsection.8.19.4.40}%
-\contentsline {subsubsection}{\numberline {8.19.4.41}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [35/41]}}{249}{subsubsection.8.19.4.41}%
-\contentsline {subsubsection}{\numberline {8.19.4.42}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [36/41]}}{249}{subsubsection.8.19.4.42}%
-\contentsline {subsubsection}{\numberline {8.19.4.43}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [37/41]}}{249}{subsubsection.8.19.4.43}%
-\contentsline {subsubsection}{\numberline {8.19.4.44}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [38/41]}}{250}{subsubsection.8.19.4.44}%
-\contentsline {subsubsection}{\numberline {8.19.4.45}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [39/41]}}{250}{subsubsection.8.19.4.45}%
-\contentsline {subsubsection}{\numberline {8.19.4.46}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [40/41]}}{250}{subsubsection.8.19.4.46}%
-\contentsline {subsubsection}{\numberline {8.19.4.47}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [41/41]}}{250}{subsubsection.8.19.4.47}%
-\contentsline {subsubsection}{\numberline {8.19.4.48}si2drDefaultMessageHandler()}{250}{subsubsection.8.19.4.48}%
-\contentsline {subsubsection}{\numberline {8.19.4.49}si2drPIGetMessageHandler()}{251}{subsubsection.8.19.4.49}%
-\contentsline {subsubsection}{\numberline {8.19.4.50}si2drPISetMessageHandler()}{251}{subsubsection.8.19.4.50}%
-\contentsline {subsubsection}{\numberline {8.19.4.51}usage()}{251}{subsubsection.8.19.4.51}%
-\contentsline {section}{\numberline {8.20}si2dr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}liberty.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{251}{section.8.20}%
-\contentsline {section}{\numberline {8.21}include\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}3rd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}party/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node.h File Reference}{261}{section.8.21}%
-\contentsline {subsection}{\numberline {8.21.1}Detailed Description}{262}{subsection.8.21.1}%
-\contentsline {section}{\numberline {8.22}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{262}{section.8.22}%
-\contentsline {section}{\numberline {8.23}include\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}3rd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}party/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Printer.h File Reference}{268}{section.8.23}%
-\contentsline {subsection}{\numberline {8.23.1}Detailed Description}{269}{subsection.8.23.1}%
-\contentsline {section}{\numberline {8.24}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Printer.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{269}{section.8.24}%
-\contentsline {section}{\numberline {8.25}include\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}3rd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}party/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree.h File Reference}{270}{section.8.25}%
-\contentsline {subsection}{\numberline {8.25.1}Detailed Description}{271}{subsection.8.25.1}%
-\contentsline {section}{\numberline {8.26}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{271}{section.8.26}%
-\contentsline {section}{\numberline {8.27}include\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}3rd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}party/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visitor.h File Reference}{273}{section.8.27}%
-\contentsline {subsection}{\numberline {8.27.1}Detailed Description}{275}{subsection.8.27.1}%
-\contentsline {subsection}{\numberline {8.27.2}Macro Definition Documentation}{275}{subsection.8.27.2}%
-\contentsline {subsubsection}{\numberline {8.27.2.1}DERIVED}{275}{subsubsection.8.27.2.1}%
-\contentsline {section}{\numberline {8.28}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visitor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{275}{section.8.28}%
-\contentsline {section}{\numberline {8.29}README.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}md File Reference}{278}{section.8.29}%
-\contentsline {section}{\numberline {8.30}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Iterators.cpp File Reference}{278}{section.8.30}%
-\contentsline {section}{\numberline {8.31}Iterators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{279}{section.8.31}%
-\contentsline {section}{\numberline {8.32}src/json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.cpp File Reference}{279}{section.8.32}%
-\contentsline {subsection}{\numberline {8.32.1}Function Documentation}{280}{subsection.8.32.1}%
-\contentsline {subsubsection}{\numberline {8.32.1.1}generateCellJson()}{280}{subsubsection.8.32.1.1}%
-\contentsline {subsubsection}{\numberline {8.32.1.2}generateLutJson()}{282}{subsubsection.8.32.1.2}%
-\contentsline {subsubsection}{\numberline {8.32.1.3}generatePinJson()}{283}{subsubsection.8.32.1.3}%
-\contentsline {subsubsection}{\numberline {8.32.1.4}generatePowerJson()}{286}{subsubsection.8.32.1.4}%
-\contentsline {subsubsection}{\numberline {8.32.1.5}generateTimingJson()}{287}{subsubsection.8.32.1.5}%
-\contentsline {subsubsection}{\numberline {8.32.1.6}parseStringToVector()}{289}{subsubsection.8.32.1.6}%
-\contentsline {section}{\numberline {8.33}json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{290}{section.8.33}%
-\contentsline {section}{\numberline {8.34}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Atrribute.cpp File Reference}{293}{section.8.34}%
-\contentsline {section}{\numberline {8.35}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Atrribute.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{294}{section.8.35}%
-\contentsline {section}{\numberline {8.36}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.cpp File Reference}{294}{section.8.36}%
-\contentsline {section}{\numberline {8.37}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{295}{section.8.37}%
-\contentsline {section}{\numberline {8.38}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.cpp File Reference}{307}{section.8.38}%
-\contentsline {section}{\numberline {8.39}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{307}{section.8.39}%
-\contentsline {section}{\numberline {8.40}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.cpp File Reference}{307}{section.8.40}%
-\contentsline {section}{\numberline {8.41}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{308}{section.8.41}%
-\contentsline {section}{\numberline {8.42}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.cpp File Reference}{314}{section.8.42}%
-\contentsline {subsection}{\numberline {8.42.1}Function Documentation}{314}{subsection.8.42.1}%
-\contentsline {subsubsection}{\numberline {8.42.1.1}extractAndPrintNetlistInfo()}{314}{subsubsection.8.42.1.1}%
-\contentsline {subsubsection}{\numberline {8.42.1.2}extractLogicFromVerilog()}{315}{subsubsection.8.42.1.2}%
-\contentsline {section}{\numberline {8.43}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{316}{section.8.43}%
-\contentsline {section}{\numberline {8.44}src/main.cpp File Reference}{325}{section.8.44}%
-\contentsline {subsection}{\numberline {8.44.1}Function Documentation}{326}{subsection.8.44.1}%
-\contentsline {subsubsection}{\numberline {8.44.1.1}compareLibFiles()}{326}{subsubsection.8.44.1.1}%
-\contentsline {subsubsection}{\numberline {8.44.1.2}funcLibFile()}{327}{subsubsection.8.44.1.2}%
-\contentsline {subsubsection}{\numberline {8.44.1.3}main()}{328}{subsubsection.8.44.1.3}%
-\contentsline {subsubsection}{\numberline {8.44.1.4}monoCheckLibFile()}{329}{subsubsection.8.44.1.4}%
-\contentsline {subsubsection}{\numberline {8.44.1.5}parseLibFile()}{331}{subsubsection.8.44.1.5}%
-\contentsline {subsubsection}{\numberline {8.44.1.6}printInfo()}{333}{subsubsection.8.44.1.6}%
-\contentsline {subsubsection}{\numberline {8.44.1.7}supercellLibFile()}{334}{subsubsection.8.44.1.7}%
-\contentsline {subsubsection}{\numberline {8.44.1.8}verilogLibFile()}{336}{subsubsection.8.44.1.8}%
-\contentsline {section}{\numberline {8.45}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{337}{section.8.45}%
-\contentsline {section}{\numberline {8.46}src/verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.cpp File Reference}{345}{section.8.46}%
-\contentsline {subsection}{\numberline {8.46.1}Function Documentation}{346}{subsection.8.46.1}%
-\contentsline {subsubsection}{\numberline {8.46.1.1}getAST()}{346}{subsubsection.8.46.1.1}%
-\contentsline {section}{\numberline {8.47}verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{346}{section.8.47}%
-\contentsline {chapter}{索引}{357}{section*.344}%
+\contentsline {subsection}{\numberline {7.31.2}Member Function Documentation}{183}{subsection.7.31.2}%
+\contentsline {subsubsection}{\numberline {7.31.2.1}visit()}{183}{subsubsection.7.31.2.1}%
+\contentsline {subsubsection}{\numberline {7.31.2.2}visitDefault()}{184}{subsubsection.7.31.2.2}%
+\contentsline {subsubsection}{\numberline {7.31.2.3}visitToken()}{184}{subsubsection.7.31.2.3}%
+\contentsline {section}{\numberline {7.32}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Token\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}List Class Reference}{185}{section.7.32}%
+\contentsline {subsection}{\numberline {7.32.1}Detailed Description}{186}{subsection.7.32.1}%
+\contentsline {subsection}{\numberline {7.32.2}Constructor \& Destructor Documentation}{186}{subsection.7.32.2}%
+\contentsline {subsubsection}{\numberline {7.32.2.1}TokenList()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{186}{subsubsection.7.32.2.1}%
+\contentsline {subsubsection}{\numberline {7.32.2.2}TokenList()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{186}{subsubsection.7.32.2.2}%
+\contentsline {subsection}{\numberline {7.32.3}Member Function Documentation}{187}{subsection.7.32.3}%
+\contentsline {subsubsection}{\numberline {7.32.3.1}clone()}{187}{subsubsection.7.32.3.1}%
+\contentsline {subsubsection}{\numberline {7.32.3.2}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{187}{subsubsection.7.32.3.2}%
+\contentsline {subsubsection}{\numberline {7.32.3.3}getChild()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{187}{subsubsection.7.32.3.3}%
+\contentsline {subsubsection}{\numberline {7.32.3.4}getChildPtr()}{188}{subsubsection.7.32.3.4}%
+\contentsline {subsubsection}{\numberline {7.32.3.5}resetAll()}{188}{subsubsection.7.32.3.5}%
+\contentsline {subsubsection}{\numberline {7.32.3.6}setChild()}{188}{subsubsection.7.32.3.6}%
+\contentsline {section}{\numberline {7.33}slang\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Token\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Or\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax Struct Reference}{189}{section.7.33}%
+\contentsline {subsection}{\numberline {7.33.1}Detailed Description}{190}{subsection.7.33.1}%
+\contentsline {subsection}{\numberline {7.33.2}Constructor \& Destructor Documentation}{190}{subsection.7.33.2}%
+\contentsline {subsubsection}{\numberline {7.33.2.1}TokenOrSyntax()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{190}{subsubsection.7.33.2.1}%
+\contentsline {subsubsection}{\numberline {7.33.2.2}TokenOrSyntax()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{190}{subsubsection.7.33.2.2}%
+\contentsline {subsubsection}{\numberline {7.33.2.3}TokenOrSyntax()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{190}{subsubsection.7.33.2.3}%
+\contentsline {subsection}{\numberline {7.33.3}Member Function Documentation}{191}{subsection.7.33.3}%
+\contentsline {subsubsection}{\numberline {7.33.3.1}node()}{191}{subsubsection.7.33.3.1}%
+\contentsline {section}{\numberline {7.34}Values\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Iterator Class Reference}{191}{section.7.34}%
+\contentsline {subsection}{\numberline {7.34.1}Detailed Description}{192}{subsection.7.34.1}%
+\contentsline {subsection}{\numberline {7.34.2}Constructor \& Destructor Documentation}{192}{subsection.7.34.2}%
+\contentsline {subsubsection}{\numberline {7.34.2.1}ValuesIterator()}{192}{subsubsection.7.34.2.1}%
+\contentsline {subsubsection}{\numberline {7.34.2.2}$\sim $ValuesIterator()}{192}{subsubsection.7.34.2.2}%
+\contentsline {subsection}{\numberline {7.34.3}Member Function Documentation}{192}{subsection.7.34.3}%
+\contentsline {subsubsection}{\numberline {7.34.3.1}end()}{193}{subsubsection.7.34.3.1}%
+\contentsline {subsubsection}{\numberline {7.34.3.2}next()}{193}{subsubsection.7.34.3.2}%
+\contentsline {subsection}{\numberline {7.34.4}Member Data Documentation}{193}{subsection.7.34.4}%
+\contentsline {subsubsection}{\numberline {7.34.4.1}bool\_}{193}{subsubsection.7.34.4.1}%
+\contentsline {subsubsection}{\numberline {7.34.4.2}err\_}{194}{subsubsection.7.34.4.2}%
+\contentsline {subsubsection}{\numberline {7.34.4.3}exprp\_}{194}{subsubsection.7.34.4.3}%
+\contentsline {subsubsection}{\numberline {7.34.4.4}float\_}{194}{subsubsection.7.34.4.4}%
+\contentsline {subsubsection}{\numberline {7.34.4.5}int\_}{194}{subsubsection.7.34.4.5}%
+\contentsline {subsubsection}{\numberline {7.34.4.6}str\_}{194}{subsubsection.7.34.4.6}%
+\contentsline {subsubsection}{\numberline {7.34.4.7}values\_}{195}{subsubsection.7.34.4.7}%
+\contentsline {subsubsection}{\numberline {7.34.4.8}vtype\_}{195}{subsubsection.7.34.4.8}%
+\contentsline {section}{\numberline {7.35}Verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visitor Class Reference}{195}{section.7.35}%
+\contentsline {subsection}{\numberline {7.35.1}Detailed Description}{196}{subsection.7.35.1}%
+\contentsline {subsection}{\numberline {7.35.2}Constructor \& Destructor Documentation}{196}{subsection.7.35.2}%
+\contentsline {subsubsection}{\numberline {7.35.2.1}VerilogVisitor()}{197}{subsubsection.7.35.2.1}%
+\contentsline {subsection}{\numberline {7.35.3}Member Function Documentation}{197}{subsection.7.35.3}%
+\contentsline {subsubsection}{\numberline {7.35.3.1}handle()\hspace {0.1cm}{\footnotesize \ttfamily [1/5]}}{197}{subsubsection.7.35.3.1}%
+\contentsline {subsubsection}{\numberline {7.35.3.2}handle()\hspace {0.1cm}{\footnotesize \ttfamily [2/5]}}{197}{subsubsection.7.35.3.2}%
+\contentsline {subsubsection}{\numberline {7.35.3.3}handle()\hspace {0.1cm}{\footnotesize \ttfamily [3/5]}}{198}{subsubsection.7.35.3.3}%
+\contentsline {subsubsection}{\numberline {7.35.3.4}handle()\hspace {0.1cm}{\footnotesize \ttfamily [4/5]}}{198}{subsubsection.7.35.3.4}%
+\contentsline {subsubsection}{\numberline {7.35.3.5}handle()\hspace {0.1cm}{\footnotesize \ttfamily [5/5]}}{198}{subsubsection.7.35.3.5}%
+\contentsline {subsection}{\numberline {7.35.4}Member Data Documentation}{199}{subsection.7.35.4}%
+\contentsline {subsubsection}{\numberline {7.35.4.1}depth\_}{199}{subsubsection.7.35.4.1}%
+\contentsline {subsubsection}{\numberline {7.35.4.2}inTargetModule\_}{199}{subsubsection.7.35.4.2}%
+\contentsline {subsubsection}{\numberline {7.35.4.3}targetCell\_}{199}{subsubsection.7.35.4.3}%
+\contentsline {chapter}{\numberline {8}File Documentation}{201}{chapter.8}%
+\contentsline {section}{\numberline {8.1}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Iterators.hpp File Reference}{201}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Iterators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{202}{section.8.2}%
+\contentsline {section}{\numberline {8.3}include/json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.hpp File Reference}{203}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Typedef Documentation}{204}{subsection.8.3.1}%
+\contentsline {subsubsection}{\numberline {8.3.1.1}json}{204}{subsubsection.8.3.1.1}%
+\contentsline {subsection}{\numberline {8.3.2}Function Documentation}{204}{subsection.8.3.2}%
+\contentsline {subsubsection}{\numberline {8.3.2.1}generateCellJson()}{205}{subsubsection.8.3.2.1}%
+\contentsline {subsubsection}{\numberline {8.3.2.2}generateLutJson()}{207}{subsubsection.8.3.2.2}%
+\contentsline {subsubsection}{\numberline {8.3.2.3}generatePinJson()}{208}{subsubsection.8.3.2.3}%
+\contentsline {subsubsection}{\numberline {8.3.2.4}generatePowerJson()}{211}{subsubsection.8.3.2.4}%
+\contentsline {section}{\numberline {8.4}json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{212}{section.8.4}%
+\contentsline {section}{\numberline {8.5}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Attribute.hpp File Reference}{213}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Attribute.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{214}{section.8.6}%
+\contentsline {section}{\numberline {8.7}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.hpp File Reference}{214}{section.8.7}%
+\contentsline {subsection}{\numberline {8.7.1}Typedef Documentation}{215}{subsection.8.7.1}%
+\contentsline {subsubsection}{\numberline {8.7.1.1}json}{215}{subsubsection.8.7.1.1}%
+\contentsline {section}{\numberline {8.8}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{216}{section.8.8}%
+\contentsline {section}{\numberline {8.9}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.hpp File Reference}{216}{section.8.9}%
+\contentsline {section}{\numberline {8.10}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{217}{section.8.10}%
+\contentsline {section}{\numberline {8.11}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.hpp File Reference}{218}{section.8.11}%
+\contentsline {subsection}{\numberline {8.11.1}Typedef Documentation}{219}{subsection.8.11.1}%
+\contentsline {subsubsection}{\numberline {8.11.1.1}json}{219}{subsubsection.8.11.1.1}%
+\contentsline {section}{\numberline {8.12}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{219}{section.8.12}%
+\contentsline {section}{\numberline {8.13}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.hpp File Reference}{220}{section.8.13}%
+\contentsline {section}{\numberline {8.14}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{220}{section.8.14}%
+\contentsline {section}{\numberline {8.15}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.hpp File Reference}{221}{section.8.15}%
+\contentsline {subsection}{\numberline {8.15.1}Function Documentation}{222}{subsection.8.15.1}%
+\contentsline {subsubsection}{\numberline {8.15.1.1}extractAndPrintNetlistInfo()}{222}{subsubsection.8.15.1.1}%
+\contentsline {subsubsection}{\numberline {8.15.1.2}extractLogicFromVerilog()}{223}{subsubsection.8.15.1.2}%
+\contentsline {section}{\numberline {8.16}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{224}{section.8.16}%
+\contentsline {section}{\numberline {8.17}include/verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.hpp File Reference}{225}{section.8.17}%
+\contentsline {subsection}{\numberline {8.17.1}Function Documentation}{226}{subsection.8.17.1}%
+\contentsline {subsubsection}{\numberline {8.17.1.1}getAST()}{226}{subsubsection.8.17.1.1}%
+\contentsline {section}{\numberline {8.18}verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{227}{section.8.18}%
+\contentsline {section}{\numberline {8.19}include/version.h File Reference}{229}{section.8.19}%
+\contentsline {subsection}{\numberline {8.19.1}Macro Definition Documentation}{229}{subsection.8.19.1}%
+\contentsline {subsubsection}{\numberline {8.19.1.1}APP\_AUTHOR}{229}{subsubsection.8.19.1.1}%
+\contentsline {subsubsection}{\numberline {8.19.1.2}APP\_CONTACT}{230}{subsubsection.8.19.1.2}%
+\contentsline {subsubsection}{\numberline {8.19.1.3}APP\_NAME}{230}{subsubsection.8.19.1.3}%
+\contentsline {subsubsection}{\numberline {8.19.1.4}APP\_VERSION}{230}{subsubsection.8.19.1.4}%
+\contentsline {subsubsection}{\numberline {8.19.1.5}APP\_VERSION\_MAJOR}{230}{subsubsection.8.19.1.5}%
+\contentsline {subsubsection}{\numberline {8.19.1.6}APP\_VERSION\_MINOR}{230}{subsubsection.8.19.1.6}%
+\contentsline {subsubsection}{\numberline {8.19.1.7}APP\_VERSION\_PATCH}{231}{subsubsection.8.19.1.7}%
+\contentsline {subsubsection}{\numberline {8.19.1.8}BUILD\_TIMESTAMP}{231}{subsubsection.8.19.1.8}%
+\contentsline {section}{\numberline {8.20}version.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{231}{section.8.20}%
+\contentsline {section}{\numberline {8.21}include\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}3rd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}party/si2dr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}liberty.h File Reference}{231}{section.8.21}%
+\contentsline {subsection}{\numberline {8.21.1}Macro Definition Documentation}{236}{subsection.8.21.1}%
+\contentsline {subsubsection}{\numberline {8.21.1.1}LONG\_DOUBLE}{236}{subsubsection.8.21.1.1}%
+\contentsline {subsubsection}{\numberline {8.21.1.2}SI2\_ARGS}{236}{subsubsection.8.21.1.2}%
+\contentsline {subsubsection}{\numberline {8.21.1.3}SI2\_LONG\_MAX}{236}{subsubsection.8.21.1.3}%
+\contentsline {subsubsection}{\numberline {8.21.1.4}SI2\_LONG\_MIN}{237}{subsubsection.8.21.1.4}%
+\contentsline {subsubsection}{\numberline {8.21.1.5}SI2\_ULONG\_MAX}{237}{subsubsection.8.21.1.5}%
+\contentsline {subsubsection}{\numberline {8.21.1.6}SI2DR\_FALSE}{237}{subsubsection.8.21.1.6}%
+\contentsline {subsubsection}{\numberline {8.21.1.7}SI2DR\_MAX\_FLOAT32}{237}{subsubsection.8.21.1.7}%
+\contentsline {subsubsection}{\numberline {8.21.1.8}SI2DR\_MAX\_FLOAT64}{237}{subsubsection.8.21.1.8}%
+\contentsline {subsubsection}{\numberline {8.21.1.9}SI2DR\_MAX\_INT32}{238}{subsubsection.8.21.1.9}%
+\contentsline {subsubsection}{\numberline {8.21.1.10}SI2DR\_MAX\_STRING\_LEN}{238}{subsubsection.8.21.1.10}%
+\contentsline {subsubsection}{\numberline {8.21.1.11}SI2DR\_MIN\_FLOAT32}{238}{subsubsection.8.21.1.11}%
+\contentsline {subsubsection}{\numberline {8.21.1.12}SI2DR\_MIN\_FLOAT64}{238}{subsubsection.8.21.1.12}%
+\contentsline {subsubsection}{\numberline {8.21.1.13}SI2DR\_MIN\_INT32}{238}{subsubsection.8.21.1.13}%
+\contentsline {subsubsection}{\numberline {8.21.1.14}SI2DR\_TRUE}{239}{subsubsection.8.21.1.14}%
+\contentsline {subsection}{\numberline {8.21.2}Typedef Documentation}{239}{subsection.8.21.2}%
+\contentsline {subsubsection}{\numberline {8.21.2.1}si2BooleanT}{239}{subsubsection.8.21.2.1}%
+\contentsline {subsubsection}{\numberline {8.21.2.2}si2DoubleT}{239}{subsubsection.8.21.2.2}%
+\contentsline {subsubsection}{\numberline {8.21.2.3}si2drAttrComplexValIdT}{239}{subsubsection.8.21.2.3}%
+\contentsline {subsubsection}{\numberline {8.21.2.4}si2drAttrIdT}{239}{subsubsection.8.21.2.4}%
+\contentsline {subsubsection}{\numberline {8.21.2.5}si2drAttrsIdT}{240}{subsubsection.8.21.2.5}%
+\contentsline {subsubsection}{\numberline {8.21.2.6}si2drAttrTypeT}{240}{subsubsection.8.21.2.6}%
+\contentsline {subsubsection}{\numberline {8.21.2.7}si2drBooleanT}{240}{subsubsection.8.21.2.7}%
+\contentsline {subsubsection}{\numberline {8.21.2.8}si2drDefineIdT}{240}{subsubsection.8.21.2.8}%
+\contentsline {subsubsection}{\numberline {8.21.2.9}si2drDefinesIdT}{240}{subsubsection.8.21.2.9}%
+\contentsline {subsubsection}{\numberline {8.21.2.10}si2drErrorT}{240}{subsubsection.8.21.2.10}%
+\contentsline {subsubsection}{\numberline {8.21.2.11}si2drExprT}{241}{subsubsection.8.21.2.11}%
+\contentsline {subsubsection}{\numberline {8.21.2.12}si2drExprTypeT}{241}{subsubsection.8.21.2.12}%
+\contentsline {subsubsection}{\numberline {8.21.2.13}si2drFloat32T}{241}{subsubsection.8.21.2.13}%
+\contentsline {subsubsection}{\numberline {8.21.2.14}si2drFloat64T}{241}{subsubsection.8.21.2.14}%
+\contentsline {subsubsection}{\numberline {8.21.2.15}si2drGroupIdT}{241}{subsubsection.8.21.2.15}%
+\contentsline {subsubsection}{\numberline {8.21.2.16}si2drGroupsIdT}{241}{subsubsection.8.21.2.16}%
+\contentsline {subsubsection}{\numberline {8.21.2.17}si2drInt32T}{242}{subsubsection.8.21.2.17}%
+\contentsline {subsubsection}{\numberline {8.21.2.18}si2drIterIdT}{242}{subsubsection.8.21.2.18}%
+\contentsline {subsubsection}{\numberline {8.21.2.19}si2drMessageHandlerT}{242}{subsubsection.8.21.2.19}%
+\contentsline {subsubsection}{\numberline {8.21.2.20}si2drNamesIdT}{242}{subsubsection.8.21.2.20}%
+\contentsline {subsubsection}{\numberline {8.21.2.21}si2drObjectIdT}{242}{subsubsection.8.21.2.21}%
+\contentsline {subsubsection}{\numberline {8.21.2.22}si2drObjectsIdT}{243}{subsubsection.8.21.2.22}%
+\contentsline {subsubsection}{\numberline {8.21.2.23}si2drObjectTypeT}{243}{subsubsection.8.21.2.23}%
+\contentsline {subsubsection}{\numberline {8.21.2.24}si2drSeverityT}{243}{subsubsection.8.21.2.24}%
+\contentsline {subsubsection}{\numberline {8.21.2.25}si2drStringT}{243}{subsubsection.8.21.2.25}%
+\contentsline {subsubsection}{\numberline {8.21.2.26}si2drValuesIdT}{243}{subsubsection.8.21.2.26}%
+\contentsline {subsubsection}{\numberline {8.21.2.27}si2drValueTypeT}{243}{subsubsection.8.21.2.27}%
+\contentsline {subsubsection}{\numberline {8.21.2.28}si2drVoidT}{244}{subsubsection.8.21.2.28}%
+\contentsline {subsubsection}{\numberline {8.21.2.29}si2FloatT}{244}{subsubsection.8.21.2.29}%
+\contentsline {subsubsection}{\numberline {8.21.2.30}si2IteratorIdT}{244}{subsubsection.8.21.2.30}%
+\contentsline {subsubsection}{\numberline {8.21.2.31}si2LongT}{244}{subsubsection.8.21.2.31}%
+\contentsline {subsubsection}{\numberline {8.21.2.32}si2ObjectIdT}{244}{subsubsection.8.21.2.32}%
+\contentsline {subsubsection}{\numberline {8.21.2.33}si2StringT}{244}{subsubsection.8.21.2.33}%
+\contentsline {subsubsection}{\numberline {8.21.2.34}si2TypeT}{245}{subsubsection.8.21.2.34}%
+\contentsline {subsubsection}{\numberline {8.21.2.35}si2VoidT}{245}{subsubsection.8.21.2.35}%
+\contentsline {subsection}{\numberline {8.21.3}Enumeration Type Documentation}{245}{subsection.8.21.3}%
+\contentsline {subsubsection}{\numberline {8.21.3.1}si2BooleanEnum}{245}{subsubsection.8.21.3.1}%
+\contentsline {subsubsection}{\numberline {8.21.3.2}si2drAttrTypeT}{245}{subsubsection.8.21.3.2}%
+\contentsline {subsubsection}{\numberline {8.21.3.3}si2drErrorT}{246}{subsubsection.8.21.3.3}%
+\contentsline {subsubsection}{\numberline {8.21.3.4}si2drExprTypeT}{246}{subsubsection.8.21.3.4}%
+\contentsline {subsubsection}{\numberline {8.21.3.5}si2drObjectTypeT}{247}{subsubsection.8.21.3.5}%
+\contentsline {subsubsection}{\numberline {8.21.3.6}si2drSeverityT}{247}{subsubsection.8.21.3.6}%
+\contentsline {subsubsection}{\numberline {8.21.3.7}si2drValueTypeT}{247}{subsubsection.8.21.3.7}%
+\contentsline {subsubsection}{\numberline {8.21.3.8}si2TypeEnum}{248}{subsubsection.8.21.3.8}%
+\contentsline {subsection}{\numberline {8.21.4}Function Documentation}{248}{subsection.8.21.4}%
+\contentsline {subsubsection}{\numberline {8.21.4.1}get\_function()}{248}{subsubsection.8.21.4.1}%
+\contentsline {subsubsection}{\numberline {8.21.4.2}liberty\_destroy\_value\_data()}{249}{subsubsection.8.21.4.2}%
+\contentsline {subsubsection}{\numberline {8.21.4.3}liberty\_get\_element()}{249}{subsubsection.8.21.4.3}%
+\contentsline {subsubsection}{\numberline {8.21.4.4}liberty\_get\_values\_data()}{249}{subsubsection.8.21.4.4}%
+\contentsline {subsubsection}{\numberline {8.21.4.5}main\_liberty\_parser()}{249}{subsubsection.8.21.4.5}%
+\contentsline {subsubsection}{\numberline {8.21.4.6}print\_version()}{249}{subsubsection.8.21.4.6}%
+\contentsline {subsubsection}{\numberline {8.21.4.7}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [1/41]}}{249}{subsubsection.8.21.4.7}%
+\contentsline {subsubsection}{\numberline {8.21.4.8}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [2/41]}}{250}{subsubsection.8.21.4.8}%
+\contentsline {subsubsection}{\numberline {8.21.4.9}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [3/41]}}{250}{subsubsection.8.21.4.9}%
+\contentsline {subsubsection}{\numberline {8.21.4.10}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [4/41]}}{250}{subsubsection.8.21.4.10}%
+\contentsline {subsubsection}{\numberline {8.21.4.11}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [5/41]}}{250}{subsubsection.8.21.4.11}%
+\contentsline {subsubsection}{\numberline {8.21.4.12}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [6/41]}}{250}{subsubsection.8.21.4.12}%
+\contentsline {subsubsection}{\numberline {8.21.4.13}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [7/41]}}{250}{subsubsection.8.21.4.13}%
+\contentsline {subsubsection}{\numberline {8.21.4.14}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [8/41]}}{251}{subsubsection.8.21.4.14}%
+\contentsline {subsubsection}{\numberline {8.21.4.15}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [9/41]}}{251}{subsubsection.8.21.4.15}%
+\contentsline {subsubsection}{\numberline {8.21.4.16}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [10/41]}}{251}{subsubsection.8.21.4.16}%
+\contentsline {subsubsection}{\numberline {8.21.4.17}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [11/41]}}{251}{subsubsection.8.21.4.17}%
+\contentsline {subsubsection}{\numberline {8.21.4.18}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [12/41]}}{251}{subsubsection.8.21.4.18}%
+\contentsline {subsubsection}{\numberline {8.21.4.19}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [13/41]}}{251}{subsubsection.8.21.4.19}%
+\contentsline {subsubsection}{\numberline {8.21.4.20}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [14/41]}}{252}{subsubsection.8.21.4.20}%
+\contentsline {subsubsection}{\numberline {8.21.4.21}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [15/41]}}{252}{subsubsection.8.21.4.21}%
+\contentsline {subsubsection}{\numberline {8.21.4.22}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [16/41]}}{252}{subsubsection.8.21.4.22}%
+\contentsline {subsubsection}{\numberline {8.21.4.23}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [17/41]}}{252}{subsubsection.8.21.4.23}%
+\contentsline {subsubsection}{\numberline {8.21.4.24}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [18/41]}}{252}{subsubsection.8.21.4.24}%
+\contentsline {subsubsection}{\numberline {8.21.4.25}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [19/41]}}{252}{subsubsection.8.21.4.25}%
+\contentsline {subsubsection}{\numberline {8.21.4.26}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [20/41]}}{253}{subsubsection.8.21.4.26}%
+\contentsline {subsubsection}{\numberline {8.21.4.27}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [21/41]}}{253}{subsubsection.8.21.4.27}%
+\contentsline {subsubsection}{\numberline {8.21.4.28}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [22/41]}}{253}{subsubsection.8.21.4.28}%
+\contentsline {subsubsection}{\numberline {8.21.4.29}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [23/41]}}{253}{subsubsection.8.21.4.29}%
+\contentsline {subsubsection}{\numberline {8.21.4.30}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [24/41]}}{253}{subsubsection.8.21.4.30}%
+\contentsline {subsubsection}{\numberline {8.21.4.31}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [25/41]}}{253}{subsubsection.8.21.4.31}%
+\contentsline {subsubsection}{\numberline {8.21.4.32}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [26/41]}}{254}{subsubsection.8.21.4.32}%
+\contentsline {subsubsection}{\numberline {8.21.4.33}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [27/41]}}{254}{subsubsection.8.21.4.33}%
+\contentsline {subsubsection}{\numberline {8.21.4.34}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [28/41]}}{254}{subsubsection.8.21.4.34}%
+\contentsline {subsubsection}{\numberline {8.21.4.35}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [29/41]}}{254}{subsubsection.8.21.4.35}%
+\contentsline {subsubsection}{\numberline {8.21.4.36}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [30/41]}}{254}{subsubsection.8.21.4.36}%
+\contentsline {subsubsection}{\numberline {8.21.4.37}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [31/41]}}{254}{subsubsection.8.21.4.37}%
+\contentsline {subsubsection}{\numberline {8.21.4.38}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [32/41]}}{255}{subsubsection.8.21.4.38}%
+\contentsline {subsubsection}{\numberline {8.21.4.39}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [33/41]}}{255}{subsubsection.8.21.4.39}%
+\contentsline {subsubsection}{\numberline {8.21.4.40}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [34/41]}}{255}{subsubsection.8.21.4.40}%
+\contentsline {subsubsection}{\numberline {8.21.4.41}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [35/41]}}{255}{subsubsection.8.21.4.41}%
+\contentsline {subsubsection}{\numberline {8.21.4.42}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [36/41]}}{255}{subsubsection.8.21.4.42}%
+\contentsline {subsubsection}{\numberline {8.21.4.43}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [37/41]}}{255}{subsubsection.8.21.4.43}%
+\contentsline {subsubsection}{\numberline {8.21.4.44}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [38/41]}}{256}{subsubsection.8.21.4.44}%
+\contentsline {subsubsection}{\numberline {8.21.4.45}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [39/41]}}{256}{subsubsection.8.21.4.45}%
+\contentsline {subsubsection}{\numberline {8.21.4.46}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [40/41]}}{256}{subsubsection.8.21.4.46}%
+\contentsline {subsubsection}{\numberline {8.21.4.47}SI2\_ARGS()\hspace {0.1cm}{\footnotesize \ttfamily [41/41]}}{256}{subsubsection.8.21.4.47}%
+\contentsline {subsubsection}{\numberline {8.21.4.48}si2drDefaultMessageHandler()}{256}{subsubsection.8.21.4.48}%
+\contentsline {subsubsection}{\numberline {8.21.4.49}si2drPIGetMessageHandler()}{257}{subsubsection.8.21.4.49}%
+\contentsline {subsubsection}{\numberline {8.21.4.50}si2drPISetMessageHandler()}{257}{subsubsection.8.21.4.50}%
+\contentsline {subsubsection}{\numberline {8.21.4.51}usage()}{257}{subsubsection.8.21.4.51}%
+\contentsline {section}{\numberline {8.22}si2dr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}liberty.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{257}{section.8.22}%
+\contentsline {section}{\numberline {8.23}include\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}3rd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}party/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node.h File Reference}{267}{section.8.23}%
+\contentsline {subsection}{\numberline {8.23.1}Detailed Description}{268}{subsection.8.23.1}%
+\contentsline {section}{\numberline {8.24}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Node.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{268}{section.8.24}%
+\contentsline {section}{\numberline {8.25}include\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}3rd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}party/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Printer.h File Reference}{274}{section.8.25}%
+\contentsline {subsection}{\numberline {8.25.1}Detailed Description}{275}{subsection.8.25.1}%
+\contentsline {section}{\numberline {8.26}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Printer.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{275}{section.8.26}%
+\contentsline {section}{\numberline {8.27}include\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}3rd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}party/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree.h File Reference}{276}{section.8.27}%
+\contentsline {subsection}{\numberline {8.27.1}Detailed Description}{277}{subsection.8.27.1}%
+\contentsline {section}{\numberline {8.28}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tree.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{277}{section.8.28}%
+\contentsline {section}{\numberline {8.29}include\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}3rd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}party/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visitor.h File Reference}{279}{section.8.29}%
+\contentsline {subsection}{\numberline {8.29.1}Detailed Description}{281}{subsection.8.29.1}%
+\contentsline {subsection}{\numberline {8.29.2}Macro Definition Documentation}{281}{subsection.8.29.2}%
+\contentsline {subsubsection}{\numberline {8.29.2.1}DERIVED}{281}{subsubsection.8.29.2.1}%
+\contentsline {section}{\numberline {8.30}Syntax\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visitor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{281}{section.8.30}%
+\contentsline {section}{\numberline {8.31}README.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}md File Reference}{284}{section.8.31}%
+\contentsline {section}{\numberline {8.32}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Iterators.cpp File Reference}{284}{section.8.32}%
+\contentsline {section}{\numberline {8.33}Iterators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{285}{section.8.33}%
+\contentsline {section}{\numberline {8.34}src/json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.cpp File Reference}{285}{section.8.34}%
+\contentsline {subsection}{\numberline {8.34.1}Function Documentation}{286}{subsection.8.34.1}%
+\contentsline {subsubsection}{\numberline {8.34.1.1}generateCellJson()}{286}{subsubsection.8.34.1.1}%
+\contentsline {subsubsection}{\numberline {8.34.1.2}generateLutJson()}{288}{subsubsection.8.34.1.2}%
+\contentsline {subsubsection}{\numberline {8.34.1.3}generatePinJson()}{289}{subsubsection.8.34.1.3}%
+\contentsline {subsubsection}{\numberline {8.34.1.4}generatePowerJson()}{292}{subsubsection.8.34.1.4}%
+\contentsline {subsubsection}{\numberline {8.34.1.5}generateTimingJson()}{293}{subsubsection.8.34.1.5}%
+\contentsline {subsubsection}{\numberline {8.34.1.6}parseStringToVector()}{295}{subsubsection.8.34.1.6}%
+\contentsline {section}{\numberline {8.35}json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{296}{section.8.35}%
+\contentsline {section}{\numberline {8.36}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Atrribute.cpp File Reference}{299}{section.8.36}%
+\contentsline {section}{\numberline {8.37}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Atrribute.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{300}{section.8.37}%
+\contentsline {section}{\numberline {8.38}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.cpp File Reference}{300}{section.8.38}%
+\contentsline {section}{\numberline {8.39}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{301}{section.8.39}%
+\contentsline {section}{\numberline {8.40}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.cpp File Reference}{313}{section.8.40}%
+\contentsline {section}{\numberline {8.41}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{313}{section.8.41}%
+\contentsline {section}{\numberline {8.42}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.cpp File Reference}{313}{section.8.42}%
+\contentsline {section}{\numberline {8.43}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{314}{section.8.43}%
+\contentsline {section}{\numberline {8.44}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.cpp File Reference}{320}{section.8.44}%
+\contentsline {section}{\numberline {8.45}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{320}{section.8.45}%
+\contentsline {section}{\numberline {8.46}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.cpp File Reference}{320}{section.8.46}%
+\contentsline {subsection}{\numberline {8.46.1}Function Documentation}{321}{subsection.8.46.1}%
+\contentsline {subsubsection}{\numberline {8.46.1.1}extractAndPrintNetlistInfo()}{321}{subsubsection.8.46.1.1}%
+\contentsline {subsubsection}{\numberline {8.46.1.2}extractLogicFromVerilog()}{322}{subsubsection.8.46.1.2}%
+\contentsline {section}{\numberline {8.47}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{322}{section.8.47}%
+\contentsline {section}{\numberline {8.48}src/main.cpp File Reference}{331}{section.8.48}%
+\contentsline {subsection}{\numberline {8.48.1}Function Documentation}{332}{subsection.8.48.1}%
+\contentsline {subsubsection}{\numberline {8.48.1.1}compareLibFiles()}{332}{subsubsection.8.48.1.1}%
+\contentsline {subsubsection}{\numberline {8.48.1.2}funcLibFile()}{334}{subsubsection.8.48.1.2}%
+\contentsline {subsubsection}{\numberline {8.48.1.3}main()}{335}{subsubsection.8.48.1.3}%
+\contentsline {subsubsection}{\numberline {8.48.1.4}monoCheckLibFile()}{336}{subsubsection.8.48.1.4}%
+\contentsline {subsubsection}{\numberline {8.48.1.5}parseLibFile()}{338}{subsubsection.8.48.1.5}%
+\contentsline {subsubsection}{\numberline {8.48.1.6}printInfo()}{340}{subsubsection.8.48.1.6}%
+\contentsline {subsubsection}{\numberline {8.48.1.7}supercellLibFile()}{341}{subsubsection.8.48.1.7}%
+\contentsline {subsubsection}{\numberline {8.48.1.8}verilogLibFile()}{343}{subsubsection.8.48.1.8}%
+\contentsline {section}{\numberline {8.49}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{344}{section.8.49}%
+\contentsline {section}{\numberline {8.50}src/verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.cpp File Reference}{352}{section.8.50}%
+\contentsline {subsection}{\numberline {8.50.1}Function Documentation}{353}{subsection.8.50.1}%
+\contentsline {subsubsection}{\numberline {8.50.1.1}getAST()}{353}{subsubsection.8.50.1.1}%
+\contentsline {section}{\numberline {8.51}verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{353}{section.8.51}%
+\contentsline {chapter}{索引}{363}{section*.351}%

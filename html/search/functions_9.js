@@ -8,5 +8,6 @@ var searchData=
   ['libgroup_5',['LibGroup',['../classLibGroup.html#a1af97874abe20591db9eb0f81700869b',1,'LibGroup']]],
   ['librarycomparator_6',['LibraryComparator',['../classLibraryComparator.html#a3b1cf4c12188388533050cc7f2804444',1,'LibraryComparator']]],
   ['logic_7',['logic',['../classLibFile.html#a90b6274f928d77388864ba61583a030f',1,'LibFile']]],
-  ['logicextractor_8',['LogicExtractor',['../classLogicExtractor.html#ab706a64dee71621803f98b5b6eee5ac9',1,'LogicExtractor']]]
+  ['logiccomparator_8',['LogicComparator',['../classLogicComparator.html#a35436d01eabacaeb34d88883ab141613',1,'LogicComparator']]],
+  ['logicextractor_9',['LogicExtractor',['../classLogicExtractor.html#ab706a64dee71621803f98b5b6eee5ac9',1,'LogicExtractor']]]
 ];

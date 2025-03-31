@@ -33,6 +33,7 @@ var annotated_dup =
     [ "LibFile", "classLibFile.html", "classLibFile" ],
     [ "LibGroup", "classLibGroup.html", "classLibGroup" ],
     [ "LibraryComparator", "classLibraryComparator.html", "classLibraryComparator" ],
+    [ "LogicComparator", "classLogicComparator.html", "classLogicComparator" ],
     [ "LogicExtractor", "classLogicExtractor.html", "classLogicExtractor" ],
     [ "ModuleRewriter", "classModuleRewriter.html", "classModuleRewriter" ],
     [ "si2drExprT", "structsi2drExprT.html", "structsi2drExprT" ],

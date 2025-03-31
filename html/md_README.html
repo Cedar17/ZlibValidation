@@ -458,7 +458,8 @@ Development Diary</h1>
 <li>实现了 <code>extractLogicFromVerilog(const std::string &amp;verilog_file, const std::string &amp;cell)</code> 函数，用于从 Verilog 文件中提取指定 cell 的逻辑表达式，并以 <code>std::map&lt;std::string, std::string&gt;</code> 的形式返回。</li>
 </ul>
 </li>
-<li>为了更好地组织代码结构，将 <code><a class="el" href="classLogicExtractor.html">LogicExtractor</a></code> 类从 <code><a class="el" href="verilog__utils_8hpp.html">verilog_utils.hpp</a></code> 和 <code><a class="el" href="verilog__utils_8cpp.html">verilog_utils.cpp</a></code> 中分离出来，并创建了独立的 <code><a class="el" href="LogicExtractor_8hpp.html">LogicExtractor.hpp</a></code> 和 <code><a class="el" href="LogicExtractor_8cpp.html">LogicExtractor.cpp</a></code> 文件。同时，统一了所有 hpp 和 cpp 文件的命名规范，使其与对应的类名保持一致。 </li>
+<li>为了更好地组织代码结构，将 <code><a class="el" href="classLogicExtractor.html">LogicExtractor</a></code> 类从 <code><a class="el" href="verilog__utils_8hpp.html">verilog_utils.hpp</a></code> 和 <code><a class="el" href="verilog__utils_8cpp.html">verilog_utils.cpp</a></code> 中分离出来，并创建了独立的 <code><a class="el" href="LogicExtractor_8hpp.html">LogicExtractor.hpp</a></code> 和 <code><a class="el" href="LogicExtractor_8cpp.html">LogicExtractor.cpp</a></code> 文件。同时，统一了所有 hpp 和 cpp 文件的命名规范，使其与对应的类名保持一致。</li>
+<li>新增 <code><a class="el" href="classLogicComparator.html">LogicComparator</a></code> 类及其头文件、源文件，用于比较两个逻辑表达式的等价性，并生成比较报告。 </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -466,7 +467,7 @@ Development Diary</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Mar 31 2025 22:47:15 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Mar 31 2025 23:18:38 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

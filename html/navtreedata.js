@@ -100,10 +100,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Iterators_8cpp.html",
-"classslang_1_1syntax_1_1SeparatedSyntaxList.html#a7c99490e05bfb84732afd7417109896f",
-"classslang_1_1syntax_1_1SyntaxTree.html#a31ed87d2949172bcb3b8d4892b35cd85",
-"si2dr__liberty_8h.html#a359ef96d64de1234d3e2f3d46a46796d",
-"verilog__utils_8hpp_source.html"
+"classslang_1_1syntax_1_1SeparatedSyntaxList.html#a519700b1427763a0fc0d26277f9e236a",
+"classslang_1_1syntax_1_1SyntaxTree.html#a1b606f61db579e161456a4bb0deda85f",
+"si2dr__liberty_8h.html#a0fb2463e805ee9181b78d2e44ae8c70d",
+"structslang_1_1syntax_1_1detail_1_1SyntaxChange.html#a3b8c3bd34cfa2157fd3b24925a7dea37"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
