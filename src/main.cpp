@@ -276,7 +276,6 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
   // Check the reference file extension
   if (ref_ext == ".v") {
     spdlog::info("Reference file in Verilog format.");
-    // getAST(ref_file, cell);
   } else if (ref_ext == ".lib") {
     spdlog::info("Reference file in Liberty format.");
     ref_libfile = new LibFile(ref_file, ref_logname);
@@ -287,7 +286,6 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
   // Check the comparison file extension
   if (comp_ext == ".v") {
     spdlog::info("Comparison file in Verilog format.");
-    // getAST(comp_file, cell);
   } else if (comp_ext == ".lib") {
     spdlog::info("Comparison file in Liberty format.");
     comp_libfile = new LibFile(comp_file, comp_logname);
@@ -311,6 +309,8 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
 
     if (comp_ext == ".v") {
       // comp_outpin_map = getLogic(comp_file, cell);
+      getAST(comp_file, cell);
+      extractAndPrintNetlistInfo(comp_file, cell);
     } else if (comp_ext == ".lib") {
       comp_outpin_map = comp_libfile->logic(cell);
     }
