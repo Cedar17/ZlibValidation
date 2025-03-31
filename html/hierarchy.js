@@ -3,6 +3,7 @@ var hierarchy =
     [ "AttributesIterator", "classAttributesIterator.html", null ],
     [ "slang::syntax::detail::ChangeCollection", "structslang_1_1syntax_1_1detail_1_1ChangeCollection.html", null ],
     [ "slang::syntax::DeferredSourceRange", "classslang_1_1syntax_1_1DeferredSourceRange.html", null ],
+    [ "GateInfo", "structGateInfo.html", null ],
     [ "GroupsIterator", "classGroupsIterator.html", null ],
     [ "iterator_facade", null, [
       [ "slang::syntax::SeparatedSyntaxList< T >::iterator_base< U >", "classslang_1_1syntax_1_1SeparatedSyntaxList_1_1iterator__base.html", null ]
@@ -43,6 +44,9 @@ var hierarchy =
     [ "slang::syntax::SyntaxVisitor< CellExtractor >", "classslang_1_1syntax_1_1SyntaxVisitor.html", null ],
     [ "slang::syntax::SyntaxVisitor< CellPrinter >", "classslang_1_1syntax_1_1SyntaxVisitor.html", [
       [ "CellPrinter", "classCellPrinter.html", null ]
+    ] ],
+    [ "slang::syntax::SyntaxVisitor< LogicExtractor >", "classslang_1_1syntax_1_1SyntaxVisitor.html", [
+      [ "LogicExtractor", "classLogicExtractor.html", null ]
     ] ],
     [ "slang::syntax::SyntaxVisitor< ModuleRewriter >", "classslang_1_1syntax_1_1SyntaxVisitor.html", null ],
     [ "slang::syntax::SyntaxVisitor< VerilogVisitor >", "classslang_1_1syntax_1_1SyntaxVisitor.html", [

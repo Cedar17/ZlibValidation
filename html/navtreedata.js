@@ -60,7 +60,8 @@ var NAVTREE =
         [ "2025-03-27", "md_README.html#autotoc_md32", null ],
         [ "2025-03-28", "md_README.html#autotoc_md33", null ],
         [ "2025-03-29", "md_README.html#autotoc_md34", null ],
-        [ "2025-03-30", "md_README.html#autotoc_md35", null ]
+        [ "2025-03-30", "md_README.html#autotoc_md35", null ],
+        [ "2025-03-31", "md_README.html#autotoc_md36", null ]
       ] ]
     ] ],
     [ "Namespaces", "namespaces.html", [
@@ -99,9 +100,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "SyntaxNode_8h.html",
-"classslang_1_1syntax_1_1SyntaxList.html#ae03f0d096d979b4950351a7534867050",
-"classslang_1_1syntax_1_1SyntaxTree.html#ae52727a3e63aa45f47b62d9cfd7774b4",
-"si2dr__liberty_8h.html#a61580aa8e965e01dc54ab869b887d944"
+"classslang_1_1syntax_1_1SeparatedSyntaxList_1_1iterator__base.html#ab65f97ecadcda9be4cf5ddf31717f57d",
+"classslang_1_1syntax_1_1SyntaxTree.html#a919ff5c50160ccb90e83e9d5709ffd1a",
+"si2dr__liberty_8h.html#a38f905a80d2386f738eeb60db5517de3",
+"version_8h.html#aef3457fba0ffa145e841c80f85adda1c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

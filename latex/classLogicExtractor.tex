@@ -1,0 +1,329 @@
+\hypertarget{classLogicExtractor}{}\doxysection{Logic\+Extractor Class Reference}
+\label{classLogicExtractor}\index{LogicExtractor@{LogicExtractor}}
+
+
+{\ttfamily \#include $<$verilog\+\_\+utils.\+hpp$>$}
+
+
+
+Inheritance diagram for Logic\+Extractor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{classLogicExtractor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Logic\+Extractor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{classLogicExtractor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLogicExtractor_ab706a64dee71621803f98b5b6eee5ac9}{Logic\+Extractor}} (const std\+::string \&target\+Cell)
+\item 
+void \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}} (const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&module)
+\item 
+void \mbox{\hyperlink{classLogicExtractor_a8c4196c94570f6689ee5a68afd38eaad}{handle}} (const slang\+::syntax\+::\+Port\+Declaration\+Syntax \&port\+Decl)
+\item 
+void \mbox{\hyperlink{classLogicExtractor_a29481733320a0fb7b1f4f59ecc3fb5d0}{handle}} (const slang\+::syntax\+::\+Non\+Ansi\+Port\+List\+Syntax \&port\+List)
+\item 
+void \mbox{\hyperlink{classLogicExtractor_aa0da0dc5655fa5d4105875b466ab90ff}{handle}} (const slang\+::syntax\+::\+Net\+Declaration\+Syntax \&net\+Decl)
+\item 
+void \mbox{\hyperlink{classLogicExtractor_a9f79d51e917503506632eeecb2a2a2f0}{handle}} (const slang\+::syntax\+::\+Primitive\+Instantiation\+Syntax \&primitive\+Inst)
+\item 
+const std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structGateInfo}{Gate\+Info}} $>$ \& \mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{get\+Extracted\+Gates}} () const
+\item 
+const std\+::unordered\+\_\+set$<$ std\+::string $>$ \& \mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{get\+Primary\+Inputs}} () const
+\item 
+const std\+::unordered\+\_\+set$<$ std\+::string $>$ \& \mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{get\+Primary\+Outputs}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classLogicExtractor_aa06d1e17b192b7fded62d3ba8086ca38}{get\+Signal\+Name}} (const slang\+::syntax\+::\+Expression\+Syntax $\ast$expr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string \& \mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{target\+Cell\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{in\+Target\+Module\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsing\+Complete\+\_\+}}
+\item 
+std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primary\+Inputs\+\_\+}}
+\item 
+std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primary\+Outputs\+\_\+}}
+\item 
+std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internal\+Wires\+\_\+}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{port\+Directions\+\_\+}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structGateInfo}{Gate\+Info}} $>$ \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gate\+Output\+Drivers\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00105}{105}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLogicExtractor_ab706a64dee71621803f98b5b6eee5ac9}\label{classLogicExtractor_ab706a64dee71621803f98b5b6eee5ac9}} 
+\index{LogicExtractor@{LogicExtractor}!LogicExtractor@{LogicExtractor}}
+\index{LogicExtractor@{LogicExtractor}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{LogicExtractor()}{LogicExtractor()}}
+{\footnotesize\ttfamily Logic\+Extractor\+::\+Logic\+Extractor (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{target\+Cell }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00108}{108}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}\label{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}} 
+\index{LogicExtractor@{LogicExtractor}!getExtractedGates@{getExtractedGates}}
+\index{getExtractedGates@{getExtractedGates}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{getExtractedGates()}{getExtractedGates()}}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structGateInfo}{Gate\+Info}} $>$ \& Logic\+Extractor\+::get\+Extracted\+Gates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00124}{124}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}\label{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}} 
+\index{LogicExtractor@{LogicExtractor}!getPrimaryInputs@{getPrimaryInputs}}
+\index{getPrimaryInputs@{getPrimaryInputs}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{getPrimaryInputs()}{getPrimaryInputs()}}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+set$<$ std\+::string $>$ \& Logic\+Extractor\+::get\+Primary\+Inputs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00127}{127}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}\label{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}} 
+\index{LogicExtractor@{LogicExtractor}!getPrimaryOutputs@{getPrimaryOutputs}}
+\index{getPrimaryOutputs@{getPrimaryOutputs}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{getPrimaryOutputs()}{getPrimaryOutputs()}}
+{\footnotesize\ttfamily const std\+::unordered\+\_\+set$<$ std\+::string $>$ \& Logic\+Extractor\+::get\+Primary\+Outputs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00128}{128}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLogicExtractor_aa06d1e17b192b7fded62d3ba8086ca38}\label{classLogicExtractor_aa06d1e17b192b7fded62d3ba8086ca38}} 
+\index{LogicExtractor@{LogicExtractor}!getSignalName@{getSignalName}}
+\index{getSignalName@{getSignalName}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{getSignalName()}{getSignalName()}}
+{\footnotesize\ttfamily std\+::string Logic\+Extractor\+::get\+Signal\+Name (\begin{DoxyParamCaption}\item[{const slang\+::syntax\+::\+Expression\+Syntax $\ast$}]{expr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00615}{615}} of file \mbox{\hyperlink{verilog__utils_8cpp_source}{verilog\+\_\+utils.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogicExtractor_aa06d1e17b192b7fded62d3ba8086ca38_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}\label{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}} 
+\index{LogicExtractor@{LogicExtractor}!handle@{handle}}
+\index{handle@{handle}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily void Logic\+Extractor\+::handle (\begin{DoxyParamCaption}\item[{const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&}]{module }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00648}{648}} of file \mbox{\hyperlink{verilog__utils_8cpp_source}{verilog\+\_\+utils.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLogicExtractor_aa0da0dc5655fa5d4105875b466ab90ff}\label{classLogicExtractor_aa0da0dc5655fa5d4105875b466ab90ff}} 
+\index{LogicExtractor@{LogicExtractor}!handle@{handle}}
+\index{handle@{handle}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily void Logic\+Extractor\+::handle (\begin{DoxyParamCaption}\item[{const slang\+::syntax\+::\+Net\+Declaration\+Syntax \&}]{net\+Decl }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00828}{828}} of file \mbox{\hyperlink{verilog__utils_8cpp_source}{verilog\+\_\+utils.\+cpp}}.
+
+\mbox{\Hypertarget{classLogicExtractor_a29481733320a0fb7b1f4f59ecc3fb5d0}\label{classLogicExtractor_a29481733320a0fb7b1f4f59ecc3fb5d0}} 
+\index{LogicExtractor@{LogicExtractor}!handle@{handle}}
+\index{handle@{handle}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily void Logic\+Extractor\+::handle (\begin{DoxyParamCaption}\item[{const slang\+::syntax\+::\+Non\+Ansi\+Port\+List\+Syntax \&}]{port\+List }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00736}{736}} of file \mbox{\hyperlink{verilog__utils_8cpp_source}{verilog\+\_\+utils.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogicExtractor_a29481733320a0fb7b1f4f59ecc3fb5d0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLogicExtractor_a8c4196c94570f6689ee5a68afd38eaad}\label{classLogicExtractor_a8c4196c94570f6689ee5a68afd38eaad}} 
+\index{LogicExtractor@{LogicExtractor}!handle@{handle}}
+\index{handle@{handle}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily void Logic\+Extractor\+::handle (\begin{DoxyParamCaption}\item[{const slang\+::syntax\+::\+Port\+Declaration\+Syntax \&}]{port\+Decl }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00692}{692}} of file \mbox{\hyperlink{verilog__utils_8cpp_source}{verilog\+\_\+utils.\+cpp}}.
+
+\mbox{\Hypertarget{classLogicExtractor_a9f79d51e917503506632eeecb2a2a2f0}\label{classLogicExtractor_a9f79d51e917503506632eeecb2a2a2f0}} 
+\index{LogicExtractor@{LogicExtractor}!handle@{handle}}
+\index{handle@{handle}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily void Logic\+Extractor\+::handle (\begin{DoxyParamCaption}\item[{const slang\+::syntax\+::\+Primitive\+Instantiation\+Syntax \&}]{primitive\+Inst }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00848}{848}} of file \mbox{\hyperlink{verilog__utils_8cpp_source}{verilog\+\_\+utils.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogicExtractor_a9f79d51e917503506632eeecb2a2a2f0_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}\label{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}} 
+\index{LogicExtractor@{LogicExtractor}!gateOutputDrivers\_@{gateOutputDrivers\_}}
+\index{gateOutputDrivers\_@{gateOutputDrivers\_}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{gateOutputDrivers\_}{gateOutputDrivers\_}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, \mbox{\hyperlink{structGateInfo}{Gate\+Info}}$>$ Logic\+Extractor\+::gate\+Output\+Drivers\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00149}{149}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+\mbox{\Hypertarget{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}\label{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}} 
+\index{LogicExtractor@{LogicExtractor}!inTargetModule\_@{inTargetModule\_}}
+\index{inTargetModule\_@{inTargetModule\_}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{inTargetModule\_}{inTargetModule\_}}
+{\footnotesize\ttfamily bool Logic\+Extractor\+::in\+Target\+Module\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00136}{136}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+\mbox{\Hypertarget{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}\label{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}} 
+\index{LogicExtractor@{LogicExtractor}!internalWires\_@{internalWires\_}}
+\index{internalWires\_@{internalWires\_}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{internalWires\_}{internalWires\_}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+set$<$std\+::string$>$ Logic\+Extractor\+::internal\+Wires\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00142}{142}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+\mbox{\Hypertarget{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}\label{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}} 
+\index{LogicExtractor@{LogicExtractor}!parsingComplete\_@{parsingComplete\_}}
+\index{parsingComplete\_@{parsingComplete\_}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{parsingComplete\_}{parsingComplete\_}}
+{\footnotesize\ttfamily bool Logic\+Extractor\+::parsing\+Complete\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00137}{137}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+\mbox{\Hypertarget{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}\label{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}} 
+\index{LogicExtractor@{LogicExtractor}!portDirections\_@{portDirections\_}}
+\index{portDirections\_@{portDirections\_}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{portDirections\_}{portDirections\_}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::string$>$ Logic\+Extractor\+::port\+Directions\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00146}{146}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+\mbox{\Hypertarget{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}\label{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}} 
+\index{LogicExtractor@{LogicExtractor}!primaryInputs\_@{primaryInputs\_}}
+\index{primaryInputs\_@{primaryInputs\_}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{primaryInputs\_}{primaryInputs\_}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+set$<$std\+::string$>$ Logic\+Extractor\+::primary\+Inputs\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00140}{140}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+\mbox{\Hypertarget{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}\label{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}} 
+\index{LogicExtractor@{LogicExtractor}!primaryOutputs\_@{primaryOutputs\_}}
+\index{primaryOutputs\_@{primaryOutputs\_}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{primaryOutputs\_}{primaryOutputs\_}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+set$<$std\+::string$>$ Logic\+Extractor\+::primary\+Outputs\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00141}{141}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+\mbox{\Hypertarget{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}\label{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}} 
+\index{LogicExtractor@{LogicExtractor}!targetCell\_@{targetCell\_}}
+\index{targetCell\_@{targetCell\_}!LogicExtractor@{LogicExtractor}}
+\doxysubsubsection{\texorpdfstring{targetCell\_}{targetCell\_}}
+{\footnotesize\ttfamily const std\+::string\& Logic\+Extractor\+::target\+Cell\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00135}{135}} of file \mbox{\hyperlink{verilog__utils_8hpp_source}{verilog\+\_\+utils.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{verilog__utils_8hpp}{verilog\+\_\+utils.\+hpp}}\item 
+src/\mbox{\hyperlink{verilog__utils_8cpp}{verilog\+\_\+utils.\+cpp}}\end{DoxyCompactItemize}

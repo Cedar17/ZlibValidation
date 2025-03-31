@@ -188,41 +188,41 @@
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00276}00276   \textcolor{comment}{// Check the reference file extension}}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00277}00277   \textcolor{keywordflow}{if} (ref\_ext == \textcolor{stringliteral}{"{}.v"{}}) \{}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00278}00278     spdlog::info(\textcolor{stringliteral}{"{}Reference file in Verilog format."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00279}00279     \textcolor{comment}{// getAST(ref\_file, cell);}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00280}00280   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (ref\_ext == \textcolor{stringliteral}{"{}.lib"{}}) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00281}00281     spdlog::info(\textcolor{stringliteral}{"{}Reference file in Liberty format."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00282}00282     ref\_libfile = \textcolor{keyword}{new} \mbox{\hyperlink{classLibFile}{LibFile}}(ref\_file, ref\_logname);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00283}00283   \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00284}00284     spdlog::error(\textcolor{stringliteral}{"{}Unsupported reference file format: '\{\}'"{}}, ref\_ext);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00285}00285     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00286}00286   \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00287}00287   \textcolor{comment}{// Check the comparison file extension}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00288}00288   \textcolor{keywordflow}{if} (comp\_ext == \textcolor{stringliteral}{"{}.v"{}}) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00289}00289     spdlog::info(\textcolor{stringliteral}{"{}Comparison file in Verilog format."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00290}00290     \textcolor{comment}{// getAST(comp\_file, cell);}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00291}00291   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (comp\_ext == \textcolor{stringliteral}{"{}.lib"{}}) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00292}00292     spdlog::info(\textcolor{stringliteral}{"{}Comparison file in Liberty format."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00293}00293     comp\_libfile = \textcolor{keyword}{new} \mbox{\hyperlink{classLibFile}{LibFile}}(comp\_file, comp\_logname);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00294}00294   \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00295}00295     spdlog::error(\textcolor{stringliteral}{"{}Unsupported comparison file format: '\{\}'"{}}, comp\_ext);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00296}00296     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00297}00297   \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00298}00298 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00299}00299   \textcolor{comment}{// Tranverse the cell names and check functional equivalence}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00300}00300   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&cell : cell\_names) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00301}00301     spdlog::info(\textcolor{stringliteral}{"{}Checking functional equivalence for cell: '\{\}'"{}}, cell);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00302}00302     std::map<std::string, std::string> ref\_outpin\_map;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00303}00303     std::map<std::string, std::string> comp\_outpin\_map;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00304}00304 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00305}00305     \textcolor{keywordflow}{if} (ref\_ext == \textcolor{stringliteral}{"{}.v"{}}) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00306}00306       \textcolor{comment}{// TODO get logic expression from Verilog file}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00307}00307       \textcolor{comment}{// ref\_outpin\_map = getLogic(ref\_file, cell);}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00308}00308     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (ref\_ext == \textcolor{stringliteral}{"{}.lib"{}}) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00309}00309       ref\_outpin\_map = ref\_libfile-\/>\mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{logic}}(cell);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00310}00310     \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00311}00311 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00312}00312     \textcolor{keywordflow}{if} (comp\_ext == \textcolor{stringliteral}{"{}.v"{}}) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00313}00313       \textcolor{comment}{// comp\_outpin\_map = getLogic(comp\_file, cell);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00279}00279   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (ref\_ext == \textcolor{stringliteral}{"{}.lib"{}}) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00280}00280     spdlog::info(\textcolor{stringliteral}{"{}Reference file in Liberty format."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00281}00281     ref\_libfile = \textcolor{keyword}{new} \mbox{\hyperlink{classLibFile}{LibFile}}(ref\_file, ref\_logname);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00282}00282   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00283}00283     spdlog::error(\textcolor{stringliteral}{"{}Unsupported reference file format: '\{\}'"{}}, ref\_ext);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00284}00284     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00285}00285   \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00286}00286   \textcolor{comment}{// Check the comparison file extension}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00287}00287   \textcolor{keywordflow}{if} (comp\_ext == \textcolor{stringliteral}{"{}.v"{}}) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00288}00288     spdlog::info(\textcolor{stringliteral}{"{}Comparison file in Verilog format."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00289}00289   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (comp\_ext == \textcolor{stringliteral}{"{}.lib"{}}) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00290}00290     spdlog::info(\textcolor{stringliteral}{"{}Comparison file in Liberty format."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00291}00291     comp\_libfile = \textcolor{keyword}{new} \mbox{\hyperlink{classLibFile}{LibFile}}(comp\_file, comp\_logname);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00292}00292   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00293}00293     spdlog::error(\textcolor{stringliteral}{"{}Unsupported comparison file format: '\{\}'"{}}, comp\_ext);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00294}00294     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00295}00295   \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00296}00296 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00297}00297   \textcolor{comment}{// Tranverse the cell names and check functional equivalence}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00298}00298   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&cell : cell\_names) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00299}00299     spdlog::info(\textcolor{stringliteral}{"{}Checking functional equivalence for cell: '\{\}'"{}}, cell);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00300}00300     std::map<std::string, std::string> ref\_outpin\_map;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00301}00301     std::map<std::string, std::string> comp\_outpin\_map;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00302}00302 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00303}00303     \textcolor{keywordflow}{if} (ref\_ext == \textcolor{stringliteral}{"{}.v"{}}) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00304}00304       \textcolor{comment}{// TODO get logic expression from Verilog file}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00305}00305       \textcolor{comment}{// ref\_outpin\_map = getLogic(ref\_file, cell);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00306}00306     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (ref\_ext == \textcolor{stringliteral}{"{}.lib"{}}) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00307}00307       ref\_outpin\_map = ref\_libfile-\/>\mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{logic}}(cell);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00308}00308     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00309}00309 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00310}00310     \textcolor{keywordflow}{if} (comp\_ext == \textcolor{stringliteral}{"{}.v"{}}) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00311}00311       \textcolor{comment}{// comp\_outpin\_map = getLogic(comp\_file, cell);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00312}00312       \mbox{\hyperlink{verilog__utils_8hpp_a7ec07bd8417a22f2aee362bd59199997}{getAST}}(comp\_file, cell);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00313}00313       \mbox{\hyperlink{verilog__utils_8hpp_a2276f971f6bd1d8f34f635811cc65e08}{extractAndPrintNetlistInfo}}(comp\_file, cell);}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00314}00314     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (comp\_ext == \textcolor{stringliteral}{"{}.lib"{}}) \{}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00315}00315       comp\_outpin\_map = comp\_libfile-\/>\mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{logic}}(cell);}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00316}00316     \}}

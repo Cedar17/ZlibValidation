@@ -15,6 +15,7 @@ var searchData=
   ['syntaxvisitor_12',['SyntaxVisitor',['../classslang_1_1syntax_1_1SyntaxVisitor.html',1,'slang::syntax']]],
   ['syntaxvisitor_3c_20cellextractor_20_3e_13',['SyntaxVisitor&lt; CellExtractor &gt;',['../classslang_1_1syntax_1_1SyntaxVisitor.html',1,'slang::syntax']]],
   ['syntaxvisitor_3c_20cellprinter_20_3e_14',['SyntaxVisitor&lt; CellPrinter &gt;',['../classslang_1_1syntax_1_1SyntaxVisitor.html',1,'slang::syntax']]],
-  ['syntaxvisitor_3c_20modulerewriter_20_3e_15',['SyntaxVisitor&lt; ModuleRewriter &gt;',['../classslang_1_1syntax_1_1SyntaxVisitor.html',1,'slang::syntax']]],
-  ['syntaxvisitor_3c_20verilogvisitor_20_3e_16',['SyntaxVisitor&lt; VerilogVisitor &gt;',['../classslang_1_1syntax_1_1SyntaxVisitor.html',1,'slang::syntax']]]
+  ['syntaxvisitor_3c_20logicextractor_20_3e_15',['SyntaxVisitor&lt; LogicExtractor &gt;',['../classslang_1_1syntax_1_1SyntaxVisitor.html',1,'slang::syntax']]],
+  ['syntaxvisitor_3c_20modulerewriter_20_3e_16',['SyntaxVisitor&lt; ModuleRewriter &gt;',['../classslang_1_1syntax_1_1SyntaxVisitor.html',1,'slang::syntax']]],
+  ['syntaxvisitor_3c_20verilogvisitor_20_3e_17',['SyntaxVisitor&lt; VerilogVisitor &gt;',['../classslang_1_1syntax_1_1SyntaxVisitor.html',1,'slang::syntax']]]
 ];
