@@ -301,16 +301,15 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
     std::map<std::string, std::string> comp_outpin_map;
 
     if (ref_ext == ".v") {
-      // TODO get logic expression from Verilog file
-      // ref_outpin_map = getLogic(ref_file, cell);
+      ref_outpin_map = extractLogicFromVerilog(ref_file, cell);
     } else if (ref_ext == ".lib") {
       ref_outpin_map = ref_libfile->logic(cell);
     }
 
     if (comp_ext == ".v") {
-      // comp_outpin_map = getLogic(comp_file, cell);
       // getAST(comp_file, cell);
-      extractAndPrintNetlistInfo(comp_file, cell);
+      // extractAndPrintNetlistInfo(comp_file, cell);
+      comp_outpin_map = extractLogicFromVerilog(comp_file, cell);
     } else if (comp_ext == ".lib") {
       comp_outpin_map = comp_libfile->logic(cell);
     }

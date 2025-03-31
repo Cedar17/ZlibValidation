@@ -30,7 +30,7 @@ public:
   void handle(const slang::syntax::ModuleDeclarationSyntax &module);
   void handle(const slang::syntax::PortDeclarationSyntax &portDecl);
   void handle(const slang::syntax::HierarchyInstantiationSyntax &hierarchyInst);
-  void handle(const slang::syntax::PrimitiveInstantiationSyntax &primitiveInst);
+  // void handle(const slang::syntax::PrimitiveInstantiationSyntax &primitiveInst);
   void handle(const slang::syntax::SpecifyBlockSyntax &specifyBlock);
 
 private:
@@ -127,9 +127,12 @@ public:
   }
   const std::unordered_set<std::string> &getPrimaryInputs() const { return primaryInputs_; }
   const std::unordered_set<std::string> &getPrimaryOutputs() const { return primaryOutputs_; }
+  const std::unordered_set<std::string> &getInternalWires() const {
+    return internalWires_;
+  }
 
   // --- Logic Derivation (Commented out for Step 1) ---
-  // std::map<std::string, std::string> getLogicExpressions();
+  std::map<std::string, std::string> getLogicExpressions();
 
 private:
   // --- Internal State ---
@@ -150,14 +153,14 @@ private:
   std::unordered_map<std::string, GateInfo> gateOutputDrivers_;
 
   // Map: signal name -> Logic expression string (Memoization Cache) - (Used in Step 2)
-  // std::unordered_map<std::string, std::string> logicCache_;
+  std::unordered_map<std::string, std::string> logicCache_;
 
   // --- Helper Methods ---
   // Recursive function to derive logic for a given signal (Used in Step 2)
-  // std::string deriveLogicRecursive(const std::string &signalName);
+  std::string deriveLogicRecursive(const std::string &signalName);
   // Helper to format expressions based on gate type (Used in Step 2)
-  // std::string formatExpression(const GateInfo &gateInfo, const std::vector<std::string>
-  // &inputExprs); Helper to get signal name from an expression syntax node
+  std::string formatExpression(const GateInfo &gateInfo,
+                               const std::vector<std::string> &inputExprs);
 };
 
 // --- Function Declaration ---

@@ -288,10 +288,22 @@ Subcommands:
 
 ### 2025-03-31
 
-- 设计了如何使用 Slang 库从 Verilog 结构网表中提取逻辑表达式的方案：
-  - 使用 Slang 解析 Verilog 文件获取语法树(AST)
-  - 遍历 AST 定位目标模块
-  - 在目标模块内构建网表的内部表示，识别输入、输出、线网及门级连接关系
-  - 对每个输出端口，递归反向追踪门和线网直至到达主输入端口
-  - 在回溯过程中根据遇到的门类型构建逻辑表达式
-  - 应用记忆化技术避免对相同线网/信号的重复计算
+- 实现了从 Verilog 结构网表中提取逻辑表达式的功能，使用了 `LogicExtractor` 类。
+  - 设计了如何使用 Slang 库从 Verilog 结构网表中提取逻辑表达式的方案：
+    - 使用 Slang 解析 Verilog 文件获取语法树(AST)。
+    - 遍历 AST 定位目标模块。
+    - 在目标模块内构建网表的内部表示，识别输入、输出、线网及门级连接关系。
+    - 对每个输出端口，递归反向追踪门和线网直至到达主输入端口。
+    - 在回溯过程中根据遇到的门类型构建逻辑表达式。
+    - 应用记忆化技术避免对相同线网/信号的重复计算。
+  - 创建了 `LogicExtractor` 类，用于从 Verilog 代码中提取逻辑表达式。
+    - `LogicExtractor` 类使用 Slang 库解析 Verilog 文件，并构建目标模块的网表表示。
+    - 实现了 `handle(const slang::syntax::ModuleDeclarationSyntax &module)` 方法，用于定位目标模块，并初始化内部数据结构。
+    - 实现了 `handle(const slang::syntax::PortDeclarationSyntax &portDecl)` 方法，用于提取端口信息，包括端口方向和名称。
+    - 实现了 `handle(const slang::syntax::NetDeclarationSyntax &netDecl)` 方法，用于提取线网信息。
+    - 实现了 `handle(const slang::syntax::PrimitiveInstantiationSyntax &primitiveInst)` 方法，用于提取门级单元信息，包括门类型、输入和输出信号。
+    - 实现了 `getLogicExpressions()` 方法，用于根据提取的网表信息，递归地推导每个输出端口的逻辑表达式。
+    - 实现了 `deriveLogicRecursive(const std::string &signalName)` 方法，用于递归地推导指定信号的逻辑表达式。
+    - 实现了 `formatExpression(const GateInfo &gateInfo, const std::vector<std::string> &inputExprs)` 方法，用于根据门类型和输入表达式，生成逻辑表达式字符串。
+  - 实现了 `extractAndPrintNetlistInfo(const std::string &verilog_file, const std::string &cell)` 函数，用于提取并打印网表信息，包括输入、输出、线网和门级单元。
+  - 实现了 `extractLogicFromVerilog(const std::string &verilog_file, const std::string &cell)` 函数，用于从 Verilog 文件中提取指定 cell 的逻辑表达式，并以 `std::map<std::string, std::string>` 的形式返回。

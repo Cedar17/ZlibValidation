@@ -187,7 +187,7 @@ void VerilogVisitor::handle(const slang::syntax::HierarchyInstantiationSyntax &h
     depth_--;
   }
 }
-
+/*
 // Handle primitive gate instantiation
 void VerilogVisitor::handle(const slang::syntax::PrimitiveInstantiationSyntax &primitiveInst) {
   if (!inTargetModule_) {
@@ -255,7 +255,7 @@ void VerilogVisitor::handle(const slang::syntax::PrimitiveInstantiationSyntax &p
     spdlog::warn("{}Primitive instantiation missing gate type", indent);
   }
 }
-
+*/
 // Handle specify block
 void VerilogVisitor::handle(const slang::syntax::SpecifyBlockSyntax &specifyBlock) {
   if (!inTargetModule_) {
@@ -580,14 +580,14 @@ void getAST(const std::string &verilog_file, const std::string &cell) {
           }
         }
 
-        spdlog::info("Print full source code to 'full_source_code.v'");
-        // Optionally save the entire syntax tree
-        std::string fullOutput = slang::syntax::SyntaxPrinter::printFile(*result.value());
-        std::ofstream out("full_source_code.v");
-        out << fullOutput;
-        out.close();
+        // spdlog::info("Print full source code to 'full_source_code.v'");
+        // // Optionally save the entire syntax tree
+        // std::string fullOutput = slang::syntax::SyntaxPrinter::printFile(*result.value());
+        // std::ofstream out("full_source_code.v");
+        // out << fullOutput;
+        // out.close();
 
-        spdlog::info("Print target cell code to 'cell_code.v'");
+        spdlog::info("Print target cell code to 'cell_code.v using toString()'");
         // Use CellPrinter to print the target cell's code
         std::ofstream cellOut("cell_code.v");
         CellPrinter cellPrinter(cell, cellOut);
@@ -874,7 +874,12 @@ void LogicExtractor::handle(const slang::syntax::PrimitiveInstantiationSyntax &p
     if (auto firstConn =
             instance->connections[0]->as_if<slang::syntax::OrderedPortConnectionSyntax>()) {
       currentGateInfo.outputSignal =
-          firstConn->toString(); // Get the output signal name from the connection
+          firstConn->expr->toString(); // Get the output signal name from the connection
+                                       // remove extra spaces in the signal name
+      currentGateInfo.outputSignal.erase(
+          std::remove_if(currentGateInfo.outputSignal.begin(), currentGateInfo.outputSignal.end(),
+                         [](unsigned char x) { return std::isspace(x); }),
+          currentGateInfo.outputSignal.end());
       if (!currentGateInfo.outputSignal.empty()) {
         spdlog::debug("  Output Signal: {}", currentGateInfo.outputSignal);
         // Gate outputs are internal signals (unless they are module outputs)
@@ -906,7 +911,12 @@ void LogicExtractor::handle(const slang::syntax::PrimitiveInstantiationSyntax &p
       }
       if (auto conn =
               instance->connections[i]->as_if<slang::syntax::OrderedPortConnectionSyntax>()) {
-        std::string inputSig = conn->toString(); // Get the input signal name from the connection
+        std::string inputSig =
+            conn->expr->toString(); // Get the input signal name from the connection
+        // remove extra spaces in the signal name
+        inputSig.erase(std::remove_if(inputSig.begin(), inputSig.end(),
+                                      [](unsigned char x) { return std::isspace(x); }),
+                       inputSig.end());
         if (!inputSig.empty()) {
           currentGateInfo.inputSignals.push_back(inputSig);
           spdlog::debug("  Input Signal {}: {}", i, inputSig);
@@ -943,6 +953,171 @@ void LogicExtractor::handle(const slang::syntax::PrimitiveInstantiationSyntax &p
   // Don't call visitDefault here
 }
 
+// --- Logic Derivation Implementation ---
+
+// Public method called after visiting the tree
+std::map<std::string, std::string> LogicExtractor::getLogicExpressions() {
+  std::map<std::string, std::string> result_map;
+  if (!parsingComplete_) {
+    spdlog::error("LogicExtractor: AST parsing did not complete or target module '{}' not found. "
+                  "Cannot extract logic.",
+                  targetCell_);
+    return result_map; // Return empty map
+  }
+
+  spdlog::info("LogicExtractor: Deriving logic expressions for {} output ports...",
+               primaryOutputs_.size());
+
+  for (const std::string &outputPort : primaryOutputs_) {
+    spdlog::debug("LogicExtractor: Deriving logic for output: {}", outputPort);
+    try {
+      result_map[outputPort] = deriveLogicRecursive(outputPort);
+      spdlog::info("  Output: {} => {}", outputPort, result_map[outputPort]);
+    } catch (const std::runtime_error &e) {
+      spdlog::error("LogicExtractor: Error deriving logic for output '{}': {}", outputPort,
+                    e.what());
+      result_map[outputPort] = "/* Error deriving logic */";
+    } catch (...) {
+      spdlog::error("LogicExtractor: Unknown error deriving logic for output '{}'", outputPort);
+      result_map[outputPort] = "/* Unknown error deriving logic */";
+    }
+  }
+  return result_map;
+}
+
+// Recursive function with memoization
+std::string LogicExtractor::deriveLogicRecursive(const std::string &signalName) {
+  // 1. Check Cache (Memoization)
+  if (logicCache_.count(signalName)) {
+    return logicCache_.at(signalName);
+  }
+
+  // 2. Base Case: Is it a primary input?
+  if (primaryInputs_.count(signalName)) {
+    // Already cached during port handling, but double-check
+    if (!logicCache_.count(signalName)) {
+      logicCache_[signalName] = signalName;
+    }
+    return signalName;
+  }
+
+  // 3. Recursive Step: Is it driven by a gate?
+  if (gateOutputDrivers_.count(signalName)) {
+    const GateInfo &driverGate = gateOutputDrivers_.at(signalName);
+    std::vector<std::string> inputExpressions;
+    spdlog::debug("    Tracing signal '{}', driven by {} gate", signalName,
+                  driverGate.gateTypeName);
+
+    // Recursively find expressions for all inputs of this gate
+    for (const std::string &inputSig : driverGate.inputSignals) {
+      if (inputSig.empty()) {
+        throw std::runtime_error("Empty input signal name encountered for gate driving " +
+                                 signalName);
+      }
+      spdlog::debug("      Recursing for input: {}", inputSig);
+      inputExpressions.push_back(deriveLogicRecursive(inputSig));
+    }
+
+    // Format the expression based on gate type and input expressions
+    std::string currentExpr = formatExpression(driverGate, inputExpressions);
+
+    // Cache the result
+    logicCache_[signalName] = currentExpr;
+    return currentExpr;
+  }
+
+  // 4. Handle Assign statements (if implemented)
+  // if (assignDrivers_.count(signalName)) { ... }
+
+  // 5. Error Case: Signal not found or not driven by known element
+  // Check if it's just an internal wire that wasn't driven?
+  if (internalWires_.count(signalName)) {
+    throw std::runtime_error(
+        "Signal '" + signalName +
+        "' is an internal wire but has no identified driver (gate or assign).");
+  } else {
+    throw std::runtime_error(
+        "Signal '" + signalName +
+        "' is not a primary input, known wire, or driven by a recognized gate/assignment.");
+  }
+}
+
+// Helper to format the expression string based on gate type
+std::string LogicExtractor::formatExpression(const GateInfo &gateInfo,
+                                             const std::vector<std::string> &inputExprs) {
+  if (inputExprs.empty() && gateInfo.kind != slang::parsing::TokenKind::NotKeyword &&
+      gateInfo.kind != slang::parsing::TokenKind::BufKeyword) {
+    // Gates like AND/OR/XOR need inputs
+    spdlog::warn("Gate type {} requires inputs, but none were provided/derived for output {}",
+                 gateInfo.gateTypeName, gateInfo.outputSignal);
+    return "/*<Error: Missing Inputs for " + gateInfo.gateTypeName + ">*/";
+  }
+
+  std::string result = "";
+
+  // Use gateInfo.type (enum) for reliable checking
+  switch (gateInfo.kind) {
+  case slang::parsing::TokenKind::AndKeyword:
+    result = "(" + inputExprs[0];
+    for (size_t i = 1; i < inputExprs.size(); ++i)
+      result += " * " + inputExprs[i]; // Use * for AND
+    result += ")";
+    break;
+  case slang::parsing::TokenKind::NandKeyword:
+    result = "!(" + inputExprs[0];
+    for (size_t i = 1; i < inputExprs.size(); ++i)
+      result += " * " + inputExprs[i];
+    result += ")";
+    break;
+  case slang::parsing::TokenKind::OrKeyword:
+    result = "(" + inputExprs[0];
+    for (size_t i = 1; i < inputExprs.size(); ++i)
+      result += " + " + inputExprs[i]; // Use + for OR
+    result += ")";
+    break;
+  case slang::parsing::TokenKind::NorKeyword:
+    result = "!(" + inputExprs[0];
+    for (size_t i = 1; i < inputExprs.size(); ++i)
+      result += " + " + inputExprs[i];
+    result += ")";
+    break;
+  case slang::parsing::TokenKind::XorKeyword:
+    result = "(" + inputExprs[0];
+    for (size_t i = 1; i < inputExprs.size(); ++i)
+      result += " ^ " + inputExprs[i]; // Use ^ for XOR
+    result += ")";
+    break;
+  case slang::parsing::TokenKind::XnorKeyword:
+    result = "!(" + inputExprs[0];
+    for (size_t i = 1; i < inputExprs.size(); ++i)
+      result += " ^ " + inputExprs[i];
+    result += ")";
+    break;
+  case slang::parsing::TokenKind::NotKeyword: // NOT gate
+    if (inputExprs.size() != 1) {
+      spdlog::warn("NOT gate expects 1 input, got {}", inputExprs.size());
+      return "/*<Error: Incorrect Inputs for NOT>*/";
+    }
+    result = "!" + inputExprs[0]; // Use ! for NOT
+    break;
+  case slang::parsing::TokenKind::BufKeyword: // BUF gate
+    if (inputExprs.size() != 1) {
+      spdlog::warn("BUF gate expects 1 input, got {}", inputExprs.size());
+      return "/*<Error: Incorrect Inputs for BUF>*/";
+    }
+    result = inputExprs[0]; // Output is the same as input
+    break;
+  // Add cases for bufif0, bufif1, notif0, notif1, pullup, pulldown, cmos, nmos, pmos, tran etc. if
+  // needed
+  default:
+    spdlog::warn("Unsupported primitive gate type for logic expression generation: {}",
+                 gateInfo.gateTypeName);
+    result = "/*<Unsupported Gate: " + gateInfo.gateTypeName + ">*/";
+    break;
+  }
+  return result;
+}
+
 // --- New Function Implementation (Step 1: Visit and Print) ---
 
 void extractAndPrintNetlistInfo(const std::string &verilog_file, const std::string &cell) {
@@ -977,6 +1152,12 @@ void extractAndPrintNetlistInfo(const std::string &verilog_file, const std::stri
       spdlog::info("  - {}", name);
     }
 
+    const auto &wires = extractor.getInternalWires();
+    spdlog::info("Found {} Internal Wires:", wires.size());
+    for (const auto &name : wires) {
+      spdlog::info("  - {}", name);
+    }
+
     const auto &gates = extractor.getExtractedGates();
     spdlog::info("Found {} Gate Drivers:", gates.size());
     for (const auto &pair : gates) {
@@ -996,4 +1177,46 @@ void extractAndPrintNetlistInfo(const std::string &verilog_file, const std::stri
   } catch (...) {
     spdlog::error("Unknown exception during Verilog parsing or info extraction.");
   }
+}
+
+// --- (Step 2: Extract Logic Expressions) ---
+
+std::map<std::string, std::string> extractLogicFromVerilog(const std::string &verilog_file,
+                                                           const std::string &cell) {
+  spdlog::info("--- Starting Logic Expression Extraction for cell: '{}' ---", cell);
+  std::map<std::string, std::string> logicMap; // Default empty map
+
+  try {
+    auto result = slang::syntax::SyntaxTree::fromFile(verilog_file);
+    if (!result) {
+      spdlog::error("Error parsing Verilog file '{}'. Cannot extract logic.", verilog_file);
+      return logicMap;
+    }
+
+    spdlog::info("Successfully parsed Verilog file.");
+    std::shared_ptr<slang::syntax::SyntaxTree> tree = result.value();
+
+    LogicExtractor extractor(cell);
+    tree->root().visit(extractor); // Populate extractor's internal state
+
+    // Now, call the method to derive and get the expressions
+    logicMap = extractor.getLogicExpressions();
+
+  } catch (const std::exception &e) {
+    spdlog::error("Exception during Verilog parsing or logic extraction: {}", e.what());
+  } catch (...) {
+    spdlog::error("Unknown exception during Verilog parsing or logic extraction.");
+  }
+
+  if (logicMap.empty()) {
+    spdlog::warn("Logic extraction finished, but no expressions were derived for cell '{}'. Check "
+                 "if cell exists and is correctly defined.",
+                 cell);
+  } else {
+    spdlog::info("Logic extraction completed for cell '{}'. Found {} output expression strings", cell,
+                 logicMap.size());
+  }
+
+  spdlog::info("--- End Logic Expression Extraction ---");
+  return logicMap;
 }
