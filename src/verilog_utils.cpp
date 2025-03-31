@@ -611,40 +611,6 @@ void getAST(const std::string &verilog_file, const std::string &cell) {
 
 // --- Implementation for LogicExtractor ---
 
-// Helper to get signal name from common expression types
-std::string LogicExtractor::getSignalName(const slang::syntax::ExpressionSyntax *expr) {
-  if (!expr)
-    return "";
-
-  // Handle simple identifiers directly used as expressions (most common in connections)
-  if (auto idName = expr->as_if<slang::syntax::IdentifierNameSyntax>()) {
-    if (idName->identifier.valid()) {
-      return std::string(idName->identifier.valueText());
-    }
-  }
-  // Handle identifiers selected (e.g., foo in foo[0]) - return the base name 'foo'
-  if (auto idSelect = expr->as_if<slang::syntax::IdentifierSelectNameSyntax>()) {
-    if (idSelect->identifier.valid()) {
-      return std::string(idSelect->identifier.valueText());
-    }
-  }
-  // Handle NameSyntax directly, which IdentifierNameSyntax inherits from
-  if (auto name = expr->as_if<slang::syntax::NameSyntax>()) {
-    // This might be broader, check if it gives useful results
-    // Let's try getting the first token's text
-    auto firstTok = name->getFirstToken();
-    if (firstTok.valid()) {
-      return std::string(firstTok.valueText());
-    }
-  }
-  // Handle concatenations? Might return a complex string or need specific handling.
-  // For now, focus on simple identifiers.
-  spdlog::warn(
-      "LogicExtractor: Could not extract simple signal name from expression kind: {}. Expr: {}",
-      slang::syntax::toString(expr->kind), expr->toString());
-  return ""; // Or throw an error
-}
-
 void LogicExtractor::handle(const slang::syntax::ModuleDeclarationSyntax &module) {
   if (parsingComplete_)
     return; // Don't re-process if called again
@@ -720,8 +686,27 @@ void LogicExtractor::handle(const slang::syntax::PortDeclarationSyntax &portDecl
                      "one ('{}'). New direction: '{}'",
                      portName, portDirections_[portName], direction);
       } else {
-        spdlog::debug("LogicExtractor: Storing direction '{}' for port '{}'", direction, portName);
+        spdlog::info("LogicExtractor: Storing direction '{}' for port '{}'", direction, portName);
         portDirections_[portName] = direction;
+        if (direction == "input") {
+          primaryInputs_.insert(portName);
+          internalWires_.insert(portName); // Inputs are also technically 'wires' usable internally
+        } else if (direction == "output") {
+          primaryOutputs_.insert(portName);
+          internalWires_.insert(portName); // Outputs are also wires driven by something
+        } else if (direction == "inout") {
+          spdlog::info("LogicExtractor: Inout port '{}' found. Adding to both inputs and outputs.",
+                       portName);
+          primaryInputs_.insert(portName);
+          primaryOutputs_.insert(portName);
+          internalWires_.insert(portName);
+        } else {
+          spdlog::warn("LogicExtractor: Port '{}' found in declaration but has unknown or missing "
+                       "direction '{}'. Treating as internal wire.",
+                       portName, direction);
+          internalWires_.insert(portName);
+        }
+        // logicCache_[portName] = portName; // For Step 2
       }
     } else {
       spdlog::warn(
@@ -760,7 +745,7 @@ void LogicExtractor::handle(const slang::syntax::NonAnsiPortListSyntax &portList
           continue; // Skip complex ports for now
         } else {
           // Fallback: try getting name from the expression directly (might be just identifier)
-          portName = getSignalName(implicitPort->expr->as_if<slang::syntax::ExpressionSyntax>());
+          portName = implicitPort->toString();
         }
       }
     }
@@ -782,7 +767,7 @@ void LogicExtractor::handle(const slang::syntax::NonAnsiPortListSyntax &portList
       continue;
     }
 
-    // Now we (hopefully) have the portName. Look up its direction.
+    // Now we (hopefully) have the portName.
     if (!portName.empty()) {
       if (portDirections_.count(portName)) {
         const std::string &direction = portDirections_[portName];
@@ -797,7 +782,7 @@ void LogicExtractor::handle(const slang::syntax::NonAnsiPortListSyntax &portList
           primaryOutputs_.insert(portName);
           internalWires_.insert(portName); // Outputs are also wires driven by something
         } else if (direction == "inout") {
-          spdlog::warn("LogicExtractor: Inout port '{}' found. Adding to both inputs and outputs.",
+          spdlog::info("LogicExtractor: Inout port '{}' found. Adding to both inputs and outputs.",
                        portName);
           primaryInputs_.insert(portName);
           primaryOutputs_.insert(portName);
@@ -810,11 +795,8 @@ void LogicExtractor::handle(const slang::syntax::NonAnsiPortListSyntax &portList
           internalWires_.insert(portName);
         }
       } else {
-        spdlog::warn("LogicExtractor: Port '{}' found in NonAnsi list but no direction declaration "
-                     "found. Treating as internal wire.",
-                     portName);
-        // Add to internalWires_ so it's recognized if used later
-        internalWires_.insert(portName);
+        spdlog::debug("LogicExtractor: Port '{}' found in NonAnsi list, no direction declaration ",
+                      portName);
       }
     } else {
       spdlog::warn("LogicExtractor: Could not determine port name from NonAnsi port list item: {}",
@@ -892,7 +874,7 @@ void LogicExtractor::handle(const slang::syntax::PrimitiveInstantiationSyntax &p
     if (auto firstConn =
             instance->connections[0]->as_if<slang::syntax::OrderedPortConnectionSyntax>()) {
       currentGateInfo.outputSignal =
-          getSignalName(firstConn->expr->as_if<slang::syntax::ExpressionSyntax>());
+          firstConn->toString(); // Get the output signal name from the connection
       if (!currentGateInfo.outputSignal.empty()) {
         spdlog::debug("  Output Signal: {}", currentGateInfo.outputSignal);
         // Gate outputs are internal signals (unless they are module outputs)
@@ -924,7 +906,7 @@ void LogicExtractor::handle(const slang::syntax::PrimitiveInstantiationSyntax &p
       }
       if (auto conn =
               instance->connections[i]->as_if<slang::syntax::OrderedPortConnectionSyntax>()) {
-        std::string inputSig = getSignalName(conn->expr->as_if<slang::syntax::ExpressionSyntax>());
+        std::string inputSig = conn->toString(); // Get the input signal name from the connection
         if (!inputSig.empty()) {
           currentGateInfo.inputSignals.push_back(inputSig);
           spdlog::debug("  Input Signal {}: {}", i, inputSig);

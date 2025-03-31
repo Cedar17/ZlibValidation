@@ -116,7 +116,8 @@ public:
   handle(const slang::syntax::NonAnsiPortListSyntax &portList); // Handles port names list in header
   void
   handle(const slang::syntax::NetDeclarationSyntax &netDecl); // To find explicitly declared wires
-  void handle(const slang::syntax::PrimitiveInstantiationSyntax &primitiveInst);
+  void handle(const slang::syntax::PrimitiveInstantiationSyntax
+                  &primitiveInst); // Handles gate instantiation
   // Potentially handle ContinuousAssignSyntax if needed later:
   // void handle(const slang::syntax::ContinuousAssignSyntax& assign);
 
@@ -157,7 +158,6 @@ private:
   // Helper to format expressions based on gate type (Used in Step 2)
   // std::string formatExpression(const GateInfo &gateInfo, const std::vector<std::string>
   // &inputExprs); Helper to get signal name from an expression syntax node
-  std::string getSignalName(const slang::syntax::ExpressionSyntax *expr);
 };
 
 // --- Function Declaration ---

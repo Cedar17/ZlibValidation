@@ -37,7 +37,7 @@ void printInfo() {
   console_sink->set_level(spdlog::level::info);
   std::string app_name = APP_NAME;
   auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(app_name + ".log", true);
-  file_sink->set_level(spdlog::level::debug);
+  file_sink->set_level(spdlog::level::trace);
 
   std::vector<spdlog::sink_ptr> sinks{console_sink, file_sink};
   auto logger = std::make_shared<spdlog::logger>(APP_NAME, sinks.begin(), sinks.end());
@@ -309,7 +309,7 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
 
     if (comp_ext == ".v") {
       // comp_outpin_map = getLogic(comp_file, cell);
-      getAST(comp_file, cell);
+      // getAST(comp_file, cell);
       extractAndPrintNetlistInfo(comp_file, cell);
     } else if (comp_ext == ".lib") {
       comp_outpin_map = comp_libfile->logic(cell);
