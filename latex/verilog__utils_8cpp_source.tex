@@ -606,409 +606,391 @@
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00611}00611 }
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00612}00612 \textcolor{comment}{// -\/-\/-\/ Implementation for LogicExtractor -\/-\/-\/}}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00613}00613 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00614}00614 \textcolor{comment}{// Helper to get signal name from common expression types}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00615}\mbox{\hyperlink{classLogicExtractor_aa06d1e17b192b7fded62d3ba8086ca38}{00615}} std::string \mbox{\hyperlink{classLogicExtractor_aa06d1e17b192b7fded62d3ba8086ca38}{LogicExtractor::getSignalName}}(\textcolor{keyword}{const} slang::syntax::ExpressionSyntax *expr) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00616}00616   \textcolor{keywordflow}{if} (!expr)}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00617}00617     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00618}00618 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00619}00619   \textcolor{comment}{// Handle simple identifiers directly used as expressions (most common in connections)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00620}00620   \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} idName = expr-\/>as\_if<slang::syntax::IdentifierNameSyntax>()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00621}00621     \textcolor{keywordflow}{if} (idName-\/>identifier.valid()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00622}00622       \textcolor{keywordflow}{return} std::string(idName-\/>identifier.valueText());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00623}00623     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00624}00624   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00625}00625   \textcolor{comment}{// Handle identifiers selected (e.g., foo in foo[0]) -\/ return the base name 'foo'}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00626}00626   \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} idSelect = expr-\/>as\_if<slang::syntax::IdentifierSelectNameSyntax>()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00627}00627     \textcolor{keywordflow}{if} (idSelect-\/>identifier.valid()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00628}00628       \textcolor{keywordflow}{return} std::string(idSelect-\/>identifier.valueText());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00629}00629     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00630}00630   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00631}00631   \textcolor{comment}{// Handle NameSyntax directly, which IdentifierNameSyntax inherits from}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00632}00632   \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} name = expr-\/>as\_if<slang::syntax::NameSyntax>()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00633}00633     \textcolor{comment}{// This might be broader, check if it gives useful results}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00634}00634     \textcolor{comment}{// Let's try getting the first token's text}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00635}00635     \textcolor{keyword}{auto} firstTok = name-\/>getFirstToken();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00636}00636     \textcolor{keywordflow}{if} (firstTok.valid()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00637}00637       \textcolor{keywordflow}{return} std::string(firstTok.valueText());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00638}00638     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00639}00639   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00640}00640   \textcolor{comment}{// Handle concatenations? Might return a complex string or need specific handling.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00641}00641   \textcolor{comment}{// For now, focus on simple identifiers.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00642}00642   spdlog::warn(}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00643}00643       \textcolor{stringliteral}{"{}LogicExtractor: Could not extract simple signal name from expression kind: \{\}. Expr: \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00644}00644       slang::syntax::toString(expr-\/>kind), expr-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00645}00645   \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}"{}}; \textcolor{comment}{// Or throw an error}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00646}00646 \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00647}00647 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00648}\mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{00648}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{LogicExtractor::handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00649}00649   \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}})}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00650}00650     \textcolor{keywordflow}{return}; \textcolor{comment}{// Don't re-\/process if called again}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00651}00651 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00652}00652   \textcolor{keywordflow}{if} (module.header \&\& module.header-\/>name.valid()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00653}00653     std::string\_view moduleName = module.header-\/>name.valueText();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00654}00654     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}}.empty() \&\& moduleName == \mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}}) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00655}00655       spdlog::info(\textcolor{stringliteral}{"{}LogicExtractor: Found target module: \{\}"{}}, \mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00656}00656       \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}} = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00657}00657 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00658}00658       \textcolor{comment}{// Reset state for the target module}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00659}00659       \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}.clear();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00660}00660       \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}.clear();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00661}00661       \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.clear();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00662}00662       \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}.clear(); \textcolor{comment}{// Clear temporary direction map}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00663}00663       \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}}.clear();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00664}00664       \textcolor{comment}{// logicCache\_.clear(); // For Step 2}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00665}00665 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00666}00666       \textcolor{comment}{// Visit children (ports, declarations, instances) IN ORDER}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00667}00667       \textcolor{comment}{// It's often better to visit declarations first, then the port list}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00668}00668       \textcolor{comment}{// Slang's default visitDefault might handle this, but be aware.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00669}00669       \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00670}00670 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00671}00671       \textcolor{comment}{// -\/-\/-\/ Finalize Ports after visiting declarations and port list -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00672}00672       \textcolor{comment}{// This part might be better placed *after* visiting NonAnsiPortList,}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00673}00673       \textcolor{comment}{// assuming the list visit confirms the names from the header.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00674}00674       \textcolor{comment}{// Let's move the finalization logic to handle(NonAnsiPortListSyntax)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00675}00675 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00676}00676       \textcolor{comment}{// Mark that we finished processing the target module}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00677}00677       \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}} = \textcolor{keyword}{false}; \textcolor{comment}{// Important to prevent processing other modules}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00678}00678       \mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}} = \textcolor{keyword}{true}; \textcolor{comment}{// Stop processing after finding the target}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00679}00679       spdlog::info(\textcolor{stringliteral}{"{}LogicExtractor: Finished visiting target module '\{\}'."{}}, \mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00614}\mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{00614}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{LogicExtractor::handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00615}00615   \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}})}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00616}00616     \textcolor{keywordflow}{return}; \textcolor{comment}{// Don't re-\/process if called again}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00617}00617 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00618}00618   \textcolor{keywordflow}{if} (module.header \&\& module.header-\/>name.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00619}00619     std::string\_view moduleName = module.header-\/>name.valueText();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00620}00620     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}}.empty() \&\& moduleName == \mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00621}00621       spdlog::info(\textcolor{stringliteral}{"{}LogicExtractor: Found target module: \{\}"{}}, \mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00622}00622       \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00623}00623 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00624}00624       \textcolor{comment}{// Reset state for the target module}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00625}00625       \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}.clear();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00626}00626       \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}.clear();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00627}00627       \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.clear();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00628}00628       \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}.clear(); \textcolor{comment}{// Clear temporary direction map}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00629}00629       \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}}.clear();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00630}00630       \textcolor{comment}{// logicCache\_.clear(); // For Step 2}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00631}00631 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00632}00632       \textcolor{comment}{// Visit children (ports, declarations, instances) IN ORDER}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00633}00633       \textcolor{comment}{// It's often better to visit declarations first, then the port list}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00634}00634       \textcolor{comment}{// Slang's default visitDefault might handle this, but be aware.}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00635}00635       \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00636}00636 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00637}00637       \textcolor{comment}{// -\/-\/-\/ Finalize Ports after visiting declarations and port list -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00638}00638       \textcolor{comment}{// This part might be better placed *after* visiting NonAnsiPortList,}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00639}00639       \textcolor{comment}{// assuming the list visit confirms the names from the header.}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00640}00640       \textcolor{comment}{// Let's move the finalization logic to handle(NonAnsiPortListSyntax)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00641}00641 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00642}00642       \textcolor{comment}{// Mark that we finished processing the target module}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00643}00643       \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}} = \textcolor{keyword}{false}; \textcolor{comment}{// Important to prevent processing other modules}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00644}00644       \mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}} = \textcolor{keyword}{true}; \textcolor{comment}{// Stop processing after finding the target}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00645}00645       spdlog::info(\textcolor{stringliteral}{"{}LogicExtractor: Finished visiting target module '\{\}'."{}}, \mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00646}00646 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00647}00647     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00648}00648       \textcolor{comment}{// If not the target module yet, continue searching}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00649}00649       \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00650}00650     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00651}00651   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00652}00652     \textcolor{comment}{// Handle modules without valid headers if necessary, or just traverse}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00653}00653     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00654}00654   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00655}00655 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00656}00656 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00657}00657 \textcolor{comment}{// Handle Port Declarations (defines direction and type, usually inside module body)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00658}\mbox{\hyperlink{classLogicExtractor_a8c4196c94570f6689ee5a68afd38eaad}{00658}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{LogicExtractor::handle}}(\textcolor{keyword}{const} slang::syntax::PortDeclarationSyntax \&portDecl) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00659}00659   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}})}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00660}00660     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00661}00661   spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Handling Port Declaration"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00662}00662 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00663}00663   std::string direction = \textcolor{stringliteral}{"{}unknown"{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00664}00664   \textcolor{keywordflow}{if} (portDecl.header) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00665}00665     \textcolor{comment}{// Determine direction (input/output/inout)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00666}00666     \textcolor{comment}{// Important: Use valueText() as Slang typically represents keywords as text tokens}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00667}00667     \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} varHeader = portDecl.header-\/>as\_if<slang::syntax::VariablePortHeaderSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00668}00668       \textcolor{keywordflow}{if} (varHeader-\/>direction.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00669}00669         direction = std::string(varHeader-\/>direction.valueText());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00670}00670       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00671}00671     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} netHeader = portDecl.header-\/>as\_if<slang::syntax::NetPortHeaderSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00672}00672       \textcolor{keywordflow}{if} (netHeader-\/>direction.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00673}00673         direction = std::string(netHeader-\/>direction.valueText());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00674}00674       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00675}00675     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00676}00676     \textcolor{comment}{// Add InterfacePortHeaderSyntax if needed}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00677}00677   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00678}00678     spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Port declaration without header found."{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00679}00679   \}}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00680}00680 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00681}00681     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00682}00682       \textcolor{comment}{// If not the target module yet, continue searching}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00683}00683       \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00684}00684     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00685}00685   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00686}00686     \textcolor{comment}{// Handle modules without valid headers if necessary, or just traverse}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00687}00687     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00688}00688   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00689}00689 \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00690}00690 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00691}00691 \textcolor{comment}{// Handle Port Declarations (defines direction and type, usually inside module body)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00692}\mbox{\hyperlink{classLogicExtractor_a8c4196c94570f6689ee5a68afd38eaad}{00692}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{LogicExtractor::handle}}(\textcolor{keyword}{const} slang::syntax::PortDeclarationSyntax \&portDecl) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00693}00693   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}})}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00694}00694     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00695}00695   spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Handling Port Declaration"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00696}00696 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00697}00697   std::string direction = \textcolor{stringliteral}{"{}unknown"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00698}00698   \textcolor{keywordflow}{if} (portDecl.header) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00699}00699     \textcolor{comment}{// Determine direction (input/output/inout)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00700}00700     \textcolor{comment}{// Important: Use valueText() as Slang typically represents keywords as text tokens}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00701}00701     \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} varHeader = portDecl.header-\/>as\_if<slang::syntax::VariablePortHeaderSyntax>()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00702}00702       \textcolor{keywordflow}{if} (varHeader-\/>direction.valid()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00703}00703         direction = std::string(varHeader-\/>direction.valueText());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00704}00704       \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00705}00705     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} netHeader = portDecl.header-\/>as\_if<slang::syntax::NetPortHeaderSyntax>()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00706}00706       \textcolor{keywordflow}{if} (netHeader-\/>direction.valid()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00707}00707         direction = std::string(netHeader-\/>direction.valueText());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00708}00708       \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00709}00709     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00710}00710     \textcolor{comment}{// Add InterfacePortHeaderSyntax if needed}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00711}00711   \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00712}00712     spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Port declaration without header found."{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00713}00713   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00714}00714 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00715}00715   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&declarator : portDecl.declarators) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00716}00716     \textcolor{keywordflow}{if} (declarator-\/>name.valid()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00717}00717       std::string portName = std::string(declarator-\/>name.valueText());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00718}00718       \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}.count(portName) \&\& \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}[portName] != \textcolor{stringliteral}{"{}unknown"{}}) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00719}00719         spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Multiple direction declarations for port '\{\}'. Keeping first "{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00720}00720                      \textcolor{stringliteral}{"{}one ('\{\}'). New direction: '\{\}'"{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00721}00721                      portName, \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}[portName], direction);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00722}00722       \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00723}00723         spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Storing direction '\{\}' for port '\{\}'"{}}, direction, portName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00724}00724         \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}[portName] = direction;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00725}00725       \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00726}00726     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00727}00727       spdlog::warn(}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00728}00728           \textcolor{stringliteral}{"{}LogicExtractor: Port declarator without a name found in PortDeclarationSyntax."{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00729}00729     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00730}00730   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00731}00731   \textcolor{comment}{// Don't call visitDefault here, as it might revisit things unexpectedly.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00732}00732   \textcolor{comment}{// Let the main module visitor handle traversing into children if necessary.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00733}00733 \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00734}00734 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00735}00735 \textcolor{comment}{// Handle Non-\/ANSI Port List (defines names, usually in module header)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00736}\mbox{\hyperlink{classLogicExtractor_a29481733320a0fb7b1f4f59ecc3fb5d0}{00736}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{LogicExtractor::handle}}(\textcolor{keyword}{const} slang::syntax::NonAnsiPortListSyntax \&portList) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00737}00737   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}})}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00738}00738     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00739}00739   spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Handling NonAnsi Port List"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00740}00740 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00741}00741   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} portSyntax : portList.ports) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00742}00742     \textcolor{keywordflow}{if} (!portSyntax)}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00743}00743       \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00744}00744 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00745}00745     std::string portName = \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00746}00746     \textcolor{comment}{// Most common case: ImplicitNonAnsiPortSyntax contains the expression (usually just the name)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00747}00747     \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} implicitPort = portSyntax-\/>as\_if<slang::syntax::ImplicitNonAnsiPortSyntax>()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00748}00748       \textcolor{keywordflow}{if} (implicitPort-\/>expr) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00749}00749         \textcolor{comment}{// The expression itself might be complex, try to get the simple name}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00750}00750         \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} portRef = implicitPort-\/>expr-\/>as\_if<slang::syntax::PortReferenceSyntax>()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00751}00751           \textcolor{keywordflow}{if} (portRef-\/>name.valid()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00752}00752             portName = std::string(portRef-\/>name.valueText());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00753}00753           \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00754}00754         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} portConcat =}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00755}00755                        implicitPort-\/>expr-\/>as\_if<slang::syntax::PortConcatenationSyntax>()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00756}00756           \textcolor{comment}{// Handle concatenations if necessary -\/ complex}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00757}00757           spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Port concatenation found in NonAnsi port list -\/ currently "{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00758}00758                        \textcolor{stringliteral}{"{}not fully handled for logic extraction. Port: \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00759}00759                        implicitPort-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00760}00760           \textcolor{keywordflow}{continue}; \textcolor{comment}{// Skip complex ports for now}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00761}00761         \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00762}00762           \textcolor{comment}{// Fallback: try getting name from the expression directly (might be just identifier)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00763}00763           portName = \mbox{\hyperlink{classLogicExtractor_aa06d1e17b192b7fded62d3ba8086ca38}{getSignalName}}(implicitPort-\/>expr-\/>as\_if<slang::syntax::ExpressionSyntax>());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00764}00764         \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00765}00765       \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00766}00766     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00767}00767     \textcolor{comment}{// Handle ExplicitNonAnsiPortSyntax (e.g., .A(A)) if needed}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00768}00768     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} explicitPort = portSyntax-\/>as\_if<slang::syntax::ExplicitNonAnsiPortSyntax>()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00769}00769       \textcolor{keywordflow}{if} (explicitPort-\/>name.valid()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00770}00770         portName = std::string(explicitPort-\/>name.valueText());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00771}00771         \textcolor{comment}{// Note: explicitPort-\/>expr is the internal signal it connects to.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00772}00772         \textcolor{comment}{// We are primarily interested in the port's own name (explicitPort-\/>name) here.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00773}00773       \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00774}00774     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00775}00775     \textcolor{comment}{// Handle EmptyNonAnsiPortSyntax (commas for placeholders) if necessary}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00776}00776     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (portSyntax-\/>kind == slang::syntax::SyntaxKind::EmptyNonAnsiPort) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00777}00777       spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Skipping empty non-\/ANSI port placeholder."{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00778}00778       \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00779}00779     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00780}00780       spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Unhandled NonAnsi port syntax kind: \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00781}00781                    slang::syntax::toString(portSyntax-\/>kind));}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00782}00782       \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00783}00783     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00784}00784 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00785}00785     \textcolor{comment}{// Now we (hopefully) have the portName. Look up its direction.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00786}00786     \textcolor{keywordflow}{if} (!portName.empty()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00787}00787       \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}.count(portName)) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00788}00788         \textcolor{keyword}{const} std::string \&direction = \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}[portName];}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00789}00789         spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Finalizing port '\{\}' with direction '\{\}'"{}}, portName,}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00790}00790                       direction);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00791}00791 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00792}00792         \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}input"{}}) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00793}00793           \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}.insert(portName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00794}00794           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName); \textcolor{comment}{// Inputs are also technically 'wires' usable internally}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00795}00795                                            \textcolor{comment}{// logicCache\_[portName] = portName; // For Step 2}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00796}00796         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}output"{}}) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00797}00797           \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}.insert(portName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00798}00798           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName); \textcolor{comment}{// Outputs are also wires driven by something}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00799}00799         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}inout"{}}) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00800}00800           spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Inout port '\{\}' found. Adding to both inputs and outputs."{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00801}00801                        portName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00802}00802           \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}.insert(portName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00803}00803           \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}.insert(portName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00804}00804           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00805}00805           \textcolor{comment}{// logicCache\_[portName] = portName; // For Step 2}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00806}00806         \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00807}00807           spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Port '\{\}' found in list but has unknown or missing "{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00808}00808                        \textcolor{stringliteral}{"{}direction '\{\}'. Treating as internal wire."{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00809}00809                        portName, direction);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00810}00810           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00811}00811         \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00812}00812       \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00813}00813         spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Port '\{\}' found in NonAnsi list but no direction declaration "{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00814}00814                      \textcolor{stringliteral}{"{}found. Treating as internal wire."{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00815}00815                      portName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00816}00816         \textcolor{comment}{// Add to internalWires\_ so it's recognized if used later}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00817}00817         \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00818}00818       \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00819}00819     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00820}00820       spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Could not determine port name from NonAnsi port list item: \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00821}00821                    portSyntax-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00822}00822     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00823}00823   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00824}00824   \textcolor{comment}{// Don't call visitDefault here}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00825}00825 \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00826}00826 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00827}00827 \textcolor{comment}{// Handle explicit wire declarations}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00828}\mbox{\hyperlink{classLogicExtractor_aa0da0dc5655fa5d4105875b466ab90ff}{00828}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{LogicExtractor::handle}}(\textcolor{keyword}{const} slang::syntax::NetDeclarationSyntax \&netDecl) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00829}00829   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}})}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00830}00830     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00831}00831 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00832}00832   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&declarator : netDecl.declarators) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00833}00833     \textcolor{keywordflow}{if} (declarator-\/>name.valid()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00834}00834       std::string wireName = std::string(declarator-\/>name.valueText());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00835}00835       spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Found wire declaration: \{\}"{}}, wireName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00836}00836       \textcolor{comment}{// Avoid adding ports again if they were also declared as nets (common)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00837}00837       \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}.count(wireName) \&\& !\mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}.count(wireName)) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00838}00838         \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(wireName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00839}00839       \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00840}00840         spdlog::trace(\textcolor{stringliteral}{"{}LogicExtractor: Wire '\{\}' is already known as a port."{}}, wireName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00841}00841       \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00842}00842     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00843}00843   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00844}00844   \textcolor{comment}{// Don't call visitDefault here}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00845}00845 \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00846}00846 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00847}00847 \textcolor{comment}{// Handle primitive gate instantiations (MOST IMPORTANT PART)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00848}\mbox{\hyperlink{classLogicExtractor_a9f79d51e917503506632eeecb2a2a2f0}{00848}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{LogicExtractor::handle}}(\textcolor{keyword}{const} slang::syntax::PrimitiveInstantiationSyntax \&primitiveInst) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00849}00849   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}})}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00850}00850     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00851}00851 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00852}00852   \textcolor{keywordflow}{if} (!primitiveInst.type.valid()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00853}00853     spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Primitive instance without a type token found."{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00854}00854     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00855}00855   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00856}00856 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00857}00857   \textcolor{comment}{// Use token kind for reliable checking, text for name storage}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00858}00858   slang::parsing::TokenKind gateKind = primitiveInst.type.kind;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00859}00859   std::string gateTypeName = std::string(primitiveInst.type.valueText());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00860}00860 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00861}00861   spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Found Primitive Instance of Type: \{\} (Kind: \{\})"{}}, gateTypeName,}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00862}00862                 slang::parsing::toString(gateKind));}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00863}00863 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00864}00864   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&instance : primitiveInst.instances) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00865}00865     \textcolor{comment}{// if (!instance || !instance-\/>connections.isInitialized()) \{ // Check if connections are valid}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00866}00866     \textcolor{comment}{//   spdlog::warn("{}LogicExtractor: Skipping primitive instance of type \{\} due to null pointer or}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00867}00867     \textcolor{comment}{//   "{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00868}00868     \textcolor{comment}{//                "{}uninitialized connections."{},}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00869}00869     \textcolor{comment}{//                gateTypeName);}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00870}00870     \textcolor{comment}{//   continue;}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00871}00871     \textcolor{comment}{// \}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00872}00872 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00873}00873     \mbox{\hyperlink{structGateInfo}{GateInfo}} currentGateInfo;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00874}00874     currentGateInfo.\mbox{\hyperlink{structGateInfo_a81e41d3db5fa85b69bbbc8d4d38a3d51}{gateTypeName}} = gateTypeName;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00875}00875     currentGateInfo.\mbox{\hyperlink{structGateInfo_a8e4b8c967fffb9f3e5044e8ef184e811}{kind}} = gateKind;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00876}00876 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00877}00877     \textcolor{comment}{// Primitives usually have ordered connections.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00878}00878     \textcolor{comment}{// The FIRST connection is typically the OUTPUT.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00879}00879     \textcolor{comment}{// The REST are INPUTS.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00880}00880     \textcolor{keywordflow}{if} (instance-\/>connections.empty()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00881}00881       spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Gate instance of type \{\} has no connections."{}}, gateTypeName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00882}00882       \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00883}00883     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00884}00884 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00885}00885     \textcolor{comment}{// Extract Output Signal}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00886}00886     \textcolor{comment}{// Ensure the connection itself is not null}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00887}00887     \textcolor{keywordflow}{if} (!instance-\/>connections[0]) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00888}00888       spdlog::error(\textcolor{stringliteral}{"{}LogicExtractor: First connection (output) is null for primitive \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00889}00889                     gateTypeName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00890}00890       \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00891}00891     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00892}00892     \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} firstConn =}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00893}00893             instance-\/>connections[0]-\/>as\_if<slang::syntax::OrderedPortConnectionSyntax>()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00894}00894       currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}} =}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00895}00895           \mbox{\hyperlink{classLogicExtractor_aa06d1e17b192b7fded62d3ba8086ca38}{getSignalName}}(firstConn-\/>expr-\/>as\_if<slang::syntax::ExpressionSyntax>());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00896}00896       \textcolor{keywordflow}{if} (!currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}}.empty()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00897}00897         spdlog::debug(\textcolor{stringliteral}{"{}  Output Signal: \{\}"{}}, currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00898}00898         \textcolor{comment}{// Gate outputs are internal signals (unless they are module outputs)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00899}00899         \textcolor{comment}{// Add to internal wires if not already a primary output.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00900}00900         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}.count(currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}})) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00901}00901           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00902}00902         \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00903}00903       \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00904}00904         spdlog::error(}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00905}00905             \textcolor{stringliteral}{"{}LogicExtractor: Could not determine output signal name for gate instance of type \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00906}00906             gateTypeName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00907}00907         \textcolor{keywordflow}{continue}; \textcolor{comment}{// Skip this instance if output is unknown}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00908}00908       \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00909}00909     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00910}00910       spdlog::error(\textcolor{stringliteral}{"{}LogicExtractor: Expected OrderedPortConnectionSyntax for output of primitive "{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00911}00911                     \textcolor{stringliteral}{"{}\{\}, but got kind: \{\}. Conn: \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00912}00912                     gateTypeName, slang::syntax::toString(instance-\/>connections[0]-\/>kind),}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00913}00913                     instance-\/>connections[0]-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00914}00914       \textcolor{keywordflow}{continue}; \textcolor{comment}{// Skip this instance}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00915}00915     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00916}00916 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00917}00917     \textcolor{comment}{// Extract Input Signals}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00918}00918     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i < instance-\/>connections.size(); ++i) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00919}00919       \textcolor{comment}{// Ensure the connection itself is not null}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00920}00920       \textcolor{keywordflow}{if} (!instance-\/>connections[i]) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00921}00921         spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Input connection \{\} is null for primitive \{\}"{}}, i,}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00922}00922                      gateTypeName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00923}00923         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00681}00681   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&declarator : portDecl.declarators) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00682}00682     \textcolor{keywordflow}{if} (declarator-\/>name.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00683}00683       std::string portName = std::string(declarator-\/>name.valueText());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00684}00684       \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}.count(portName) \&\& \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}[portName] != \textcolor{stringliteral}{"{}unknown"{}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00685}00685         spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Multiple direction declarations for port '\{\}'. Keeping first "{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00686}00686                      \textcolor{stringliteral}{"{}one ('\{\}'). New direction: '\{\}'"{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00687}00687                      portName, \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}[portName], direction);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00688}00688       \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00689}00689         spdlog::info(\textcolor{stringliteral}{"{}LogicExtractor: Storing direction '\{\}' for port '\{\}'"{}}, direction, portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00690}00690         \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}[portName] = direction;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00691}00691         \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}input"{}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00692}00692           \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}.insert(portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00693}00693           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName); \textcolor{comment}{// Inputs are also technically 'wires' usable internally}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00694}00694         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}output"{}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00695}00695           \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}.insert(portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00696}00696           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName); \textcolor{comment}{// Outputs are also wires driven by something}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00697}00697         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}inout"{}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00698}00698           spdlog::info(\textcolor{stringliteral}{"{}LogicExtractor: Inout port '\{\}' found. Adding to both inputs and outputs."{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00699}00699                        portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00700}00700           \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}.insert(portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00701}00701           \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}.insert(portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00702}00702           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00703}00703         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00704}00704           spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Port '\{\}' found in declaration but has unknown or missing "{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00705}00705                        \textcolor{stringliteral}{"{}direction '\{\}'. Treating as internal wire."{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00706}00706                        portName, direction);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00707}00707           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00708}00708         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00709}00709         \textcolor{comment}{// logicCache\_[portName] = portName; // For Step 2}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00710}00710       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00711}00711     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00712}00712       spdlog::warn(}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00713}00713           \textcolor{stringliteral}{"{}LogicExtractor: Port declarator without a name found in PortDeclarationSyntax."{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00714}00714     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00715}00715   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00716}00716   \textcolor{comment}{// Don't call visitDefault here, as it might revisit things unexpectedly.}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00717}00717   \textcolor{comment}{// Let the main module visitor handle traversing into children if necessary.}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00718}00718 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00719}00719 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00720}00720 \textcolor{comment}{// Handle Non-\/ANSI Port List (defines names, usually in module header)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00721}\mbox{\hyperlink{classLogicExtractor_a29481733320a0fb7b1f4f59ecc3fb5d0}{00721}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{LogicExtractor::handle}}(\textcolor{keyword}{const} slang::syntax::NonAnsiPortListSyntax \&portList) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00722}00722   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}})}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00723}00723     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00724}00724   spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Handling NonAnsi Port List"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00725}00725 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00726}00726   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} portSyntax : portList.ports) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00727}00727     \textcolor{keywordflow}{if} (!portSyntax)}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00728}00728       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00729}00729 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00730}00730     std::string portName = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00731}00731     \textcolor{comment}{// Most common case: ImplicitNonAnsiPortSyntax contains the expression (usually just the name)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00732}00732     \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} implicitPort = portSyntax-\/>as\_if<slang::syntax::ImplicitNonAnsiPortSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00733}00733       \textcolor{keywordflow}{if} (implicitPort-\/>expr) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00734}00734         \textcolor{comment}{// The expression itself might be complex, try to get the simple name}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00735}00735         \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} portRef = implicitPort-\/>expr-\/>as\_if<slang::syntax::PortReferenceSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00736}00736           \textcolor{keywordflow}{if} (portRef-\/>name.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00737}00737             portName = std::string(portRef-\/>name.valueText());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00738}00738           \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00739}00739         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} portConcat =}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00740}00740                        implicitPort-\/>expr-\/>as\_if<slang::syntax::PortConcatenationSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00741}00741           \textcolor{comment}{// Handle concatenations if necessary -\/ complex}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00742}00742           spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Port concatenation found in NonAnsi port list -\/ currently "{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00743}00743                        \textcolor{stringliteral}{"{}not fully handled for logic extraction. Port: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00744}00744                        implicitPort-\/>toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00745}00745           \textcolor{keywordflow}{continue}; \textcolor{comment}{// Skip complex ports for now}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00746}00746         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00747}00747           \textcolor{comment}{// Fallback: try getting name from the expression directly (might be just identifier)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00748}00748           portName = implicitPort-\/>toString();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00749}00749         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00750}00750       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00751}00751     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00752}00752     \textcolor{comment}{// Handle ExplicitNonAnsiPortSyntax (e.g., .A(A)) if needed}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00753}00753     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} explicitPort = portSyntax-\/>as\_if<slang::syntax::ExplicitNonAnsiPortSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00754}00754       \textcolor{keywordflow}{if} (explicitPort-\/>name.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00755}00755         portName = std::string(explicitPort-\/>name.valueText());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00756}00756         \textcolor{comment}{// Note: explicitPort-\/>expr is the internal signal it connects to.}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00757}00757         \textcolor{comment}{// We are primarily interested in the port's own name (explicitPort-\/>name) here.}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00758}00758       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00759}00759     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00760}00760     \textcolor{comment}{// Handle EmptyNonAnsiPortSyntax (commas for placeholders) if necessary}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00761}00761     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (portSyntax-\/>kind == slang::syntax::SyntaxKind::EmptyNonAnsiPort) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00762}00762       spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Skipping empty non-\/ANSI port placeholder."{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00763}00763       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00764}00764     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00765}00765       spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Unhandled NonAnsi port syntax kind: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00766}00766                    slang::syntax::toString(portSyntax-\/>kind));}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00767}00767       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00768}00768     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00769}00769 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00770}00770     \textcolor{comment}{// Now we (hopefully) have the portName.}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00771}00771     \textcolor{keywordflow}{if} (!portName.empty()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00772}00772       \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}.count(portName)) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00773}00773         \textcolor{keyword}{const} std::string \&direction = \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}}[portName];}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00774}00774         spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Finalizing port '\{\}' with direction '\{\}'"{}}, portName,}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00775}00775                       direction);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00776}00776 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00777}00777         \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}input"{}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00778}00778           \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}.insert(portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00779}00779           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName); \textcolor{comment}{// Inputs are also technically 'wires' usable internally}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00780}00780                                            \textcolor{comment}{// logicCache\_[portName] = portName; // For Step 2}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00781}00781         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}output"{}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00782}00782           \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}.insert(portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00783}00783           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName); \textcolor{comment}{// Outputs are also wires driven by something}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00784}00784         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (direction == \textcolor{stringliteral}{"{}inout"{}}) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00785}00785           spdlog::info(\textcolor{stringliteral}{"{}LogicExtractor: Inout port '\{\}' found. Adding to both inputs and outputs."{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00786}00786                        portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00787}00787           \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}.insert(portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00788}00788           \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}.insert(portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00789}00789           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00790}00790           \textcolor{comment}{// logicCache\_[portName] = portName; // For Step 2}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00791}00791         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00792}00792           spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Port '\{\}' found in list but has unknown or missing "{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00793}00793                        \textcolor{stringliteral}{"{}direction '\{\}'. Treating as internal wire."{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00794}00794                        portName, direction);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00795}00795           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00796}00796         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00797}00797       \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00798}00798         spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Port '\{\}' found in NonAnsi list, no direction declaration "{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00799}00799                       portName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00800}00800       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00801}00801     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00802}00802       spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Could not determine port name from NonAnsi port list item: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00803}00803                    portSyntax-\/>toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00804}00804     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00805}00805   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00806}00806   \textcolor{comment}{// Don't call visitDefault here}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00807}00807 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00808}00808 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00809}00809 \textcolor{comment}{// Handle explicit wire declarations}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00810}\mbox{\hyperlink{classLogicExtractor_aa0da0dc5655fa5d4105875b466ab90ff}{00810}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{LogicExtractor::handle}}(\textcolor{keyword}{const} slang::syntax::NetDeclarationSyntax \&netDecl) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00811}00811   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}})}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00812}00812     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00813}00813 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00814}00814   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&declarator : netDecl.declarators) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00815}00815     \textcolor{keywordflow}{if} (declarator-\/>name.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00816}00816       std::string wireName = std::string(declarator-\/>name.valueText());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00817}00817       spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Found wire declaration: \{\}"{}}, wireName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00818}00818       \textcolor{comment}{// Avoid adding ports again if they were also declared as nets (common)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00819}00819       \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}.count(wireName) \&\& !\mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}.count(wireName)) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00820}00820         \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(wireName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00821}00821       \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00822}00822         spdlog::trace(\textcolor{stringliteral}{"{}LogicExtractor: Wire '\{\}' is already known as a port."{}}, wireName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00823}00823       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00824}00824     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00825}00825   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00826}00826   \textcolor{comment}{// Don't call visitDefault here}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00827}00827 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00828}00828 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00829}00829 \textcolor{comment}{// Handle primitive gate instantiations (MOST IMPORTANT PART)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00830}\mbox{\hyperlink{classLogicExtractor_a9f79d51e917503506632eeecb2a2a2f0}{00830}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{LogicExtractor::handle}}(\textcolor{keyword}{const} slang::syntax::PrimitiveInstantiationSyntax \&primitiveInst) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00831}00831   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}})}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00832}00832     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00833}00833 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00834}00834   \textcolor{keywordflow}{if} (!primitiveInst.type.valid()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00835}00835     spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Primitive instance without a type token found."{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00836}00836     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00837}00837   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00838}00838 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00839}00839   \textcolor{comment}{// Use token kind for reliable checking, text for name storage}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00840}00840   slang::parsing::TokenKind gateKind = primitiveInst.type.kind;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00841}00841   std::string gateTypeName = std::string(primitiveInst.type.valueText());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00842}00842 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00843}00843   spdlog::debug(\textcolor{stringliteral}{"{}LogicExtractor: Found Primitive Instance of Type: \{\} (Kind: \{\})"{}}, gateTypeName,}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00844}00844                 slang::parsing::toString(gateKind));}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00845}00845 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00846}00846   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&instance : primitiveInst.instances) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00847}00847     \textcolor{comment}{// if (!instance || !instance-\/>connections.isInitialized()) \{ // Check if connections are valid}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00848}00848     \textcolor{comment}{//   spdlog::warn("{}LogicExtractor: Skipping primitive instance of type \{\} due to null pointer or}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00849}00849     \textcolor{comment}{//   "{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00850}00850     \textcolor{comment}{//                "{}uninitialized connections."{},}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00851}00851     \textcolor{comment}{//                gateTypeName);}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00852}00852     \textcolor{comment}{//   continue;}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00853}00853     \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00854}00854 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00855}00855     \mbox{\hyperlink{structGateInfo}{GateInfo}} currentGateInfo;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00856}00856     currentGateInfo.\mbox{\hyperlink{structGateInfo_a81e41d3db5fa85b69bbbc8d4d38a3d51}{gateTypeName}} = gateTypeName;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00857}00857     currentGateInfo.\mbox{\hyperlink{structGateInfo_a8e4b8c967fffb9f3e5044e8ef184e811}{kind}} = gateKind;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00858}00858 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00859}00859     \textcolor{comment}{// Primitives usually have ordered connections.}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00860}00860     \textcolor{comment}{// The FIRST connection is typically the OUTPUT.}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00861}00861     \textcolor{comment}{// The REST are INPUTS.}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00862}00862     \textcolor{keywordflow}{if} (instance-\/>connections.empty()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00863}00863       spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Gate instance of type \{\} has no connections."{}}, gateTypeName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00864}00864       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00865}00865     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00866}00866 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00867}00867     \textcolor{comment}{// Extract Output Signal}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00868}00868     \textcolor{comment}{// Ensure the connection itself is not null}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00869}00869     \textcolor{keywordflow}{if} (!instance-\/>connections[0]) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00870}00870       spdlog::error(\textcolor{stringliteral}{"{}LogicExtractor: First connection (output) is null for primitive \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00871}00871                     gateTypeName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00872}00872       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00873}00873     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00874}00874     \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} firstConn =}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00875}00875             instance-\/>connections[0]-\/>as\_if<slang::syntax::OrderedPortConnectionSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00876}00876       currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}} =}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00877}00877           firstConn-\/>toString(); \textcolor{comment}{// Get the output signal name from the connection}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00878}00878       \textcolor{keywordflow}{if} (!currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}}.empty()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00879}00879         spdlog::debug(\textcolor{stringliteral}{"{}  Output Signal: \{\}"{}}, currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00880}00880         \textcolor{comment}{// Gate outputs are internal signals (unless they are module outputs)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00881}00881         \textcolor{comment}{// Add to internal wires if not already a primary output.}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00882}00882         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}.count(currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}})) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00883}00883           \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}.insert(currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00884}00884         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00885}00885       \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00886}00886         spdlog::error(}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00887}00887             \textcolor{stringliteral}{"{}LogicExtractor: Could not determine output signal name for gate instance of type \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00888}00888             gateTypeName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00889}00889         \textcolor{keywordflow}{continue}; \textcolor{comment}{// Skip this instance if output is unknown}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00890}00890       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00891}00891     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00892}00892       spdlog::error(\textcolor{stringliteral}{"{}LogicExtractor: Expected OrderedPortConnectionSyntax for output of primitive "{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00893}00893                     \textcolor{stringliteral}{"{}\{\}, but got kind: \{\}. Conn: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00894}00894                     gateTypeName, slang::syntax::toString(instance-\/>connections[0]-\/>kind),}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00895}00895                     instance-\/>connections[0]-\/>toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00896}00896       \textcolor{keywordflow}{continue}; \textcolor{comment}{// Skip this instance}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00897}00897     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00898}00898 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00899}00899     \textcolor{comment}{// Extract Input Signals}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00900}00900     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 1; i < instance-\/>connections.size(); ++i) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00901}00901       \textcolor{comment}{// Ensure the connection itself is not null}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00902}00902       \textcolor{keywordflow}{if} (!instance-\/>connections[i]) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00903}00903         spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Input connection \{\} is null for primitive \{\}"{}}, i,}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00904}00904                      gateTypeName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00905}00905         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00906}00906       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00907}00907       \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} conn =}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00908}00908               instance-\/>connections[i]-\/>as\_if<slang::syntax::OrderedPortConnectionSyntax>()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00909}00909         std::string inputSig = conn-\/>toString(); \textcolor{comment}{// Get the input signal name from the connection}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00910}00910         \textcolor{keywordflow}{if} (!inputSig.empty()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00911}00911           currentGateInfo.\mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{inputSignals}}.push\_back(inputSig);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00912}00912           spdlog::debug(\textcolor{stringliteral}{"{}  Input Signal \{\}: \{\}"{}}, i, inputSig);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00913}00913         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00914}00914           spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Could not determine input signal name for input \{\} of gate "{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00915}00915                        \textcolor{stringliteral}{"{}instance type \{\}. Conn: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00916}00916                        i, gateTypeName, conn-\/>toString());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00917}00917           \textcolor{comment}{// Decide whether to skip or continue with partial inputs}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00918}00918         \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00919}00919       \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00920}00920         spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Expected OrderedPortConnectionSyntax for input \{\} of "{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00921}00921                      \textcolor{stringliteral}{"{}primitive \{\}, but got kind: \{\}. Conn: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00922}00922                      i, gateTypeName, slang::syntax::toString(instance-\/>connections[i]-\/>kind),}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00923}00923                      instance-\/>connections[i]-\/>toString());}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00924}00924       \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00925}00925       \textcolor{keywordflow}{if} (\textcolor{keyword}{auto} conn =}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00926}00926               instance-\/>connections[i]-\/>as\_if<slang::syntax::OrderedPortConnectionSyntax>()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00927}00927         std::string inputSig = \mbox{\hyperlink{classLogicExtractor_aa06d1e17b192b7fded62d3ba8086ca38}{getSignalName}}(conn-\/>expr-\/>as\_if<slang::syntax::ExpressionSyntax>());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00928}00928         \textcolor{keywordflow}{if} (!inputSig.empty()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00929}00929           currentGateInfo.\mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{inputSignals}}.push\_back(inputSig);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00930}00930           spdlog::debug(\textcolor{stringliteral}{"{}  Input Signal \{\}: \{\}"{}}, i, inputSig);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00931}00931         \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00932}00932           spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Could not determine input signal name for input \{\} of gate "{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00933}00933                        \textcolor{stringliteral}{"{}instance type \{\}. Conn: \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00934}00934                        i, gateTypeName, conn-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00935}00935           \textcolor{comment}{// Decide whether to skip or continue with partial inputs}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00936}00936         \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00937}00937       \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00938}00938         spdlog::warn(\textcolor{stringliteral}{"{}LogicExtractor: Expected OrderedPortConnectionSyntax for input \{\} of "{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00939}00939                      \textcolor{stringliteral}{"{}primitive \{\}, but got kind: \{\}. Conn: \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00940}00940                      i, gateTypeName, slang::syntax::toString(instance-\/>connections[i]-\/>kind),}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00941}00941                      instance-\/>connections[i]-\/>toString());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00942}00942       \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00943}00943     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00944}00944 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00945}00945     \textcolor{comment}{// Store the gate information, mapping the output signal to its driving gate}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00946}00946     \textcolor{keywordflow}{if} (!currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}}.empty()) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00947}00947       \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}}.count(currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}})) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00948}00948         \textcolor{comment}{// This is a critical warning -\/ indicates multiple drivers for the same net!}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00949}00949         spdlog::error(\textcolor{stringliteral}{"{}LogicExtractor: Multiple drivers found for signal '\{\}'! Previous driver: "{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00950}00950                       \textcolor{stringliteral}{"{}\{\}, New driver: \{\}. Netlist is likely invalid."{}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00951}00951                       currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00952}00952                       \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}}[currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}}].gateTypeName, gateTypeName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00953}00953         \textcolor{comment}{// Keep the first one found for now, or decide on error handling}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00954}00954       \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00955}00955         spdlog::info(\textcolor{stringliteral}{"{}  Storing driver for '\{\}': Gate Type '\{\}'"{}}, currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}},}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00956}00956                      gateTypeName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00957}00957         \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}}[currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}}] = currentGateInfo;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00958}00958       \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00959}00959     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00960}00960   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00961}00961   \textcolor{comment}{// Don't call visitDefault here}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00962}00962 \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00963}00963 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00964}00964 \textcolor{comment}{// -\/-\/-\/ New Function Implementation (Step 1: Visit and Print) -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00965}00965 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00966}\mbox{\hyperlink{verilog__utils_8hpp_a2276f971f6bd1d8f34f635811cc65e08}{00966}} \textcolor{keywordtype}{void} \mbox{\hyperlink{verilog__utils_8cpp_a2276f971f6bd1d8f34f635811cc65e08}{extractAndPrintNetlistInfo}}(\textcolor{keyword}{const} std::string \&verilog\_file, \textcolor{keyword}{const} std::string \&cell) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00967}00967   spdlog::info(\textcolor{stringliteral}{"{}-\/-\/-\/ Step 1: Starting Netlist Info Extraction -\/-\/-\/"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00968}00968   spdlog::info(\textcolor{stringliteral}{"{}Verilog file: '\{\}', Target cell: '\{\}'"{}}, verilog\_file, cell);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00969}00969 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00970}00970   \textcolor{keywordflow}{try} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00971}00971     \textcolor{keyword}{auto} result = \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aee79423807e68c2a5cca99281285dbc0}{slang::syntax::SyntaxTree::fromFile}}(verilog\_file);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00972}00972     \textcolor{keywordflow}{if} (!result) \{ \textcolor{comment}{// Check if result is valid}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00973}00973       spdlog::error(\textcolor{stringliteral}{"{}Error parsing Verilog file '\{\}'. Cannot extract info."{}}, verilog\_file);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00974}00974       \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00975}00975     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00976}00976 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00977}00977     spdlog::info(\textcolor{stringliteral}{"{}Successfully parsed Verilog file."{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00978}00978     std::shared\_ptr<slang::syntax::SyntaxTree> tree = result.value();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00925}00925     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00926}00926 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00927}00927     \textcolor{comment}{// Store the gate information, mapping the output signal to its driving gate}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00928}00928     \textcolor{keywordflow}{if} (!currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}}.empty()) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00929}00929       \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}}.count(currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}})) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00930}00930         \textcolor{comment}{// This is a critical warning -\/ indicates multiple drivers for the same net!}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00931}00931         spdlog::error(\textcolor{stringliteral}{"{}LogicExtractor: Multiple drivers found for signal '\{\}'! Previous driver: "{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00932}00932                       \textcolor{stringliteral}{"{}\{\}, New driver: \{\}. Netlist is likely invalid."{}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00933}00933                       currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00934}00934                       \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}}[currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}}].gateTypeName, gateTypeName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00935}00935         \textcolor{comment}{// Keep the first one found for now, or decide on error handling}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00936}00936       \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00937}00937         spdlog::info(\textcolor{stringliteral}{"{}  Storing driver for '\{\}': Gate Type '\{\}'"{}}, currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}},}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00938}00938                      gateTypeName);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00939}00939         \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}}[currentGateInfo.\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}}] = currentGateInfo;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00940}00940       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00941}00941     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00942}00942   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00943}00943   \textcolor{comment}{// Don't call visitDefault here}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00944}00944 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00945}00945 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00946}00946 \textcolor{comment}{// -\/-\/-\/ New Function Implementation (Step 1: Visit and Print) -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00947}00947 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00948}\mbox{\hyperlink{verilog__utils_8hpp_a2276f971f6bd1d8f34f635811cc65e08}{00948}} \textcolor{keywordtype}{void} \mbox{\hyperlink{verilog__utils_8cpp_a2276f971f6bd1d8f34f635811cc65e08}{extractAndPrintNetlistInfo}}(\textcolor{keyword}{const} std::string \&verilog\_file, \textcolor{keyword}{const} std::string \&cell) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00949}00949   spdlog::info(\textcolor{stringliteral}{"{}-\/-\/-\/ Step 1: Starting Netlist Info Extraction -\/-\/-\/"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00950}00950   spdlog::info(\textcolor{stringliteral}{"{}Verilog file: '\{\}', Target cell: '\{\}'"{}}, verilog\_file, cell);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00951}00951 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00952}00952   \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00953}00953     \textcolor{keyword}{auto} result = \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aee79423807e68c2a5cca99281285dbc0}{slang::syntax::SyntaxTree::fromFile}}(verilog\_file);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00954}00954     \textcolor{keywordflow}{if} (!result) \{ \textcolor{comment}{// Check if result is valid}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00955}00955       spdlog::error(\textcolor{stringliteral}{"{}Error parsing Verilog file '\{\}'. Cannot extract info."{}}, verilog\_file);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00956}00956       \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00957}00957     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00958}00958 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00959}00959     spdlog::info(\textcolor{stringliteral}{"{}Successfully parsed Verilog file."{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00960}00960     std::shared\_ptr<slang::syntax::SyntaxTree> tree = result.value();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00961}00961 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00962}00962     \mbox{\hyperlink{classLogicExtractor}{LogicExtractor}} extractor(cell);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00963}00963     tree-\/>root().visit(extractor); \textcolor{comment}{// Populate extractor's internal state}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00964}00964 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00965}00965     \textcolor{comment}{// -\/-\/-\/ Print Summary (Debug for Step 1) -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00966}00966     spdlog::info(\textcolor{stringliteral}{"{}-\/-\/-\/ Extraction Summary for Cell '\{\}': -\/-\/-\/"{}}, cell);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00967}00967 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00968}00968     \textcolor{keyword}{const} \textcolor{keyword}{auto} \&inputs = extractor.\mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{getPrimaryInputs}}();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00969}00969     spdlog::info(\textcolor{stringliteral}{"{}Found \{\} Primary Inputs:"{}}, inputs.size());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00970}00970     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&name : inputs) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00971}00971       spdlog::info(\textcolor{stringliteral}{"{}  -\/ \{\}"{}}, name);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00972}00972     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00973}00973 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00974}00974     \textcolor{keyword}{const} \textcolor{keyword}{auto} \&outputs = extractor.\mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{getPrimaryOutputs}}();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00975}00975     spdlog::info(\textcolor{stringliteral}{"{}Found \{\} Primary Outputs:"{}}, outputs.size());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00976}00976     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&name : outputs) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00977}00977       spdlog::info(\textcolor{stringliteral}{"{}  -\/ \{\}"{}}, name);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00978}00978     \}}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00979}00979 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00980}00980     \mbox{\hyperlink{classLogicExtractor}{LogicExtractor}} extractor(cell);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00981}00981     tree-\/>root().visit(extractor); \textcolor{comment}{// Populate extractor's internal state}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00982}00982 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00983}00983     \textcolor{comment}{// -\/-\/-\/ Print Summary (Debug for Step 1) -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00984}00984     spdlog::info(\textcolor{stringliteral}{"{}-\/-\/-\/ Extraction Summary for Cell '\{\}': -\/-\/-\/"{}}, cell);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00985}00985 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00986}00986     \textcolor{keyword}{const} \textcolor{keyword}{auto} \&inputs = extractor.\mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{getPrimaryInputs}}();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00987}00987     spdlog::info(\textcolor{stringliteral}{"{}Found \{\} Primary Inputs:"{}}, inputs.size());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00988}00988     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&name : inputs) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00989}00989       spdlog::info(\textcolor{stringliteral}{"{}  -\/ \{\}"{}}, name);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00990}00990     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00991}00991 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00992}00992     \textcolor{keyword}{const} \textcolor{keyword}{auto} \&outputs = extractor.\mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{getPrimaryOutputs}}();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00993}00993     spdlog::info(\textcolor{stringliteral}{"{}Found \{\} Primary Outputs:"{}}, outputs.size());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00994}00994     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&name : outputs) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00995}00995       spdlog::info(\textcolor{stringliteral}{"{}  -\/ \{\}"{}}, name);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00996}00996     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00997}00997 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00998}00998     \textcolor{keyword}{const} \textcolor{keyword}{auto} \&gates = extractor.\mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{getExtractedGates}}();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00999}00999     spdlog::info(\textcolor{stringliteral}{"{}Found \{\} Gate Drivers:"{}}, gates.size());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01000}01000     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pair : gates) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01001}01001       \textcolor{keyword}{const} std::string \&outputNet = pair.first;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01002}01002       \textcolor{keyword}{const} \mbox{\hyperlink{structGateInfo}{GateInfo}} \&info = pair.second;}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01003}01003       std::string inputsStr = \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01004}01004       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < info.\mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{inputSignals}}.size(); ++i) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01005}01005         inputsStr += info.\mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{inputSignals}}[i] + (i == info.\mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{inputSignals}}.size() -\/ 1 ? \textcolor{stringliteral}{"{}"{}} : \textcolor{stringliteral}{"{}, "{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01006}01006       \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01007}01007       spdlog::info(\textcolor{stringliteral}{"{}  -\/ Output: \{\} <= Driven by: \{\} (\{\}) Inputs: [\{\}]"{}}, outputNet,}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01008}01008                    info.\mbox{\hyperlink{structGateInfo_a81e41d3db5fa85b69bbbc8d4d38a3d51}{gateTypeName}}, slang::parsing::toString(info.\mbox{\hyperlink{structGateInfo_a8e4b8c967fffb9f3e5044e8ef184e811}{kind}}), inputsStr);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01009}01009     \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01010}01010     spdlog::info(\textcolor{stringliteral}{"{}-\/-\/-\/ End Netlist Info Extraction -\/-\/-\/"{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01011}01011 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01012}01012   \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception \&e) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01013}01013     spdlog::error(\textcolor{stringliteral}{"{}Exception during Verilog parsing or info extraction: \{\}"{}}, e.what());}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01014}01014   \} \textcolor{keywordflow}{catch} (...) \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01015}01015     spdlog::error(\textcolor{stringliteral}{"{}Unknown exception during Verilog parsing or info extraction."{}});}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01016}01016   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l01017}01017 \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00980}00980     \textcolor{keyword}{const} \textcolor{keyword}{auto} \&gates = extractor.\mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{getExtractedGates}}();}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00981}00981     spdlog::info(\textcolor{stringliteral}{"{}Found \{\} Gate Drivers:"{}}, gates.size());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00982}00982     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pair : gates) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00983}00983       \textcolor{keyword}{const} std::string \&outputNet = pair.first;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00984}00984       \textcolor{keyword}{const} \mbox{\hyperlink{structGateInfo}{GateInfo}} \&info = pair.second;}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00985}00985       std::string inputsStr = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00986}00986       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < info.\mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{inputSignals}}.size(); ++i) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00987}00987         inputsStr += info.\mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{inputSignals}}[i] + (i == info.\mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{inputSignals}}.size() -\/ 1 ? \textcolor{stringliteral}{"{}"{}} : \textcolor{stringliteral}{"{}, "{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00988}00988       \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00989}00989       spdlog::info(\textcolor{stringliteral}{"{}  -\/ Output: \{\} <= Driven by: \{\} (\{\}) Inputs: [\{\}]"{}}, outputNet,}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00990}00990                    info.\mbox{\hyperlink{structGateInfo_a81e41d3db5fa85b69bbbc8d4d38a3d51}{gateTypeName}}, slang::parsing::toString(info.\mbox{\hyperlink{structGateInfo_a8e4b8c967fffb9f3e5044e8ef184e811}{kind}}), inputsStr);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00991}00991     \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00992}00992     spdlog::info(\textcolor{stringliteral}{"{}-\/-\/-\/ End Netlist Info Extraction -\/-\/-\/"{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00993}00993 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00994}00994   \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception \&e) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00995}00995     spdlog::error(\textcolor{stringliteral}{"{}Exception during Verilog parsing or info extraction: \{\}"{}}, e.what());}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00996}00996   \} \textcolor{keywordflow}{catch} (...) \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00997}00997     spdlog::error(\textcolor{stringliteral}{"{}Unknown exception during Verilog parsing or info extraction."{}});}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00998}00998   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8cpp_source_l00999}00999 \}}
 
 \end{DoxyCode}

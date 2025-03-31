@@ -26,7 +26,7 @@
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037   console\_sink-\/>set\_level(spdlog::level::info);}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038   std::string app\_name = \mbox{\hyperlink{version_8h_af0b5cfa4242ae7f98ba80fd23ef8afa9}{APP\_NAME}};}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039   \textcolor{keyword}{auto} file\_sink = std::make\_shared<spdlog::sinks::basic\_file\_sink\_mt>(app\_name + \textcolor{stringliteral}{"{}.log"{}}, \textcolor{keyword}{true});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040   file\_sink-\/>set\_level(spdlog::level::debug);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040   file\_sink-\/>set\_level(spdlog::level::trace);}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041 }
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042   std::vector<spdlog::sink\_ptr> sinks\{console\_sink, file\_sink\};}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043   \textcolor{keyword}{auto} logger = std::make\_shared<spdlog::logger>(\mbox{\hyperlink{version_8h_af0b5cfa4242ae7f98ba80fd23ef8afa9}{APP\_NAME}}, sinks.begin(), sinks.end());}
@@ -221,7 +221,7 @@
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00309}00309 }
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00310}00310     \textcolor{keywordflow}{if} (comp\_ext == \textcolor{stringliteral}{"{}.v"{}}) \{}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00311}00311       \textcolor{comment}{// comp\_outpin\_map = getLogic(comp\_file, cell);}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00312}00312       \mbox{\hyperlink{verilog__utils_8hpp_a7ec07bd8417a22f2aee362bd59199997}{getAST}}(comp\_file, cell);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00312}00312       \textcolor{comment}{// getAST(comp\_file, cell);}}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00313}00313       \mbox{\hyperlink{verilog__utils_8hpp_a2276f971f6bd1d8f34f635811cc65e08}{extractAndPrintNetlistInfo}}(comp\_file, cell);}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00314}00314     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (comp\_ext == \textcolor{stringliteral}{"{}.lib"{}}) \{}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00315}00315       comp\_outpin\_map = comp\_libfile-\/>\mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{logic}}(cell);}

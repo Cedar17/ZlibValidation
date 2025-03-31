@@ -28,10 +28,9 @@ var searchData=
   ['getname_25',['getName',['../classLibGroup.html#a5de2a5c697f684c1d809c3e944cf6db0',1,'LibGroup::getName()'],['../classLibAttribute.html#af1ea12ff0eae79e5303b2a6fd0ac2c52',1,'LibAttribute::getName()']]],
   ['getprimaryinputs_26',['getPrimaryInputs',['../classLogicExtractor.html#a8bd2720fc5c89953124e82e56cd0d13d',1,'LogicExtractor']]],
   ['getprimaryoutputs_27',['getPrimaryOutputs',['../classLogicExtractor.html#a9086b5ae491778be70e0f78f83bf7b77',1,'LogicExtractor']]],
-  ['getsignalname_28',['getSignalName',['../classLogicExtractor.html#aa06d1e17b192b7fded62d3ba8086ca38',1,'LogicExtractor']]],
-  ['getsourcelibrary_29',['getSourceLibrary',['../classslang_1_1syntax_1_1SyntaxTree.html#adfb240a7e54274c7a92587491f6606e4',1,'slang::syntax::SyntaxTree']]],
-  ['getstring_30',['getString',['../classLibAttribute.html#aa3cb7b40fb5997fd0f9bd2992e3809e6',1,'LibAttribute']]],
-  ['gettype_31',['getType',['../classLibGroup.html#a276eb509d5bc526c08feb562ce182f4d',1,'LibGroup']]],
-  ['getvalues_32',['getValues',['../classLibAttribute.html#a1e75b7b406371300da5ed2b8722c56a7',1,'LibAttribute']]],
-  ['groupsiterator_33',['GroupsIterator',['../classGroupsIterator.html#a9435305043df352f41a6badd1268f140',1,'GroupsIterator']]]
+  ['getsourcelibrary_28',['getSourceLibrary',['../classslang_1_1syntax_1_1SyntaxTree.html#adfb240a7e54274c7a92587491f6606e4',1,'slang::syntax::SyntaxTree']]],
+  ['getstring_29',['getString',['../classLibAttribute.html#aa3cb7b40fb5997fd0f9bd2992e3809e6',1,'LibAttribute']]],
+  ['gettype_30',['getType',['../classLibGroup.html#a276eb509d5bc526c08feb562ce182f4d',1,'LibGroup']]],
+  ['getvalues_31',['getValues',['../classLibAttribute.html#a1e75b7b406371300da5ed2b8722c56a7',1,'LibAttribute']]],
+  ['groupsiterator_32',['GroupsIterator',['../classGroupsIterator.html#a9435305043df352f41a6badd1268f140',1,'GroupsIterator']]]
 ];

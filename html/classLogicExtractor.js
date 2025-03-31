@@ -4,7 +4,6 @@ var classLogicExtractor =
     [ "getExtractedGates", "classLogicExtractor.html#a1526e2569cae9fee072b8fc90c159567", null ],
     [ "getPrimaryInputs", "classLogicExtractor.html#a8bd2720fc5c89953124e82e56cd0d13d", null ],
     [ "getPrimaryOutputs", "classLogicExtractor.html#a9086b5ae491778be70e0f78f83bf7b77", null ],
-    [ "getSignalName", "classLogicExtractor.html#aa06d1e17b192b7fded62d3ba8086ca38", null ],
     [ "handle", "classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a", null ],
     [ "handle", "classLogicExtractor.html#aa0da0dc5655fa5d4105875b466ab90ff", null ],
     [ "handle", "classLogicExtractor.html#a29481733320a0fb7b1f4f59ecc3fb5d0", null ],

@@ -31,12 +31,11 @@ var searchData=
   ['getname_28',['getName',['../classLibGroup.html#a5de2a5c697f684c1d809c3e944cf6db0',1,'LibGroup::getName()'],['../classLibAttribute.html#af1ea12ff0eae79e5303b2a6fd0ac2c52',1,'LibAttribute::getName()']]],
   ['getprimaryinputs_29',['getPrimaryInputs',['../classLogicExtractor.html#a8bd2720fc5c89953124e82e56cd0d13d',1,'LogicExtractor']]],
   ['getprimaryoutputs_30',['getPrimaryOutputs',['../classLogicExtractor.html#a9086b5ae491778be70e0f78f83bf7b77',1,'LogicExtractor']]],
-  ['getsignalname_31',['getSignalName',['../classLogicExtractor.html#aa06d1e17b192b7fded62d3ba8086ca38',1,'LogicExtractor']]],
-  ['getsourcelibrary_32',['getSourceLibrary',['../classslang_1_1syntax_1_1SyntaxTree.html#adfb240a7e54274c7a92587491f6606e4',1,'slang::syntax::SyntaxTree']]],
-  ['getstring_33',['getString',['../classLibAttribute.html#aa3cb7b40fb5997fd0f9bd2992e3809e6',1,'LibAttribute']]],
-  ['gettype_34',['getType',['../classLibGroup.html#a276eb509d5bc526c08feb562ce182f4d',1,'LibGroup']]],
-  ['getvalues_35',['getValues',['../classLibAttribute.html#a1e75b7b406371300da5ed2b8722c56a7',1,'LibAttribute']]],
-  ['group_5f_36',['group_',['../classLibGroup.html#a8db4cf0fc8d3cfc5a7aa41b6897ef25c',1,'LibGroup::group_()'],['../classGroupsIterator.html#a810c78c0141d56a48887db5605c0380d',1,'GroupsIterator::group_()']]],
-  ['groups_5f_37',['groups_',['../classGroupsIterator.html#a9be77c4c2b75c53ff7972e812144d916',1,'GroupsIterator']]],
-  ['groupsiterator_38',['GroupsIterator',['../classGroupsIterator.html#a9435305043df352f41a6badd1268f140',1,'GroupsIterator::GroupsIterator()'],['../classGroupsIterator.html',1,'GroupsIterator']]]
+  ['getsourcelibrary_31',['getSourceLibrary',['../classslang_1_1syntax_1_1SyntaxTree.html#adfb240a7e54274c7a92587491f6606e4',1,'slang::syntax::SyntaxTree']]],
+  ['getstring_32',['getString',['../classLibAttribute.html#aa3cb7b40fb5997fd0f9bd2992e3809e6',1,'LibAttribute']]],
+  ['gettype_33',['getType',['../classLibGroup.html#a276eb509d5bc526c08feb562ce182f4d',1,'LibGroup']]],
+  ['getvalues_34',['getValues',['../classLibAttribute.html#a1e75b7b406371300da5ed2b8722c56a7',1,'LibAttribute']]],
+  ['group_5f_35',['group_',['../classLibGroup.html#a8db4cf0fc8d3cfc5a7aa41b6897ef25c',1,'LibGroup::group_()'],['../classGroupsIterator.html#a810c78c0141d56a48887db5605c0380d',1,'GroupsIterator::group_()']]],
+  ['groups_5f_36',['groups_',['../classGroupsIterator.html#a9be77c4c2b75c53ff7972e812144d916',1,'GroupsIterator']]],
+  ['groupsiterator_37',['GroupsIterator',['../classGroupsIterator.html#a9435305043df352f41a6badd1268f140',1,'GroupsIterator::GroupsIterator()'],['../classGroupsIterator.html',1,'GroupsIterator']]]
 ];

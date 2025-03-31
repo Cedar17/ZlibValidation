@@ -120,48 +120,48 @@
 \DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00116}00116   \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::NonAnsiPortListSyntax \&portList); \textcolor{comment}{// Handles port names list in header}}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00117}00117   \textcolor{keywordtype}{void}}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00118}00118   \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::NetDeclarationSyntax \&netDecl); \textcolor{comment}{// To find explicitly declared wires}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00119}00119   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::PrimitiveInstantiationSyntax \&primitiveInst);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00120}00120   \textcolor{comment}{// Potentially handle ContinuousAssignSyntax if needed later:}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00121}00121   \textcolor{comment}{// void handle(const slang::syntax::ContinuousAssignSyntax\& assign);}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00122}00122 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00123}00123   \textcolor{comment}{// -\/-\/-\/ Access Extracted Info (for Step 1 debugging) -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00124}\mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{00124}}   \textcolor{keyword}{const} std::unordered\_map<std::string, GateInfo> \&\mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{getExtractedGates}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00125}00125     \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00126}00126   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00127}\mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{00127}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{getPrimaryInputs}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}; \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00128}\mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{00128}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{getPrimaryOutputs}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}; \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00129}00129 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00130}00130   \textcolor{comment}{// -\/-\/-\/ Logic Derivation (Commented out for Step 1) -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00131}00131   \textcolor{comment}{// std::map<std::string, std::string> getLogicExpressions();}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00132}00132 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00133}00133 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00134}00134   \textcolor{comment}{// -\/-\/-\/ Internal State -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00135}\mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{00135}}   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00136}\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{00136}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00137}\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{00137}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}; \textcolor{comment}{// Flag to indicate AST traversal is done}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00138}00138 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00139}00139   \textcolor{comment}{// Netlist Information}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00140}\mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{00140}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00141}\mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{00141}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00142}\mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{00142}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}; \textcolor{comment}{// Includes gate outputs}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00143}00143 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00144}00144   \textcolor{comment}{// Temporary map to store directions found in PortDeclarationSyntax}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00145}00145   \textcolor{comment}{// Key: port name, Value: direction ("{}input"{}, "{}output"{}, "{}inout"{}, "{}unknown"{})}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00146}\mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{00146}}   std::unordered\_map<std::string, std::string> \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00147}00147 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00148}00148   \textcolor{comment}{// Map: output signal name -\/> GateInfo driving it}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00149}\mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{00149}}   std::unordered\_map<std::string, GateInfo> \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00150}00150 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00151}00151   \textcolor{comment}{// Map: signal name -\/> Logic expression string (Memoization Cache) -\/ (Used in Step 2)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00152}00152   \textcolor{comment}{// std::unordered\_map<std::string, std::string> logicCache\_;}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00153}00153 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00154}00154   \textcolor{comment}{// -\/-\/-\/ Helper Methods -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00155}00155   \textcolor{comment}{// Recursive function to derive logic for a given signal (Used in Step 2)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00156}00156   \textcolor{comment}{// std::string deriveLogicRecursive(const std::string \&signalName);}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00157}00157   \textcolor{comment}{// Helper to format expressions based on gate type (Used in Step 2)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00158}00158   \textcolor{comment}{// std::string formatExpression(const GateInfo \&gateInfo, const std::vector<std::string>}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00159}00159   \textcolor{comment}{// \&inputExprs); Helper to get signal name from an expression syntax node}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00160}00160   std::string \mbox{\hyperlink{classLogicExtractor_aa06d1e17b192b7fded62d3ba8086ca38}{getSignalName}}(\textcolor{keyword}{const} slang::syntax::ExpressionSyntax *expr);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00119}00119   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::PrimitiveInstantiationSyntax}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00120}00120                   \&primitiveInst); \textcolor{comment}{// Handles gate instantiation}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00121}00121   \textcolor{comment}{// Potentially handle ContinuousAssignSyntax if needed later:}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00122}00122   \textcolor{comment}{// void handle(const slang::syntax::ContinuousAssignSyntax\& assign);}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00124}00124   \textcolor{comment}{// -\/-\/-\/ Access Extracted Info (for Step 1 debugging) -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00125}\mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{00125}}   \textcolor{keyword}{const} std::unordered\_map<std::string, GateInfo> \&\mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{getExtractedGates}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00126}00126     \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00127}00127   \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00128}\mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{00128}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{getPrimaryInputs}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}; \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00129}\mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{00129}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{getPrimaryOutputs}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}; \}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00131}00131   \textcolor{comment}{// -\/-\/-\/ Logic Derivation (Commented out for Step 1) -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00132}00132   \textcolor{comment}{// std::map<std::string, std::string> getLogicExpressions();}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00134}00134 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00135}00135   \textcolor{comment}{// -\/-\/-\/ Internal State -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00136}\mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{00136}}   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00137}\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{00137}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00138}\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{00138}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}; \textcolor{comment}{// Flag to indicate AST traversal is done}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00140}00140   \textcolor{comment}{// Netlist Information}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00141}\mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{00141}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00142}\mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{00142}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00143}\mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{00143}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}; \textcolor{comment}{// Includes gate outputs}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00145}00145   \textcolor{comment}{// Temporary map to store directions found in PortDeclarationSyntax}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00146}00146   \textcolor{comment}{// Key: port name, Value: direction ("{}input"{}, "{}output"{}, "{}inout"{}, "{}unknown"{})}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00147}\mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{00147}}   std::unordered\_map<std::string, std::string> \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00149}00149   \textcolor{comment}{// Map: output signal name -\/> GateInfo driving it}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00150}\mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{00150}}   std::unordered\_map<std::string, GateInfo> \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00152}00152   \textcolor{comment}{// Map: signal name -\/> Logic expression string (Memoization Cache) -\/ (Used in Step 2)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00153}00153   \textcolor{comment}{// std::unordered\_map<std::string, std::string> logicCache\_;}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00155}00155   \textcolor{comment}{// -\/-\/-\/ Helper Methods -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00156}00156   \textcolor{comment}{// Recursive function to derive logic for a given signal (Used in Step 2)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00157}00157   \textcolor{comment}{// std::string deriveLogicRecursive(const std::string \&signalName);}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00158}00158   \textcolor{comment}{// Helper to format expressions based on gate type (Used in Step 2)}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00159}00159   \textcolor{comment}{// std::string formatExpression(const GateInfo \&gateInfo, const std::vector<std::string>}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00160}00160   \textcolor{comment}{// \&inputExprs); Helper to get signal name from an expression syntax node}}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00161}00161 \};}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00162}00162 }
 \DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00163}00163 \textcolor{comment}{// -\/-\/-\/ Function Declaration -\/-\/-\/}}

@@ -698,410 +698,392 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span> </div>
 <div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span><span class="comment">// --- Implementation for LogicExtractor ---</span></div>
 <div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span> </div>
-<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span><span class="comment">// Helper to get signal name from common expression types</span></div>
-<div class="line"><a id="l00615" name="l00615"></a><span class="lineno"><a class="line" href="classLogicExtractor.html#aa06d1e17b192b7fded62d3ba8086ca38">  615</a></span>std::string <a class="code hl_function" href="classLogicExtractor.html#aa06d1e17b192b7fded62d3ba8086ca38">LogicExtractor::getSignalName</a>(<span class="keyword">const</span> slang::syntax::ExpressionSyntax *expr) {</div>
-<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>  <span class="keywordflow">if</span> (!expr)</div>
-<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span> </div>
-<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>  <span class="comment">// Handle simple identifiers directly used as expressions (most common in connections)</span></div>
-<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>  <span class="keywordflow">if</span> (<span class="keyword">auto</span> idName = expr-&gt;as_if&lt;slang::syntax::IdentifierNameSyntax&gt;()) {</div>
-<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>    <span class="keywordflow">if</span> (idName-&gt;identifier.valid()) {</div>
-<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>      <span class="keywordflow">return</span> std::string(idName-&gt;identifier.valueText());</div>
-<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>    }</div>
-<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>  }</div>
-<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>  <span class="comment">// Handle identifiers selected (e.g., foo in foo[0]) - return the base name &#39;foo&#39;</span></div>
-<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>  <span class="keywordflow">if</span> (<span class="keyword">auto</span> idSelect = expr-&gt;as_if&lt;slang::syntax::IdentifierSelectNameSyntax&gt;()) {</div>
-<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>    <span class="keywordflow">if</span> (idSelect-&gt;identifier.valid()) {</div>
-<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>      <span class="keywordflow">return</span> std::string(idSelect-&gt;identifier.valueText());</div>
-<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span>    }</div>
-<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>  }</div>
-<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span>  <span class="comment">// Handle NameSyntax directly, which IdentifierNameSyntax inherits from</span></div>
-<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>  <span class="keywordflow">if</span> (<span class="keyword">auto</span> name = expr-&gt;as_if&lt;slang::syntax::NameSyntax&gt;()) {</div>
-<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>    <span class="comment">// This might be broader, check if it gives useful results</span></div>
-<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>    <span class="comment">// Let&#39;s try getting the first token&#39;s text</span></div>
-<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>    <span class="keyword">auto</span> firstTok = name-&gt;getFirstToken();</div>
-<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>    <span class="keywordflow">if</span> (firstTok.valid()) {</div>
-<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>      <span class="keywordflow">return</span> std::string(firstTok.valueText());</div>
-<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>    }</div>
-<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>  }</div>
-<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>  <span class="comment">// Handle concatenations? Might return a complex string or need specific handling.</span></div>
-<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>  <span class="comment">// For now, focus on simple identifiers.</span></div>
-<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>  spdlog::warn(</div>
-<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>      <span class="stringliteral">&quot;LogicExtractor: Could not extract simple signal name from expression kind: {}. Expr: {}&quot;</span>,</div>
-<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>      slang::syntax::toString(expr-&gt;kind), expr-&gt;toString());</div>
-<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>  <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>; <span class="comment">// Or throw an error</span></div>
-<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>}</div>
-<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span> </div>
-<div class="line"><a id="l00648" name="l00648"></a><span class="lineno"><a class="line" href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">  648</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">LogicExtractor::handle</a>(<span class="keyword">const</span> slang::syntax::ModuleDeclarationSyntax &amp;module) {</div>
-<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="classLogicExtractor.html#a7083bd7a416253ba80fdb9fe0c8b9555">parsingComplete_</a>)</div>
-<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>    <span class="keywordflow">return</span>; <span class="comment">// Don&#39;t re-process if called again</span></div>
-<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span> </div>
-<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>  <span class="keywordflow">if</span> (module.header &amp;&amp; module.header-&gt;name.valid()) {</div>
-<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>    std::string_view moduleName = module.header-&gt;name.valueText();</div>
-<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#a9acb02e853246044d71ff25032a19d95">targetCell_</a>.empty() &amp;&amp; moduleName == <a class="code hl_variable" href="classLogicExtractor.html#a9acb02e853246044d71ff25032a19d95">targetCell_</a>) {</div>
-<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>      spdlog::info(<span class="stringliteral">&quot;LogicExtractor: Found target module: {}&quot;</span>, <a class="code hl_variable" href="classLogicExtractor.html#a9acb02e853246044d71ff25032a19d95">targetCell_</a>);</div>
-<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>      <a class="code hl_variable" href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">inTargetModule_</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span> </div>
-<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span>      <span class="comment">// Reset state for the target module</span></div>
-<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>      <a class="code hl_variable" href="classLogicExtractor.html#a9eed76016f8b8e2f9f5c23c8d328c963">primaryInputs_</a>.clear();</div>
-<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>      <a class="code hl_variable" href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">primaryOutputs_</a>.clear();</div>
-<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>      <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.clear();</div>
-<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>      <a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>.clear(); <span class="comment">// Clear temporary direction map</span></div>
-<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>      <a class="code hl_variable" href="classLogicExtractor.html#a07b350897e95e1fcea0794f6dbea02ed">gateOutputDrivers_</a>.clear();</div>
-<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>      <span class="comment">// logicCache_.clear(); // For Step 2</span></div>
-<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span> </div>
-<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>      <span class="comment">// Visit children (ports, declarations, instances) IN ORDER</span></div>
-<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>      <span class="comment">// It&#39;s often better to visit declarations first, then the port list</span></div>
-<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>      <span class="comment">// Slang&#39;s default visitDefault might handle this, but be aware.</span></div>
-<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>      <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a>(module);</div>
-<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span> </div>
-<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>      <span class="comment">// --- Finalize Ports after visiting declarations and port list ---</span></div>
-<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>      <span class="comment">// This part might be better placed *after* visiting NonAnsiPortList,</span></div>
-<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>      <span class="comment">// assuming the list visit confirms the names from the header.</span></div>
-<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>      <span class="comment">// Let&#39;s move the finalization logic to handle(NonAnsiPortListSyntax)</span></div>
-<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span> </div>
-<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>      <span class="comment">// Mark that we finished processing the target module</span></div>
-<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>      <a class="code hl_variable" href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">inTargetModule_</a> = <span class="keyword">false</span>; <span class="comment">// Important to prevent processing other modules</span></div>
-<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>      <a class="code hl_variable" href="classLogicExtractor.html#a7083bd7a416253ba80fdb9fe0c8b9555">parsingComplete_</a> = <span class="keyword">true</span>; <span class="comment">// Stop processing after finding the target</span></div>
-<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>      spdlog::info(<span class="stringliteral">&quot;LogicExtractor: Finished visiting target module &#39;{}&#39;.&quot;</span>, <a class="code hl_variable" href="classLogicExtractor.html#a9acb02e853246044d71ff25032a19d95">targetCell_</a>);</div>
+<div class="line"><a id="l00614" name="l00614"></a><span class="lineno"><a class="line" href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">  614</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">LogicExtractor::handle</a>(<span class="keyword">const</span> slang::syntax::ModuleDeclarationSyntax &amp;module) {</div>
+<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="classLogicExtractor.html#a7083bd7a416253ba80fdb9fe0c8b9555">parsingComplete_</a>)</div>
+<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>    <span class="keywordflow">return</span>; <span class="comment">// Don&#39;t re-process if called again</span></div>
+<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span> </div>
+<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>  <span class="keywordflow">if</span> (module.header &amp;&amp; module.header-&gt;name.valid()) {</div>
+<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>    std::string_view moduleName = module.header-&gt;name.valueText();</div>
+<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#a9acb02e853246044d71ff25032a19d95">targetCell_</a>.empty() &amp;&amp; moduleName == <a class="code hl_variable" href="classLogicExtractor.html#a9acb02e853246044d71ff25032a19d95">targetCell_</a>) {</div>
+<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>      spdlog::info(<span class="stringliteral">&quot;LogicExtractor: Found target module: {}&quot;</span>, <a class="code hl_variable" href="classLogicExtractor.html#a9acb02e853246044d71ff25032a19d95">targetCell_</a>);</div>
+<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>      <a class="code hl_variable" href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">inTargetModule_</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span> </div>
+<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>      <span class="comment">// Reset state for the target module</span></div>
+<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span>      <a class="code hl_variable" href="classLogicExtractor.html#a9eed76016f8b8e2f9f5c23c8d328c963">primaryInputs_</a>.clear();</div>
+<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>      <a class="code hl_variable" href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">primaryOutputs_</a>.clear();</div>
+<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>      <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.clear();</div>
+<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span>      <a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>.clear(); <span class="comment">// Clear temporary direction map</span></div>
+<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span>      <a class="code hl_variable" href="classLogicExtractor.html#a07b350897e95e1fcea0794f6dbea02ed">gateOutputDrivers_</a>.clear();</div>
+<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>      <span class="comment">// logicCache_.clear(); // For Step 2</span></div>
+<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span> </div>
+<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>      <span class="comment">// Visit children (ports, declarations, instances) IN ORDER</span></div>
+<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>      <span class="comment">// It&#39;s often better to visit declarations first, then the port list</span></div>
+<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span>      <span class="comment">// Slang&#39;s default visitDefault might handle this, but be aware.</span></div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>      <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a>(module);</div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span> </div>
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>      <span class="comment">// --- Finalize Ports after visiting declarations and port list ---</span></div>
+<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>      <span class="comment">// This part might be better placed *after* visiting NonAnsiPortList,</span></div>
+<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>      <span class="comment">// assuming the list visit confirms the names from the header.</span></div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>      <span class="comment">// Let&#39;s move the finalization logic to handle(NonAnsiPortListSyntax)</span></div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span> </div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>      <span class="comment">// Mark that we finished processing the target module</span></div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>      <a class="code hl_variable" href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">inTargetModule_</a> = <span class="keyword">false</span>; <span class="comment">// Important to prevent processing other modules</span></div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>      <a class="code hl_variable" href="classLogicExtractor.html#a7083bd7a416253ba80fdb9fe0c8b9555">parsingComplete_</a> = <span class="keyword">true</span>; <span class="comment">// Stop processing after finding the target</span></div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>      spdlog::info(<span class="stringliteral">&quot;LogicExtractor: Finished visiting target module &#39;{}&#39;.&quot;</span>, <a class="code hl_variable" href="classLogicExtractor.html#a9acb02e853246044d71ff25032a19d95">targetCell_</a>);</div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span> </div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#a7083bd7a416253ba80fdb9fe0c8b9555">parsingComplete_</a>) {</div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span>      <span class="comment">// If not the target module yet, continue searching</span></div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span>      <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a>(module);</div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>    }</div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#a7083bd7a416253ba80fdb9fe0c8b9555">parsingComplete_</a>) {</div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>    <span class="comment">// Handle modules without valid headers if necessary, or just traverse</span></div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>    <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a>(module);</div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>  }</div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>}</div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span> </div>
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span><span class="comment">// Handle Port Declarations (defines direction and type, usually inside module body)</span></div>
+<div class="line"><a id="l00658" name="l00658"></a><span class="lineno"><a class="line" href="classLogicExtractor.html#a8c4196c94570f6689ee5a68afd38eaad">  658</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">LogicExtractor::handle</a>(<span class="keyword">const</span> slang::syntax::PortDeclarationSyntax &amp;portDecl) {</div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span>  <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">inTargetModule_</a>)</div>
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno">  660</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>  spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Handling Port Declaration&quot;</span>);</div>
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span> </div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>  std::string direction = <span class="stringliteral">&quot;unknown&quot;</span>;</div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>  <span class="keywordflow">if</span> (portDecl.header) {</div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>    <span class="comment">// Determine direction (input/output/inout)</span></div>
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>    <span class="comment">// Important: Use valueText() as Slang typically represents keywords as text tokens</span></div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> varHeader = portDecl.header-&gt;as_if&lt;slang::syntax::VariablePortHeaderSyntax&gt;()) {</div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span>      <span class="keywordflow">if</span> (varHeader-&gt;direction.valid()) {</div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>        direction = std::string(varHeader-&gt;direction.valueText());</div>
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>      }</div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">auto</span> netHeader = portDecl.header-&gt;as_if&lt;slang::syntax::NetPortHeaderSyntax&gt;()) {</div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>      <span class="keywordflow">if</span> (netHeader-&gt;direction.valid()) {</div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>        direction = std::string(netHeader-&gt;direction.valueText());</div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>      }</div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>    }</div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>    <span class="comment">// Add InterfacePortHeaderSyntax if needed</span></div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>    spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Port declaration without header found.&quot;</span>);</div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>  }</div>
 <div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span> </div>
-<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#a7083bd7a416253ba80fdb9fe0c8b9555">parsingComplete_</a>) {</div>
-<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>      <span class="comment">// If not the target module yet, continue searching</span></div>
-<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>      <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a>(module);</div>
-<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>    }</div>
-<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#a7083bd7a416253ba80fdb9fe0c8b9555">parsingComplete_</a>) {</div>
-<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>    <span class="comment">// Handle modules without valid headers if necessary, or just traverse</span></div>
-<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>    <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a>(module);</div>
-<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>  }</div>
-<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>}</div>
-<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span> </div>
-<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span><span class="comment">// Handle Port Declarations (defines direction and type, usually inside module body)</span></div>
-<div class="line"><a id="l00692" name="l00692"></a><span class="lineno"><a class="line" href="classLogicExtractor.html#a8c4196c94570f6689ee5a68afd38eaad">  692</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">LogicExtractor::handle</a>(<span class="keyword">const</span> slang::syntax::PortDeclarationSyntax &amp;portDecl) {</div>
-<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>  <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">inTargetModule_</a>)</div>
-<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>  spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Handling Port Declaration&quot;</span>);</div>
-<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span> </div>
-<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>  std::string direction = <span class="stringliteral">&quot;unknown&quot;</span>;</div>
-<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>  <span class="keywordflow">if</span> (portDecl.header) {</div>
-<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>    <span class="comment">// Determine direction (input/output/inout)</span></div>
-<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>    <span class="comment">// Important: Use valueText() as Slang typically represents keywords as text tokens</span></div>
-<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> varHeader = portDecl.header-&gt;as_if&lt;slang::syntax::VariablePortHeaderSyntax&gt;()) {</div>
-<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span>      <span class="keywordflow">if</span> (varHeader-&gt;direction.valid()) {</div>
-<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span>        direction = std::string(varHeader-&gt;direction.valueText());</div>
-<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>      }</div>
-<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">auto</span> netHeader = portDecl.header-&gt;as_if&lt;slang::syntax::NetPortHeaderSyntax&gt;()) {</div>
-<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>      <span class="keywordflow">if</span> (netHeader-&gt;direction.valid()) {</div>
-<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>        direction = std::string(netHeader-&gt;direction.valueText());</div>
-<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>      }</div>
-<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>    }</div>
-<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>    <span class="comment">// Add InterfacePortHeaderSyntax if needed</span></div>
-<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>    spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Port declaration without header found.&quot;</span>);</div>
-<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>  }</div>
-<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span> </div>
-<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;declarator : portDecl.declarators) {</div>
-<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span>    <span class="keywordflow">if</span> (declarator-&gt;name.valid()) {</div>
-<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span>      std::string portName = std::string(declarator-&gt;name.valueText());</div>
-<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>.count(portName) &amp;&amp; <a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>[portName] != <span class="stringliteral">&quot;unknown&quot;</span>) {</div>
-<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span>        spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Multiple direction declarations for port &#39;{}&#39;. Keeping first &quot;</span></div>
-<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span>                     <span class="stringliteral">&quot;one (&#39;{}&#39;). New direction: &#39;{}&#39;&quot;</span>,</div>
-<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span>                     portName, <a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>[portName], direction);</div>
-<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span>      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span>        spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Storing direction &#39;{}&#39; for port &#39;{}&#39;&quot;</span>, direction, portName);</div>
-<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>        <a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>[portName] = direction;</div>
-<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>      }</div>
-<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span>      spdlog::warn(</div>
-<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span>          <span class="stringliteral">&quot;LogicExtractor: Port declarator without a name found in PortDeclarationSyntax.&quot;</span>);</div>
-<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span>    }</div>
-<div class="line"><a id="l00730" name="l00730"></a><span class="lineno">  730</span>  }</div>
-<div class="line"><a id="l00731" name="l00731"></a><span class="lineno">  731</span>  <span class="comment">// Don&#39;t call visitDefault here, as it might revisit things unexpectedly.</span></div>
-<div class="line"><a id="l00732" name="l00732"></a><span class="lineno">  732</span>  <span class="comment">// Let the main module visitor handle traversing into children if necessary.</span></div>
-<div class="line"><a id="l00733" name="l00733"></a><span class="lineno">  733</span>}</div>
-<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span> </div>
-<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span><span class="comment">// Handle Non-ANSI Port List (defines names, usually in module header)</span></div>
-<div class="line"><a id="l00736" name="l00736"></a><span class="lineno"><a class="line" href="classLogicExtractor.html#a29481733320a0fb7b1f4f59ecc3fb5d0">  736</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">LogicExtractor::handle</a>(<span class="keyword">const</span> slang::syntax::NonAnsiPortListSyntax &amp;portList) {</div>
-<div class="line"><a id="l00737" name="l00737"></a><span class="lineno">  737</span>  <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">inTargetModule_</a>)</div>
-<div class="line"><a id="l00738" name="l00738"></a><span class="lineno">  738</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span>  spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Handling NonAnsi Port List&quot;</span>);</div>
-<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span> </div>
-<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> portSyntax : portList.ports) {</div>
-<div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span>    <span class="keywordflow">if</span> (!portSyntax)</div>
-<div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span>      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span> </div>
-<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span>    std::string portName = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span>    <span class="comment">// Most common case: ImplicitNonAnsiPortSyntax contains the expression (usually just the name)</span></div>
-<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> implicitPort = portSyntax-&gt;as_if&lt;slang::syntax::ImplicitNonAnsiPortSyntax&gt;()) {</div>
-<div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span>      <span class="keywordflow">if</span> (implicitPort-&gt;expr) {</div>
-<div class="line"><a id="l00749" name="l00749"></a><span class="lineno">  749</span>        <span class="comment">// The expression itself might be complex, try to get the simple name</span></div>
-<div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> portRef = implicitPort-&gt;expr-&gt;as_if&lt;slang::syntax::PortReferenceSyntax&gt;()) {</div>
-<div class="line"><a id="l00751" name="l00751"></a><span class="lineno">  751</span>          <span class="keywordflow">if</span> (portRef-&gt;name.valid()) {</div>
-<div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span>            portName = std::string(portRef-&gt;name.valueText());</div>
-<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span>          }</div>
-<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">auto</span> portConcat =</div>
-<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span>                       implicitPort-&gt;expr-&gt;as_if&lt;slang::syntax::PortConcatenationSyntax&gt;()) {</div>
-<div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span>          <span class="comment">// Handle concatenations if necessary - complex</span></div>
-<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span>          spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Port concatenation found in NonAnsi port list - currently &quot;</span></div>
-<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span>                       <span class="stringliteral">&quot;not fully handled for logic extraction. Port: {}&quot;</span>,</div>
-<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>                       implicitPort-&gt;toString());</div>
-<div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span>          <span class="keywordflow">continue</span>; <span class="comment">// Skip complex ports for now</span></div>
-<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>          <span class="comment">// Fallback: try getting name from the expression directly (might be just identifier)</span></div>
-<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span>          portName = <a class="code hl_function" href="classLogicExtractor.html#aa06d1e17b192b7fded62d3ba8086ca38">getSignalName</a>(implicitPort-&gt;expr-&gt;as_if&lt;slang::syntax::ExpressionSyntax&gt;());</div>
-<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span>        }</div>
-<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>      }</div>
-<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>    }</div>
-<div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span>    <span class="comment">// Handle ExplicitNonAnsiPortSyntax (e.g., .A(A)) if needed</span></div>
-<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">auto</span> explicitPort = portSyntax-&gt;as_if&lt;slang::syntax::ExplicitNonAnsiPortSyntax&gt;()) {</div>
-<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span>      <span class="keywordflow">if</span> (explicitPort-&gt;name.valid()) {</div>
-<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span>        portName = std::string(explicitPort-&gt;name.valueText());</div>
-<div class="line"><a id="l00771" name="l00771"></a><span class="lineno">  771</span>        <span class="comment">// Note: explicitPort-&gt;expr is the internal signal it connects to.</span></div>
-<div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span>        <span class="comment">// We are primarily interested in the port&#39;s own name (explicitPort-&gt;name) here.</span></div>
-<div class="line"><a id="l00773" name="l00773"></a><span class="lineno">  773</span>      }</div>
-<div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span>    }</div>
-<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span>    <span class="comment">// Handle EmptyNonAnsiPortSyntax (commas for placeholders) if necessary</span></div>
-<div class="line"><a id="l00776" name="l00776"></a><span class="lineno">  776</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (portSyntax-&gt;kind == slang::syntax::SyntaxKind::EmptyNonAnsiPort) {</div>
-<div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span>      spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Skipping empty non-ANSI port placeholder.&quot;</span>);</div>
-<div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span>      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00779" name="l00779"></a><span class="lineno">  779</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span>      spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Unhandled NonAnsi port syntax kind: {}&quot;</span>,</div>
-<div class="line"><a id="l00781" name="l00781"></a><span class="lineno">  781</span>                   slang::syntax::toString(portSyntax-&gt;kind));</div>
-<div class="line"><a id="l00782" name="l00782"></a><span class="lineno">  782</span>      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span>    }</div>
-<div class="line"><a id="l00784" name="l00784"></a><span class="lineno">  784</span> </div>
-<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span>    <span class="comment">// Now we (hopefully) have the portName. Look up its direction.</span></div>
-<div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span>    <span class="keywordflow">if</span> (!portName.empty()) {</div>
-<div class="line"><a id="l00787" name="l00787"></a><span class="lineno">  787</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>.count(portName)) {</div>
-<div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span>        <span class="keyword">const</span> std::string &amp;direction = <a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>[portName];</div>
-<div class="line"><a id="l00789" name="l00789"></a><span class="lineno">  789</span>        spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Finalizing port &#39;{}&#39; with direction &#39;{}&#39;&quot;</span>, portName,</div>
-<div class="line"><a id="l00790" name="l00790"></a><span class="lineno">  790</span>                      direction);</div>
-<div class="line"><a id="l00791" name="l00791"></a><span class="lineno">  791</span> </div>
-<div class="line"><a id="l00792" name="l00792"></a><span class="lineno">  792</span>        <span class="keywordflow">if</span> (direction == <span class="stringliteral">&quot;input&quot;</span>) {</div>
-<div class="line"><a id="l00793" name="l00793"></a><span class="lineno">  793</span>          <a class="code hl_variable" href="classLogicExtractor.html#a9eed76016f8b8e2f9f5c23c8d328c963">primaryInputs_</a>.insert(portName);</div>
-<div class="line"><a id="l00794" name="l00794"></a><span class="lineno">  794</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName); <span class="comment">// Inputs are also technically &#39;wires&#39; usable internally</span></div>
-<div class="line"><a id="l00795" name="l00795"></a><span class="lineno">  795</span>                                           <span class="comment">// logicCache_[portName] = portName; // For Step 2</span></div>
-<div class="line"><a id="l00796" name="l00796"></a><span class="lineno">  796</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (direction == <span class="stringliteral">&quot;output&quot;</span>) {</div>
-<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span>          <a class="code hl_variable" href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">primaryOutputs_</a>.insert(portName);</div>
-<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName); <span class="comment">// Outputs are also wires driven by something</span></div>
-<div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (direction == <span class="stringliteral">&quot;inout&quot;</span>) {</div>
-<div class="line"><a id="l00800" name="l00800"></a><span class="lineno">  800</span>          spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Inout port &#39;{}&#39; found. Adding to both inputs and outputs.&quot;</span>,</div>
-<div class="line"><a id="l00801" name="l00801"></a><span class="lineno">  801</span>                       portName);</div>
-<div class="line"><a id="l00802" name="l00802"></a><span class="lineno">  802</span>          <a class="code hl_variable" href="classLogicExtractor.html#a9eed76016f8b8e2f9f5c23c8d328c963">primaryInputs_</a>.insert(portName);</div>
-<div class="line"><a id="l00803" name="l00803"></a><span class="lineno">  803</span>          <a class="code hl_variable" href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">primaryOutputs_</a>.insert(portName);</div>
-<div class="line"><a id="l00804" name="l00804"></a><span class="lineno">  804</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName);</div>
-<div class="line"><a id="l00805" name="l00805"></a><span class="lineno">  805</span>          <span class="comment">// logicCache_[portName] = portName; // For Step 2</span></div>
-<div class="line"><a id="l00806" name="l00806"></a><span class="lineno">  806</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00807" name="l00807"></a><span class="lineno">  807</span>          spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Port &#39;{}&#39; found in list but has unknown or missing &quot;</span></div>
-<div class="line"><a id="l00808" name="l00808"></a><span class="lineno">  808</span>                       <span class="stringliteral">&quot;direction &#39;{}&#39;. Treating as internal wire.&quot;</span>,</div>
-<div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span>                       portName, direction);</div>
-<div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName);</div>
-<div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span>        }</div>
-<div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span>      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span>        spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Port &#39;{}&#39; found in NonAnsi list but no direction declaration &quot;</span></div>
-<div class="line"><a id="l00814" name="l00814"></a><span class="lineno">  814</span>                     <span class="stringliteral">&quot;found. Treating as internal wire.&quot;</span>,</div>
-<div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span>                     portName);</div>
-<div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span>        <span class="comment">// Add to internalWires_ so it&#39;s recognized if used later</span></div>
-<div class="line"><a id="l00817" name="l00817"></a><span class="lineno">  817</span>        <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName);</div>
-<div class="line"><a id="l00818" name="l00818"></a><span class="lineno">  818</span>      }</div>
-<div class="line"><a id="l00819" name="l00819"></a><span class="lineno">  819</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span>      spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Could not determine port name from NonAnsi port list item: {}&quot;</span>,</div>
-<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>                   portSyntax-&gt;toString());</div>
-<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>    }</div>
-<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span>  }</div>
-<div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span>  <span class="comment">// Don&#39;t call visitDefault here</span></div>
-<div class="line"><a id="l00825" name="l00825"></a><span class="lineno">  825</span>}</div>
-<div class="line"><a id="l00826" name="l00826"></a><span class="lineno">  826</span> </div>
-<div class="line"><a id="l00827" name="l00827"></a><span class="lineno">  827</span><span class="comment">// Handle explicit wire declarations</span></div>
-<div class="line"><a id="l00828" name="l00828"></a><span class="lineno"><a class="line" href="classLogicExtractor.html#aa0da0dc5655fa5d4105875b466ab90ff">  828</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">LogicExtractor::handle</a>(<span class="keyword">const</span> slang::syntax::NetDeclarationSyntax &amp;netDecl) {</div>
-<div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span>  <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">inTargetModule_</a>)</div>
-<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00831" name="l00831"></a><span class="lineno">  831</span> </div>
-<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;declarator : netDecl.declarators) {</div>
-<div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span>    <span class="keywordflow">if</span> (declarator-&gt;name.valid()) {</div>
-<div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span>      std::string wireName = std::string(declarator-&gt;name.valueText());</div>
-<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span>      spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Found wire declaration: {}&quot;</span>, wireName);</div>
-<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span>      <span class="comment">// Avoid adding ports again if they were also declared as nets (common)</span></div>
-<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span>      <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#a9eed76016f8b8e2f9f5c23c8d328c963">primaryInputs_</a>.count(wireName) &amp;&amp; !<a class="code hl_variable" href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">primaryOutputs_</a>.count(wireName)) {</div>
-<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span>        <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(wireName);</div>
-<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span>        spdlog::trace(<span class="stringliteral">&quot;LogicExtractor: Wire &#39;{}&#39; is already known as a port.&quot;</span>, wireName);</div>
-<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span>      }</div>
-<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span>    }</div>
-<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span>  }</div>
-<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span>  <span class="comment">// Don&#39;t call visitDefault here</span></div>
-<div class="line"><a id="l00845" name="l00845"></a><span class="lineno">  845</span>}</div>
-<div class="line"><a id="l00846" name="l00846"></a><span class="lineno">  846</span> </div>
-<div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span><span class="comment">// Handle primitive gate instantiations (MOST IMPORTANT PART)</span></div>
-<div class="line"><a id="l00848" name="l00848"></a><span class="lineno"><a class="line" href="classLogicExtractor.html#a9f79d51e917503506632eeecb2a2a2f0">  848</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">LogicExtractor::handle</a>(<span class="keyword">const</span> slang::syntax::PrimitiveInstantiationSyntax &amp;primitiveInst) {</div>
-<div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span>  <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">inTargetModule_</a>)</div>
-<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span> </div>
-<div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span>  <span class="keywordflow">if</span> (!primitiveInst.type.valid()) {</div>
-<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span>    spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Primitive instance without a type token found.&quot;</span>);</div>
-<div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span>  }</div>
-<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span> </div>
-<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span>  <span class="comment">// Use token kind for reliable checking, text for name storage</span></div>
-<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span>  slang::parsing::TokenKind gateKind = primitiveInst.type.kind;</div>
-<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span>  std::string gateTypeName = std::string(primitiveInst.type.valueText());</div>
-<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span> </div>
-<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>  spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Found Primitive Instance of Type: {} (Kind: {})&quot;</span>, gateTypeName,</div>
-<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>                slang::parsing::toString(gateKind));</div>
-<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span> </div>
-<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;instance : primitiveInst.instances) {</div>
-<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>    <span class="comment">// if (!instance || !instance-&gt;connections.isInitialized()) { // Check if connections are valid</span></div>
-<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span>    <span class="comment">//   spdlog::warn(&quot;LogicExtractor: Skipping primitive instance of type {} due to null pointer or</span></div>
-<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>    <span class="comment">//   &quot;</span></div>
-<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>    <span class="comment">//                &quot;uninitialized connections.&quot;,</span></div>
-<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span>    <span class="comment">//                gateTypeName);</span></div>
-<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>    <span class="comment">//   continue;</span></div>
-<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span>    <span class="comment">// }</span></div>
-<div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span> </div>
-<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>    <a class="code hl_struct" href="structGateInfo.html">GateInfo</a> currentGateInfo;</div>
-<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span>    currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a81e41d3db5fa85b69bbbc8d4d38a3d51">gateTypeName</a> = gateTypeName;</div>
-<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>    currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a8e4b8c967fffb9f3e5044e8ef184e811">kind</a> = gateKind;</div>
-<div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span> </div>
-<div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span>    <span class="comment">// Primitives usually have ordered connections.</span></div>
-<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span>    <span class="comment">// The FIRST connection is typically the OUTPUT.</span></div>
-<div class="line"><a id="l00879" name="l00879"></a><span class="lineno">  879</span>    <span class="comment">// The REST are INPUTS.</span></div>
-<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>    <span class="keywordflow">if</span> (instance-&gt;connections.empty()) {</div>
-<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span>      spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Gate instance of type {} has no connections.&quot;</span>, gateTypeName);</div>
-<div class="line"><a id="l00882" name="l00882"></a><span class="lineno">  882</span>      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span>    }</div>
-<div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span> </div>
-<div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span>    <span class="comment">// Extract Output Signal</span></div>
-<div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span>    <span class="comment">// Ensure the connection itself is not null</span></div>
-<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span>    <span class="keywordflow">if</span> (!instance-&gt;connections[0]) {</div>
-<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>      spdlog::error(<span class="stringliteral">&quot;LogicExtractor: First connection (output) is null for primitive {}&quot;</span>,</div>
-<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span>                    gateTypeName);</div>
-<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>      <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>    }</div>
-<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> firstConn =</div>
-<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>            instance-&gt;connections[0]-&gt;as_if&lt;slang::syntax::OrderedPortConnectionSyntax&gt;()) {</div>
-<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>      currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a> =</div>
-<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>          <a class="code hl_function" href="classLogicExtractor.html#aa06d1e17b192b7fded62d3ba8086ca38">getSignalName</a>(firstConn-&gt;expr-&gt;as_if&lt;slang::syntax::ExpressionSyntax&gt;());</div>
-<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>      <span class="keywordflow">if</span> (!currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>.empty()) {</div>
-<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>        spdlog::debug(<span class="stringliteral">&quot;  Output Signal: {}&quot;</span>, currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>);</div>
-<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>        <span class="comment">// Gate outputs are internal signals (unless they are module outputs)</span></div>
-<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>        <span class="comment">// Add to internal wires if not already a primary output.</span></div>
-<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">primaryOutputs_</a>.count(currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>)) {</div>
-<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>);</div>
-<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span>        }</div>
-<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span>      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>        spdlog::error(</div>
-<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>            <span class="stringliteral">&quot;LogicExtractor: Could not determine output signal name for gate instance of type {}&quot;</span>,</div>
-<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>            gateTypeName);</div>
-<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>        <span class="keywordflow">continue</span>; <span class="comment">// Skip this instance if output is unknown</span></div>
-<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>      }</div>
-<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>      spdlog::error(<span class="stringliteral">&quot;LogicExtractor: Expected OrderedPortConnectionSyntax for output of primitive &quot;</span></div>
-<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span>                    <span class="stringliteral">&quot;{}, but got kind: {}. Conn: {}&quot;</span>,</div>
-<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span>                    gateTypeName, slang::syntax::toString(instance-&gt;connections[0]-&gt;kind),</div>
-<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span>                    instance-&gt;connections[0]-&gt;toString());</div>
-<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span>      <span class="keywordflow">continue</span>; <span class="comment">// Skip this instance</span></div>
-<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span>    }</div>
-<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span> </div>
-<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span>    <span class="comment">// Extract Input Signals</span></div>
-<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; instance-&gt;connections.size(); ++i) {</div>
-<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span>      <span class="comment">// Ensure the connection itself is not null</span></div>
-<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>      <span class="keywordflow">if</span> (!instance-&gt;connections[i]) {</div>
-<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>        spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Input connection {} is null for primitive {}&quot;</span>, i,</div>
-<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>                     gateTypeName);</div>
-<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span>        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;declarator : portDecl.declarators) {</div>
+<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>    <span class="keywordflow">if</span> (declarator-&gt;name.valid()) {</div>
+<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>      std::string portName = std::string(declarator-&gt;name.valueText());</div>
+<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>.count(portName) &amp;&amp; <a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>[portName] != <span class="stringliteral">&quot;unknown&quot;</span>) {</div>
+<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>        spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Multiple direction declarations for port &#39;{}&#39;. Keeping first &quot;</span></div>
+<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>                     <span class="stringliteral">&quot;one (&#39;{}&#39;). New direction: &#39;{}&#39;&quot;</span>,</div>
+<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>                     portName, <a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>[portName], direction);</div>
+<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>        spdlog::info(<span class="stringliteral">&quot;LogicExtractor: Storing direction &#39;{}&#39; for port &#39;{}&#39;&quot;</span>, direction, portName);</div>
+<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>        <a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>[portName] = direction;</div>
+<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>        <span class="keywordflow">if</span> (direction == <span class="stringliteral">&quot;input&quot;</span>) {</div>
+<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>          <a class="code hl_variable" href="classLogicExtractor.html#a9eed76016f8b8e2f9f5c23c8d328c963">primaryInputs_</a>.insert(portName);</div>
+<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName); <span class="comment">// Inputs are also technically &#39;wires&#39; usable internally</span></div>
+<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (direction == <span class="stringliteral">&quot;output&quot;</span>) {</div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>          <a class="code hl_variable" href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">primaryOutputs_</a>.insert(portName);</div>
+<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName); <span class="comment">// Outputs are also wires driven by something</span></div>
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (direction == <span class="stringliteral">&quot;inout&quot;</span>) {</div>
+<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>          spdlog::info(<span class="stringliteral">&quot;LogicExtractor: Inout port &#39;{}&#39; found. Adding to both inputs and outputs.&quot;</span>,</div>
+<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>                       portName);</div>
+<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>          <a class="code hl_variable" href="classLogicExtractor.html#a9eed76016f8b8e2f9f5c23c8d328c963">primaryInputs_</a>.insert(portName);</div>
+<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>          <a class="code hl_variable" href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">primaryOutputs_</a>.insert(portName);</div>
+<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName);</div>
+<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>          spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Port &#39;{}&#39; found in declaration but has unknown or missing &quot;</span></div>
+<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>                       <span class="stringliteral">&quot;direction &#39;{}&#39;. Treating as internal wire.&quot;</span>,</div>
+<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>                       portName, direction);</div>
+<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName);</div>
+<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>        }</div>
+<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>        <span class="comment">// logicCache_[portName] = portName; // For Step 2</span></div>
+<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>      }</div>
+<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>      spdlog::warn(</div>
+<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>          <span class="stringliteral">&quot;LogicExtractor: Port declarator without a name found in PortDeclarationSyntax.&quot;</span>);</div>
+<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span>    }</div>
+<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span>  }</div>
+<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span>  <span class="comment">// Don&#39;t call visitDefault here, as it might revisit things unexpectedly.</span></div>
+<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span>  <span class="comment">// Let the main module visitor handle traversing into children if necessary.</span></div>
+<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span>}</div>
+<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span> </div>
+<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span><span class="comment">// Handle Non-ANSI Port List (defines names, usually in module header)</span></div>
+<div class="line"><a id="l00721" name="l00721"></a><span class="lineno"><a class="line" href="classLogicExtractor.html#a29481733320a0fb7b1f4f59ecc3fb5d0">  721</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">LogicExtractor::handle</a>(<span class="keyword">const</span> slang::syntax::NonAnsiPortListSyntax &amp;portList) {</div>
+<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span>  <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">inTargetModule_</a>)</div>
+<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>  spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Handling NonAnsi Port List&quot;</span>);</div>
+<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span> </div>
+<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> portSyntax : portList.ports) {</div>
+<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span>    <span class="keywordflow">if</span> (!portSyntax)</div>
+<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span>      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span> </div>
+<div class="line"><a id="l00730" name="l00730"></a><span class="lineno">  730</span>    std::string portName = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00731" name="l00731"></a><span class="lineno">  731</span>    <span class="comment">// Most common case: ImplicitNonAnsiPortSyntax contains the expression (usually just the name)</span></div>
+<div class="line"><a id="l00732" name="l00732"></a><span class="lineno">  732</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> implicitPort = portSyntax-&gt;as_if&lt;slang::syntax::ImplicitNonAnsiPortSyntax&gt;()) {</div>
+<div class="line"><a id="l00733" name="l00733"></a><span class="lineno">  733</span>      <span class="keywordflow">if</span> (implicitPort-&gt;expr) {</div>
+<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span>        <span class="comment">// The expression itself might be complex, try to get the simple name</span></div>
+<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> portRef = implicitPort-&gt;expr-&gt;as_if&lt;slang::syntax::PortReferenceSyntax&gt;()) {</div>
+<div class="line"><a id="l00736" name="l00736"></a><span class="lineno">  736</span>          <span class="keywordflow">if</span> (portRef-&gt;name.valid()) {</div>
+<div class="line"><a id="l00737" name="l00737"></a><span class="lineno">  737</span>            portName = std::string(portRef-&gt;name.valueText());</div>
+<div class="line"><a id="l00738" name="l00738"></a><span class="lineno">  738</span>          }</div>
+<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">auto</span> portConcat =</div>
+<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span>                       implicitPort-&gt;expr-&gt;as_if&lt;slang::syntax::PortConcatenationSyntax&gt;()) {</div>
+<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span>          <span class="comment">// Handle concatenations if necessary - complex</span></div>
+<div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span>          spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Port concatenation found in NonAnsi port list - currently &quot;</span></div>
+<div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span>                       <span class="stringliteral">&quot;not fully handled for logic extraction. Port: {}&quot;</span>,</div>
+<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span>                       implicitPort-&gt;toString());</div>
+<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span>          <span class="keywordflow">continue</span>; <span class="comment">// Skip complex ports for now</span></div>
+<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span>          <span class="comment">// Fallback: try getting name from the expression directly (might be just identifier)</span></div>
+<div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span>          portName = implicitPort-&gt;toString();</div>
+<div class="line"><a id="l00749" name="l00749"></a><span class="lineno">  749</span>        }</div>
+<div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span>      }</div>
+<div class="line"><a id="l00751" name="l00751"></a><span class="lineno">  751</span>    }</div>
+<div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span>    <span class="comment">// Handle ExplicitNonAnsiPortSyntax (e.g., .A(A)) if needed</span></div>
+<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">auto</span> explicitPort = portSyntax-&gt;as_if&lt;slang::syntax::ExplicitNonAnsiPortSyntax&gt;()) {</div>
+<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span>      <span class="keywordflow">if</span> (explicitPort-&gt;name.valid()) {</div>
+<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span>        portName = std::string(explicitPort-&gt;name.valueText());</div>
+<div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span>        <span class="comment">// Note: explicitPort-&gt;expr is the internal signal it connects to.</span></div>
+<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span>        <span class="comment">// We are primarily interested in the port&#39;s own name (explicitPort-&gt;name) here.</span></div>
+<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span>      }</div>
+<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>    }</div>
+<div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span>    <span class="comment">// Handle EmptyNonAnsiPortSyntax (commas for placeholders) if necessary</span></div>
+<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (portSyntax-&gt;kind == slang::syntax::SyntaxKind::EmptyNonAnsiPort) {</div>
+<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>      spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Skipping empty non-ANSI port placeholder.&quot;</span>);</div>
+<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span>      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>      spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Unhandled NonAnsi port syntax kind: {}&quot;</span>,</div>
+<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>                   slang::syntax::toString(portSyntax-&gt;kind));</div>
+<div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span>      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span>    }</div>
+<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span> </div>
+<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span>    <span class="comment">// Now we (hopefully) have the portName.</span></div>
+<div class="line"><a id="l00771" name="l00771"></a><span class="lineno">  771</span>    <span class="keywordflow">if</span> (!portName.empty()) {</div>
+<div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>.count(portName)) {</div>
+<div class="line"><a id="l00773" name="l00773"></a><span class="lineno">  773</span>        <span class="keyword">const</span> std::string &amp;direction = <a class="code hl_variable" href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">portDirections_</a>[portName];</div>
+<div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span>        spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Finalizing port &#39;{}&#39; with direction &#39;{}&#39;&quot;</span>, portName,</div>
+<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span>                      direction);</div>
+<div class="line"><a id="l00776" name="l00776"></a><span class="lineno">  776</span> </div>
+<div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span>        <span class="keywordflow">if</span> (direction == <span class="stringliteral">&quot;input&quot;</span>) {</div>
+<div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span>          <a class="code hl_variable" href="classLogicExtractor.html#a9eed76016f8b8e2f9f5c23c8d328c963">primaryInputs_</a>.insert(portName);</div>
+<div class="line"><a id="l00779" name="l00779"></a><span class="lineno">  779</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName); <span class="comment">// Inputs are also technically &#39;wires&#39; usable internally</span></div>
+<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span>                                           <span class="comment">// logicCache_[portName] = portName; // For Step 2</span></div>
+<div class="line"><a id="l00781" name="l00781"></a><span class="lineno">  781</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (direction == <span class="stringliteral">&quot;output&quot;</span>) {</div>
+<div class="line"><a id="l00782" name="l00782"></a><span class="lineno">  782</span>          <a class="code hl_variable" href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">primaryOutputs_</a>.insert(portName);</div>
+<div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName); <span class="comment">// Outputs are also wires driven by something</span></div>
+<div class="line"><a id="l00784" name="l00784"></a><span class="lineno">  784</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (direction == <span class="stringliteral">&quot;inout&quot;</span>) {</div>
+<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span>          spdlog::info(<span class="stringliteral">&quot;LogicExtractor: Inout port &#39;{}&#39; found. Adding to both inputs and outputs.&quot;</span>,</div>
+<div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span>                       portName);</div>
+<div class="line"><a id="l00787" name="l00787"></a><span class="lineno">  787</span>          <a class="code hl_variable" href="classLogicExtractor.html#a9eed76016f8b8e2f9f5c23c8d328c963">primaryInputs_</a>.insert(portName);</div>
+<div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span>          <a class="code hl_variable" href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">primaryOutputs_</a>.insert(portName);</div>
+<div class="line"><a id="l00789" name="l00789"></a><span class="lineno">  789</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName);</div>
+<div class="line"><a id="l00790" name="l00790"></a><span class="lineno">  790</span>          <span class="comment">// logicCache_[portName] = portName; // For Step 2</span></div>
+<div class="line"><a id="l00791" name="l00791"></a><span class="lineno">  791</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00792" name="l00792"></a><span class="lineno">  792</span>          spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Port &#39;{}&#39; found in list but has unknown or missing &quot;</span></div>
+<div class="line"><a id="l00793" name="l00793"></a><span class="lineno">  793</span>                       <span class="stringliteral">&quot;direction &#39;{}&#39;. Treating as internal wire.&quot;</span>,</div>
+<div class="line"><a id="l00794" name="l00794"></a><span class="lineno">  794</span>                       portName, direction);</div>
+<div class="line"><a id="l00795" name="l00795"></a><span class="lineno">  795</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(portName);</div>
+<div class="line"><a id="l00796" name="l00796"></a><span class="lineno">  796</span>        }</div>
+<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span>      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span>        spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Port &#39;{}&#39; found in NonAnsi list, no direction declaration &quot;</span>,</div>
+<div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span>                      portName);</div>
+<div class="line"><a id="l00800" name="l00800"></a><span class="lineno">  800</span>      }</div>
+<div class="line"><a id="l00801" name="l00801"></a><span class="lineno">  801</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00802" name="l00802"></a><span class="lineno">  802</span>      spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Could not determine port name from NonAnsi port list item: {}&quot;</span>,</div>
+<div class="line"><a id="l00803" name="l00803"></a><span class="lineno">  803</span>                   portSyntax-&gt;toString());</div>
+<div class="line"><a id="l00804" name="l00804"></a><span class="lineno">  804</span>    }</div>
+<div class="line"><a id="l00805" name="l00805"></a><span class="lineno">  805</span>  }</div>
+<div class="line"><a id="l00806" name="l00806"></a><span class="lineno">  806</span>  <span class="comment">// Don&#39;t call visitDefault here</span></div>
+<div class="line"><a id="l00807" name="l00807"></a><span class="lineno">  807</span>}</div>
+<div class="line"><a id="l00808" name="l00808"></a><span class="lineno">  808</span> </div>
+<div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span><span class="comment">// Handle explicit wire declarations</span></div>
+<div class="line"><a id="l00810" name="l00810"></a><span class="lineno"><a class="line" href="classLogicExtractor.html#aa0da0dc5655fa5d4105875b466ab90ff">  810</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">LogicExtractor::handle</a>(<span class="keyword">const</span> slang::syntax::NetDeclarationSyntax &amp;netDecl) {</div>
+<div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span>  <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">inTargetModule_</a>)</div>
+<div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span> </div>
+<div class="line"><a id="l00814" name="l00814"></a><span class="lineno">  814</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;declarator : netDecl.declarators) {</div>
+<div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span>    <span class="keywordflow">if</span> (declarator-&gt;name.valid()) {</div>
+<div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span>      std::string wireName = std::string(declarator-&gt;name.valueText());</div>
+<div class="line"><a id="l00817" name="l00817"></a><span class="lineno">  817</span>      spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Found wire declaration: {}&quot;</span>, wireName);</div>
+<div class="line"><a id="l00818" name="l00818"></a><span class="lineno">  818</span>      <span class="comment">// Avoid adding ports again if they were also declared as nets (common)</span></div>
+<div class="line"><a id="l00819" name="l00819"></a><span class="lineno">  819</span>      <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#a9eed76016f8b8e2f9f5c23c8d328c963">primaryInputs_</a>.count(wireName) &amp;&amp; !<a class="code hl_variable" href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">primaryOutputs_</a>.count(wireName)) {</div>
+<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span>        <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(wireName);</div>
+<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>        spdlog::trace(<span class="stringliteral">&quot;LogicExtractor: Wire &#39;{}&#39; is already known as a port.&quot;</span>, wireName);</div>
+<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span>      }</div>
+<div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span>    }</div>
+<div class="line"><a id="l00825" name="l00825"></a><span class="lineno">  825</span>  }</div>
+<div class="line"><a id="l00826" name="l00826"></a><span class="lineno">  826</span>  <span class="comment">// Don&#39;t call visitDefault here</span></div>
+<div class="line"><a id="l00827" name="l00827"></a><span class="lineno">  827</span>}</div>
+<div class="line"><a id="l00828" name="l00828"></a><span class="lineno">  828</span> </div>
+<div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span><span class="comment">// Handle primitive gate instantiations (MOST IMPORTANT PART)</span></div>
+<div class="line"><a id="l00830" name="l00830"></a><span class="lineno"><a class="line" href="classLogicExtractor.html#a9f79d51e917503506632eeecb2a2a2f0">  830</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">LogicExtractor::handle</a>(<span class="keyword">const</span> slang::syntax::PrimitiveInstantiationSyntax &amp;primitiveInst) {</div>
+<div class="line"><a id="l00831" name="l00831"></a><span class="lineno">  831</span>  <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">inTargetModule_</a>)</div>
+<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span> </div>
+<div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span>  <span class="keywordflow">if</span> (!primitiveInst.type.valid()) {</div>
+<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span>    spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Primitive instance without a type token found.&quot;</span>);</div>
+<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span>  }</div>
+<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span> </div>
+<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>  <span class="comment">// Use token kind for reliable checking, text for name storage</span></div>
+<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span>  slang::parsing::TokenKind gateKind = primitiveInst.type.kind;</div>
+<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span>  std::string gateTypeName = std::string(primitiveInst.type.valueText());</div>
+<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span> </div>
+<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span>  spdlog::debug(<span class="stringliteral">&quot;LogicExtractor: Found Primitive Instance of Type: {} (Kind: {})&quot;</span>, gateTypeName,</div>
+<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span>                slang::parsing::toString(gateKind));</div>
+<div class="line"><a id="l00845" name="l00845"></a><span class="lineno">  845</span> </div>
+<div class="line"><a id="l00846" name="l00846"></a><span class="lineno">  846</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;instance : primitiveInst.instances) {</div>
+<div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span>    <span class="comment">// if (!instance || !instance-&gt;connections.isInitialized()) { // Check if connections are valid</span></div>
+<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span>    <span class="comment">//   spdlog::warn(&quot;LogicExtractor: Skipping primitive instance of type {} due to null pointer or</span></div>
+<div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span>    <span class="comment">//   &quot;</span></div>
+<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span>    <span class="comment">//                &quot;uninitialized connections.&quot;,</span></div>
+<div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span>    <span class="comment">//                gateTypeName);</span></div>
+<div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span>    <span class="comment">//   continue;</span></div>
+<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span> </div>
+<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span>    <a class="code hl_struct" href="structGateInfo.html">GateInfo</a> currentGateInfo;</div>
+<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span>    currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a81e41d3db5fa85b69bbbc8d4d38a3d51">gateTypeName</a> = gateTypeName;</div>
+<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span>    currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a8e4b8c967fffb9f3e5044e8ef184e811">kind</a> = gateKind;</div>
+<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span> </div>
+<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span>    <span class="comment">// Primitives usually have ordered connections.</span></div>
+<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span>    <span class="comment">// The FIRST connection is typically the OUTPUT.</span></div>
+<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>    <span class="comment">// The REST are INPUTS.</span></div>
+<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>    <span class="keywordflow">if</span> (instance-&gt;connections.empty()) {</div>
+<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>      spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Gate instance of type {} has no connections.&quot;</span>, gateTypeName);</div>
+<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span>      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>    }</div>
+<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span> </div>
+<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>    <span class="comment">// Extract Output Signal</span></div>
+<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>    <span class="comment">// Ensure the connection itself is not null</span></div>
+<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span>    <span class="keywordflow">if</span> (!instance-&gt;connections[0]) {</div>
+<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>      spdlog::error(<span class="stringliteral">&quot;LogicExtractor: First connection (output) is null for primitive {}&quot;</span>,</div>
+<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span>                    gateTypeName);</div>
+<div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span>      <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>    }</div>
+<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> firstConn =</div>
+<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>            instance-&gt;connections[0]-&gt;as_if&lt;slang::syntax::OrderedPortConnectionSyntax&gt;()) {</div>
+<div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span>      currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a> =</div>
+<div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span>          firstConn-&gt;toString(); <span class="comment">// Get the output signal name from the connection</span></div>
+<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span>      <span class="keywordflow">if</span> (!currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>.empty()) {</div>
+<div class="line"><a id="l00879" name="l00879"></a><span class="lineno">  879</span>        spdlog::debug(<span class="stringliteral">&quot;  Output Signal: {}&quot;</span>, currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>);</div>
+<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>        <span class="comment">// Gate outputs are internal signals (unless they are module outputs)</span></div>
+<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span>        <span class="comment">// Add to internal wires if not already a primary output.</span></div>
+<div class="line"><a id="l00882" name="l00882"></a><span class="lineno">  882</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">primaryOutputs_</a>.count(currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>)) {</div>
+<div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span>          <a class="code hl_variable" href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">internalWires_</a>.insert(currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>);</div>
+<div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span>        }</div>
+<div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span>      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span>        spdlog::error(</div>
+<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span>            <span class="stringliteral">&quot;LogicExtractor: Could not determine output signal name for gate instance of type {}&quot;</span>,</div>
+<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>            gateTypeName);</div>
+<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span>        <span class="keywordflow">continue</span>; <span class="comment">// Skip this instance if output is unknown</span></div>
+<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>      }</div>
+<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>      spdlog::error(<span class="stringliteral">&quot;LogicExtractor: Expected OrderedPortConnectionSyntax for output of primitive &quot;</span></div>
+<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>                    <span class="stringliteral">&quot;{}, but got kind: {}. Conn: {}&quot;</span>,</div>
+<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>                    gateTypeName, slang::syntax::toString(instance-&gt;connections[0]-&gt;kind),</div>
+<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>                    instance-&gt;connections[0]-&gt;toString());</div>
+<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>      <span class="keywordflow">continue</span>; <span class="comment">// Skip this instance</span></div>
+<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>    }</div>
+<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span> </div>
+<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>    <span class="comment">// Extract Input Signals</span></div>
+<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; instance-&gt;connections.size(); ++i) {</div>
+<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>      <span class="comment">// Ensure the connection itself is not null</span></div>
+<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span>      <span class="keywordflow">if</span> (!instance-&gt;connections[i]) {</div>
+<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span>        spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Input connection {} is null for primitive {}&quot;</span>, i,</div>
+<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>                     gateTypeName);</div>
+<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>      }</div>
+<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>      <span class="keywordflow">if</span> (<span class="keyword">auto</span> conn =</div>
+<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>              instance-&gt;connections[i]-&gt;as_if&lt;slang::syntax::OrderedPortConnectionSyntax&gt;()) {</div>
+<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>        std::string inputSig = conn-&gt;toString(); <span class="comment">// Get the input signal name from the connection</span></div>
+<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>        <span class="keywordflow">if</span> (!inputSig.empty()) {</div>
+<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span>          currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a723fc6a9effc5a729d3104ed178d0417">inputSignals</a>.push_back(inputSig);</div>
+<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span>          spdlog::debug(<span class="stringliteral">&quot;  Input Signal {}: {}&quot;</span>, i, inputSig);</div>
+<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span>          spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Could not determine input signal name for input {} of gate &quot;</span></div>
+<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span>                       <span class="stringliteral">&quot;instance type {}. Conn: {}&quot;</span>,</div>
+<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span>                       i, gateTypeName, conn-&gt;toString());</div>
+<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span>          <span class="comment">// Decide whether to skip or continue with partial inputs</span></div>
+<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span>        }</div>
+<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span>      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>        spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Expected OrderedPortConnectionSyntax for input {} of &quot;</span></div>
+<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>                     <span class="stringliteral">&quot;primitive {}, but got kind: {}. Conn: {}&quot;</span>,</div>
+<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>                     i, gateTypeName, slang::syntax::toString(instance-&gt;connections[i]-&gt;kind),</div>
+<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span>                     instance-&gt;connections[i]-&gt;toString());</div>
 <div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span>      }</div>
-<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span>      <span class="keywordflow">if</span> (<span class="keyword">auto</span> conn =</div>
-<div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span>              instance-&gt;connections[i]-&gt;as_if&lt;slang::syntax::OrderedPortConnectionSyntax&gt;()) {</div>
-<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>        std::string inputSig = <a class="code hl_function" href="classLogicExtractor.html#aa06d1e17b192b7fded62d3ba8086ca38">getSignalName</a>(conn-&gt;expr-&gt;as_if&lt;slang::syntax::ExpressionSyntax&gt;());</div>
-<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span>        <span class="keywordflow">if</span> (!inputSig.empty()) {</div>
-<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>          currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a723fc6a9effc5a729d3104ed178d0417">inputSignals</a>.push_back(inputSig);</div>
-<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>          spdlog::debug(<span class="stringliteral">&quot;  Input Signal {}: {}&quot;</span>, i, inputSig);</div>
-<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span>          spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Could not determine input signal name for input {} of gate &quot;</span></div>
-<div class="line"><a id="l00933" name="l00933"></a><span class="lineno">  933</span>                       <span class="stringliteral">&quot;instance type {}. Conn: {}&quot;</span>,</div>
-<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span>                       i, gateTypeName, conn-&gt;toString());</div>
-<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span>          <span class="comment">// Decide whether to skip or continue with partial inputs</span></div>
-<div class="line"><a id="l00936" name="l00936"></a><span class="lineno">  936</span>        }</div>
-<div class="line"><a id="l00937" name="l00937"></a><span class="lineno">  937</span>      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span>        spdlog::warn(<span class="stringliteral">&quot;LogicExtractor: Expected OrderedPortConnectionSyntax for input {} of &quot;</span></div>
-<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span>                     <span class="stringliteral">&quot;primitive {}, but got kind: {}. Conn: {}&quot;</span>,</div>
-<div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span>                     i, gateTypeName, slang::syntax::toString(instance-&gt;connections[i]-&gt;kind),</div>
-<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span>                     instance-&gt;connections[i]-&gt;toString());</div>
-<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span>      }</div>
-<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>    }</div>
-<div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span> </div>
-<div class="line"><a id="l00945" name="l00945"></a><span class="lineno">  945</span>    <span class="comment">// Store the gate information, mapping the output signal to its driving gate</span></div>
-<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span>    <span class="keywordflow">if</span> (!currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>.empty()) {</div>
-<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="classLogicExtractor.html#a07b350897e95e1fcea0794f6dbea02ed">gateOutputDrivers_</a>.count(currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>)) {</div>
-<div class="line"><a id="l00948" name="l00948"></a><span class="lineno">  948</span>        <span class="comment">// This is a critical warning - indicates multiple drivers for the same net!</span></div>
-<div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span>        spdlog::error(<span class="stringliteral">&quot;LogicExtractor: Multiple drivers found for signal &#39;{}&#39;! Previous driver: &quot;</span></div>
-<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>                      <span class="stringliteral">&quot;{}, New driver: {}. Netlist is likely invalid.&quot;</span>,</div>
-<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span>                      currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>,</div>
-<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>                      <a class="code hl_variable" href="classLogicExtractor.html#a07b350897e95e1fcea0794f6dbea02ed">gateOutputDrivers_</a>[currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>].gateTypeName, gateTypeName);</div>
-<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span>        <span class="comment">// Keep the first one found for now, or decide on error handling</span></div>
-<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span>        spdlog::info(<span class="stringliteral">&quot;  Storing driver for &#39;{}&#39;: Gate Type &#39;{}&#39;&quot;</span>, currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>,</div>
-<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>                     gateTypeName);</div>
-<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>        <a class="code hl_variable" href="classLogicExtractor.html#a07b350897e95e1fcea0794f6dbea02ed">gateOutputDrivers_</a>[currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>] = currentGateInfo;</div>
-<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span>      }</div>
-<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>    }</div>
-<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>  }</div>
-<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>  <span class="comment">// Don&#39;t call visitDefault here</span></div>
-<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>}</div>
-<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span> </div>
-<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span><span class="comment">// --- New Function Implementation (Step 1: Visit and Print) ---</span></div>
-<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span> </div>
-<div class="line"><a id="l00966" name="l00966"></a><span class="lineno"><a class="line" href="verilog__utils_8hpp.html#a2276f971f6bd1d8f34f635811cc65e08">  966</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="verilog__utils_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08">extractAndPrintNetlistInfo</a>(<span class="keyword">const</span> std::string &amp;verilog_file, <span class="keyword">const</span> std::string &amp;cell) {</div>
-<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>  spdlog::info(<span class="stringliteral">&quot;--- Step 1: Starting Netlist Info Extraction ---&quot;</span>);</div>
-<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>  spdlog::info(<span class="stringliteral">&quot;Verilog file: &#39;{}&#39;, Target cell: &#39;{}&#39;&quot;</span>, verilog_file, cell);</div>
-<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span> </div>
-<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span>  <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span>    <span class="keyword">auto</span> result = <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxTree.html#aee79423807e68c2a5cca99281285dbc0">slang::syntax::SyntaxTree::fromFile</a>(verilog_file);</div>
-<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>    <span class="keywordflow">if</span> (!result) { <span class="comment">// Check if result is valid</span></div>
-<div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span>      spdlog::error(<span class="stringliteral">&quot;Error parsing Verilog file &#39;{}&#39;. Cannot extract info.&quot;</span>, verilog_file);</div>
-<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>      <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>    }</div>
-<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span> </div>
-<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>    spdlog::info(<span class="stringliteral">&quot;Successfully parsed Verilog file.&quot;</span>);</div>
-<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>    std::shared_ptr&lt;slang::syntax::SyntaxTree&gt; tree = result.value();</div>
+<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span>    }</div>
+<div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span> </div>
+<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>    <span class="comment">// Store the gate information, mapping the output signal to its driving gate</span></div>
+<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span>    <span class="keywordflow">if</span> (!currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>.empty()) {</div>
+<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="classLogicExtractor.html#a07b350897e95e1fcea0794f6dbea02ed">gateOutputDrivers_</a>.count(currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>)) {</div>
+<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>        <span class="comment">// This is a critical warning - indicates multiple drivers for the same net!</span></div>
+<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>        spdlog::error(<span class="stringliteral">&quot;LogicExtractor: Multiple drivers found for signal &#39;{}&#39;! Previous driver: &quot;</span></div>
+<div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span>                      <span class="stringliteral">&quot;{}, New driver: {}. Netlist is likely invalid.&quot;</span>,</div>
+<div class="line"><a id="l00933" name="l00933"></a><span class="lineno">  933</span>                      currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>,</div>
+<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span>                      <a class="code hl_variable" href="classLogicExtractor.html#a07b350897e95e1fcea0794f6dbea02ed">gateOutputDrivers_</a>[currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>].gateTypeName, gateTypeName);</div>
+<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span>        <span class="comment">// Keep the first one found for now, or decide on error handling</span></div>
+<div class="line"><a id="l00936" name="l00936"></a><span class="lineno">  936</span>      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00937" name="l00937"></a><span class="lineno">  937</span>        spdlog::info(<span class="stringliteral">&quot;  Storing driver for &#39;{}&#39;: Gate Type &#39;{}&#39;&quot;</span>, currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>,</div>
+<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span>                     gateTypeName);</div>
+<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span>        <a class="code hl_variable" href="classLogicExtractor.html#a07b350897e95e1fcea0794f6dbea02ed">gateOutputDrivers_</a>[currentGateInfo.<a class="code hl_variable" href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">outputSignal</a>] = currentGateInfo;</div>
+<div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span>      }</div>
+<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span>    }</div>
+<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span>  }</div>
+<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>  <span class="comment">// Don&#39;t call visitDefault here</span></div>
+<div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span>}</div>
+<div class="line"><a id="l00945" name="l00945"></a><span class="lineno">  945</span> </div>
+<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span><span class="comment">// --- New Function Implementation (Step 1: Visit and Print) ---</span></div>
+<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span> </div>
+<div class="line"><a id="l00948" name="l00948"></a><span class="lineno"><a class="line" href="verilog__utils_8hpp.html#a2276f971f6bd1d8f34f635811cc65e08">  948</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="verilog__utils_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08">extractAndPrintNetlistInfo</a>(<span class="keyword">const</span> std::string &amp;verilog_file, <span class="keyword">const</span> std::string &amp;cell) {</div>
+<div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span>  spdlog::info(<span class="stringliteral">&quot;--- Step 1: Starting Netlist Info Extraction ---&quot;</span>);</div>
+<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>  spdlog::info(<span class="stringliteral">&quot;Verilog file: &#39;{}&#39;, Target cell: &#39;{}&#39;&quot;</span>, verilog_file, cell);</div>
+<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span> </div>
+<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>  <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span>    <span class="keyword">auto</span> result = <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxTree.html#aee79423807e68c2a5cca99281285dbc0">slang::syntax::SyntaxTree::fromFile</a>(verilog_file);</div>
+<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>    <span class="keywordflow">if</span> (!result) { <span class="comment">// Check if result is valid</span></div>
+<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span>      spdlog::error(<span class="stringliteral">&quot;Error parsing Verilog file &#39;{}&#39;. Cannot extract info.&quot;</span>, verilog_file);</div>
+<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>      <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>    }</div>
+<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span> </div>
+<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>    spdlog::info(<span class="stringliteral">&quot;Successfully parsed Verilog file.&quot;</span>);</div>
+<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>    std::shared_ptr&lt;slang::syntax::SyntaxTree&gt; tree = result.value();</div>
+<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span> </div>
+<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>    <a class="code hl_class" href="classLogicExtractor.html">LogicExtractor</a> extractor(cell);</div>
+<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>    tree-&gt;root().visit(extractor); <span class="comment">// Populate extractor&#39;s internal state</span></div>
+<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span> </div>
+<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>    <span class="comment">// --- Print Summary (Debug for Step 1) ---</span></div>
+<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>    spdlog::info(<span class="stringliteral">&quot;--- Extraction Summary for Cell &#39;{}&#39;: ---&quot;</span>, cell);</div>
+<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span> </div>
+<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;inputs = extractor.<a class="code hl_function" href="classLogicExtractor.html#a8bd2720fc5c89953124e82e56cd0d13d">getPrimaryInputs</a>();</div>
+<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span>    spdlog::info(<span class="stringliteral">&quot;Found {} Primary Inputs:&quot;</span>, inputs.size());</div>
+<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;name : inputs) {</div>
+<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span>      spdlog::info(<span class="stringliteral">&quot;  - {}&quot;</span>, name);</div>
+<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>    }</div>
+<div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span> </div>
+<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;outputs = extractor.<a class="code hl_function" href="classLogicExtractor.html#a9086b5ae491778be70e0f78f83bf7b77">getPrimaryOutputs</a>();</div>
+<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>    spdlog::info(<span class="stringliteral">&quot;Found {} Primary Outputs:&quot;</span>, outputs.size());</div>
+<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;name : outputs) {</div>
+<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>      spdlog::info(<span class="stringliteral">&quot;  - {}&quot;</span>, name);</div>
+<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>    }</div>
 <div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span> </div>
-<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>    <a class="code hl_class" href="classLogicExtractor.html">LogicExtractor</a> extractor(cell);</div>
-<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>    tree-&gt;root().visit(extractor); <span class="comment">// Populate extractor&#39;s internal state</span></div>
-<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span> </div>
-<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>    <span class="comment">// --- Print Summary (Debug for Step 1) ---</span></div>
-<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span>    spdlog::info(<span class="stringliteral">&quot;--- Extraction Summary for Cell &#39;{}&#39;: ---&quot;</span>, cell);</div>
-<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span> </div>
-<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;inputs = extractor.<a class="code hl_function" href="classLogicExtractor.html#a8bd2720fc5c89953124e82e56cd0d13d">getPrimaryInputs</a>();</div>
-<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span>    spdlog::info(<span class="stringliteral">&quot;Found {} Primary Inputs:&quot;</span>, inputs.size());</div>
-<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;name : inputs) {</div>
-<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span>      spdlog::info(<span class="stringliteral">&quot;  - {}&quot;</span>, name);</div>
-<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>    }</div>
-<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span> </div>
-<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;outputs = extractor.<a class="code hl_function" href="classLogicExtractor.html#a9086b5ae491778be70e0f78f83bf7b77">getPrimaryOutputs</a>();</div>
-<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>    spdlog::info(<span class="stringliteral">&quot;Found {} Primary Outputs:&quot;</span>, outputs.size());</div>
-<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;name : outputs) {</div>
-<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span>      spdlog::info(<span class="stringliteral">&quot;  - {}&quot;</span>, name);</div>
-<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>    }</div>
-<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span> </div>
-<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;gates = extractor.<a class="code hl_function" href="classLogicExtractor.html#a1526e2569cae9fee072b8fc90c159567">getExtractedGates</a>();</div>
-<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span>    spdlog::info(<span class="stringliteral">&quot;Found {} Gate Drivers:&quot;</span>, gates.size());</div>
-<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;pair : gates) {</div>
-<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>      <span class="keyword">const</span> std::string &amp;outputNet = pair.first;</div>
-<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>      <span class="keyword">const</span> <a class="code hl_struct" href="structGateInfo.html">GateInfo</a> &amp;info = pair.second;</div>
-<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span>      std::string inputsStr = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span>      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; info.<a class="code hl_variable" href="structGateInfo.html#a723fc6a9effc5a729d3104ed178d0417">inputSignals</a>.size(); ++i) {</div>
-<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span>        inputsStr += info.<a class="code hl_variable" href="structGateInfo.html#a723fc6a9effc5a729d3104ed178d0417">inputSignals</a>[i] + (i == info.<a class="code hl_variable" href="structGateInfo.html#a723fc6a9effc5a729d3104ed178d0417">inputSignals</a>.size() - 1 ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot;, &quot;</span>);</div>
-<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>      }</div>
-<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span>      spdlog::info(<span class="stringliteral">&quot;  - Output: {} &lt;= Driven by: {} ({}) Inputs: [{}]&quot;</span>, outputNet,</div>
-<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>                   info.<a class="code hl_variable" href="structGateInfo.html#a81e41d3db5fa85b69bbbc8d4d38a3d51">gateTypeName</a>, slang::parsing::toString(info.<a class="code hl_variable" href="structGateInfo.html#a8e4b8c967fffb9f3e5044e8ef184e811">kind</a>), inputsStr);</div>
-<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>    }</div>
-<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span>    spdlog::info(<span class="stringliteral">&quot;--- End Netlist Info Extraction ---&quot;</span>);</div>
-<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span> </div>
-<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
-<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span>    spdlog::error(<span class="stringliteral">&quot;Exception during Verilog parsing or info extraction: {}&quot;</span>, e.what());</div>
-<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span>  } <span class="keywordflow">catch</span> (...) {</div>
-<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>    spdlog::error(<span class="stringliteral">&quot;Unknown exception during Verilog parsing or info extraction.&quot;</span>);</div>
-<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>  }</div>
-<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>}</div>
+<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;gates = extractor.<a class="code hl_function" href="classLogicExtractor.html#a1526e2569cae9fee072b8fc90c159567">getExtractedGates</a>();</div>
+<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>    spdlog::info(<span class="stringliteral">&quot;Found {} Gate Drivers:&quot;</span>, gates.size());</div>
+<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;pair : gates) {</div>
+<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>      <span class="keyword">const</span> std::string &amp;outputNet = pair.first;</div>
+<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span>      <span class="keyword">const</span> <a class="code hl_struct" href="structGateInfo.html">GateInfo</a> &amp;info = pair.second;</div>
+<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span>      std::string inputsStr = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span>      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; info.<a class="code hl_variable" href="structGateInfo.html#a723fc6a9effc5a729d3104ed178d0417">inputSignals</a>.size(); ++i) {</div>
+<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span>        inputsStr += info.<a class="code hl_variable" href="structGateInfo.html#a723fc6a9effc5a729d3104ed178d0417">inputSignals</a>[i] + (i == info.<a class="code hl_variable" href="structGateInfo.html#a723fc6a9effc5a729d3104ed178d0417">inputSignals</a>.size() - 1 ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot;, &quot;</span>);</div>
+<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>      }</div>
+<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span>      spdlog::info(<span class="stringliteral">&quot;  - Output: {} &lt;= Driven by: {} ({}) Inputs: [{}]&quot;</span>, outputNet,</div>
+<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>                   info.<a class="code hl_variable" href="structGateInfo.html#a81e41d3db5fa85b69bbbc8d4d38a3d51">gateTypeName</a>, slang::parsing::toString(info.<a class="code hl_variable" href="structGateInfo.html#a8e4b8c967fffb9f3e5044e8ef184e811">kind</a>), inputsStr);</div>
+<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>    }</div>
+<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span>    spdlog::info(<span class="stringliteral">&quot;--- End Netlist Info Extraction ---&quot;</span>);</div>
+<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span> </div>
+<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
+<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span>    spdlog::error(<span class="stringliteral">&quot;Exception during Verilog parsing or info extraction: {}&quot;</span>, e.what());</div>
+<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>  } <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span>    spdlog::error(<span class="stringliteral">&quot;Unknown exception during Verilog parsing or info extraction.&quot;</span>);</div>
+<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span>  }</div>
+<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span>}</div>
 <div class="ttc" id="aclassCellExtractor_html"><div class="ttname"><a href="classCellExtractor.html">CellExtractor</a></div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00043">verilog_utils.hpp:43</a></div></div>
 <div class="ttc" id="aclassCellExtractor_html_a0a91984aface381a68def3a0a8515d57"><div class="ttname"><a href="classCellExtractor.html#a0a91984aface381a68def3a0a8515d57">CellExtractor::foundTargetCell</a></div><div class="ttdeci">bool foundTargetCell() const</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8cpp_source.html#l00366">verilog_utils.cpp:366</a></div></div>
 <div class="ttc" id="aclassCellExtractor_html_a3596b4c6c76def7e078a179efe2badd1"><div class="ttname"><a href="classCellExtractor.html#a3596b4c6c76def7e078a179efe2badd1">CellExtractor::foundTarget_</a></div><div class="ttdeci">bool foundTarget_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00052">verilog_utils.hpp:52</a></div></div>
@@ -1113,19 +1095,18 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="ttc" id="aclassCellPrinter_html_a4604bd63f54266b52c4b8d80d0f16b33"><div class="ttname"><a href="classCellPrinter.html#a4604bd63f54266b52c4b8d80d0f16b33">CellPrinter::targetCell_</a></div><div class="ttdeci">const std::string &amp; targetCell_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00063">verilog_utils.hpp:63</a></div></div>
 <div class="ttc" id="aclassCellPrinter_html_ad5c4bf574314659bff25f4ae13874b38"><div class="ttname"><a href="classCellPrinter.html#ad5c4bf574314659bff25f4ae13874b38">CellPrinter::foundTarget_</a></div><div class="ttdeci">bool foundTarget_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00065">verilog_utils.hpp:65</a></div></div>
 <div class="ttc" id="aclassLogicExtractor_html"><div class="ttname"><a href="classLogicExtractor.html">LogicExtractor</a></div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00105">verilog_utils.hpp:105</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_a07b350897e95e1fcea0794f6dbea02ed"><div class="ttname"><a href="classLogicExtractor.html#a07b350897e95e1fcea0794f6dbea02ed">LogicExtractor::gateOutputDrivers_</a></div><div class="ttdeci">std::unordered_map&lt; std::string, GateInfo &gt; gateOutputDrivers_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00149">verilog_utils.hpp:149</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_a1526e2569cae9fee072b8fc90c159567"><div class="ttname"><a href="classLogicExtractor.html#a1526e2569cae9fee072b8fc90c159567">LogicExtractor::getExtractedGates</a></div><div class="ttdeci">const std::unordered_map&lt; std::string, GateInfo &gt; &amp; getExtractedGates() const</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00124">verilog_utils.hpp:124</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_a49fa470c58c6e9d75677f04aee252f65"><div class="ttname"><a href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">LogicExtractor::internalWires_</a></div><div class="ttdeci">std::unordered_set&lt; std::string &gt; internalWires_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00142">verilog_utils.hpp:142</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_a7083bd7a416253ba80fdb9fe0c8b9555"><div class="ttname"><a href="classLogicExtractor.html#a7083bd7a416253ba80fdb9fe0c8b9555">LogicExtractor::parsingComplete_</a></div><div class="ttdeci">bool parsingComplete_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00137">verilog_utils.hpp:137</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_a8bd2720fc5c89953124e82e56cd0d13d"><div class="ttname"><a href="classLogicExtractor.html#a8bd2720fc5c89953124e82e56cd0d13d">LogicExtractor::getPrimaryInputs</a></div><div class="ttdeci">const std::unordered_set&lt; std::string &gt; &amp; getPrimaryInputs() const</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00127">verilog_utils.hpp:127</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_a9086b5ae491778be70e0f78f83bf7b77"><div class="ttname"><a href="classLogicExtractor.html#a9086b5ae491778be70e0f78f83bf7b77">LogicExtractor::getPrimaryOutputs</a></div><div class="ttdeci">const std::unordered_set&lt; std::string &gt; &amp; getPrimaryOutputs() const</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00128">verilog_utils.hpp:128</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_a9acb02e853246044d71ff25032a19d95"><div class="ttname"><a href="classLogicExtractor.html#a9acb02e853246044d71ff25032a19d95">LogicExtractor::targetCell_</a></div><div class="ttdeci">const std::string &amp; targetCell_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00135">verilog_utils.hpp:135</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_a9eed76016f8b8e2f9f5c23c8d328c963"><div class="ttname"><a href="classLogicExtractor.html#a9eed76016f8b8e2f9f5c23c8d328c963">LogicExtractor::primaryInputs_</a></div><div class="ttdeci">std::unordered_set&lt; std::string &gt; primaryInputs_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00140">verilog_utils.hpp:140</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_aa06d1e17b192b7fded62d3ba8086ca38"><div class="ttname"><a href="classLogicExtractor.html#aa06d1e17b192b7fded62d3ba8086ca38">LogicExtractor::getSignalName</a></div><div class="ttdeci">std::string getSignalName(const slang::syntax::ExpressionSyntax *expr)</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8cpp_source.html#l00615">verilog_utils.cpp:615</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_abd308142bbee1acecfdfa0bbfb9eae8f"><div class="ttname"><a href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">LogicExtractor::portDirections_</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::string &gt; portDirections_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00146">verilog_utils.hpp:146</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_acf1fb0d37db64d624e689c123b3b0f30"><div class="ttname"><a href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">LogicExtractor::inTargetModule_</a></div><div class="ttdeci">bool inTargetModule_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00136">verilog_utils.hpp:136</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_ae0dc2d2b120bd6f6b49633902c16d077"><div class="ttname"><a href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">LogicExtractor::primaryOutputs_</a></div><div class="ttdeci">std::unordered_set&lt; std::string &gt; primaryOutputs_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00141">verilog_utils.hpp:141</a></div></div>
-<div class="ttc" id="aclassLogicExtractor_html_af93dcee415210a87001fad3fc7d77a2a"><div class="ttname"><a href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">LogicExtractor::handle</a></div><div class="ttdeci">void handle(const slang::syntax::ModuleDeclarationSyntax &amp;module)</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8cpp_source.html#l00648">verilog_utils.cpp:648</a></div></div>
+<div class="ttc" id="aclassLogicExtractor_html_a07b350897e95e1fcea0794f6dbea02ed"><div class="ttname"><a href="classLogicExtractor.html#a07b350897e95e1fcea0794f6dbea02ed">LogicExtractor::gateOutputDrivers_</a></div><div class="ttdeci">std::unordered_map&lt; std::string, GateInfo &gt; gateOutputDrivers_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00150">verilog_utils.hpp:150</a></div></div>
+<div class="ttc" id="aclassLogicExtractor_html_a1526e2569cae9fee072b8fc90c159567"><div class="ttname"><a href="classLogicExtractor.html#a1526e2569cae9fee072b8fc90c159567">LogicExtractor::getExtractedGates</a></div><div class="ttdeci">const std::unordered_map&lt; std::string, GateInfo &gt; &amp; getExtractedGates() const</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00125">verilog_utils.hpp:125</a></div></div>
+<div class="ttc" id="aclassLogicExtractor_html_a49fa470c58c6e9d75677f04aee252f65"><div class="ttname"><a href="classLogicExtractor.html#a49fa470c58c6e9d75677f04aee252f65">LogicExtractor::internalWires_</a></div><div class="ttdeci">std::unordered_set&lt; std::string &gt; internalWires_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00143">verilog_utils.hpp:143</a></div></div>
+<div class="ttc" id="aclassLogicExtractor_html_a7083bd7a416253ba80fdb9fe0c8b9555"><div class="ttname"><a href="classLogicExtractor.html#a7083bd7a416253ba80fdb9fe0c8b9555">LogicExtractor::parsingComplete_</a></div><div class="ttdeci">bool parsingComplete_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00138">verilog_utils.hpp:138</a></div></div>
+<div class="ttc" id="aclassLogicExtractor_html_a8bd2720fc5c89953124e82e56cd0d13d"><div class="ttname"><a href="classLogicExtractor.html#a8bd2720fc5c89953124e82e56cd0d13d">LogicExtractor::getPrimaryInputs</a></div><div class="ttdeci">const std::unordered_set&lt; std::string &gt; &amp; getPrimaryInputs() const</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00128">verilog_utils.hpp:128</a></div></div>
+<div class="ttc" id="aclassLogicExtractor_html_a9086b5ae491778be70e0f78f83bf7b77"><div class="ttname"><a href="classLogicExtractor.html#a9086b5ae491778be70e0f78f83bf7b77">LogicExtractor::getPrimaryOutputs</a></div><div class="ttdeci">const std::unordered_set&lt; std::string &gt; &amp; getPrimaryOutputs() const</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00129">verilog_utils.hpp:129</a></div></div>
+<div class="ttc" id="aclassLogicExtractor_html_a9acb02e853246044d71ff25032a19d95"><div class="ttname"><a href="classLogicExtractor.html#a9acb02e853246044d71ff25032a19d95">LogicExtractor::targetCell_</a></div><div class="ttdeci">const std::string &amp; targetCell_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00136">verilog_utils.hpp:136</a></div></div>
+<div class="ttc" id="aclassLogicExtractor_html_a9eed76016f8b8e2f9f5c23c8d328c963"><div class="ttname"><a href="classLogicExtractor.html#a9eed76016f8b8e2f9f5c23c8d328c963">LogicExtractor::primaryInputs_</a></div><div class="ttdeci">std::unordered_set&lt; std::string &gt; primaryInputs_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00141">verilog_utils.hpp:141</a></div></div>
+<div class="ttc" id="aclassLogicExtractor_html_abd308142bbee1acecfdfa0bbfb9eae8f"><div class="ttname"><a href="classLogicExtractor.html#abd308142bbee1acecfdfa0bbfb9eae8f">LogicExtractor::portDirections_</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::string &gt; portDirections_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00147">verilog_utils.hpp:147</a></div></div>
+<div class="ttc" id="aclassLogicExtractor_html_acf1fb0d37db64d624e689c123b3b0f30"><div class="ttname"><a href="classLogicExtractor.html#acf1fb0d37db64d624e689c123b3b0f30">LogicExtractor::inTargetModule_</a></div><div class="ttdeci">bool inTargetModule_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00137">verilog_utils.hpp:137</a></div></div>
+<div class="ttc" id="aclassLogicExtractor_html_ae0dc2d2b120bd6f6b49633902c16d077"><div class="ttname"><a href="classLogicExtractor.html#ae0dc2d2b120bd6f6b49633902c16d077">LogicExtractor::primaryOutputs_</a></div><div class="ttdeci">std::unordered_set&lt; std::string &gt; primaryOutputs_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00142">verilog_utils.hpp:142</a></div></div>
+<div class="ttc" id="aclassLogicExtractor_html_af93dcee415210a87001fad3fc7d77a2a"><div class="ttname"><a href="classLogicExtractor.html#af93dcee415210a87001fad3fc7d77a2a">LogicExtractor::handle</a></div><div class="ttdeci">void handle(const slang::syntax::ModuleDeclarationSyntax &amp;module)</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8cpp_source.html#l00614">verilog_utils.cpp:614</a></div></div>
 <div class="ttc" id="aclassModuleRewriter_html_a1ccaa865548fbf442969925a8f4063aa"><div class="ttname"><a href="classModuleRewriter.html#a1ccaa865548fbf442969925a8f4063aa">ModuleRewriter::depth_</a></div><div class="ttdeci">int depth_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00088">verilog_utils.hpp:88</a></div></div>
 <div class="ttc" id="aclassModuleRewriter_html_a35bc880b11364a5c980c70be72ab42ab"><div class="ttname"><a href="classModuleRewriter.html#a35bc880b11364a5c980c70be72ab42ab">ModuleRewriter::logger_</a></div><div class="ttdeci">std::shared_ptr&lt; spdlog::logger &gt; logger_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00078">verilog_utils.hpp:78</a></div></div>
 <div class="ttc" id="aclassModuleRewriter_html_a6c95bf7e5c9a2fb4b1316d830ef5cd6e"><div class="ttname"><a href="classModuleRewriter.html#a6c95bf7e5c9a2fb4b1316d830ef5cd6e">ModuleRewriter::instance_count_</a></div><div class="ttdeci">int instance_count_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00089">verilog_utils.hpp:89</a></div></div>
@@ -1154,7 +1135,7 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="ttc" id="astructGateInfo_html_a81e41d3db5fa85b69bbbc8d4d38a3d51"><div class="ttname"><a href="structGateInfo.html#a81e41d3db5fa85b69bbbc8d4d38a3d51">GateInfo::gateTypeName</a></div><div class="ttdeci">std::string gateTypeName</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00099">verilog_utils.hpp:99</a></div></div>
 <div class="ttc" id="astructGateInfo_html_a8e4b8c967fffb9f3e5044e8ef184e811"><div class="ttname"><a href="structGateInfo.html#a8e4b8c967fffb9f3e5044e8ef184e811">GateInfo::kind</a></div><div class="ttdeci">slang::parsing::TokenKind kind</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00098">verilog_utils.hpp:98</a></div></div>
 <div class="ttc" id="astructGateInfo_html_a9b0d61fbcb278b985ca6fa82f6273e05"><div class="ttname"><a href="structGateInfo.html#a9b0d61fbcb278b985ca6fa82f6273e05">GateInfo::outputSignal</a></div><div class="ttdeci">std::string outputSignal</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00101">verilog_utils.hpp:101</a></div></div>
-<div class="ttc" id="averilog__utils_8cpp_html_a2276f971f6bd1d8f34f635811cc65e08"><div class="ttname"><a href="verilog__utils_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08">extractAndPrintNetlistInfo</a></div><div class="ttdeci">void extractAndPrintNetlistInfo(const std::string &amp;verilog_file, const std::string &amp;cell)</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8cpp_source.html#l00966">verilog_utils.cpp:966</a></div></div>
+<div class="ttc" id="averilog__utils_8cpp_html_a2276f971f6bd1d8f34f635811cc65e08"><div class="ttname"><a href="verilog__utils_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08">extractAndPrintNetlistInfo</a></div><div class="ttdeci">void extractAndPrintNetlistInfo(const std::string &amp;verilog_file, const std::string &amp;cell)</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8cpp_source.html#l00948">verilog_utils.cpp:948</a></div></div>
 <div class="ttc" id="averilog__utils_8cpp_html_a7ec07bd8417a22f2aee362bd59199997"><div class="ttname"><a href="verilog__utils_8cpp.html#a7ec07bd8417a22f2aee362bd59199997">getAST</a></div><div class="ttdeci">void getAST(const std::string &amp;verilog_file, const std::string &amp;cell)</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8cpp_source.html#l00546">verilog_utils.cpp:546</a></div></div>
 <div class="ttc" id="averilog__utils_8hpp_html"><div class="ttname"><a href="verilog__utils_8hpp.html">verilog_utils.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -1163,7 +1144,7 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="verilog__utils_8cpp.html">verilog_utils.cpp</a></li>
-    <li class="footer">Generated on Mon Mar 31 2025 11:52:30 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Mar 31 2025 13:34:53 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
