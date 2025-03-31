@@ -8,5 +8,6 @@ var searchData=
   ['listinsertatback_5',['listInsertAtBack',['../structslang_1_1syntax_1_1detail_1_1ChangeCollection.html#a237587342016d8089387a7c5a0b6b7bb',1,'slang::syntax::detail::ChangeCollection']]],
   ['listinsertatfront_6',['listInsertAtFront',['../structslang_1_1syntax_1_1detail_1_1ChangeCollection.html#adb68c1d5282f4cd32eafa8ae46b74ecf',1,'slang::syntax::detail::ChangeCollection']]],
   ['logger_5f_7',['logger_',['../classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d',1,'LibFile::logger_()'],['../classModuleRewriter.html#a35bc880b11364a5c980c70be72ab42ab',1,'ModuleRewriter::logger_()']]],
-  ['loggername_5f_8',['loggername_',['../classLibFile.html#ac603785bfcf7fb11172603e0777b3332',1,'LibFile']]]
+  ['loggername_5f_8',['loggername_',['../classLibFile.html#ac603785bfcf7fb11172603e0777b3332',1,'LibFile']]],
+  ['logiccache_5f_9',['logicCache_',['../classLogicExtractor.html#a20e3904f73ad961b667a2df7a713a961',1,'LogicExtractor']]]
 ];

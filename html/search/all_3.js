@@ -6,9 +6,10 @@ var searchData=
   ['depth_5f_3',['depth_',['../classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741',1,'VerilogVisitor::depth_()'],['../classModuleRewriter.html#a1ccaa865548fbf442969925a8f4063aa',1,'ModuleRewriter::depth_()']]],
   ['dereference_4',['dereference',['../classslang_1_1syntax_1_1SeparatedSyntaxList_1_1iterator__base.html#a9c9a60d15f5cd6521c129d6ce230cb25',1,'slang::syntax::SeparatedSyntaxList::iterator_base']]],
   ['derived_5',['DERIVED',['../SyntaxVisitor_8h.html#a05ac2573750b3614698ffbb334c0b761',1,'SyntaxVisitor.h']]],
-  ['diagnostics_6',['diagnostics',['../classslang_1_1syntax_1_1SyntaxTree.html#a5afdd762c70295225497bc47e569711d',1,'slang::syntax::SyntaxTree']]],
-  ['diagnosticsbuffer_7',['diagnosticsBuffer',['../classslang_1_1syntax_1_1SyntaxTree.html#a919ff5c50160ccb90e83e9d5709ffd1a',1,'slang::syntax::SyntaxTree']]],
-  ['dim_5fsizes_8',['dim_sizes',['../structliberty__value__data.html#aed724ff27971f5f13c0d2325b64d65e0',1,'liberty_value_data']]],
-  ['dimensions_9',['dimensions',['../structliberty__value__data.html#aed74bb159b3ab2f65189d54a297e61e5',1,'liberty_value_data']]],
-  ['distance_5fto_10',['distance_to',['../classslang_1_1syntax_1_1SeparatedSyntaxList_1_1iterator__base.html#a937de7ddbef8821f3f445f223237773f',1,'slang::syntax::SeparatedSyntaxList::iterator_base']]]
+  ['derivelogicrecursive_6',['deriveLogicRecursive',['../classLogicExtractor.html#ad00ef591f9a574c2e1bb9ad6a30c0db4',1,'LogicExtractor']]],
+  ['diagnostics_7',['diagnostics',['../classslang_1_1syntax_1_1SyntaxTree.html#a5afdd762c70295225497bc47e569711d',1,'slang::syntax::SyntaxTree']]],
+  ['diagnosticsbuffer_8',['diagnosticsBuffer',['../classslang_1_1syntax_1_1SyntaxTree.html#a919ff5c50160ccb90e83e9d5709ffd1a',1,'slang::syntax::SyntaxTree']]],
+  ['dim_5fsizes_9',['dim_sizes',['../structliberty__value__data.html#aed724ff27971f5f13c0d2325b64d65e0',1,'liberty_value_data']]],
+  ['dimensions_10',['dimensions',['../structliberty__value__data.html#aed74bb159b3ab2f65189d54a297e61e5',1,'liberty_value_data']]],
+  ['distance_5fto_11',['distance_to',['../classslang_1_1syntax_1_1SeparatedSyntaxList_1_1iterator__base.html#a937de7ddbef8821f3f445f223237773f',1,'slang::syntax::SeparatedSyntaxList::iterator_base']]]
 ];

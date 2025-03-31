@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('classLogicExtractor.html',''); initRes
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classLogicExtractor-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">LogicExtractor Class Reference</div></div>
@@ -139,12 +140,23 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8bd2720fc5c89953124e82e56cd0d13d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9086b5ae491778be70e0f78f83bf7b77"><td class="memItemLeft" align="right" valign="top">const std::unordered_set&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicExtractor.html#a9086b5ae491778be70e0f78f83bf7b77">getPrimaryOutputs</a> () const</td></tr>
 <tr class="separator:a9086b5ae491778be70e0f78f83bf7b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fa7c2d7d0f96602169c4572c56f9292"><td class="memItemLeft" align="right" valign="top">const std::unordered_set&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicExtractor.html#a8fa7c2d7d0f96602169c4572c56f9292">getInternalWires</a> () const</td></tr>
+<tr class="separator:a8fa7c2d7d0f96602169c4572c56f9292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a234c934f2b8824311dbeca77f4d8ad52"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicExtractor.html#a234c934f2b8824311dbeca77f4d8ad52">getLogicExpressions</a> ()</td></tr>
+<tr class="separator:a234c934f2b8824311dbeca77f4d8ad52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classslang_1_1syntax_1_1SyntaxVisitor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classslang_1_1syntax_1_1SyntaxVisitor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classslang_1_1syntax_1_1SyntaxVisitor.html">slang::syntax::SyntaxVisitor&lt; LogicExtractor &gt;</a></td></tr>
 <tr class="memitem:aecb294b0686307633702e2bb937246b6 inherit pub_methods_classslang_1_1syntax_1_1SyntaxVisitor"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classslang_1_1syntax_1_1SyntaxVisitor.html#aecb294b0686307633702e2bb937246b6">visit</a> (T &amp;&amp;t)</td></tr>
 <tr class="memdesc:aecb294b0686307633702e2bb937246b6 inherit pub_methods_classslang_1_1syntax_1_1SyntaxVisitor"><td class="mdescLeft">&#160;</td><td class="mdescRight">Visit the provided node, of static type T.  <a href="classslang_1_1syntax_1_1SyntaxVisitor.html#aecb294b0686307633702e2bb937246b6">More...</a><br /></td></tr>
 <tr class="separator:aecb294b0686307633702e2bb937246b6 inherit pub_methods_classslang_1_1syntax_1_1SyntaxVisitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d2e95f55b5bdb1cd09c8cb0ca2fdb16 inherit pub_methods_classslang_1_1syntax_1_1SyntaxVisitor"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a> (T &amp;&amp;node)</td></tr>
 <tr class="separator:a3d2e95f55b5bdb1cd09c8cb0ca2fdb16 inherit pub_methods_classslang_1_1syntax_1_1SyntaxVisitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ad00ef591f9a574c2e1bb9ad6a30c0db4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicExtractor.html#ad00ef591f9a574c2e1bb9ad6a30c0db4">deriveLogicRecursive</a> (const std::string &amp;signalName)</td></tr>
+<tr class="separator:ad00ef591f9a574c2e1bb9ad6a30c0db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95832f1f42e902556dc36bca8f9796fe"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicExtractor.html#a95832f1f42e902556dc36bca8f9796fe">formatExpression</a> (const <a class="el" href="structGateInfo.html">GateInfo</a> &amp;gateInfo, const std::vector&lt; std::string &gt; &amp;inputExprs)</td></tr>
+<tr class="separator:a95832f1f42e902556dc36bca8f9796fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -164,6 +176,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:abd308142bbee1acecfdfa0bbfb9eae8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07b350897e95e1fcea0794f6dbea02ed"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="structGateInfo.html">GateInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicExtractor.html#a07b350897e95e1fcea0794f6dbea02ed">gateOutputDrivers_</a></td></tr>
 <tr class="separator:a07b350897e95e1fcea0794f6dbea02ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20e3904f73ad961b667a2df7a713a961"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicExtractor.html#a20e3904f73ad961b667a2df7a713a961">logicCache_</a></td></tr>
+<tr class="separator:a20e3904f73ad961b667a2df7a713a961"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -198,6 +212,106 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad00ef591f9a574c2e1bb9ad6a30c0db4" name="ad00ef591f9a574c2e1bb9ad6a30c0db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad00ef591f9a574c2e1bb9ad6a30c0db4">&#9670;&#160;</a></span>deriveLogicRecursive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string LogicExtractor::deriveLogicRecursive </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>signalName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8cpp_source.html#l00989">989</a> of file <a class="el" href="verilog__utils_8cpp_source.html">verilog_utils.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogicExtractor_ad00ef591f9a574c2e1bb9ad6a30c0db4_cgraph.png" border="0" usemap="#aclassLogicExtractor_ad00ef591f9a574c2e1bb9ad6a30c0db4_cgraph" alt=""/></div>
+<map name="aclassLogicExtractor_ad00ef591f9a574c2e1bb9ad6a30c0db4_cgraph" id="aclassLogicExtractor_ad00ef591f9a574c2e1bb9ad6a30c0db4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,29,204,69"/>
+<area shape="rect" href="classLogicExtractor.html#a95832f1f42e902556dc36bca8f9796fe" title=" " alt="" coords="252,37,491,62"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogicExtractor_ad00ef591f9a574c2e1bb9ad6a30c0db4_icgraph.png" border="0" usemap="#aclassLogicExtractor_ad00ef591f9a574c2e1bb9ad6a30c0db4_icgraph" alt=""/></div>
+<map name="aclassLogicExtractor_ad00ef591f9a574c2e1bb9ad6a30c0db4_icgraph" id="aclassLogicExtractor_ad00ef591f9a574c2e1bb9ad6a30c0db4_icgraph">
+<area shape="rect" title=" " alt="" coords="703,29,901,69"/>
+<area shape="rect" href="classLogicExtractor.html#a234c934f2b8824311dbeca77f4d8ad52" title=" " alt="" coords="476,29,655,69"/>
+<area shape="rect" href="verilog__utils_8cpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d" title=" " alt="" coords="248,37,428,62"/>
+<area shape="rect" href="main_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,37,200,62"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,37,60,62"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a95832f1f42e902556dc36bca8f9796fe" name="a95832f1f42e902556dc36bca8f9796fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95832f1f42e902556dc36bca8f9796fe">&#9670;&#160;</a></span>formatExpression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string LogicExtractor::formatExpression </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structGateInfo.html">GateInfo</a> &amp;&#160;</td>
+          <td class="paramname"><em>gateInfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>inputExprs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8cpp_source.html#l01046">1046</a> of file <a class="el" href="verilog__utils_8cpp_source.html">verilog_utils.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogicExtractor_a95832f1f42e902556dc36bca8f9796fe_icgraph.png" border="0" usemap="#aclassLogicExtractor_a95832f1f42e902556dc36bca8f9796fe_icgraph" alt=""/></div>
+<map name="aclassLogicExtractor_a95832f1f42e902556dc36bca8f9796fe_icgraph" id="aclassLogicExtractor_a95832f1f42e902556dc36bca8f9796fe_icgraph">
+<area shape="rect" title=" " alt="" coords="949,37,1188,62"/>
+<area shape="rect" href="classLogicExtractor.html#ad00ef591f9a574c2e1bb9ad6a30c0db4" title=" " alt="" coords="703,29,901,69"/>
+<area shape="rect" href="classLogicExtractor.html#a234c934f2b8824311dbeca77f4d8ad52" title=" " alt="" coords="476,29,655,69"/>
+<area shape="rect" href="verilog__utils_8cpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d" title=" " alt="" coords="248,37,428,62"/>
+<area shape="rect" href="main_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,37,200,62"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,37,60,62"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a1526e2569cae9fee072b8fc90c159567" name="a1526e2569cae9fee072b8fc90c159567"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1526e2569cae9fee072b8fc90c159567">&#9670;&#160;</a></span>getExtractedGates()</h2>
 
@@ -227,8 +341,82 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLogicExtractor_a1526e2569cae9fee072b8fc90c159567_icgraph.png" border="0" usemap="#aclassLogicExtractor_a1526e2569cae9fee072b8fc90c159567_icgraph" alt=""/></div>
 <map name="aclassLogicExtractor_a1526e2569cae9fee072b8fc90c159567_icgraph" id="aclassLogicExtractor_a1526e2569cae9fee072b8fc90c159567_icgraph">
-<area shape="rect" title=" " alt="" coords="487,5,693,45"/>
-<area shape="rect" href="verilog__utils_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08" title=" " alt="" coords="248,13,439,38"/>
+<area shape="rect" title=" " alt="" coords="244,5,451,45"/>
+<area shape="rect" href="verilog__utils_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08" title=" " alt="" coords="5,13,196,38"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8fa7c2d7d0f96602169c4572c56f9292" name="a8fa7c2d7d0f96602169c4572c56f9292"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fa7c2d7d0f96602169c4572c56f9292">&#9670;&#160;</a></span>getInternalWires()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::unordered_set&lt; std::string &gt; &amp; LogicExtractor::getInternalWires </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00130">130</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogicExtractor_a8fa7c2d7d0f96602169c4572c56f9292_icgraph.png" border="0" usemap="#aclassLogicExtractor_a8fa7c2d7d0f96602169c4572c56f9292_icgraph" alt=""/></div>
+<map name="aclassLogicExtractor_a8fa7c2d7d0f96602169c4572c56f9292_icgraph" id="aclassLogicExtractor_a8fa7c2d7d0f96602169c4572c56f9292_icgraph">
+<area shape="rect" title=" " alt="" coords="244,5,439,45"/>
+<area shape="rect" href="verilog__utils_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08" title=" " alt="" coords="5,13,196,38"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a234c934f2b8824311dbeca77f4d8ad52" name="a234c934f2b8824311dbeca77f4d8ad52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a234c934f2b8824311dbeca77f4d8ad52">&#9670;&#160;</a></span>getLogicExpressions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; std::string, std::string &gt; LogicExtractor::getLogicExpressions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8cpp_source.html#l00959">959</a> of file <a class="el" href="verilog__utils_8cpp_source.html">verilog_utils.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogicExtractor_a234c934f2b8824311dbeca77f4d8ad52_cgraph.png" border="0" usemap="#aclassLogicExtractor_a234c934f2b8824311dbeca77f4d8ad52_cgraph" alt=""/></div>
+<map name="aclassLogicExtractor_a234c934f2b8824311dbeca77f4d8ad52_cgraph" id="aclassLogicExtractor_a234c934f2b8824311dbeca77f4d8ad52_cgraph">
+<area shape="rect" title=" " alt="" coords="5,29,184,69"/>
+<area shape="rect" href="classLogicExtractor.html#ad00ef591f9a574c2e1bb9ad6a30c0db4" title=" " alt="" coords="232,29,431,69"/>
+<area shape="rect" href="classLogicExtractor.html#a95832f1f42e902556dc36bca8f9796fe" title=" " alt="" coords="479,37,717,62"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogicExtractor_a234c934f2b8824311dbeca77f4d8ad52_icgraph.png" border="0" usemap="#aclassLogicExtractor_a234c934f2b8824311dbeca77f4d8ad52_icgraph" alt=""/></div>
+<map name="aclassLogicExtractor_a234c934f2b8824311dbeca77f4d8ad52_icgraph" id="aclassLogicExtractor_a234c934f2b8824311dbeca77f4d8ad52_icgraph">
+<area shape="rect" title=" " alt="" coords="476,5,655,45"/>
+<area shape="rect" href="verilog__utils_8cpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d" title=" " alt="" coords="248,13,428,38"/>
 <area shape="rect" href="main_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
 </map>
@@ -265,10 +453,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d_icgraph.png" border="0" usemap="#aclassLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d_icgraph" alt=""/></div>
 <map name="aclassLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d_icgraph" id="aclassLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d_icgraph">
-<area shape="rect" title=" " alt="" coords="487,5,681,45"/>
-<area shape="rect" href="verilog__utils_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08" title=" " alt="" coords="248,13,439,38"/>
-<area shape="rect" href="main_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
-<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
+<area shape="rect" title=" " alt="" coords="244,5,439,45"/>
+<area shape="rect" href="verilog__utils_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08" title=" " alt="" coords="5,13,196,38"/>
 </map>
 </div>
 
@@ -303,10 +489,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77_icgraph.png" border="0" usemap="#aclassLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77_icgraph" alt=""/></div>
 <map name="aclassLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77_icgraph" id="aclassLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77_icgraph">
-<area shape="rect" title=" " alt="" coords="487,5,681,45"/>
-<area shape="rect" href="verilog__utils_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08" title=" " alt="" coords="248,13,439,38"/>
-<area shape="rect" href="main_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
-<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
+<area shape="rect" title=" " alt="" coords="244,5,439,45"/>
+<area shape="rect" href="verilog__utils_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08" title=" " alt="" coords="5,13,196,38"/>
 </map>
 </div>
 
@@ -442,7 +626,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00150">150</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00153">153</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -466,7 +650,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00137">137</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00140">140</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -490,7 +674,31 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00143">143</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00146">146</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a20e3904f73ad961b667a2df7a713a961" name="a20e3904f73ad961b667a2df7a713a961"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20e3904f73ad961b667a2df7a713a961">&#9670;&#160;</a></span>logicCache_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::string, std::string&gt; LogicExtractor::logicCache_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00156">156</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -514,7 +722,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00138">138</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00141">141</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -538,7 +746,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00147">147</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00150">150</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -562,7 +770,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00141">141</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00144">144</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -586,7 +794,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00142">142</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00145">145</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -610,7 +818,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00136">136</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="verilog__utils_8hpp_source.html#l00139">139</a> of file <a class="el" href="verilog__utils_8hpp_source.html">verilog_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -624,7 +832,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classLogicExtractor.html">LogicExtractor</a></li>
-    <li class="footer">Generated on Mon Mar 31 2025 13:34:53 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Mar 31 2025 15:12:40 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

@@ -433,13 +433,29 @@ Development Diary</h1>
 <h2><a class="anchor" id="autotoc_md36"></a>
 2025-03-31</h2>
 <ul>
+<li>实现了从 Verilog 结构网表中提取逻辑表达式的功能，使用了 <code><a class="el" href="classLogicExtractor.html">LogicExtractor</a></code> 类。<ul>
 <li>设计了如何使用 Slang 库从 Verilog 结构网表中提取逻辑表达式的方案：<ul>
-<li>使用 Slang 解析 Verilog 文件获取语法树(AST)</li>
-<li>遍历 AST 定位目标模块</li>
-<li>在目标模块内构建网表的内部表示，识别输入、输出、线网及门级连接关系</li>
-<li>对每个输出端口，递归反向追踪门和线网直至到达主输入端口</li>
-<li>在回溯过程中根据遇到的门类型构建逻辑表达式</li>
-<li>应用记忆化技术避免对相同线网/信号的重复计算 </li>
+<li>使用 Slang 解析 Verilog 文件获取语法树(AST)。</li>
+<li>遍历 AST 定位目标模块。</li>
+<li>在目标模块内构建网表的内部表示，识别输入、输出、线网及门级连接关系。</li>
+<li>对每个输出端口，递归反向追踪门和线网直至到达主输入端口。</li>
+<li>在回溯过程中根据遇到的门类型构建逻辑表达式。</li>
+<li>应用记忆化技术避免对相同线网/信号的重复计算。</li>
+</ul>
+</li>
+<li>创建了 <code><a class="el" href="classLogicExtractor.html">LogicExtractor</a></code> 类，用于从 Verilog 代码中提取逻辑表达式。<ul>
+<li><code><a class="el" href="classLogicExtractor.html">LogicExtractor</a></code> 类使用 Slang 库解析 Verilog 文件，并构建目标模块的网表表示。</li>
+<li>实现了 <code>handle(const slang::syntax::ModuleDeclarationSyntax &amp;module)</code> 方法，用于定位目标模块，并初始化内部数据结构。</li>
+<li>实现了 <code>handle(const slang::syntax::PortDeclarationSyntax &amp;portDecl)</code> 方法，用于提取端口信息，包括端口方向和名称。</li>
+<li>实现了 <code>handle(const slang::syntax::NetDeclarationSyntax &amp;netDecl)</code> 方法，用于提取线网信息。</li>
+<li>实现了 <code>handle(const slang::syntax::PrimitiveInstantiationSyntax &amp;primitiveInst)</code> 方法，用于提取门级单元信息，包括门类型、输入和输出信号。</li>
+<li>实现了 <code>getLogicExpressions()</code> 方法，用于根据提取的网表信息，递归地推导每个输出端口的逻辑表达式。</li>
+<li>实现了 <code>deriveLogicRecursive(const std::string &amp;signalName)</code> 方法，用于递归地推导指定信号的逻辑表达式。</li>
+<li>实现了 <code>formatExpression(const <a class="el" href="structGateInfo.html">GateInfo</a> &amp;gateInfo, const std::vector&lt;std::string&gt; &amp;inputExprs)</code> 方法，用于根据门类型和输入表达式，生成逻辑表达式字符串。</li>
+</ul>
+</li>
+<li>实现了 <code>extractAndPrintNetlistInfo(const std::string &amp;verilog_file, const std::string &amp;cell)</code> 函数，用于提取并打印网表信息，包括输入、输出、线网和门级单元。</li>
+<li>实现了 <code>extractLogicFromVerilog(const std::string &amp;verilog_file, const std::string &amp;cell)</code> 函数，用于从 Verilog 文件中提取指定 cell 的逻辑表达式，并以 <code>std::map&lt;std::string, std::string&gt;</code> 的形式返回。 </li>
 </ul>
 </li>
 </ul>
@@ -449,7 +465,7 @@ Development Diary</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Mar 31 2025 13:34:53 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Mar 31 2025 15:12:40 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

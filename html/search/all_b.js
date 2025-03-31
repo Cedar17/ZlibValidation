@@ -14,7 +14,7 @@ var searchData=
   ['liberty_5fget_5fvalues_5fdata_11',['liberty_get_values_data',['../si2dr__liberty_8h.html#a9e49015b07ece4fb2ce79062f78004f2',1,'si2dr_liberty.h']]],
   ['liberty_5fvalue_5fdata_12',['liberty_value_data',['../structliberty__value__data.html',1,'']]],
   ['libfile_13',['LibFile',['../classLibFile.html',1,'LibFile'],['../classLibFile.html#a92a5efdef532776c5c2d60bc49dbe104',1,'LibFile::LibFile()']]],
-  ['libgroup_14',['LibGroup',['../classLibGroup.html#a1af97874abe20591db9eb0f81700869b',1,'LibGroup::LibGroup()'],['../classLibGroup.html',1,'LibGroup']]],
+  ['libgroup_14',['LibGroup',['../classLibGroup.html',1,'LibGroup'],['../classLibGroup.html#a1af97874abe20591db9eb0f81700869b',1,'LibGroup::LibGroup()']]],
   ['libname_5f_15',['libname_',['../classLibFile.html#a20994ad220fbf032ca4ccb519fe7e704',1,'LibFile']]],
   ['library_16',['library',['../classslang_1_1syntax_1_1SyntaxTree.html#aa1c1b3f430d82c330d76eb82d7fa2691',1,'slang::syntax::SyntaxTree']]],
   ['librarycomparator_17',['LibraryComparator',['../classLibraryComparator.html#a3b1cf4c12188388533050cc7f2804444',1,'LibraryComparator::LibraryComparator()'],['../classLibraryComparator.html',1,'LibraryComparator']]],
@@ -25,6 +25,7 @@ var searchData=
   ['logger_5f_22',['logger_',['../classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d',1,'LibFile::logger_()'],['../classModuleRewriter.html#a35bc880b11364a5c980c70be72ab42ab',1,'ModuleRewriter::logger_()']]],
   ['loggername_5f_23',['loggername_',['../classLibFile.html#ac603785bfcf7fb11172603e0777b3332',1,'LibFile']]],
   ['logic_24',['logic',['../classLibFile.html#a90b6274f928d77388864ba61583a030f',1,'LibFile']]],
-  ['logicextractor_25',['LogicExtractor',['../classLogicExtractor.html#ab706a64dee71621803f98b5b6eee5ac9',1,'LogicExtractor::LogicExtractor()'],['../classLogicExtractor.html',1,'LogicExtractor']]],
-  ['long_5fdouble_26',['LONG_DOUBLE',['../si2dr__liberty_8h.html#ad53edf12e98c4098e41b9d91fd8d5f17',1,'si2dr_liberty.h']]]
+  ['logiccache_5f_25',['logicCache_',['../classLogicExtractor.html#a20e3904f73ad961b667a2df7a713a961',1,'LogicExtractor']]],
+  ['logicextractor_26',['LogicExtractor',['../classLogicExtractor.html#ab706a64dee71621803f98b5b6eee5ac9',1,'LogicExtractor::LogicExtractor()'],['../classLogicExtractor.html',1,'LogicExtractor']]],
+  ['long_5fdouble_27',['LONG_DOUBLE',['../si2dr__liberty_8h.html#ad53edf12e98c4098e41b9d91fd8d5f17',1,'si2dr_liberty.h']]]
 ];
