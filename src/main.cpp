@@ -11,8 +11,9 @@
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/spdlog.h"
 
-#include "LibraryComparator.hpp"
 #include "LibFile.hpp"
+#include "LibraryComparator.hpp"
+#include "LogicComparator.hpp"
 #include "LogicExtractor.hpp"
 #include "verilog_utils.hpp"
 #include "version.h"
@@ -319,8 +320,8 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
     spdlog::info("Starting logic comparison ...");
 
     // TODO Perform functional equivalence check
-    // LogicComparator comparator(ref_outpin_map, comp_outpin_map, cell);
-    // comparator.generateReport(report_file_name);
+    LogicComparator comparator(ref_outpin_map, comp_outpin_map, cell);
+    comparator.generateReport(report_file_name);
     spdlog::info("Functional equivalence check completed for cell: '{}'", cell);
   }
   spdlog::info("Functional equivalence check completed for all cells,");
