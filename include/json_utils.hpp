@@ -7,7 +7,7 @@
 #include "nlohmann/json.hpp"
 #include "si2dr_liberty.h"
 
-#include "lib_group.hpp"
+#include "LibGroup.hpp"
 
 using json = nlohmann::json;
 

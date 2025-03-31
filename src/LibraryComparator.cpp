@@ -6,7 +6,7 @@
 #include "spdlog/spdlog.h"
 #include <tabulate/markdown_exporter.hpp>
 
-#include "compare.hpp"
+#include "LibraryComparator.hpp"
 #include "version.h"
 
 

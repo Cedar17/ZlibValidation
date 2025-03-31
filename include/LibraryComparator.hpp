@@ -1,7 +1,7 @@
 #ifndef COMPARE_HPP
 #define COMPARE_HPP
 
-#include "lib_file.hpp"
+#include "LibFile.hpp"
 
 #include "nlohmann/json.hpp"
 #include "tabulate/table.hpp"

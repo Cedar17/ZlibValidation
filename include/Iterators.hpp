@@ -3,8 +3,8 @@
 
 #include "si2dr_liberty.h"
 
-#include "lib_attribute.hpp"
-#include "lib_group.hpp"
+#include "LibAttribute.hpp"
+#include "LibGroup.hpp"
 
 class GroupsIterator {
 public:

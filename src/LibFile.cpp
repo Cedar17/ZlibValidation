@@ -8,9 +8,9 @@
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/spdlog.h"
 
-#include "iterators.hpp"
+#include "Iterators.hpp"
 #include "json_utils.hpp"
-#include "lib_file.hpp"
+#include "LibFile.hpp"
 #include "verilog_utils.hpp"
 
 /**
@@ -124,7 +124,7 @@ void LibFile::read() {
  *   - "voltage": Voltage value (rounded to 2 decimal places)
  *   - "temperature": Temperature value
  *
- * @note This method creates local scopes to ensure proper cleanup of SI2 iterators.
+ * @note This method creates local scopes to ensure proper cleanup of SI2 Iterators.
  */
 void LibFile::parse() {
   si2drPIInit(&err_); // Initialize private error handler
@@ -941,7 +941,7 @@ std::map<std::string, std::string> LibFile::logic(const std::string &cell_name) 
     logger_->info("Found {} Logic functions for cell: '{}'", logic_map.size(), cell_name);
     // Print the logic functions
     for (const auto &pair : logic_map) {
-      logger_->info("Pin: '{}', Logic Function: '{}'", pair.first, pair.second);
+      logger_->info("Pin -> Logic Function: {} -> {}", pair.first, pair.second);
     }
   }
   return logic_map;

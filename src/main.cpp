@@ -11,8 +11,9 @@
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/spdlog.h"
 
-#include "compare.hpp"
-#include "lib_file.hpp"
+#include "LibraryComparator.hpp"
+#include "LibFile.hpp"
+#include "LogicExtractor.hpp"
 #include "verilog_utils.hpp"
 #include "version.h"
 
