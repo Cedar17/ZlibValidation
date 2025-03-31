@@ -11,171 +11,86 @@
 \DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <fstream>}}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include <iostream>}}
 \DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#include <map>}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#include <memory>}    \textcolor{comment}{// For shared\_ptr}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include <stdexcept>} \textcolor{comment}{// For exceptions}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include <unordered\_map>}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include <unordered\_set>}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00016}00016 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}slang/parsing/Token.h"{}} \textcolor{comment}{// Include Token header for TokenKind}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}slang/syntax/AllSyntax.h"{}} \textcolor{comment}{// Include for specific syntax nodes like NonAnsiPortListSyntax etc.}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}slang/syntax/SyntaxPrinter.h"{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}slang/syntax/SyntaxTree.h"{}} \textcolor{comment}{// Include SyntaxTree header}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}slang/syntax/SyntaxVisitor.h"{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}spdlog/spdlog.h"{}} \textcolor{comment}{// Include spdlog}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00023}00023 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00024}00024 \textcolor{comment}{// Creating custom visitor class}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00025}\mbox{\hyperlink{classVerilogVisitor}{00025}} \textcolor{keyword}{class }\mbox{\hyperlink{classVerilogVisitor}{VerilogVisitor}} : \textcolor{keyword}{public} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor}{slang::syntax::SyntaxVisitor}}<VerilogVisitor> \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00026}00026 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00027}\mbox{\hyperlink{classVerilogVisitor_a0fc2cbd3e630e18817cc9be1e3eb1ea9}{00027}}   \textcolor{keyword}{explicit} \mbox{\hyperlink{classVerilogVisitor_a0fc2cbd3e630e18817cc9be1e3eb1ea9}{VerilogVisitor}}(\textcolor{keyword}{const} std::string \&targetCell)}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00028}00028       : \mbox{\hyperlink{classVerilogVisitor_ad0e136294c2978685afb0ffc902a0066}{targetCell\_}}(targetCell), \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}(0), \mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}}(false) \{\}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00029}00029   \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(\textcolor{keyword}{const} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang::syntax::SyntaxNode}} \&node);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00030}00030   \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00031}00031   \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(\textcolor{keyword}{const} slang::syntax::PortDeclarationSyntax \&portDecl);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00032}00032   \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(\textcolor{keyword}{const} slang::syntax::HierarchyInstantiationSyntax \&hierarchyInst);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00033}00033   \textcolor{comment}{// void handle(const slang::syntax::PrimitiveInstantiationSyntax \&primitiveInst);}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00034}00034   \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(\textcolor{keyword}{const} slang::syntax::SpecifyBlockSyntax \&specifyBlock);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00035}00035 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00036}00036 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00037}\mbox{\hyperlink{classVerilogVisitor_ad0e136294c2978685afb0ffc902a0066}{00037}}   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classVerilogVisitor_ad0e136294c2978685afb0ffc902a0066}{targetCell\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00038}\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{00038}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00039}\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{00039}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00040}00040 \};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00041}00041 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00042}00042 \textcolor{comment}{// Creating a Rewriter to extract a specific cell}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00043}\mbox{\hyperlink{classCellExtractor}{00043}} \textcolor{keyword}{class }\mbox{\hyperlink{classCellExtractor}{CellExtractor}} : \textcolor{keyword}{public} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang::syntax::SyntaxRewriter}}<CellExtractor> \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00044}00044 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00045}\mbox{\hyperlink{classCellExtractor_ab8b425b3ed88f8a3d778b082299f9b9e}{00045}}   \textcolor{keyword}{explicit} \mbox{\hyperlink{classCellExtractor_ab8b425b3ed88f8a3d778b082299f9b9e}{CellExtractor}}(\textcolor{keyword}{const} std::string \&targetCell)}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00046}00046       : \mbox{\hyperlink{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}{targetCell\_}}(targetCell), \mbox{\hyperlink{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}{foundTarget\_}}(false) \{\}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00047}00047   \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellExtractor_a47f5b76a6876f10dbbbd278625f95e6a}{handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00048}00048   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCellExtractor_a0a91984aface381a68def3a0a8515d57}{foundTargetCell}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00049}00049 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00050}00050 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00051}\mbox{\hyperlink{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}{00051}}   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}{targetCell\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00052}\mbox{\hyperlink{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}{00052}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}{foundTarget\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00053}00053 \};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00054}00054 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00055}00055 \textcolor{comment}{// Print specific cell when visiting SyntaxTree}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00056}\mbox{\hyperlink{classCellPrinter}{00056}} \textcolor{keyword}{class }\mbox{\hyperlink{classCellPrinter}{CellPrinter}} : \textcolor{keyword}{public} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor}{slang::syntax::SyntaxVisitor}}<CellPrinter> \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00057}00057 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00058}\mbox{\hyperlink{classCellPrinter_a614e3bf130f524081e2c8bff0aa19f6d}{00058}}   \textcolor{keyword}{explicit} \mbox{\hyperlink{classCellPrinter_a614e3bf130f524081e2c8bff0aa19f6d}{CellPrinter}}(\textcolor{keyword}{const} std::string \&targetCell, std::ostream \&out)}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00059}00059       : \mbox{\hyperlink{classCellPrinter_a4604bd63f54266b52c4b8d80d0f16b33}{targetCell\_}}(targetCell), \mbox{\hyperlink{classCellPrinter_a08457c6555215e8a21a5a2decca84ca1}{out\_}}(out), \mbox{\hyperlink{classCellPrinter_ad5c4bf574314659bff25f4ae13874b38}{foundTarget\_}}(false) \{\}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00060}00060   \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellPrinter_a44367253e5186ea1eb98cef83cd01d03}{handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00061}00061 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00062}00062 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00063}\mbox{\hyperlink{classCellPrinter_a4604bd63f54266b52c4b8d80d0f16b33}{00063}}   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classCellPrinter_a4604bd63f54266b52c4b8d80d0f16b33}{targetCell\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00064}\mbox{\hyperlink{classCellPrinter_a08457c6555215e8a21a5a2decca84ca1}{00064}}   std::ostream \&\mbox{\hyperlink{classCellPrinter_a08457c6555215e8a21a5a2decca84ca1}{out\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00065}\mbox{\hyperlink{classCellPrinter_ad5c4bf574314659bff25f4ae13874b38}{00065}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCellPrinter_ad5c4bf574314659bff25f4ae13874b38}{foundTarget\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00066}00066 \};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00067}00067 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00068}00068 \textcolor{comment}{// Comprehensive module rewriter for adding ports, instances, and connections}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00069}\mbox{\hyperlink{classModuleRewriter}{00069}} \textcolor{keyword}{class }\mbox{\hyperlink{classModuleRewriter}{ModuleRewriter}} : \textcolor{keyword}{public} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang::syntax::SyntaxRewriter}}<ModuleRewriter> \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00070}00070 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00071}\mbox{\hyperlink{classModuleRewriter_a0fc85a14d1374ad12e24eefc3802357b}{00071}}   \textcolor{keyword}{explicit} \mbox{\hyperlink{classModuleRewriter_a0fc85a14d1374ad12e24eefc3802357b}{ModuleRewriter}}(\textcolor{keyword}{const} std::vector<std::string> \&inputPins,}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00072}00072                           \textcolor{keyword}{const} std::vector<std::string> \&outputPins,}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00073}00073                           \textcolor{keyword}{const} std::pair<std::string, std::string> \&supercell\_entry,}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00074}00074                           \textcolor{keywordtype}{int} instance\_count, std::shared\_ptr<spdlog::logger> logger)}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00075}00075       : \mbox{\hyperlink{classModuleRewriter_a2f805c22fb4301d84cf005149b0a28e2}{inputPins\_}}(inputPins), \mbox{\hyperlink{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}{outputPins\_}}(outputPins), \mbox{\hyperlink{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}{cellName\_}}(supercell\_entry.first),}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00076}00076         \mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}(supercell\_entry.second), \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}(logger), \mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{depth\_}}(0),}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00077}00077         \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}}(instance\_count) \{\}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00078}\mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{00078}}   std::shared\_ptr<spdlog::logger> \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00079}00079   \textcolor{keywordtype}{void} \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{handle}}(\textcolor{keyword}{const} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang::syntax::SyntaxNode}} \&node);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00080}00080   \textcolor{keywordtype}{void} \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00081}00081 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00082}00082 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00083}\mbox{\hyperlink{classModuleRewriter_a2f805c22fb4301d84cf005149b0a28e2}{00083}}   \textcolor{keyword}{const} std::vector<std::string> \&\mbox{\hyperlink{classModuleRewriter_a2f805c22fb4301d84cf005149b0a28e2}{inputPins\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00084}\mbox{\hyperlink{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}{00084}}   \textcolor{keyword}{const} std::vector<std::string> \&\mbox{\hyperlink{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}{outputPins\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00085}\mbox{\hyperlink{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}{00085}}   \textcolor{keyword}{const} std::string \mbox{\hyperlink{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}{cellName\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00086}\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{00086}}   \textcolor{keyword}{const} std::string \mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00087}\mbox{\hyperlink{classModuleRewriter_aad5df1bbd2cad9aa6cb7f842a22ae07d}{00087}}   std::map<std::string, std::string> \mbox{\hyperlink{classModuleRewriter_aad5df1bbd2cad9aa6cb7f842a22ae07d}{portInfoMap\_}}; \textcolor{comment}{// Map from port name to direction}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00088}\mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{00088}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{depth\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00089}\mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{00089}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00090}00090 \};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00091}00091 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00092}00092 \textcolor{keywordtype}{void} \mbox{\hyperlink{verilog__utils_8hpp_a7ec07bd8417a22f2aee362bd59199997}{getAST}}(\textcolor{keyword}{const} std::string \&verilog\_file, \textcolor{keyword}{const} std::string \&cell);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00093}00093 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00094}00094 \textcolor{comment}{// -\/-\/-\/ New Class for Logic Extraction -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00095}00095 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00096}00096 \textcolor{comment}{// Structure to represent a gate instance's information}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00097}\mbox{\hyperlink{structGateInfo}{00097}} \textcolor{keyword}{struct }\mbox{\hyperlink{structGateInfo}{GateInfo}} \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00098}\mbox{\hyperlink{structGateInfo_a8e4b8c967fffb9f3e5044e8ef184e811}{00098}}   slang::parsing::TokenKind \mbox{\hyperlink{structGateInfo_a8e4b8c967fffb9f3e5044e8ef184e811}{kind}}; \textcolor{comment}{// Store the TokenKind for reliable checks}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00099}\mbox{\hyperlink{structGateInfo_a81e41d3db5fa85b69bbbc8d4d38a3d51}{00099}}   std::string \mbox{\hyperlink{structGateInfo_a81e41d3db5fa85b69bbbc8d4d38a3d51}{gateTypeName}};       \textcolor{comment}{// Store the string name like "{}and"{}, "{}xor"{}}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00100}\mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{00100}}   std::vector<std::string> \mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{inputSignals}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00101}\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{00101}}   std::string \mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00102}00102 \};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00103}00103 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00104}00104 \textcolor{comment}{// Visitor class to extract netlist information and derive logic expressions}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00105}\mbox{\hyperlink{classLogicExtractor}{00105}} \textcolor{keyword}{class }\mbox{\hyperlink{classLogicExtractor}{LogicExtractor}} : \textcolor{keyword}{public} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor}{slang::syntax::SyntaxVisitor}}<LogicExtractor> \{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00106}00106 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00107}00107   \textcolor{comment}{// Constructor takes the target cell name}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00108}\mbox{\hyperlink{classLogicExtractor_ab706a64dee71621803f98b5b6eee5ac9}{00108}}   \textcolor{keyword}{explicit} \mbox{\hyperlink{classLogicExtractor_ab706a64dee71621803f98b5b6eee5ac9}{LogicExtractor}}(\textcolor{keyword}{const} std::string \&targetCell)}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00109}00109       : \mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}}(targetCell), \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}}(false), \mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}(false) \{\}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00110}00110 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00111}00111   \textcolor{comment}{// -\/-\/-\/ Visitor Handlers -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00112}00112   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00113}00113   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00114}00114       \textcolor{keyword}{const} slang::syntax::PortDeclarationSyntax \&portDecl); \textcolor{comment}{// Handles direction/type declaration}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00115}00115   \textcolor{keywordtype}{void}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00116}00116   \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::NonAnsiPortListSyntax \&portList); \textcolor{comment}{// Handles port names list in header}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00117}00117   \textcolor{keywordtype}{void}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00118}00118   \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::NetDeclarationSyntax \&netDecl); \textcolor{comment}{// To find explicitly declared wires}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00119}00119   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::PrimitiveInstantiationSyntax}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00120}00120                   \&primitiveInst); \textcolor{comment}{// Handles gate instantiation}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00121}00121   \textcolor{comment}{// Potentially handle ContinuousAssignSyntax if needed later:}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00122}00122   \textcolor{comment}{// void handle(const slang::syntax::ContinuousAssignSyntax\& assign);}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00123}00123 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00124}00124   \textcolor{comment}{// -\/-\/-\/ Access Extracted Info (for Step 1 debugging) -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00125}\mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{00125}}   \textcolor{keyword}{const} std::unordered\_map<std::string, GateInfo> \&\mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{getExtractedGates}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00126}00126     \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00127}00127   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00128}\mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{00128}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{getPrimaryInputs}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}; \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00129}\mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{00129}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{getPrimaryOutputs}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}; \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00130}\mbox{\hyperlink{classLogicExtractor_a8fa7c2d7d0f96602169c4572c56f9292}{00130}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a8fa7c2d7d0f96602169c4572c56f9292}{getInternalWires}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00131}00131     \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00132}00132   \}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00133}00133 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00134}00134   \textcolor{comment}{// -\/-\/-\/ Logic Derivation (Commented out for Step 1) -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00135}00135   std::map<std::string, std::string> \mbox{\hyperlink{classLogicExtractor_a234c934f2b8824311dbeca77f4d8ad52}{getLogicExpressions}}();}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00136}00136 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00137}00137 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00138}00138   \textcolor{comment}{// -\/-\/-\/ Internal State -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00139}\mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{00139}}   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00140}\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{00140}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00141}\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{00141}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}; \textcolor{comment}{// Flag to indicate AST traversal is done}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00142}00142 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00143}00143   \textcolor{comment}{// Netlist Information}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00144}\mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{00144}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00145}\mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{00145}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00146}\mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{00146}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}; \textcolor{comment}{// Includes gate outputs}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00147}00147 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00148}00148   \textcolor{comment}{// Temporary map to store directions found in PortDeclarationSyntax}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00149}00149   \textcolor{comment}{// Key: port name, Value: direction ("{}input"{}, "{}output"{}, "{}inout"{}, "{}unknown"{})}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00150}\mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{00150}}   std::unordered\_map<std::string, std::string> \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00151}00151 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00152}00152   \textcolor{comment}{// Map: output signal name -\/> GateInfo driving it}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00153}\mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{00153}}   std::unordered\_map<std::string, GateInfo> \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00154}00154 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00155}00155   \textcolor{comment}{// Map: signal name -\/> Logic expression string (Memoization Cache) -\/ (Used in Step 2)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00156}\mbox{\hyperlink{classLogicExtractor_a20e3904f73ad961b667a2df7a713a961}{00156}}   std::unordered\_map<std::string, std::string> \mbox{\hyperlink{classLogicExtractor_a20e3904f73ad961b667a2df7a713a961}{logicCache\_}};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00157}00157 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00158}00158   \textcolor{comment}{// -\/-\/-\/ Helper Methods -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00159}00159   \textcolor{comment}{// Recursive function to derive logic for a given signal (Used in Step 2)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00160}00160   std::string \mbox{\hyperlink{classLogicExtractor_ad00ef591f9a574c2e1bb9ad6a30c0db4}{deriveLogicRecursive}}(\textcolor{keyword}{const} std::string \&signalName);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00161}00161   \textcolor{comment}{// Helper to format expressions based on gate type (Used in Step 2)}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00162}00162   std::string \mbox{\hyperlink{classLogicExtractor_a95832f1f42e902556dc36bca8f9796fe}{formatExpression}}(\textcolor{keyword}{const} \mbox{\hyperlink{structGateInfo}{GateInfo}} \&gateInfo,}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00163}00163                                \textcolor{keyword}{const} std::vector<std::string> \&inputExprs);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00164}00164 \};}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00165}00165 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00166}00166 \textcolor{comment}{// -\/-\/-\/ Function Declaration -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00167}00167 \textcolor{comment}{// Modify getAST or create a new function to use LogicExtractor}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00168}00168 \textcolor{comment}{// For Step 1, this function will just run the visitor and maybe print summary}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00169}00169 \textcolor{keywordtype}{void} \mbox{\hyperlink{verilog__utils_8hpp_a2276f971f6bd1d8f34f635811cc65e08}{extractAndPrintNetlistInfo}}(\textcolor{keyword}{const} std::string \&verilog\_file, \textcolor{keyword}{const} std::string \&cell);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00170}00170 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00171}00171 \textcolor{comment}{// Function to be implemented in Step 2}}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00172}00172 std::map<std::string, std::string> \mbox{\hyperlink{verilog__utils_8hpp_ae057244a8c2cf0f12f0fa95ce36c8a5d}{extractLogicFromVerilog}}(\textcolor{keyword}{const} std::string \&verilog\_file,}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00173}00173                                                            \textcolor{keyword}{const} std::string \&cell);}
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00174}00174 }
-\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00175}00175 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// VERILOG\_UTILS\_H}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}slang/parsing/Token.h"{}} \textcolor{comment}{// Include Token header for TokenKind}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}slang/syntax/SyntaxPrinter.h"{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}slang/syntax/SyntaxVisitor.h"{}}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00018}00018 \textcolor{preprocessor}{\#include "{}spdlog/spdlog.h"{}} \textcolor{comment}{// Include spdlog}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00020}00020 \textcolor{comment}{// Creating custom visitor class}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00021}\mbox{\hyperlink{classVerilogVisitor}{00021}} \textcolor{keyword}{class }\mbox{\hyperlink{classVerilogVisitor}{VerilogVisitor}} : \textcolor{keyword}{public} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor}{slang::syntax::SyntaxVisitor}}<VerilogVisitor> \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00022}00022 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00023}\mbox{\hyperlink{classVerilogVisitor_a0fc2cbd3e630e18817cc9be1e3eb1ea9}{00023}}   \textcolor{keyword}{explicit} \mbox{\hyperlink{classVerilogVisitor_a0fc2cbd3e630e18817cc9be1e3eb1ea9}{VerilogVisitor}}(\textcolor{keyword}{const} std::string \&targetCell)}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00024}00024       : \mbox{\hyperlink{classVerilogVisitor_ad0e136294c2978685afb0ffc902a0066}{targetCell\_}}(targetCell), \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}}(0), \mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}}(false) \{\}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00025}00025   \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(\textcolor{keyword}{const} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang::syntax::SyntaxNode}} \&node);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00026}00026   \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00027}00027   \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(\textcolor{keyword}{const} slang::syntax::PortDeclarationSyntax \&portDecl);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00028}00028   \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(\textcolor{keyword}{const} slang::syntax::HierarchyInstantiationSyntax \&hierarchyInst);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00029}00029   \textcolor{comment}{// void handle(const slang::syntax::PrimitiveInstantiationSyntax \&primitiveInst);}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00030}00030   \textcolor{keywordtype}{void} \mbox{\hyperlink{classVerilogVisitor_abc9e9aadac72fbf46cd929590f3d4eb5}{handle}}(\textcolor{keyword}{const} slang::syntax::SpecifyBlockSyntax \&specifyBlock);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00032}00032 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00033}\mbox{\hyperlink{classVerilogVisitor_ad0e136294c2978685afb0ffc902a0066}{00033}}   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classVerilogVisitor_ad0e136294c2978685afb0ffc902a0066}{targetCell\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00034}\mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{00034}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classVerilogVisitor_aceac12880a80019b6a438f0a1b2f9741}{depth\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00035}\mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{00035}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classVerilogVisitor_a165c448e0c16f0c688eed1bd23f38b8e}{inTargetModule\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00036}00036 \};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00038}00038 \textcolor{comment}{// Creating a Rewriter to extract a specific cell}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00039}\mbox{\hyperlink{classCellExtractor}{00039}} \textcolor{keyword}{class }\mbox{\hyperlink{classCellExtractor}{CellExtractor}} : \textcolor{keyword}{public} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang::syntax::SyntaxRewriter}}<CellExtractor> \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00040}00040 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00041}\mbox{\hyperlink{classCellExtractor_ab8b425b3ed88f8a3d778b082299f9b9e}{00041}}   \textcolor{keyword}{explicit} \mbox{\hyperlink{classCellExtractor_ab8b425b3ed88f8a3d778b082299f9b9e}{CellExtractor}}(\textcolor{keyword}{const} std::string \&targetCell)}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00042}00042       : \mbox{\hyperlink{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}{targetCell\_}}(targetCell), \mbox{\hyperlink{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}{foundTarget\_}}(false) \{\}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00043}00043   \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellExtractor_a47f5b76a6876f10dbbbd278625f95e6a}{handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00044}00044   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCellExtractor_a0a91984aface381a68def3a0a8515d57}{foundTargetCell}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00046}00046 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00047}\mbox{\hyperlink{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}{00047}}   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classCellExtractor_ac20d39db14958d1e1b256c236b9effe1}{targetCell\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00048}\mbox{\hyperlink{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}{00048}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCellExtractor_a3596b4c6c76def7e078a179efe2badd1}{foundTarget\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00049}00049 \};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00051}00051 \textcolor{comment}{// Print specific cell when visiting SyntaxTree}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00052}\mbox{\hyperlink{classCellPrinter}{00052}} \textcolor{keyword}{class }\mbox{\hyperlink{classCellPrinter}{CellPrinter}} : \textcolor{keyword}{public} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor}{slang::syntax::SyntaxVisitor}}<CellPrinter> \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00053}00053 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00054}\mbox{\hyperlink{classCellPrinter_a614e3bf130f524081e2c8bff0aa19f6d}{00054}}   \textcolor{keyword}{explicit} \mbox{\hyperlink{classCellPrinter_a614e3bf130f524081e2c8bff0aa19f6d}{CellPrinter}}(\textcolor{keyword}{const} std::string \&targetCell, std::ostream \&out)}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00055}00055       : \mbox{\hyperlink{classCellPrinter_a4604bd63f54266b52c4b8d80d0f16b33}{targetCell\_}}(targetCell), \mbox{\hyperlink{classCellPrinter_a08457c6555215e8a21a5a2decca84ca1}{out\_}}(out), \mbox{\hyperlink{classCellPrinter_ad5c4bf574314659bff25f4ae13874b38}{foundTarget\_}}(false) \{\}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00056}00056   \textcolor{keywordtype}{void} \mbox{\hyperlink{classCellPrinter_a44367253e5186ea1eb98cef83cd01d03}{handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00058}00058 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00059}\mbox{\hyperlink{classCellPrinter_a4604bd63f54266b52c4b8d80d0f16b33}{00059}}   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classCellPrinter_a4604bd63f54266b52c4b8d80d0f16b33}{targetCell\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00060}\mbox{\hyperlink{classCellPrinter_a08457c6555215e8a21a5a2decca84ca1}{00060}}   std::ostream \&\mbox{\hyperlink{classCellPrinter_a08457c6555215e8a21a5a2decca84ca1}{out\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00061}\mbox{\hyperlink{classCellPrinter_ad5c4bf574314659bff25f4ae13874b38}{00061}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCellPrinter_ad5c4bf574314659bff25f4ae13874b38}{foundTarget\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00062}00062 \};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00064}00064 \textcolor{comment}{// Comprehensive module rewriter for adding ports, instances, and connections}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00065}\mbox{\hyperlink{classModuleRewriter}{00065}} \textcolor{keyword}{class }\mbox{\hyperlink{classModuleRewriter}{ModuleRewriter}} : \textcolor{keyword}{public} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter}{slang::syntax::SyntaxRewriter}}<ModuleRewriter> \{}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00066}00066 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00067}\mbox{\hyperlink{classModuleRewriter_a0fc85a14d1374ad12e24eefc3802357b}{00067}}   \textcolor{keyword}{explicit} \mbox{\hyperlink{classModuleRewriter_a0fc85a14d1374ad12e24eefc3802357b}{ModuleRewriter}}(\textcolor{keyword}{const} std::vector<std::string> \&inputPins,}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00068}00068                           \textcolor{keyword}{const} std::vector<std::string> \&outputPins,}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00069}00069                           \textcolor{keyword}{const} std::pair<std::string, std::string> \&supercell\_entry,}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00070}00070                           \textcolor{keywordtype}{int} instance\_count, std::shared\_ptr<spdlog::logger> logger)}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00071}00071       : \mbox{\hyperlink{classModuleRewriter_a2f805c22fb4301d84cf005149b0a28e2}{inputPins\_}}(inputPins), \mbox{\hyperlink{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}{outputPins\_}}(outputPins), \mbox{\hyperlink{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}{cellName\_}}(supercell\_entry.first),}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00072}00072         \mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}}(supercell\_entry.second), \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}}(logger), \mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{depth\_}}(0),}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00073}00073         \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}}(instance\_count) \{\}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00074}\mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{00074}}   std::shared\_ptr<spdlog::logger> \mbox{\hyperlink{classModuleRewriter_a35bc880b11364a5c980c70be72ab42ab}{logger\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00075}00075   \textcolor{keywordtype}{void} \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{handle}}(\textcolor{keyword}{const} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang::syntax::SyntaxNode}} \&node);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00076}00076   \textcolor{keywordtype}{void} \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00078}00078 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00079}\mbox{\hyperlink{classModuleRewriter_a2f805c22fb4301d84cf005149b0a28e2}{00079}}   \textcolor{keyword}{const} std::vector<std::string> \&\mbox{\hyperlink{classModuleRewriter_a2f805c22fb4301d84cf005149b0a28e2}{inputPins\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00080}\mbox{\hyperlink{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}{00080}}   \textcolor{keyword}{const} std::vector<std::string> \&\mbox{\hyperlink{classModuleRewriter_a8314722fe0c97d3e78953ee0eb45b0ca}{outputPins\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00081}\mbox{\hyperlink{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}{00081}}   \textcolor{keyword}{const} std::string \mbox{\hyperlink{classModuleRewriter_aacc88ad73dec9641178c07cc519b4e9e}{cellName\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00082}\mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{00082}}   \textcolor{keyword}{const} std::string \mbox{\hyperlink{classModuleRewriter_ac5bdc3d50b39f851fa1bb728d08c1bfb}{moduleName\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00083}\mbox{\hyperlink{classModuleRewriter_aad5df1bbd2cad9aa6cb7f842a22ae07d}{00083}}   std::map<std::string, std::string> \mbox{\hyperlink{classModuleRewriter_aad5df1bbd2cad9aa6cb7f842a22ae07d}{portInfoMap\_}}; \textcolor{comment}{// Map from port name to direction}}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00084}\mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{00084}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{depth\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00085}\mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{00085}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\_count\_}};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00086}00086 \};}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00088}00088 \textcolor{keywordtype}{void} \mbox{\hyperlink{verilog__utils_8hpp_a7ec07bd8417a22f2aee362bd59199997}{getAST}}(\textcolor{keyword}{const} std::string \&verilog\_file, \textcolor{keyword}{const} std::string \&cell);}
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{verilog__utils_8hpp_source_l00090}00090 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// VERILOG\_UTILS\_H}}
 
 \end{DoxyCode}

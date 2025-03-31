@@ -1,0 +1,91 @@
+\hypertarget{LogicExtractor_8hpp}{}\doxysection{include/\+Logic\+Extractor.hpp File Reference}
+\label{LogicExtractor_8hpp}\index{include/LogicExtractor.hpp@{include/LogicExtractor.hpp}}
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}slang/parsing/\+Token.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}slang/syntax/\+Syntax\+Printer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}slang/syntax/\+Syntax\+Visitor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spdlog/spdlog.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}verilog\+\_\+utils.\+hpp\char`\"{}}\newline
+Include dependency graph for Logic\+Extractor.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LogicExtractor_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{LogicExtractor_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structGateInfo}{Gate\+Info}}
+\item 
+class \mbox{\hyperlink{classLogicExtractor}{Logic\+Extractor}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{LogicExtractor_8hpp_a2276f971f6bd1d8f34f635811cc65e08}{extract\+And\+Print\+Netlist\+Info}} (const std\+::string \&verilog\+\_\+file, const std\+::string \&cell)
+\item 
+std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{LogicExtractor_8hpp_ae057244a8c2cf0f12f0fa95ce36c8a5d}{extract\+Logic\+From\+Verilog}} (const std\+::string \&verilog\+\_\+file, const std\+::string \&cell)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{LogicExtractor_8hpp_a2276f971f6bd1d8f34f635811cc65e08}\label{LogicExtractor_8hpp_a2276f971f6bd1d8f34f635811cc65e08}} 
+\index{LogicExtractor.hpp@{LogicExtractor.hpp}!extractAndPrintNetlistInfo@{extractAndPrintNetlistInfo}}
+\index{extractAndPrintNetlistInfo@{extractAndPrintNetlistInfo}!LogicExtractor.hpp@{LogicExtractor.hpp}}
+\doxysubsubsection{\texorpdfstring{extractAndPrintNetlistInfo()}{extractAndPrintNetlistInfo()}}
+{\footnotesize\ttfamily void extract\+And\+Print\+Netlist\+Info (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{verilog\+\_\+file,  }\item[{const std\+::string \&}]{cell }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00514}{514}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LogicExtractor_8hpp_a2276f971f6bd1d8f34f635811cc65e08_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{LogicExtractor_8hpp_ae057244a8c2cf0f12f0fa95ce36c8a5d}\label{LogicExtractor_8hpp_ae057244a8c2cf0f12f0fa95ce36c8a5d}} 
+\index{LogicExtractor.hpp@{LogicExtractor.hpp}!extractLogicFromVerilog@{extractLogicFromVerilog}}
+\index{extractLogicFromVerilog@{extractLogicFromVerilog}!LogicExtractor.hpp@{LogicExtractor.hpp}}
+\doxysubsubsection{\texorpdfstring{extractLogicFromVerilog()}{extractLogicFromVerilog()}}
+{\footnotesize\ttfamily std\+::map$<$ std\+::string, std\+::string $>$ extract\+Logic\+From\+Verilog (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{verilog\+\_\+file,  }\item[{const std\+::string \&}]{cell }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00575}{575}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LogicExtractor_8hpp_ae057244a8c2cf0f12f0fa95ce36c8a5d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LogicExtractor_8hpp_ae057244a8c2cf0f12f0fa95ce36c8a5d_icgraph}
+\end{center}
+\end{figure}
