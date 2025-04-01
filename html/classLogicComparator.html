@@ -93,7 +93,6 @@ $(document).ready(function(){initNavTree('classLogicComparator.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classLogicComparator-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">LogicComparator Class Reference</div></div>
@@ -111,6 +110,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4ce5e98ddd78aafb760d49f7201e78a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accce3c590846e3fdf1a66aaa6a5c465a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">preprocessExpression</a> (const std::string &amp;input_expr)</td></tr>
 <tr class="separator:accce3c590846e3fdf1a66aaa6a5c465a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75c9d6faa38a1003670c59e5f60d1666"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666">extractVariables</a> (const std::string &amp;expr1, const std::string &amp;expr2, std::vector&lt; std::string &gt; &amp;sorted_vars)</td></tr>
+<tr class="memdesc:a75c9d6faa38a1003670c59e5f60d1666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts and validates variables from two expressions, ensuring they match.  <a href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666">More...</a><br /></td></tr>
+<tr class="separator:a75c9d6faa38a1003670c59e5f60d1666"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75bc372dab8bde4526c3ebbdc476d631"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a75bc372dab8bde4526c3ebbdc476d631"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#a75bc372dab8bde4526c3ebbdc476d631">compareSingleExpressionPair</a> (const std::string &amp;ref_expression_processed, const std::string &amp;comp_expression_processed, <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> &amp;result)</td></tr>
+<tr class="memdesc:a75bc372dab8bde4526c3ebbdc476d631"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two preprocessed logic expression strings for equivalence. Internal helper function.  <a href="classLogicComparator.html#a75bc372dab8bde4526c3ebbdc476d631">More...</a><br /></td></tr>
+<tr class="separator:a75bc372dab8bde4526c3ebbdc476d631"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa9d3a5c46e5c6fa589e1c5e29b1c379"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aaa9d3a5c46e5c6fa589e1c5e29b1c379"><td class="memTemplItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#aaa9d3a5c46e5c6fa589e1c5e29b1c379">compareCellLogic</a> ()</td></tr>
 <tr class="memdesc:aaa9d3a5c46e5c6fa589e1c5e29b1c379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares logic for all output pins defined in the input maps.  <a href="classLogicComparator.html#aaa9d3a5c46e5c6fa589e1c5e29b1c379">More...</a><br /></td></tr>
@@ -118,15 +124,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7c0ccb67d6136a1982ef8d5094087c73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#a7c0ccb67d6136a1982ef8d5094087c73">generateReport</a> (const std::string &amp;output_file, const std::map&lt; std::string, <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> &gt; &amp;comparison_results)</td></tr>
 <tr class="memdesc:a7c0ccb67d6136a1982ef8d5094087c73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a comparison report file based on cell logic comparison results.  <a href="classLogicComparator.html#a7c0ccb67d6136a1982ef8d5094087c73">More...</a><br /></td></tr>
 <tr class="separator:a7c0ccb67d6136a1982ef8d5094087c73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a75c9d6faa38a1003670c59e5f60d1666"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666">extractVariables</a> (const std::string &amp;expr1, const std::string &amp;expr2, std::vector&lt; std::string &gt; &amp;sorted_vars)</td></tr>
-<tr class="separator:a75c9d6faa38a1003670c59e5f60d1666"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75bc372dab8bde4526c3ebbdc476d631"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a75bc372dab8bde4526c3ebbdc476d631"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#a75bc372dab8bde4526c3ebbdc476d631">compareSingleExpressionPair</a> (const std::string &amp;ref_expression_processed, const std::string &amp;comp_expression_processed, <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> &amp;result)</td></tr>
-<tr class="memdesc:a75bc372dab8bde4526c3ebbdc476d631"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two preprocessed logic expression strings for equivalence. Internal helper function.  <a href="classLogicComparator.html#a75bc372dab8bde4526c3ebbdc476d631">More...</a><br /></td></tr>
-<tr class="separator:a75bc372dab8bde4526c3ebbdc476d631"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -213,9 +210,6 @@ template&lt;typename T &gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void LogicComparator::compareSingleExpressionPair </td>
@@ -241,11 +235,6 @@ template&lt;typename T &gt; </div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Compares two preprocessed logic expression strings for equivalence. Internal helper function. </p>
@@ -271,21 +260,18 @@ template&lt;typename T &gt; </div>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool LogicComparator::extractVariables </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>expr1</em>, </td>
+          <td class="paramname"><em>expr1_raw</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>expr2</em>, </td>
+          <td class="paramname"><em>expr2_raw</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -299,12 +285,49 @@ template&lt;typename T &gt; </div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
+
+<p>Extracts and validates variables from two expressions, ensuring they match. </p>
+<p >This function parses two raw expression strings (<code>expr1_raw</code> and <code>expr2_raw</code>) to identify potential variable names. It uses a regular expression to find identifiers and then validates them against a set of rules:</p><ol type="1">
+<li>The identifier must be a valid identifier as determined by the <code>isIdentifier</code> function.</li>
+<li>The identifier must not be a keyword or function name defined in the <code>keywords</code> set.</li>
+</ol>
+<p >The function compares the sets of validated variables from both expressions. If the sets are identical, the variables are extracted, sorted alphabetically, and stored in the <code>sorted_vars</code> vector. If the sets differ, an error is reported, and the differences between the sets are logged.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">expr1_raw</td><td>The raw string representation of the first expression. </td></tr>
+    <tr><td class="paramname">expr2_raw</td><td>The raw string representation of the second expression. </td></tr>
+    <tr><td class="paramname">sorted_vars</td><td>A vector to store the sorted list of unique variable names if the variable sets from both expressions match. This vector is cleared if the sets do not match.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the variable sets from both expressions match, indicating that the <code>sorted_vars</code> vector contains the sorted list of unique variable names. <code>false</code> if the variable sets do not match, indicating an error.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The <code>isIdentifier</code> function is used to validate potential variable names. </dd>
+<dd>
+The <code>keywords</code> set contains a list of reserved words that cannot be used as variable names. </dd>
+<dd>
+The function uses spdlog for logging debug, trace, info, and warning messages. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00200">200</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_cgraph.png" border="0" usemap="#aclassLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_cgraph" alt=""/></div>
+<map name="aclassLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_cgraph" id="aclassLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_cgraph">
+<area shape="rect" title="Extracts and validates variables from two expressions, ensuring they match." alt="" coords="5,5,192,45"/>
+<area shape="rect" href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df" title="Checks if a given string is a valid identifier." alt="" coords="240,13,331,38"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_icgraph.png" border="0" usemap="#aclassLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_icgraph" alt=""/></div>
+<map name="aclassLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_icgraph" id="aclassLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_icgraph">
+<area shape="rect" title="Extracts and validates variables from two expressions, ensuring they match." alt="" coords="248,5,435,45"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -343,7 +366,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00169">169</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00398">398</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
 
 </div>
 </div>
@@ -401,7 +424,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_icgraph.png" border="0" usemap="#aclassLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_icgraph" alt=""/></div>
 <map name="aclassLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_icgraph" id="aclassLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_icgraph">
 <area shape="rect" title=" " alt="" coords="248,5,460,45"/>
-<area shape="rect" href="main_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
 </map>
 </div>
@@ -429,7 +452,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00071">71</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00089">89</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
 
 </div>
 </div>
@@ -453,7 +476,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00070">70</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00088">88</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
 
 </div>
 </div>
@@ -477,7 +500,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00069">69</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00087">87</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
 
 </div>
 </div>
@@ -491,7 +514,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classLogicComparator.html">LogicComparator</a></li>
-    <li class="footer">Generated on Tue Apr 1 2025 15:41:05 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Apr 1 2025 17:22:26 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

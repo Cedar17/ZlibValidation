@@ -489,7 +489,17 @@ Development Diary</h1>
 </li>
 </ul>
 </li>
-<li>**重组与清理**：将处理后的 token 列表用单个空格连接起来，并进行最终的空格清理（去除多余空格，修剪首尾空格），得到最终的预处理表达式。 </li>
+<li>**重组与清理**：将处理后的 token 列表用单个空格连接起来，并进行最终的空格清理（去除多余空格，修剪首尾空格），得到最终的预处理表达式。</li>
+</ul>
+</li>
+<li>在 <code>CMakeLists.txt</code> 中，强制启用了 lld 链接器和 ccache，以提升链接和编译速度。</li>
+<li>为了保持 <code><a class="el" href="main_8cpp.html">main.cpp</a></code> 的整洁，将 <code><a class="el" href="classLibFile.html">LibFile()</a></code> 函数的相关操作剥离出来，并放入 <code><a class="el" href="LibFileOperations_8cpp.html">LibFileOperations.cpp</a></code> 文件中。</li>
+<li>实现了 <code><a class="el" href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666" title="Extracts and validates variables from two expressions, ensuring they match.">LogicComparator::extractVariables()</a></code> 方法，用于从两个表达式中提取并验证变量名，确保它们一致。<ul>
+<li>该方法使用正则表达式初步提取所有可能的标识符。</li>
+<li>对每个提取出的标识符，先用 <code>isIdentifier</code> 函数（检查大写开头等）进行验证。</li>
+<li>通过 <code>isIdentifier</code> 验证后，仍然将其转换为小写并与 <code>keywords</code> 集合比较，以过滤掉可能的关键词（这是一个保守但安全的操作）。</li>
+<li>只有通过这两步验证的标识符才被认为是有效变量，并以原始大小写形式添加到各自的 <code>std::set</code> 中。</li>
+<li>最后比较两个 <code>std::set</code> 是否相等，如果不等则报告差异并返回 <code>false</code>，如果相等则将变量列表（保留原始大小写）排序后存入 <code>sorted_vars</code> 并返回 <code>true</code>。 </li>
 </ul>
 </li>
 </ul>
@@ -499,7 +509,7 @@ Development Diary</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 1 2025 15:41:05 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Apr 1 2025 17:22:26 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

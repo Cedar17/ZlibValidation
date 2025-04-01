@@ -51,24 +51,24 @@
 \DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00047}00047   \textcolor{comment}{// Preprocessing function}}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00048}00048   std::string \mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{preprocessExpression}}(\textcolor{keyword}{const} std::string \&input\_expr);}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00049}00049 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00057}\mbox{\hyperlink{classLogicComparator_aaa9d3a5c46e5c6fa589e1c5e29b1c379}{00057}}   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> std::map<std::string, PinComparisonResult> \mbox{\hyperlink{classLogicComparator_aaa9d3a5c46e5c6fa589e1c5e29b1c379}{compareCellLogic}}();}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00058}00058 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00065}00065   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{generateReport}}(\textcolor{keyword}{const} std::string \&output\_file,}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00066}00066                       \textcolor{keyword}{const} std::map<std::string, PinComparisonResult> \&comparison\_results);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00050}00050   \textcolor{comment}{// Helper to extract unique sorted variables from TWO expressions}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00051}00051   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{extractVariables}}(\textcolor{keyword}{const} std::string \&expr1, \textcolor{keyword}{const} std::string \&expr2,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00052}00052                         std::vector<std::string> \&sorted\_vars);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00063}00063   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00064}\mbox{\hyperlink{classLogicComparator_a75bc372dab8bde4526c3ebbdc476d631}{00064}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a75bc372dab8bde4526c3ebbdc476d631}{compareSingleExpressionPair}}(\textcolor{keyword}{const} std::string \&ref\_expression\_processed,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00065}00065                                    \textcolor{keyword}{const} std::string \&comp\_expression\_processed,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00066}00066                                    \mbox{\hyperlink{structPinComparisonResult}{PinComparisonResult}} \&result); \textcolor{comment}{// Pass result struct}}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00067}00067 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00068}00068 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00069}\mbox{\hyperlink{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}{00069}}   std::map<std::string, std::string> \mbox{\hyperlink{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}{ref\_outpin\_map\_}};}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00070}\mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{00070}}   std::map<std::string, std::string> \mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{comp\_outpin\_map\_}};}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00071}\mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{00071}}   std::string \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}};}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00072}00072 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00073}00073   \textcolor{comment}{// Helper to extract unique sorted variables from TWO expressions}}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00074}\mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{00074}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{extractVariables}}(\textcolor{keyword}{const} std::string \&expr1, \textcolor{keyword}{const} std::string \&expr2,}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00075}00075                         std::vector<std::string> \&sorted\_vars);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00075}\mbox{\hyperlink{classLogicComparator_aaa9d3a5c46e5c6fa589e1c5e29b1c379}{00075}}   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> std::map<std::string, PinComparisonResult> \mbox{\hyperlink{classLogicComparator_aaa9d3a5c46e5c6fa589e1c5e29b1c379}{compareCellLogic}}();}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00076}00076 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00086}00086   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00087}\mbox{\hyperlink{classLogicComparator_a75bc372dab8bde4526c3ebbdc476d631}{00087}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a75bc372dab8bde4526c3ebbdc476d631}{compareSingleExpressionPair}}(\textcolor{keyword}{const} std::string \&ref\_expression\_processed,}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00088}00088                                    \textcolor{keyword}{const} std::string \&comp\_expression\_processed,}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00089}00089                                    \mbox{\hyperlink{structPinComparisonResult}{PinComparisonResult}} \&result); \textcolor{comment}{// Pass result struct}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00083}00083   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{generateReport}}(\textcolor{keyword}{const} std::string \&output\_file,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00084}00084                       \textcolor{keyword}{const} std::map<std::string, PinComparisonResult> \&comparison\_results);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00086}00086 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00087}\mbox{\hyperlink{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}{00087}}   std::map<std::string, std::string> \mbox{\hyperlink{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}{ref\_outpin\_map\_}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00088}\mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{00088}}   std::map<std::string, std::string> \mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{comp\_outpin\_map\_}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00089}\mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{00089}}   std::string \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}};}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00090}00090 \};}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00091}00091 }
 \DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00092}00092 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LOGIC\_COMPARATOR\_HPP}}

@@ -361,6 +361,16 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \item 下一个 token 不是一个显式逻辑运算符或右括号 {\ttfamily )}。
 \end{DoxyItemize}
 \end{DoxyItemize}
-\item $\ast$$\ast$重组与清理$\ast$$\ast$：将处理后的 token 列表用单个空格连接起来，并进行最终的空格清理（去除多余空格，修剪首尾空格），得到最终的预处理表达式。 
+\item $\ast$$\ast$重组与清理$\ast$$\ast$：将处理后的 token 列表用单个空格连接起来，并进行最终的空格清理（去除多余空格，修剪首尾空格），得到最终的预处理表达式。
+\end{DoxyItemize}
+\item 在 {\ttfamily CMake\+Lists.\+txt} 中，强制启用了 lld 链接器和 ccache，以提升链接和编译速度。
+\item 为了保持 {\ttfamily \mbox{\hyperlink{main_8cpp}{main.\+cpp}}} 的整洁，将 {\ttfamily \mbox{\hyperlink{classLibFile}{Lib\+File()}}} 函数的相关操作剥离出来，并放入 {\ttfamily \mbox{\hyperlink{LibFileOperations_8cpp}{Lib\+File\+Operations.\+cpp}}} 文件中。
+\item 实现了 {\ttfamily \mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{Logic\+Comparator\+::extract\+Variables()}}} 方法，用于从两个表达式中提取并验证变量名，确保它们一致。
+\begin{DoxyItemize}
+\item 该方法使用正则表达式初步提取所有可能的标识符。
+\item 对每个提取出的标识符，先用 {\ttfamily is\+Identifier} 函数（检查大写开头等）进行验证。
+\item 通过 {\ttfamily is\+Identifier} 验证后，仍然将其转换为小写并与 {\ttfamily keywords} 集合比较，以过滤掉可能的关键词（这是一个保守但安全的操作）。
+\item 只有通过这两步验证的标识符才被认为是有效变量，并以原始大小写形式添加到各自的 {\ttfamily std\+::set} 中。
+\item 最后比较两个 {\ttfamily std\+::set} 是否相等，如果不等则报告差异并返回 {\ttfamily false}，如果相等则将变量列表（保留原始大小写）排序后存入 {\ttfamily sorted\+\_\+vars} 并返回 {\ttfamily true}。 
 \end{DoxyItemize}
 \end{DoxyItemize}

@@ -13,17 +13,14 @@
 \item 
 std\+::string \mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{preprocess\+Expression}} (const std\+::string \&input\+\_\+expr)
 \item 
+bool \mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{extract\+Variables}} (const std\+::string \&expr1, const std\+::string \&expr2, std\+::vector$<$ std\+::string $>$ \&sorted\+\_\+vars)
+\begin{DoxyCompactList}\small\item\em Extracts and validates variables from two expressions, ensuring they match. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classLogicComparator_a75bc372dab8bde4526c3ebbdc476d631}{compare\+Single\+Expression\+Pair}} (const std\+::string \&ref\+\_\+expression\+\_\+processed, const std\+::string \&comp\+\_\+expression\+\_\+processed, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} \&result)
+\begin{DoxyCompactList}\small\item\em Compares two preprocessed logic expression strings for equivalence. Internal helper function. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\std\+::map$<$ std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} $>$ \mbox{\hyperlink{classLogicComparator_aaa9d3a5c46e5c6fa589e1c5e29b1c379}{compare\+Cell\+Logic}} ()
 \begin{DoxyCompactList}\small\item\em Compares logic for all output pins defined in the input maps. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{generate\+Report}} (const std\+::string \&output\+\_\+file, const std\+::map$<$ std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} $>$ \&comparison\+\_\+results)
 \begin{DoxyCompactList}\small\item\em Generates a comparison report file based on cell logic comparison results. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-bool \mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{extract\+Variables}} (const std\+::string \&expr1, const std\+::string \&expr2, std\+::vector$<$ std\+::string $>$ \&sorted\+\_\+vars)
-\item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classLogicComparator_a75bc372dab8bde4526c3ebbdc476d631}{compare\+Single\+Expression\+Pair}} (const std\+::string \&ref\+\_\+expression\+\_\+processed, const std\+::string \&comp\+\_\+expression\+\_\+processed, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} \&result)
-\begin{DoxyCompactList}\small\item\em Compares two preprocessed logic expression strings for equivalence. Internal helper function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -80,7 +77,7 @@ A map where the key is the pin name and the value is the \mbox{\hyperlink{struct
 \index{compareSingleExpressionPair@{compareSingleExpressionPair}!LogicComparator@{LogicComparator}}
 \doxysubsubsection{\texorpdfstring{compareSingleExpressionPair()}{compareSingleExpressionPair()}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-void Logic\+Comparator\+::compare\+Single\+Expression\+Pair (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{ref\+\_\+expression\+\_\+processed,  }\item[{const std\+::string \&}]{comp\+\_\+expression\+\_\+processed,  }\item[{\mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+void Logic\+Comparator\+::compare\+Single\+Expression\+Pair (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{ref\+\_\+expression\+\_\+processed,  }\item[{const std\+::string \&}]{comp\+\_\+expression\+\_\+processed,  }\item[{\mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} \&}]{result }\end{DoxyParamCaption})}
 
 
 
@@ -104,8 +101,59 @@ Compares two preprocessed logic expression strings for equivalence. Internal hel
 \index{LogicComparator@{LogicComparator}!extractVariables@{extractVariables}}
 \index{extractVariables@{extractVariables}!LogicComparator@{LogicComparator}}
 \doxysubsubsection{\texorpdfstring{extractVariables()}{extractVariables()}}
-{\footnotesize\ttfamily bool Logic\+Comparator\+::extract\+Variables (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{expr1,  }\item[{const std\+::string \&}]{expr2,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{sorted\+\_\+vars }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily bool Logic\+Comparator\+::extract\+Variables (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{expr1\+\_\+raw,  }\item[{const std\+::string \&}]{expr2\+\_\+raw,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{sorted\+\_\+vars }\end{DoxyParamCaption})}
 
+
+
+Extracts and validates variables from two expressions, ensuring they match. 
+
+This function parses two raw expression strings ({\ttfamily expr1\+\_\+raw} and {\ttfamily expr2\+\_\+raw}) to identify potential variable names. It uses a regular expression to find identifiers and then validates them against a set of rules\+:
+\begin{DoxyEnumerate}
+\item The identifier must be a valid identifier as determined by the {\ttfamily is\+Identifier} function.
+\item The identifier must not be a keyword or function name defined in the {\ttfamily keywords} set.
+\end{DoxyEnumerate}
+
+The function compares the sets of validated variables from both expressions. If the sets are identical, the variables are extracted, sorted alphabetically, and stored in the {\ttfamily sorted\+\_\+vars} vector. If the sets differ, an error is reported, and the differences between the sets are logged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em expr1\+\_\+raw} & The raw string representation of the first expression. \\
+\hline
+{\em expr2\+\_\+raw} & The raw string representation of the second expression. \\
+\hline
+{\em sorted\+\_\+vars} & A vector to store the sorted list of unique variable names if the variable sets from both expressions match. This vector is cleared if the sets do not match.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the variable sets from both expressions match, indicating that the {\ttfamily sorted\+\_\+vars} vector contains the sorted list of unique variable names. {\ttfamily false} if the variable sets do not match, indicating an error.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The {\ttfamily is\+Identifier} function is used to validate potential variable names. 
+
+The {\ttfamily keywords} set contains a list of reserved words that cannot be used as variable names. 
+
+The function uses spdlog for logging debug, trace, info, and warning messages. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00200}{200}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}\label{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}} 
 \index{LogicComparator@{LogicComparator}!generateReport@{generateReport}}
 \index{generateReport@{generateReport}!LogicComparator@{LogicComparator}}
@@ -125,7 +173,7 @@ Generates a comparison report file based on cell logic comparison results.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00169}{169}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00398}{398}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 \mbox{\Hypertarget{classLogicComparator_a4ce5e98ddd78aafb760d49f7201e78a9}\label{classLogicComparator_a4ce5e98ddd78aafb760d49f7201e78a9}} 
 \index{LogicComparator@{LogicComparator}!logic@{logic}}
@@ -175,7 +223,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00071}{71}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
 
 \mbox{\Hypertarget{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}\label{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}} 
 \index{LogicComparator@{LogicComparator}!comp\_outpin\_map\_@{comp\_outpin\_map\_}}
@@ -185,7 +233,7 @@ Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00071}{71}} of 
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
 
 \mbox{\Hypertarget{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}\label{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}} 
 \index{LogicComparator@{LogicComparator}!ref\_outpin\_map\_@{ref\_outpin\_map\_}}
@@ -195,7 +243,7 @@ Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00070}{70}} of 
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
 
 
 

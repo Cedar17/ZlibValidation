@@ -11,28 +11,28 @@
   \item {$\sim$LibGroup}
     \subitem {LibGroup}, \hyperpage{56}
   \item {$\sim$ValuesIterator}
-    \subitem {ValuesIterator}, \hyperpage{89}
+    \subitem {ValuesIterator}, \hyperpage{90}
 
   \indexspace
 
   \item {abstol\_}
     \subitem {LibraryComparator}, \hyperpage{67}
   \item {APP\_AUTHOR}
-    \subitem {version.h}, \hyperpage{126}
+    \subitem {version.h}, \hyperpage{139}
   \item {APP\_CONTACT}
-    \subitem {version.h}, \hyperpage{126}
+    \subitem {version.h}, \hyperpage{139}
   \item {APP\_NAME}
-    \subitem {version.h}, \hyperpage{126}
+    \subitem {version.h}, \hyperpage{139}
   \item {APP\_VERSION}
-    \subitem {version.h}, \hyperpage{126}
+    \subitem {version.h}, \hyperpage{139}
   \item {APP\_VERSION\_MAJOR}
-    \subitem {version.h}, \hyperpage{126}
+    \subitem {version.h}, \hyperpage{139}
   \item {APP\_VERSION\_MINOR}
-    \subitem {version.h}, \hyperpage{126}
+    \subitem {version.h}, \hyperpage{139}
   \item {APP\_VERSION\_PATCH}
-    \subitem {version.h}, \hyperpage{127}
+    \subitem {version.h}, \hyperpage{140}
   \item {are\_equivalent}
-    \subitem {PinComparisonResult}, \hyperpage{86}
+    \subitem {PinComparisonResult}, \hyperpage{87}
   \item {attr\_}
     \subitem {AttributesIterator}, \hyperpage{23}
     \subitem {LibAttribute}, \hyperpage{38}
@@ -53,14 +53,14 @@
   \item {basename\_}
     \subitem {LibFile}, \hyperpage{52}
   \item {bool\_}
-    \subitem {ValuesIterator}, \hyperpage{90}
+    \subitem {ValuesIterator}, \hyperpage{91}
   \item {BUILD\_TIMESTAMP}
-    \subitem {version.h}, \hyperpage{127}
+    \subitem {version.h}, \hyperpage{140}
 
   \indexspace
 
   \item {cell\_name\_}
-    \subitem {LogicComparator}, \hyperpage{72}
+    \subitem {LogicComparator}, \hyperpage{73}
   \item {CellExtractor}, \hyperpage{24}
     \subitem {CellExtractor}, \hyperpage{25}
     \subitem {foundTarget\_}, \hyperpage{26}
@@ -68,7 +68,7 @@
     \subitem {handle}, \hyperpage{26}
     \subitem {targetCell\_}, \hyperpage{26}
   \item {cellName\_}
-    \subitem {ModuleRewriter}, \hyperpage{83}
+    \subitem {ModuleRewriter}, \hyperpage{84}
   \item {CellPrinter}, \hyperpage{27}
     \subitem {CellPrinter}, \hyperpage{28}
     \subitem {foundTarget\_}, \hyperpage{29}
@@ -78,25 +78,26 @@
   \item {checkTimingArcMonotonicity}
     \subitem {LibFile}, \hyperpage{40}
   \item {comp\_compiles}
-    \subitem {PinComparisonResult}, \hyperpage{86}
+    \subitem {PinComparisonResult}, \hyperpage{87}
   \item {comp\_expr\_processed}
-    \subitem {PinComparisonResult}, \hyperpage{86}
+    \subitem {PinComparisonResult}, \hyperpage{87}
   \item {comp\_expr\_raw}
-    \subitem {PinComparisonResult}, \hyperpage{86}
+    \subitem {PinComparisonResult}, \hyperpage{87}
   \item {comp\_json\_}
     \subitem {LibraryComparator}, \hyperpage{67}
   \item {comp\_lib\_path\_}
     \subitem {LibraryComparator}, \hyperpage{67}
   \item {comp\_outpin\_map\_}
-    \subitem {LogicComparator}, \hyperpage{72}
+    \subitem {LogicComparator}, \hyperpage{73}
   \item {comp\_truth\_table}
-    \subitem {PinComparisonResult}, \hyperpage{86}
+    \subitem {PinComparisonResult}, \hyperpage{87}
   \item {compareCell}
     \subitem {LibraryComparator}, \hyperpage{61}
   \item {compareCellLogic}
     \subitem {LogicComparator}, \hyperpage{69}
   \item {compareLibFiles}
-    \subitem {main.cpp}, \hyperpage{179}
+    \subitem {LibFileOperations.cpp}, \hyperpage{170}
+    \subitem {LibFileOperations.hpp}, \hyperpage{114}
   \item {compareLut}
     \subitem {LibraryComparator}, \hyperpage{62}
   \item {comparePin}
@@ -106,39 +107,39 @@
   \item {compareTimingArc}
     \subitem {LibraryComparator}, \hyperpage{64}
   \item {comparison\_possible}
-    \subitem {PinComparisonResult}, \hyperpage{86}
+    \subitem {PinComparisonResult}, \hyperpage{87}
 
   \indexspace
 
   \item {depth\_}
-    \subitem {ModuleRewriter}, \hyperpage{83}
-    \subitem {VerilogVisitor}, \hyperpage{95}
+    \subitem {ModuleRewriter}, \hyperpage{84}
+    \subitem {VerilogVisitor}, \hyperpage{96}
   \item {deriveLogicRecursive}
-    \subitem {LogicExtractor}, \hyperpage{74}
+    \subitem {LogicExtractor}, \hyperpage{75}
 
   \indexspace
 
   \item {end}
     \subitem {AttributesIterator}, \hyperpage{22}
     \subitem {GroupsIterator}, \hyperpage{32}
-    \subitem {ValuesIterator}, \hyperpage{89}
+    \subitem {ValuesIterator}, \hyperpage{90}
   \item {err\_}
     \subitem {AttributesIterator}, \hyperpage{24}
     \subitem {GroupsIterator}, \hyperpage{33}
     \subitem {LibAttribute}, \hyperpage{38}
     \subitem {LibFile}, \hyperpage{52}
     \subitem {LibGroup}, \hyperpage{58}
-    \subitem {ValuesIterator}, \hyperpage{90}
+    \subitem {ValuesIterator}, \hyperpage{91}
   \item {error\_message}
-    \subitem {PinComparisonResult}, \hyperpage{87}
+    \subitem {PinComparisonResult}, \hyperpage{88}
   \item {exprp\_}
-    \subitem {ValuesIterator}, \hyperpage{90}
+    \subitem {ValuesIterator}, \hyperpage{91}
   \item {extractAndPrintNetlistInfo}
-    \subitem {LogicExtractor.cpp}, \hyperpage{167}
-    \subitem {LogicExtractor.hpp}, \hyperpage{120}
+    \subitem {LogicExtractor.cpp}, \hyperpage{199}
+    \subitem {LogicExtractor.hpp}, \hyperpage{133}
   \item {extractLogicFromVerilog}
-    \subitem {LogicExtractor.cpp}, \hyperpage{168}
-    \subitem {LogicExtractor.hpp}, \hyperpage{120}
+    \subitem {LogicExtractor.cpp}, \hyperpage{200}
+    \subitem {LogicExtractor.hpp}, \hyperpage{133}
   \item {extractVariables}
     \subitem {LogicComparator}, \hyperpage{70}
 
@@ -149,16 +150,17 @@
   \item {filepath\_}
     \subitem {LibFile}, \hyperpage{53}
   \item {float\_}
-    \subitem {ValuesIterator}, \hyperpage{90}
+    \subitem {ValuesIterator}, \hyperpage{91}
   \item {formatExpression}
-    \subitem {LogicExtractor}, \hyperpage{75}
+    \subitem {LogicExtractor}, \hyperpage{76}
   \item {foundTarget\_}
     \subitem {CellExtractor}, \hyperpage{26}
     \subitem {CellPrinter}, \hyperpage{29}
   \item {foundTargetCell}
     \subitem {CellExtractor}, \hyperpage{26}
   \item {funcLibFile}
-    \subitem {main.cpp}, \hyperpage{180}
+    \subitem {LibFileOperations.cpp}, \hyperpage{171}
+    \subitem {LibFileOperations.hpp}, \hyperpage{115}
 
   \indexspace
 
@@ -168,38 +170,38 @@
     \subitem {kind}, \hyperpage{30}
     \subitem {outputSignal}, \hyperpage{30}
   \item {gateOutputDrivers\_}
-    \subitem {LogicExtractor}, \hyperpage{79}
+    \subitem {LogicExtractor}, \hyperpage{80}
   \item {gateTypeName}
     \subitem {GateInfo}, \hyperpage{30}
   \item {generateCellJson}
-    \subitem {json\_utils.cpp}, \hyperpage{130}
+    \subitem {json\_utils.cpp}, \hyperpage{143}
     \subitem {json\_utils.hpp}, \hyperpage{101}
   \item {generateLutJson}
-    \subitem {json\_utils.cpp}, \hyperpage{131}
+    \subitem {json\_utils.cpp}, \hyperpage{144}
     \subitem {json\_utils.hpp}, \hyperpage{102}
   \item {generatePinJson}
-    \subitem {json\_utils.cpp}, \hyperpage{133}
+    \subitem {json\_utils.cpp}, \hyperpage{146}
     \subitem {json\_utils.hpp}, \hyperpage{104}
   \item {generatePowerJson}
-    \subitem {json\_utils.cpp}, \hyperpage{136}
+    \subitem {json\_utils.cpp}, \hyperpage{149}
     \subitem {json\_utils.hpp}, \hyperpage{107}
   \item {generateReport}
     \subitem {LibraryComparator}, \hyperpage{66}
-    \subitem {LogicComparator}, \hyperpage{70}
+    \subitem {LogicComparator}, \hyperpage{72}
   \item {generateTimingJson}
-    \subitem {json\_utils.cpp}, \hyperpage{137}
+    \subitem {json\_utils.cpp}, \hyperpage{150}
   \item {get}
     \subitem {AttributesIterator}, \hyperpage{22}
     \subitem {GroupsIterator}, \hyperpage{32}
   \item {getAST}
-    \subitem {verilog\_utils.cpp}, \hyperpage{199}
-    \subitem {verilog\_utils.hpp}, \hyperpage{123}
+    \subitem {verilog\_utils.cpp}, \hyperpage{216}
+    \subitem {verilog\_utils.hpp}, \hyperpage{136}
   \item {getAttrs}
     \subitem {LibGroup}, \hyperpage{56}
   \item {getBoolean}
     \subitem {LibAttribute}, \hyperpage{35}
   \item {getExtractedGates}
-    \subitem {LogicExtractor}, \hyperpage{75}
+    \subitem {LogicExtractor}, \hyperpage{76}
   \item {getFloat}
     \subitem {LibAttribute}, \hyperpage{35}
   \item {getGroups}
@@ -207,16 +209,16 @@
   \item {getInt}
     \subitem {LibAttribute}, \hyperpage{35}
   \item {getInternalWires}
-    \subitem {LogicExtractor}, \hyperpage{76}
+    \subitem {LogicExtractor}, \hyperpage{77}
   \item {getLogicExpressions}
-    \subitem {LogicExtractor}, \hyperpage{76}
+    \subitem {LogicExtractor}, \hyperpage{77}
   \item {getName}
     \subitem {LibAttribute}, \hyperpage{36}
     \subitem {LibGroup}, \hyperpage{57}
   \item {getPrimaryInputs}
-    \subitem {LogicExtractor}, \hyperpage{77}
+    \subitem {LogicExtractor}, \hyperpage{78}
   \item {getPrimaryOutputs}
-    \subitem {LogicExtractor}, \hyperpage{77}
+    \subitem {LogicExtractor}, \hyperpage{78}
   \item {getString}
     \subitem {LibAttribute}, \hyperpage{36}
   \item {getType}
@@ -243,9 +245,9 @@
   \item {handle}
     \subitem {CellExtractor}, \hyperpage{26}
     \subitem {CellPrinter}, \hyperpage{28}
-    \subitem {LogicExtractor}, \hyperpage{78, 79}
-    \subitem {ModuleRewriter}, \hyperpage{83}
-    \subitem {VerilogVisitor}, \hyperpage{93, 94}
+    \subitem {LogicExtractor}, \hyperpage{79, 80}
+    \subitem {ModuleRewriter}, \hyperpage{84}
+    \subitem {VerilogVisitor}, \hyperpage{94, 95}
 
   \indexspace
 
@@ -253,45 +255,47 @@
   \item {include/json\_utils.hpp}, \hyperpage{99}, \hyperpage{108}
   \item {include/LibAttribute.hpp}, \hyperpage{109, 110}
   \item {include/LibFile.hpp}, \hyperpage{111, 112}
-  \item {include/LibGroup.hpp}, \hyperpage{113, 114}
-  \item {include/LibraryComparator.hpp}, \hyperpage{115, 116}
-  \item {include/LogicComparator.hpp}, \hyperpage{117, 118}
-  \item {include/LogicExtractor.hpp}, \hyperpage{119}, \hyperpage{121}
-  \item {include/verilog\_utils.hpp}, \hyperpage{122}, \hyperpage{124}
-  \item {include/version.h}, \hyperpage{125}, \hyperpage{127}
+  \item {include/LibFileOperations.hpp}, \hyperpage{113}, 
+		\hyperpage{125}
+  \item {include/LibGroup.hpp}, \hyperpage{126, 127}
+  \item {include/LibraryComparator.hpp}, \hyperpage{128, 129}
+  \item {include/LogicComparator.hpp}, \hyperpage{130, 131}
+  \item {include/LogicExtractor.hpp}, \hyperpage{132}, \hyperpage{134}
+  \item {include/verilog\_utils.hpp}, \hyperpage{135}, \hyperpage{137}
+  \item {include/version.h}, \hyperpage{138}, \hyperpage{140}
   \item {inputPins\_}
-    \subitem {ModuleRewriter}, \hyperpage{84}
+    \subitem {ModuleRewriter}, \hyperpage{85}
   \item {inputSignals}
     \subitem {GateInfo}, \hyperpage{30}
   \item {instance\_count\_}
-    \subitem {ModuleRewriter}, \hyperpage{84}
+    \subitem {ModuleRewriter}, \hyperpage{85}
   \item {int\_}
-    \subitem {ValuesIterator}, \hyperpage{91}
+    \subitem {ValuesIterator}, \hyperpage{92}
   \item {inTargetModule\_}
-    \subitem {LogicExtractor}, \hyperpage{79}
-    \subitem {VerilogVisitor}, \hyperpage{95}
+    \subitem {LogicExtractor}, \hyperpage{80}
+    \subitem {VerilogVisitor}, \hyperpage{96}
   \item {internalWires\_}
-    \subitem {LogicExtractor}, \hyperpage{79}
+    \subitem {LogicExtractor}, \hyperpage{80}
   \item {isComplex}
     \subitem {LibAttribute}, \hyperpage{37}
   \item {isIdentifier}
-    \subitem {LogicComparator.cpp}, \hyperpage{163}
+    \subitem {LogicComparator.cpp}, \hyperpage{192}
   \item {isOperator}
-    \subitem {LogicComparator.cpp}, \hyperpage{164}
+    \subitem {LogicComparator.cpp}, \hyperpage{193}
 
   \indexspace
 
   \item {json}
     \subitem {json\_utils.hpp}, \hyperpage{100}
     \subitem {LibFile.hpp}, \hyperpage{112}
-    \subitem {LibraryComparator.hpp}, \hyperpage{116}
+    \subitem {LibraryComparator.hpp}, \hyperpage{129}
   \item {json\_utils.cpp}
-    \subitem {generateCellJson}, \hyperpage{130}
-    \subitem {generateLutJson}, \hyperpage{131}
-    \subitem {generatePinJson}, \hyperpage{133}
-    \subitem {generatePowerJson}, \hyperpage{136}
-    \subitem {generateTimingJson}, \hyperpage{137}
-    \subitem {parseStringToVector}, \hyperpage{139}
+    \subitem {generateCellJson}, \hyperpage{143}
+    \subitem {generateLutJson}, \hyperpage{144}
+    \subitem {generatePinJson}, \hyperpage{146}
+    \subitem {generatePowerJson}, \hyperpage{149}
+    \subitem {generateTimingJson}, \hyperpage{150}
+    \subitem {parseStringToVector}, \hyperpage{152}
   \item {json\_utils.hpp}
     \subitem {generateCellJson}, \hyperpage{101}
     \subitem {generateLutJson}, \hyperpage{102}
@@ -348,6 +352,22 @@
     \subitem {writeJsonToFile}, \hyperpage{51}
   \item {LibFile.hpp}
     \subitem {json}, \hyperpage{112}
+  \item {LibFileOperations.cpp}
+    \subitem {compareLibFiles}, \hyperpage{170}
+    \subitem {funcLibFile}, \hyperpage{171}
+    \subitem {monoCheckLibFile}, \hyperpage{172}
+    \subitem {parseLibFile}, \hyperpage{174}
+    \subitem {printInfo}, \hyperpage{177}
+    \subitem {supercellLibFile}, \hyperpage{177}
+    \subitem {verilogLibFile}, \hyperpage{179}
+  \item {LibFileOperations.hpp}
+    \subitem {compareLibFiles}, \hyperpage{114}
+    \subitem {funcLibFile}, \hyperpage{115}
+    \subitem {monoCheckLibFile}, \hyperpage{116}
+    \subitem {parseLibFile}, \hyperpage{118}
+    \subitem {printInfo}, \hyperpage{121}
+    \subitem {supercellLibFile}, \hyperpage{121}
+    \subitem {verilogLibFile}, \hyperpage{123}
   \item {LibGroup}, \hyperpage{55}
     \subitem {$\sim$LibGroup}, \hyperpage{56}
     \subitem {err\_}, \hyperpage{58}
@@ -373,103 +393,97 @@
     \subitem {ref\_lib\_path\_}, \hyperpage{67}
     \subitem {reltol\_}, \hyperpage{68}
   \item {LibraryComparator.hpp}
-    \subitem {json}, \hyperpage{116}
+    \subitem {json}, \hyperpage{129}
   \item {logger\_}
     \subitem {LibFile}, \hyperpage{54}
-    \subitem {ModuleRewriter}, \hyperpage{84}
+    \subitem {ModuleRewriter}, \hyperpage{85}
   \item {loggername\_}
     \subitem {LibFile}, \hyperpage{54}
   \item {logic}
     \subitem {LibFile}, \hyperpage{41}
-    \subitem {LogicComparator}, \hyperpage{71}
+    \subitem {LogicComparator}, \hyperpage{72}
   \item {logicCache\_}
-    \subitem {LogicExtractor}, \hyperpage{79}
+    \subitem {LogicExtractor}, \hyperpage{80}
   \item {LogicComparator}, \hyperpage{68}
-    \subitem {cell\_name\_}, \hyperpage{72}
-    \subitem {comp\_outpin\_map\_}, \hyperpage{72}
+    \subitem {cell\_name\_}, \hyperpage{73}
+    \subitem {comp\_outpin\_map\_}, \hyperpage{73}
     \subitem {compareCellLogic}, \hyperpage{69}
     \subitem {compareSingleExpressionPair}, \hyperpage{70}
     \subitem {extractVariables}, \hyperpage{70}
-    \subitem {generateReport}, \hyperpage{70}
-    \subitem {logic}, \hyperpage{71}
+    \subitem {generateReport}, \hyperpage{72}
+    \subitem {logic}, \hyperpage{72}
     \subitem {LogicComparator}, \hyperpage{69}
-    \subitem {preprocessExpression}, \hyperpage{71}
-    \subitem {ref\_outpin\_map\_}, \hyperpage{72}
+    \subitem {preprocessExpression}, \hyperpage{72}
+    \subitem {ref\_outpin\_map\_}, \hyperpage{73}
   \item {LogicComparator.cpp}
-    \subitem {isIdentifier}, \hyperpage{163}
-    \subitem {isOperator}, \hyperpage{164}
-  \item {LogicExtractor}, \hyperpage{73}
-    \subitem {deriveLogicRecursive}, \hyperpage{74}
-    \subitem {formatExpression}, \hyperpage{75}
-    \subitem {gateOutputDrivers\_}, \hyperpage{79}
-    \subitem {getExtractedGates}, \hyperpage{75}
-    \subitem {getInternalWires}, \hyperpage{76}
-    \subitem {getLogicExpressions}, \hyperpage{76}
-    \subitem {getPrimaryInputs}, \hyperpage{77}
-    \subitem {getPrimaryOutputs}, \hyperpage{77}
-    \subitem {handle}, \hyperpage{78, 79}
-    \subitem {inTargetModule\_}, \hyperpage{79}
-    \subitem {internalWires\_}, \hyperpage{79}
-    \subitem {logicCache\_}, \hyperpage{79}
-    \subitem {LogicExtractor}, \hyperpage{74}
-    \subitem {parsingComplete\_}, \hyperpage{80}
-    \subitem {portDirections\_}, \hyperpage{80}
-    \subitem {primaryInputs\_}, \hyperpage{80}
-    \subitem {primaryOutputs\_}, \hyperpage{80}
-    \subitem {targetCell\_}, \hyperpage{80}
+    \subitem {isIdentifier}, \hyperpage{192}
+    \subitem {isOperator}, \hyperpage{193}
+  \item {LogicExtractor}, \hyperpage{74}
+    \subitem {deriveLogicRecursive}, \hyperpage{75}
+    \subitem {formatExpression}, \hyperpage{76}
+    \subitem {gateOutputDrivers\_}, \hyperpage{80}
+    \subitem {getExtractedGates}, \hyperpage{76}
+    \subitem {getInternalWires}, \hyperpage{77}
+    \subitem {getLogicExpressions}, \hyperpage{77}
+    \subitem {getPrimaryInputs}, \hyperpage{78}
+    \subitem {getPrimaryOutputs}, \hyperpage{78}
+    \subitem {handle}, \hyperpage{79, 80}
+    \subitem {inTargetModule\_}, \hyperpage{80}
+    \subitem {internalWires\_}, \hyperpage{80}
+    \subitem {logicCache\_}, \hyperpage{80}
+    \subitem {LogicExtractor}, \hyperpage{75}
+    \subitem {parsingComplete\_}, \hyperpage{81}
+    \subitem {portDirections\_}, \hyperpage{81}
+    \subitem {primaryInputs\_}, \hyperpage{81}
+    \subitem {primaryOutputs\_}, \hyperpage{81}
+    \subitem {targetCell\_}, \hyperpage{81}
   \item {LogicExtractor.cpp}
-    \subitem {extractAndPrintNetlistInfo}, \hyperpage{167}
-    \subitem {extractLogicFromVerilog}, \hyperpage{168}
+    \subitem {extractAndPrintNetlistInfo}, \hyperpage{199}
+    \subitem {extractLogicFromVerilog}, \hyperpage{200}
   \item {LogicExtractor.hpp}
-    \subitem {extractAndPrintNetlistInfo}, \hyperpage{120}
-    \subitem {extractLogicFromVerilog}, \hyperpage{120}
+    \subitem {extractAndPrintNetlistInfo}, \hyperpage{133}
+    \subitem {extractLogicFromVerilog}, \hyperpage{133}
 
   \indexspace
 
   \item {main}
-    \subitem {main.cpp}, \hyperpage{181}
+    \subitem {main.cpp}, \hyperpage{210}
   \item {main.cpp}
-    \subitem {compareLibFiles}, \hyperpage{179}
-    \subitem {funcLibFile}, \hyperpage{180}
-    \subitem {main}, \hyperpage{181}
-    \subitem {monoCheckLibFile}, \hyperpage{182}
-    \subitem {parseLibFile}, \hyperpage{184}
-    \subitem {printInfo}, \hyperpage{186}
-    \subitem {supercellLibFile}, \hyperpage{186}
-    \subitem {verilogLibFile}, \hyperpage{188}
+    \subitem {main}, \hyperpage{210}
   \item {modify}
     \subitem {LibFile}, \hyperpage{43}
   \item {moduleName\_}
-    \subitem {ModuleRewriter}, \hyperpage{84}
-  \item {ModuleRewriter}, \hyperpage{81}
-    \subitem {cellName\_}, \hyperpage{83}
-    \subitem {depth\_}, \hyperpage{83}
-    \subitem {handle}, \hyperpage{83}
-    \subitem {inputPins\_}, \hyperpage{84}
-    \subitem {instance\_count\_}, \hyperpage{84}
-    \subitem {logger\_}, \hyperpage{84}
-    \subitem {moduleName\_}, \hyperpage{84}
-    \subitem {ModuleRewriter}, \hyperpage{82}
-    \subitem {outputPins\_}, \hyperpage{84}
-    \subitem {portInfoMap\_}, \hyperpage{85}
+    \subitem {ModuleRewriter}, \hyperpage{85}
+  \item {ModuleRewriter}, \hyperpage{82}
+    \subitem {cellName\_}, \hyperpage{84}
+    \subitem {depth\_}, \hyperpage{84}
+    \subitem {handle}, \hyperpage{84}
+    \subitem {inputPins\_}, \hyperpage{85}
+    \subitem {instance\_count\_}, \hyperpage{85}
+    \subitem {logger\_}, \hyperpage{85}
+    \subitem {moduleName\_}, \hyperpage{85}
+    \subitem {ModuleRewriter}, \hyperpage{83}
+    \subitem {outputPins\_}, \hyperpage{85}
+    \subitem {portInfoMap\_}, \hyperpage{86}
   \item {mono}
     \subitem {LibFile}, \hyperpage{43}
   \item {monoCheckLibFile}
-    \subitem {main.cpp}, \hyperpage{182}
+    \subitem {LibFileOperations.cpp}, \hyperpage{172}
+    \subitem {LibFileOperations.hpp}, \hyperpage{116}
 
   \indexspace
 
   \item {next}
     \subitem {AttributesIterator}, \hyperpage{23}
     \subitem {GroupsIterator}, \hyperpage{32}
-    \subitem {ValuesIterator}, \hyperpage{89}
+    \subitem {ValuesIterator}, \hyperpage{90}
 
   \indexspace
 
   \item {out\_}
     \subitem {CellPrinter}, \hyperpage{29}
   \item {outputPins\_}
-    \subitem {ModuleRewriter}, \hyperpage{84}
+    \subitem {ModuleRewriter}, \hyperpage{85}
   \item {outputSignal}
     \subitem {GateInfo}, \hyperpage{30}
 
@@ -478,38 +492,40 @@
   \item {parse}
     \subitem {LibFile}, \hyperpage{45}
   \item {parseLibFile}
-    \subitem {main.cpp}, \hyperpage{184}
+    \subitem {LibFileOperations.cpp}, \hyperpage{174}
+    \subitem {LibFileOperations.hpp}, \hyperpage{118}
   \item {parseStringToVector}
-    \subitem {json\_utils.cpp}, \hyperpage{139}
+    \subitem {json\_utils.cpp}, \hyperpage{152}
   \item {parsingComplete\_}
-    \subitem {LogicExtractor}, \hyperpage{80}
+    \subitem {LogicExtractor}, \hyperpage{81}
   \item {pin\_name}
-    \subitem {PinComparisonResult}, \hyperpage{87}
-  \item {PinComparisonResult}, \hyperpage{85}
-    \subitem {are\_equivalent}, \hyperpage{86}
-    \subitem {comp\_compiles}, \hyperpage{86}
-    \subitem {comp\_expr\_processed}, \hyperpage{86}
-    \subitem {comp\_expr\_raw}, \hyperpage{86}
-    \subitem {comp\_truth\_table}, \hyperpage{86}
-    \subitem {comparison\_possible}, \hyperpage{86}
-    \subitem {error\_message}, \hyperpage{87}
-    \subitem {pin\_name}, \hyperpage{87}
-    \subitem {ref\_compiles}, \hyperpage{87}
-    \subitem {ref\_expr\_processed}, \hyperpage{87}
-    \subitem {ref\_expr\_raw}, \hyperpage{87}
-    \subitem {ref\_truth\_table}, \hyperpage{88}
+    \subitem {PinComparisonResult}, \hyperpage{88}
+  \item {PinComparisonResult}, \hyperpage{86}
+    \subitem {are\_equivalent}, \hyperpage{87}
+    \subitem {comp\_compiles}, \hyperpage{87}
+    \subitem {comp\_expr\_processed}, \hyperpage{87}
+    \subitem {comp\_expr\_raw}, \hyperpage{87}
+    \subitem {comp\_truth\_table}, \hyperpage{87}
+    \subitem {comparison\_possible}, \hyperpage{87}
+    \subitem {error\_message}, \hyperpage{88}
+    \subitem {pin\_name}, \hyperpage{88}
+    \subitem {ref\_compiles}, \hyperpage{88}
+    \subitem {ref\_expr\_processed}, \hyperpage{88}
+    \subitem {ref\_expr\_raw}, \hyperpage{88}
+    \subitem {ref\_truth\_table}, \hyperpage{89}
   \item {portDirections\_}
-    \subitem {LogicExtractor}, \hyperpage{80}
+    \subitem {LogicExtractor}, \hyperpage{81}
   \item {portInfoMap\_}
-    \subitem {ModuleRewriter}, \hyperpage{85}
+    \subitem {ModuleRewriter}, \hyperpage{86}
   \item {preprocessExpression}
-    \subitem {LogicComparator}, \hyperpage{71}
+    \subitem {LogicComparator}, \hyperpage{72}
   \item {primaryInputs\_}
-    \subitem {LogicExtractor}, \hyperpage{80}
+    \subitem {LogicExtractor}, \hyperpage{81}
   \item {primaryOutputs\_}
-    \subitem {LogicExtractor}, \hyperpage{80}
+    \subitem {LogicExtractor}, \hyperpage{81}
   \item {printInfo}
-    \subitem {main.cpp}, \hyperpage{186}
+    \subitem {LibFileOperations.cpp}, \hyperpage{177}
+    \subitem {LibFileOperations.hpp}, \hyperpage{121}
   \item {process\_}
     \subitem {LibFile}, \hyperpage{54}
 
@@ -517,97 +533,100 @@
 
   \item {read}
     \subitem {LibFile}, \hyperpage{47}
-  \item {README.md}, \hyperpage{128}
+  \item {README.md}, \hyperpage{141}
   \item {ref\_compiles}
-    \subitem {PinComparisonResult}, \hyperpage{87}
+    \subitem {PinComparisonResult}, \hyperpage{88}
   \item {ref\_expr\_processed}
-    \subitem {PinComparisonResult}, \hyperpage{87}
+    \subitem {PinComparisonResult}, \hyperpage{88}
   \item {ref\_expr\_raw}
-    \subitem {PinComparisonResult}, \hyperpage{87}
+    \subitem {PinComparisonResult}, \hyperpage{88}
   \item {ref\_json\_}
     \subitem {LibraryComparator}, \hyperpage{67}
   \item {ref\_lib\_path\_}
     \subitem {LibraryComparator}, \hyperpage{67}
   \item {ref\_outpin\_map\_}
-    \subitem {LogicComparator}, \hyperpage{72}
+    \subitem {LogicComparator}, \hyperpage{73}
   \item {ref\_truth\_table}
-    \subitem {PinComparisonResult}, \hyperpage{88}
+    \subitem {PinComparisonResult}, \hyperpage{89}
   \item {reltol\_}
     \subitem {LibraryComparator}, \hyperpage{68}
 
   \indexspace
 
-  \item {src/Iterators.cpp}, \hyperpage{128}
-  \item {src/json\_utils.cpp}, \hyperpage{129}, \hyperpage{140}
-  \item {src/LibAtrribute.cpp}, \hyperpage{143}
-  \item {src/LibFile.cpp}, \hyperpage{144}
-  \item {src/LibGroup.cpp}, \hyperpage{156}
-  \item {src/LibraryComparator.cpp}, \hyperpage{157}
-  \item {src/LogicComparator.cpp}, \hyperpage{163}, \hyperpage{165}
-  \item {src/LogicExtractor.cpp}, \hyperpage{167}, \hyperpage{169}
-  \item {src/main.cpp}, \hyperpage{178}, \hyperpage{190}
-  \item {src/verilog\_utils.cpp}, \hyperpage{199, 200}
+  \item {src/Iterators.cpp}, \hyperpage{141}
+  \item {src/json\_utils.cpp}, \hyperpage{142}, \hyperpage{153}
+  \item {src/LibAtrribute.cpp}, \hyperpage{156}
+  \item {src/LibFile.cpp}, \hyperpage{157}
+  \item {src/LibFileOperations.cpp}, \hyperpage{169}, \hyperpage{181}
+  \item {src/LibGroup.cpp}, \hyperpage{185}
+  \item {src/LibraryComparator.cpp}, \hyperpage{186}
+  \item {src/LogicComparator.cpp}, \hyperpage{192}, \hyperpage{194}
+  \item {src/LogicExtractor.cpp}, \hyperpage{199}, \hyperpage{201}
+  \item {src/main.cpp}, \hyperpage{210, 211}
+  \item {src/verilog\_utils.cpp}, \hyperpage{216, 217}
   \item {str\_}
-    \subitem {ValuesIterator}, \hyperpage{91}
+    \subitem {ValuesIterator}, \hyperpage{92}
   \item {supercell}
     \subitem {LibFile}, \hyperpage{48}
   \item {supercellLibFile}
-    \subitem {main.cpp}, \hyperpage{186}
+    \subitem {LibFileOperations.cpp}, \hyperpage{177}
+    \subitem {LibFileOperations.hpp}, \hyperpage{121}
 
   \indexspace
 
   \item {targetCell\_}
     \subitem {CellExtractor}, \hyperpage{26}
     \subitem {CellPrinter}, \hyperpage{29}
-    \subitem {LogicExtractor}, \hyperpage{80}
-    \subitem {VerilogVisitor}, \hyperpage{95}
+    \subitem {LogicExtractor}, \hyperpage{81}
+    \subitem {VerilogVisitor}, \hyperpage{96}
   \item {temperature\_}
     \subitem {LibFile}, \hyperpage{54}
 
   \indexspace
 
   \item {values\_}
-    \subitem {ValuesIterator}, \hyperpage{91}
-  \item {ValuesIterator}, \hyperpage{88}
-    \subitem {$\sim$ValuesIterator}, \hyperpage{89}
-    \subitem {bool\_}, \hyperpage{90}
-    \subitem {end}, \hyperpage{89}
-    \subitem {err\_}, \hyperpage{90}
-    \subitem {exprp\_}, \hyperpage{90}
-    \subitem {float\_}, \hyperpage{90}
-    \subitem {int\_}, \hyperpage{91}
-    \subitem {next}, \hyperpage{89}
-    \subitem {str\_}, \hyperpage{91}
-    \subitem {values\_}, \hyperpage{91}
-    \subitem {ValuesIterator}, \hyperpage{89}
-    \subitem {vtype\_}, \hyperpage{91}
+    \subitem {ValuesIterator}, \hyperpage{92}
+  \item {ValuesIterator}, \hyperpage{89}
+    \subitem {$\sim$ValuesIterator}, \hyperpage{90}
+    \subitem {bool\_}, \hyperpage{91}
+    \subitem {end}, \hyperpage{90}
+    \subitem {err\_}, \hyperpage{91}
+    \subitem {exprp\_}, \hyperpage{91}
+    \subitem {float\_}, \hyperpage{91}
+    \subitem {int\_}, \hyperpage{92}
+    \subitem {next}, \hyperpage{90}
+    \subitem {str\_}, \hyperpage{92}
+    \subitem {values\_}, \hyperpage{92}
+    \subitem {ValuesIterator}, \hyperpage{90}
+    \subitem {vtype\_}, \hyperpage{92}
   \item {verilog}
     \subitem {LibFile}, \hyperpage{50}
   \item {verilog\_utils.cpp}
-    \subitem {getAST}, \hyperpage{199}
+    \subitem {getAST}, \hyperpage{216}
   \item {verilog\_utils.hpp}
-    \subitem {getAST}, \hyperpage{123}
+    \subitem {getAST}, \hyperpage{136}
   \item {verilogLibFile}
-    \subitem {main.cpp}, \hyperpage{188}
-  \item {VerilogVisitor}, \hyperpage{92}
-    \subitem {depth\_}, \hyperpage{95}
-    \subitem {handle}, \hyperpage{93, 94}
-    \subitem {inTargetModule\_}, \hyperpage{95}
-    \subitem {targetCell\_}, \hyperpage{95}
-    \subitem {VerilogVisitor}, \hyperpage{93}
+    \subitem {LibFileOperations.cpp}, \hyperpage{179}
+    \subitem {LibFileOperations.hpp}, \hyperpage{123}
+  \item {VerilogVisitor}, \hyperpage{93}
+    \subitem {depth\_}, \hyperpage{96}
+    \subitem {handle}, \hyperpage{94, 95}
+    \subitem {inTargetModule\_}, \hyperpage{96}
+    \subitem {targetCell\_}, \hyperpage{96}
+    \subitem {VerilogVisitor}, \hyperpage{94}
   \item {version.h}
-    \subitem {APP\_AUTHOR}, \hyperpage{126}
-    \subitem {APP\_CONTACT}, \hyperpage{126}
-    \subitem {APP\_NAME}, \hyperpage{126}
-    \subitem {APP\_VERSION}, \hyperpage{126}
-    \subitem {APP\_VERSION\_MAJOR}, \hyperpage{126}
-    \subitem {APP\_VERSION\_MINOR}, \hyperpage{126}
-    \subitem {APP\_VERSION\_PATCH}, \hyperpage{127}
-    \subitem {BUILD\_TIMESTAMP}, \hyperpage{127}
+    \subitem {APP\_AUTHOR}, \hyperpage{139}
+    \subitem {APP\_CONTACT}, \hyperpage{139}
+    \subitem {APP\_NAME}, \hyperpage{139}
+    \subitem {APP\_VERSION}, \hyperpage{139}
+    \subitem {APP\_VERSION\_MAJOR}, \hyperpage{139}
+    \subitem {APP\_VERSION\_MINOR}, \hyperpage{139}
+    \subitem {APP\_VERSION\_PATCH}, \hyperpage{140}
+    \subitem {BUILD\_TIMESTAMP}, \hyperpage{140}
   \item {voltage\_}
     \subitem {LibFile}, \hyperpage{54}
   \item {vtype\_}
-    \subitem {ValuesIterator}, \hyperpage{91}
+    \subitem {ValuesIterator}, \hyperpage{92}
 
   \indexspace
 

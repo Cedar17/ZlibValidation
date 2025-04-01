@@ -4,6 +4,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "json_utils.cpp", "json__utils_8cpp.html", "json__utils_8cpp" ],
     [ "LibAtrribute.cpp", "LibAtrribute_8cpp.html", null ],
     [ "LibFile.cpp", "LibFile_8cpp.html", null ],
+    [ "LibFileOperations.cpp", "LibFileOperations_8cpp.html", "LibFileOperations_8cpp" ],
     [ "LibGroup.cpp", "LibGroup_8cpp.html", null ],
     [ "LibraryComparator.cpp", "LibraryComparator_8cpp.html", null ],
     [ "LogicComparator.cpp", "LogicComparator_8cpp.html", "LogicComparator_8cpp" ],

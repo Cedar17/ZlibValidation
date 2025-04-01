@@ -1,0 +1,338 @@
+\hypertarget{LibFileOperations_8cpp}{}\doxysection{src/\+Lib\+File\+Operations.cpp File Reference}
+\label{LibFileOperations_8cpp}\index{src/LibFileOperations.cpp@{src/LibFileOperations.cpp}}
+{\ttfamily \#include \char`\"{}Lib\+File\+Operations.\+hpp\char`\"{}}\newline
+Include dependency graph for Lib\+File\+Operations.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LibFileOperations_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{LibFileOperations_8cpp_a2dbaf5580b5305d54cff6848ae7deb30}{print\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Sets up and configures the global logger and prints application information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{LibFileOperations_8cpp_a3ac24d33b321364527447f166fd31edf}{parse\+Lib\+File}} (const std\+::string \&library\+\_\+path, const std\+::string log\+\_\+file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Parses a library file and generates corresponding output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{LibFileOperations_8cpp_aebef9d1797be7b2aafcbc107bcc513cb}{mono\+Check\+Lib\+File}} (const std\+::string \&library\+\_\+path, const std\+::string log\+\_\+file\+\_\+name, bool is\+\_\+slew)
+\begin{DoxyCompactList}\small\item\em Performs monotonicity check on a library file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{LibFileOperations_8cpp_a0d7485f0df82adbd1671def221103a4e}{supercell\+Lib\+File}} (const std\+::string \&library\+\_\+path, const std\+::string \&log\+\_\+file\+\_\+name, int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
+\begin{DoxyCompactList}\small\item\em Creates supercell map structures from a Liberty library file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{LibFileOperations_8cpp_ab649fe3c5663201c3e23700250f7b1c2}{verilog\+Lib\+File}} (const std\+::string \&library\+\_\+path, const std\+::string \&log\+\_\+file\+\_\+name, int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
+\begin{DoxyCompactList}\small\item\em Generates Verilog files from a library file for specified cells. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{LibFileOperations_8cpp_aefb52455235a664c6dc21709237f77a1}{compare\+Lib\+Files}} (const std\+::string \&ref\+\_\+lib, const std\+::string \&comp\+\_\+lib, const double reltol, const double abstol, std\+::string \&report\+\_\+file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Compares two library files and generates a detailed comparison report. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{LibFileOperations_8cpp_a56d944f0ea8b38f2f61c046c7fb44476}{func\+Lib\+File}} (const std\+::string \&ref\+\_\+file, const std\+::string \&comp\+\_\+file, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names, std\+::string \&report\+\_\+file\+\_\+name)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{LibFileOperations_8cpp_aefb52455235a664c6dc21709237f77a1}\label{LibFileOperations_8cpp_aefb52455235a664c6dc21709237f77a1}} 
+\index{LibFileOperations.cpp@{LibFileOperations.cpp}!compareLibFiles@{compareLibFiles}}
+\index{compareLibFiles@{compareLibFiles}!LibFileOperations.cpp@{LibFileOperations.cpp}}
+\doxysubsubsection{\texorpdfstring{compareLibFiles()}{compareLibFiles()}}
+{\footnotesize\ttfamily void compare\+Lib\+Files (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{ref\+\_\+lib,  }\item[{const std\+::string \&}]{comp\+\_\+lib,  }\item[{const double}]{reltol,  }\item[{const double}]{abstol,  }\item[{std\+::string \&}]{report\+\_\+file\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Compares two library files and generates a detailed comparison report. 
+
+This function compares a reference library file with another library file, performing validation checks based on specified tolerance parameters. The comparison results are written to a report file in markdown or text format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref\+\_\+lib} & Path to the reference library file to use as the baseline \\
+\hline
+{\em comp\+\_\+lib} & Path to the library file to compare against the reference \\
+\hline
+{\em reltol} & Relative tolerance for numerical comparisons (must be \texorpdfstring{$>$}{>}= 0.\+0) \\
+\hline
+{\em abstol} & Absolute tolerance for numerical comparisons \\
+\hline
+{\em report\+\_\+file\+\_\+name} & \mbox{[}in,out\mbox{]} Name of the file to write the comparison report to. If empty, defaults to \mbox{[}comp\+\_\+lib\+\_\+basename\mbox{]}.cmp.\+md. If provided but doesn\textquotesingle{}t end with .txt or .md, .md will be appended.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function will log an error and return without comparing if reltol is invalid. 
+
+Log files will be created with the naming pattern \mbox{[}library\+\_\+basename\mbox{]}.cmp.\+log 
+
+The function uses the \mbox{\hyperlink{classLibraryComparator}{Library\+Comparator}} class to perform the actual comparison. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00203}{203}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LibFileOperations_8cpp_aefb52455235a664c6dc21709237f77a1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{LibFileOperations_8cpp_aefb52455235a664c6dc21709237f77a1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{LibFileOperations_8cpp_a56d944f0ea8b38f2f61c046c7fb44476}\label{LibFileOperations_8cpp_a56d944f0ea8b38f2f61c046c7fb44476}} 
+\index{LibFileOperations.cpp@{LibFileOperations.cpp}!funcLibFile@{funcLibFile}}
+\index{funcLibFile@{funcLibFile}!LibFileOperations.cpp@{LibFileOperations.cpp}}
+\doxysubsubsection{\texorpdfstring{funcLibFile()}{funcLibFile()}}
+{\footnotesize\ttfamily void func\+Lib\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{ref\+\_\+file,  }\item[{const std\+::string \&}]{comp\+\_\+file,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{cell\+\_\+names,  }\item[{std\+::string \&}]{report\+\_\+file\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00231}{231}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LibFileOperations_8cpp_a56d944f0ea8b38f2f61c046c7fb44476_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{LibFileOperations_8cpp_a56d944f0ea8b38f2f61c046c7fb44476_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{LibFileOperations_8cpp_aebef9d1797be7b2aafcbc107bcc513cb}\label{LibFileOperations_8cpp_aebef9d1797be7b2aafcbc107bcc513cb}} 
+\index{LibFileOperations.cpp@{LibFileOperations.cpp}!monoCheckLibFile@{monoCheckLibFile}}
+\index{monoCheckLibFile@{monoCheckLibFile}!LibFileOperations.cpp@{LibFileOperations.cpp}}
+\doxysubsubsection{\texorpdfstring{monoCheckLibFile()}{monoCheckLibFile()}}
+{\footnotesize\ttfamily void mono\+Check\+Lib\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{library\+\_\+path,  }\item[{const std\+::string}]{log\+\_\+file\+\_\+name,  }\item[{bool}]{is\+\_\+slew }\end{DoxyParamCaption})}
+
+
+
+Performs monotonicity check on a library file. 
+
+This function validates the monotonicity of timing data in a library file. It creates a log file to record the results of the check and handles any exceptions that occur during the process.
+
+
+\begin{DoxyParams}{Parameters}
+{\em library\+\_\+path} & Path to the library file to check \\
+\hline
+{\em log\+\_\+file\+\_\+name} & Name of the log file to create (optional). If empty, a default name will be generated from the library file name \\
+\hline
+{\em is\+\_\+slew} & Flag indicating whether to check input slew monotonicity (true) or output load monotonicity (false)\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em The} & function catches and logs any exceptions but does not rethrow them \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LibFileOperations_8cpp_aebef9d1797be7b2aafcbc107bcc513cb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{LibFileOperations_8cpp_aebef9d1797be7b2aafcbc107bcc513cb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{LibFileOperations_8cpp_a3ac24d33b321364527447f166fd31edf}\label{LibFileOperations_8cpp_a3ac24d33b321364527447f166fd31edf}} 
+\index{LibFileOperations.cpp@{LibFileOperations.cpp}!parseLibFile@{parseLibFile}}
+\index{parseLibFile@{parseLibFile}!LibFileOperations.cpp@{LibFileOperations.cpp}}
+\doxysubsubsection{\texorpdfstring{parseLibFile()}{parseLibFile()}}
+{\footnotesize\ttfamily void parse\+Lib\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{library\+\_\+path,  }\item[{const std\+::string}]{log\+\_\+file\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Parses a library file and generates corresponding output. 
+
+This function processes the given library file, parsing its contents and generating a JSON output. It also logs the parsing process to a specified log file or creates a default log file if none is provided.
+
+
+\begin{DoxyParams}{Parameters}
+{\em library\+\_\+path} & Path to the library file that needs to be parsed \\
+\hline
+{\em log\+\_\+file\+\_\+name} & Optional name for the log file. If empty, a default name is generated based on the library filename with \char`\"{}.\+parse.\+log\char`\"{} extension\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em The} & function catches and logs any exceptions but doesn\textquotesingle{}t propagate them \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LibFileOperations_8cpp_a3ac24d33b321364527447f166fd31edf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{LibFileOperations_8cpp_a3ac24d33b321364527447f166fd31edf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{LibFileOperations_8cpp_a2dbaf5580b5305d54cff6848ae7deb30}\label{LibFileOperations_8cpp_a2dbaf5580b5305d54cff6848ae7deb30}} 
+\index{LibFileOperations.cpp@{LibFileOperations.cpp}!printInfo@{printInfo}}
+\index{printInfo@{printInfo}!LibFileOperations.cpp@{LibFileOperations.cpp}}
+\doxysubsubsection{\texorpdfstring{printInfo()}{printInfo()}}
+{\footnotesize\ttfamily void print\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets up and configures the global logger and prints application information. 
+
+This function performs the following operations\+:
+\begin{DoxyEnumerate}
+\item Creates a console sink for logging with level set to INFO
+\item Creates a file sink for logging with level set to DEBUG, saving to \mbox{[}APP\+\_\+\+NAME\mbox{]}.log
+\item Configures a logger with both sinks and sets it as the default logger
+\item Outputs basic application information\+:
+\begin{DoxyItemize}
+\item Version and build timestamp
+\item Author information
+\item Log file location
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+\begin{DoxyNote}{Note}
+Uses spdlog library for logging functionality 
+
+Depends on APP\+\_\+\+NAME, APP\+\_\+\+VERSION, BUILD\+\_\+\+TIMESTAMP, APP\+\_\+\+AUTHOR, and APP\+\_\+\+CONTACT macros 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{LibFileOperations_8cpp_a2dbaf5580b5305d54cff6848ae7deb30_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{LibFileOperations_8cpp_a0d7485f0df82adbd1671def221103a4e}\label{LibFileOperations_8cpp_a0d7485f0df82adbd1671def221103a4e}} 
+\index{LibFileOperations.cpp@{LibFileOperations.cpp}!supercellLibFile@{supercellLibFile}}
+\index{supercellLibFile@{supercellLibFile}!LibFileOperations.cpp@{LibFileOperations.cpp}}
+\doxysubsubsection{\texorpdfstring{supercellLibFile()}{supercellLibFile()}}
+{\footnotesize\ttfamily void supercell\+Lib\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{library\+\_\+path,  }\item[{const std\+::string \&}]{log\+\_\+file\+\_\+name,  }\item[{int}]{chain\+\_\+length,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{cell\+\_\+names }\end{DoxyParamCaption})}
+
+
+
+Creates supercell map structures from a Liberty library file. 
+
+This function reads a Liberty file, creates supercell structures based on the specified chain length and cell names, and logs the process to a file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em library\+\_\+path} & Path to the Liberty file to process \\
+\hline
+{\em log\+\_\+file\+\_\+name} & Name of the log file (if empty, defaults to \char`\"{}\mbox{[}library\+\_\+name\mbox{]}.\+supercell.\+log\char`\"{}) \\
+\hline
+{\em chain\+\_\+length} & The length of chains to create (must be \texorpdfstring{$>$}{>}= 1) \\
+\hline
+{\em cell\+\_\+names} & Vector of cell names to process for supercell generation\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em May} & pass through exceptions from the \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{Lib\+File\+::supercell}} method\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Note}
+The function validates the chain length and logs all activities including errors that might occur during processing 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LibFileOperations_8cpp_a0d7485f0df82adbd1671def221103a4e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{LibFileOperations_8cpp_a0d7485f0df82adbd1671def221103a4e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{LibFileOperations_8cpp_ab649fe3c5663201c3e23700250f7b1c2}\label{LibFileOperations_8cpp_ab649fe3c5663201c3e23700250f7b1c2}} 
+\index{LibFileOperations.cpp@{LibFileOperations.cpp}!verilogLibFile@{verilogLibFile}}
+\index{verilogLibFile@{verilogLibFile}!LibFileOperations.cpp@{LibFileOperations.cpp}}
+\doxysubsubsection{\texorpdfstring{verilogLibFile()}{verilogLibFile()}}
+{\footnotesize\ttfamily void verilog\+Lib\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{library\+\_\+path,  }\item[{const std\+::string \&}]{log\+\_\+file\+\_\+name,  }\item[{int}]{chain\+\_\+length,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{cell\+\_\+names }\end{DoxyParamCaption})}
+
+
+
+Generates Verilog files from a library file for specified cells. 
+
+This function processes a library file and generates Verilog representation for the specified cell names with a given chain length. The operation results are logged to a specified or default log file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em library\+\_\+path} & Path to the library file to process \\
+\hline
+{\em log\+\_\+file\+\_\+name} & Name for the log file (if empty, a default name will be generated) \\
+\hline
+{\em chain\+\_\+length} & Number of cells to chain together, must be \texorpdfstring{$>$}{>}= 1 \\
+\hline
+{\em cell\+\_\+names} & Vector of cell names to generate Verilog for\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Catches} & any exceptions from the verilog generation process and logs them \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00157}{157}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LibFileOperations_8cpp_ab649fe3c5663201c3e23700250f7b1c2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{LibFileOperations_8cpp_ab649fe3c5663201c3e23700250f7b1c2_icgraph}
+\end{center}
+\end{figure}

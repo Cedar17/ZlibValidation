@@ -50,7 +50,7 @@
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00058}\mbox{\hyperlink{LogicComparator_8cpp_a6334f80db7207e331e587be0f9eae2df}{00058}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{LogicComparator_8cpp_a6334f80db7207e331e587be0f9eae2df}{isIdentifier}}(\textcolor{keyword}{const} std::string \&token) \{}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00059}00059   \textcolor{keywordflow}{if} (token.empty())}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00060}00060     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00061}00061   \textcolor{comment}{// Check if the token is a valid identifier (alphanumeric + underscore)}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00061}00061   \textcolor{comment}{// Check if the token is a valid identifier (upper alpha+ numeric + underscore)}}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00062}00062   \textcolor{keywordtype}{bool} has\_alpha = \textcolor{keyword}{false};}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00063}00063   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{char} c : token) \{}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00064}00064     \textcolor{keywordflow}{if} (std::isalpha(c)) \{}
@@ -59,8 +59,8 @@
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00067}00067       \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// Contains invalid char}}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00068}00068     \}}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00069}00069   \}}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00070}00070   \textcolor{comment}{// Must start with an alphabetic character}}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00071}00071   \textcolor{keywordflow}{return} has\_alpha \&\& std::isalpha(token[0]);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00070}00070   \textcolor{comment}{// Must start with an uppercase alphabetic character}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00071}00071   \textcolor{keywordflow}{return} has\_alpha \&\& std::isupper(token[0]);}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00072}00072 \}}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00073}00073 }
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00083}\mbox{\hyperlink{LogicComparator_8cpp_a1c875672f908868869e6cce7cbd92c1c}{00083}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{LogicComparator_8cpp_a1c875672f908868869e6cce7cbd92c1c}{isOperator}}(\textcolor{keyword}{const} std::string \&token) \{}
@@ -141,16 +141,217 @@
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00158}00158   final\_expr = std::regex\_replace(final\_expr, std::regex(\textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)s+"{}}), \textcolor{stringliteral}{"{} "{}});}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00159}00159   final\_expr = std::regex\_replace(final\_expr, std::regex(\textcolor{stringliteral}{"{} \(\backslash\)\(\backslash\)( "{}}), \textcolor{stringliteral}{"{}("{}});}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00160}00160   final\_expr = std::regex\_replace(final\_expr, std::regex(\textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)( "{}}), \textcolor{stringliteral}{"{}("{}});}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00161}00161   final\_expr = std::regex\_replace(final\_expr, std::regex(\textcolor{stringliteral}{"{} \(\backslash\)\(\backslash\)) "{}}), \textcolor{stringliteral}{"{})"{}});}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00162}00162   final\_expr = std::regex\_replace(final\_expr, std::regex(\textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)) "{}}), \textcolor{stringliteral}{"{})"{}});}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00163}00163   final\_expr = std::regex\_replace(final\_expr, std::regex(\textcolor{stringliteral}{"{}\string^\(\backslash\)\(\backslash\)s+|\(\backslash\)\(\backslash\)s+\$"{}}), \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00164}00164 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00165}00165   spdlog::debug(\textcolor{stringliteral}{"{}Preprocessed expression result: \{\}"{}}, final\_expr);}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00166}00166   \textcolor{keywordflow}{return} final\_expr;}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00167}00167 \}}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00168}00168 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00169}\mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{00169}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{LogicComparator::generateReport}}(}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00170}00170     \textcolor{keyword}{const} std::string \&output\_file,}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00171}00171     \textcolor{keyword}{const} std::map<std::string, PinComparisonResult> \&comparison\_results) \{\}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00161}00161   final\_expr = std::regex\_replace(final\_expr, std::regex(\textcolor{stringliteral}{"{} \(\backslash\)\(\backslash\)("{}}), \textcolor{stringliteral}{"{}("{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00162}00162   final\_expr = std::regex\_replace(final\_expr, std::regex(\textcolor{stringliteral}{"{} \(\backslash\)\(\backslash\)) "{}}), \textcolor{stringliteral}{"{})"{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00163}00163   final\_expr = std::regex\_replace(final\_expr, std::regex(\textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)) "{}}), \textcolor{stringliteral}{"{})"{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00164}00164   final\_expr = std::regex\_replace(final\_expr, std::regex(\textcolor{stringliteral}{"{} \(\backslash\)\(\backslash\))"{}}), \textcolor{stringliteral}{"{})"{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00165}00165   final\_expr = std::regex\_replace(final\_expr, std::regex(\textcolor{stringliteral}{"{}\string^\(\backslash\)\(\backslash\)s+|\(\backslash\)\(\backslash\)s+\$"{}}), \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00166}00166 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00167}00167   spdlog::debug(\textcolor{stringliteral}{"{}Preprocessed expression result: \{\}"{}}, final\_expr);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00168}00168   \textcolor{keywordflow}{return} final\_expr;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00169}00169 \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00170}00170 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00171}00171 \textcolor{comment}{// -\/-\/-\/ Variable Extraction Helper -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00200}\mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{00200}} \textcolor{comment}{}\textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{LogicComparator::extractVariables}}(\textcolor{keyword}{const} std::string \&expr1\_raw, \textcolor{keyword}{const} std::string \&expr2\_raw,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00201}00201                                        std::vector<std::string> \&sorted\_vars) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00202}00202   \textcolor{comment}{// Define the set of ExprTk keywords/function names to filter out (lowercase)}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00203}00203   \textcolor{comment}{// Even though isIdentifier checks for uppercase, keep this filter as a safety measure}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00204}00204   \textcolor{keyword}{static} \textcolor{keyword}{const} std::set<std::string> keywords = \{\textcolor{stringliteral}{"{}abs"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00205}00205                                                  \textcolor{stringliteral}{"{}acos"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00206}00206                                                  \textcolor{stringliteral}{"{}acosh"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00207}00207                                                  \textcolor{stringliteral}{"{}and"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00208}00208                                                  \textcolor{stringliteral}{"{}asin"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00209}00209                                                  \textcolor{stringliteral}{"{}asinh"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00210}00210                                                  \textcolor{stringliteral}{"{}assert"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00211}00211                                                  \textcolor{stringliteral}{"{}atan"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00212}00212                                                  \textcolor{stringliteral}{"{}atan2"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00213}00213                                                  \textcolor{stringliteral}{"{}atanh"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00214}00214                                                  \textcolor{stringliteral}{"{}avg"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00215}00215                                                  \textcolor{stringliteral}{"{}break"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00216}00216                                                  \textcolor{stringliteral}{"{}case"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00217}00217                                                  \textcolor{stringliteral}{"{}ceil"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00218}00218                                                  \textcolor{stringliteral}{"{}clamp"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00219}00219                                                  \textcolor{stringliteral}{"{}continue"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00220}00220                                                  \textcolor{stringliteral}{"{}cosh"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00221}00221                                                  \textcolor{stringliteral}{"{}cos"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00222}00222                                                  \textcolor{stringliteral}{"{}cot"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00223}00223                                                  \textcolor{stringliteral}{"{}csc"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00224}00224                                                  \textcolor{stringliteral}{"{}default"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00225}00225                                                  \textcolor{stringliteral}{"{}deg2grad"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00226}00226                                                  \textcolor{stringliteral}{"{}deg2rad"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00227}00227                                                  \textcolor{stringliteral}{"{}else"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00228}00228                                                  \textcolor{stringliteral}{"{}equal"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00229}00229                                                  \textcolor{stringliteral}{"{}erfc"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00230}00230                                                  \textcolor{stringliteral}{"{}erf"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00231}00231                                                  \textcolor{stringliteral}{"{}exp"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00232}00232                                                  \textcolor{stringliteral}{"{}expm1"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00233}00233                                                  \textcolor{stringliteral}{"{}false"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00234}00234                                                  \textcolor{stringliteral}{"{}floor"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00235}00235                                                  \textcolor{stringliteral}{"{}for"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00236}00236                                                  \textcolor{stringliteral}{"{}frac"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00237}00237                                                  \textcolor{stringliteral}{"{}grad2deg"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00238}00238                                                  \textcolor{stringliteral}{"{}hypot"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00239}00239                                                  \textcolor{stringliteral}{"{}iclamp"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00240}00240                                                  \textcolor{stringliteral}{"{}if"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00241}00241                                                  \textcolor{stringliteral}{"{}ilike"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00242}00242                                                  \textcolor{stringliteral}{"{}in"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00243}00243                                                  \textcolor{stringliteral}{"{}inrange"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00244}00244                                                  \textcolor{comment}{/*"{}in"{},*/} \textcolor{stringliteral}{"{}like"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00245}00245                                                  \textcolor{stringliteral}{"{}log"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00246}00246                                                  \textcolor{stringliteral}{"{}log10"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00247}00247                                                  \textcolor{stringliteral}{"{}log1p"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00248}00248                                                  \textcolor{stringliteral}{"{}log2"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00249}00249                                                  \textcolor{stringliteral}{"{}logn"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00250}00250                                                  \textcolor{stringliteral}{"{}mand"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00251}00251                                                  \textcolor{stringliteral}{"{}max"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00252}00252                                                  \textcolor{stringliteral}{"{}min"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00253}00253                                                  \textcolor{stringliteral}{"{}mod"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00254}00254                                                  \textcolor{stringliteral}{"{}mor"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00255}00255                                                  \textcolor{stringliteral}{"{}mul"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00256}00256                                                  \textcolor{stringliteral}{"{}nand"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00257}00257                                                  \textcolor{stringliteral}{"{}ncdf"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00258}00258                                                  \textcolor{stringliteral}{"{}nor"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00259}00259                                                  \textcolor{stringliteral}{"{}not"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00260}00260                                                  \textcolor{stringliteral}{"{}not\_equal"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00261}00261                                                  \textcolor{comment}{/*"{}not"{},*/} \textcolor{stringliteral}{"{}null"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00262}00262                                                  \textcolor{stringliteral}{"{}or"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00263}00263                                                  \textcolor{stringliteral}{"{}pow"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00264}00264                                                  \textcolor{stringliteral}{"{}rad2deg"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00265}00265                                                  \textcolor{stringliteral}{"{}repeat"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00266}00266                                                  \textcolor{stringliteral}{"{}return"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00267}00267                                                  \textcolor{stringliteral}{"{}root"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00268}00268                                                  \textcolor{stringliteral}{"{}roundn"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00269}00269                                                  \textcolor{stringliteral}{"{}round"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00270}00270                                                  \textcolor{stringliteral}{"{}sec"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00271}00271                                                  \textcolor{stringliteral}{"{}sgn"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00272}00272                                                  \textcolor{stringliteral}{"{}shl"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00273}00273                                                  \textcolor{stringliteral}{"{}shr"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00274}00274                                                  \textcolor{stringliteral}{"{}sinc"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00275}00275                                                  \textcolor{stringliteral}{"{}sinh"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00276}00276                                                  \textcolor{stringliteral}{"{}sin"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00277}00277                                                  \textcolor{stringliteral}{"{}sqrt"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00278}00278                                                  \textcolor{stringliteral}{"{}sum"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00279}00279                                                  \textcolor{stringliteral}{"{}swap"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00280}00280                                                  \textcolor{stringliteral}{"{}switch"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00281}00281                                                  \textcolor{stringliteral}{"{}tanh"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00282}00282                                                  \textcolor{stringliteral}{"{}tan"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00283}00283                                                  \textcolor{stringliteral}{"{}true"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00284}00284                                                  \textcolor{stringliteral}{"{}trunc"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00285}00285                                                  \textcolor{stringliteral}{"{}until"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00286}00286                                                  \textcolor{stringliteral}{"{}var"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00287}00287                                                  \textcolor{stringliteral}{"{}while"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00288}00288                                                  \textcolor{stringliteral}{"{}xnor"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00289}00289                                                  \textcolor{stringliteral}{"{}xor"{}}\};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00290}00290 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00291}00291   \textcolor{comment}{// Regular expression to find potential identifiers (unchanged)}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00292}00292   \textcolor{keyword}{const} std::regex identifier\_regex(\textcolor{stringliteral}{"{}[a-\/zA-\/Z\_][a-\/zA-\/Z0-\/9\_]*"{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00293}00293 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00294}00294   \textcolor{comment}{// Store validated and filtered variable names}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00295}00295   std::set<std::string> actual\_vars1\_set;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00296}00296   std::set<std::string> actual\_vars2\_set;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00297}00297 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00298}00298   \textcolor{comment}{// -\/-\/-\/ Helper function: build log string -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00299}00299   \textcolor{keyword}{auto} build\_log\_string = [](\textcolor{keyword}{const} \textcolor{keyword}{auto} \&container) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00300}00300     std::ostringstream oss;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00301}00301     oss << \textcolor{stringliteral}{"{}["{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00302}00302     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = container.begin(); it != container.end(); ++it) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00303}00303       oss << *it;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00304}00304       \textcolor{keywordflow}{if} (std::next(it) != container.end()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00305}00305         oss << \textcolor{stringliteral}{"{}, "{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00306}00306       \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00307}00307     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00308}00308     oss << \textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00309}00309     \textcolor{keywordflow}{return} oss.str();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00310}00310   \};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00312}00312   \textcolor{comment}{// -\/-\/-\/ Process the first expression -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00313}00313   spdlog::debug(\textcolor{stringliteral}{"{}Extracting and validating identifiers from raw expr1: \{\}"{}}, expr1\_raw);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00314}00314   \textcolor{keyword}{auto} words\_begin1 = std::sregex\_iterator(expr1\_raw.begin(), expr1\_raw.end(), identifier\_regex);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00315}00315   \textcolor{keyword}{auto} words\_end1 = std::sregex\_iterator();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00316}00316   \textcolor{keywordflow}{for} (std::sregex\_iterator i = words\_begin1; i != words\_end1; ++i) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00317}00317     std::string potential\_var = i-\/>str();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00318}00318     spdlog::trace(\textcolor{stringliteral}{"{}Regex found in expr1: \{\}"{}}, potential\_var);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00319}00319 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00320}00320     \textcolor{comment}{// 1. Validate using isIdentifier (now checks for uppercase etc.)}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00321}00321     \textcolor{keywordflow}{if} (\mbox{\hyperlink{LogicComparator_8cpp_a6334f80db7207e331e587be0f9eae2df}{isIdentifier}}(potential\_var)) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00322}00322       \textcolor{comment}{// 2. Check if it's a keyword (still use lowercase comparison as a precaution)}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00323}00323       std::string lower\_var = potential\_var;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00324}00324       std::transform(lower\_var.begin(), lower\_var.end(), lower\_var.begin(),}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00325}00325                      [](\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} c) \{ return std::tolower(c); \});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00326}00326 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00327}00327       \textcolor{keywordflow}{if} (keywords.find(lower\_var) == keywords.end()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00328}00328         actual\_vars1\_set.insert(potential\_var); \textcolor{comment}{// Keep original case}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00329}00329         spdlog::trace(\textcolor{stringliteral}{"{}Kept variable from expr1: \{\}"{}}, potential\_var);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00330}00330       \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00331}00331         spdlog::trace(\textcolor{stringliteral}{"{}Filtered keyword from expr1: \{\}"{}}, potential\_var);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00332}00332       \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00333}00333     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00334}00334       spdlog::trace(\textcolor{stringliteral}{"{}Filtered invalid identifier from expr1: \{\}"{}}, potential\_var);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00335}00335     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00336}00336   \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00337}00337   spdlog::debug(\textcolor{stringliteral}{"{}Validated variables found in expr1: \{\}"{}}, build\_log\_string(actual\_vars1\_set));}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00338}00338 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00339}00339   \textcolor{comment}{// -\/-\/-\/ Process the second expression -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00340}00340   spdlog::debug(\textcolor{stringliteral}{"{}Extracting and validating identifiers from raw expr2: \{\}"{}}, expr2\_raw);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00341}00341   \textcolor{keyword}{auto} words\_begin2 = std::sregex\_iterator(expr2\_raw.begin(), expr2\_raw.end(), identifier\_regex);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00342}00342   \textcolor{keyword}{auto} words\_end2 = std::sregex\_iterator();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00343}00343   \textcolor{keywordflow}{for} (std::sregex\_iterator i = words\_begin2; i != words\_end2; ++i) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00344}00344     std::string potential\_var = i-\/>str();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00345}00345     spdlog::trace(\textcolor{stringliteral}{"{}Regex found in expr2: \{\}"{}}, potential\_var);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00346}00346 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00347}00347     \textcolor{comment}{// 1. Validate using isIdentifier}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00348}00348     \textcolor{keywordflow}{if} (\mbox{\hyperlink{LogicComparator_8cpp_a6334f80db7207e331e587be0f9eae2df}{isIdentifier}}(potential\_var)) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00349}00349       \textcolor{comment}{// 2. Check if it's a keyword (still use lowercase comparison)}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00350}00350       std::string lower\_var = potential\_var;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00351}00351       std::transform(lower\_var.begin(), lower\_var.end(), lower\_var.begin(),}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00352}00352                      [](\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} c) \{ return std::tolower(c); \});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00353}00353 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00354}00354       \textcolor{keywordflow}{if} (keywords.find(lower\_var) == keywords.end()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00355}00355         actual\_vars2\_set.insert(potential\_var); \textcolor{comment}{// Keep original case}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00356}00356         spdlog::trace(\textcolor{stringliteral}{"{}Kept variable from expr2: \{\}"{}}, potential\_var);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00357}00357       \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00358}00358         spdlog::trace(\textcolor{stringliteral}{"{}Filtered keyword from expr2: \{\}"{}}, potential\_var);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00359}00359       \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00360}00360     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00361}00361       spdlog::trace(\textcolor{stringliteral}{"{}Filtered invalid identifier from expr2: \{\}"{}}, potential\_var);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00362}00362     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00363}00363   \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00364}00364   spdlog::debug(\textcolor{stringliteral}{"{}Validated variables found in expr2: \{\}"{}}, build\_log\_string(actual\_vars2\_set));}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00365}00365 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00366}00366   \textcolor{comment}{// -\/-\/-\/ Compare the two variable sets -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00367}00367   \textcolor{keywordflow}{if} (actual\_vars1\_set == actual\_vars2\_set) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00368}00368     \textcolor{comment}{// Sets are equal, extract the variable list}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00369}00369     sorted\_vars.assign(actual\_vars1\_set.begin(), actual\_vars1\_set.end());}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00370}00370     std::sort(sorted\_vars.begin(), sorted\_vars.end()); \textcolor{comment}{// Sort alphabetically}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00371}00371     spdlog::info(\textcolor{stringliteral}{"{}Variable sets match. Found unique variables for comparison: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00372}00372                  build\_log\_string(sorted\_vars));}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00373}00373     spdlog::info(\textcolor{stringliteral}{"{}Extracted variables done !"{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00374}00374     \textcolor{keywordflow}{return} \textcolor{keyword}{true}; \textcolor{comment}{// Variable sets are consistent}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00375}00375   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00376}00376     \textcolor{comment}{// Sets are not equal, report an error and return false}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00377}00377     spdlog::warn(\textcolor{stringliteral}{"{}Variable sets do not match between the two expressions!"{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00378}00378     \textcolor{comment}{// Calculate the differences for more detailed logging}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00379}00379     std::vector<std::string> diff1, diff2;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00380}00380     std::set\_difference(actual\_vars1\_set.begin(), actual\_vars1\_set.end(), actual\_vars2\_set.begin(),}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00381}00381                         actual\_vars2\_set.end(),}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00382}00382                         std::back\_inserter(diff1)); \textcolor{comment}{// Vars only in expr1}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00383}00383     std::set\_difference(actual\_vars2\_set.begin(), actual\_vars2\_set.end(), actual\_vars1\_set.begin(),}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00384}00384                         actual\_vars1\_set.end(),}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00385}00385                         std::back\_inserter(diff2)); \textcolor{comment}{// Vars only in expr2}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00386}00386 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00387}00387     \textcolor{keywordflow}{if} (!diff1.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00388}00388       spdlog::warn(\textcolor{stringliteral}{"{}Variables only in reference expression: \{\}"{}}, build\_log\_string(diff1));}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00389}00389     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00390}00390     \textcolor{keywordflow}{if} (!diff2.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00391}00391       spdlog::warn(\textcolor{stringliteral}{"{}Variables only in comparison expression: \{\}"{}}, build\_log\_string(diff2));}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00392}00392     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00393}00393     sorted\_vars.clear(); \textcolor{comment}{// Clear the output variable list}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00394}00394     \textcolor{keywordflow}{return} \textcolor{keyword}{false};        \textcolor{comment}{// Variable sets are inconsistent}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00395}00395   \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00396}00396 \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00397}00397 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00398}\mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{00398}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{LogicComparator::generateReport}}(}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00399}00399     \textcolor{keyword}{const} std::string \&output\_file,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00400}00400     \textcolor{keyword}{const} std::map<std::string, PinComparisonResult> \&comparison\_results) \{\}}
 
 \end{DoxyCode}
