@@ -49,7 +49,7 @@ template void LogicComparator::logic<double>();
  * A valid identifier must:
  * - Not be empty.
  * - Consist of alphanumeric characters and underscores.
- * - Start with an alphabetic character.
+ * - Start with an uppercase alphabetic character.
  * - Contain at least one alphabetic character.
  *
  * @param token The string to check.
@@ -58,7 +58,7 @@ template void LogicComparator::logic<double>();
 bool isIdentifier(const std::string &token) {
   if (token.empty())
     return false;
-  // Check if the token is a valid identifier (alphanumeric + underscore)
+  // Check if the token is a valid identifier (upper alpha+ numeric + underscore)
   bool has_alpha = false;
   for (char c : token) {
     if (std::isalpha(c)) {
@@ -67,8 +67,8 @@ bool isIdentifier(const std::string &token) {
       return false; // Contains invalid char
     }
   }
-  // Must start with an alphabetic character
-  return has_alpha && std::isalpha(token[0]);
+  // Must start with an uppercase alphabetic character
+  return has_alpha && std::isupper(token[0]);
 }
 
 /**
@@ -158,12 +158,241 @@ std::string LogicComparator::preprocessExpression(const std::string &input_expr)
   final_expr = std::regex_replace(final_expr, std::regex("\\s+"), " ");
   final_expr = std::regex_replace(final_expr, std::regex(" \\( "), "(");
   final_expr = std::regex_replace(final_expr, std::regex("\\( "), "(");
+  final_expr = std::regex_replace(final_expr, std::regex(" \\("), "(");
   final_expr = std::regex_replace(final_expr, std::regex(" \\) "), ")");
   final_expr = std::regex_replace(final_expr, std::regex("\\) "), ")");
+  final_expr = std::regex_replace(final_expr, std::regex(" \\)"), ")");
   final_expr = std::regex_replace(final_expr, std::regex("^\\s+|\\s+$"), "");
 
   spdlog::debug("Preprocessed expression result: {}", final_expr);
   return final_expr;
+}
+
+// --- Variable Extraction Helper ---
+/**
+ * @brief Extracts and validates variables from two expressions, ensuring they match.
+ *
+ * This function parses two raw expression strings (`expr1_raw` and `expr2_raw`) to identify
+ * potential variable names. It uses a regular expression to find identifiers and then
+ * validates them against a set of rules:
+ *   1. The identifier must be a valid identifier as determined by the `isIdentifier` function.
+ *   2. The identifier must not be a keyword or function name defined in the `keywords` set.
+ *
+ * The function compares the sets of validated variables from both expressions. If the sets
+ * are identical, the variables are extracted, sorted alphabetically, and stored in the
+ * `sorted_vars` vector. If the sets differ, an error is reported, and the differences
+ * between the sets are logged.
+ *
+ * @param expr1_raw The raw string representation of the first expression.
+ * @param expr2_raw The raw string representation of the second expression.
+ * @param sorted_vars A vector to store the sorted list of unique variable names if the
+ *                    variable sets from both expressions match. This vector is cleared if
+ *                    the sets do not match.
+ *
+ * @return `true` if the variable sets from both expressions match, indicating that the
+ *         `sorted_vars` vector contains the sorted list of unique variable names.
+ *         `false` if the variable sets do not match, indicating an error.
+ *
+ * @note The `isIdentifier` function is used to validate potential variable names.
+ * @note The `keywords` set contains a list of reserved words that cannot be used as variable names.
+ * @note The function uses spdlog for logging debug, trace, info, and warning messages.
+ */
+bool LogicComparator::extractVariables(const std::string &expr1_raw, const std::string &expr2_raw,
+                                       std::vector<std::string> &sorted_vars) {
+  // Define the set of ExprTk keywords/function names to filter out (lowercase)
+  // Even though isIdentifier checks for uppercase, keep this filter as a safety measure
+  static const std::set<std::string> keywords = {"abs",
+                                                 "acos",
+                                                 "acosh",
+                                                 "and",
+                                                 "asin",
+                                                 "asinh",
+                                                 "assert",
+                                                 "atan",
+                                                 "atan2",
+                                                 "atanh",
+                                                 "avg",
+                                                 "break",
+                                                 "case",
+                                                 "ceil",
+                                                 "clamp",
+                                                 "continue",
+                                                 "cosh",
+                                                 "cos",
+                                                 "cot",
+                                                 "csc",
+                                                 "default",
+                                                 "deg2grad",
+                                                 "deg2rad",
+                                                 "else",
+                                                 "equal",
+                                                 "erfc",
+                                                 "erf",
+                                                 "exp",
+                                                 "expm1",
+                                                 "false",
+                                                 "floor",
+                                                 "for",
+                                                 "frac",
+                                                 "grad2deg",
+                                                 "hypot",
+                                                 "iclamp",
+                                                 "if",
+                                                 "ilike",
+                                                 "in",
+                                                 "inrange",
+                                                 /*"in",*/ "like",
+                                                 "log",
+                                                 "log10",
+                                                 "log1p",
+                                                 "log2",
+                                                 "logn",
+                                                 "mand",
+                                                 "max",
+                                                 "min",
+                                                 "mod",
+                                                 "mor",
+                                                 "mul",
+                                                 "nand",
+                                                 "ncdf",
+                                                 "nor",
+                                                 "not",
+                                                 "not_equal",
+                                                 /*"not",*/ "null",
+                                                 "or",
+                                                 "pow",
+                                                 "rad2deg",
+                                                 "repeat",
+                                                 "return",
+                                                 "root",
+                                                 "roundn",
+                                                 "round",
+                                                 "sec",
+                                                 "sgn",
+                                                 "shl",
+                                                 "shr",
+                                                 "sinc",
+                                                 "sinh",
+                                                 "sin",
+                                                 "sqrt",
+                                                 "sum",
+                                                 "swap",
+                                                 "switch",
+                                                 "tanh",
+                                                 "tan",
+                                                 "true",
+                                                 "trunc",
+                                                 "until",
+                                                 "var",
+                                                 "while",
+                                                 "xnor",
+                                                 "xor"};
+
+  // Regular expression to find potential identifiers (unchanged)
+  const std::regex identifier_regex("[a-zA-Z_][a-zA-Z0-9_]*");
+
+  // Store validated and filtered variable names
+  std::set<std::string> actual_vars1_set;
+  std::set<std::string> actual_vars2_set;
+
+  // --- Helper function: build log string ---
+  auto build_log_string = [](const auto &container) {
+    std::ostringstream oss;
+    oss << "[";
+    for (auto it = container.begin(); it != container.end(); ++it) {
+      oss << *it;
+      if (std::next(it) != container.end()) {
+        oss << ", ";
+      }
+    }
+    oss << "]";
+    return oss.str();
+  };
+
+  // --- Process the first expression ---
+  spdlog::debug("Extracting and validating identifiers from raw expr1: {}", expr1_raw);
+  auto words_begin1 = std::sregex_iterator(expr1_raw.begin(), expr1_raw.end(), identifier_regex);
+  auto words_end1 = std::sregex_iterator();
+  for (std::sregex_iterator i = words_begin1; i != words_end1; ++i) {
+    std::string potential_var = i->str();
+    spdlog::trace("Regex found in expr1: {}", potential_var);
+
+    // 1. Validate using isIdentifier (now checks for uppercase etc.)
+    if (isIdentifier(potential_var)) {
+      // 2. Check if it's a keyword (still use lowercase comparison as a precaution)
+      std::string lower_var = potential_var;
+      std::transform(lower_var.begin(), lower_var.end(), lower_var.begin(),
+                     [](unsigned char c) { return std::tolower(c); });
+
+      if (keywords.find(lower_var) == keywords.end()) {
+        actual_vars1_set.insert(potential_var); // Keep original case
+        spdlog::trace("Kept variable from expr1: {}", potential_var);
+      } else {
+        spdlog::trace("Filtered keyword from expr1: {}", potential_var);
+      }
+    } else {
+      spdlog::trace("Filtered invalid identifier from expr1: {}", potential_var);
+    }
+  }
+  spdlog::debug("Validated variables found in expr1: {}", build_log_string(actual_vars1_set));
+
+  // --- Process the second expression ---
+  spdlog::debug("Extracting and validating identifiers from raw expr2: {}", expr2_raw);
+  auto words_begin2 = std::sregex_iterator(expr2_raw.begin(), expr2_raw.end(), identifier_regex);
+  auto words_end2 = std::sregex_iterator();
+  for (std::sregex_iterator i = words_begin2; i != words_end2; ++i) {
+    std::string potential_var = i->str();
+    spdlog::trace("Regex found in expr2: {}", potential_var);
+
+    // 1. Validate using isIdentifier
+    if (isIdentifier(potential_var)) {
+      // 2. Check if it's a keyword (still use lowercase comparison)
+      std::string lower_var = potential_var;
+      std::transform(lower_var.begin(), lower_var.end(), lower_var.begin(),
+                     [](unsigned char c) { return std::tolower(c); });
+
+      if (keywords.find(lower_var) == keywords.end()) {
+        actual_vars2_set.insert(potential_var); // Keep original case
+        spdlog::trace("Kept variable from expr2: {}", potential_var);
+      } else {
+        spdlog::trace("Filtered keyword from expr2: {}", potential_var);
+      }
+    } else {
+      spdlog::trace("Filtered invalid identifier from expr2: {}", potential_var);
+    }
+  }
+  spdlog::debug("Validated variables found in expr2: {}", build_log_string(actual_vars2_set));
+
+  // --- Compare the two variable sets ---
+  if (actual_vars1_set == actual_vars2_set) {
+    // Sets are equal, extract the variable list
+    sorted_vars.assign(actual_vars1_set.begin(), actual_vars1_set.end());
+    std::sort(sorted_vars.begin(), sorted_vars.end()); // Sort alphabetically
+    spdlog::info("Variable sets match. Found unique variables for comparison: {}",
+                 build_log_string(sorted_vars));
+    spdlog::info("Extracted variables done !");
+    return true; // Variable sets are consistent
+  } else {
+    // Sets are not equal, report an error and return false
+    spdlog::warn("Variable sets do not match between the two expressions!");
+    // Calculate the differences for more detailed logging
+    std::vector<std::string> diff1, diff2;
+    std::set_difference(actual_vars1_set.begin(), actual_vars1_set.end(), actual_vars2_set.begin(),
+                        actual_vars2_set.end(),
+                        std::back_inserter(diff1)); // Vars only in expr1
+    std::set_difference(actual_vars2_set.begin(), actual_vars2_set.end(), actual_vars1_set.begin(),
+                        actual_vars1_set.end(),
+                        std::back_inserter(diff2)); // Vars only in expr2
+
+    if (!diff1.empty()) {
+      spdlog::warn("Variables only in reference expression: {}", build_log_string(diff1));
+    }
+    if (!diff2.empty()) {
+      spdlog::warn("Variables only in comparison expression: {}", build_log_string(diff2));
+    }
+    sorted_vars.clear(); // Clear the output variable list
+    return false;        // Variable sets are inconsistent
+  }
 }
 
 void LogicComparator::generateReport(
