@@ -371,6 +371,31 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \item 对每个提取出的标识符，先用 {\ttfamily is\+Identifier} 函数（检查大写开头等）进行验证。
 \item 通过 {\ttfamily is\+Identifier} 验证后，仍然将其转换为小写并与 {\ttfamily keywords} 集合比较，以过滤掉可能的关键词（这是一个保守但安全的操作）。
 \item 只有通过这两步验证的标识符才被认为是有效变量，并以原始大小写形式添加到各自的 {\ttfamily std\+::set} 中。
-\item 最后比较两个 {\ttfamily std\+::set} 是否相等，如果不等则报告差异并返回 {\ttfamily false}，如果相等则将变量列表（保留原始大小写）排序后存入 {\ttfamily sorted\+\_\+vars} 并返回 {\ttfamily true}。 
+\item 最后比较两个 {\ttfamily std\+::set} 是否相等，如果不等则报告差异并返回 {\ttfamily false}，如果相等则将变量列表（保留原始大小写）排序后存入 {\ttfamily sorted\+\_\+vars} 并返回 {\ttfamily true}。
+\end{DoxyItemize}
+\item 修复了 {\ttfamily \mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{Logic\+Comparator\+::preprocess\+Expression()}}} 方法中对 not 操作符的处理。exprtk 库要求 not 关键字后必须跟着括号，如 {\ttfamily not(\+A)} 而非 {\ttfamily not A}。为此增加了专门的处理步骤：
+\begin{DoxyItemize}
+\item 遍历预处理后的 token 列表，识别所有 {\ttfamily not} 关键字。
+\item 当发现 {\ttfamily not} 后，检查其后是否跟随标识符（通过 {\ttfamily \mbox{\hyperlink{LogicComparator_8cpp_a6334f80db7207e331e587be0f9eae2df}{is\+Identifier()}}} 函数判断）。
+\item 如果后接标识符，自动将 {\ttfamily not A} 形式转换为 {\ttfamily not(\+A)}，具体做法是依次添加 {\ttfamily not}、{\ttfamily (}、标识符和 {\ttfamily )}，并跳过已处理的标识符。
+\item 如果后接其他元素（如 {\ttfamily (}、其他运算符或表达式结尾），保留原样，让 Expr\+Tk 处理 {\ttfamily not(表达式)} 形式。
+\item 对其他 token，直接添加到最终 token 列表，不做特殊处理。
+\end{DoxyItemize}
+\item 实现了 {\ttfamily \mbox{\hyperlink{classLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6}{Logic\+Comparator\+::compare\+Single\+Expression\+Pair()}}} 方法，用于比较两个逻辑表达式的等价性：
+\begin{DoxyItemize}
+\item 接收预处理后的表达式字符串和已排序的变量列表作为输入参数。
+\item 为参考表达式和比较表达式分别创建 Expr\+Tk 环境（符号表、表达式对象和解析器）。
+\item 将所有变量添加到两个符号表中，确保变量一致性和顺序性。
+\item 使用 Expr\+Tk 解析器编译两个表达式，并检查可能的语法错误。
+\item 通过二进制计数法，遍历所有可能的输入变量组合（2$^\wedge$N 种），其中 N 为变量数量。
+\item 对每种组合：
+\begin{DoxyItemize}
+\item 设置两个符号表中的变量值（0或1）。
+\item 计算两个表达式的值，并处理可能的运行时错误。
+\item 将计算结果转换为布尔值并存入结果向量。
+\item 同步构建真值表，记录输入组合和对应的输出值。
+\end{DoxyItemize}
+\item 比较两个结果向量判断表达式是否等价。
+\item 将生成的真值表存入 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象的 {\ttfamily std\+::optional} 成员中，以便后续报告生成。 
 \end{DoxyItemize}
 \end{DoxyItemize}

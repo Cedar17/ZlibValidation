@@ -499,7 +499,32 @@ Development Diary</h1>
 <li>对每个提取出的标识符，先用 <code>isIdentifier</code> 函数（检查大写开头等）进行验证。</li>
 <li>通过 <code>isIdentifier</code> 验证后，仍然将其转换为小写并与 <code>keywords</code> 集合比较，以过滤掉可能的关键词（这是一个保守但安全的操作）。</li>
 <li>只有通过这两步验证的标识符才被认为是有效变量，并以原始大小写形式添加到各自的 <code>std::set</code> 中。</li>
-<li>最后比较两个 <code>std::set</code> 是否相等，如果不等则报告差异并返回 <code>false</code>，如果相等则将变量列表（保留原始大小写）排序后存入 <code>sorted_vars</code> 并返回 <code>true</code>。 </li>
+<li>最后比较两个 <code>std::set</code> 是否相等，如果不等则报告差异并返回 <code>false</code>，如果相等则将变量列表（保留原始大小写）排序后存入 <code>sorted_vars</code> 并返回 <code>true</code>。</li>
+</ul>
+</li>
+<li>修复了 <code><a class="el" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">LogicComparator::preprocessExpression()</a></code> 方法中对 not 操作符的处理。exprtk 库要求 not 关键字后必须跟着括号，如 <code>not(A)</code> 而非 <code>not A</code>。为此增加了专门的处理步骤：<ul>
+<li>遍历预处理后的 token 列表，识别所有 <code>not</code> 关键字。</li>
+<li>当发现 <code>not</code> 后，检查其后是否跟随标识符（通过 <code><a class="el" href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df" title="Checks if a given string is a valid identifier.">isIdentifier()</a></code> 函数判断）。</li>
+<li>如果后接标识符，自动将 <code>not A</code> 形式转换为 <code>not(A)</code>，具体做法是依次添加 <code>not</code>、<code>(</code>、标识符和 <code>)</code>，并跳过已处理的标识符。</li>
+<li>如果后接其他元素（如 <code>(</code>、其他运算符或表达式结尾），保留原样，让 ExprTk 处理 <code>not(表达式)</code> 形式。</li>
+<li>对其他 token，直接添加到最终 token 列表，不做特殊处理。</li>
+</ul>
+</li>
+<li>实现了 <code><a class="el" href="classLogicComparator.html#abb88d10e0cb7a1a436e41a4179ef92a6" title="Compares two preprocessed logic expression strings for equivalence. Internal helper function.">LogicComparator::compareSingleExpressionPair()</a></code> 方法，用于比较两个逻辑表达式的等价性：<ul>
+<li>接收预处理后的表达式字符串和已排序的变量列表作为输入参数。</li>
+<li>为参考表达式和比较表达式分别创建 ExprTk 环境（符号表、表达式对象和解析器）。</li>
+<li>将所有变量添加到两个符号表中，确保变量一致性和顺序性。</li>
+<li>使用 ExprTk 解析器编译两个表达式，并检查可能的语法错误。</li>
+<li>通过二进制计数法，遍历所有可能的输入变量组合（2^N 种），其中 N 为变量数量。</li>
+<li>对每种组合：<ul>
+<li>设置两个符号表中的变量值（0或1）。</li>
+<li>计算两个表达式的值，并处理可能的运行时错误。</li>
+<li>将计算结果转换为布尔值并存入结果向量。</li>
+<li>同步构建真值表，记录输入组合和对应的输出值。</li>
+</ul>
+</li>
+<li>比较两个结果向量判断表达式是否等价。</li>
+<li>将生成的真值表存入 <code><a class="el" href="structPinComparisonResult.html">PinComparisonResult</a></code> 对象的 <code>std::optional</code> 成员中，以便后续报告生成。 </li>
 </ul>
 </li>
 </ul>
@@ -509,7 +534,7 @@ Development Diary</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 1 2025 17:22:26 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Apr 1 2025 23:12:22 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

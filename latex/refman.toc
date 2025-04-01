@@ -178,205 +178,205 @@
 \contentsline {subsection}{\numberline {5.10.3}Member Function Documentation}{69}{subsection.5.10.3}%
 \contentsline {subsubsection}{\numberline {5.10.3.1}compareCellLogic()}{69}{subsubsection.5.10.3.1}%
 \contentsline {subsubsection}{\numberline {5.10.3.2}compareSingleExpressionPair()}{70}{subsubsection.5.10.3.2}%
-\contentsline {subsubsection}{\numberline {5.10.3.3}extractVariables()}{70}{subsubsection.5.10.3.3}%
+\contentsline {subsubsection}{\numberline {5.10.3.3}extractVariables()}{71}{subsubsection.5.10.3.3}%
 \contentsline {subsubsection}{\numberline {5.10.3.4}generateReport()}{72}{subsubsection.5.10.3.4}%
-\contentsline {subsubsection}{\numberline {5.10.3.5}logic()}{72}{subsubsection.5.10.3.5}%
-\contentsline {subsubsection}{\numberline {5.10.3.6}preprocessExpression()}{72}{subsubsection.5.10.3.6}%
-\contentsline {subsection}{\numberline {5.10.4}Member Data Documentation}{73}{subsection.5.10.4}%
-\contentsline {subsubsection}{\numberline {5.10.4.1}cell\_name\_}{73}{subsubsection.5.10.4.1}%
-\contentsline {subsubsection}{\numberline {5.10.4.2}comp\_outpin\_map\_}{73}{subsubsection.5.10.4.2}%
-\contentsline {subsubsection}{\numberline {5.10.4.3}ref\_outpin\_map\_}{73}{subsubsection.5.10.4.3}%
-\contentsline {section}{\numberline {5.11}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor Class Reference}{74}{section.5.11}%
-\contentsline {subsection}{\numberline {5.11.1}Detailed Description}{75}{subsection.5.11.1}%
-\contentsline {subsection}{\numberline {5.11.2}Constructor \& Destructor Documentation}{75}{subsection.5.11.2}%
-\contentsline {subsubsection}{\numberline {5.11.2.1}LogicExtractor()}{75}{subsubsection.5.11.2.1}%
-\contentsline {subsection}{\numberline {5.11.3}Member Function Documentation}{75}{subsection.5.11.3}%
-\contentsline {subsubsection}{\numberline {5.11.3.1}deriveLogicRecursive()}{76}{subsubsection.5.11.3.1}%
-\contentsline {subsubsection}{\numberline {5.11.3.2}formatExpression()}{76}{subsubsection.5.11.3.2}%
-\contentsline {subsubsection}{\numberline {5.11.3.3}getExtractedGates()}{77}{subsubsection.5.11.3.3}%
-\contentsline {subsubsection}{\numberline {5.11.3.4}getInternalWires()}{77}{subsubsection.5.11.3.4}%
-\contentsline {subsubsection}{\numberline {5.11.3.5}getLogicExpressions()}{77}{subsubsection.5.11.3.5}%
-\contentsline {subsubsection}{\numberline {5.11.3.6}getPrimaryInputs()}{78}{subsubsection.5.11.3.6}%
-\contentsline {subsubsection}{\numberline {5.11.3.7}getPrimaryOutputs()}{78}{subsubsection.5.11.3.7}%
-\contentsline {subsubsection}{\numberline {5.11.3.8}handle()\hspace {0.1cm}{\footnotesize \ttfamily [1/5]}}{79}{subsubsection.5.11.3.8}%
-\contentsline {subsubsection}{\numberline {5.11.3.9}handle()\hspace {0.1cm}{\footnotesize \ttfamily [2/5]}}{79}{subsubsection.5.11.3.9}%
-\contentsline {subsubsection}{\numberline {5.11.3.10}handle()\hspace {0.1cm}{\footnotesize \ttfamily [3/5]}}{79}{subsubsection.5.11.3.10}%
-\contentsline {subsubsection}{\numberline {5.11.3.11}handle()\hspace {0.1cm}{\footnotesize \ttfamily [4/5]}}{80}{subsubsection.5.11.3.11}%
-\contentsline {subsubsection}{\numberline {5.11.3.12}handle()\hspace {0.1cm}{\footnotesize \ttfamily [5/5]}}{80}{subsubsection.5.11.3.12}%
-\contentsline {subsection}{\numberline {5.11.4}Member Data Documentation}{80}{subsection.5.11.4}%
-\contentsline {subsubsection}{\numberline {5.11.4.1}gateOutputDrivers\_}{80}{subsubsection.5.11.4.1}%
-\contentsline {subsubsection}{\numberline {5.11.4.2}inTargetModule\_}{80}{subsubsection.5.11.4.2}%
-\contentsline {subsubsection}{\numberline {5.11.4.3}internalWires\_}{80}{subsubsection.5.11.4.3}%
-\contentsline {subsubsection}{\numberline {5.11.4.4}logicCache\_}{81}{subsubsection.5.11.4.4}%
-\contentsline {subsubsection}{\numberline {5.11.4.5}parsingComplete\_}{81}{subsubsection.5.11.4.5}%
-\contentsline {subsubsection}{\numberline {5.11.4.6}portDirections\_}{81}{subsubsection.5.11.4.6}%
-\contentsline {subsubsection}{\numberline {5.11.4.7}primaryInputs\_}{81}{subsubsection.5.11.4.7}%
-\contentsline {subsubsection}{\numberline {5.11.4.8}primaryOutputs\_}{81}{subsubsection.5.11.4.8}%
-\contentsline {subsubsection}{\numberline {5.11.4.9}targetCell\_}{82}{subsubsection.5.11.4.9}%
-\contentsline {section}{\numberline {5.12}Module\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rewriter Class Reference}{82}{section.5.12}%
-\contentsline {subsection}{\numberline {5.12.1}Detailed Description}{83}{subsection.5.12.1}%
-\contentsline {subsection}{\numberline {5.12.2}Constructor \& Destructor Documentation}{83}{subsection.5.12.2}%
-\contentsline {subsubsection}{\numberline {5.12.2.1}ModuleRewriter()}{83}{subsubsection.5.12.2.1}%
-\contentsline {subsection}{\numberline {5.12.3}Member Function Documentation}{84}{subsection.5.12.3}%
-\contentsline {subsubsection}{\numberline {5.12.3.1}handle()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{84}{subsubsection.5.12.3.1}%
-\contentsline {subsubsection}{\numberline {5.12.3.2}handle()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{84}{subsubsection.5.12.3.2}%
-\contentsline {subsection}{\numberline {5.12.4}Member Data Documentation}{84}{subsection.5.12.4}%
-\contentsline {subsubsection}{\numberline {5.12.4.1}cellName\_}{84}{subsubsection.5.12.4.1}%
-\contentsline {subsubsection}{\numberline {5.12.4.2}depth\_}{85}{subsubsection.5.12.4.2}%
-\contentsline {subsubsection}{\numberline {5.12.4.3}inputPins\_}{85}{subsubsection.5.12.4.3}%
-\contentsline {subsubsection}{\numberline {5.12.4.4}instance\_count\_}{85}{subsubsection.5.12.4.4}%
-\contentsline {subsubsection}{\numberline {5.12.4.5}logger\_}{85}{subsubsection.5.12.4.5}%
-\contentsline {subsubsection}{\numberline {5.12.4.6}moduleName\_}{85}{subsubsection.5.12.4.6}%
-\contentsline {subsubsection}{\numberline {5.12.4.7}outputPins\_}{86}{subsubsection.5.12.4.7}%
-\contentsline {subsubsection}{\numberline {5.12.4.8}portInfoMap\_}{86}{subsubsection.5.12.4.8}%
-\contentsline {section}{\numberline {5.13}Pin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparison\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Result Struct Reference}{86}{section.5.13}%
-\contentsline {subsection}{\numberline {5.13.1}Detailed Description}{86}{subsection.5.13.1}%
-\contentsline {subsection}{\numberline {5.13.2}Member Data Documentation}{87}{subsection.5.13.2}%
-\contentsline {subsubsection}{\numberline {5.13.2.1}are\_equivalent}{87}{subsubsection.5.13.2.1}%
-\contentsline {subsubsection}{\numberline {5.13.2.2}comp\_compiles}{87}{subsubsection.5.13.2.2}%
-\contentsline {subsubsection}{\numberline {5.13.2.3}comp\_expr\_processed}{87}{subsubsection.5.13.2.3}%
-\contentsline {subsubsection}{\numberline {5.13.2.4}comp\_expr\_raw}{87}{subsubsection.5.13.2.4}%
-\contentsline {subsubsection}{\numberline {5.13.2.5}comp\_truth\_table}{87}{subsubsection.5.13.2.5}%
-\contentsline {subsubsection}{\numberline {5.13.2.6}comparison\_possible}{88}{subsubsection.5.13.2.6}%
-\contentsline {subsubsection}{\numberline {5.13.2.7}error\_message}{88}{subsubsection.5.13.2.7}%
-\contentsline {subsubsection}{\numberline {5.13.2.8}pin\_name}{88}{subsubsection.5.13.2.8}%
-\contentsline {subsubsection}{\numberline {5.13.2.9}ref\_compiles}{88}{subsubsection.5.13.2.9}%
-\contentsline {subsubsection}{\numberline {5.13.2.10}ref\_expr\_processed}{88}{subsubsection.5.13.2.10}%
-\contentsline {subsubsection}{\numberline {5.13.2.11}ref\_expr\_raw}{89}{subsubsection.5.13.2.11}%
-\contentsline {subsubsection}{\numberline {5.13.2.12}ref\_truth\_table}{89}{subsubsection.5.13.2.12}%
-\contentsline {section}{\numberline {5.14}Values\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Iterator Class Reference}{89}{section.5.14}%
-\contentsline {subsection}{\numberline {5.14.1}Detailed Description}{90}{subsection.5.14.1}%
-\contentsline {subsection}{\numberline {5.14.2}Constructor \& Destructor Documentation}{90}{subsection.5.14.2}%
-\contentsline {subsubsection}{\numberline {5.14.2.1}ValuesIterator()}{90}{subsubsection.5.14.2.1}%
-\contentsline {subsubsection}{\numberline {5.14.2.2}$\sim $ValuesIterator()}{90}{subsubsection.5.14.2.2}%
-\contentsline {subsection}{\numberline {5.14.3}Member Function Documentation}{90}{subsection.5.14.3}%
-\contentsline {subsubsection}{\numberline {5.14.3.1}end()}{90}{subsubsection.5.14.3.1}%
-\contentsline {subsubsection}{\numberline {5.14.3.2}next()}{91}{subsubsection.5.14.3.2}%
-\contentsline {subsection}{\numberline {5.14.4}Member Data Documentation}{91}{subsection.5.14.4}%
-\contentsline {subsubsection}{\numberline {5.14.4.1}bool\_}{91}{subsubsection.5.14.4.1}%
-\contentsline {subsubsection}{\numberline {5.14.4.2}err\_}{91}{subsubsection.5.14.4.2}%
-\contentsline {subsubsection}{\numberline {5.14.4.3}exprp\_}{91}{subsubsection.5.14.4.3}%
-\contentsline {subsubsection}{\numberline {5.14.4.4}float\_}{92}{subsubsection.5.14.4.4}%
-\contentsline {subsubsection}{\numberline {5.14.4.5}int\_}{92}{subsubsection.5.14.4.5}%
-\contentsline {subsubsection}{\numberline {5.14.4.6}str\_}{92}{subsubsection.5.14.4.6}%
-\contentsline {subsubsection}{\numberline {5.14.4.7}values\_}{92}{subsubsection.5.14.4.7}%
-\contentsline {subsubsection}{\numberline {5.14.4.8}vtype\_}{92}{subsubsection.5.14.4.8}%
-\contentsline {section}{\numberline {5.15}Verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visitor Class Reference}{93}{section.5.15}%
-\contentsline {subsection}{\numberline {5.15.1}Detailed Description}{94}{subsection.5.15.1}%
-\contentsline {subsection}{\numberline {5.15.2}Constructor \& Destructor Documentation}{94}{subsection.5.15.2}%
-\contentsline {subsubsection}{\numberline {5.15.2.1}VerilogVisitor()}{94}{subsubsection.5.15.2.1}%
-\contentsline {subsection}{\numberline {5.15.3}Member Function Documentation}{94}{subsection.5.15.3}%
-\contentsline {subsubsection}{\numberline {5.15.3.1}handle()\hspace {0.1cm}{\footnotesize \ttfamily [1/5]}}{94}{subsubsection.5.15.3.1}%
-\contentsline {subsubsection}{\numberline {5.15.3.2}handle()\hspace {0.1cm}{\footnotesize \ttfamily [2/5]}}{94}{subsubsection.5.15.3.2}%
-\contentsline {subsubsection}{\numberline {5.15.3.3}handle()\hspace {0.1cm}{\footnotesize \ttfamily [3/5]}}{95}{subsubsection.5.15.3.3}%
-\contentsline {subsubsection}{\numberline {5.15.3.4}handle()\hspace {0.1cm}{\footnotesize \ttfamily [4/5]}}{95}{subsubsection.5.15.3.4}%
-\contentsline {subsubsection}{\numberline {5.15.3.5}handle()\hspace {0.1cm}{\footnotesize \ttfamily [5/5]}}{95}{subsubsection.5.15.3.5}%
-\contentsline {subsection}{\numberline {5.15.4}Member Data Documentation}{96}{subsection.5.15.4}%
-\contentsline {subsubsection}{\numberline {5.15.4.1}depth\_}{96}{subsubsection.5.15.4.1}%
-\contentsline {subsubsection}{\numberline {5.15.4.2}inTargetModule\_}{96}{subsubsection.5.15.4.2}%
-\contentsline {subsubsection}{\numberline {5.15.4.3}targetCell\_}{96}{subsubsection.5.15.4.3}%
-\contentsline {chapter}{\numberline {6}File Documentation}{97}{chapter.6}%
-\contentsline {section}{\numberline {6.1}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Iterators.hpp File Reference}{97}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Iterators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{98}{section.6.2}%
-\contentsline {section}{\numberline {6.3}include/json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.hpp File Reference}{99}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Typedef Documentation}{100}{subsection.6.3.1}%
-\contentsline {subsubsection}{\numberline {6.3.1.1}json}{100}{subsubsection.6.3.1.1}%
-\contentsline {subsection}{\numberline {6.3.2}Function Documentation}{101}{subsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.2.1}generateCellJson()}{101}{subsubsection.6.3.2.1}%
-\contentsline {subsubsection}{\numberline {6.3.2.2}generateLutJson()}{103}{subsubsection.6.3.2.2}%
-\contentsline {subsubsection}{\numberline {6.3.2.3}generatePinJson()}{104}{subsubsection.6.3.2.3}%
-\contentsline {subsubsection}{\numberline {6.3.2.4}generatePowerJson()}{107}{subsubsection.6.3.2.4}%
-\contentsline {section}{\numberline {6.4}json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{108}{section.6.4}%
-\contentsline {section}{\numberline {6.5}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Attribute.hpp File Reference}{109}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Attribute.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{110}{section.6.6}%
-\contentsline {section}{\numberline {6.7}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.hpp File Reference}{111}{section.6.7}%
-\contentsline {subsection}{\numberline {6.7.1}Typedef Documentation}{112}{subsection.6.7.1}%
-\contentsline {subsubsection}{\numberline {6.7.1.1}json}{112}{subsubsection.6.7.1.1}%
-\contentsline {section}{\numberline {6.8}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{112}{section.6.8}%
-\contentsline {section}{\numberline {6.9}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operations.hpp File Reference}{113}{section.6.9}%
-\contentsline {subsection}{\numberline {6.9.1}Function Documentation}{114}{subsection.6.9.1}%
-\contentsline {subsubsection}{\numberline {6.9.1.1}compareLibFiles()}{114}{subsubsection.6.9.1.1}%
-\contentsline {subsubsection}{\numberline {6.9.1.2}funcLibFile()}{115}{subsubsection.6.9.1.2}%
-\contentsline {subsubsection}{\numberline {6.9.1.3}monoCheckLibFile()}{117}{subsubsection.6.9.1.3}%
-\contentsline {subsubsection}{\numberline {6.9.1.4}parseLibFile()}{119}{subsubsection.6.9.1.4}%
-\contentsline {subsubsection}{\numberline {6.9.1.5}printInfo()}{121}{subsubsection.6.9.1.5}%
-\contentsline {subsubsection}{\numberline {6.9.1.6}supercellLibFile()}{122}{subsubsection.6.9.1.6}%
-\contentsline {subsubsection}{\numberline {6.9.1.7}verilogLibFile()}{124}{subsubsection.6.9.1.7}%
-\contentsline {section}{\numberline {6.10}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operations.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{125}{section.6.10}%
-\contentsline {section}{\numberline {6.11}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.hpp File Reference}{126}{section.6.11}%
-\contentsline {section}{\numberline {6.12}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{127}{section.6.12}%
-\contentsline {section}{\numberline {6.13}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.hpp File Reference}{128}{section.6.13}%
-\contentsline {subsection}{\numberline {6.13.1}Typedef Documentation}{129}{subsection.6.13.1}%
-\contentsline {subsubsection}{\numberline {6.13.1.1}json}{129}{subsubsection.6.13.1.1}%
-\contentsline {section}{\numberline {6.14}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{129}{section.6.14}%
-\contentsline {section}{\numberline {6.15}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.hpp File Reference}{130}{section.6.15}%
-\contentsline {section}{\numberline {6.16}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{131}{section.6.16}%
-\contentsline {section}{\numberline {6.17}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.hpp File Reference}{132}{section.6.17}%
-\contentsline {subsection}{\numberline {6.17.1}Function Documentation}{133}{subsection.6.17.1}%
-\contentsline {subsubsection}{\numberline {6.17.1.1}extractAndPrintNetlistInfo()}{133}{subsubsection.6.17.1.1}%
-\contentsline {subsubsection}{\numberline {6.17.1.2}extractLogicFromVerilog()}{133}{subsubsection.6.17.1.2}%
-\contentsline {section}{\numberline {6.18}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{134}{section.6.18}%
-\contentsline {section}{\numberline {6.19}include/verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.hpp File Reference}{135}{section.6.19}%
-\contentsline {subsection}{\numberline {6.19.1}Function Documentation}{136}{subsection.6.19.1}%
-\contentsline {subsubsection}{\numberline {6.19.1.1}getAST()}{136}{subsubsection.6.19.1.1}%
-\contentsline {section}{\numberline {6.20}verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{137}{section.6.20}%
-\contentsline {section}{\numberline {6.21}include/version.h File Reference}{138}{section.6.21}%
-\contentsline {subsection}{\numberline {6.21.1}Macro Definition Documentation}{139}{subsection.6.21.1}%
-\contentsline {subsubsection}{\numberline {6.21.1.1}APP\_AUTHOR}{139}{subsubsection.6.21.1.1}%
-\contentsline {subsubsection}{\numberline {6.21.1.2}APP\_CONTACT}{139}{subsubsection.6.21.1.2}%
-\contentsline {subsubsection}{\numberline {6.21.1.3}APP\_NAME}{139}{subsubsection.6.21.1.3}%
-\contentsline {subsubsection}{\numberline {6.21.1.4}APP\_VERSION}{139}{subsubsection.6.21.1.4}%
-\contentsline {subsubsection}{\numberline {6.21.1.5}APP\_VERSION\_MAJOR}{139}{subsubsection.6.21.1.5}%
-\contentsline {subsubsection}{\numberline {6.21.1.6}APP\_VERSION\_MINOR}{140}{subsubsection.6.21.1.6}%
-\contentsline {subsubsection}{\numberline {6.21.1.7}APP\_VERSION\_PATCH}{140}{subsubsection.6.21.1.7}%
-\contentsline {subsubsection}{\numberline {6.21.1.8}BUILD\_TIMESTAMP}{140}{subsubsection.6.21.1.8}%
-\contentsline {section}{\numberline {6.22}version.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{140}{section.6.22}%
-\contentsline {section}{\numberline {6.23}README.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}md File Reference}{141}{section.6.23}%
-\contentsline {section}{\numberline {6.24}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Iterators.cpp File Reference}{141}{section.6.24}%
-\contentsline {section}{\numberline {6.25}Iterators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{141}{section.6.25}%
-\contentsline {section}{\numberline {6.26}src/json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.cpp File Reference}{142}{section.6.26}%
-\contentsline {subsection}{\numberline {6.26.1}Function Documentation}{143}{subsection.6.26.1}%
-\contentsline {subsubsection}{\numberline {6.26.1.1}generateCellJson()}{143}{subsubsection.6.26.1.1}%
-\contentsline {subsubsection}{\numberline {6.26.1.2}generateLutJson()}{145}{subsubsection.6.26.1.2}%
-\contentsline {subsubsection}{\numberline {6.26.1.3}generatePinJson()}{146}{subsubsection.6.26.1.3}%
-\contentsline {subsubsection}{\numberline {6.26.1.4}generatePowerJson()}{149}{subsubsection.6.26.1.4}%
-\contentsline {subsubsection}{\numberline {6.26.1.5}generateTimingJson()}{150}{subsubsection.6.26.1.5}%
-\contentsline {subsubsection}{\numberline {6.26.1.6}parseStringToVector()}{152}{subsubsection.6.26.1.6}%
-\contentsline {section}{\numberline {6.27}json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{153}{section.6.27}%
-\contentsline {section}{\numberline {6.28}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Atrribute.cpp File Reference}{156}{section.6.28}%
-\contentsline {section}{\numberline {6.29}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Atrribute.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{156}{section.6.29}%
-\contentsline {section}{\numberline {6.30}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.cpp File Reference}{157}{section.6.30}%
-\contentsline {section}{\numberline {6.31}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{157}{section.6.31}%
-\contentsline {section}{\numberline {6.32}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operations.cpp File Reference}{169}{section.6.32}%
-\contentsline {subsection}{\numberline {6.32.1}Function Documentation}{170}{subsection.6.32.1}%
-\contentsline {subsubsection}{\numberline {6.32.1.1}compareLibFiles()}{170}{subsubsection.6.32.1.1}%
-\contentsline {subsubsection}{\numberline {6.32.1.2}funcLibFile()}{171}{subsubsection.6.32.1.2}%
-\contentsline {subsubsection}{\numberline {6.32.1.3}monoCheckLibFile()}{172}{subsubsection.6.32.1.3}%
-\contentsline {subsubsection}{\numberline {6.32.1.4}parseLibFile()}{175}{subsubsection.6.32.1.4}%
-\contentsline {subsubsection}{\numberline {6.32.1.5}printInfo()}{177}{subsubsection.6.32.1.5}%
-\contentsline {subsubsection}{\numberline {6.32.1.6}supercellLibFile()}{178}{subsubsection.6.32.1.6}%
-\contentsline {subsubsection}{\numberline {6.32.1.7}verilogLibFile()}{180}{subsubsection.6.32.1.7}%
-\contentsline {section}{\numberline {6.33}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operations.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{181}{section.6.33}%
-\contentsline {section}{\numberline {6.34}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.cpp File Reference}{185}{section.6.34}%
-\contentsline {section}{\numberline {6.35}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{185}{section.6.35}%
-\contentsline {section}{\numberline {6.36}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.cpp File Reference}{186}{section.6.36}%
-\contentsline {section}{\numberline {6.37}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{186}{section.6.37}%
-\contentsline {section}{\numberline {6.38}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.cpp File Reference}{192}{section.6.38}%
-\contentsline {subsection}{\numberline {6.38.1}Function Documentation}{192}{subsection.6.38.1}%
-\contentsline {subsubsection}{\numberline {6.38.1.1}isIdentifier()}{192}{subsubsection.6.38.1.1}%
-\contentsline {subsubsection}{\numberline {6.38.1.2}isOperator()}{193}{subsubsection.6.38.1.2}%
-\contentsline {section}{\numberline {6.39}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{194}{section.6.39}%
-\contentsline {section}{\numberline {6.40}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.cpp File Reference}{199}{section.6.40}%
-\contentsline {subsection}{\numberline {6.40.1}Function Documentation}{199}{subsection.6.40.1}%
-\contentsline {subsubsection}{\numberline {6.40.1.1}extractAndPrintNetlistInfo()}{199}{subsubsection.6.40.1.1}%
-\contentsline {subsubsection}{\numberline {6.40.1.2}extractLogicFromVerilog()}{200}{subsubsection.6.40.1.2}%
-\contentsline {section}{\numberline {6.41}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{201}{section.6.41}%
-\contentsline {section}{\numberline {6.42}src/main.cpp File Reference}{210}{section.6.42}%
-\contentsline {subsection}{\numberline {6.42.1}Function Documentation}{210}{subsection.6.42.1}%
-\contentsline {subsubsection}{\numberline {6.42.1.1}main()}{210}{subsubsection.6.42.1.1}%
-\contentsline {section}{\numberline {6.43}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{211}{section.6.43}%
-\contentsline {section}{\numberline {6.44}src/verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.cpp File Reference}{216}{section.6.44}%
-\contentsline {subsection}{\numberline {6.44.1}Function Documentation}{216}{subsection.6.44.1}%
-\contentsline {subsubsection}{\numberline {6.44.1.1}getAST()}{216}{subsubsection.6.44.1.1}%
-\contentsline {section}{\numberline {6.45}verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{217}{section.6.45}%
-\contentsline {chapter}{索引}{227}{section*.212}%
+\contentsline {subsubsection}{\numberline {5.10.3.5}logic()}{73}{subsubsection.5.10.3.5}%
+\contentsline {subsubsection}{\numberline {5.10.3.6}preprocessExpression()}{73}{subsubsection.5.10.3.6}%
+\contentsline {subsection}{\numberline {5.10.4}Member Data Documentation}{74}{subsection.5.10.4}%
+\contentsline {subsubsection}{\numberline {5.10.4.1}cell\_name\_}{74}{subsubsection.5.10.4.1}%
+\contentsline {subsubsection}{\numberline {5.10.4.2}comp\_outpin\_map\_}{74}{subsubsection.5.10.4.2}%
+\contentsline {subsubsection}{\numberline {5.10.4.3}ref\_outpin\_map\_}{74}{subsubsection.5.10.4.3}%
+\contentsline {section}{\numberline {5.11}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor Class Reference}{75}{section.5.11}%
+\contentsline {subsection}{\numberline {5.11.1}Detailed Description}{76}{subsection.5.11.1}%
+\contentsline {subsection}{\numberline {5.11.2}Constructor \& Destructor Documentation}{76}{subsection.5.11.2}%
+\contentsline {subsubsection}{\numberline {5.11.2.1}LogicExtractor()}{76}{subsubsection.5.11.2.1}%
+\contentsline {subsection}{\numberline {5.11.3}Member Function Documentation}{76}{subsection.5.11.3}%
+\contentsline {subsubsection}{\numberline {5.11.3.1}deriveLogicRecursive()}{77}{subsubsection.5.11.3.1}%
+\contentsline {subsubsection}{\numberline {5.11.3.2}formatExpression()}{77}{subsubsection.5.11.3.2}%
+\contentsline {subsubsection}{\numberline {5.11.3.3}getExtractedGates()}{78}{subsubsection.5.11.3.3}%
+\contentsline {subsubsection}{\numberline {5.11.3.4}getInternalWires()}{78}{subsubsection.5.11.3.4}%
+\contentsline {subsubsection}{\numberline {5.11.3.5}getLogicExpressions()}{78}{subsubsection.5.11.3.5}%
+\contentsline {subsubsection}{\numberline {5.11.3.6}getPrimaryInputs()}{79}{subsubsection.5.11.3.6}%
+\contentsline {subsubsection}{\numberline {5.11.3.7}getPrimaryOutputs()}{79}{subsubsection.5.11.3.7}%
+\contentsline {subsubsection}{\numberline {5.11.3.8}handle()\hspace {0.1cm}{\footnotesize \ttfamily [1/5]}}{80}{subsubsection.5.11.3.8}%
+\contentsline {subsubsection}{\numberline {5.11.3.9}handle()\hspace {0.1cm}{\footnotesize \ttfamily [2/5]}}{80}{subsubsection.5.11.3.9}%
+\contentsline {subsubsection}{\numberline {5.11.3.10}handle()\hspace {0.1cm}{\footnotesize \ttfamily [3/5]}}{80}{subsubsection.5.11.3.10}%
+\contentsline {subsubsection}{\numberline {5.11.3.11}handle()\hspace {0.1cm}{\footnotesize \ttfamily [4/5]}}{81}{subsubsection.5.11.3.11}%
+\contentsline {subsubsection}{\numberline {5.11.3.12}handle()\hspace {0.1cm}{\footnotesize \ttfamily [5/5]}}{81}{subsubsection.5.11.3.12}%
+\contentsline {subsection}{\numberline {5.11.4}Member Data Documentation}{81}{subsection.5.11.4}%
+\contentsline {subsubsection}{\numberline {5.11.4.1}gateOutputDrivers\_}{81}{subsubsection.5.11.4.1}%
+\contentsline {subsubsection}{\numberline {5.11.4.2}inTargetModule\_}{81}{subsubsection.5.11.4.2}%
+\contentsline {subsubsection}{\numberline {5.11.4.3}internalWires\_}{81}{subsubsection.5.11.4.3}%
+\contentsline {subsubsection}{\numberline {5.11.4.4}logicCache\_}{82}{subsubsection.5.11.4.4}%
+\contentsline {subsubsection}{\numberline {5.11.4.5}parsingComplete\_}{82}{subsubsection.5.11.4.5}%
+\contentsline {subsubsection}{\numberline {5.11.4.6}portDirections\_}{82}{subsubsection.5.11.4.6}%
+\contentsline {subsubsection}{\numberline {5.11.4.7}primaryInputs\_}{82}{subsubsection.5.11.4.7}%
+\contentsline {subsubsection}{\numberline {5.11.4.8}primaryOutputs\_}{82}{subsubsection.5.11.4.8}%
+\contentsline {subsubsection}{\numberline {5.11.4.9}targetCell\_}{83}{subsubsection.5.11.4.9}%
+\contentsline {section}{\numberline {5.12}Module\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Rewriter Class Reference}{83}{section.5.12}%
+\contentsline {subsection}{\numberline {5.12.1}Detailed Description}{84}{subsection.5.12.1}%
+\contentsline {subsection}{\numberline {5.12.2}Constructor \& Destructor Documentation}{84}{subsection.5.12.2}%
+\contentsline {subsubsection}{\numberline {5.12.2.1}ModuleRewriter()}{84}{subsubsection.5.12.2.1}%
+\contentsline {subsection}{\numberline {5.12.3}Member Function Documentation}{85}{subsection.5.12.3}%
+\contentsline {subsubsection}{\numberline {5.12.3.1}handle()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{85}{subsubsection.5.12.3.1}%
+\contentsline {subsubsection}{\numberline {5.12.3.2}handle()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{85}{subsubsection.5.12.3.2}%
+\contentsline {subsection}{\numberline {5.12.4}Member Data Documentation}{85}{subsection.5.12.4}%
+\contentsline {subsubsection}{\numberline {5.12.4.1}cellName\_}{85}{subsubsection.5.12.4.1}%
+\contentsline {subsubsection}{\numberline {5.12.4.2}depth\_}{86}{subsubsection.5.12.4.2}%
+\contentsline {subsubsection}{\numberline {5.12.4.3}inputPins\_}{86}{subsubsection.5.12.4.3}%
+\contentsline {subsubsection}{\numberline {5.12.4.4}instance\_count\_}{86}{subsubsection.5.12.4.4}%
+\contentsline {subsubsection}{\numberline {5.12.4.5}logger\_}{86}{subsubsection.5.12.4.5}%
+\contentsline {subsubsection}{\numberline {5.12.4.6}moduleName\_}{86}{subsubsection.5.12.4.6}%
+\contentsline {subsubsection}{\numberline {5.12.4.7}outputPins\_}{87}{subsubsection.5.12.4.7}%
+\contentsline {subsubsection}{\numberline {5.12.4.8}portInfoMap\_}{87}{subsubsection.5.12.4.8}%
+\contentsline {section}{\numberline {5.13}Pin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparison\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Result Struct Reference}{87}{section.5.13}%
+\contentsline {subsection}{\numberline {5.13.1}Detailed Description}{87}{subsection.5.13.1}%
+\contentsline {subsection}{\numberline {5.13.2}Member Data Documentation}{88}{subsection.5.13.2}%
+\contentsline {subsubsection}{\numberline {5.13.2.1}are\_equivalent}{88}{subsubsection.5.13.2.1}%
+\contentsline {subsubsection}{\numberline {5.13.2.2}comp\_compiles}{88}{subsubsection.5.13.2.2}%
+\contentsline {subsubsection}{\numberline {5.13.2.3}comp\_expr\_processed}{88}{subsubsection.5.13.2.3}%
+\contentsline {subsubsection}{\numberline {5.13.2.4}comp\_expr\_raw}{88}{subsubsection.5.13.2.4}%
+\contentsline {subsubsection}{\numberline {5.13.2.5}comp\_truth\_table}{88}{subsubsection.5.13.2.5}%
+\contentsline {subsubsection}{\numberline {5.13.2.6}comparison\_possible}{89}{subsubsection.5.13.2.6}%
+\contentsline {subsubsection}{\numberline {5.13.2.7}error\_message}{89}{subsubsection.5.13.2.7}%
+\contentsline {subsubsection}{\numberline {5.13.2.8}pin\_name}{89}{subsubsection.5.13.2.8}%
+\contentsline {subsubsection}{\numberline {5.13.2.9}ref\_compiles}{89}{subsubsection.5.13.2.9}%
+\contentsline {subsubsection}{\numberline {5.13.2.10}ref\_expr\_processed}{89}{subsubsection.5.13.2.10}%
+\contentsline {subsubsection}{\numberline {5.13.2.11}ref\_expr\_raw}{90}{subsubsection.5.13.2.11}%
+\contentsline {subsubsection}{\numberline {5.13.2.12}ref\_truth\_table}{90}{subsubsection.5.13.2.12}%
+\contentsline {section}{\numberline {5.14}Values\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Iterator Class Reference}{90}{section.5.14}%
+\contentsline {subsection}{\numberline {5.14.1}Detailed Description}{91}{subsection.5.14.1}%
+\contentsline {subsection}{\numberline {5.14.2}Constructor \& Destructor Documentation}{91}{subsection.5.14.2}%
+\contentsline {subsubsection}{\numberline {5.14.2.1}ValuesIterator()}{91}{subsubsection.5.14.2.1}%
+\contentsline {subsubsection}{\numberline {5.14.2.2}$\sim $ValuesIterator()}{91}{subsubsection.5.14.2.2}%
+\contentsline {subsection}{\numberline {5.14.3}Member Function Documentation}{91}{subsection.5.14.3}%
+\contentsline {subsubsection}{\numberline {5.14.3.1}end()}{91}{subsubsection.5.14.3.1}%
+\contentsline {subsubsection}{\numberline {5.14.3.2}next()}{92}{subsubsection.5.14.3.2}%
+\contentsline {subsection}{\numberline {5.14.4}Member Data Documentation}{92}{subsection.5.14.4}%
+\contentsline {subsubsection}{\numberline {5.14.4.1}bool\_}{92}{subsubsection.5.14.4.1}%
+\contentsline {subsubsection}{\numberline {5.14.4.2}err\_}{92}{subsubsection.5.14.4.2}%
+\contentsline {subsubsection}{\numberline {5.14.4.3}exprp\_}{92}{subsubsection.5.14.4.3}%
+\contentsline {subsubsection}{\numberline {5.14.4.4}float\_}{93}{subsubsection.5.14.4.4}%
+\contentsline {subsubsection}{\numberline {5.14.4.5}int\_}{93}{subsubsection.5.14.4.5}%
+\contentsline {subsubsection}{\numberline {5.14.4.6}str\_}{93}{subsubsection.5.14.4.6}%
+\contentsline {subsubsection}{\numberline {5.14.4.7}values\_}{93}{subsubsection.5.14.4.7}%
+\contentsline {subsubsection}{\numberline {5.14.4.8}vtype\_}{93}{subsubsection.5.14.4.8}%
+\contentsline {section}{\numberline {5.15}Verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visitor Class Reference}{94}{section.5.15}%
+\contentsline {subsection}{\numberline {5.15.1}Detailed Description}{95}{subsection.5.15.1}%
+\contentsline {subsection}{\numberline {5.15.2}Constructor \& Destructor Documentation}{95}{subsection.5.15.2}%
+\contentsline {subsubsection}{\numberline {5.15.2.1}VerilogVisitor()}{95}{subsubsection.5.15.2.1}%
+\contentsline {subsection}{\numberline {5.15.3}Member Function Documentation}{95}{subsection.5.15.3}%
+\contentsline {subsubsection}{\numberline {5.15.3.1}handle()\hspace {0.1cm}{\footnotesize \ttfamily [1/5]}}{95}{subsubsection.5.15.3.1}%
+\contentsline {subsubsection}{\numberline {5.15.3.2}handle()\hspace {0.1cm}{\footnotesize \ttfamily [2/5]}}{95}{subsubsection.5.15.3.2}%
+\contentsline {subsubsection}{\numberline {5.15.3.3}handle()\hspace {0.1cm}{\footnotesize \ttfamily [3/5]}}{96}{subsubsection.5.15.3.3}%
+\contentsline {subsubsection}{\numberline {5.15.3.4}handle()\hspace {0.1cm}{\footnotesize \ttfamily [4/5]}}{96}{subsubsection.5.15.3.4}%
+\contentsline {subsubsection}{\numberline {5.15.3.5}handle()\hspace {0.1cm}{\footnotesize \ttfamily [5/5]}}{96}{subsubsection.5.15.3.5}%
+\contentsline {subsection}{\numberline {5.15.4}Member Data Documentation}{97}{subsection.5.15.4}%
+\contentsline {subsubsection}{\numberline {5.15.4.1}depth\_}{97}{subsubsection.5.15.4.1}%
+\contentsline {subsubsection}{\numberline {5.15.4.2}inTargetModule\_}{97}{subsubsection.5.15.4.2}%
+\contentsline {subsubsection}{\numberline {5.15.4.3}targetCell\_}{97}{subsubsection.5.15.4.3}%
+\contentsline {chapter}{\numberline {6}File Documentation}{99}{chapter.6}%
+\contentsline {section}{\numberline {6.1}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Iterators.hpp File Reference}{99}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Iterators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{100}{section.6.2}%
+\contentsline {section}{\numberline {6.3}include/json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.hpp File Reference}{101}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Typedef Documentation}{102}{subsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.1.1}json}{102}{subsubsection.6.3.1.1}%
+\contentsline {subsection}{\numberline {6.3.2}Function Documentation}{103}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}generateCellJson()}{103}{subsubsection.6.3.2.1}%
+\contentsline {subsubsection}{\numberline {6.3.2.2}generateLutJson()}{105}{subsubsection.6.3.2.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.3}generatePinJson()}{106}{subsubsection.6.3.2.3}%
+\contentsline {subsubsection}{\numberline {6.3.2.4}generatePowerJson()}{109}{subsubsection.6.3.2.4}%
+\contentsline {section}{\numberline {6.4}json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{110}{section.6.4}%
+\contentsline {section}{\numberline {6.5}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Attribute.hpp File Reference}{111}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Attribute.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{112}{section.6.6}%
+\contentsline {section}{\numberline {6.7}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.hpp File Reference}{113}{section.6.7}%
+\contentsline {subsection}{\numberline {6.7.1}Typedef Documentation}{114}{subsection.6.7.1}%
+\contentsline {subsubsection}{\numberline {6.7.1.1}json}{114}{subsubsection.6.7.1.1}%
+\contentsline {section}{\numberline {6.8}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{114}{section.6.8}%
+\contentsline {section}{\numberline {6.9}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operations.hpp File Reference}{115}{section.6.9}%
+\contentsline {subsection}{\numberline {6.9.1}Function Documentation}{116}{subsection.6.9.1}%
+\contentsline {subsubsection}{\numberline {6.9.1.1}compareLibFiles()}{116}{subsubsection.6.9.1.1}%
+\contentsline {subsubsection}{\numberline {6.9.1.2}funcLibFile()}{117}{subsubsection.6.9.1.2}%
+\contentsline {subsubsection}{\numberline {6.9.1.3}monoCheckLibFile()}{119}{subsubsection.6.9.1.3}%
+\contentsline {subsubsection}{\numberline {6.9.1.4}parseLibFile()}{121}{subsubsection.6.9.1.4}%
+\contentsline {subsubsection}{\numberline {6.9.1.5}printInfo()}{123}{subsubsection.6.9.1.5}%
+\contentsline {subsubsection}{\numberline {6.9.1.6}supercellLibFile()}{124}{subsubsection.6.9.1.6}%
+\contentsline {subsubsection}{\numberline {6.9.1.7}verilogLibFile()}{126}{subsubsection.6.9.1.7}%
+\contentsline {section}{\numberline {6.10}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operations.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{127}{section.6.10}%
+\contentsline {section}{\numberline {6.11}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.hpp File Reference}{128}{section.6.11}%
+\contentsline {section}{\numberline {6.12}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{129}{section.6.12}%
+\contentsline {section}{\numberline {6.13}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.hpp File Reference}{130}{section.6.13}%
+\contentsline {subsection}{\numberline {6.13.1}Typedef Documentation}{131}{subsection.6.13.1}%
+\contentsline {subsubsection}{\numberline {6.13.1.1}json}{131}{subsubsection.6.13.1.1}%
+\contentsline {section}{\numberline {6.14}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{131}{section.6.14}%
+\contentsline {section}{\numberline {6.15}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.hpp File Reference}{132}{section.6.15}%
+\contentsline {section}{\numberline {6.16}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{133}{section.6.16}%
+\contentsline {section}{\numberline {6.17}include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.hpp File Reference}{134}{section.6.17}%
+\contentsline {subsection}{\numberline {6.17.1}Function Documentation}{135}{subsection.6.17.1}%
+\contentsline {subsubsection}{\numberline {6.17.1.1}extractAndPrintNetlistInfo()}{135}{subsubsection.6.17.1.1}%
+\contentsline {subsubsection}{\numberline {6.17.1.2}extractLogicFromVerilog()}{135}{subsubsection.6.17.1.2}%
+\contentsline {section}{\numberline {6.18}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{136}{section.6.18}%
+\contentsline {section}{\numberline {6.19}include/verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.hpp File Reference}{137}{section.6.19}%
+\contentsline {subsection}{\numberline {6.19.1}Function Documentation}{138}{subsection.6.19.1}%
+\contentsline {subsubsection}{\numberline {6.19.1.1}getAST()}{138}{subsubsection.6.19.1.1}%
+\contentsline {section}{\numberline {6.20}verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}hpp}{139}{section.6.20}%
+\contentsline {section}{\numberline {6.21}include/version.h File Reference}{140}{section.6.21}%
+\contentsline {subsection}{\numberline {6.21.1}Macro Definition Documentation}{141}{subsection.6.21.1}%
+\contentsline {subsubsection}{\numberline {6.21.1.1}APP\_AUTHOR}{141}{subsubsection.6.21.1.1}%
+\contentsline {subsubsection}{\numberline {6.21.1.2}APP\_CONTACT}{141}{subsubsection.6.21.1.2}%
+\contentsline {subsubsection}{\numberline {6.21.1.3}APP\_NAME}{141}{subsubsection.6.21.1.3}%
+\contentsline {subsubsection}{\numberline {6.21.1.4}APP\_VERSION}{141}{subsubsection.6.21.1.4}%
+\contentsline {subsubsection}{\numberline {6.21.1.5}APP\_VERSION\_MAJOR}{141}{subsubsection.6.21.1.5}%
+\contentsline {subsubsection}{\numberline {6.21.1.6}APP\_VERSION\_MINOR}{142}{subsubsection.6.21.1.6}%
+\contentsline {subsubsection}{\numberline {6.21.1.7}APP\_VERSION\_PATCH}{142}{subsubsection.6.21.1.7}%
+\contentsline {subsubsection}{\numberline {6.21.1.8}BUILD\_TIMESTAMP}{142}{subsubsection.6.21.1.8}%
+\contentsline {section}{\numberline {6.22}version.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{142}{section.6.22}%
+\contentsline {section}{\numberline {6.23}README.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}md File Reference}{143}{section.6.23}%
+\contentsline {section}{\numberline {6.24}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Iterators.cpp File Reference}{143}{section.6.24}%
+\contentsline {section}{\numberline {6.25}Iterators.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{143}{section.6.25}%
+\contentsline {section}{\numberline {6.26}src/json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.cpp File Reference}{144}{section.6.26}%
+\contentsline {subsection}{\numberline {6.26.1}Function Documentation}{145}{subsection.6.26.1}%
+\contentsline {subsubsection}{\numberline {6.26.1.1}generateCellJson()}{145}{subsubsection.6.26.1.1}%
+\contentsline {subsubsection}{\numberline {6.26.1.2}generateLutJson()}{147}{subsubsection.6.26.1.2}%
+\contentsline {subsubsection}{\numberline {6.26.1.3}generatePinJson()}{148}{subsubsection.6.26.1.3}%
+\contentsline {subsubsection}{\numberline {6.26.1.4}generatePowerJson()}{151}{subsubsection.6.26.1.4}%
+\contentsline {subsubsection}{\numberline {6.26.1.5}generateTimingJson()}{152}{subsubsection.6.26.1.5}%
+\contentsline {subsubsection}{\numberline {6.26.1.6}parseStringToVector()}{154}{subsubsection.6.26.1.6}%
+\contentsline {section}{\numberline {6.27}json\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{155}{section.6.27}%
+\contentsline {section}{\numberline {6.28}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Atrribute.cpp File Reference}{158}{section.6.28}%
+\contentsline {section}{\numberline {6.29}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Atrribute.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{158}{section.6.29}%
+\contentsline {section}{\numberline {6.30}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.cpp File Reference}{159}{section.6.30}%
+\contentsline {section}{\numberline {6.31}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{159}{section.6.31}%
+\contentsline {section}{\numberline {6.32}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operations.cpp File Reference}{171}{section.6.32}%
+\contentsline {subsection}{\numberline {6.32.1}Function Documentation}{172}{subsection.6.32.1}%
+\contentsline {subsubsection}{\numberline {6.32.1.1}compareLibFiles()}{172}{subsubsection.6.32.1.1}%
+\contentsline {subsubsection}{\numberline {6.32.1.2}funcLibFile()}{173}{subsubsection.6.32.1.2}%
+\contentsline {subsubsection}{\numberline {6.32.1.3}monoCheckLibFile()}{174}{subsubsection.6.32.1.3}%
+\contentsline {subsubsection}{\numberline {6.32.1.4}parseLibFile()}{177}{subsubsection.6.32.1.4}%
+\contentsline {subsubsection}{\numberline {6.32.1.5}printInfo()}{179}{subsubsection.6.32.1.5}%
+\contentsline {subsubsection}{\numberline {6.32.1.6}supercellLibFile()}{180}{subsubsection.6.32.1.6}%
+\contentsline {subsubsection}{\numberline {6.32.1.7}verilogLibFile()}{182}{subsubsection.6.32.1.7}%
+\contentsline {section}{\numberline {6.33}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}File\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Operations.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{183}{section.6.33}%
+\contentsline {section}{\numberline {6.34}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.cpp File Reference}{187}{section.6.34}%
+\contentsline {section}{\numberline {6.35}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Group.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{188}{section.6.35}%
+\contentsline {section}{\numberline {6.36}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.cpp File Reference}{188}{section.6.36}%
+\contentsline {section}{\numberline {6.37}Library\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{188}{section.6.37}%
+\contentsline {section}{\numberline {6.38}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.cpp File Reference}{194}{section.6.38}%
+\contentsline {subsection}{\numberline {6.38.1}Function Documentation}{194}{subsection.6.38.1}%
+\contentsline {subsubsection}{\numberline {6.38.1.1}isIdentifier()}{194}{subsubsection.6.38.1.1}%
+\contentsline {subsubsection}{\numberline {6.38.1.2}isOperator()}{195}{subsubsection.6.38.1.2}%
+\contentsline {section}{\numberline {6.39}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{196}{section.6.39}%
+\contentsline {section}{\numberline {6.40}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.cpp File Reference}{205}{section.6.40}%
+\contentsline {subsection}{\numberline {6.40.1}Function Documentation}{206}{subsection.6.40.1}%
+\contentsline {subsubsection}{\numberline {6.40.1.1}extractAndPrintNetlistInfo()}{206}{subsubsection.6.40.1.1}%
+\contentsline {subsubsection}{\numberline {6.40.1.2}extractLogicFromVerilog()}{207}{subsubsection.6.40.1.2}%
+\contentsline {section}{\numberline {6.41}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{207}{section.6.41}%
+\contentsline {section}{\numberline {6.42}src/main.cpp File Reference}{216}{section.6.42}%
+\contentsline {subsection}{\numberline {6.42.1}Function Documentation}{217}{subsection.6.42.1}%
+\contentsline {subsubsection}{\numberline {6.42.1.1}main()}{217}{subsubsection.6.42.1.1}%
+\contentsline {section}{\numberline {6.43}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{217}{section.6.43}%
+\contentsline {section}{\numberline {6.44}src/verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.cpp File Reference}{222}{section.6.44}%
+\contentsline {subsection}{\numberline {6.44.1}Function Documentation}{222}{subsection.6.44.1}%
+\contentsline {subsubsection}{\numberline {6.44.1.1}getAST()}{223}{subsubsection.6.44.1.1}%
+\contentsline {section}{\numberline {6.45}verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{223}{section.6.45}%
+\contentsline {chapter}{索引}{233}{section*.213}%

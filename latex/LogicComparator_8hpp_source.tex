@@ -56,21 +56,22 @@
 \DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00052}00052                         std::vector<std::string> \&sorted\_vars);}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00053}00053 }
 \DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00063}00063   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00064}\mbox{\hyperlink{classLogicComparator_a75bc372dab8bde4526c3ebbdc476d631}{00064}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a75bc372dab8bde4526c3ebbdc476d631}{compareSingleExpressionPair}}(\textcolor{keyword}{const} std::string \&ref\_expression\_processed,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00064}00064   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6}{compareSingleExpressionPair}}(\textcolor{keyword}{const} std::string \&ref\_expression\_processed,}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00065}00065                                    \textcolor{keyword}{const} std::string \&comp\_expression\_processed,}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00066}00066                                    \mbox{\hyperlink{structPinComparisonResult}{PinComparisonResult}} \&result); \textcolor{comment}{// Pass result struct}}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00067}00067 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00075}\mbox{\hyperlink{classLogicComparator_aaa9d3a5c46e5c6fa589e1c5e29b1c379}{00075}}   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> std::map<std::string, PinComparisonResult> \mbox{\hyperlink{classLogicComparator_aaa9d3a5c46e5c6fa589e1c5e29b1c379}{compareCellLogic}}();}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00076}00076 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00083}00083   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{generateReport}}(\textcolor{keyword}{const} std::string \&output\_file,}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00084}00084                       \textcolor{keyword}{const} std::map<std::string, PinComparisonResult> \&comparison\_results);}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00085}00085 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00086}00086 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00087}\mbox{\hyperlink{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}{00087}}   std::map<std::string, std::string> \mbox{\hyperlink{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}{ref\_outpin\_map\_}};}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00088}\mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{00088}}   std::map<std::string, std::string> \mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{comp\_outpin\_map\_}};}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00089}\mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{00089}}   std::string \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}};}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00090}00090 \};}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00091}00091 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00092}00092 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LOGIC\_COMPARATOR\_HPP}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00066}00066                                    \textcolor{keyword}{const} std::vector<std::string> \&sorted\_vars,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00067}00067                                    \mbox{\hyperlink{structPinComparisonResult}{PinComparisonResult}} \&result); \textcolor{comment}{// Pass result struct}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00076}\mbox{\hyperlink{classLogicComparator_aaa9d3a5c46e5c6fa589e1c5e29b1c379}{00076}}   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> std::map<std::string, PinComparisonResult> \mbox{\hyperlink{classLogicComparator_aaa9d3a5c46e5c6fa589e1c5e29b1c379}{compareCellLogic}}();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00084}00084   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{generateReport}}(\textcolor{keyword}{const} std::string \&output\_file,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00085}00085                       \textcolor{keyword}{const} std::map<std::string, PinComparisonResult> \&comparison\_results);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00087}00087 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00088}\mbox{\hyperlink{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}{00088}}   std::map<std::string, std::string> \mbox{\hyperlink{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}{ref\_outpin\_map\_}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00089}\mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{00089}}   std::map<std::string, std::string> \mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{comp\_outpin\_map\_}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00090}\mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{00090}}   std::string \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00091}00091 \};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8hpp_source_l00093}00093 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LOGIC\_COMPARATOR\_HPP}}
 
 \end{DoxyCode}

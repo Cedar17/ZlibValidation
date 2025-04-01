@@ -230,10 +230,14 @@
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00318}00318     \}}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00319}00319     std::vector<std::string> sorted\_vars;}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00320}00320     comparator.\mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{extractVariables}}(ref\_expr, comp\_expr, sorted\_vars);}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00321}00321     spdlog::info(\textcolor{stringliteral}{"{}Functional equivalence check completed for cell: '\{\}'"{}}, cell);}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00322}00322   \}}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00323}00323   spdlog::info(\textcolor{stringliteral}{"{}Functional equivalence check completed for all cells,"{}});}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00324}00324   spdlog::info(\textcolor{stringliteral}{"{}Report written to: '\{\}'"{}}, report\_file\_name);}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00325}00325 \}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00321}00321     \textcolor{keyword}{struct }\mbox{\hyperlink{structPinComparisonResult}{PinComparisonResult}} pin\_comparison\_result;}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00322}00322     \textcolor{comment}{// comp\_expr = "{}not ((not(A1) and not(A2)) or B)"{};}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00323}00323     comparator.\mbox{\hyperlink{classLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6}{compareSingleExpressionPair}}<\textcolor{keywordtype}{double}>(ref\_expr, comp\_expr, sorted\_vars,}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00324}00324                                                    pin\_comparison\_result);}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00325}00325     spdlog::info(\textcolor{stringliteral}{"{}Functional equivalence check completed for cell: '\{\}'"{}}, cell);}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00326}00326   \}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00327}00327   spdlog::info(\textcolor{stringliteral}{"{}Functional equivalence check completed for all cells,"{}});}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00328}00328   spdlog::info(\textcolor{stringliteral}{"{}Report written to: '\{\}'"{}}, report\_file\_name);}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00329}00329 \}}
 
 \end{DoxyCode}
