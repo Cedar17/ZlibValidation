@@ -716,6 +716,274 @@ template void LogicComparator::compareSingleExpressionPair<double>(const std::st
                                                                    PinComparisonResult &);
 // Add other types if needed, e.g., <float>
 
+/**
+ * @brief Compares logic for all output pins defined in the input maps for a specific cell.
+ *
+ * Iterates through all unique output pins found in either the reference or
+ * comparison maps. For each pin, it preprocesses the expressions, extracts
+ * and validates variables, and then compares the logic using truth tables via
+ * compareSingleExpressionPair.
+ *
+ * @tparam T Numeric type for ExprTk (e.g., double).
+ * @return A map where the key is the pin name and the value is the
+ *         PinComparisonResult struct containing detailed comparison results for that pin.
+ */
+template <typename T>
+std::map<std::string, PinComparisonResult> LogicComparator::compareCellLogic() {
+  std::map<std::string, PinComparisonResult> all_pin_results;
+
+  // 1. Collect all unique pin names from both maps
+  std::set<std::string> unique_pin_names;
+  for (const auto &pair : ref_outpin_map_) {
+    unique_pin_names.insert(pair.first);
+  }
+  for (const auto &pair : comp_outpin_map_) {
+    unique_pin_names.insert(pair.first);
+  }
+
+  spdlog::info("Starting logic comparison for cell '{}' with {} unique output pins...", cell_name_,
+               unique_pin_names.size());
+
+  // 2. Iterate through each unique pin name
+  for (const std::string &pin_name : unique_pin_names) {
+    PinComparisonResult pin_result;
+    pin_result.pin_name = pin_name;
+    pin_result.comparison_possible = true; // Assume possible initially
+
+    // 3. Get raw expressions
+    auto ref_it = ref_outpin_map_.find(pin_name);
+    auto comp_it = comp_outpin_map_.find(pin_name);
+
+    if (ref_it == ref_outpin_map_.end()) {
+      pin_result.error_message = "Pin not found in reference map.";
+      spdlog::warn("Cell '{}', Pin '{}': {}", cell_name_, pin_name, pin_result.error_message);
+      pin_result.comparison_possible = false;
+      // Still try to get the comparison expression for reporting
+      if (comp_it != comp_outpin_map_.end()) {
+        pin_result.comp_expr_raw = comp_it->second;
+      }
+    } else {
+      pin_result.ref_expr_raw = ref_it->second;
+      spdlog::debug("Pin -> Expression: {} -> {}", pin_name, pin_result.ref_expr_raw);
+    }
+
+    if (comp_it == comp_outpin_map_.end()) {
+      std::string comp_err = "Pin not found in comparison map.";
+      pin_result.error_message += (pin_result.error_message.empty() ? "" : "\n") + comp_err;
+      spdlog::warn("Cell '{}', Pin '{}': {}", cell_name_, pin_name, comp_err);
+      pin_result.comparison_possible = false;
+      // If ref existed, store it
+      if (ref_it != ref_outpin_map_.end()) {
+        pin_result.ref_expr_raw = ref_it->second; // Already stored if ref exists
+      }
+    } else {
+      pin_result.comp_expr_raw = comp_it->second;
+      spdlog::debug("Pin => Expression: {} => {}", pin_name, pin_result.comp_expr_raw);
+    }
+
+    // If pin missing in either, we can't compare, but store result and continue
+    if (!pin_result.comparison_possible) {
+      all_pin_results[pin_name] = pin_result;
+      continue;
+    }
+
+    // 4. Preprocess expressions
+    std::string ref_processed = preprocessExpression(pin_result.ref_expr_raw);
+    std::string comp_processed = preprocessExpression(pin_result.comp_expr_raw);
+
+    if (ref_processed.empty()) {
+      pin_result.error_message += "\nReference expression became empty after preprocessing.";
+      spdlog::warn("Cell '{}', Pin '{}': {}", cell_name_, pin_name,
+                   "Reference expression became empty after preprocessing.");
+      pin_result.comparison_possible = false;
+    }
+    if (comp_processed.empty()) {
+      std::string comp_err = "\nComparison expression became empty after preprocessing.";
+      pin_result.error_message += (pin_result.error_message.empty() ? "" : "\n") + comp_err;
+      spdlog::warn("Cell '{}', Pin '{}': {}", cell_name_, pin_name,
+                   "Comparison expression became empty after preprocessing.");
+      pin_result.comparison_possible = false; // Mark as impossible if not already
+    }
+    // If preprocessing failed for either, store and continue
+    if (ref_processed.empty() || comp_processed.empty()) {
+      pin_result.ref_expr_processed = ref_processed; // Store possibly empty strings
+      pin_result.comp_expr_processed = comp_processed;
+      all_pin_results[pin_name] = pin_result;
+      continue;
+    }
+
+    // 5. Extract and validate variables
+    std::vector<std::string> sorted_vars;
+    // Pass RAW expressions to extractVariables as it uses regex on original format
+    bool variables_match =
+        extractVariables(pin_result.ref_expr_raw, pin_result.comp_expr_raw, sorted_vars);
+
+    if (!variables_match) {
+      pin_result.error_message = "Variable sets do not match between expressions.";
+      // extractVariables already logs details
+      pin_result.comparison_possible = false;
+      pin_result.ref_expr_processed = ref_processed; // Store processed even if vars mismatch
+      pin_result.comp_expr_processed = comp_processed;
+      all_pin_results[pin_name] = pin_result;
+      continue;
+    }
+    // --- Helper function: build log string ---
+    auto build_log_string = [](const auto &container) {
+      std::ostringstream oss;
+      for (auto it = container.begin(); it != container.end(); ++it) {
+        oss << *it;
+        if (std::next(it) != container.end()) {
+          oss << ", ";
+        }
+      }
+      return oss.str();
+    };
+    spdlog::info("Pin '{}': Variable sets match. Found unique variables: {}", pin_name,
+                 build_log_string(sorted_vars));
+
+    // 6. Compare the single pair using the processed expressions
+    // Pass pin_result by reference - it will be populated by the function
+    compareSingleExpressionPair<T>(ref_processed, comp_processed, sorted_vars, pin_result);
+
+    // 7. Store the detailed result for this pin
+    all_pin_results[pin_name] = pin_result;
+
+  } // End of pin loop
+
+  spdlog::info("Logic comparison finished for cell '{}'.", cell_name_);
+  return all_pin_results;
+}
+
+// Explicit template instantiation (usually in the .cpp file)
+template std::map<std::string, PinComparisonResult> LogicComparator::compareCellLogic<double>();
+// Add other types if needed, e.g., <float>
+
+#include "LogicComparator.hpp"
+#include "tabulate/markdown_exporter.hpp" // Include MarkdownExporter
+#include <chrono>                         // For system_clock
+#include <ctime>                          // For time_t, tm, localtime
+#include <fstream>
+#include <iomanip> // For std::put_time
+
+/**
+ * @brief Generates a comparison report file based on cell logic comparison results.
+ *
+ * Creates a Markdown file summarizing the logic comparison for each pin of a cell.
+ * Includes raw and processed expressions, comparison status, and detailed truth tables
+ * if the expressions are found to be non-equivalent but comparable.
+ *
+ * @param output_file Path to the output report file (should end with .md).
+ * @param comparison_results The results obtained from compareCellLogic.
+ */
 void LogicComparator::generateReport(
     const std::string &output_file,
-    const std::map<std::string, PinComparisonResult> &comparison_results) {}
+    const std::map<std::string, PinComparisonResult> &comparison_results) {
+
+  std::ofstream outfile(output_file);
+  if (!outfile.is_open()) {
+    spdlog::error("Failed to open output report file: {}", output_file);
+    return;
+  }
+
+  outfile << "# Logic Equivalence Comparison Report\n\n";
+  outfile << "**Cell Name: " << cell_name_ << "**\n\n";
+  // Assuming ref_lib_path_ and comp_lib_path_ are accessible if needed
+  // outfile << "**Reference Source: [Path to Ref]**\n";
+  // outfile << "**Comparison Source: [Path to Comp]**\n\n";
+
+  auto now = std::chrono::system_clock::now();
+  std::time_t now_time_t = std::chrono::system_clock::to_time_t(now);
+  // Use localtime_s or equivalent thread-safe version if available/necessary
+  // std::tm now_tm;
+  // localtime_s(&now_tm, &now_time_t); // Example for MSVC/C11
+  std::tm *now_tm_ptr = std::localtime(&now_time_t); // Standard C++, potentially not thread-safe
+  if (now_tm_ptr) {
+    outfile << "**Generated on: " << std::put_time(now_tm_ptr, "%Y-%m-%d %H:%M:%S") << "**\n\n";
+  }
+
+  outfile << "## Legend\n\n";
+  outfile << "| Symbol | Meaning                       |\n";
+  outfile << "| :----: | :---------------------------- |\n";
+  outfile << "|   ✅   | Logically Equivalent          |\n";
+  outfile << "|   ❌   | Not Logically Equivalent      |\n";
+  outfile << "|   ➖   | Comparison Not Possible       |\n";
+  outfile << "|   ⚠️V  | Variable Mismatch           |\n";
+  outfile << "|   ⚠️C  | Compilation Error           |\n";
+  outfile << "|   ⚠️E  | Evaluation Error            |\n";
+  outfile << "|   ⚠️P  | Preprocessing/Pin Error     |\n";
+  outfile << "\n";
+
+  spdlog::info("Generating report for cell '{}' to '{}'...", cell_name_, output_file);
+
+  tabulate::MarkdownExporter exporter; // Create exporter once
+
+  for (const auto &[pin_name, result] : comparison_results) {
+    outfile << "## Pin: " << pin_name << "\n\n";
+
+    Table summary_table;
+    summary_table.add_row({"Property", "Value"});
+    summary_table[0][0].format().font_style({FontStyle::bold});
+    summary_table[0][1].format().font_style({FontStyle::bold});
+
+    // Determine Status Symbol
+    std::string status_symbol;
+    if (!result.comparison_possible) {
+      status_symbol = "➖";
+      // Add specific warning symbol based on error message content maybe?
+      if (result.error_message.find("Variable sets do not match") != std::string::npos)
+        status_symbol += " (⚠️V)";
+      else if (result.error_message.find("compilation failed") != std::string::npos)
+        status_symbol += " (⚠️C)";
+      else if (result.error_message.find("evaluation failed") != std::string::npos)
+        status_symbol += " (⚠️E)";
+      else
+        status_symbol += " (⚠️P)"; // General preprocessing/pin error
+    } else if (result.are_equivalent) {
+      status_symbol = "✅";
+    } else {
+      status_symbol = "❌";
+    }
+
+    summary_table.add_row({"Status", status_symbol});
+    summary_table.add_row({"Reference (Raw)", "`" + result.ref_expr_raw + "`"});
+    summary_table.add_row({"Comparison (Raw)", "`" + result.comp_expr_raw + "`"});
+    summary_table.add_row({"Reference (Processed)", "`" + result.ref_expr_processed + "`"});
+    summary_table.add_row({"Comparison (Processed)", "`" + result.comp_expr_processed + "`"});
+    summary_table.add_row({"Ref Compiles", result.ref_compiles ? "Yes" : "No"});
+    summary_table.add_row({"Comp Compiles", result.comp_compiles ? "Yes" : "No"});
+
+    if (!result.error_message.empty()) {
+      // Format error message for Markdown (e.g., replace newlines with <br>)
+      std::string formatted_error = result.error_message;
+      // Basic newline replacement for Markdown
+      size_t pos = 0;
+      while ((pos = formatted_error.find('\n', pos)) != std::string::npos) {
+        formatted_error.replace(pos, 1, "<br>");
+        pos += 4; // Length of "<br>"
+      }
+      summary_table.add_row({"Details/Error", formatted_error});
+    }
+
+    // Output summary table
+    outfile << exporter.dump(summary_table) << "\n";
+
+    // Optional: Output truth tables if they are different but comparable
+    if (!result.are_equivalent && result.comparison_possible &&
+        result.ref_truth_table.has_value() && result.comp_truth_table.has_value()) {
+      outfile << "### Truth Tables (Differences Detected)\n\n";
+
+      outfile << "#### Reference Truth Table\n\n";
+      Table ref_table = result.ref_truth_table.value();
+      outfile << exporter.dump(ref_table) << "\n";
+
+      outfile << "#### Comparison Truth Table\n\n";
+      Table comp_table = result.comp_truth_table.value();
+      outfile << exporter.dump(comp_table) << "\n";
+    }
+    outfile << "---\n\n"; // Separator between pins
+
+  } // End of pin results loop
+
+  outfile.close();
+  spdlog::info("Report generation complete for cell '{}'.", cell_name_);
+}

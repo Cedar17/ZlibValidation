@@ -244,7 +244,7 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
 
   // Check the report file name
   if (report_file_name.empty()) {
-    report_file_name = std::filesystem::path(comp_file).stem().string() + ".cmp.md";
+    report_file_name = std::filesystem::path(comp_file).stem().string() + ".logic.cmp.md";
   } else if (std::filesystem::path(report_file_name).extension() != ".txt" &&
              std::filesystem::path(report_file_name).extension() != ".md") {
     // report file name not end in .txt or .md, warn user and append .md
@@ -305,23 +305,28 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
     LogicComparator comparator(ref_outpin_map, comp_outpin_map, cell);
     // comparator.logic<double>();
 
-    // Test for preprocessing
-    std::string ref_expr;
-    std::string comp_expr;
-    for (const auto &pin : ref_outpin_map) {
-      spdlog::info("Pin -> Expression: {} -> {}", pin.first, pin.second);
-      ref_expr = comparator.preprocessExpression(pin.second);
-    }
-    for (const auto &pin : comp_outpin_map) {
-      spdlog::info("Pin => Expression: {} => {}", pin.first, pin.second);
-      comp_expr = comparator.preprocessExpression(pin.second);
-    }
-    std::vector<std::string> sorted_vars;
-    comparator.extractVariables(ref_expr, comp_expr, sorted_vars);
-    struct PinComparisonResult pin_comparison_result;
-    // comp_expr = "not ((not(A1) and not(A2)) or B)";
-    comparator.compareSingleExpressionPair<double>(ref_expr, comp_expr, sorted_vars,
-                                                   pin_comparison_result);
+    // // Test for preprocessing
+    // std::string ref_expr;
+    // std::string comp_expr;
+    // for (const auto &pin : ref_outpin_map) {
+    //   spdlog::info("Pin -> Expression: {} -> {}", pin.first, pin.second);
+    //   ref_expr = comparator.preprocessExpression(pin.second);
+    // }
+    // for (const auto &pin : comp_outpin_map) {
+    //   spdlog::info("Pin => Expression: {} => {}", pin.first, pin.second);
+    //   comp_expr = comparator.preprocessExpression(pin.second);
+    // }
+    // std::vector<std::string> sorted_vars;
+    // comparator.extractVariables(ref_expr, comp_expr, sorted_vars);
+    // struct PinComparisonResult pin_comparison_result;
+    // // comp_expr = "not ((not(A1) and not(A2)) or B)";
+    // comparator.compareSingleExpressionPair<double>(ref_expr, comp_expr, sorted_vars,
+    //                                                pin_comparison_result);
+
+    // comparator.compareCellLogic<double>();
+    std::map<std::string, PinComparisonResult> results = comparator.compareCellLogic<double>();
+    comparator.generateReport(report_file_name, results);
+    
     spdlog::info("Functional equivalence check completed for cell: '{}'", cell);
   }
   spdlog::info("Functional equivalence check completed for all cells,");

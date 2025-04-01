@@ -361,3 +361,11 @@ Subcommands:
     - 同步构建真值表，记录输入组合和对应的输出值。
   - 比较两个结果向量判断表达式是否等价。
   - 将生成的真值表存入 `PinComparisonResult` 对象的 `std::optional` 成员中，以便后续报告生成。
+
+- 实现了`template <typename T> std::map<std::string, PinComparisonResult> LogicComparator::compareCellLogic();`
+  - 该方法用于比较两个 cell 的逻辑表达式，返回一个 `std::map`，键为 cell 名称，值为 `PinComparisonResult` 结构体。
+  - 遍历在类私有属性里的整个独立输出引脚键，提取其值作为逻辑字符串表达式，首先使用 `preprocessExpression` 进行预处理，然后使用 `extractVariables` 提取变量向量。
+  - 调用 `LogicComparator::compareSingleExpressionPair()` 方法进行比较，结果存入 `PinComparisonResult` 对象。
+  - 最后将 `PinComparisonResult` 对象存入 `std::map` 中，键为 cell 名称，值为 `PinComparisonResult` 对象，返回。
+
+- 实现了 `LogicComparator::generateReport()` 方法，报告格式仍需要调整。
