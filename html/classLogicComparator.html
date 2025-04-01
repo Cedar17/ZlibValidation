@@ -117,10 +117,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abb88d10e0cb7a1a436e41a4179ef92a6"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#abb88d10e0cb7a1a436e41a4179ef92a6">compareSingleExpressionPair</a> (const std::string &amp;ref_expression_processed, const std::string &amp;comp_expression_processed, const std::vector&lt; std::string &gt; &amp;sorted_vars, <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> &amp;result)</td></tr>
 <tr class="memdesc:abb88d10e0cb7a1a436e41a4179ef92a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two preprocessed logic expression strings for equivalence. Internal helper function.  <a href="classLogicComparator.html#abb88d10e0cb7a1a436e41a4179ef92a6">More...</a><br /></td></tr>
 <tr class="separator:abb88d10e0cb7a1a436e41a4179ef92a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa9d3a5c46e5c6fa589e1c5e29b1c379"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aaa9d3a5c46e5c6fa589e1c5e29b1c379"><td class="memTemplItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#aaa9d3a5c46e5c6fa589e1c5e29b1c379">compareCellLogic</a> ()</td></tr>
-<tr class="memdesc:aaa9d3a5c46e5c6fa589e1c5e29b1c379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares logic for all output pins defined in the input maps.  <a href="classLogicComparator.html#aaa9d3a5c46e5c6fa589e1c5e29b1c379">More...</a><br /></td></tr>
-<tr class="separator:aaa9d3a5c46e5c6fa589e1c5e29b1c379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af14395e54450c738c39033a364c23c0f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:af14395e54450c738c39033a364c23c0f"><td class="memTemplItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#af14395e54450c738c39033a364c23c0f">compareCellLogic</a> ()</td></tr>
+<tr class="memdesc:af14395e54450c738c39033a364c23c0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares logic for all output pins defined in the input maps.  <a href="classLogicComparator.html#af14395e54450c738c39033a364c23c0f">More...</a><br /></td></tr>
+<tr class="separator:af14395e54450c738c39033a364c23c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c0ccb67d6136a1982ef8d5094087c73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#a7c0ccb67d6136a1982ef8d5094087c73">generateReport</a> (const std::string &amp;output_file, const std::map&lt; std::string, <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> &gt; &amp;comparison_results)</td></tr>
 <tr class="memdesc:a7c0ccb67d6136a1982ef8d5094087c73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a comparison report file based on cell logic comparison results.  <a href="classLogicComparator.html#a7c0ccb67d6136a1982ef8d5094087c73">More...</a><br /></td></tr>
 <tr class="separator:a7c0ccb67d6136a1982ef8d5094087c73"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,8 +175,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aaa9d3a5c46e5c6fa589e1c5e29b1c379" name="aaa9d3a5c46e5c6fa589e1c5e29b1c379"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa9d3a5c46e5c6fa589e1c5e29b1c379">&#9670;&#160;</a></span>compareCellLogic()</h2>
+<a id="af14395e54450c738c39033a364c23c0f" name="af14395e54450c738c39033a364c23c0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af14395e54450c738c39033a364c23c0f">&#9670;&#160;</a></span>compareCellLogic()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,7 +184,7 @@ Private Attributes</h2></td></tr>
 template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt; std::string, <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> &gt; LogicComparator::compareCellLogic </td>
+          <td class="memname">template std::map&lt; std::string, <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> &gt; LogicComparator::compareCellLogic&lt; double &gt; </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -193,13 +193,46 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Compares logic for all output pins defined in the input maps. </p>
+<p >Compares logic for all output pins defined in the input maps for a specific cell.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>Numeric type for ExprTk (e.g., double). </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A map where the key is the pin name and the value is the <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> struct containing comparison details. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A map where the key is the pin name and the value is the <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> struct containing comparison details.</dd></dl>
+<p >Iterates through all unique output pins found in either the reference or comparison maps. For each pin, it preprocesses the expressions, extracts and validates variables, and then compares the logic using truth tables via compareSingleExpressionPair.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Numeric type for ExprTk (e.g., double). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A map where the key is the pin name and the value is the <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> struct containing detailed comparison results for that pin. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00732">732</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogicComparator_af14395e54450c738c39033a364c23c0f_cgraph.png" border="0" usemap="#aclassLogicComparator_af14395e54450c738c39033a364c23c0f_cgraph" alt=""/></div>
+<map name="aclassLogicComparator_af14395e54450c738c39033a364c23c0f_cgraph" id="aclassLogicComparator_af14395e54450c738c39033a364c23c0f_cgraph">
+<area shape="rect" title="Compares logic for all output pins defined in the input maps." alt="" coords="5,37,204,77"/>
+<area shape="rect" href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666" title="Extracts and validates variables from two expressions, ensuring they match." alt="" coords="265,5,451,45"/>
+<area shape="rect" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a" title=" " alt="" coords="252,69,464,109"/>
+<area shape="rect" href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df" title="Checks if a given string is a valid identifier." alt="" coords="512,21,603,46"/>
+<area shape="rect" href="LogicComparator_8cpp.html#a1c875672f908868869e6cce7cbd92c1c" title="Checks if a given token is a logical operator." alt="" coords="512,77,603,102"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogicComparator_af14395e54450c738c39033a364c23c0f_icgraph.png" border="0" usemap="#aclassLogicComparator_af14395e54450c738c39033a364c23c0f_icgraph" alt=""/></div>
+<map name="aclassLogicComparator_af14395e54450c738c39033a364c23c0f_icgraph" id="aclassLogicComparator_af14395e54450c738c39033a364c23c0f_icgraph">
+<area shape="rect" title="Compares logic for all output pins defined in the input maps." alt="" coords="248,5,447,45"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -276,16 +309,6 @@ template&lt;typename T &gt; </div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00498">498</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6_icgraph.png" border="0" usemap="#aclassLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6_icgraph" alt=""/></div>
-<map name="aclassLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6_icgraph" id="aclassLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6_icgraph">
-<area shape="rect" title="Compares two preprocessed logic expression strings for equivalence. Internal helper function." alt="" coords="248,5,447,45"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
-<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -357,7 +380,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_icgraph.png" border="0" usemap="#aclassLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_icgraph" alt=""/></div>
 <map name="aclassLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_icgraph" id="aclassLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_icgraph">
-<area shape="rect" title="Extracts and validates variables from two expressions, ensuring they match." alt="" coords="248,5,435,45"/>
+<area shape="rect" title="Extracts and validates variables from two expressions, ensuring they match." alt="" coords="495,5,681,45"/>
+<area shape="rect" href="classLogicComparator.html#af14395e54450c738c39033a364c23c0f" title="Compares logic for all output pins defined in the input maps." alt="" coords="248,5,447,45"/>
 <area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
 </map>
@@ -395,12 +419,30 @@ Here is the caller graph for this function:</div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">output_file</td><td>Path to the output report file. </td></tr>
+    <tr><td class="paramname">comparison_results</td><td>The results obtained from compareCellLogic.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p >Creates a Markdown file summarizing the logic comparison for each pin of a cell. Includes raw and processed expressions, comparison status, and detailed truth tables if the expressions are found to be non-equivalent but comparable.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">output_file</td><td>Path to the output report file (should end with .md). </td></tr>
     <tr><td class="paramname">comparison_results</td><td>The results obtained from compareCellLogic. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00719">719</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00878">878</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73_icgraph.png" border="0" usemap="#aclassLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73_icgraph" alt=""/></div>
+<map name="aclassLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73_icgraph" id="aclassLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73_icgraph">
+<area shape="rect" title="Generates a comparison report file based on cell logic comparison results." alt="" coords="248,5,447,45"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -457,7 +499,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_icgraph.png" border="0" usemap="#aclassLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_icgraph" alt=""/></div>
 <map name="aclassLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_icgraph" id="aclassLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_icgraph">
-<area shape="rect" title=" " alt="" coords="248,5,460,45"/>
+<area shape="rect" title=" " alt="" coords="495,5,707,45"/>
+<area shape="rect" href="classLogicComparator.html#af14395e54450c738c39033a364c23c0f" title="Compares logic for all output pins defined in the input maps." alt="" coords="248,5,447,45"/>
 <area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
 </map>
@@ -548,7 +591,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classLogicComparator.html">LogicComparator</a></li>
-    <li class="footer">Generated on Tue Apr 1 2025 23:12:22 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Wed Apr 2 2025 00:20:40 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

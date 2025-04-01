@@ -156,7 +156,7 @@
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00244}00244 }
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00245}00245   \textcolor{comment}{// Check the report file name}}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00246}00246   \textcolor{keywordflow}{if} (report\_file\_name.empty()) \{}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00247}00247     report\_file\_name = std::filesystem::path(comp\_file).stem().string() + \textcolor{stringliteral}{"{}.cmp.md"{}};}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00247}00247     report\_file\_name = std::filesystem::path(comp\_file).stem().string() + \textcolor{stringliteral}{"{}.logic.cmp.md"{}};}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00248}00248   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (std::filesystem::path(report\_file\_name).extension() != \textcolor{stringliteral}{"{}.txt"{}} \&\&}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00249}00249              std::filesystem::path(report\_file\_name).extension() != \textcolor{stringliteral}{"{}.md"{}}) \{}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00250}00250     \textcolor{comment}{// report file name not end in .txt or .md, warn user and append .md}}
@@ -217,27 +217,32 @@
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00305}00305     \mbox{\hyperlink{classLogicComparator}{LogicComparator}} comparator(ref\_outpin\_map, comp\_outpin\_map, cell);}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00306}00306     \textcolor{comment}{// comparator.logic<double>();}}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00307}00307 }
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00308}00308     \textcolor{comment}{// Test for preprocessing}}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00309}00309     std::string ref\_expr;}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00310}00310     std::string comp\_expr;}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00311}00311     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pin : ref\_outpin\_map) \{}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00312}00312       spdlog::info(\textcolor{stringliteral}{"{}Pin -\/> Expression: \{\} -\/> \{\}"{}}, pin.first, pin.second);}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00313}00313       ref\_expr = comparator.\mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{preprocessExpression}}(pin.second);}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00314}00314     \}}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00315}00315     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pin : comp\_outpin\_map) \{}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00316}00316       spdlog::info(\textcolor{stringliteral}{"{}Pin => Expression: \{\} => \{\}"{}}, pin.first, pin.second);}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00317}00317       comp\_expr = comparator.\mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{preprocessExpression}}(pin.second);}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00318}00318     \}}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00319}00319     std::vector<std::string> sorted\_vars;}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00320}00320     comparator.\mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{extractVariables}}(ref\_expr, comp\_expr, sorted\_vars);}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00321}00321     \textcolor{keyword}{struct }\mbox{\hyperlink{structPinComparisonResult}{PinComparisonResult}} pin\_comparison\_result;}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00322}00322     \textcolor{comment}{// comp\_expr = "{}not ((not(A1) and not(A2)) or B)"{};}}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00323}00323     comparator.\mbox{\hyperlink{classLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6}{compareSingleExpressionPair}}<\textcolor{keywordtype}{double}>(ref\_expr, comp\_expr, sorted\_vars,}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00324}00324                                                    pin\_comparison\_result);}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00325}00325     spdlog::info(\textcolor{stringliteral}{"{}Functional equivalence check completed for cell: '\{\}'"{}}, cell);}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00326}00326   \}}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00327}00327   spdlog::info(\textcolor{stringliteral}{"{}Functional equivalence check completed for all cells,"{}});}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00328}00328   spdlog::info(\textcolor{stringliteral}{"{}Report written to: '\{\}'"{}}, report\_file\_name);}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00329}00329 \}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00308}00308     \textcolor{comment}{// // Test for preprocessing}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00309}00309     \textcolor{comment}{// std::string ref\_expr;}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00310}00310     \textcolor{comment}{// std::string comp\_expr;}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00311}00311     \textcolor{comment}{// for (const auto \&pin : ref\_outpin\_map) \{}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00312}00312     \textcolor{comment}{//   spdlog::info("{}Pin -\/> Expression: \{\} -\/> \{\}"{}, pin.first, pin.second);}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00313}00313     \textcolor{comment}{//   ref\_expr = comparator.preprocessExpression(pin.second);}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00314}00314     \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00315}00315     \textcolor{comment}{// for (const auto \&pin : comp\_outpin\_map) \{}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00316}00316     \textcolor{comment}{//   spdlog::info("{}Pin => Expression: \{\} => \{\}"{}, pin.first, pin.second);}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00317}00317     \textcolor{comment}{//   comp\_expr = comparator.preprocessExpression(pin.second);}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00318}00318     \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00319}00319     \textcolor{comment}{// std::vector<std::string> sorted\_vars;}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00320}00320     \textcolor{comment}{// comparator.extractVariables(ref\_expr, comp\_expr, sorted\_vars);}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00321}00321     \textcolor{comment}{// struct PinComparisonResult pin\_comparison\_result;}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00322}00322     \textcolor{comment}{// // comp\_expr = "{}not ((not(A1) and not(A2)) or B)"{};}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00323}00323     \textcolor{comment}{// comparator.compareSingleExpressionPair<double>(ref\_expr, comp\_expr, sorted\_vars,}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00324}00324     \textcolor{comment}{//                                                pin\_comparison\_result);}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00325}00325 }
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00326}00326     \textcolor{comment}{// comparator.compareCellLogic<double>();}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00327}00327     std::map<std::string, PinComparisonResult> results = comparator.\mbox{\hyperlink{classLogicComparator_af14395e54450c738c39033a364c23c0f}{compareCellLogic}}<\textcolor{keywordtype}{double}>();}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00328}00328     comparator.\mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{generateReport}}(report\_file\_name, results);}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00329}00329     }
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00330}00330     spdlog::info(\textcolor{stringliteral}{"{}Functional equivalence check completed for cell: '\{\}'"{}}, cell);}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00331}00331   \}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00332}00332   spdlog::info(\textcolor{stringliteral}{"{}Functional equivalence check completed for all cells,"{}});}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00333}00333   spdlog::info(\textcolor{stringliteral}{"{}Report written to: '\{\}'"{}}, report\_file\_name);}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00334}00334 \}}
 
 \end{DoxyCode}

@@ -1,7 +1,7 @@
 var classLogicComparator =
 [
     [ "LogicComparator", "classLogicComparator.html#a35436d01eabacaeb34d88883ab141613", null ],
-    [ "compareCellLogic", "classLogicComparator.html#aaa9d3a5c46e5c6fa589e1c5e29b1c379", null ],
+    [ "compareCellLogic", "classLogicComparator.html#af14395e54450c738c39033a364c23c0f", null ],
     [ "compareSingleExpressionPair", "classLogicComparator.html#abb88d10e0cb7a1a436e41a4179ef92a6", null ],
     [ "extractVariables", "classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666", null ],
     [ "generateReport", "classLogicComparator.html#a7c0ccb67d6136a1982ef8d5094087c73", null ],

@@ -661,8 +661,254 @@
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00716}00716                                                                    \mbox{\hyperlink{structPinComparisonResult}{PinComparisonResult}} \&);}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00717}00717 \textcolor{comment}{// Add other types if needed, e.g., <float>}}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00718}00718 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00719}\mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{00719}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{LogicComparator::generateReport}}(}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00720}00720     \textcolor{keyword}{const} std::string \&output\_file,}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00721}00721     \textcolor{keyword}{const} std::map<std::string, PinComparisonResult> \&comparison\_results) \{\}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00731}00731 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00732}\mbox{\hyperlink{classLogicComparator_af14395e54450c738c39033a364c23c0f}{00732}} std::map<std::string, PinComparisonResult> \mbox{\hyperlink{classLogicComparator_af14395e54450c738c39033a364c23c0f}{LogicComparator::compareCellLogic}}() \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00733}00733   std::map<std::string, PinComparisonResult> all\_pin\_results;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00734}00734 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00735}00735   \textcolor{comment}{// 1. Collect all unique pin names from both maps}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00736}00736   std::set<std::string> unique\_pin\_names;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00737}00737   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pair : \mbox{\hyperlink{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}{ref\_outpin\_map\_}}) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00738}00738     unique\_pin\_names.insert(pair.first);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00739}00739   \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00740}00740   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pair : \mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{comp\_outpin\_map\_}}) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00741}00741     unique\_pin\_names.insert(pair.first);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00742}00742   \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00743}00743 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00744}00744   spdlog::info(\textcolor{stringliteral}{"{}Starting logic comparison for cell '\{\}' with \{\} unique output pins..."{}}, \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00745}00745                unique\_pin\_names.size());}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00746}00746 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00747}00747   \textcolor{comment}{// 2. Iterate through each unique pin name}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00748}00748   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} std::string \&pin\_name : unique\_pin\_names) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00749}00749     \mbox{\hyperlink{structPinComparisonResult}{PinComparisonResult}} pin\_result;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00750}00750     pin\_result.\mbox{\hyperlink{structPinComparisonResult_a57a0923b63aed488e1275c2164215300}{pin\_name}} = pin\_name;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00751}00751     pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae646a5838f30faff6523f72bb03b7c1d}{comparison\_possible}} = \textcolor{keyword}{true}; \textcolor{comment}{// Assume possible initially}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00752}00752 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00753}00753     \textcolor{comment}{// 3. Get raw expressions}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00754}00754     \textcolor{keyword}{auto} ref\_it = \mbox{\hyperlink{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}{ref\_outpin\_map\_}}.find(pin\_name);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00755}00755     \textcolor{keyword}{auto} comp\_it = \mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{comp\_outpin\_map\_}}.find(pin\_name);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00756}00756 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00757}00757     \textcolor{keywordflow}{if} (ref\_it == \mbox{\hyperlink{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}{ref\_outpin\_map\_}}.end()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00758}00758       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ad4259ab0e5774e3368e1846499054e2b}{error\_message}} = \textcolor{stringliteral}{"{}Pin not found in reference map."{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00759}00759       spdlog::warn(\textcolor{stringliteral}{"{}Cell '\{\}', Pin '\{\}': \{\}"{}}, \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}}, pin\_name, pin\_result.\mbox{\hyperlink{structPinComparisonResult_ad4259ab0e5774e3368e1846499054e2b}{error\_message}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00760}00760       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae646a5838f30faff6523f72bb03b7c1d}{comparison\_possible}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00761}00761       \textcolor{comment}{// Still try to get the comparison expression for reporting}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00762}00762       \textcolor{keywordflow}{if} (comp\_it != \mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{comp\_outpin\_map\_}}.end()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00763}00763         pin\_result.\mbox{\hyperlink{structPinComparisonResult_ab468409e24708c1255b4aa0636247f60}{comp\_expr\_raw}} = comp\_it-\/>second;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00764}00764       \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00765}00765     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00766}00766       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae5c45ec4460f1e622d663a6610123845}{ref\_expr\_raw}} = ref\_it-\/>second;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00767}00767       spdlog::debug(\textcolor{stringliteral}{"{}Pin -\/> Expression: \{\} -\/> \{\}"{}}, pin\_name, pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae5c45ec4460f1e622d663a6610123845}{ref\_expr\_raw}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00768}00768     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00769}00769 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00770}00770     \textcolor{keywordflow}{if} (comp\_it == \mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{comp\_outpin\_map\_}}.end()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00771}00771       std::string comp\_err = \textcolor{stringliteral}{"{}Pin not found in comparison map."{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00772}00772       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ad4259ab0e5774e3368e1846499054e2b}{error\_message}} += (pin\_result.\mbox{\hyperlink{structPinComparisonResult_ad4259ab0e5774e3368e1846499054e2b}{error\_message}}.empty() ? \textcolor{stringliteral}{"{}"{}} : \textcolor{stringliteral}{"{}\(\backslash\)n"{}}) + comp\_err;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00773}00773       spdlog::warn(\textcolor{stringliteral}{"{}Cell '\{\}', Pin '\{\}': \{\}"{}}, \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}}, pin\_name, comp\_err);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00774}00774       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae646a5838f30faff6523f72bb03b7c1d}{comparison\_possible}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00775}00775       \textcolor{comment}{// If ref existed, store it}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00776}00776       \textcolor{keywordflow}{if} (ref\_it != \mbox{\hyperlink{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}{ref\_outpin\_map\_}}.end()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00777}00777         pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae5c45ec4460f1e622d663a6610123845}{ref\_expr\_raw}} = ref\_it-\/>second; \textcolor{comment}{// Already stored if ref exists}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00778}00778       \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00779}00779     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00780}00780       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ab468409e24708c1255b4aa0636247f60}{comp\_expr\_raw}} = comp\_it-\/>second;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00781}00781       spdlog::debug(\textcolor{stringliteral}{"{}Pin => Expression: \{\} => \{\}"{}}, pin\_name, pin\_result.\mbox{\hyperlink{structPinComparisonResult_ab468409e24708c1255b4aa0636247f60}{comp\_expr\_raw}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00782}00782     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00783}00783 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00784}00784     \textcolor{comment}{// If pin missing in either, we can't compare, but store result and continue}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00785}00785     \textcolor{keywordflow}{if} (!pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae646a5838f30faff6523f72bb03b7c1d}{comparison\_possible}}) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00786}00786       all\_pin\_results[pin\_name] = pin\_result;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00787}00787       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00788}00788     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00789}00789 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00790}00790     \textcolor{comment}{// 4. Preprocess expressions}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00791}00791     std::string ref\_processed = \mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{preprocessExpression}}(pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae5c45ec4460f1e622d663a6610123845}{ref\_expr\_raw}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00792}00792     std::string comp\_processed = \mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{preprocessExpression}}(pin\_result.\mbox{\hyperlink{structPinComparisonResult_ab468409e24708c1255b4aa0636247f60}{comp\_expr\_raw}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00793}00793 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00794}00794     \textcolor{keywordflow}{if} (ref\_processed.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00795}00795       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ad4259ab0e5774e3368e1846499054e2b}{error\_message}} += \textcolor{stringliteral}{"{}\(\backslash\)nReference expression became empty after preprocessing."{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00796}00796       spdlog::warn(\textcolor{stringliteral}{"{}Cell '\{\}', Pin '\{\}': \{\}"{}}, \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}}, pin\_name,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00797}00797                    \textcolor{stringliteral}{"{}Reference expression became empty after preprocessing."{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00798}00798       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae646a5838f30faff6523f72bb03b7c1d}{comparison\_possible}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00799}00799     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00800}00800     \textcolor{keywordflow}{if} (comp\_processed.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00801}00801       std::string comp\_err = \textcolor{stringliteral}{"{}\(\backslash\)nComparison expression became empty after preprocessing."{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00802}00802       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ad4259ab0e5774e3368e1846499054e2b}{error\_message}} += (pin\_result.\mbox{\hyperlink{structPinComparisonResult_ad4259ab0e5774e3368e1846499054e2b}{error\_message}}.empty() ? \textcolor{stringliteral}{"{}"{}} : \textcolor{stringliteral}{"{}\(\backslash\)n"{}}) + comp\_err;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00803}00803       spdlog::warn(\textcolor{stringliteral}{"{}Cell '\{\}', Pin '\{\}': \{\}"{}}, \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}}, pin\_name,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00804}00804                    \textcolor{stringliteral}{"{}Comparison expression became empty after preprocessing."{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00805}00805       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae646a5838f30faff6523f72bb03b7c1d}{comparison\_possible}} = \textcolor{keyword}{false}; \textcolor{comment}{// Mark as impossible if not already}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00806}00806     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00807}00807     \textcolor{comment}{// If preprocessing failed for either, store and continue}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00808}00808     \textcolor{keywordflow}{if} (ref\_processed.empty() || comp\_processed.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00809}00809       pin\_result.\mbox{\hyperlink{structPinComparisonResult_a1a48518c1c722dd5e46336bfabda7595}{ref\_expr\_processed}} = ref\_processed; \textcolor{comment}{// Store possibly empty strings}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00810}00810       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae7fb0ef87806d6b4f96e20346c942df9}{comp\_expr\_processed}} = comp\_processed;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00811}00811       all\_pin\_results[pin\_name] = pin\_result;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00812}00812       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00813}00813     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00814}00814 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00815}00815     \textcolor{comment}{// 5. Extract and validate variables}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00816}00816     std::vector<std::string> sorted\_vars;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00817}00817     \textcolor{comment}{// Pass RAW expressions to extractVariables as it uses regex on original format}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00818}00818     \textcolor{keywordtype}{bool} variables\_match =}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00819}00819         \mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{extractVariables}}(pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae5c45ec4460f1e622d663a6610123845}{ref\_expr\_raw}}, pin\_result.\mbox{\hyperlink{structPinComparisonResult_ab468409e24708c1255b4aa0636247f60}{comp\_expr\_raw}}, sorted\_vars);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00820}00820 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00821}00821     \textcolor{keywordflow}{if} (!variables\_match) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00822}00822       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ad4259ab0e5774e3368e1846499054e2b}{error\_message}} = \textcolor{stringliteral}{"{}Variable sets do not match between expressions."{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00823}00823       \textcolor{comment}{// extractVariables already logs details}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00824}00824       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae646a5838f30faff6523f72bb03b7c1d}{comparison\_possible}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00825}00825       pin\_result.\mbox{\hyperlink{structPinComparisonResult_a1a48518c1c722dd5e46336bfabda7595}{ref\_expr\_processed}} = ref\_processed; \textcolor{comment}{// Store processed even if vars mismatch}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00826}00826       pin\_result.\mbox{\hyperlink{structPinComparisonResult_ae7fb0ef87806d6b4f96e20346c942df9}{comp\_expr\_processed}} = comp\_processed;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00827}00827       all\_pin\_results[pin\_name] = pin\_result;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00828}00828       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00829}00829     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00830}00830     \textcolor{comment}{// -\/-\/-\/ Helper function: build log string -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00831}00831     \textcolor{keyword}{auto} build\_log\_string = [](\textcolor{keyword}{const} \textcolor{keyword}{auto} \&container) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00832}00832       std::ostringstream oss;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00833}00833       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = container.begin(); it != container.end(); ++it) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00834}00834         oss << *it;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00835}00835         \textcolor{keywordflow}{if} (std::next(it) != container.end()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00836}00836           oss << \textcolor{stringliteral}{"{}, "{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00837}00837         \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00838}00838       \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00839}00839       \textcolor{keywordflow}{return} oss.str();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00840}00840     \};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00841}00841     spdlog::info(\textcolor{stringliteral}{"{}Pin '\{\}': Variable sets match. Found unique variables: \{\}"{}}, pin\_name,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00842}00842                  build\_log\_string(sorted\_vars));}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00843}00843 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00844}00844     \textcolor{comment}{// 6. Compare the single pair using the processed expressions}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00845}00845     \textcolor{comment}{// Pass pin\_result by reference -\/ it will be populated by the function}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00846}00846     compareSingleExpressionPair<T>(ref\_processed, comp\_processed, sorted\_vars, pin\_result);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00847}00847 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00848}00848     \textcolor{comment}{// 7. Store the detailed result for this pin}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00849}00849     all\_pin\_results[pin\_name] = pin\_result;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00850}00850 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00851}00851   \} \textcolor{comment}{// End of pin loop}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00852}00852 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00853}00853   spdlog::info(\textcolor{stringliteral}{"{}Logic comparison finished for cell '\{\}'."{}}, \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00854}00854   \textcolor{keywordflow}{return} all\_pin\_results;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00855}00855 \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00856}00856 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00857}00857 \textcolor{comment}{// Explicit template instantiation (usually in the .cpp file)}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00858}00858 \textcolor{keyword}{template} std::map<std::string, PinComparisonResult> LogicComparator::compareCellLogic<double>();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00859}00859 \textcolor{comment}{// Add other types if needed, e.g., <float>}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00860}00860 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00861}00861 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{LogicComparator_8hpp}{LogicComparator.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00862}00862 \textcolor{preprocessor}{\#include "{}tabulate/markdown\_exporter.hpp"{}} \textcolor{comment}{// Include MarkdownExporter}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00863}00863 \textcolor{preprocessor}{\#include <chrono>}                         \textcolor{comment}{// For system\_clock}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00864}00864 \textcolor{preprocessor}{\#include <ctime>}                          \textcolor{comment}{// For time\_t, tm, localtime}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00865}00865 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00866}00866 \textcolor{preprocessor}{\#include <iomanip>} \textcolor{comment}{// For std::put\_time}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00867}00867 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00878}\mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{00878}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{LogicComparator::generateReport}}(}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00879}00879     \textcolor{keyword}{const} std::string \&output\_file,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00880}00880     \textcolor{keyword}{const} std::map<std::string, PinComparisonResult> \&comparison\_results) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00881}00881 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00882}00882   std::ofstream outfile(output\_file);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00883}00883   \textcolor{keywordflow}{if} (!outfile.is\_open()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00884}00884     spdlog::error(\textcolor{stringliteral}{"{}Failed to open output report file: \{\}"{}}, output\_file);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00885}00885     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00886}00886   \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00887}00887 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00888}00888   outfile << \textcolor{stringliteral}{"{}\# Logic Equivalence Comparison Report\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00889}00889   outfile << \textcolor{stringliteral}{"{}**Cell Name: "{}} << \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}} << \textcolor{stringliteral}{"{}**\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00890}00890   \textcolor{comment}{// Assuming ref\_lib\_path\_ and comp\_lib\_path\_ are accessible if needed}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00891}00891   \textcolor{comment}{// outfile << "{}**Reference Source: [Path to Ref]**\(\backslash\)n"{};}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00892}00892   \textcolor{comment}{// outfile << "{}**Comparison Source: [Path to Comp]**\(\backslash\)n\(\backslash\)n"{};}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00893}00893 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00894}00894   \textcolor{keyword}{auto} now = std::chrono::system\_clock::now();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00895}00895   std::time\_t now\_time\_t = std::chrono::system\_clock::to\_time\_t(now);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00896}00896   \textcolor{comment}{// Use localtime\_s or equivalent thread-\/safe version if available/necessary}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00897}00897   \textcolor{comment}{// std::tm now\_tm;}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00898}00898   \textcolor{comment}{// localtime\_s(\&now\_tm, \&now\_time\_t); // Example for MSVC/C11}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00899}00899   std::tm *now\_tm\_ptr = std::localtime(\&now\_time\_t); \textcolor{comment}{// Standard C++, potentially not thread-\/safe}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00900}00900   \textcolor{keywordflow}{if} (now\_tm\_ptr) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00901}00901     outfile << \textcolor{stringliteral}{"{}**Generated on: "{}} << std::put\_time(now\_tm\_ptr, \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d \%H:\%M:\%S"{}}) << \textcolor{stringliteral}{"{}**\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00902}00902   \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00903}00903 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00904}00904   outfile << \textcolor{stringliteral}{"{}\#\# Legend\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00905}00905   outfile << \textcolor{stringliteral}{"{}| Symbol | Meaning                       |\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00906}00906   outfile << \textcolor{stringliteral}{"{}| :-\/-\/-\/-\/: | :-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ |\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00907}00907   outfile << \textcolor{stringliteral}{"{}|   ✅   | Logically Equivalent          |\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00908}00908   outfile << \textcolor{stringliteral}{"{}|   ❌   | Not Logically Equivalent      |\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00909}00909   outfile << \textcolor{stringliteral}{"{}|   ➖   | Comparison Not Possible       |\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00910}00910   outfile << \textcolor{stringliteral}{"{}|   ⚠️V  | Variable Mismatch           |\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00911}00911   outfile << \textcolor{stringliteral}{"{}|   ⚠️C  | Compilation Error           |\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00912}00912   outfile << \textcolor{stringliteral}{"{}|   ⚠️E  | Evaluation Error            |\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00913}00913   outfile << \textcolor{stringliteral}{"{}|   ⚠️P  | Preprocessing/Pin Error     |\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00914}00914   outfile << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00915}00915 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00916}00916   spdlog::info(\textcolor{stringliteral}{"{}Generating report for cell '\{\}' to '\{\}'..."{}}, \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}}, output\_file);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00917}00917 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00918}00918   tabulate::MarkdownExporter exporter; \textcolor{comment}{// Create exporter once}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00919}00919 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00920}00920   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&[pin\_name, result] : comparison\_results) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00921}00921     outfile << \textcolor{stringliteral}{"{}\#\# Pin: "{}} << pin\_name << \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00922}00922 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00923}00923     Table summary\_table;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00924}00924     summary\_table.add\_row(\{\textcolor{stringliteral}{"{}Property"{}}, \textcolor{stringliteral}{"{}Value"{}}\});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00925}00925     summary\_table[0][0].format().font\_style(\{FontStyle::bold\});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00926}00926     summary\_table[0][1].format().font\_style(\{FontStyle::bold\});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00927}00927 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00928}00928     \textcolor{comment}{// Determine Status Symbol}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00929}00929     std::string status\_symbol;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00930}00930     \textcolor{keywordflow}{if} (!result.comparison\_possible) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00931}00931       status\_symbol = \textcolor{stringliteral}{"{}➖"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00932}00932       \textcolor{comment}{// Add specific warning symbol based on error message content maybe?}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00933}00933       \textcolor{keywordflow}{if} (result.error\_message.find(\textcolor{stringliteral}{"{}Variable sets do not match"{}}) != std::string::npos)}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00934}00934         status\_symbol += \textcolor{stringliteral}{"{} (⚠️V)"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00935}00935       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (result.error\_message.find(\textcolor{stringliteral}{"{}compilation failed"{}}) != std::string::npos)}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00936}00936         status\_symbol += \textcolor{stringliteral}{"{} (⚠️C)"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00937}00937       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (result.error\_message.find(\textcolor{stringliteral}{"{}evaluation failed"{}}) != std::string::npos)}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00938}00938         status\_symbol += \textcolor{stringliteral}{"{} (⚠️E)"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00939}00939       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00940}00940         status\_symbol += \textcolor{stringliteral}{"{} (⚠️P)"{}}; \textcolor{comment}{// General preprocessing/pin error}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00941}00941     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (result.are\_equivalent) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00942}00942       status\_symbol = \textcolor{stringliteral}{"{}✅"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00943}00943     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00944}00944       status\_symbol = \textcolor{stringliteral}{"{}❌"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00945}00945     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00946}00946 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00947}00947     summary\_table.add\_row(\{\textcolor{stringliteral}{"{}Status"{}}, status\_symbol\});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00948}00948     summary\_table.add\_row(\{\textcolor{stringliteral}{"{}Reference (Raw)"{}}, \textcolor{stringliteral}{"{}`"{}} + result.ref\_expr\_raw + \textcolor{stringliteral}{"{}`"{}}\});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00949}00949     summary\_table.add\_row(\{\textcolor{stringliteral}{"{}Comparison (Raw)"{}}, \textcolor{stringliteral}{"{}`"{}} + result.comp\_expr\_raw + \textcolor{stringliteral}{"{}`"{}}\});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00950}00950     summary\_table.add\_row(\{\textcolor{stringliteral}{"{}Reference (Processed)"{}}, \textcolor{stringliteral}{"{}`"{}} + result.ref\_expr\_processed + \textcolor{stringliteral}{"{}`"{}}\});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00951}00951     summary\_table.add\_row(\{\textcolor{stringliteral}{"{}Comparison (Processed)"{}}, \textcolor{stringliteral}{"{}`"{}} + result.comp\_expr\_processed + \textcolor{stringliteral}{"{}`"{}}\});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00952}00952     summary\_table.add\_row(\{\textcolor{stringliteral}{"{}Ref Compiles"{}}, result.ref\_compiles ? \textcolor{stringliteral}{"{}Yes"{}} : \textcolor{stringliteral}{"{}No"{}}\});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00953}00953     summary\_table.add\_row(\{\textcolor{stringliteral}{"{}Comp Compiles"{}}, result.comp\_compiles ? \textcolor{stringliteral}{"{}Yes"{}} : \textcolor{stringliteral}{"{}No"{}}\});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00954}00954 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00955}00955     \textcolor{keywordflow}{if} (!result.error\_message.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00956}00956       \textcolor{comment}{// Format error message for Markdown (e.g., replace newlines with <br>)}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00957}00957       std::string formatted\_error = result.error\_message;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00958}00958       \textcolor{comment}{// Basic newline replacement for Markdown}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00959}00959       \textcolor{keywordtype}{size\_t} pos = 0;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00960}00960       \textcolor{keywordflow}{while} ((pos = formatted\_error.find(\textcolor{charliteral}{'\(\backslash\)n'}, pos)) != std::string::npos) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00961}00961         formatted\_error.replace(pos, 1, \textcolor{stringliteral}{"{}<br>"{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00962}00962         pos += 4; \textcolor{comment}{// Length of "{}<br>"{}}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00963}00963       \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00964}00964       summary\_table.add\_row(\{\textcolor{stringliteral}{"{}Details/Error"{}}, formatted\_error\});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00965}00965     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00966}00966 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00967}00967     \textcolor{comment}{// Output summary table}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00968}00968     outfile << exporter.dump(summary\_table) << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00969}00969 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00970}00970     \textcolor{comment}{// Optional: Output truth tables if they are different but comparable}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00971}00971     \textcolor{keywordflow}{if} (!result.are\_equivalent \&\& result.comparison\_possible \&\&}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00972}00972         result.ref\_truth\_table.has\_value() \&\& result.comp\_truth\_table.has\_value()) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00973}00973       outfile << \textcolor{stringliteral}{"{}\#\#\# Truth Tables (Differences Detected)\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00974}00974 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00975}00975       outfile << \textcolor{stringliteral}{"{}\#\#\#\# Reference Truth Table\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00976}00976       Table ref\_table = result.ref\_truth\_table.value();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00977}00977       outfile << exporter.dump(ref\_table) << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00978}00978 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00979}00979       outfile << \textcolor{stringliteral}{"{}\#\#\#\# Comparison Truth Table\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00980}00980       Table comp\_table = result.comp\_truth\_table.value();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00981}00981       outfile << exporter.dump(comp\_table) << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00982}00982     \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00983}00983     outfile << \textcolor{stringliteral}{"{}-\/-\/-\/\(\backslash\)n\(\backslash\)n"{}}; \textcolor{comment}{// Separator between pins}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00984}00984 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00985}00985   \} \textcolor{comment}{// End of pin results loop}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00986}00986 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00987}00987   outfile.close();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00988}00988   spdlog::info(\textcolor{stringliteral}{"{}Report generation complete for cell '\{\}'."{}}, \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\_name\_}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00989}00989 \}}
 
 \end{DoxyCode}

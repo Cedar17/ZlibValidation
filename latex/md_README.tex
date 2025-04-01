@@ -396,6 +396,14 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \item 同步构建真值表，记录输入组合和对应的输出值。
 \end{DoxyItemize}
 \item 比较两个结果向量判断表达式是否等价。
-\item 将生成的真值表存入 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象的 {\ttfamily std\+::optional} 成员中，以便后续报告生成。 
+\item 将生成的真值表存入 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象的 {\ttfamily std\+::optional} 成员中，以便后续报告生成。
 \end{DoxyItemize}
+\item 实现了{\ttfamily template \texorpdfstring{$<$}{<}typename T\texorpdfstring{$>$}{>} std\+::map\texorpdfstring{$<$}{<}std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}\texorpdfstring{$>$}{>} \mbox{\hyperlink{classLogicComparator_af14395e54450c738c39033a364c23c0f}{Logic\+Comparator\+::compare\+Cell\+Logic()}};}
+\begin{DoxyItemize}
+\item 该方法用于比较两个 cell 的逻辑表达式，返回一个 {\ttfamily std\+::map}，键为 cell 名称，值为 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 结构体。
+\item 遍历在类私有属性里的整个独立输出引脚键，提取其值作为逻辑字符串表达式，首先使用 {\ttfamily preprocess\+Expression} 进行预处理，然后使用 {\ttfamily extract\+Variables} 提取变量向量。
+\item 调用 {\ttfamily \mbox{\hyperlink{classLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6}{Logic\+Comparator\+::compare\+Single\+Expression\+Pair()}}} 方法进行比较，结果存入 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象。
+\item 最后将 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象存入 {\ttfamily std\+::map} 中，键为 cell 名称，值为 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象，返回。
+\end{DoxyItemize}
+\item 实现了 {\ttfamily \mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{Logic\+Comparator\+::generate\+Report()}}} 方法，报告格式仍需要调整。 
 \end{DoxyItemize}

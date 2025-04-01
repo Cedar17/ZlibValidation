@@ -524,9 +524,17 @@ Development Diary</h1>
 </ul>
 </li>
 <li>比较两个结果向量判断表达式是否等价。</li>
-<li>将生成的真值表存入 <code><a class="el" href="structPinComparisonResult.html">PinComparisonResult</a></code> 对象的 <code>std::optional</code> 成员中，以便后续报告生成。 </li>
+<li>将生成的真值表存入 <code><a class="el" href="structPinComparisonResult.html">PinComparisonResult</a></code> 对象的 <code>std::optional</code> 成员中，以便后续报告生成。</li>
 </ul>
 </li>
+<li>实现了<code>template &lt;typename T&gt; std::map&lt;std::string, <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a>&gt; <a class="el" href="classLogicComparator.html#af14395e54450c738c39033a364c23c0f" title="Compares logic for all output pins defined in the input maps.">LogicComparator::compareCellLogic()</a>;</code><ul>
+<li>该方法用于比较两个 cell 的逻辑表达式，返回一个 <code>std::map</code>，键为 cell 名称，值为 <code><a class="el" href="structPinComparisonResult.html">PinComparisonResult</a></code> 结构体。</li>
+<li>遍历在类私有属性里的整个独立输出引脚键，提取其值作为逻辑字符串表达式，首先使用 <code>preprocessExpression</code> 进行预处理，然后使用 <code>extractVariables</code> 提取变量向量。</li>
+<li>调用 <code><a class="el" href="classLogicComparator.html#abb88d10e0cb7a1a436e41a4179ef92a6" title="Compares two preprocessed logic expression strings for equivalence. Internal helper function.">LogicComparator::compareSingleExpressionPair()</a></code> 方法进行比较，结果存入 <code><a class="el" href="structPinComparisonResult.html">PinComparisonResult</a></code> 对象。</li>
+<li>最后将 <code><a class="el" href="structPinComparisonResult.html">PinComparisonResult</a></code> 对象存入 <code>std::map</code> 中，键为 cell 名称，值为 <code><a class="el" href="structPinComparisonResult.html">PinComparisonResult</a></code> 对象，返回。</li>
+</ul>
+</li>
+<li>实现了 <code><a class="el" href="classLogicComparator.html#a7c0ccb67d6136a1982ef8d5094087c73" title="Generates a comparison report file based on cell logic comparison results.">LogicComparator::generateReport()</a></code> 方法，报告格式仍需要调整。 </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -534,7 +542,7 @@ Development Diary</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 1 2025 23:12:22 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Wed Apr 2 2025 00:20:40 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

@@ -4,7 +4,7 @@ var searchData=
   ['cellprinter_1',['CellPrinter',['../classCellPrinter.html#a614e3bf130f524081e2c8bff0aa19f6d',1,'CellPrinter']]],
   ['checktimingarcmonotonicity_2',['checkTimingArcMonotonicity',['../classLibFile.html#acffc39bf8d1206b2efb2111229c57827',1,'LibFile']]],
   ['comparecell_3',['compareCell',['../classLibraryComparator.html#a33d180a887ce7b69245b1be5ffaf1e01',1,'LibraryComparator']]],
-  ['comparecelllogic_4',['compareCellLogic',['../classLogicComparator.html#aaa9d3a5c46e5c6fa589e1c5e29b1c379',1,'LogicComparator']]],
+  ['comparecelllogic_4',['compareCellLogic',['../classLogicComparator.html#af14395e54450c738c39033a364c23c0f',1,'LogicComparator']]],
   ['comparelibfiles_5',['compareLibFiles',['../LibFileOperations_8hpp.html#aefb52455235a664c6dc21709237f77a1',1,'compareLibFiles(const std::string &amp;ref_lib, const std::string &amp;comp_lib, const double reltol, const double abstol, std::string &amp;report_file_name):&#160;LibFileOperations.cpp'],['../LibFileOperations_8cpp.html#aefb52455235a664c6dc21709237f77a1',1,'compareLibFiles(const std::string &amp;ref_lib, const std::string &amp;comp_lib, const double reltol, const double abstol, std::string &amp;report_file_name):&#160;LibFileOperations.cpp']]],
   ['comparelut_6',['compareLut',['../classLibraryComparator.html#afef02627c853b4956fb5f9bdf7f0e6ee',1,'LibraryComparator']]],
   ['comparepin_7',['comparePin',['../classLibraryComparator.html#ac65c88728ce78808f4b067b55ef12ed6',1,'LibraryComparator']]],
