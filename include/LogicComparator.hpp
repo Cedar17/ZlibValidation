@@ -63,6 +63,7 @@ public:
   template <typename T>
   void compareSingleExpressionPair(const std::string &ref_expression_processed,
                                    const std::string &comp_expression_processed,
+                                   const std::vector<std::string> &sorted_vars,
                                    PinComparisonResult &result); // Pass result struct
 
   /**

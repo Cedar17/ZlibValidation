@@ -318,6 +318,10 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
     }
     std::vector<std::string> sorted_vars;
     comparator.extractVariables(ref_expr, comp_expr, sorted_vars);
+    struct PinComparisonResult pin_comparison_result;
+    // comp_expr = "not ((not(A1) and not(A2)) or B)";
+    comparator.compareSingleExpressionPair<double>(ref_expr, comp_expr, sorted_vars,
+                                                   pin_comparison_result);
     spdlog::info("Functional equivalence check completed for cell: '{}'", cell);
   }
   spdlog::info("Functional equivalence check completed for all cells,");
