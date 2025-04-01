@@ -309,3 +309,26 @@ Subcommands:
   - 实现了 `extractLogicFromVerilog(const std::string &verilog_file, const std::string &cell)` 函数，用于从 Verilog 文件中提取指定 cell 的逻辑表达式，并以 `std::map<std::string, std::string>` 的形式返回。
 - 为了更好地组织代码结构，将 `LogicExtractor` 类从 `verilog_utils.hpp` 和 `verilog_utils.cpp` 中分离出来，并创建了独立的 `LogicExtractor.hpp` 和 `LogicExtractor.cpp` 文件。同时，统一了所有 hpp 和 cpp 文件的命名规范，使其与对应的类名保持一致。
 - 新增 `LogicComparator` 类及其头文件、源文件，用于比较两个逻辑表达式的等价性，并生成比较报告。
+
+### 2025-04-01
+
+- 整理头文件引用，删除了不必要的引用，提高编译效率。
+- 引入 `exprtk.cpp` 到第三方头文件目录，为后续的表达式解析做准备。
+- 完善了 `LogicComparator` 类的实现，增加了其示例代码模板 `template <typename T> void logic();`，该模板能够对一个表达式遍历输入变量的所有组合，计算出逻辑值，并打印真值表，为逻辑等价性验证提供基础。
+- 实现了 `LogicComparator::preprocessExpression()` 方法，用于预处理逻辑表达式，目的是简化表达式，使其更易于比较。预处理的逻辑如下：
+  - **统一 AND 处理**：将 `*` 和空格隐式 AND 都转换为带空格的 `and`，保证 AND 运算符的显式性。
+  - **显式符号处理**：
+    - 在所有括号 `()` 周围添加空格，方便后续分词。
+    - 将 `+` 替换为 `or`。
+    - 将 `^` 替换为 `xor`。
+    - 将 `!` (非 `!=` 中的 `!`) 替换为 `not`。
+    - 将 `*` 替换为 `and`。
+  - **分词**：基于空格将处理后的字符串分割为 token 列表。
+  - **精确插入隐式 AND**：
+    - 遍历 token 列表。
+    - 检查当前 token 和下一个 token，如果满足以下条件，则在当前 token 之后插入 `and`：
+      - 当前 token 是一个标识符 (如 `A`, `CIX`) 或右括号 `)`。
+      - 下一个 token 是一个标识符或左括号 `(`。
+      - 当前 token 不是一个显式逻辑运算符 (`and`, `or`, `xor`, `not`) 或左括号 `(`。
+      - 下一个 token 不是一个显式逻辑运算符或右括号 `)`。
+  - **重组与清理**：将处理后的 token 列表用单个空格连接起来，并进行最终的空格清理（去除多余空格，修剪首尾空格），得到最终的预处理表达式。

@@ -319,8 +319,16 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
 
     // TODO Perform functional equivalence check
     LogicComparator comparator(ref_outpin_map, comp_outpin_map, cell);
-    comparator.logic<double>();
-    comparator.generateReport(report_file_name);
+    // comparator.logic<double>();
+    // comparator.generateReport(report_file_name);
+    for (const auto &pin : ref_outpin_map) {
+      spdlog::info("Pin -> Expression: {} -> {}", pin.first, pin.second);
+      std::string ref_expr = comparator.preprocessExpression(pin.second);
+    }
+    for (const auto &pin : comp_outpin_map) {
+      spdlog::info("Pin => Expression: {} => {}", pin.first, pin.second);
+      std::string comp_expr = comparator.preprocessExpression(pin.second);
+    }
     spdlog::info("Functional equivalence check completed for cell: '{}'", cell);
   }
   spdlog::info("Functional equivalence check completed for all cells,");
