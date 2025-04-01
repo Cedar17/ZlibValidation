@@ -1,8 +1,15 @@
 var searchData=
 [
-  ['_5f180_5fpi_0',['_180_pi',['../namespaceexprtk_1_1details_1_1numeric_1_1constant.html#a29c7477cc9b625d391a451b37a308597',1,'exprtk::details::numeric::constant']]],
-  ['_5f1_5fpi_1',['_1_pi',['../namespaceexprtk_1_1details_1_1numeric_1_1constant.html#a5e1bc16d2c3fc428c9450317727ef3a9',1,'exprtk::details::numeric::constant']]],
-  ['_5f2_5fpi_2',['_2_pi',['../namespaceexprtk_1_1details_1_1numeric_1_1constant.html#a69888319af48dc80b77464344cb0fe41',1,'exprtk::details::numeric::constant']]],
-  ['_5fint64_5ft_3',['_int64_t',['../namespaceexprtk_1_1details.html#a2b8b9aea8a463c9bdc41aa110815da28',1,'exprtk::details']]],
-  ['_5fuint64_5ft_4',['_uint64_t',['../namespaceexprtk_1_1details.html#aa251575709d3fcd7be5eed82741a3f9e',1,'exprtk::details']]]
+  ['abstol_5f_0',['abstol_',['../classLibraryComparator.html#af427a02959ef09a0544e325f5b934d01',1,'LibraryComparator']]],
+  ['app_5fauthor_1',['APP_AUTHOR',['../version_8h.html#a87832488ddb61266f75ab21e1b6402cb',1,'version.h']]],
+  ['app_5fcontact_2',['APP_CONTACT',['../version_8h.html#a6a4aa5160b6f6575332a971ca421f042',1,'version.h']]],
+  ['app_5fname_3',['APP_NAME',['../version_8h.html#af0b5cfa4242ae7f98ba80fd23ef8afa9',1,'version.h']]],
+  ['app_5fversion_4',['APP_VERSION',['../version_8h.html#a92673e33f27532767749b79edb8ef806',1,'version.h']]],
+  ['app_5fversion_5fmajor_5',['APP_VERSION_MAJOR',['../version_8h.html#aef3457fba0ffa145e841c80f85adda1c',1,'version.h']]],
+  ['app_5fversion_5fminor_6',['APP_VERSION_MINOR',['../version_8h.html#a7732f188a6cca879e493081406cbb293',1,'version.h']]],
+  ['app_5fversion_5fpatch_7',['APP_VERSION_PATCH',['../version_8h.html#a3524583a75de0db510345b6f0eb189f7',1,'version.h']]],
+  ['are_5fequivalent_8',['are_equivalent',['../structPinComparisonResult.html#aad48dc44a492b20aa3d69ff6c794bf91',1,'PinComparisonResult']]],
+  ['attr_5f_9',['attr_',['../classAttributesIterator.html#ab97e2149f32dc1843c44f60c5fa31c9d',1,'AttributesIterator::attr_()'],['../classLibAttribute.html#a8b8c9430bc213894c6ddf70e3c1b7d29',1,'LibAttribute::attr_()']]],
+  ['attributesiterator_10',['AttributesIterator',['../classAttributesIterator.html',1,'AttributesIterator'],['../classAttributesIterator.html#ae25ccc0681c9c3957b612ea808e3f12c',1,'AttributesIterator::AttributesIterator(si2drAttrsIdT attrs, si2drErrorT &amp;err)']]],
+  ['attrs_5f_11',['attrs_',['../classAttributesIterator.html#a694c16f5ff41bd4110d0397b0ce8938e',1,'AttributesIterator']]]
 ];

@@ -347,8 +347,8 @@ Development Diary</h1>
 2025-03-26</h2>
 <ul>
 <li>进一步完善了对 UDP（如 <code>tsmc_dff</code>）端口映射关系的解析，但其内部 Entry 尚未处理。</li>
-<li>尝试了通过继承 <code><a class="el" href="classslang_1_1syntax_1_1SyntaxRewriter.html">slang::syntax::SyntaxRewriter</a></code> 类创建自定义类 <code><a class="el" href="classCellExtractor.html">CellExtractor</a></code>，实现了只保留目标模块、删除其他模块，并将修改后的语法树另存为新文件。使用 <code><a class="el" href="classslang_1_1syntax_1_1SyntaxPrinter.html#ae767f71421811693eac4c5e708faf196">slang::syntax::SyntaxPrinter::printFile()</a></code> 方法可以将 Verilog 代码输出到文件。</li>
-<li>创建了 <code><a class="el" href="classCellPrinter.html">CellPrinter</a></code> 类，继承自 <code><a class="el" href="classslang_1_1syntax_1_1SyntaxVisitor.html">slang::syntax::SyntaxVisitor</a></code> 类。当访问到目标模块时，使用 <code>module.toString()</code> 方法也能将 Verilog 代码输出到文件，但发现输出结果中空行会被删除。</li>
+<li>尝试了通过继承 <code>slang::syntax::SyntaxRewriter</code> 类创建自定义类 <code><a class="el" href="classCellExtractor.html">CellExtractor</a></code>，实现了只保留目标模块、删除其他模块，并将修改后的语法树另存为新文件。使用 <code>slang::syntax::SyntaxPrinter::printFile()</code> 方法可以将 Verilog 代码输出到文件。</li>
+<li>创建了 <code><a class="el" href="classCellPrinter.html">CellPrinter</a></code> 类，继承自 <code>slang::syntax::SyntaxVisitor</code> 类。当访问到目标模块时，使用 <code>module.toString()</code> 方法也能将 Verilog 代码输出到文件，但发现输出结果中空行会被删除。</li>
 <li>修改了 <code><a class="el" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188" title="Creates supercells based on standard cells in the library file.">LibFile::supercell()</a></code> 方法，该方法可以根据输入的 <code>cell_names</code> 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。</li>
 <li>优化了时钟引脚的处理方式，现在时钟引脚不再被视为 supercell 的输入引脚，而是仅记录为时序单元，并跳过存入 <code>input_pins</code> 集合的步骤。</li>
 <li>引入了 Doxygen 文档生成工具，用于可视化分析项目，并生成了 Doxygen HTML 文档和 LaTeX 参考手册。</li>
@@ -364,7 +364,7 @@ Development Diary</h1>
 <li>从 <code>lib_json_</code> 中提取单元的输入/输出端口信息。</li>
 <li>根据是否存在时钟引脚，确定 Verilog 模块中 instance 的生成数量（时序逻辑为 1，组合逻辑等于 chain length）。</li>
 <li>通过字符串操作生成 ANSI 风格的端口列表，并与模块名组合成完整的 <code>fullModuleText</code>。</li>
-<li>使用 <code><a class="el" href="classslang_1_1syntax_1_1SyntaxTree.html#a51378e0851d9dc03ab4b75e94b061fb6">slang::syntax::SyntaxTree::fromText</a></code> 从 <code>fullModuleText</code> 生成语法树。</li>
+<li>使用 <code>slang::syntax::SyntaxTree::fromText</code> 从 <code>fullModuleText</code> 生成语法树。</li>
 <li>将语法树传递给 <code><a class="el" href="classModuleRewriter.html">ModuleRewriter</a></code> 类，使用其 <code>transform</code> 方法遍历模块成员，并通过 <code>handle()</code> 方法进行处理。</li>
 <li>最后，使用 <code>slang::syntax::SyntaxPrinter::printFile(*tree)</code> 将处理后的语法树输出到文件。</li>
 </ul>
@@ -459,7 +459,39 @@ Development Diary</h1>
 </ul>
 </li>
 <li>为了更好地组织代码结构，将 <code><a class="el" href="classLogicExtractor.html">LogicExtractor</a></code> 类从 <code><a class="el" href="verilog__utils_8hpp.html">verilog_utils.hpp</a></code> 和 <code><a class="el" href="verilog__utils_8cpp.html">verilog_utils.cpp</a></code> 中分离出来，并创建了独立的 <code><a class="el" href="LogicExtractor_8hpp.html">LogicExtractor.hpp</a></code> 和 <code><a class="el" href="LogicExtractor_8cpp.html">LogicExtractor.cpp</a></code> 文件。同时，统一了所有 hpp 和 cpp 文件的命名规范，使其与对应的类名保持一致。</li>
-<li>新增 <code><a class="el" href="classLogicComparator.html">LogicComparator</a></code> 类及其头文件、源文件，用于比较两个逻辑表达式的等价性，并生成比较报告。 </li>
+<li>新增 <code><a class="el" href="classLogicComparator.html">LogicComparator</a></code> 类及其头文件、源文件，用于比较两个逻辑表达式的等价性，并生成比较报告。</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md37"></a>
+2025-04-01</h2>
+<ul>
+<li>整理头文件引用，删除了不必要的引用，提高编译效率。</li>
+<li>引入 <code>exprtk.cpp</code> 到第三方头文件目录，为后续的表达式解析做准备。</li>
+<li>完善了 <code><a class="el" href="classLogicComparator.html">LogicComparator</a></code> 类的实现，增加了其示例代码模板 <code>template &lt;typename T&gt; void logic();</code>，该模板能够对一个表达式遍历输入变量的所有组合，计算出逻辑值，并打印真值表，为逻辑等价性验证提供基础。</li>
+<li>实现了 <code><a class="el" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">LogicComparator::preprocessExpression()</a></code> 方法，用于预处理逻辑表达式，目的是简化表达式，使其更易于比较。预处理的逻辑如下：<ul>
+<li>**统一 AND 处理**：将 <code>*</code> 和空格隐式 AND 都转换为带空格的 <code>and</code>，保证 AND 运算符的显式性。</li>
+<li>**显式符号处理**：<ul>
+<li>在所有括号 <code>()</code> 周围添加空格，方便后续分词。</li>
+<li>将 <code>+</code> 替换为 <code>or</code>。</li>
+<li>将 <code>^</code> 替换为 <code>xor</code>。</li>
+<li>将 <code>!</code> (非 <code>!=</code> 中的 <code>!</code>) 替换为 <code>not</code>。</li>
+<li>将 <code>*</code> 替换为 <code>and</code>。</li>
+</ul>
+</li>
+<li>**分词**：基于空格将处理后的字符串分割为 token 列表。</li>
+<li>**精确插入隐式 AND**：<ul>
+<li>遍历 token 列表。</li>
+<li>检查当前 token 和下一个 token，如果满足以下条件，则在当前 token 之后插入 <code>and</code>：<ul>
+<li>当前 token 是一个标识符 (如 <code>A</code>, <code>CIX</code>) 或右括号 <code>)</code>。</li>
+<li>下一个 token 是一个标识符或左括号 <code>(</code>。</li>
+<li>当前 token 不是一个显式逻辑运算符 (<code>and</code>, <code>or</code>, <code>xor</code>, <code>not</code>) 或左括号 <code>(</code>。</li>
+<li>下一个 token 不是一个显式逻辑运算符或右括号 <code>)</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>**重组与清理**：将处理后的 token 列表用单个空格连接起来，并进行最终的空格清理（去除多余空格，修剪首尾空格），得到最终的预处理表达式。 </li>
+</ul>
+</li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -467,7 +499,7 @@ Development Diary</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 1 2025 10:13:32 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Apr 1 2025 15:41:05 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

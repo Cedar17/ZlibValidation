@@ -45,10 +45,10 @@
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00082}00082   \textcolor{keyword}{auto} end = std::chrono::high\_resolution\_clock::now();}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00083}00083   std::chrono::duration<double> duration = end -\/ start;}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00084}00084 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00085}00085   \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{err\_}} == \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789daa898645bca0f55d05bc4ce6122784cad}{SI2DR\_INVALID\_NAME}}) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00085}00085   \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{err\_}} == SI2DR\_INVALID\_NAME) \{}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00086}00086     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could not open file '\{\}' for parsing, quitting..."{}}, \mbox{\hyperlink{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}{filename\_}});}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00087}00087     exit(301);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00088}00088   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{err\_}} == \mbox{\hyperlink{si2dr__liberty_8h_aa320a34797ba963d356fe11b5ead789dab796381410d6543d611fbf0d42b3cf68}{SI2DR\_SYNTAX\_ERROR}}) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00088}00088   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{err\_}} == SI2DR\_SYNTAX\_ERROR) \{}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00089}00089     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Syntax Errors were detected in the input file!"{}});}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00090}00090     exit(401);}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00091}00091   \} \textcolor{keywordflow}{else} \{}
@@ -600,18 +600,18 @@
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00741}00741     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Full module text: \{\}"{}}, fullModuleText);}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00742}00742 }
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00743}00743     \textcolor{comment}{// Generate the syntax tree for the module using slang library}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00744}00744     \textcolor{keyword}{auto} tree = \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_a51378e0851d9dc03ab4b75e94b061fb6}{slang::syntax::SyntaxTree::fromText}}(fullModuleText);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00744}00744     \textcolor{keyword}{auto} tree = slang::syntax::SyntaxTree::fromText(fullModuleText);}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00745}00745     \textcolor{keywordflow}{if} (tree) \{}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00746}00746       \textcolor{comment}{// Add ports to the syntax tree}}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00747}00747       \mbox{\hyperlink{classModuleRewriter}{ModuleRewriter}} rewriter(input\_pins, output\_pins, supercell\_entry, instance\_count, \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}});}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00748}00748 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00749}00749       tree = rewriter.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxRewriter_a9da1110f23efabf52212982d52d64601}{transform}}(tree);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00749}00749       tree = rewriter.transform(tree);}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00750}00750       \textcolor{comment}{// Revisit the syntax tree to check architecture}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00751}00751       rewriter.\mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_aecb294b0686307633702e2bb937246b6}{visit}}(tree-\/>root());}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00751}00751       rewriter.visit(tree-\/>root());}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00752}00752 }
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00753}00753       \textcolor{comment}{// Output the transformed syntax tree}}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00754}00754       out << \textcolor{stringliteral}{"{}`timescale 1ns/10ps"{}} << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00755}00755       out << \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxPrinter_ae767f71421811693eac4c5e708faf196}{slang::syntax::SyntaxPrinter::printFile}}(*tree) << std::endl << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00755}00755       out << slang::syntax::SyntaxPrinter::printFile(*tree) << std::endl << std::endl;}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00756}00756     \} \textcolor{keywordflow}{else} \{}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00757}00757       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Failed to create syntax tree for module '\{\}'"{}}, module\_name);}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00758}00758       \textcolor{keywordflow}{continue};}

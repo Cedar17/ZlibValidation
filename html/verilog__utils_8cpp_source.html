@@ -99,13 +99,13 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="verilog__utils_8hpp.html">verilog_utils.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// Adding a generic handler method to record all visited nodes and increment the depth counter</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classVerilogVisitor.html#abc9e9aadac72fbf46cd929590f3d4eb5">    6</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classVerilogVisitor.html#abc9e9aadac72fbf46cd929590f3d4eb5">VerilogVisitor::handle</a>(<span class="keyword">const</span> <a class="code hl_class" href="classslang_1_1syntax_1_1SyntaxNode.html">slang::syntax::SyntaxNode</a> &amp;node) {</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classVerilogVisitor.html#abc9e9aadac72fbf46cd929590f3d4eb5">    6</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classVerilogVisitor.html#abc9e9aadac72fbf46cd929590f3d4eb5">VerilogVisitor::handle</a>(<span class="keyword">const</span> slang::syntax::SyntaxNode &amp;node) {</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>  std::string indent(<a class="code hl_variable" href="classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741">depth_</a> * 2, <span class="charliteral">&#39; &#39;</span>);</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>  spdlog::debug(<span class="stringliteral">&quot;{}Node: {}&quot;</span>, indent, slang::syntax::toString(node.<a class="code hl_variable" href="classslang_1_1syntax_1_1SyntaxNode.html#ac893a4d23a77a55eb8eb17d67099ac43">kind</a>));</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>  spdlog::debug(<span class="stringliteral">&quot;{}Node: {}&quot;</span>, indent, slang::syntax::toString(node.kind));</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  <span class="comment">// Increase depth, visit child nodes, then decrease depth</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <a class="code hl_variable" href="classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741">depth_</a>++;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a>(node);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  visitDefault(node);</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  <a class="code hl_variable" href="classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741">depth_</a>--;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="comment">// Continue processing child nodes</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <a class="code hl_variable" href="classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741">depth_</a>++;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a>(module);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  visitDefault(module);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <a class="code hl_variable" href="classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741">depth_</a>--;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
@@ -277,7 +277,7 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="comment">// Continue processing child nodes</span></div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <a class="code hl_variable" href="classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741">depth_</a>++;</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a>(hierarchyInst);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    visitDefault(hierarchyInst);</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <a class="code hl_variable" href="classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741">depth_</a>--;</div>
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  }</div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>}</div>
@@ -435,7 +435,7 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span> </div>
 <div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    <span class="comment">// Continue processing child nodes</span></div>
 <div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    <a class="code hl_variable" href="classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741">depth_</a>++;</div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a>(specifyBlock);</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    visitDefault(specifyBlock);</div>
 <div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <a class="code hl_variable" href="classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741">depth_</a>--;</div>
 <div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>  }</div>
 <div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>}</div>
@@ -451,7 +451,7 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>      <span class="comment">// Do not modify, keep this module</span></div>
 <div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>      <span class="comment">// Remove non-target modules</span></div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>      <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxRewriter.html#ac7c9f8d4bc01e65e4eaa0afd6cec31e2">remove</a>(module);</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>      remove(module);</div>
 <div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    }</div>
 <div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>  }</div>
 <div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>}</div>
@@ -477,16 +477,16 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>  }</div>
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>  <span class="comment">// Continue traversing other modules</span></div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>  <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a>(module);</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>  visitDefault(module);</div>
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>}</div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span> </div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno"><a class="line" href="classModuleRewriter.html#aa57bf8f3d6692468013a52a0154f08e8">  396</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classModuleRewriter.html#aa57bf8f3d6692468013a52a0154f08e8">ModuleRewriter::handle</a>(<span class="keyword">const</span> <a class="code hl_class" href="classslang_1_1syntax_1_1SyntaxNode.html">slang::syntax::SyntaxNode</a> &amp;node) {</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno"><a class="line" href="classModuleRewriter.html#aa57bf8f3d6692468013a52a0154f08e8">  396</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classModuleRewriter.html#aa57bf8f3d6692468013a52a0154f08e8">ModuleRewriter::handle</a>(<span class="keyword">const</span> slang::syntax::SyntaxNode &amp;node) {</div>
 <div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>  std::string indent(<a class="code hl_variable" href="classModuleRewriter.html#a1ccaa865548fbf442969925a8f4063aa">depth_</a> * 2, <span class="charliteral">&#39; &#39;</span>);</div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>  <a class="code hl_variable" href="classModuleRewriter.html#a35bc880b11364a5c980c70be72ab42ab">logger_</a>-&gt;debug(<span class="stringliteral">&quot;{}Node: {}&quot;</span>, indent, slang::syntax::toString(node.<a class="code hl_variable" href="classslang_1_1syntax_1_1SyntaxNode.html#ac893a4d23a77a55eb8eb17d67099ac43">kind</a>));</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>  <a class="code hl_variable" href="classModuleRewriter.html#a35bc880b11364a5c980c70be72ab42ab">logger_</a>-&gt;debug(<span class="stringliteral">&quot;{}Node: {}&quot;</span>, indent, slang::syntax::toString(node.kind));</div>
 <div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span> </div>
 <div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>  <span class="comment">// Continue processing child nodes</span></div>
 <div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>  <a class="code hl_variable" href="classModuleRewriter.html#a1ccaa865548fbf442969925a8f4063aa">depth_</a>++;</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>  <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">visitDefault</a>(node);</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>  visitDefault(node);</div>
 <div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>  <a class="code hl_variable" href="classModuleRewriter.html#a1ccaa865548fbf442969925a8f4063aa">depth_</a>--;</div>
 <div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>}</div>
 <div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span> </div>
@@ -495,8 +495,8 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span> </div>
 <div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>  <span class="comment">// Create intermediate wires for connections between instances</span></div>
 <div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="classModuleRewriter.html#a6c95bf7e5c9a2fb4b1316d830ef5cd6e">instance_count_</a> - 1; i++) {</div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>    <span class="keyword">auto</span> &amp;newNetNode = <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxRewriter.html#ae75ddbcab869a09077dc1fa0ef01bbcb">parse</a>(<span class="stringliteral">&quot;\n  wire OP_&quot;</span> + std::to_string(i) + <span class="stringliteral">&quot;;&quot;</span>);</div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>    <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxRewriter.html#aabf4247f8c732f9423585d65ee42f642">insertAtBack</a>(module.members, newNetNode);</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>    <span class="keyword">auto</span> &amp;newNetNode = parse(<span class="stringliteral">&quot;\n  wire OP_&quot;</span> + std::to_string(i) + <span class="stringliteral">&quot;;&quot;</span>);</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>    insertAtBack(module.members, newNetNode);</div>
 <div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>    <a class="code hl_variable" href="classModuleRewriter.html#a35bc880b11364a5c980c70be72ab42ab">logger_</a>-&gt;debug(<span class="stringliteral">&quot;Added intermediate wire: {}&quot;</span>, newNetNode.toString());</div>
 <div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>  }</div>
 <div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span> </div>
@@ -537,8 +537,8 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="classModuleRewriter.html#a6c95bf7e5c9a2fb4b1316d830ef5cd6e">instance_count_</a> - 1; i++) { <span class="comment">// Skip the first and last instances</span></div>
 <div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;outputPin : this-&gt;<a class="code hl_variable" href="classModuleRewriter.html#a8314722fe0c97d3e78953ee0eb45b0ca">outputPins_</a>) {</div>
 <div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>        <span class="keywordflow">if</span> (outputPin != criticalOutputPort) { <span class="comment">// Found an intermediate output pin</span></div>
-<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>          <span class="keyword">auto</span> &amp;newNetNode = <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxRewriter.html#ae75ddbcab869a09077dc1fa0ef01bbcb">parse</a>(<span class="stringliteral">&quot;\n  wire P_&quot;</span> + std::to_string(i) + <span class="stringliteral">&quot;__&quot;</span> + outputPin + <span class="stringliteral">&quot;;&quot;</span>);</div>
-<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>          <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxRewriter.html#aabf4247f8c732f9423585d65ee42f642">insertAtBack</a>(module.members, newNetNode);</div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>          <span class="keyword">auto</span> &amp;newNetNode = parse(<span class="stringliteral">&quot;\n  wire P_&quot;</span> + std::to_string(i) + <span class="stringliteral">&quot;__&quot;</span> + outputPin + <span class="stringliteral">&quot;;&quot;</span>);</div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>          insertAtBack(module.members, newNetNode);</div>
 <div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>          <a class="code hl_variable" href="classModuleRewriter.html#a35bc880b11364a5c980c70be72ab42ab">logger_</a>-&gt;debug(<span class="stringliteral">&quot;Added intermediate wire: {}&quot;</span>, newNetNode.toString());</div>
 <div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>        }</div>
 <div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>      }</div>
@@ -623,32 +623,32 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>    }</div>
 <div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span> </div>
 <div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>    <span class="comment">// Insert the instance code</span></div>
-<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>    <span class="keyword">auto</span> &amp;instanceNode = <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxRewriter.html#ae75ddbcab869a09077dc1fa0ef01bbcb">parse</a>(instanceCode);</div>
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>    <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxRewriter.html#aabf4247f8c732f9423585d65ee42f642">insertAtBack</a>(module.members, instanceNode);</div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>    <span class="keyword">auto</span> &amp;instanceNode = parse(instanceCode);</div>
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>    insertAtBack(module.members, instanceNode);</div>
 <div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>  }</div>
 <div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>}</div>
 <div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span> </div>
 <div class="line"><a id="l00544" name="l00544"></a><span class="lineno"><a class="line" href="verilog__utils_8hpp.html#a7ec07bd8417a22f2aee362bd59199997">  544</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="verilog__utils_8cpp.html#a7ec07bd8417a22f2aee362bd59199997">getAST</a>(<span class="keyword">const</span> std::string &amp;verilog_file, <span class="keyword">const</span> std::string &amp;cell) {</div>
 <div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>  <span class="keywordflow">try</span> {</div>
 <div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>    spdlog::info(<span class="stringliteral">&quot;Starting get AST from Verilog file: &#39;{}&#39;&quot;</span>, verilog_file);</div>
-<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>    <span class="keyword">auto</span> result = <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxTree.html#aee79423807e68c2a5cca99281285dbc0">slang::syntax::SyntaxTree::fromFile</a>(verilog_file);</div>
+<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>    <span class="keyword">auto</span> result = slang::syntax::SyntaxTree::fromFile(verilog_file);</div>
 <div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>    <span class="keywordflow">if</span> (result) {</div>
 <div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>      spdlog::info(<span class="stringliteral">&quot;Successfully parsed Verilog file.&quot;</span>);</div>
 <div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span> </div>
 <div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span>      <span class="keywordflow">try</span> {</div>
 <div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>        <span class="comment">// First, use the visitor to print basic information</span></div>
 <div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span>        <a class="code hl_class" href="classVerilogVisitor.html">VerilogVisitor</a> visitor(cell);</div>
-<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>        visitor.<a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#aecb294b0686307633702e2bb937246b6">visit</a>(result.value()-&gt;root());</div>
+<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>        visitor.visit(result.value()-&gt;root());</div>
 <div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span> </div>
 <div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>        <span class="comment">// If a target cell is specified, use the rewriter to extract the relevant code</span></div>
 <div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>        <span class="keywordflow">if</span> (!cell.empty()) {</div>
 <div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>          <span class="comment">// Create a rewriter to only keep the target cell related code</span></div>
 <div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>          <a class="code hl_class" href="classCellExtractor.html">CellExtractor</a> extractor(cell);</div>
-<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>          <span class="keyword">auto</span> extractedTree = extractor.<a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxRewriter.html#a9da1110f23efabf52212982d52d64601">transform</a>(result.value());</div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>          <span class="keyword">auto</span> extractedTree = extractor.transform(result.value());</div>
 <div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span> </div>
 <div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>          <span class="keywordflow">if</span> (extractor.<a class="code hl_function" href="classCellExtractor.html#a0a91984aface381a68def3a0a8515d57">foundTargetCell</a>()) {</div>
 <div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>            <span class="comment">// Use SyntaxPrinter to print the extracted code</span></div>
-<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>            std::string extractedCode = <a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxPrinter.html#ae767f71421811693eac4c5e708faf196">slang::syntax::SyntaxPrinter::printFile</a>(*extractedTree);</div>
+<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>            std::string extractedCode = slang::syntax::SyntaxPrinter::printFile(*extractedTree);</div>
 <div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span> </div>
 <div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>            <span class="comment">// Save to a file named after the cell name</span></div>
 <div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span>            std::string outputFile = cell + <span class="stringliteral">&quot;.v&quot;</span>;</div>
@@ -676,7 +676,7 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>        <span class="comment">// Use CellPrinter to print the target cell&#39;s code</span></div>
 <div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>        std::ofstream cellOut(<span class="stringliteral">&quot;cell_code.v&quot;</span>);</div>
 <div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>        <a class="code hl_class" href="classCellPrinter.html">CellPrinter</a> cellPrinter(cell, cellOut);</div>
-<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>        cellPrinter.<a class="code hl_function" href="classslang_1_1syntax_1_1SyntaxVisitor.html#aecb294b0686307633702e2bb937246b6">visit</a>(result.value()-&gt;root());</div>
+<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>        cellPrinter.visit(result.value()-&gt;root());</div>
 <div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>        cellOut.close();</div>
 <div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span> </div>
 <div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span>      } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
@@ -716,16 +716,6 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div class="ttc" id="aclassVerilogVisitor_html_abc9e9aadac72fbf46cd929590f3d4eb5"><div class="ttname"><a href="classVerilogVisitor.html#abc9e9aadac72fbf46cd929590f3d4eb5">VerilogVisitor::handle</a></div><div class="ttdeci">void handle(const slang::syntax::SyntaxNode &amp;node)</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8cpp_source.html#l00006">verilog_utils.cpp:6</a></div></div>
 <div class="ttc" id="aclassVerilogVisitor_html_aceac12880a80019b6a438f0a1b2f9741"><div class="ttname"><a href="classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741">VerilogVisitor::depth_</a></div><div class="ttdeci">int depth_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00028">verilog_utils.hpp:28</a></div></div>
 <div class="ttc" id="aclassVerilogVisitor_html_ad0e136294c2978685afb0ffc902a0066"><div class="ttname"><a href="classVerilogVisitor.html#ad0e136294c2978685afb0ffc902a0066">VerilogVisitor::targetCell_</a></div><div class="ttdeci">const std::string &amp; targetCell_</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8hpp_source.html#l00027">verilog_utils.hpp:27</a></div></div>
-<div class="ttc" id="aclassslang_1_1syntax_1_1SyntaxNode_html"><div class="ttname"><a href="classslang_1_1syntax_1_1SyntaxNode.html">slang::syntax::SyntaxNode</a></div><div class="ttdoc">Base class for all syntax nodes.</div><div class="ttdef"><b>Definition:</b> <a href="SyntaxNode_8h_source.html#l00090">SyntaxNode.h:90</a></div></div>
-<div class="ttc" id="aclassslang_1_1syntax_1_1SyntaxNode_html_ac893a4d23a77a55eb8eb17d67099ac43"><div class="ttname"><a href="classslang_1_1syntax_1_1SyntaxNode.html#ac893a4d23a77a55eb8eb17d67099ac43">slang::syntax::SyntaxNode::kind</a></div><div class="ttdeci">SyntaxKind kind</div><div class="ttdoc">The kind of syntax node.</div><div class="ttdef"><b>Definition:</b> <a href="SyntaxNode_8h_source.html#l00095">SyntaxNode.h:95</a></div></div>
-<div class="ttc" id="aclassslang_1_1syntax_1_1SyntaxPrinter_html_ae767f71421811693eac4c5e708faf196"><div class="ttname"><a href="classslang_1_1syntax_1_1SyntaxPrinter.html#ae767f71421811693eac4c5e708faf196">slang::syntax::SyntaxPrinter::printFile</a></div><div class="ttdeci">static std::string printFile(const SyntaxTree &amp;tree)</div></div>
-<div class="ttc" id="aclassslang_1_1syntax_1_1SyntaxRewriter_html_a9da1110f23efabf52212982d52d64601"><div class="ttname"><a href="classslang_1_1syntax_1_1SyntaxRewriter.html#a9da1110f23efabf52212982d52d64601">slang::syntax::SyntaxRewriter::transform</a></div><div class="ttdeci">std::shared_ptr&lt; SyntaxTree &gt; transform(const std::shared_ptr&lt; SyntaxTree &gt; &amp;tree, const SourceLibrary *library=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="SyntaxVisitor_8h_source.html#l00116">SyntaxVisitor.h:116</a></div></div>
-<div class="ttc" id="aclassslang_1_1syntax_1_1SyntaxRewriter_html_aabf4247f8c732f9423585d65ee42f642"><div class="ttname"><a href="classslang_1_1syntax_1_1SyntaxRewriter.html#aabf4247f8c732f9423585d65ee42f642">slang::syntax::SyntaxRewriter&lt; ModuleRewriter &gt;::insertAtBack</a></div><div class="ttdeci">void insertAtBack(const SyntaxListBase &amp;list, SyntaxNode &amp;newNode, Token separator={})</div><div class="ttdoc">Insert newNode at the back of list in the rewritten tree.</div><div class="ttdef"><b>Definition:</b> <a href="SyntaxVisitor_8h_source.html#l00173">SyntaxVisitor.h:173</a></div></div>
-<div class="ttc" id="aclassslang_1_1syntax_1_1SyntaxRewriter_html_ac7c9f8d4bc01e65e4eaa0afd6cec31e2"><div class="ttname"><a href="classslang_1_1syntax_1_1SyntaxRewriter.html#ac7c9f8d4bc01e65e4eaa0afd6cec31e2">slang::syntax::SyntaxRewriter&lt; CellExtractor &gt;::remove</a></div><div class="ttdeci">void remove(const SyntaxNode &amp;oldNode)</div><div class="ttdoc">Register a removal for the given syntax node from the tree.</div><div class="ttdef"><b>Definition:</b> <a href="SyntaxVisitor_8h_source.html#l00140">SyntaxVisitor.h:140</a></div></div>
-<div class="ttc" id="aclassslang_1_1syntax_1_1SyntaxRewriter_html_ae75ddbcab869a09077dc1fa0ef01bbcb"><div class="ttname"><a href="classslang_1_1syntax_1_1SyntaxRewriter.html#ae75ddbcab869a09077dc1fa0ef01bbcb">slang::syntax::SyntaxRewriter&lt; ModuleRewriter &gt;::parse</a></div><div class="ttdeci">SyntaxNode &amp; parse(std::string_view text)</div><div class="ttdoc">A helper for derived classes that parses some text into syntax nodes.</div><div class="ttdef"><b>Definition:</b> <a href="SyntaxVisitor_8h_source.html#l00134">SyntaxVisitor.h:134</a></div></div>
-<div class="ttc" id="aclassslang_1_1syntax_1_1SyntaxTree_html_aee79423807e68c2a5cca99281285dbc0"><div class="ttname"><a href="classslang_1_1syntax_1_1SyntaxTree.html#aee79423807e68c2a5cca99281285dbc0">slang::syntax::SyntaxTree::fromFile</a></div><div class="ttdeci">static TreeOrError fromFile(std::string_view path)</div></div>
-<div class="ttc" id="aclassslang_1_1syntax_1_1SyntaxVisitor_html_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16"><div class="ttname"><a href="classslang_1_1syntax_1_1SyntaxVisitor.html#a3d2e95f55b5bdb1cd09c8cb0ca2fdb16">slang::syntax::SyntaxVisitor&lt; VerilogVisitor &gt;::visitDefault</a></div><div class="ttdeci">void visitDefault(T &amp;&amp;node)</div><div class="ttdef"><b>Definition:</b> <a href="SyntaxVisitor_8h_source.html#l00039">SyntaxVisitor.h:39</a></div></div>
-<div class="ttc" id="aclassslang_1_1syntax_1_1SyntaxVisitor_html_aecb294b0686307633702e2bb937246b6"><div class="ttname"><a href="classslang_1_1syntax_1_1SyntaxVisitor.html#aecb294b0686307633702e2bb937246b6">slang::syntax::SyntaxVisitor::visit</a></div><div class="ttdeci">void visit(T &amp;&amp;t)</div><div class="ttdoc">Visit the provided node, of static type T.</div><div class="ttdef"><b>Definition:</b> <a href="SyntaxVisitor_8h_source.html#l00029">SyntaxVisitor.h:29</a></div></div>
 <div class="ttc" id="averilog__utils_8cpp_html_a7ec07bd8417a22f2aee362bd59199997"><div class="ttname"><a href="verilog__utils_8cpp.html#a7ec07bd8417a22f2aee362bd59199997">getAST</a></div><div class="ttdeci">void getAST(const std::string &amp;verilog_file, const std::string &amp;cell)</div><div class="ttdef"><b>Definition:</b> <a href="verilog__utils_8cpp_source.html#l00544">verilog_utils.cpp:544</a></div></div>
 <div class="ttc" id="averilog__utils_8hpp_html"><div class="ttname"><a href="verilog__utils_8hpp.html">verilog_utils.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -734,7 +724,7 @@ $(document).ready(function(){initNavTree('verilog__utils_8cpp_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="verilog__utils_8cpp.html">verilog_utils.cpp</a></li>
-    <li class="footer">Generated on Tue Apr 1 2025 10:13:32 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Apr 1 2025 15:41:05 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

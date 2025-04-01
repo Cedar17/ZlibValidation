@@ -27,7 +27,7 @@
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00023}00023       \textcolor{comment}{// Visit children (ports, declarations, instances) IN ORDER}}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00024}00024       \textcolor{comment}{// It's often better to visit declarations first, then the port list}}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00025}00025       \textcolor{comment}{// Slang's default visitDefault might handle this, but be aware.}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00026}00026       \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00026}00026       visitDefault(module);}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00027}00027 }
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00028}00028       \textcolor{comment}{// -\/-\/-\/ Finalize Ports after visiting declarations and port list -\/-\/-\/}}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00029}00029       \textcolor{comment}{// This part might be better placed *after* visiting NonAnsiPortList,}}
@@ -41,11 +41,11 @@
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00037}00037 }
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00038}00038     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}) \{}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00039}00039       \textcolor{comment}{// If not the target module yet, continue searching}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00040}00040       \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00040}00040       visitDefault(module);}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00041}00041     \}}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00042}00042   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}) \{}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00043}00043     \textcolor{comment}{// Handle modules without valid headers if necessary, or just traverse}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00044}00044     \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor_a3d2e95f55b5bdb1cd09c8cb0ca2fdb16}{visitDefault}}(module);}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00044}00044     visitDefault(module);}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00045}00045   \}}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00046}00046 \}}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00047}00047 }
@@ -520,7 +520,7 @@
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00516}00516   spdlog::info(\textcolor{stringliteral}{"{}Verilog file: '\{\}', Target cell: '\{\}'"{}}, verilog\_file, cell);}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00517}00517 }
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00518}00518   \textcolor{keywordflow}{try} \{}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00519}00519     \textcolor{keyword}{auto} result = \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aee79423807e68c2a5cca99281285dbc0}{slang::syntax::SyntaxTree::fromFile}}(verilog\_file);}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00519}00519     \textcolor{keyword}{auto} result = slang::syntax::SyntaxTree::fromFile(verilog\_file);}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00520}00520     \textcolor{keywordflow}{if} (!result) \{ \textcolor{comment}{// Check if result is valid}}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00521}00521       spdlog::error(\textcolor{stringliteral}{"{}Error parsing Verilog file '\{\}'. Cannot extract info."{}}, verilog\_file);}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00522}00522       \textcolor{keywordflow}{return};}
@@ -582,7 +582,7 @@
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00578}00578   std::map<std::string, std::string> logicMap; \textcolor{comment}{// Default empty map}}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00579}00579 }
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00580}00580   \textcolor{keywordflow}{try} \{}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00581}00581     \textcolor{keyword}{auto} result = \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxTree_aee79423807e68c2a5cca99281285dbc0}{slang::syntax::SyntaxTree::fromFile}}(verilog\_file);}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00581}00581     \textcolor{keyword}{auto} result = slang::syntax::SyntaxTree::fromFile(verilog\_file);}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00582}00582     \textcolor{keywordflow}{if} (!result) \{}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00583}00583       spdlog::error(\textcolor{stringliteral}{"{}Error parsing Verilog file '\{\}'. Cannot extract logic."{}}, verilog\_file);}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8cpp_source_l00584}00584       \textcolor{keywordflow}{return} logicMap;}

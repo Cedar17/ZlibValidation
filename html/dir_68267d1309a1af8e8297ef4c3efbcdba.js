@@ -6,7 +6,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "LibFile.cpp", "LibFile_8cpp.html", null ],
     [ "LibGroup.cpp", "LibGroup_8cpp.html", null ],
     [ "LibraryComparator.cpp", "LibraryComparator_8cpp.html", null ],
-    [ "LogicComparator.cpp", "LogicComparator_8cpp.html", null ],
+    [ "LogicComparator.cpp", "LogicComparator_8cpp.html", "LogicComparator_8cpp" ],
     [ "LogicExtractor.cpp", "LogicExtractor_8cpp.html", "LogicExtractor_8cpp" ],
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
     [ "verilog_utils.cpp", "verilog__utils_8cpp.html", "verilog__utils_8cpp" ]

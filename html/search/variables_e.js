@@ -1,18 +1,11 @@
 var searchData=
 [
-  ['n0_5fc_0',['n0_c',['../structexprtk_1_1details_1_1range__pack.html#a7fcf7514fca3fec6ab166cfbbc7a30cf',1,'exprtk::details::range_pack']]],
-  ['n0_5fe_1',['n0_e',['../structexprtk_1_1details_1_1range__pack.html#aa95a9180e83edf01eafb94f004435c46',1,'exprtk::details::range_pack']]],
-  ['n1_5fc_2',['n1_c',['../structexprtk_1_1details_1_1range__pack.html#a856a9bd1b2157c008dd7fd54d558489d',1,'exprtk::details::range_pack']]],
-  ['n1_5fe_3',['n1_e',['../structexprtk_1_1details_1_1range__pack.html#a62f09fa9fc4c5749df214b6acc0676d4',1,'exprtk::details::range_pack']]],
-  ['name_4',['name',['../structexprtk_1_1parser_1_1scope__element.html#a9fc509a0b215bbd3e3d416593d4e05ba',1,'exprtk::parser::scope_element']]],
-  ['name_5f_5',['name_',['../classexprtk_1_1stringvar__base.html#a1126187a9535476cfcceca3546fedb62',1,'exprtk::stringvar_base::name_()'],['../structexprtk_1_1function__compositor_1_1function.html#acbc418c94b4a140750ce754a55f10629',1,'exprtk::function_compositor::function::name_()']]],
-  ['ne_6',['ne',['../structexprtk_1_1rtl_1_1vecops_1_1package.html#a2b73b8681f8bf580c1e0e375d7bff61d',1,'exprtk::rtl::vecops::package']]],
-  ['nf_7',['nf',['../structexprtk_1_1rtl_1_1vecops_1_1package.html#a6398f68555fe2f7bd5e531c85a00a60e',1,'exprtk::rtl::vecops::package']]],
-  ['node_8',['node',['../classslang_1_1syntax_1_1DeferredSourceRange.html#a4c8826c5b6a2d02531b11bf71fb038b6',1,'slang::syntax::DeferredSourceRange']]],
-  ['node_5fallocator_5f_9',['node_allocator_',['../classexprtk_1_1parser_1_1expression__generator.html#aab72851abd8ceb64b9c28f99db8c2714',1,'exprtk::parser::expression_generator::node_allocator_()'],['../classexprtk_1_1parser.html#abc2cf6f5ca6817cf0d00aa7115916d07',1,'exprtk::parser::node_allocator_()']]],
-  ['nt_10',['nt',['../structexprtk_1_1rtl_1_1vecops_1_1package.html#a4216fd9805b78e8f1950c1f6fd5c434d',1,'exprtk::rtl::vecops::package']]],
-  ['null_5felement_5f_11',['null_element_',['../classexprtk_1_1parser_1_1scope__element__manager.html#a5ab67c6e10e18988295cc28e36c70a4e',1,'exprtk::parser::scope_element_manager']]],
-  ['null_5fvalue_12',['null_value',['../classexprtk_1_1details_1_1exprtk__final.html#a4f584983ceaebb4715a90a2b77b61953',1,'exprtk::details::exprtk_final::null_value()'],['../classexprtk_1_1details_1_1exprtk__final.html#a6f044a9409511f96d858d1a9b9364ddb',1,'exprtk::details::exprtk_final::null_value()'],['../classexprtk_1_1details_1_1exprtk__final.html#a5936da48fb26d3d7c626610b8816634f',1,'exprtk::details::exprtk_final::null_value()']]],
-  ['num_5fparams_13',['num_params',['../structexprtk_1_1details_1_1base__operation__t.html#ae30d005cd28a9b3d4d99a237b3b8eea2',1,'exprtk::details::base_operation_t']]],
-  ['numeric_5fchecker_5f_14',['numeric_checker_',['../classexprtk_1_1parser.html#ab5606ba030f12a16207d4417e7d2a706',1,'exprtk::parser']]]
+  ['ref_5fcompiles_0',['ref_compiles',['../structPinComparisonResult.html#a74e1dec470324064da996c694e51cf19',1,'PinComparisonResult']]],
+  ['ref_5fexpr_5fprocessed_1',['ref_expr_processed',['../structPinComparisonResult.html#a1a48518c1c722dd5e46336bfabda7595',1,'PinComparisonResult']]],
+  ['ref_5fexpr_5fraw_2',['ref_expr_raw',['../structPinComparisonResult.html#ae5c45ec4460f1e622d663a6610123845',1,'PinComparisonResult']]],
+  ['ref_5fjson_5f_3',['ref_json_',['../classLibraryComparator.html#a655d87b8d6fb9714a660654ae744773e',1,'LibraryComparator']]],
+  ['ref_5flib_5fpath_5f_4',['ref_lib_path_',['../classLibraryComparator.html#a17fd7ca420dde6290d9c34162dba7f4a',1,'LibraryComparator']]],
+  ['ref_5foutpin_5fmap_5f_5',['ref_outpin_map_',['../classLogicComparator.html#a380ca36e75733aa6e1bcb1858c7fadd9',1,'LogicComparator']]],
+  ['ref_5ftruth_5ftable_6',['ref_truth_table',['../structPinComparisonResult.html#a1db1dabbc4cb4cae68a63dd13320e754',1,'PinComparisonResult']]],
+  ['reltol_5f_7',['reltol_',['../classLibraryComparator.html#abf28f740c7095501489ae0d6c6745e70',1,'LibraryComparator']]]
 ];

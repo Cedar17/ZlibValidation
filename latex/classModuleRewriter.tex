@@ -21,7 +21,7 @@ Collaboration diagram for Module\+Rewriter\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classModuleRewriter__coll__graph}
+\includegraphics[width=243pt]{classModuleRewriter__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -29,7 +29,7 @@ Collaboration diagram for Module\+Rewriter\+:
 \item 
 \mbox{\hyperlink{classModuleRewriter_a0fc85a14d1374ad12e24eefc3802357b}{Module\+Rewriter}} (const std\+::vector$<$ std\+::string $>$ \&input\+Pins, const std\+::vector$<$ std\+::string $>$ \&output\+Pins, const std\+::pair$<$ std\+::string, std\+::string $>$ \&supercell\+\_\+entry, int instance\+\_\+count, std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ logger)
 \item 
-void \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{handle}} (const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}} \&node)
+void \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{handle}} (const slang\+::syntax\+::\+Syntax\+Node \&node)
 \begin{DoxyCompactList}\small\item\em Processes a syntax node in the module\textquotesingle{}s AST. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classModuleRewriter_aa91fd9d45e04c0408aead2b70c359585}{handle}} (const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&module)
 \end{DoxyCompactItemize}
@@ -55,7 +55,6 @@ int \mbox{\hyperlink{classModuleRewriter_a1ccaa865548fbf442969925a8f4063aa}{dept
 \item 
 int \mbox{\hyperlink{classModuleRewriter_a6c95bf7e5c9a2fb4b1316d830ef5cd6e}{instance\+\_\+count\+\_\+}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
@@ -89,19 +88,11 @@ Definition at line \mbox{\hyperlink{verilog__utils_8hpp_source_l00061}{61}} of f
 
 Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00406}{406}} of file \mbox{\hyperlink{verilog__utils_8cpp_source}{verilog\+\_\+utils.\+cpp}}.
 
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classModuleRewriter_aa91fd9d45e04c0408aead2b70c359585_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}\label{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}} 
 \index{ModuleRewriter@{ModuleRewriter}!handle@{handle}}
 \index{handle@{handle}!ModuleRewriter@{ModuleRewriter}}
 \doxysubsubsection{\texorpdfstring{handle()}{handle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Module\+Rewriter\+::handle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxNode}{slang\+::syntax\+::\+Syntax\+Node}} \&}]{node }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Module\+Rewriter\+::handle (\begin{DoxyParamCaption}\item[{const slang\+::syntax\+::\+Syntax\+Node \&}]{node }\end{DoxyParamCaption})}
 
 
 
@@ -118,14 +109,6 @@ This method is called for each syntax node during the traversal of the AST. It l
 
 Definition at line \mbox{\hyperlink{verilog__utils_8cpp_source_l00396}{396}} of file \mbox{\hyperlink{verilog__utils_8cpp_source}{verilog\+\_\+utils.\+cpp}}.
 
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8_cgraph}
-\end{center}
-\end{figure}
 
 
 \doxysubsection{Member Data Documentation}

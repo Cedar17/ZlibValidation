@@ -101,9 +101,9 @@ $(document).ready(function(){initNavTree('LogicComparator_8cpp_source.html','');
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>                                 <span class="keyword">const</span> std::string &amp;cell_name)</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    : ref_outpin_map_(ref_outpin_map), comp_outpin_map_(comp_outpin_map), cell_name_(cell_name) {}</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="classLogicComparator.html#a4ce5e98ddd78aafb760d49f7201e78a9">    7</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">void</span> <a class="code hl_function" href="classLogicComparator.html#a4ce5e98ddd78aafb760d49f7201e78a9">LogicComparator::logic</a>() {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>  <span class="keyword">typedef</span> <a class="code hl_class" href="classexprtk_1_1symbol__table.html">exprtk::symbol_table&lt;T&gt;</a> symbol_table_t;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  <span class="keyword">typedef</span> <a class="code hl_class" href="classexprtk_1_1expression.html">exprtk::expression&lt;T&gt;</a> expression_t;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  <span class="keyword">typedef</span> <a class="code hl_class" href="classexprtk_1_1parser.html">exprtk::parser&lt;T&gt;</a> parser_t;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>  <span class="keyword">typedef</span> exprtk::symbol_table&lt;T&gt; symbol_table_t;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  <span class="keyword">typedef</span> exprtk::expression&lt;T&gt; expression_t;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  <span class="keyword">typedef</span> exprtk::parser&lt;T&gt; parser_t;</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <span class="keyword">const</span> std::string expression_string = <span class="stringliteral">&quot;not(A and B) or C&quot;</span>;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
@@ -116,7 +116,7 @@ $(document).ready(function(){initNavTree('LogicComparator_8cpp_source.html','');
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  expression.register_symbol_table(symbol_table);</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  parser_t parser;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  parser.<a class="code hl_function" href="classexprtk_1_1parser.html#a1d44f3682429df87cea0572774b7a0f5">compile</a>(expression_string, expression);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  parser.compile(expression_string, expression);</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  printf(<span class="stringliteral">&quot; # | A | B | C | %s\n&quot;</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>         <span class="stringliteral">&quot;---+---+---+---+-%s\n&quot;</span>,</div>
@@ -136,22 +136,128 @@ $(document).ready(function(){initNavTree('LogicComparator_8cpp_source.html','');
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  }</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">template</span> <span class="keywordtype">void</span> LogicComparator::logic&lt;double&gt;();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">   43</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">LogicComparator::generateReport</a>(<span class="keyword">const</span> std::string &amp;output_file) {}</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">// --- Preprocessing Function ---</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df">   58</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df">isIdentifier</a>(<span class="keyword">const</span> std::string &amp;token) {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keywordflow">if</span> (token.empty())</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="comment">// Check if the token is a valid identifier (alphanumeric + underscore)</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keywordtype">bool</span> has_alpha = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keywordflow">for</span> (<span class="keywordtype">char</span> c : token) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">if</span> (std::isalpha(c)) {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>      has_alpha = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!std::isalnum(c) &amp;&amp; c != <span class="charliteral">&#39;_&#39;</span>) {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// Contains invalid char</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="comment">// Must start with an alphabetic character</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordflow">return</span> has_alpha &amp;&amp; std::isalpha(token[0]);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="LogicComparator_8cpp.html#a1c875672f908868869e6cce7cbd92c1c">   83</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="LogicComparator_8cpp.html#a1c875672f908868869e6cce7cbd92c1c">isOperator</a>(<span class="keyword">const</span> std::string &amp;token) {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="keyword">static</span> <span class="keyword">const</span> std::set&lt;std::string&gt; operators = {<span class="stringliteral">&quot;and&quot;</span>, <span class="stringliteral">&quot;or&quot;</span>, <span class="stringliteral">&quot;xor&quot;</span>, <span class="stringliteral">&quot;not&quot;</span>};</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <span class="keywordflow">return</span> operators.count(token);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">   88</a></span>std::string <a class="code hl_function" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">LogicComparator::preprocessExpression</a>(<span class="keyword">const</span> std::string &amp;input_expr) {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  std::string processed = input_expr;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  spdlog::debug(<span class="stringliteral">&quot;Preprocessing raw expression: {}&quot;</span>, processed);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <span class="comment">// 0. Trim leading/trailing whitespace first</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  processed = std::regex_replace(processed, std::regex(<span class="stringliteral">&quot;^\\s+|\\s+$&quot;</span>), <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  <span class="comment">// 1. Make replacements more robust by adding spaces first, then replacing</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  <span class="comment">// Add spaces around operators and parentheses that need them</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  processed = std::regex_replace(processed, std::regex(<span class="stringliteral">&quot;\\(&quot;</span>), <span class="stringliteral">&quot; ( &quot;</span>);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  processed = std::regex_replace(processed, std::regex(<span class="stringliteral">&quot;\\)&quot;</span>), <span class="stringliteral">&quot; ) &quot;</span>);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  processed = std::regex_replace(processed, std::regex(<span class="stringliteral">&quot;\\+&quot;</span>), <span class="stringliteral">&quot; + &quot;</span>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  processed = std::regex_replace(processed, std::regex(<span class="stringliteral">&quot;\\^&quot;</span>), <span class="stringliteral">&quot; ^ &quot;</span>);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  processed = std::regex_replace(processed, std::regex(<span class="stringliteral">&quot;\\*&quot;</span>), <span class="stringliteral">&quot; * &quot;</span>);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  <span class="comment">// Handle &#39;!&#39; carefully, might be part of !=</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  <span class="comment">// Let&#39;s assume &#39;!&#39; is only used for NOT for now</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  processed =</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>      std::regex_replace(processed, std::regex(<span class="stringliteral">&quot;!([^=])&quot;</span>), <span class="stringliteral">&quot; not $1&quot;</span>);  <span class="comment">// \! followed by non-=</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  processed = std::regex_replace(processed, std::regex(<span class="stringliteral">&quot;^!&quot;</span>), <span class="stringliteral">&quot; not &quot;</span>); <span class="comment">// \! at the beginning</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  <span class="comment">// 2. Replace logical operators with their equivalents(with spaces around them)</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  processed = std::regex_replace(processed, std::regex(<span class="stringliteral">&quot; \\+ &quot;</span>), <span class="stringliteral">&quot; or &quot;</span>);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  processed = std::regex_replace(processed, std::regex(<span class="stringliteral">&quot; \\^ &quot;</span>), <span class="stringliteral">&quot; xor &quot;</span>);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  processed = std::regex_replace(processed, std::regex(<span class="stringliteral">&quot; \\* &quot;</span>), <span class="stringliteral">&quot; and &quot;</span>);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  spdlog::debug(<span class="stringliteral">&quot;Processed expression after replacements: {}&quot;</span>, processed);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  <span class="comment">// 3. Tokenize based on spaces</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>  std::stringstream ss(processed);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  std::istream_iterator&lt;std::string&gt; begin(ss);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  std::istream_iterator&lt;std::string&gt; end;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  std::vector&lt;std::string&gt; tokens(begin, end);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  <span class="keywordflow">if</span> (tokens.empty()) {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    spdlog::debug(<span class="stringliteral">&quot;No tokens found after preprocessing.&quot;</span>);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  }</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <span class="comment">// 4. Insert implied &#39;and&#39;</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  std::vector&lt;std::string&gt; processed_tokens;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  processed_tokens.push_back(tokens[0]); <span class="comment">// 先添加第一个 token</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; tokens.size() - 1; ++i) {</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keyword">const</span> std::string &amp;current_token = tokens[i];</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keyword">const</span> std::string &amp;next_token = tokens[i + 1];</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="comment">// 定义可以构成隐式 AND 的结尾和开头 token 类型</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordtype">bool</span> current_ends_operand = <a class="code hl_function" href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df">isIdentifier</a>(current_token) || current_token == <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">bool</span> next_starts_operand = <a class="code hl_function" href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df">isIdentifier</a>(next_token) || next_token == <span class="stringliteral">&quot;(&quot;</span>;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="comment">// 定义不能插入 AND 的情况：当前或下一个是显式操作符，或括号组合不当</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">bool</span> current_is_invalid_before_and = <a class="code hl_function" href="LogicComparator_8cpp.html#a1c875672f908868869e6cce7cbd92c1c">isOperator</a>(current_token) || current_token == <span class="stringliteral">&quot;(&quot;</span>;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordtype">bool</span> next_is_invalid_after_and = <a class="code hl_function" href="LogicComparator_8cpp.html#a1c875672f908868869e6cce7cbd92c1c">isOperator</a>(next_token) || next_token == <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="comment">// 检查是否应该插入 AND</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordflow">if</span> (current_ends_operand &amp;&amp; next_starts_operand &amp;&amp; !current_is_invalid_before_and &amp;&amp;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        !next_is_invalid_after_and) {</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>      processed_tokens.push_back(<span class="stringliteral">&quot;and&quot;</span>);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    }</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    processed_tokens.push_back(next_token); <span class="comment">// 添加下一个 token</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>  }</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  <span class="comment">// 5. Reconstruct the string</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>  std::string final_expr;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; processed_tokens.size(); ++i) {</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    final_expr += processed_tokens[i] + (i == processed_tokens.size() - 1 ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>  }</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>  <span class="comment">// 6. Final cleanup of spaces, especially around parentheses</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>  final_expr = std::regex_replace(final_expr, std::regex(<span class="stringliteral">&quot;\\s+&quot;</span>), <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>  final_expr = std::regex_replace(final_expr, std::regex(<span class="stringliteral">&quot; \\( &quot;</span>), <span class="stringliteral">&quot;(&quot;</span>);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  final_expr = std::regex_replace(final_expr, std::regex(<span class="stringliteral">&quot;\\( &quot;</span>), <span class="stringliteral">&quot;(&quot;</span>);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  final_expr = std::regex_replace(final_expr, std::regex(<span class="stringliteral">&quot; \\) &quot;</span>), <span class="stringliteral">&quot;)&quot;</span>);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  final_expr = std::regex_replace(final_expr, std::regex(<span class="stringliteral">&quot;\\) &quot;</span>), <span class="stringliteral">&quot;)&quot;</span>);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  final_expr = std::regex_replace(final_expr, std::regex(<span class="stringliteral">&quot;^\\s+|\\s+$&quot;</span>), <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>  spdlog::debug(<span class="stringliteral">&quot;Preprocessed expression result: {}&quot;</span>, final_expr);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>  <span class="keywordflow">return</span> final_expr;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>}</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="classLogicComparator.html#a7c0ccb67d6136a1982ef8d5094087c73">  169</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicComparator.html#a7c0ccb67d6136a1982ef8d5094087c73">LogicComparator::generateReport</a>(</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keyword">const</span> std::string &amp;output_file,</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keyword">const</span> std::map&lt;std::string, PinComparisonResult&gt; &amp;comparison_results) {}</div>
+<div class="ttc" id="aLogicComparator_8cpp_html_a1c875672f908868869e6cce7cbd92c1c"><div class="ttname"><a href="LogicComparator_8cpp.html#a1c875672f908868869e6cce7cbd92c1c">isOperator</a></div><div class="ttdeci">bool isOperator(const std::string &amp;token)</div><div class="ttdoc">Checks if a given token is a logical operator.</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00083">LogicComparator.cpp:83</a></div></div>
+<div class="ttc" id="aLogicComparator_8cpp_html_a6334f80db7207e331e587be0f9eae2df"><div class="ttname"><a href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df">isIdentifier</a></div><div class="ttdeci">bool isIdentifier(const std::string &amp;token)</div><div class="ttdoc">Checks if a given string is a valid identifier.</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00058">LogicComparator.cpp:58</a></div></div>
 <div class="ttc" id="aLogicComparator_8hpp_html"><div class="ttname"><a href="LogicComparator_8hpp.html">LogicComparator.hpp</a></div></div>
-<div class="ttc" id="aclassLogicComparator_html_a11238591d905205ad26839e1977634f5"><div class="ttname"><a href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">LogicComparator::generateReport</a></div><div class="ttdeci">void generateReport(const std::string &amp;output_file)</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00043">LogicComparator.cpp:43</a></div></div>
 <div class="ttc" id="aclassLogicComparator_html_a35436d01eabacaeb34d88883ab141613"><div class="ttname"><a href="classLogicComparator.html#a35436d01eabacaeb34d88883ab141613">LogicComparator::LogicComparator</a></div><div class="ttdeci">LogicComparator(const std::map&lt; std::string, std::string &gt; &amp;ref_outpin_map, const std::map&lt; std::string, std::string &gt; &amp;comp_outpin_map, const std::string &amp;cell_name)</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00003">LogicComparator.cpp:3</a></div></div>
 <div class="ttc" id="aclassLogicComparator_html_a4ce5e98ddd78aafb760d49f7201e78a9"><div class="ttname"><a href="classLogicComparator.html#a4ce5e98ddd78aafb760d49f7201e78a9">LogicComparator::logic</a></div><div class="ttdeci">void logic()</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00007">LogicComparator.cpp:7</a></div></div>
-<div class="ttc" id="aclassexprtk_1_1expression_html"><div class="ttname"><a href="classexprtk_1_1expression.html">exprtk::expression</a></div><div class="ttdef"><b>Definition:</b> <a href="exprtk_8hpp_source.html#l21576">exprtk.hpp:21577</a></div></div>
-<div class="ttc" id="aclassexprtk_1_1parser_html"><div class="ttname"><a href="classexprtk_1_1parser.html">exprtk::parser</a></div><div class="ttdef"><b>Definition:</b> <a href="exprtk_8hpp_source.html#l22265">exprtk.hpp:22266</a></div></div>
-<div class="ttc" id="aclassexprtk_1_1parser_html_a1d44f3682429df87cea0572774b7a0f5"><div class="ttname"><a href="classexprtk_1_1parser.html#a1d44f3682429df87cea0572774b7a0f5">exprtk::parser::compile</a></div><div class="ttdeci">bool compile(const std::string &amp;expression_string, expression&lt; T &gt; &amp;expr)</div><div class="ttdef"><b>Definition:</b> <a href="exprtk_8hpp_source.html#l24567">exprtk.hpp:24567</a></div></div>
-<div class="ttc" id="aclassexprtk_1_1symbol__table_html"><div class="ttname"><a href="classexprtk_1_1symbol__table.html">exprtk::symbol_table</a></div><div class="ttdef"><b>Definition:</b> <a href="exprtk_8hpp_source.html#l19834">exprtk.hpp:19835</a></div></div>
+<div class="ttc" id="aclassLogicComparator_html_a7c0ccb67d6136a1982ef8d5094087c73"><div class="ttname"><a href="classLogicComparator.html#a7c0ccb67d6136a1982ef8d5094087c73">LogicComparator::generateReport</a></div><div class="ttdeci">void generateReport(const std::string &amp;output_file, const std::map&lt; std::string, PinComparisonResult &gt; &amp;comparison_results)</div><div class="ttdoc">Generates a comparison report file based on cell logic comparison results.</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00169">LogicComparator.cpp:169</a></div></div>
+<div class="ttc" id="aclassLogicComparator_html_accce3c590846e3fdf1a66aaa6a5c465a"><div class="ttname"><a href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">LogicComparator::preprocessExpression</a></div><div class="ttdeci">std::string preprocessExpression(const std::string &amp;input_expr)</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00088">LogicComparator.cpp:88</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="LogicComparator_8cpp.html">LogicComparator.cpp</a></li>
-    <li class="footer">Generated on Tue Apr 1 2025 10:13:31 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Apr 1 2025 15:41:05 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

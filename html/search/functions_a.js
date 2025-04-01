@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kahan_5fsum_0',['kahan_sum',['../namespaceexprtk_1_1rtl_1_1vecops_1_1details.html#a17dd587613f597a482fb0c0f4a4a66c6',1,'exprtk::rtl::vecops::details']]]
+  ['next_0',['next',['../classGroupsIterator.html#aa858689ef1027248ac7884e494304367',1,'GroupsIterator::next()'],['../classAttributesIterator.html#a9325c74720b2abce090e7f4cb853e5c4',1,'AttributesIterator::next()'],['../classValuesIterator.html#a85a2ea0228c13127706dc6dd00d713d5',1,'ValuesIterator::next()']]]
 ];

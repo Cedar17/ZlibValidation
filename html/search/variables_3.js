@@ -1,32 +1,4 @@
 var searchData=
 [
-  ['c_0',['c',['../structexprtk_1_1rtl_1_1vecops_1_1package.html#a4f41f71fca98aa07c6146726c3647b03',1,'exprtk::rtl::vecops::package::c()'],['../structexprtk_1_1rtl_1_1io_1_1file_1_1package.html#a6d32f3317bcd103211ae91b011e900e1',1,'exprtk::rtl::io::file::package::c()']]],
-  ['c_5f_1',['c_',['../classexprtk_1_1details_1_1exprtk__final.html#ad0f03bbd6589a1e8cb130379d8248baf',1,'exprtk::details::exprtk_final']]],
-  ['cache_2',['cache',['../structexprtk_1_1details_1_1range__pack.html#a11e6d24bdc7fef8315ea8fa6a2ad1163',1,'exprtk::details::range_pack']]],
-  ['cell_5fname_5f_3',['cell_name_',['../classLogicComparator.html#a51ab3436638590be5044e84536bf9f9f',1,'LogicComparator']]],
-  ['cellname_5f_4',['cellName_',['../classModuleRewriter.html#aacc88ad73dec9641178c07cc519b4e9e',1,'ModuleRewriter']]],
-  ['childcount_5',['childCount',['../classslang_1_1syntax_1_1SyntaxListBase.html#af8b0130aa1f1a5f844b66e63aca7339d',1,'slang::syntax::SyntaxListBase']]],
-  ['cntrl_5fstruct_5flist_6',['cntrl_struct_list',['../namespaceexprtk_1_1details.html#ab58b8d51ecfd45e4adac85f364cb31b4',1,'exprtk::details']]],
-  ['cntrl_5fstruct_5flist_5fsize_7',['cntrl_struct_list_size',['../namespaceexprtk_1_1details.html#a88d481878ce8e19ebf75b4e064da75bd',1,'exprtk::details']]],
-  ['collect_5fassignments_5f_8',['collect_assignments_',['../classexprtk_1_1parser_1_1dependent__entity__collector.html#a44d988f159752e65f05151dddf7939ee',1,'exprtk::parser::dependent_entity_collector']]],
-  ['collect_5ffunctions_5f_9',['collect_functions_',['../classexprtk_1_1parser_1_1dependent__entity__collector.html#a57febfbdb7d0d4e952d87aaebe4b5371',1,'exprtk::parser::dependent_entity_collector']]],
-  ['collect_5fvariables_5f_10',['collect_variables_',['../classexprtk_1_1parser_1_1dependent__entity__collector.html#a65faa701a0ec7c1c36f9effc6fb3fe36',1,'exprtk::parser::dependent_entity_collector']]],
-  ['column_5fno_11',['column_no',['../structexprtk_1_1parser__error_1_1type.html#ab8a912d4d8632344e137c7af930e409b',1,'exprtk::parser_error::type']]],
-  ['commits_12',['commits',['../classslang_1_1syntax_1_1SyntaxRewriter.html#ab1cb6b63bf6c21049a64a20e36eaf40f',1,'slang::syntax::SyntaxRewriter']]],
-  ['commutative_5finserter_5f_13',['commutative_inserter_',['../classexprtk_1_1parser.html#a9bcfcb8634ec15f07fbac8c7fa9519d4',1,'exprtk::parser']]],
-  ['comp_5fjson_5f_14',['comp_json_',['../classLibraryComparator.html#aa15f519ce35319c0e6b0e790bd411a27',1,'LibraryComparator']]],
-  ['comp_5flib_5fpath_5f_15',['comp_lib_path_',['../classLibraryComparator.html#ad353971065caba1d6cfac194db3814c2',1,'LibraryComparator']]],
-  ['comp_5foutpin_5fmap_5f_16',['comp_outpin_map_',['../classLogicComparator.html#aa931edd41dbaaa5bb4c6cf33f06d915a',1,'LogicComparator']]],
-  ['compilation_5fcheck_5fptr_5f_17',['compilation_check_ptr_',['../classexprtk_1_1parser.html#a8a2e4197e4bda649422907d446f3195a',1,'exprtk::parser']]],
-  ['condition_18',['condition',['../structexprtk_1_1assert__check_1_1assert__context.html#ae62ec1b36d05c3c530a49f5a51c4f7ac',1,'exprtk::assert_check::assert_context']]],
-  ['condition_5f_19',['condition_',['../classexprtk_1_1details_1_1exprtk__final.html#ad25044cce19b0dcbf70f053ad211665a',1,'exprtk::details::exprtk_final::condition_()'],['../classexprtk_1_1details_1_1exprtk__final.html#aefb5304a95546a1b27449a450f50c8ef',1,'exprtk::details::exprtk_final::condition_()'],['../classexprtk_1_1details_1_1for__loop__node.html#a4ce751944e18150076bf66c4ff380d48',1,'exprtk::details::for_loop_node::condition_()'],['../classexprtk_1_1details_1_1repeat__until__loop__node.html#af6e535b731723600e65bcb60ead17741',1,'exprtk::details::repeat_until_loop_node::condition_()'],['../classexprtk_1_1details_1_1while__loop__node.html#ab3e6aad3b246a8b477bdf04335c04f1d',1,'exprtk::details::while_loop_node::condition_()']]],
-  ['consequent_5f_20',['consequent_',['../classexprtk_1_1details_1_1exprtk__final.html#a79b6fa710db4891d82b16d9dc4cc08e2',1,'exprtk::details::exprtk_final::consequent_()'],['../classexprtk_1_1details_1_1exprtk__final.html#ad9cd7f2472eb2f56acbe684b06a1b0dd',1,'exprtk::details::exprtk_final::consequent_()']]],
-  ['consequent_5fnode_5fptr_5f_21',['consequent_node_ptr_',['../classexprtk_1_1details_1_1exprtk__final.html#ac1fa3522dae0154edba7e00b28066cd6',1,'exprtk::details::exprtk_final']]],
-  ['const_5fnonzero_5fliteral_5fvalue_5finitialse_5f_22',['const_nonzero_literal_value_initialse_',['../classexprtk_1_1details_1_1exprtk__final.html#afb98ee8f15a13cf374402a3776c96708',1,'exprtk::details::exprtk_final']]],
-  ['context_5f_23',['context_',['../classexprtk_1_1details_1_1exprtk__final.html#a7b877ded446d1ea7e6d2c69a8f29cec9',1,'exprtk::details::exprtk_final']]],
-  ['control_5fblock_5f_24',['control_block_',['../classexprtk_1_1details_1_1vec__data__store.html#a65be1e0ef00fcc70d30e0a8034b8a1f9',1,'exprtk::details::vec_data_store::control_block_()'],['../classexprtk_1_1symbol__table.html#a0f63f18a3d823228bc7a76db95892f0b',1,'exprtk::symbol_table::control_block_()'],['../classexprtk_1_1expression.html#aef76587a497204543dea38271fe5121f',1,'exprtk::expression::control_block_()']]],
-  ['cp_25',['cp',['../structexprtk_1_1rtl_1_1vecops_1_1package.html#a46ce8478574ed94c987591a295059e4b',1,'exprtk::rtl::vecops::package']]],
-  ['current_5findex_5f_26',['current_index_',['../classexprtk_1_1lexer_1_1helper_1_1exprtk__final.html#af1b5977599ef6ceaaf0f6482f6e78a89',1,'exprtk::lexer::helper::exprtk_final']]],
-  ['current_5fstate_5fstack_5f_27',['current_state_stack_',['../classexprtk_1_1parser.html#a5806bff4476052446844f29956708f25',1,'exprtk::parser']]],
-  ['current_5ftoken_5f_28',['current_token_',['../classexprtk_1_1lexer_1_1parser__helper.html#ace9f159eb282ff352fc98e1a3c6b17fc',1,'exprtk::lexer::parser_helper']]]
+  ['depth_5f_0',['depth_',['../classVerilogVisitor.html#aceac12880a80019b6a438f0a1b2f9741',1,'VerilogVisitor::depth_()'],['../classModuleRewriter.html#a1ccaa865548fbf442969925a8f4063aa',1,'ModuleRewriter::depth_()']]]
 ];

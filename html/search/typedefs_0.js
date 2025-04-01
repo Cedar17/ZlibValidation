@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_5fint64_5ft_0',['_int64_t',['../namespaceexprtk_1_1details.html#a2b8b9aea8a463c9bdc41aa110815da28',1,'exprtk::details']]],
-  ['_5fuint64_5ft_1',['_uint64_t',['../namespaceexprtk_1_1details.html#aa251575709d3fcd7be5eed82741a3f9e',1,'exprtk::details']]]
+  ['json_0',['json',['../json__utils_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d',1,'json():&#160;json_utils.hpp'],['../LibFile_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d',1,'json():&#160;LibFile.hpp'],['../LibraryComparator_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d',1,'json():&#160;LibraryComparator.hpp']]]
 ];
