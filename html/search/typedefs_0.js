@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['base_0',['Base',['../structslang_1_1syntax_1_1PtrTokenOrSyntax.html#a50bce3c306a29fc93193afb978e9e941',1,'slang::syntax::PtrTokenOrSyntax::Base()'],['../structslang_1_1syntax_1_1ConstTokenOrSyntax.html#ad974c59cd235729906b80778a6aa56d1',1,'slang::syntax::ConstTokenOrSyntax::Base()']]]
+  ['_5fint64_5ft_0',['_int64_t',['../namespaceexprtk_1_1details.html#a2b8b9aea8a463c9bdc41aa110815da28',1,'exprtk::details']]],
+  ['_5fuint64_5ft_1',['_uint64_t',['../namespaceexprtk_1_1details.html#aa251575709d3fcd7be5eed82741a3f9e',1,'exprtk::details']]]
 ];

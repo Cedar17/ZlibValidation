@@ -1,0 +1,589 @@
+\hypertarget{classexprtk_1_1details_1_1generic__function__node}{}\doxysection{exprtk\+::details\+::generic\+\_\+function\+\_\+node\texorpdfstring{$<$}{<} T, Generic\+Function \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classexprtk_1_1details_1_1generic__function__node}\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+
+
+{\ttfamily \#include $<$exprtk.\+hpp$>$}
+
+
+
+Inheritance diagram for exprtk\+::details\+::generic\+\_\+function\+\_\+node\texorpdfstring{$<$}{<} T, Generic\+Function \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1details_1_1generic__function__node__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for exprtk\+::details\+::generic\+\_\+function\+\_\+node\texorpdfstring{$<$}{<} T, Generic\+Function \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1details_1_1generic__function__node__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{structexprtk_1_1type__store}{type\+\_\+store}}$<$ T $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_aeb455397647e4f4e3315d300914140e5}{type\+\_\+store\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1expression__node}{expression\+\_\+node}}$<$ T $>$ $\ast$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_aeba60a43eba98e3c73ace815b033b909}{expression\+\_\+ptr}}
+\item 
+typedef variable\+\_\+node$<$ T $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_ad8a39d24b9771f1be2d42ffe1766bee2}{variable\+\_\+node\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1vector__node}{vector\+\_\+node}}$<$ T $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a70dc9c004fa087ac97f5bca78852710c}{vector\+\_\+node\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_ad8a39d24b9771f1be2d42ffe1766bee2}{variable\+\_\+node\+\_\+t}} $\ast$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a2ccf02803b2d135d3dc5146b2ac968c0}{variable\+\_\+node\+\_\+ptr\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a70dc9c004fa087ac97f5bca78852710c}{vector\+\_\+node\+\_\+t}} $\ast$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a87c0b351f0cb63b9b7b76f6427d7323c}{vector\+\_\+node\+\_\+ptr\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1range__interface}{range\+\_\+interface}}$<$ T $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a482be02927fd4647ea28ce9ea6652508}{range\+\_\+interface\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{structexprtk_1_1details_1_1range__data__type}{range\+\_\+data\+\_\+type}}$<$ T $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a85a88bacd660f3fcb84d35e5e8f53ccd}{range\+\_\+data\+\_\+type\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1range__interface}{range\+\_\+interface}}$<$ T $>$\+::range\+\_\+t \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_adcdfba048dda007c880e57fcd1a9edab}{range\+\_\+t}}
+\item 
+typedef std\+::pair$<$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_aeba60a43eba98e3c73ace815b033b909}{expression\+\_\+ptr}}, bool $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a5fa88a4bb94bae79ec22e6b023a395e2}{branch\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1vector__holder}{vector\+\_\+holder}}$<$ T $>$ $\ast$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a415b532bf6c5962d1509906809e3963c}{vh\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1vector__view}{vector\+\_\+view}}$<$ T $>$ $\ast$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_af4d02c17bc09e8beb78a902a9b0c7376}{vecview\+\_\+t}}
+\item 
+typedef std\+::vector$<$ T $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a82675b2c52033510b0d41c78dd71c549}{tmp\+\_\+vs\+\_\+t}}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_aeb455397647e4f4e3315d300914140e5}{type\+\_\+store\+\_\+t}} $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a7a8e843d7dfae541bab3ccbc1b95a19c}{typestore\+\_\+list\+\_\+t}}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a85a88bacd660f3fcb84d35e5e8f53ccd}{range\+\_\+data\+\_\+type\+\_\+t}} $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a11523ae136bf5ddeb82d3d1f60863bc7}{range\+\_\+list\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_afe8ae6a2717683faf4f96be3d4209ded}{generic\+\_\+function\+\_\+node}} (const std\+::vector$<$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_aeba60a43eba98e3c73ace815b033b909}{expression\+\_\+ptr}} $>$ \&arg\+\_\+list, Generic\+Function $\ast$func=reinterpret\+\_\+cast$<$ Generic\+Function $\ast$ $>$(0))
+\item 
+virtual \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a50bb257bdf2cf4368ce519f269cd167e}{$\sim$generic\+\_\+function\+\_\+node}} ()
+\item 
+void \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a5d619cc270014469f2e6878043b7cc2a}{collect\+\_\+nodes}} (typename \mbox{\hyperlink{classexprtk_1_1details_1_1expression__node}{expression\+\_\+node}}$<$ T $>$\mbox{\hyperlink{classexprtk_1_1details_1_1expression__node_a32f84376907217e15200db67c02afe8b}{\+::noderef\+\_\+list\+\_\+t}} \&node\+\_\+delete\+\_\+list) \mbox{\hyperlink{exprtk_8hpp_ac8eb7683d67c0546d6f64462ba3220f3}{exprtk\+\_\+override}}
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_ae3fd583f6a58bae4044a8079cd148cd6}{node\+\_\+depth}} () const \mbox{\hyperlink{exprtk_8hpp_ac8eb7683d67c0546d6f64462ba3220f3}{exprtk\+\_\+override}} \mbox{\hyperlink{classexprtk_1_1details_1_1exprtk__final}{exprtk\+\_\+final}}
+\item 
+virtual bool \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_af3f9d7b62a5c6ebf96e3a0e28abc8739}{init\+\_\+branches}} ()
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_ad16bd811ef0fabdd03717793e49d220f}{operator$<$}} (const \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$ \&fn) const
+\item 
+T \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_acc3f445b7b8db494404e600a6d66b4e6}{value}} () const \mbox{\hyperlink{exprtk_8hpp_ac8eb7683d67c0546d6f64462ba3220f3}{exprtk\+\_\+override}}
+\item 
+\mbox{\hyperlink{classexprtk_1_1details_1_1expression__node}{expression\+\_\+node}}$<$ T $>$\mbox{\hyperlink{classexprtk_1_1details_1_1expression__node_a728c18d32fa7d7b19267bcf4c72a2c7f}{\+::node\+\_\+type}} \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a5cbc0883b604295978a1b79c84ded33f}{type}} () const \mbox{\hyperlink{exprtk_8hpp_ac8eb7683d67c0546d6f64462ba3220f3}{exprtk\+\_\+override}}
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_ada12aaf9a2577d974d19925b3f1a1565}{valid}} () const \mbox{\hyperlink{exprtk_8hpp_ac8eb7683d67c0546d6f64462ba3220f3}{exprtk\+\_\+override}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_ac5179676e3c69cf3d71cf416e184306d}{populate\+\_\+value\+\_\+list}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Generic\+Function $\ast$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a4f6eb88384b11fe5d2996dc151684136}{function\+\_\+}}
+\item 
+\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a7a8e843d7dfae541bab3ccbc1b95a19c}{typestore\+\_\+list\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a93da631a993131fceb0463a4fd4bea4f}{typestore\+\_\+list\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_aeba60a43eba98e3c73ace815b033b909}{expression\+\_\+ptr}} $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a0cb9d45477b4f6e0f90c8747161050ef}{arg\+\_\+list\+\_\+}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a5fa88a4bb94bae79ec22e6b023a395e2}{branch\+\_\+t}} $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_aa91a917f1ffc3e3e863396a71606a12e}{branch\+\_\+}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_af4d02c17bc09e8beb78a902a9b0c7376}{vecview\+\_\+t}} $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a7d1b2b082cf891d8239bfe19e70d89c4}{vv\+\_\+list\+\_\+}}
+\item 
+\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a82675b2c52033510b0d41c78dd71c549}{tmp\+\_\+vs\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_aadd393689a088d1a007f282a7ed817d8}{expr\+\_\+as\+\_\+vec1\+\_\+store\+\_\+}}
+\item 
+\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a11523ae136bf5ddeb82d3d1f60863bc7}{range\+\_\+list\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_ab0821af6e738f1cdba3d7d9bccc45030}{range\+\_\+list\+\_\+}}
+\item 
+std\+::vector$<$ std\+::size\+\_\+t $>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_adf459a882f993e62aaddd76218f4ab78}{range\+\_\+param\+\_\+list\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename Generic\+Function$>$\newline
+class exprtk\+::details\+::generic\+\_\+function\+\_\+node$<$ T, Generic\+Function $>$}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14904}{14904}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a5fa88a4bb94bae79ec22e6b023a395e2}\label{classexprtk_1_1details_1_1generic__function__node_a5fa88a4bb94bae79ec22e6b023a395e2}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!branch\_t@{branch\_t}}
+\index{branch\_t@{branch\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{branch\_t}{branch\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef std\+::pair$<$\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_aeba60a43eba98e3c73ace815b033b909}{expression\+\_\+ptr}},bool$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::branch\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14918}{14918}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_aeba60a43eba98e3c73ace815b033b909}\label{classexprtk_1_1details_1_1generic__function__node_aeba60a43eba98e3c73ace815b033b909}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!expression\_ptr@{expression\_ptr}}
+\index{expression\_ptr@{expression\_ptr}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{expression\_ptr}{expression\_ptr}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1expression__node}{expression\+\_\+node}}$<$T$>$$\ast$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::expression\+\_\+ptr}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14909}{14909}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a85a88bacd660f3fcb84d35e5e8f53ccd}\label{classexprtk_1_1details_1_1generic__function__node_a85a88bacd660f3fcb84d35e5e8f53ccd}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!range\_data\_type\_t@{range\_data\_type\_t}}
+\index{range\_data\_type\_t@{range\_data\_type\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{range\_data\_type\_t}{range\_data\_type\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef \mbox{\hyperlink{structexprtk_1_1details_1_1range__data__type}{range\+\_\+data\+\_\+type}}$<$T$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::range\+\_\+data\+\_\+type\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14915}{14915}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a482be02927fd4647ea28ce9ea6652508}\label{classexprtk_1_1details_1_1generic__function__node_a482be02927fd4647ea28ce9ea6652508}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!range\_interface\_t@{range\_interface\_t}}
+\index{range\_interface\_t@{range\_interface\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{range\_interface\_t}{range\_interface\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1range__interface}{range\+\_\+interface}}$<$T$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::range\+\_\+interface\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14914}{14914}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a11523ae136bf5ddeb82d3d1f60863bc7}\label{classexprtk_1_1details_1_1generic__function__node_a11523ae136bf5ddeb82d3d1f60863bc7}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!range\_list\_t@{range\_list\_t}}
+\index{range\_list\_t@{range\_list\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{range\_list\_t}{range\_list\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef std\+::vector$<$\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a85a88bacd660f3fcb84d35e5e8f53ccd}{range\+\_\+data\+\_\+type\+\_\+t}}$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::range\+\_\+list\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14924}{14924}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_adcdfba048dda007c880e57fcd1a9edab}\label{classexprtk_1_1details_1_1generic__function__node_adcdfba048dda007c880e57fcd1a9edab}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!range\_t@{range\_t}}
+\index{range\_t@{range\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{range\_t}{range\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1range__interface}{range\+\_\+interface}}$<$T$>$\+::range\+\_\+t \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::range\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14916}{14916}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a82675b2c52033510b0d41c78dd71c549}\label{classexprtk_1_1details_1_1generic__function__node_a82675b2c52033510b0d41c78dd71c549}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!tmp\_vs\_t@{tmp\_vs\_t}}
+\index{tmp\_vs\_t@{tmp\_vs\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{tmp\_vs\_t}{tmp\_vs\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef std\+::vector$<$T$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::tmp\+\_\+vs\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14922}{14922}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_aeb455397647e4f4e3315d300914140e5}\label{classexprtk_1_1details_1_1generic__function__node_aeb455397647e4f4e3315d300914140e5}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!type\_store\_t@{type\_store\_t}}
+\index{type\_store\_t@{type\_store\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{type\_store\_t}{type\_store\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef \mbox{\hyperlink{structexprtk_1_1type__store}{type\+\_\+store}}$<$T$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::type\+\_\+store\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14908}{14908}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a7a8e843d7dfae541bab3ccbc1b95a19c}\label{classexprtk_1_1details_1_1generic__function__node_a7a8e843d7dfae541bab3ccbc1b95a19c}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!typestore\_list\_t@{typestore\_list\_t}}
+\index{typestore\_list\_t@{typestore\_list\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{typestore\_list\_t}{typestore\_list\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef std\+::vector$<$\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_aeb455397647e4f4e3315d300914140e5}{type\+\_\+store\+\_\+t}}$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::typestore\+\_\+list\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14923}{14923}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a2ccf02803b2d135d3dc5146b2ac968c0}\label{classexprtk_1_1details_1_1generic__function__node_a2ccf02803b2d135d3dc5146b2ac968c0}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!variable\_node\_ptr\_t@{variable\_node\_ptr\_t}}
+\index{variable\_node\_ptr\_t@{variable\_node\_ptr\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{variable\_node\_ptr\_t}{variable\_node\_ptr\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_ad8a39d24b9771f1be2d42ffe1766bee2}{variable\+\_\+node\+\_\+t}}$\ast$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::variable\+\_\+node\+\_\+ptr\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14912}{14912}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_ad8a39d24b9771f1be2d42ffe1766bee2}\label{classexprtk_1_1details_1_1generic__function__node_ad8a39d24b9771f1be2d42ffe1766bee2}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!variable\_node\_t@{variable\_node\_t}}
+\index{variable\_node\_t@{variable\_node\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{variable\_node\_t}{variable\_node\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef variable\+\_\+node$<$T$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::variable\+\_\+node\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14910}{14910}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a87c0b351f0cb63b9b7b76f6427d7323c}\label{classexprtk_1_1details_1_1generic__function__node_a87c0b351f0cb63b9b7b76f6427d7323c}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!vector\_node\_ptr\_t@{vector\_node\_ptr\_t}}
+\index{vector\_node\_ptr\_t@{vector\_node\_ptr\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{vector\_node\_ptr\_t}{vector\_node\_ptr\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a70dc9c004fa087ac97f5bca78852710c}{vector\+\_\+node\+\_\+t}}$\ast$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::vector\+\_\+node\+\_\+ptr\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14913}{14913}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a70dc9c004fa087ac97f5bca78852710c}\label{classexprtk_1_1details_1_1generic__function__node_a70dc9c004fa087ac97f5bca78852710c}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!vector\_node\_t@{vector\_node\_t}}
+\index{vector\_node\_t@{vector\_node\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{vector\_node\_t}{vector\_node\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1vector__node}{vector\+\_\+node}}$<$T$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::vector\+\_\+node\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14911}{14911}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_af4d02c17bc09e8beb78a902a9b0c7376}\label{classexprtk_1_1details_1_1generic__function__node_af4d02c17bc09e8beb78a902a9b0c7376}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!vecview\_t@{vecview\_t}}
+\index{vecview\_t@{vecview\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{vecview\_t}{vecview\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1vector__view}{vector\+\_\+view}}$<$T$>$$\ast$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::vecview\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14920}{14920}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a415b532bf6c5962d1509906809e3963c}\label{classexprtk_1_1details_1_1generic__function__node_a415b532bf6c5962d1509906809e3963c}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!vh\_t@{vh\_t}}
+\index{vh\_t@{vh\_t}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{vh\_t}{vh\_t}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1vector__holder}{vector\+\_\+holder}}$<$T$>$$\ast$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::vh\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14919}{14919}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_afe8ae6a2717683faf4f96be3d4209ded}\label{classexprtk_1_1details_1_1generic__function__node_afe8ae6a2717683faf4f96be3d4209ded}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!generic\_function\_node@{generic\_function\_node}}
+\index{generic\_function\_node@{generic\_function\_node}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{generic\_function\_node()}{generic\_function\_node()}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::generic\+\_\+function\+\_\+node (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_aeba60a43eba98e3c73ace815b033b909}{expression\+\_\+ptr}} $>$ \&}]{arg\+\_\+list,  }\item[{Generic\+Function $\ast$}]{func = {\ttfamily reinterpret\+\_\+cast$<$GenericFunction$\ast$$>$(0)} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14926}{14926}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a50bb257bdf2cf4368ce519f269cd167e}\label{classexprtk_1_1details_1_1generic__function__node_a50bb257bdf2cf4368ce519f269cd167e}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!````~generic\_function\_node@{$\sim$generic\_function\_node}}
+\index{````~generic\_function\_node@{$\sim$generic\_function\_node}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$generic\_function\_node()}{~generic\_function\_node()}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+virtual \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::$\sim$\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{generic\+\_\+function\+\_\+node}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14932}{14932}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1details_1_1generic__function__node_a50bb257bdf2cf4368ce519f269cd167e_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a5d619cc270014469f2e6878043b7cc2a}\label{classexprtk_1_1details_1_1generic__function__node_a5d619cc270014469f2e6878043b7cc2a}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!collect\_nodes@{collect\_nodes}}
+\index{collect\_nodes@{collect\_nodes}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{collect\_nodes()}{collect\_nodes()}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::collect\+\_\+nodes (\begin{DoxyParamCaption}\item[{typename \mbox{\hyperlink{classexprtk_1_1details_1_1expression__node}{expression\+\_\+node}}$<$ T $>$\mbox{\hyperlink{classexprtk_1_1details_1_1expression__node_a32f84376907217e15200db67c02afe8b}{\+::noderef\+\_\+list\+\_\+t}} \&}]{node\+\_\+delete\+\_\+list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14945}{14945}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1details_1_1generic__function__node_a5d619cc270014469f2e6878043b7cc2a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_af3f9d7b62a5c6ebf96e3a0e28abc8739}\label{classexprtk_1_1details_1_1generic__function__node_af3f9d7b62a5c6ebf96e3a0e28abc8739}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!init\_branches@{init\_branches}}
+\index{init\_branches@{init\_branches}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{init\_branches()}{init\_branches()}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+virtual bool \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::init\+\_\+branches (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14955}{14955}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1details_1_1generic__function__node_af3f9d7b62a5c6ebf96e3a0e28abc8739_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_ae3fd583f6a58bae4044a8079cd148cd6}\label{classexprtk_1_1details_1_1generic__function__node_ae3fd583f6a58bae4044a8079cd148cd6}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!node\_depth@{node\_depth}}
+\index{node\_depth@{node\_depth}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{node\_depth()}{node\_depth()}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::node\+\_\+depth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{structexprtk_1_1details_1_1node__depth__base_a3ac5cb687a6d01b1698150ff34e493ff}{exprtk\+::details\+::node\+\_\+depth\+\_\+base$<$ expression\+\_\+node$<$ T $>$ $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l14950}{14950}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1details_1_1generic__function__node_ae3fd583f6a58bae4044a8079cd148cd6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_ad16bd811ef0fabdd03717793e49d220f}\label{classexprtk_1_1details_1_1generic__function__node_ad16bd811ef0fabdd03717793e49d220f}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$ \&}]{fn }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15053}{15053}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_ac5179676e3c69cf3d71cf416e184306d}\label{classexprtk_1_1details_1_1generic__function__node_ac5179676e3c69cf3d71cf416e184306d}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!populate\_value\_list@{populate\_value\_list}}
+\index{populate\_value\_list@{populate\_value\_list}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{populate\_value\_list()}{populate\_value\_list()}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+virtual bool \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::populate\+\_\+value\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classexprtk_1_1details_1_1exprtk__final_a67f6e32551308a37853a04495613f520}{exprtk\+::details\+::exprtk\+\_\+final$<$ T $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15082}{15082}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1details_1_1generic__function__node_ac5179676e3c69cf3d71cf416e184306d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1details_1_1generic__function__node_ac5179676e3c69cf3d71cf416e184306d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a5cbc0883b604295978a1b79c84ded33f}\label{classexprtk_1_1details_1_1generic__function__node_a5cbc0883b604295978a1b79c84ded33f}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!type@{type}}
+\index{type@{type}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{type()}{type()}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+\mbox{\hyperlink{classexprtk_1_1details_1_1expression__node}{expression\+\_\+node}}$<$ T $>$\mbox{\hyperlink{classexprtk_1_1details_1_1expression__node_a728c18d32fa7d7b19267bcf4c72a2c7f}{\+::node\+\_\+type}} \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classexprtk_1_1details_1_1expression__node_a105bfb3187351f863fdba3cb305ef734}{exprtk\+::details\+::expression\+\_\+node$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classexprtk_1_1details_1_1multimode__genfunction__node_a4119dd7e86e4db52fd650b5208eebf79}{exprtk\+::details\+::multimode\+\_\+genfunction\+\_\+node$<$ T, Generic\+Function $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15070}{15070}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_ada12aaf9a2577d974d19925b3f1a1565}\label{classexprtk_1_1details_1_1generic__function__node_ada12aaf9a2577d974d19925b3f1a1565}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!valid@{valid}}
+\index{valid@{valid}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{valid()}{valid()}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::valid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classexprtk_1_1details_1_1expression__node_abf9a6b1e8155fb87ae59e434acc670b4}{exprtk\+::details\+::expression\+\_\+node$<$ T $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15075}{15075}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1details_1_1generic__function__node_ada12aaf9a2577d974d19925b3f1a1565_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_acc3f445b7b8db494404e600a6d66b4e6}\label{classexprtk_1_1details_1_1generic__function__node_acc3f445b7b8db494404e600a6d66b4e6}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!value@{value}}
+\index{value@{value}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+T \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classexprtk_1_1details_1_1expression__node_a0569d2aa1a68cbf06e69ff5564a92392}{exprtk\+::details\+::expression\+\_\+node$<$ T $>$}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classexprtk_1_1details_1_1multimode__genfunction__node_afc16ccd1ac23aa22131ff670889047f6}{exprtk\+::details\+::multimode\+\_\+genfunction\+\_\+node$<$ T, Generic\+Function $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15058}{15058}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1details_1_1generic__function__node_acc3f445b7b8db494404e600a6d66b4e6_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a0cb9d45477b4f6e0f90c8747161050ef}\label{classexprtk_1_1details_1_1generic__function__node_a0cb9d45477b4f6e0f90c8747161050ef}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!arg\_list\_@{arg\_list\_}}
+\index{arg\_list\_@{arg\_list\_}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{arg\_list\_}{arg\_list\_}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+std\+::vector$<$\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_aeba60a43eba98e3c73ace815b033b909}{expression\+\_\+ptr}}$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::arg\+\_\+list\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15134}{15134}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_aa91a917f1ffc3e3e863396a71606a12e}\label{classexprtk_1_1details_1_1generic__function__node_aa91a917f1ffc3e3e863396a71606a12e}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!branch\_@{branch\_}}
+\index{branch\_@{branch\_}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{branch\_}{branch\_}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+std\+::vector$<$\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a5fa88a4bb94bae79ec22e6b023a395e2}{branch\+\_\+t}}$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::branch\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15135}{15135}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_aadd393689a088d1a007f282a7ed817d8}\label{classexprtk_1_1details_1_1generic__function__node_aadd393689a088d1a007f282a7ed817d8}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!expr\_as\_vec1\_store\_@{expr\_as\_vec1\_store\_}}
+\index{expr\_as\_vec1\_store\_@{expr\_as\_vec1\_store\_}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{expr\_as\_vec1\_store\_}{expr\_as\_vec1\_store\_}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a82675b2c52033510b0d41c78dd71c549}{tmp\+\_\+vs\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::expr\+\_\+as\+\_\+vec1\+\_\+store\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15137}{15137}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a4f6eb88384b11fe5d2996dc151684136}\label{classexprtk_1_1details_1_1generic__function__node_a4f6eb88384b11fe5d2996dc151684136}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!function\_@{function\_}}
+\index{function\_@{function\_}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{function\_}{function\_}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+Generic\+Function$\ast$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::function\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15129}{15129}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_ab0821af6e738f1cdba3d7d9bccc45030}\label{classexprtk_1_1details_1_1generic__function__node_ab0821af6e738f1cdba3d7d9bccc45030}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!range\_list\_@{range\_list\_}}
+\index{range\_list\_@{range\_list\_}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{range\_list\_}{range\_list\_}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a11523ae136bf5ddeb82d3d1f60863bc7}{range\+\_\+list\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::range\+\_\+list\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15138}{15138}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_adf459a882f993e62aaddd76218f4ab78}\label{classexprtk_1_1details_1_1generic__function__node_adf459a882f993e62aaddd76218f4ab78}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!range\_param\_list\_@{range\_param\_list\_}}
+\index{range\_param\_list\_@{range\_param\_list\_}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{range\_param\_list\_}{range\_param\_list\_}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+std\+::vector$<$std\+::size\+\_\+t$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::range\+\_\+param\+\_\+list\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15139}{15139}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a93da631a993131fceb0463a4fd4bea4f}\label{classexprtk_1_1details_1_1generic__function__node_a93da631a993131fceb0463a4fd4bea4f}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!typestore\_list\_@{typestore\_list\_}}
+\index{typestore\_list\_@{typestore\_list\_}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{typestore\_list\_}{typestore\_list\_}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_a7a8e843d7dfae541bab3ccbc1b95a19c}{typestore\+\_\+list\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::typestore\+\_\+list\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15130}{15130}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1details_1_1generic__function__node_a7d1b2b082cf891d8239bfe19e70d89c4}\label{classexprtk_1_1details_1_1generic__function__node_a7d1b2b082cf891d8239bfe19e70d89c4}} 
+\index{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}!vv\_list\_@{vv\_list\_}}
+\index{vv\_list\_@{vv\_list\_}!exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$@{exprtk::details::generic\_function\_node$<$ T, GenericFunction $>$}}
+\doxysubsubsection{\texorpdfstring{vv\_list\_}{vv\_list\_}}
+{\footnotesize\ttfamily template$<$typename T , typename Generic\+Function $>$ \\
+std\+::vector$<$\mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node_af4d02c17bc09e8beb78a902a9b0c7376}{vecview\+\_\+t}}$>$ \mbox{\hyperlink{classexprtk_1_1details_1_1generic__function__node}{exprtk\+::details\+::generic\+\_\+function\+\_\+node}}$<$ T, Generic\+Function $>$\+::vv\+\_\+list\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l15136}{15136}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{exprtk_8hpp}{exprtk.\+hpp}}\end{DoxyCompactItemize}

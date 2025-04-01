@@ -1,0 +1,812 @@
+\hypertarget{classexprtk_1_1function__compositor}{}\doxysection{exprtk\+::function\+\_\+compositor\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classexprtk_1_1function__compositor}\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+
+
+{\ttfamily \#include $<$exprtk.\+hpp$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1base__func}{base\+\_\+func}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1func__0param}{func\+\_\+0param}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1func__1param}{func\+\_\+1param}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1func__2param}{func\+\_\+2param}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1func__3param}{func\+\_\+3param}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1func__4param}{func\+\_\+4param}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1func__5param}{func\+\_\+5param}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1func__6param}{func\+\_\+6param}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1function}{function}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1scoped__bft}{scoped\+\_\+bft}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$ \mbox{\hyperlink{classexprtk_1_1function__compositor_ae2dbc29983ea08b812936e470078ed65}{expression\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1symbol__table}{exprtk\+::symbol\+\_\+table}}$<$ T $>$ \mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$ \mbox{\hyperlink{classexprtk_1_1function__compositor_a3fbfe82962dcafab1e7a63d01ccf1954}{parser\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1parser_1_1settings__store}{parser\+\_\+t\+::settings\+\_\+store}} \mbox{\hyperlink{classexprtk_1_1function__compositor_aa310b4352ab74d6209e0f6ee5b3222b9}{settings\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexprtk_1_1function__compositor_a4d3a5c6eefbac7b35fa0d06eac0ac760}{function\+\_\+compositor}} ()
+\item 
+\mbox{\hyperlink{classexprtk_1_1function__compositor_ad56ce0788473d28d0c93a0530422bc5a}{function\+\_\+compositor}} (const \mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} \&st)
+\item 
+\mbox{\hyperlink{classexprtk_1_1function__compositor_a891d4926609b118bff7ac9add6cce118}{$\sim$function\+\_\+compositor}} ()
+\item 
+\mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1function__compositor_a01437c7836a7801f622e62f35f1db5e9}{symbol\+\_\+table}} ()
+\item 
+const \mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1function__compositor_af8f38882b2ffb0b79df353ab981807a9}{symbol\+\_\+table}} () const
+\item 
+void \mbox{\hyperlink{classexprtk_1_1function__compositor_a60751253b744cf51e12541de61a0dc10}{add\+\_\+auxiliary\+\_\+symtab}} (\mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} \&symtab)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1function__compositor_acf29a22d971947c56cabeb109aa9b48a}{load\+\_\+variables}} (const bool load=true)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1function__compositor_ab5496acee8bca279b4de533c7eb2526f}{load\+\_\+vectors}} (const bool load=true)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1function__compositor_a87175df793ad58106f623a2f8ddbb40b}{register\+\_\+loop\+\_\+runtime\+\_\+check}} (\mbox{\hyperlink{structexprtk_1_1loop__runtime__check}{loop\+\_\+runtime\+\_\+check}} \&lrtchk)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1function__compositor_a4a5985797f7052116e8e790f50407011}{register\+\_\+vector\+\_\+access\+\_\+runtime\+\_\+check}} (\mbox{\hyperlink{structexprtk_1_1vector__access__runtime__check}{vector\+\_\+access\+\_\+runtime\+\_\+check}} \&vartchk)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1function__compositor_af6b0a5ea6fbc49f50dbbb5231c98da96}{register\+\_\+compilation\+\_\+timeout\+\_\+check}} (\mbox{\hyperlink{structexprtk_1_1compilation__check}{compilation\+\_\+check}} \&compchk)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1function__compositor_a6e01fbc61b649f0c53d8f1deae0d9de5}{clear\+\_\+loop\+\_\+runtime\+\_\+check}} ()
+\item 
+void \mbox{\hyperlink{classexprtk_1_1function__compositor_a35605c5b38d4879a7964e7e155b12496}{clear\+\_\+vector\+\_\+access\+\_\+runtime\+\_\+check}} ()
+\item 
+void \mbox{\hyperlink{classexprtk_1_1function__compositor_a13554f7627f863a43a50822ef28208c2}{clear\+\_\+compilation\+\_\+timeout\+\_\+check}} ()
+\item 
+void \mbox{\hyperlink{classexprtk_1_1function__compositor_ab70ab390ef7525d9d344199d40f2bedc}{clear}} ()
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor_a72cdc6f71ff218ce769c5a04069658d7}{add}} (const \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1function}{function}} \&f, const bool override=false)
+\item 
+std\+::string \mbox{\hyperlink{classexprtk_1_1function__compositor_a6a9df33a58b53ea73a1142f46eb8d615}{error}} () const
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1function__compositor_aeb230bc65027b5a009b1d4d7c5d944ea}{error\+\_\+count}} () const
+\item 
+\mbox{\hyperlink{structexprtk_1_1parser__error_1_1type}{parser\+\_\+error\+::type}} \mbox{\hyperlink{classexprtk_1_1function__compositor_a74f663208371d52aa45ef09919c022f0}{get\+\_\+error}} (const std\+::size\+\_\+t \&index) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::map$<$ std\+::string, \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1base__func}{base\+\_\+func}} $\ast$ $>$ \mbox{\hyperlink{classexprtk_1_1function__compositor_aa096506515971448d991520ed4c6772e}{funcparam\+\_\+t}}
+\item 
+typedef const T \& \mbox{\hyperlink{classexprtk_1_1function__compositor_a3e0c882c21efcf88c3b5d3a194f02071}{type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexprtk_1_1function__compositor_ab3f49b65dbc605aaf2ccf1d7ccf8cd03}{def\+\_\+fp\+\_\+retval}} (0) def\+\_\+fp\+\_\+retval(1) def\+\_\+fp\+\_\+retval(2) def\+\_\+fp\+\_\+retval(3) def\+\_\+fp\+\_\+retval(4) def\+\_\+fp\+\_\+retval(5) def\+\_\+fp\+\_\+retval(6) template$<$ typename Allocator
+\item 
+{\footnotesize template$<$typename , typename $>$ }\\class Sequence inline bool \mbox{\hyperlink{classexprtk_1_1function__compositor_af7df26d87c906e510d6d626dfaef91f3}{add}} (const std\+::string \&name, const std\+::string \&\mbox{\hyperlink{classexprtk_1_1expression}{expression}}, const Sequence$<$ std\+::string, Allocator $>$ \&var\+\_\+list, const bool override=false)
+\item 
+{\footnotesize template$<$typename Allocator , template$<$ typename, typename $>$ class Sequence$>$ }\\bool \mbox{\hyperlink{classexprtk_1_1function__compositor_ab7ae4a38057229b2dfc0cba73b696cf5}{compile\+\_\+expression}} (const std\+::string \&name, const std\+::string \&\mbox{\hyperlink{classexprtk_1_1expression}{expression}}, const Sequence$<$ std\+::string, Allocator $>$ \&input\+\_\+var\+\_\+list, bool return\+\_\+present=false)
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor_af91e577a76c40046219bbee3be5fbf44}{symbol\+\_\+used}} (const std\+::string \&symbol) const
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor_af1871b08bc658b6327e3846c7b63c805}{valid}} (const std\+::string \&name, const std\+::size\+\_\+t \&arg\+\_\+count) const
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor_a09178d8af3e30039299e03bcc68c17b3}{forward}} (const std\+::string \&name, const std\+::size\+\_\+t \&arg\+\_\+count, \mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} \&sym\+\_\+table, const bool ret\+\_\+present=false)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1function__compositor_abf50a6aa4968d2e2fd33e4ebcaab3495}{remove}} (const std\+::string \&name, const std\+::size\+\_\+t \&arg\+\_\+count)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static T \mbox{\hyperlink{classexprtk_1_1function__compositor_a91559f1be9c1bb88aa7e591fc493bcd8}{return\+\_\+value}} (\mbox{\hyperlink{classexprtk_1_1function__compositor_ae2dbc29983ea08b812936e470078ed65}{expression\+\_\+t}} \&e)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1function__compositor_ad96139b4b699b31f488778f2345d9268}{symbol\+\_\+table\+\_\+}}
+\item 
+\mbox{\hyperlink{classexprtk_1_1function__compositor_a3fbfe82962dcafab1e7a63d01ccf1954}{parser\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1function__compositor_a96eb61133923334808543c92962d7c11}{parser\+\_\+}}
+\item 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{classexprtk_1_1function__compositor_ae2dbc29983ea08b812936e470078ed65}{expression\+\_\+t}} $>$ \mbox{\hyperlink{classexprtk_1_1function__compositor_a91ba3785033550fb5e270a19d623c2c2}{expr\+\_\+map\+\_\+}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classexprtk_1_1function__compositor_aa096506515971448d991520ed4c6772e}{funcparam\+\_\+t}} $>$ \mbox{\hyperlink{classexprtk_1_1function__compositor_a3f6b802965a824bc944e5f3fc9841a85}{fp\+\_\+map\+\_\+}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} $\ast$ $>$ \mbox{\hyperlink{classexprtk_1_1function__compositor_a1f5e16048fea44d4d579b8661977322d}{auxiliary\+\_\+symtab\+\_\+list\+\_\+}}
+\item 
+std\+::deque$<$ \mbox{\hyperlink{structexprtk_1_1parser__error_1_1type}{parser\+\_\+error\+::type}} $>$ \mbox{\hyperlink{classexprtk_1_1function__compositor_ab46527b3d0601cbbda3c1262eb3e3a15}{error\+\_\+list\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor_a672fd3a0c33f780d2427fb3f27732355}{load\+\_\+variables\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor_a35753dff10da98d61782dd1816e6b658}{load\+\_\+vectors\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class exprtk\+::function\+\_\+compositor$<$ T $>$}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l42748}{42748}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_ae2dbc29983ea08b812936e470078ed65}\label{classexprtk_1_1function__compositor_ae2dbc29983ea08b812936e470078ed65}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!expression\_t@{expression\_t}}
+\index{expression\_t@{expression\_t}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{expression\_t}{expression\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$T$>$ \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::expression\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l42752}{42752}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_aa096506515971448d991520ed4c6772e}\label{classexprtk_1_1function__compositor_aa096506515971448d991520ed4c6772e}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!funcparam\_t@{funcparam\_t}}
+\index{funcparam\_t@{funcparam\_t}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{funcparam\_t}{funcparam\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef std\+::map$<$std\+::string,\mbox{\hyperlink{structexprtk_1_1function__compositor_1_1base__func}{base\+\_\+func}}$\ast$$>$ \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::funcparam\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43184}{43184}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a3fbfe82962dcafab1e7a63d01ccf1954}\label{classexprtk_1_1function__compositor_a3fbfe82962dcafab1e7a63d01ccf1954}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!parser\_t@{parser\_t}}
+\index{parser\_t@{parser\_t}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{parser\_t}{parser\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$T$>$ \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::parser\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l42754}{42754}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_aa310b4352ab74d6209e0f6ee5b3222b9}\label{classexprtk_1_1function__compositor_aa310b4352ab74d6209e0f6ee5b3222b9}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!settings\_t@{settings\_t}}
+\index{settings\_t@{settings\_t}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{settings\_t}{settings\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1parser_1_1settings__store}{parser\+\_\+t\+::settings\+\_\+store}} \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::settings\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l42755}{42755}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}\label{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!symbol\_table\_t@{symbol\_table\_t}}
+\index{symbol\_table\_t@{symbol\_table\_t}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{symbol\_table\_t}{symbol\_table\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1symbol__table}{exprtk\+::symbol\+\_\+table}}$<$T$>$ \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::symbol\+\_\+table\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l42753}{42753}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a3e0c882c21efcf88c3b5d3a194f02071}\label{classexprtk_1_1function__compositor_a3e0c882c21efcf88c3b5d3a194f02071}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!type@{type}}
+\index{type@{type}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef const T\& \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43186}{43186}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a4d3a5c6eefbac7b35fa0d06eac0ac760}\label{classexprtk_1_1function__compositor_a4d3a5c6eefbac7b35fa0d06eac0ac760}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!function\_compositor@{function\_compositor}}
+\index{function\_compositor@{function\_compositor}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{function\_compositor()}{function\_compositor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::function\+\_\+compositor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43386}{43386}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_ad56ce0788473d28d0c93a0530422bc5a}\label{classexprtk_1_1function__compositor_ad56ce0788473d28d0c93a0530422bc5a}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!function\_compositor@{function\_compositor}}
+\index{function\_compositor@{function\_compositor}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{function\_compositor()}{function\_compositor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::function\+\_\+compositor (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} \&}]{st }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43394}{43394}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a891d4926609b118bff7ac9add6cce118}\label{classexprtk_1_1function__compositor_a891d4926609b118bff7ac9add6cce118}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!````~function\_compositor@{$\sim$function\_compositor}}
+\index{````~function\_compositor@{$\sim$function\_compositor}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$function\_compositor()}{~function\_compositor()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{classexprtk_1_1function__compositor}{function\+\_\+compositor}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43403}{43403}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a891d4926609b118bff7ac9add6cce118_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a72cdc6f71ff218ce769c5a04069658d7}\label{classexprtk_1_1function__compositor_a72cdc6f71ff218ce769c5a04069658d7}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!add@{add}}
+\index{add@{add}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::add (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structexprtk_1_1function__compositor_1_1function}{function}} \&}]{f,  }\item[{const bool}]{override = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43487}{43487}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a72cdc6f71ff218ce769c5a04069658d7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_af7df26d87c906e510d6d626dfaef91f3}\label{classexprtk_1_1function__compositor_af7df26d87c906e510d6d626dfaef91f3}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!add@{add}}
+\index{add@{add}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename , typename $>$ \\
+class Sequence inline bool \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::add (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{expression,  }\item[{const Sequence$<$ std\+::string, Allocator $>$ \&}]{var\+\_\+list,  }\item[{const bool}]{override = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43347}{43347}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_af7df26d87c906e510d6d626dfaef91f3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_af7df26d87c906e510d6d626dfaef91f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a60751253b744cf51e12541de61a0dc10}\label{classexprtk_1_1function__compositor_a60751253b744cf51e12541de61a0dc10}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!add\_auxiliary\_symtab@{add\_auxiliary\_symtab}}
+\index{add\_auxiliary\_symtab@{add\_auxiliary\_symtab}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{add\_auxiliary\_symtab()}{add\_auxiliary\_symtab()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::add\+\_\+auxiliary\+\_\+symtab (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} \&}]{symtab }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43418}{43418}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_ab70ab390ef7525d9d344199d40f2bedc}\label{classexprtk_1_1function__compositor_ab70ab390ef7525d9d344199d40f2bedc}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!clear@{clear}}
+\index{clear@{clear}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43463}{43463}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_ab70ab390ef7525d9d344199d40f2bedc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_ab70ab390ef7525d9d344199d40f2bedc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a13554f7627f863a43a50822ef28208c2}\label{classexprtk_1_1function__compositor_a13554f7627f863a43a50822ef28208c2}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!clear\_compilation\_timeout\_check@{clear\_compilation\_timeout\_check}}
+\index{clear\_compilation\_timeout\_check@{clear\_compilation\_timeout\_check}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear\_compilation\_timeout\_check()}{clear\_compilation\_timeout\_check()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::clear\+\_\+compilation\+\_\+timeout\+\_\+check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43458}{43458}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a13554f7627f863a43a50822ef28208c2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a13554f7627f863a43a50822ef28208c2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a6e01fbc61b649f0c53d8f1deae0d9de5}\label{classexprtk_1_1function__compositor_a6e01fbc61b649f0c53d8f1deae0d9de5}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!clear\_loop\_runtime\_check@{clear\_loop\_runtime\_check}}
+\index{clear\_loop\_runtime\_check@{clear\_loop\_runtime\_check}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear\_loop\_runtime\_check()}{clear\_loop\_runtime\_check()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::clear\+\_\+loop\+\_\+runtime\+\_\+check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43448}{43448}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a6e01fbc61b649f0c53d8f1deae0d9de5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a6e01fbc61b649f0c53d8f1deae0d9de5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a35605c5b38d4879a7964e7e155b12496}\label{classexprtk_1_1function__compositor_a35605c5b38d4879a7964e7e155b12496}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!clear\_vector\_access\_runtime\_check@{clear\_vector\_access\_runtime\_check}}
+\index{clear\_vector\_access\_runtime\_check@{clear\_vector\_access\_runtime\_check}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear\_vector\_access\_runtime\_check()}{clear\_vector\_access\_runtime\_check()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::clear\+\_\+vector\+\_\+access\+\_\+runtime\+\_\+check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43453}{43453}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a35605c5b38d4879a7964e7e155b12496_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a35605c5b38d4879a7964e7e155b12496_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_ab7ae4a38057229b2dfc0cba73b696cf5}\label{classexprtk_1_1function__compositor_ab7ae4a38057229b2dfc0cba73b696cf5}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!compile\_expression@{compile\_expression}}
+\index{compile\_expression@{compile\_expression}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{compile\_expression()}{compile\_expression()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename Allocator , template$<$ typename, typename $>$ class Sequence$>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::compile\+\_\+expression (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{expression,  }\item[{const Sequence$<$ std\+::string, Allocator $>$ \&}]{input\+\_\+var\+\_\+list,  }\item[{bool}]{return\+\_\+present = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43521}{43521}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_ab7ae4a38057229b2dfc0cba73b696cf5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_ab7ae4a38057229b2dfc0cba73b696cf5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_ab3f49b65dbc605aaf2ccf1d7ccf8cd03}\label{classexprtk_1_1function__compositor_ab3f49b65dbc605aaf2ccf1d7ccf8cd03}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!def\_fp\_retval@{def\_fp\_retval}}
+\index{def\_fp\_retval@{def\_fp\_retval}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{def\_fp\_retval()}{def\_fp\_retval()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::def\+\_\+fp\+\_\+retval (\begin{DoxyParamCaption}\item[{0}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a6a9df33a58b53ea73a1142f46eb8d615}\label{classexprtk_1_1function__compositor_a6a9df33a58b53ea73a1142f46eb8d615}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!error@{error}}
+\index{error@{error}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{error()}{error()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43492}{43492}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a6a9df33a58b53ea73a1142f46eb8d615_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_aeb230bc65027b5a009b1d4d7c5d944ea}\label{classexprtk_1_1function__compositor_aeb230bc65027b5a009b1d4d7c5d944ea}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!error\_count@{error\_count}}
+\index{error\_count@{error\_count}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{error\_count()}{error\_count()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::error\+\_\+count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43502}{43502}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a09178d8af3e30039299e03bcc68c17b3}\label{classexprtk_1_1function__compositor_a09178d8af3e30039299e03bcc68c17b3}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!forward@{forward}}
+\index{forward@{forward}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::forward (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::size\+\_\+t \&}]{arg\+\_\+count,  }\item[{\mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} \&}]{sym\+\_\+table,  }\item[{const bool}]{ret\+\_\+present = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43667}{43667}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a09178d8af3e30039299e03bcc68c17b3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a09178d8af3e30039299e03bcc68c17b3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a74f663208371d52aa45ef09919c022f0}\label{classexprtk_1_1function__compositor_a74f663208371d52aa45ef09919c022f0}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!get\_error@{get\_error}}
+\index{get\_error@{get\_error}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_error()}{get\_error()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structexprtk_1_1parser__error_1_1type}{parser\+\_\+error\+::type}} \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::get\+\_\+error (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43507}{43507}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_acf29a22d971947c56cabeb109aa9b48a}\label{classexprtk_1_1function__compositor_acf29a22d971947c56cabeb109aa9b48a}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!load\_variables@{load\_variables}}
+\index{load\_variables@{load\_variables}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{load\_variables()}{load\_variables()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::load\+\_\+variables (\begin{DoxyParamCaption}\item[{const bool}]{load = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43423}{43423}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_ab5496acee8bca279b4de533c7eb2526f}\label{classexprtk_1_1function__compositor_ab5496acee8bca279b4de533c7eb2526f}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!load\_vectors@{load\_vectors}}
+\index{load\_vectors@{load\_vectors}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{load\_vectors()}{load\_vectors()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::load\+\_\+vectors (\begin{DoxyParamCaption}\item[{const bool}]{load = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43428}{43428}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_af6b0a5ea6fbc49f50dbbb5231c98da96}\label{classexprtk_1_1function__compositor_af6b0a5ea6fbc49f50dbbb5231c98da96}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!register\_compilation\_timeout\_check@{register\_compilation\_timeout\_check}}
+\index{register\_compilation\_timeout\_check@{register\_compilation\_timeout\_check}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{register\_compilation\_timeout\_check()}{register\_compilation\_timeout\_check()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::register\+\_\+compilation\+\_\+timeout\+\_\+check (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexprtk_1_1compilation__check}{compilation\+\_\+check}} \&}]{compchk }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43443}{43443}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_af6b0a5ea6fbc49f50dbbb5231c98da96_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a87175df793ad58106f623a2f8ddbb40b}\label{classexprtk_1_1function__compositor_a87175df793ad58106f623a2f8ddbb40b}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!register\_loop\_runtime\_check@{register\_loop\_runtime\_check}}
+\index{register\_loop\_runtime\_check@{register\_loop\_runtime\_check}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{register\_loop\_runtime\_check()}{register\_loop\_runtime\_check()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::register\+\_\+loop\+\_\+runtime\+\_\+check (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexprtk_1_1loop__runtime__check}{loop\+\_\+runtime\+\_\+check}} \&}]{lrtchk }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43433}{43433}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a87175df793ad58106f623a2f8ddbb40b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a4a5985797f7052116e8e790f50407011}\label{classexprtk_1_1function__compositor_a4a5985797f7052116e8e790f50407011}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!register\_vector\_access\_runtime\_check@{register\_vector\_access\_runtime\_check}}
+\index{register\_vector\_access\_runtime\_check@{register\_vector\_access\_runtime\_check}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{register\_vector\_access\_runtime\_check()}{register\_vector\_access\_runtime\_check()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::register\+\_\+vector\+\_\+access\+\_\+runtime\+\_\+check (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexprtk_1_1vector__access__runtime__check}{vector\+\_\+access\+\_\+runtime\+\_\+check}} \&}]{vartchk }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43438}{43438}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_a4a5985797f7052116e8e790f50407011_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_abf50a6aa4968d2e2fd33e4ebcaab3495}\label{classexprtk_1_1function__compositor_abf50a6aa4968d2e2fd33e4ebcaab3495}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!remove@{remove}}
+\index{remove@{remove}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::remove (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::size\+\_\+t \&}]{arg\+\_\+count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43693}{43693}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_abf50a6aa4968d2e2fd33e4ebcaab3495_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_abf50a6aa4968d2e2fd33e4ebcaab3495_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a91559f1be9c1bb88aa7e591fc493bcd8}\label{classexprtk_1_1function__compositor_a91559f1be9c1bb88aa7e591fc493bcd8}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!return\_value@{return\_value}}
+\index{return\_value@{return\_value}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{return\_value()}{return\_value()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+static T \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::return\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classexprtk_1_1function__compositor_ae2dbc29983ea08b812936e470078ed65}{expression\+\_\+t}} \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43307}{43307}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a01437c7836a7801f622e62f35f1db5e9}\label{classexprtk_1_1function__compositor_a01437c7836a7801f622e62f35f1db5e9}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!symbol\_table@{symbol\_table}}
+\index{symbol\_table@{symbol\_table}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{symbol\_table()}{symbol\_table()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::symbol\+\_\+table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43408}{43408}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_af8f38882b2ffb0b79df353ab981807a9}\label{classexprtk_1_1function__compositor_af8f38882b2ffb0b79df353ab981807a9}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!symbol\_table@{symbol\_table}}
+\index{symbol\_table@{symbol\_table}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{symbol\_table()}{symbol\_table()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const \mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::symbol\+\_\+table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43413}{43413}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_af91e577a76c40046219bbee3be5fbf44}\label{classexprtk_1_1function__compositor_af91e577a76c40046219bbee3be5fbf44}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!symbol\_used@{symbol\_used}}
+\index{symbol\_used@{symbol\_used}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{symbol\_used()}{symbol\_used()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::symbol\+\_\+used (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43643}{43643}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_af91e577a76c40046219bbee3be5fbf44_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_af91e577a76c40046219bbee3be5fbf44_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_af1871b08bc658b6327e3846c7b63c805}\label{classexprtk_1_1function__compositor_af1871b08bc658b6327e3846c7b63c805}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!valid@{valid}}
+\index{valid@{valid}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{valid()}{valid()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::valid (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::size\+\_\+t \&}]{arg\+\_\+count }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43654}{43654}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_af1871b08bc658b6327e3846c7b63c805_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1function__compositor_af1871b08bc658b6327e3846c7b63c805_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a1f5e16048fea44d4d579b8661977322d}\label{classexprtk_1_1function__compositor_a1f5e16048fea44d4d579b8661977322d}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!auxiliary\_symtab\_list\_@{auxiliary\_symtab\_list\_}}
+\index{auxiliary\_symtab\_list\_@{auxiliary\_symtab\_list\_}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{auxiliary\_symtab\_list\_}{auxiliary\_symtab\_list\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}}$\ast$$>$ \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::auxiliary\+\_\+symtab\+\_\+list\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43722}{43722}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_ab46527b3d0601cbbda3c1262eb3e3a15}\label{classexprtk_1_1function__compositor_ab46527b3d0601cbbda3c1262eb3e3a15}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!error\_list\_@{error\_list\_}}
+\index{error\_list\_@{error\_list\_}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{error\_list\_}{error\_list\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::deque$<$\mbox{\hyperlink{structexprtk_1_1parser__error_1_1type}{parser\+\_\+error\+::type}}$>$ \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::error\+\_\+list\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43723}{43723}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a91ba3785033550fb5e270a19d623c2c2}\label{classexprtk_1_1function__compositor_a91ba3785033550fb5e270a19d623c2c2}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!expr\_map\_@{expr\_map\_}}
+\index{expr\_map\_@{expr\_map\_}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{expr\_map\_}{expr\_map\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::map$<$std\+::string,\mbox{\hyperlink{classexprtk_1_1function__compositor_ae2dbc29983ea08b812936e470078ed65}{expression\+\_\+t}}$>$ \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::expr\+\_\+map\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43720}{43720}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a3f6b802965a824bc944e5f3fc9841a85}\label{classexprtk_1_1function__compositor_a3f6b802965a824bc944e5f3fc9841a85}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!fp\_map\_@{fp\_map\_}}
+\index{fp\_map\_@{fp\_map\_}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{fp\_map\_}{fp\_map\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{classexprtk_1_1function__compositor_aa096506515971448d991520ed4c6772e}{funcparam\+\_\+t}}$>$ \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::fp\+\_\+map\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43721}{43721}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a672fd3a0c33f780d2427fb3f27732355}\label{classexprtk_1_1function__compositor_a672fd3a0c33f780d2427fb3f27732355}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!load\_variables\_@{load\_variables\_}}
+\index{load\_variables\_@{load\_variables\_}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{load\_variables\_}{load\_variables\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::load\+\_\+variables\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43724}{43724}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a35753dff10da98d61782dd1816e6b658}\label{classexprtk_1_1function__compositor_a35753dff10da98d61782dd1816e6b658}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!load\_vectors\_@{load\_vectors\_}}
+\index{load\_vectors\_@{load\_vectors\_}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{load\_vectors\_}{load\_vectors\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::load\+\_\+vectors\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43725}{43725}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_a96eb61133923334808543c92962d7c11}\label{classexprtk_1_1function__compositor_a96eb61133923334808543c92962d7c11}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!parser\_@{parser\_}}
+\index{parser\_@{parser\_}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{parser\_}{parser\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1function__compositor_a3fbfe82962dcafab1e7a63d01ccf1954}{parser\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::parser\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43719}{43719}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1function__compositor_ad96139b4b699b31f488778f2345d9268}\label{classexprtk_1_1function__compositor_ad96139b4b699b31f488778f2345d9268}} 
+\index{exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}!symbol\_table\_@{symbol\_table\_}}
+\index{symbol\_table\_@{symbol\_table\_}!exprtk::function\_compositor$<$ T $>$@{exprtk::function\_compositor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{symbol\_table\_}{symbol\_table\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1function__compositor_a1d116e62417abad64c0456481ba4bca3}{symbol\+\_\+table\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1function__compositor}{exprtk\+::function\+\_\+compositor}}$<$ T $>$\+::symbol\+\_\+table\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l43718}{43718}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{exprtk_8hpp}{exprtk.\+hpp}}\end{DoxyCompactItemize}

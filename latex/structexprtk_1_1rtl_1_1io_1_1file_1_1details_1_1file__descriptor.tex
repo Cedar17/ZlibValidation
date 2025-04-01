@@ -1,0 +1,252 @@
+\hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor}{}\doxysection{exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor Struct Reference}
+\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor}\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+
+
+{\ttfamily \#include $<$exprtk.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a1702fa760fb5eadcde18814b388d8a54}{file\+\_\+descriptor}} (const std\+::string \&fname, const std\+::string \&access)
+\item 
+bool \mbox{\hyperlink{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a8eae8c084f6bb011ef72625fe182212b}{open}} ()
+\item 
+{\footnotesize template$<$typename Stream , typename Ptr $>$ }\\void \mbox{\hyperlink{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a0b4b4a947448c21bda99edf3aa2c87dd}{close}} (Ptr \&p)
+\item 
+bool \mbox{\hyperlink{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a64e735f303ccc0ad5ed29c52ec76e458}{close}} ()
+\item 
+{\footnotesize template$<$typename View $>$ }\\bool \mbox{\hyperlink{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a3167e9faa69ec1197bbb7cf92d014186}{write}} (const View \&view, const std\+::size\+\_\+t amount, const std\+::size\+\_\+t offset=0)
+\item 
+{\footnotesize template$<$typename View $>$ }\\bool \mbox{\hyperlink{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_adb86d740d6110d1a7762fcacef2d3472}{read}} (View \&view, const std\+::size\+\_\+t amount, const std\+::size\+\_\+t offset=0)
+\item 
+bool \mbox{\hyperlink{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a0bc8b26bf04fe141a9c71020d9493431}{getline}} (std\+::string \&s)
+\item 
+bool \mbox{\hyperlink{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a8d2ddf4a41f49fc3b3c6ad31d500ff49}{eof}} () const
+\item 
+\mbox{\hyperlink{namespaceexprtk_1_1rtl_1_1io_1_1file_1_1details_aca7b3fbe4dcd996edd55a2027b827b8c}{file\+\_\+mode}} \mbox{\hyperlink{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_afc75a20a89e821c9319bb6a99a2052e8}{get\+\_\+file\+\_\+mode}} (const std\+::string \&access) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a8a58d1365f5b11e8811b3d9ccee04db9}{stream\+\_\+ptr}}
+\item 
+\mbox{\hyperlink{namespaceexprtk_1_1rtl_1_1io_1_1file_1_1details_aca7b3fbe4dcd996edd55a2027b827b8c}{file\+\_\+mode}} \mbox{\hyperlink{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a122c190d3771558ba95c8b68726caf1d}{mode}}
+\item 
+std\+::string \mbox{\hyperlink{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a18519d2c792557d5a1d35405dc2bb6d2}{file\+\_\+name}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44033}{44033}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a1702fa760fb5eadcde18814b388d8a54}\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a1702fa760fb5eadcde18814b388d8a54}} 
+\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}!file\_descriptor@{file\_descriptor}}
+\index{file\_descriptor@{file\_descriptor}!exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+\doxysubsubsection{\texorpdfstring{file\_descriptor()}{file\_descriptor()}}
+{\footnotesize\ttfamily exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor\+::file\+\_\+descriptor (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{fname,  }\item[{const std\+::string \&}]{access }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44035}{44035}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a64e735f303ccc0ad5ed29c52ec76e458}\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a64e735f303ccc0ad5ed29c52ec76e458}} 
+\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}!close@{close}}
+\index{close@{close}!exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44108}{44108}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a0b4b4a947448c21bda99edf3aa2c87dd}\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a0b4b4a947448c21bda99edf3aa2c87dd}} 
+\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}!close@{close}}
+\index{close@{close}!exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Stream , typename Ptr $>$ \\
+void exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor\+::close (\begin{DoxyParamCaption}\item[{Ptr \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44100}{44100}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a0b4b4a947448c21bda99edf3aa2c87dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a8d2ddf4a41f49fc3b3c6ad31d500ff49}\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a8d2ddf4a41f49fc3b3c6ad31d500ff49}} 
+\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}!eof@{eof}}
+\index{eof@{eof}!exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+\doxysubsubsection{\texorpdfstring{eof()}{eof()}}
+{\footnotesize\ttfamily bool exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor\+::eof (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44175}{44175}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a8d2ddf4a41f49fc3b3c6ad31d500ff49_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a8d2ddf4a41f49fc3b3c6ad31d500ff49_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_afc75a20a89e821c9319bb6a99a2052e8}\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_afc75a20a89e821c9319bb6a99a2052e8}} 
+\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}!get\_file\_mode@{get\_file\_mode}}
+\index{get\_file\_mode@{get\_file\_mode}!exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+\doxysubsubsection{\texorpdfstring{get\_file\_mode()}{get\_file\_mode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceexprtk_1_1rtl_1_1io_1_1file_1_1details_aca7b3fbe4dcd996edd55a2027b827b8c}{file\+\_\+mode}} exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor\+::get\+\_\+file\+\_\+mode (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{access }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44186}{44186}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a0bc8b26bf04fe141a9c71020d9493431}\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a0bc8b26bf04fe141a9c71020d9493431}} 
+\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}!getline@{getline}}
+\index{getline@{getline}!exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+\doxysubsubsection{\texorpdfstring{getline()}{getline()}}
+{\footnotesize\ttfamily bool exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor\+::getline (\begin{DoxyParamCaption}\item[{std\+::string \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44165}{44165}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a0bc8b26bf04fe141a9c71020d9493431_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a8eae8c084f6bb011ef72625fe182212b}\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a8eae8c084f6bb011ef72625fe182212b}} 
+\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}!open@{open}}
+\index{open@{open}!exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily bool exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor\+::open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44045}{44045}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a8eae8c084f6bb011ef72625fe182212b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_adb86d740d6110d1a7762fcacef2d3472}\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_adb86d740d6110d1a7762fcacef2d3472}} 
+\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}!read@{read}}
+\index{read@{read}!exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily template$<$typename View $>$ \\
+bool exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor\+::read (\begin{DoxyParamCaption}\item[{View \&}]{view,  }\item[{const std\+::size\+\_\+t}]{amount,  }\item[{const std\+::size\+\_\+t}]{offset = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44147}{44147}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_adb86d740d6110d1a7762fcacef2d3472_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_adb86d740d6110d1a7762fcacef2d3472_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a3167e9faa69ec1197bbb7cf92d014186}\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a3167e9faa69ec1197bbb7cf92d014186}} 
+\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}!write@{write}}
+\index{write@{write}!exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily template$<$typename View $>$ \\
+bool exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor\+::write (\begin{DoxyParamCaption}\item[{const View \&}]{view,  }\item[{const std\+::size\+\_\+t}]{amount,  }\item[{const std\+::size\+\_\+t}]{offset = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44128}{44128}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a3167e9faa69ec1197bbb7cf92d014186_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a3167e9faa69ec1197bbb7cf92d014186_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a18519d2c792557d5a1d35405dc2bb6d2}\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a18519d2c792557d5a1d35405dc2bb6d2}} 
+\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}!file\_name@{file\_name}}
+\index{file\_name@{file\_name}!exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+\doxysubsubsection{\texorpdfstring{file\_name}{file\_name}}
+{\footnotesize\ttfamily std\+::string exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor\+::file\+\_\+name}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44043}{44043}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a122c190d3771558ba95c8b68726caf1d}\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a122c190d3771558ba95c8b68726caf1d}} 
+\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}!mode@{mode}}
+\index{mode@{mode}!exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceexprtk_1_1rtl_1_1io_1_1file_1_1details_aca7b3fbe4dcd996edd55a2027b827b8c}{file\+\_\+mode}} exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor\+::mode}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44042}{44042}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a8a58d1365f5b11e8811b3d9ccee04db9}\label{structexprtk_1_1rtl_1_1io_1_1file_1_1details_1_1file__descriptor_a8a58d1365f5b11e8811b3d9ccee04db9}} 
+\index{exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}!stream\_ptr@{stream\_ptr}}
+\index{stream\_ptr@{stream\_ptr}!exprtk::rtl::io::file::details::file\_descriptor@{exprtk::rtl::io::file::details::file\_descriptor}}
+\doxysubsubsection{\texorpdfstring{stream\_ptr}{stream\_ptr}}
+{\footnotesize\ttfamily void$\ast$ exprtk\+::rtl\+::io\+::file\+::details\+::file\+\_\+descriptor\+::stream\+\_\+ptr}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l44041}{44041}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{exprtk_8hpp}{exprtk.\+hpp}}\end{DoxyCompactItemize}

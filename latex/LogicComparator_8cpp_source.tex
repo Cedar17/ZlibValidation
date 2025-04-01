@@ -8,7 +8,42 @@
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00004}00004                                  \textcolor{keyword}{const} std::map<std::string, std::string> \&comp\_outpin\_map,}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00005}00005                                  \textcolor{keyword}{const} std::string \&cell\_name)}
 \DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00006}00006     : ref\_outpin\_map\_(ref\_outpin\_map), comp\_outpin\_map\_(comp\_outpin\_map), cell\_name\_(cell\_name) \{\}}
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00007}00007 }
-\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00008}\mbox{\hyperlink{classLogicComparator_a11238591d905205ad26839e1977634f5}{00008}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a11238591d905205ad26839e1977634f5}{LogicComparator::generateReport}}(\textcolor{keyword}{const} std::string \&output\_file) \{\}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00007}\mbox{\hyperlink{classLogicComparator_a4ce5e98ddd78aafb760d49f7201e78a9}{00007}} \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a4ce5e98ddd78aafb760d49f7201e78a9}{LogicComparator::logic}}() \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00008}00008   \textcolor{keyword}{typedef} \mbox{\hyperlink{classexprtk_1_1symbol__table}{exprtk::symbol\_table<T>}} symbol\_table\_t;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00009}00009   \textcolor{keyword}{typedef} \mbox{\hyperlink{classexprtk_1_1expression}{exprtk::expression<T>}} expression\_t;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00010}00010   \textcolor{keyword}{typedef} \mbox{\hyperlink{classexprtk_1_1parser}{exprtk::parser<T>}} parser\_t;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00012}00012   \textcolor{keyword}{const} std::string expression\_string = \textcolor{stringliteral}{"{}not(A and B) or C"{}};}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00014}00014   symbol\_table\_t symbol\_table;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00015}00015   symbol\_table.create\_variable(\textcolor{stringliteral}{"{}A"{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00016}00016   symbol\_table.create\_variable(\textcolor{stringliteral}{"{}B"{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00017}00017   symbol\_table.create\_variable(\textcolor{stringliteral}{"{}C"{}});}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00019}00019   expression\_t expression;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00020}00020   expression.register\_symbol\_table(symbol\_table);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00022}00022   parser\_t parser;}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00023}00023   parser.\mbox{\hyperlink{classexprtk_1_1parser_a1d44f3682429df87cea0572774b7a0f5}{compile}}(expression\_string, expression);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00025}00025   printf(\textcolor{stringliteral}{"{} \# | A | B | C | \%s\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00026}00026          \textcolor{stringliteral}{"{}-\/-\/-\/+-\/-\/-\/+-\/-\/-\/+-\/-\/-\/+-\/\%s\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00027}00027          expression\_string.c\_str(), std::string(expression\_string.size(), \textcolor{charliteral}{'-\/'}).c\_str());}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00029}00029   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; ++i) \{}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00030}00030     symbol\_table.get\_variable(\textcolor{stringliteral}{"{}A"{}})-\/>ref() = T(i \& 0x01 ? 1 : 0);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00031}00031     symbol\_table.get\_variable(\textcolor{stringliteral}{"{}B"{}})-\/>ref() = T(i \& 0x02 ? 1 : 0);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00032}00032     symbol\_table.get\_variable(\textcolor{stringliteral}{"{}C"{}})-\/>ref() = T(i \& 0x04 ? 1 : 0);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00034}00034     \textcolor{keyword}{const} \textcolor{keywordtype}{int} result = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(expression.value());}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00036}00036     printf(\textcolor{stringliteral}{"{} \%d | \%d | \%d | \%d | \%d \(\backslash\)n"{}}, i,}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00037}00037            \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(symbol\_table.get\_variable(\textcolor{stringliteral}{"{}A"{}})-\/>value()),}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00038}00038            \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(symbol\_table.get\_variable(\textcolor{stringliteral}{"{}B"{}})-\/>value()),}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00039}00039            \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(symbol\_table.get\_variable(\textcolor{stringliteral}{"{}C"{}})-\/>value()), result);}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00040}00040   \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00041}00041 \}}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00042}00042 \textcolor{keyword}{template} \textcolor{keywordtype}{void} LogicComparator::logic<double>();}
+\DoxyCodeLine{\Hypertarget{LogicComparator_8cpp_source_l00043}\mbox{\hyperlink{classLogicComparator_a11238591d905205ad26839e1977634f5}{00043}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicComparator_a11238591d905205ad26839e1977634f5}{LogicComparator::generateReport}}(\textcolor{keyword}{const} std::string \&output\_file) \{\}}
 
 \end{DoxyCode}

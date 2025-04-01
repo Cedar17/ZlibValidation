@@ -98,21 +98,24 @@ $(document).ready(function(){initNavTree('json__utils_8hpp.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
-<code>#include &lt;utility&gt;</code><br />
 <code>#include &quot;nlohmann/json.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="si2dr__liberty_8h_source.html">si2dr_liberty.h</a>&quot;</code><br />
+<code>#include &quot;spdlog/spdlog.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="Iterators_8hpp_source.html">Iterators.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="LibGroup_8hpp_source.html">LibGroup.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for json_utils.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="json__utils_8hpp__incl.png" border="0" usemap="#ainclude_2json__utils_8hpp" alt=""/></div>
 <map name="ainclude_2json__utils_8hpp" id="ainclude_2json__utils_8hpp">
-<area shape="rect" title=" " alt="" coords="101,5,264,31"/>
-<area shape="rect" title=" " alt="" coords="121,152,180,177"/>
-<area shape="rect" title=" " alt="" coords="25,79,85,104"/>
-<area shape="rect" title=" " alt="" coords="109,79,256,104"/>
-<area shape="rect" href="si2dr__liberty_8h.html" title=" " alt="" coords="323,152,437,177"/>
-<area shape="rect" href="LibGroup_8hpp.html" title=" " alt="" coords="281,79,389,104"/>
+<area shape="rect" title=" " alt="" coords="243,5,406,31"/>
+<area shape="rect" title=" " alt="" coords="47,225,106,251"/>
+<area shape="rect" title=" " alt="" coords="407,79,554,104"/>
+<area shape="rect" href="si2dr__liberty_8h.html" title=" " alt="" coords="212,225,325,251"/>
+<area shape="rect" title=" " alt="" coords="579,79,703,104"/>
+<area shape="rect" href="Iterators_8hpp.html" title=" " alt="" coords="196,79,301,104"/>
+<area shape="rect" href="LibGroup_8hpp.html" title=" " alt="" coords="23,152,131,177"/>
+<area shape="rect" href="LibAttribute_8hpp.html" title=" " alt="" coords="155,152,281,177"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -120,9 +123,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="json__utils_8hpp__dep__incl.png" border="0" usemap="#ainclude_2json__utils_8hppdep" alt=""/></div>
 <map name="ainclude_2json__utils_8hppdep" id="ainclude_2json__utils_8hppdep">
-<area shape="rect" title=" " alt="" coords="56,5,219,31"/>
-<area shape="rect" href="LibFile_8cpp.html" title=" " alt="" coords="5,79,120,104"/>
-<area shape="rect" href="json__utils_8cpp.html" title=" " alt="" coords="145,79,279,104"/>
+<area shape="rect" title=" " alt="" coords="275,5,438,31"/>
+<area shape="rect" href="LibFile_8hpp.html" title=" " alt="" coords="204,79,347,104"/>
+<area shape="rect" href="json__utils_8cpp.html" title=" " alt="" coords="371,79,505,104"/>
+<area shape="rect" href="LibraryComparator_8hpp.html" title=" " alt="" coords="16,152,239,177"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="223,225,328,251"/>
+<area shape="rect" href="LibFile_8cpp.html" title=" " alt="" coords="313,152,427,177"/>
+<area shape="rect" href="LibraryComparator_8cpp.html" title=" " alt="" coords="5,225,199,251"/>
 </map>
 </div>
 </div>
@@ -161,7 +168,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="json__utils_8hpp_source.html#l00012">12</a> of file <a class="el" href="json__utils_8hpp_source.html">json_utils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="json__utils_8hpp_source.html#l00013">13</a> of file <a class="el" href="json__utils_8hpp_source.html">json_utils.hpp</a>.</p>
 
 </div>
 </div>
@@ -213,7 +220,7 @@ Functions</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="json__utils_8cpp_source.html#l00272">272</a> of file <a class="el" href="json__utils_8cpp_source.html">json_utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="json__utils_8cpp_source.html#l00269">269</a> of file <a class="el" href="json__utils_8cpp_source.html">json_utils.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -309,7 +316,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>json A JSON object representing the LUT data with keys for "index_1", "index_2", and "values" </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="json__utils_8cpp_source.html#l00062">62</a> of file <a class="el" href="json__utils_8cpp_source.html">json_utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="json__utils_8cpp_source.html#l00059">59</a> of file <a class="el" href="json__utils_8cpp_source.html">json_utils.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -401,7 +408,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pair containing the pin direction (string) and the JSON representation of the pin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="json__utils_8cpp_source.html#l00206">206</a> of file <a class="el" href="json__utils_8cpp_source.html">json_utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="json__utils_8cpp_source.html#l00203">203</a> of file <a class="el" href="json__utils_8cpp_source.html">json_utils.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -497,7 +504,7 @@ Here is the caller graph for this function:</div>
 <li>Logs warnings for unknown power subgroup types </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="json__utils_8cpp_source.html#l00154">154</a> of file <a class="el" href="json__utils_8cpp_source.html">json_utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="json__utils_8cpp_source.html#l00151">151</a> of file <a class="el" href="json__utils_8cpp_source.html">json_utils.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -553,7 +560,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="json__utils_8hpp.html">json_utils.hpp</a></li>
-    <li class="footer">Generated on Mon Mar 31 2025 23:18:38 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Apr 1 2025 10:13:32 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

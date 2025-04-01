@@ -1,0 +1,607 @@
+\hypertarget{classexprtk_1_1lexer_1_1parser__helper}{}\doxysection{exprtk\+::lexer\+::parser\+\_\+helper Class Reference}
+\label{classexprtk_1_1lexer_1_1parser__helper}\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+
+
+{\ttfamily \#include $<$exprtk.\+hpp$>$}
+
+
+
+Inheritance diagram for exprtk\+::lexer\+::parser\+\_\+helper\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{classexprtk_1_1lexer_1_1parser__helper__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for exprtk\+::lexer\+::parser\+\_\+helper\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}} \{ \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a08d15cc035944dac5575d5cf6364b7b1}{e\+\_\+hold}} = 0
+, \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}} = 1
+ \}
+\item 
+typedef \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ab20bc76267e693f02f64ad189225ed93}{token\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1lexer_1_1generator}{generator}} \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_acce5e98f65cb0122f54ce24842ac7e28}{generator\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ac4d71f8b5951b0747ba7072d342b9319}{init}} (const std\+::string \&str)
+\item 
+\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_acce5e98f65cb0122f54ce24842ac7e28}{generator\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ac25ef9edd19d64cacaaa38221ca02d43}{lexer}} ()
+\item 
+const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_acce5e98f65cb0122f54ce24842ac7e28}{generator\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a609805e98ffc77fb5b580d0d58af5fce}{lexer}} () const
+\item 
+void \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ae82ba94387be68edc8df4b2f29d3ecdd}{store\+\_\+token}} ()
+\item 
+void \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a820f18ea9c227383bd61e08ceb6c8fd1}{restore\+\_\+token}} ()
+\item 
+void \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a7ad3c2bf478818f745b39d6ce952b4ad}{next\+\_\+token}} ()
+\item 
+const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ab20bc76267e693f02f64ad189225ed93}{token\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_af406d741e7fdfca41c1653ecf00b2545}{current\+\_\+token}} () const
+\item 
+const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ab20bc76267e693f02f64ad189225ed93}{token\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a8f741653d1d43830c9cb56f1e9ab2b92}{peek\+\_\+next\+\_\+token}} ()
+\item 
+void \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a38a905c2412c4f207fdc9e59542b1942}{advance\+\_\+token}} (const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}} mode)
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_afb15367d6a030cae43dac17d38a3b6dd}{token\+\_\+is}} (const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token_affda38795b8d6680ea118ec4d5280395}{token\+\_\+t\+::token\+\_\+type}} \&ttype, const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}} mode=\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}})
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ae658840f6d0ca3a2a429768cab5a97a4}{token\+\_\+is}} (const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token_affda38795b8d6680ea118ec4d5280395}{token\+\_\+t\+::token\+\_\+type}} \&ttype, const std\+::string \&value, const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}} mode=\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}})
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a6811b2205c18da3357c49052de965af5}{token\+\_\+is}} (const std\+::string \&value, const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}} mode=\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}})
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a3c1ab89b8625c66a5458722c60b732d0}{token\+\_\+is\+\_\+arithmetic\+\_\+opr}} (const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}} mode=\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}})
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a589a65b3a4324ef7799b848d82ba3567}{token\+\_\+is\+\_\+ineq\+\_\+opr}} (const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}} mode=\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}})
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a43039a708a521e914f402a51d7f158d9}{token\+\_\+is\+\_\+left\+\_\+bracket}} (const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}} mode=\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}})
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4d625cc7ce970f6243ea1b0553d01e2b}{token\+\_\+is\+\_\+right\+\_\+bracket}} (const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}} mode=\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}})
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a84591e83da287fa32bc8fcb6f0d0577e}{token\+\_\+is\+\_\+bracket}} (const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}} mode=\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}})
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a24f379e4280227a777c1c433834ee62d}{token\+\_\+is\+\_\+loop}} (const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}} mode=\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}})
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a6d6816c8419e0b317de8c36fb3bbbb5b}{peek\+\_\+token\+\_\+is}} (const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token_affda38795b8d6680ea118ec4d5280395}{token\+\_\+t\+::token\+\_\+type}} \&ttype)
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a9d193aeccd0886dde38e0330917a854d}{peek\+\_\+token\+\_\+is}} (const std\+::string \&s)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_acce5e98f65cb0122f54ce24842ac7e28}{generator\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a1973498d32d1da18e58772a153083d96}{lexer\+\_\+}}
+\item 
+\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ab20bc76267e693f02f64ad189225ed93}{token\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ace9f159eb282ff352fc98e1a3c6b17fc}{current\+\_\+token\+\_\+}}
+\item 
+\mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ab20bc76267e693f02f64ad189225ed93}{token\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ab9de313ff73859e3eb74ef16afcdaeaa}{store\+\_\+current\+\_\+token\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04378}{4378}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_acce5e98f65cb0122f54ce24842ac7e28}\label{classexprtk_1_1lexer_1_1parser__helper_acce5e98f65cb0122f54ce24842ac7e28}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!generator\_t@{generator\_t}}
+\index{generator\_t@{generator\_t}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{generator\_t}{generator\_t}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{classexprtk_1_1lexer_1_1generator}{generator}} \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_acce5e98f65cb0122f54ce24842ac7e28}{exprtk\+::lexer\+::parser\+\_\+helper\+::generator\+\_\+t}}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04383}{4383}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_ab20bc76267e693f02f64ad189225ed93}\label{classexprtk_1_1lexer_1_1parser__helper_ab20bc76267e693f02f64ad189225ed93}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!token\_t@{token\_t}}
+\index{token\_t@{token\_t}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{token\_t}{token\_t}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ab20bc76267e693f02f64ad189225ed93}{exprtk\+::lexer\+::parser\+\_\+helper\+::token\+\_\+t}}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04382}{4382}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}\label{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!token\_advance\_mode@{token\_advance\_mode}}
+\index{token\_advance\_mode@{token\_advance\_mode}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{token\_advance\_mode}{token\_advance\_mode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{exprtk\+::lexer\+::parser\+\_\+helper\+::token\+\_\+advance\+\_\+mode}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{e\_hold@{e\_hold}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!e\_hold@{e\_hold}}}\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a08d15cc035944dac5575d5cf6364b7b1}\label{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a08d15cc035944dac5575d5cf6364b7b1}} 
+e\+\_\+hold&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{e\_advance@{e\_advance}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!e\_advance@{e\_advance}}}\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}\label{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}} 
+e\+\_\+advance&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04436}{4436}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a38a905c2412c4f207fdc9e59542b1942}\label{classexprtk_1_1lexer_1_1parser__helper_a38a905c2412c4f207fdc9e59542b1942}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!advance\_token@{advance\_token}}
+\index{advance\_token@{advance\_token}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{advance\_token()}{advance\_token()}}
+{\footnotesize\ttfamily void exprtk\+::lexer\+::parser\+\_\+helper\+::advance\+\_\+token (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04442}{4442}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a38a905c2412c4f207fdc9e59542b1942_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a38a905c2412c4f207fdc9e59542b1942_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_af406d741e7fdfca41c1653ecf00b2545}\label{classexprtk_1_1lexer_1_1parser__helper_af406d741e7fdfca41c1653ecf00b2545}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!current\_token@{current\_token}}
+\index{current\_token@{current\_token}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{current\_token()}{current\_token()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ab20bc76267e693f02f64ad189225ed93}{token\+\_\+t}} \& exprtk\+::lexer\+::parser\+\_\+helper\+::current\+\_\+token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04426}{4426}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_ac4d71f8b5951b0747ba7072d342b9319}\label{classexprtk_1_1lexer_1_1parser__helper_ac4d71f8b5951b0747ba7072d342b9319}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!init@{init}}
+\index{init@{init}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily bool exprtk\+::lexer\+::parser\+\_\+helper\+::init (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04385}{4385}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_ac4d71f8b5951b0747ba7072d342b9319_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_ac4d71f8b5951b0747ba7072d342b9319_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_ac25ef9edd19d64cacaaa38221ca02d43}\label{classexprtk_1_1lexer_1_1parser__helper_ac25ef9edd19d64cacaaa38221ca02d43}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!lexer@{lexer}}
+\index{lexer@{lexer}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{lexer()}{lexer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_acce5e98f65cb0122f54ce24842ac7e28}{generator\+\_\+t}} \& exprtk\+::lexer\+::parser\+\_\+helper\+::lexer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04399}{4399}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_ac25ef9edd19d64cacaaa38221ca02d43_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a609805e98ffc77fb5b580d0d58af5fce}\label{classexprtk_1_1lexer_1_1parser__helper_a609805e98ffc77fb5b580d0d58af5fce}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!lexer@{lexer}}
+\index{lexer@{lexer}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{lexer()}{lexer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_acce5e98f65cb0122f54ce24842ac7e28}{generator\+\_\+t}} \& exprtk\+::lexer\+::parser\+\_\+helper\+::lexer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04404}{4404}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a7ad3c2bf478818f745b39d6ce952b4ad}\label{classexprtk_1_1lexer_1_1parser__helper_a7ad3c2bf478818f745b39d6ce952b4ad}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!next\_token@{next\_token}}
+\index{next\_token@{next\_token}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{next\_token()}{next\_token()}}
+{\footnotesize\ttfamily void exprtk\+::lexer\+::parser\+\_\+helper\+::next\+\_\+token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04421}{4421}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a7ad3c2bf478818f745b39d6ce952b4ad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a7ad3c2bf478818f745b39d6ce952b4ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a8f741653d1d43830c9cb56f1e9ab2b92}\label{classexprtk_1_1lexer_1_1parser__helper_a8f741653d1d43830c9cb56f1e9ab2b92}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!peek\_next\_token@{peek\_next\_token}}
+\index{peek\_next\_token@{peek\_next\_token}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{peek\_next\_token()}{peek\_next\_token()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ab20bc76267e693f02f64ad189225ed93}{token\+\_\+t}} \& exprtk\+::lexer\+::parser\+\_\+helper\+::peek\+\_\+next\+\_\+token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04431}{4431}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a8f741653d1d43830c9cb56f1e9ab2b92_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a9d193aeccd0886dde38e0330917a854d}\label{classexprtk_1_1lexer_1_1parser__helper_a9d193aeccd0886dde38e0330917a854d}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!peek\_token\_is@{peek\_token\_is}}
+\index{peek\_token\_is@{peek\_token\_is}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{peek\_token\_is()}{peek\_token\_is()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool exprtk\+::lexer\+::parser\+\_\+helper\+::peek\+\_\+token\+\_\+is (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04588}{4588}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a9d193aeccd0886dde38e0330917a854d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a6d6816c8419e0b317de8c36fb3bbbb5b}\label{classexprtk_1_1lexer_1_1parser__helper_a6d6816c8419e0b317de8c36fb3bbbb5b}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!peek\_token\_is@{peek\_token\_is}}
+\index{peek\_token\_is@{peek\_token\_is}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{peek\_token\_is()}{peek\_token\_is()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool exprtk\+::lexer\+::parser\+\_\+helper\+::peek\+\_\+token\+\_\+is (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token_affda38795b8d6680ea118ec4d5280395}{token\+\_\+t\+::token\+\_\+type}} \&}]{ttype }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04583}{4583}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a6d6816c8419e0b317de8c36fb3bbbb5b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a6d6816c8419e0b317de8c36fb3bbbb5b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a820f18ea9c227383bd61e08ceb6c8fd1}\label{classexprtk_1_1lexer_1_1parser__helper_a820f18ea9c227383bd61e08ceb6c8fd1}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!restore\_token@{restore\_token}}
+\index{restore\_token@{restore\_token}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{restore\_token()}{restore\_token()}}
+{\footnotesize\ttfamily void exprtk\+::lexer\+::parser\+\_\+helper\+::restore\+\_\+token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04415}{4415}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a820f18ea9c227383bd61e08ceb6c8fd1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_ae82ba94387be68edc8df4b2f29d3ecdd}\label{classexprtk_1_1lexer_1_1parser__helper_ae82ba94387be68edc8df4b2f29d3ecdd}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!store\_token@{store\_token}}
+\index{store\_token@{store\_token}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{store\_token()}{store\_token()}}
+{\footnotesize\ttfamily void exprtk\+::lexer\+::parser\+\_\+helper\+::store\+\_\+token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04409}{4409}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_ae82ba94387be68edc8df4b2f29d3ecdd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a6811b2205c18da3357c49052de965af5}\label{classexprtk_1_1lexer_1_1parser__helper_a6811b2205c18da3357c49052de965af5}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!token\_is@{token\_is}}
+\index{token\_is@{token\_is}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{token\_is()}{token\_is()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily bool exprtk\+::lexer\+::parser\+\_\+helper\+::token\+\_\+is (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{value,  }\item[{const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}}}]{mode = {\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04479}{4479}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a6811b2205c18da3357c49052de965af5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_ae658840f6d0ca3a2a429768cab5a97a4}\label{classexprtk_1_1lexer_1_1parser__helper_ae658840f6d0ca3a2a429768cab5a97a4}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!token\_is@{token\_is}}
+\index{token\_is@{token\_is}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{token\_is()}{token\_is()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool exprtk\+::lexer\+::parser\+\_\+helper\+::token\+\_\+is (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token_affda38795b8d6680ea118ec4d5280395}{token\+\_\+t\+::token\+\_\+type}} \&}]{ttype,  }\item[{const std\+::string \&}]{value,  }\item[{const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}}}]{mode = {\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04462}{4462}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_ae658840f6d0ca3a2a429768cab5a97a4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_afb15367d6a030cae43dac17d38a3b6dd}\label{classexprtk_1_1lexer_1_1parser__helper_afb15367d6a030cae43dac17d38a3b6dd}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!token\_is@{token\_is}}
+\index{token\_is@{token\_is}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{token\_is()}{token\_is()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool exprtk\+::lexer\+::parser\+\_\+helper\+::token\+\_\+is (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token_affda38795b8d6680ea118ec4d5280395}{token\+\_\+t\+::token\+\_\+type}} \&}]{ttype,  }\item[{const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}}}]{mode = {\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04450}{4450}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_afb15367d6a030cae43dac17d38a3b6dd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classexprtk_1_1lexer_1_1parser__helper_afb15367d6a030cae43dac17d38a3b6dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a3c1ab89b8625c66a5458722c60b732d0}\label{classexprtk_1_1lexer_1_1parser__helper_a3c1ab89b8625c66a5458722c60b732d0}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!token\_is\_arithmetic\_opr@{token\_is\_arithmetic\_opr}}
+\index{token\_is\_arithmetic\_opr@{token\_is\_arithmetic\_opr}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{token\_is\_arithmetic\_opr()}{token\_is\_arithmetic\_opr()}}
+{\footnotesize\ttfamily bool exprtk\+::lexer\+::parser\+\_\+helper\+::token\+\_\+is\+\_\+arithmetic\+\_\+opr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}}}]{mode = {\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04492}{4492}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a3c1ab89b8625c66a5458722c60b732d0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a3c1ab89b8625c66a5458722c60b732d0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a84591e83da287fa32bc8fcb6f0d0577e}\label{classexprtk_1_1lexer_1_1parser__helper_a84591e83da287fa32bc8fcb6f0d0577e}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!token\_is\_bracket@{token\_is\_bracket}}
+\index{token\_is\_bracket@{token\_is\_bracket}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{token\_is\_bracket()}{token\_is\_bracket()}}
+{\footnotesize\ttfamily bool exprtk\+::lexer\+::parser\+\_\+helper\+::token\+\_\+is\+\_\+bracket (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}}}]{mode = {\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04558}{4558}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a84591e83da287fa32bc8fcb6f0d0577e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a84591e83da287fa32bc8fcb6f0d0577e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a589a65b3a4324ef7799b848d82ba3567}\label{classexprtk_1_1lexer_1_1parser__helper_a589a65b3a4324ef7799b848d82ba3567}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!token\_is\_ineq\_opr@{token\_is\_ineq\_opr}}
+\index{token\_is\_ineq\_opr@{token\_is\_ineq\_opr}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{token\_is\_ineq\_opr()}{token\_is\_ineq\_opr()}}
+{\footnotesize\ttfamily bool exprtk\+::lexer\+::parser\+\_\+helper\+::token\+\_\+is\+\_\+ineq\+\_\+opr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}}}]{mode = {\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04510}{4510}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a589a65b3a4324ef7799b848d82ba3567_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a589a65b3a4324ef7799b848d82ba3567_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a43039a708a521e914f402a51d7f158d9}\label{classexprtk_1_1lexer_1_1parser__helper_a43039a708a521e914f402a51d7f158d9}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!token\_is\_left\_bracket@{token\_is\_left\_bracket}}
+\index{token\_is\_left\_bracket@{token\_is\_left\_bracket}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{token\_is\_left\_bracket()}{token\_is\_left\_bracket()}}
+{\footnotesize\ttfamily bool exprtk\+::lexer\+::parser\+\_\+helper\+::token\+\_\+is\+\_\+left\+\_\+bracket (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}}}]{mode = {\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04528}{4528}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a43039a708a521e914f402a51d7f158d9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a24f379e4280227a777c1c433834ee62d}\label{classexprtk_1_1lexer_1_1parser__helper_a24f379e4280227a777c1c433834ee62d}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!token\_is\_loop@{token\_is\_loop}}
+\index{token\_is\_loop@{token\_is\_loop}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{token\_is\_loop()}{token\_is\_loop()}}
+{\footnotesize\ttfamily bool exprtk\+::lexer\+::parser\+\_\+helper\+::token\+\_\+is\+\_\+loop (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}}}]{mode = {\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04576}{4576}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a24f379e4280227a777c1c433834ee62d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a24f379e4280227a777c1c433834ee62d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a4d625cc7ce970f6243ea1b0553d01e2b}\label{classexprtk_1_1lexer_1_1parser__helper_a4d625cc7ce970f6243ea1b0553d01e2b}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!token\_is\_right\_bracket@{token\_is\_right\_bracket}}
+\index{token\_is\_right\_bracket@{token\_is\_right\_bracket}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{token\_is\_right\_bracket()}{token\_is\_right\_bracket()}}
+{\footnotesize\ttfamily bool exprtk\+::lexer\+::parser\+\_\+helper\+::token\+\_\+is\+\_\+right\+\_\+bracket (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416}{token\+\_\+advance\+\_\+mode}}}]{mode = {\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_a4f8e4c029138974588b7a7c6a1e4d416a96d3dc6a551c23d34eca8fc0d649b29f}{e\+\_\+advance}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04543}{4543}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a4d625cc7ce970f6243ea1b0553d01e2b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1parser__helper_a4d625cc7ce970f6243ea1b0553d01e2b_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_ace9f159eb282ff352fc98e1a3c6b17fc}\label{classexprtk_1_1lexer_1_1parser__helper_ace9f159eb282ff352fc98e1a3c6b17fc}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!current\_token\_@{current\_token\_}}
+\index{current\_token\_@{current\_token\_}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{current\_token\_}{current\_token\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ab20bc76267e693f02f64ad189225ed93}{token\+\_\+t}} exprtk\+::lexer\+::parser\+\_\+helper\+::current\+\_\+token\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04596}{4596}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_a1973498d32d1da18e58772a153083d96}\label{classexprtk_1_1lexer_1_1parser__helper_a1973498d32d1da18e58772a153083d96}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!lexer\_@{lexer\_}}
+\index{lexer\_@{lexer\_}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{lexer\_}{lexer\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_acce5e98f65cb0122f54ce24842ac7e28}{generator\+\_\+t}} exprtk\+::lexer\+::parser\+\_\+helper\+::lexer\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04595}{4595}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1parser__helper_ab9de313ff73859e3eb74ef16afcdaeaa}\label{classexprtk_1_1lexer_1_1parser__helper_ab9de313ff73859e3eb74ef16afcdaeaa}} 
+\index{exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}!store\_current\_token\_@{store\_current\_token\_}}
+\index{store\_current\_token\_@{store\_current\_token\_}!exprtk::lexer::parser\_helper@{exprtk::lexer::parser\_helper}}
+\doxysubsubsection{\texorpdfstring{store\_current\_token\_}{store\_current\_token\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classexprtk_1_1lexer_1_1parser__helper_ab20bc76267e693f02f64ad189225ed93}{token\+\_\+t}} exprtk\+::lexer\+::parser\+\_\+helper\+::store\+\_\+current\+\_\+token\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04597}{4597}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{exprtk_8hpp}{exprtk.\+hpp}}\end{DoxyCompactItemize}

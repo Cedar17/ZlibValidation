@@ -7,97 +7,84 @@
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00003}00003 \textcolor{preprocessor}{\#ifndef LOGIC\_EXTRACTOR\_HPP}}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#define LOGIC\_EXTRACTOR\_HPP}}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00005}00005 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <fstream>}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <iostream>}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include <map>}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00010}00010 \textcolor{preprocessor}{\#include <unordered\_map>}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include <unordered\_set>}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00013}00013 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}slang/parsing/Token.h"{}} \textcolor{comment}{// Include Token header for TokenKind}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}slang/syntax/SyntaxPrinter.h"{}}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}slang/syntax/SyntaxVisitor.h"{}}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00017}00017 \textcolor{preprocessor}{\#include "{}spdlog/spdlog.h"{}} \textcolor{comment}{// Include spdlog}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{verilog__utils_8hpp}{verilog\_utils.hpp}}"{}}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00020}00020 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00021}00021 \textcolor{comment}{// Structure to represent a gate instance's information}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00022}\mbox{\hyperlink{structGateInfo}{00022}} \textcolor{keyword}{struct }\mbox{\hyperlink{structGateInfo}{GateInfo}} \{}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00023}\mbox{\hyperlink{structGateInfo_a8e4b8c967fffb9f3e5044e8ef184e811}{00023}}   slang::parsing::TokenKind \mbox{\hyperlink{structGateInfo_a8e4b8c967fffb9f3e5044e8ef184e811}{kind}}; \textcolor{comment}{// Store the TokenKind for reliable checks}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00024}\mbox{\hyperlink{structGateInfo_a81e41d3db5fa85b69bbbc8d4d38a3d51}{00024}}   std::string \mbox{\hyperlink{structGateInfo_a81e41d3db5fa85b69bbbc8d4d38a3d51}{gateTypeName}};       \textcolor{comment}{// Store the string name like "{}and"{}, "{}xor"{}}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00025}\mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{00025}}   std::vector<std::string> \mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{inputSignals}};}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00026}\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{00026}}   std::string \mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}};}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00027}00027 \};}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00028}00028 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00029}00029 \textcolor{comment}{// Visitor class to extract netlist information and derive logic expressions}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00030}\mbox{\hyperlink{classLogicExtractor}{00030}} \textcolor{keyword}{class }\mbox{\hyperlink{classLogicExtractor}{LogicExtractor}} : \textcolor{keyword}{public} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor}{slang::syntax::SyntaxVisitor}}<LogicExtractor> \{}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00031}00031 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00032}00032   \textcolor{comment}{// Constructor takes the target cell name}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00033}\mbox{\hyperlink{classLogicExtractor_ab706a64dee71621803f98b5b6eee5ac9}{00033}}   \textcolor{keyword}{explicit} \mbox{\hyperlink{classLogicExtractor_ab706a64dee71621803f98b5b6eee5ac9}{LogicExtractor}}(\textcolor{keyword}{const} std::string \&targetCell)}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00034}00034       : \mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}}(targetCell), \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}}(false), \mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}(false) \{\}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{verilog__utils_8hpp}{verilog\_utils.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00008}00008 \textcolor{comment}{// Structure to represent a gate instance's information}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00009}\mbox{\hyperlink{structGateInfo}{00009}} \textcolor{keyword}{struct }\mbox{\hyperlink{structGateInfo}{GateInfo}} \{}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00010}\mbox{\hyperlink{structGateInfo_a8e4b8c967fffb9f3e5044e8ef184e811}{00010}}   slang::parsing::TokenKind \mbox{\hyperlink{structGateInfo_a8e4b8c967fffb9f3e5044e8ef184e811}{kind}}; \textcolor{comment}{// Store the TokenKind for reliable checks}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00011}\mbox{\hyperlink{structGateInfo_a81e41d3db5fa85b69bbbc8d4d38a3d51}{00011}}   std::string \mbox{\hyperlink{structGateInfo_a81e41d3db5fa85b69bbbc8d4d38a3d51}{gateTypeName}};       \textcolor{comment}{// Store the string name like "{}and"{}, "{}xor"{}}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00012}\mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{00012}}   std::vector<std::string> \mbox{\hyperlink{structGateInfo_a723fc6a9effc5a729d3104ed178d0417}{inputSignals}};}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00013}\mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{00013}}   std::string \mbox{\hyperlink{structGateInfo_a9b0d61fbcb278b985ca6fa82f6273e05}{outputSignal}};}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00014}00014 \};}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00016}00016 \textcolor{comment}{// Visitor class to extract netlist information and derive logic expressions}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00017}\mbox{\hyperlink{classLogicExtractor}{00017}} \textcolor{keyword}{class }\mbox{\hyperlink{classLogicExtractor}{LogicExtractor}} : \textcolor{keyword}{public} \mbox{\hyperlink{classslang_1_1syntax_1_1SyntaxVisitor}{slang::syntax::SyntaxVisitor}}<LogicExtractor> \{}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00018}00018 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00019}00019   \textcolor{comment}{// Constructor takes the target cell name}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00020}\mbox{\hyperlink{classLogicExtractor_ab706a64dee71621803f98b5b6eee5ac9}{00020}}   \textcolor{keyword}{explicit} \mbox{\hyperlink{classLogicExtractor_ab706a64dee71621803f98b5b6eee5ac9}{LogicExtractor}}(\textcolor{keyword}{const} std::string \&targetCell)}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00021}00021       : \mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}}(targetCell), \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}}(false), \mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}(false) \{\}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00023}00023   \textcolor{comment}{// -\/-\/-\/ Visitor Handlers -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00024}00024   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module);}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00025}00025   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00026}00026       \textcolor{keyword}{const} slang::syntax::PortDeclarationSyntax \&portDecl); \textcolor{comment}{// Handles direction/type declaration}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00027}00027   \textcolor{keywordtype}{void}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00028}00028   \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::NonAnsiPortListSyntax \&portList); \textcolor{comment}{// Handles port names list in header}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00029}00029   \textcolor{keywordtype}{void}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00030}00030   \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::NetDeclarationSyntax \&netDecl); \textcolor{comment}{// To find explicitly declared wires}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00031}00031   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::PrimitiveInstantiationSyntax}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00032}00032                   \&primitiveInst); \textcolor{comment}{// Handles gate instantiation}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00033}00033   \textcolor{comment}{// Potentially handle ContinuousAssignSyntax if needed later:}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00034}00034   \textcolor{comment}{// void handle(const slang::syntax::ContinuousAssignSyntax\& assign);}}
 \DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00035}00035 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00036}00036   \textcolor{comment}{// -\/-\/-\/ Visitor Handlers -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00037}00037   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::ModuleDeclarationSyntax \&module);}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00038}00038   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00039}00039       \textcolor{keyword}{const} slang::syntax::PortDeclarationSyntax \&portDecl); \textcolor{comment}{// Handles direction/type declaration}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00040}00040   \textcolor{keywordtype}{void}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00041}00041   \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::NonAnsiPortListSyntax \&portList); \textcolor{comment}{// Handles port names list in header}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00042}00042   \textcolor{keywordtype}{void}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00043}00043   \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::NetDeclarationSyntax \&netDecl); \textcolor{comment}{// To find explicitly declared wires}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00044}00044   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}}(\textcolor{keyword}{const} slang::syntax::PrimitiveInstantiationSyntax}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00045}00045                   \&primitiveInst); \textcolor{comment}{// Handles gate instantiation}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00046}00046   \textcolor{comment}{// Potentially handle ContinuousAssignSyntax if needed later:}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00047}00047   \textcolor{comment}{// void handle(const slang::syntax::ContinuousAssignSyntax\& assign);}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00048}00048 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00049}00049   \textcolor{comment}{// -\/-\/-\/ Access Extracted Info (for Step 1 debugging) -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00050}\mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{00050}}   \textcolor{keyword}{const} std::unordered\_map<std::string, GateInfo> \&\mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{getExtractedGates}}()\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00051}00051     \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}};}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00052}00052   \}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00053}\mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{00053}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{getPrimaryInputs}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}; \}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00054}\mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{00054}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{getPrimaryOutputs}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}; \}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00055}\mbox{\hyperlink{classLogicExtractor_a8fa7c2d7d0f96602169c4572c56f9292}{00055}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a8fa7c2d7d0f96602169c4572c56f9292}{getInternalWires}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}; \}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00056}00056 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00057}00057   \textcolor{comment}{// -\/-\/-\/ Logic Derivation (Commented out for Step 1) -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00058}00058   std::map<std::string, std::string> \mbox{\hyperlink{classLogicExtractor_a234c934f2b8824311dbeca77f4d8ad52}{getLogicExpressions}}();}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00059}00059 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00060}00060 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00061}00061   \textcolor{comment}{// -\/-\/-\/ Internal State -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00062}\mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{00062}}   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}};}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00063}\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{00063}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}};}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00064}\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{00064}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}; \textcolor{comment}{// Flag to indicate AST traversal is done}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00065}00065 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00066}00066   \textcolor{comment}{// Netlist Information}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00067}\mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{00067}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}};}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00068}\mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{00068}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}};}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00069}\mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{00069}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}; \textcolor{comment}{// Includes gate outputs}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00070}00070 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00071}00071   \textcolor{comment}{// Temporary map to store directions found in PortDeclarationSyntax}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00072}00072   \textcolor{comment}{// Key: port name, Value: direction ("{}input"{}, "{}output"{}, "{}inout"{}, "{}unknown"{})}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00073}\mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{00073}}   std::unordered\_map<std::string, std::string> \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}};}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00074}00074 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00075}00075   \textcolor{comment}{// Map: output signal name -\/> GateInfo driving it}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00076}\mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{00076}}   std::unordered\_map<std::string, GateInfo> \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}};}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00077}00077 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00078}00078   \textcolor{comment}{// Map: signal name -\/> Logic expression string (Memoization Cache) -\/ (Used in Step 2)}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00079}\mbox{\hyperlink{classLogicExtractor_a20e3904f73ad961b667a2df7a713a961}{00079}}   std::unordered\_map<std::string, std::string> \mbox{\hyperlink{classLogicExtractor_a20e3904f73ad961b667a2df7a713a961}{logicCache\_}};}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00080}00080 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00081}00081   \textcolor{comment}{// -\/-\/-\/ Helper Methods -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00082}00082   \textcolor{comment}{// Recursive function to derive logic for a given signal (Used in Step 2)}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00083}00083   std::string \mbox{\hyperlink{classLogicExtractor_ad00ef591f9a574c2e1bb9ad6a30c0db4}{deriveLogicRecursive}}(\textcolor{keyword}{const} std::string \&signalName);}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00084}00084   \textcolor{comment}{// Helper to format expressions based on gate type (Used in Step 2)}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00085}00085   std::string \mbox{\hyperlink{classLogicExtractor_a95832f1f42e902556dc36bca8f9796fe}{formatExpression}}(\textcolor{keyword}{const} \mbox{\hyperlink{structGateInfo}{GateInfo}} \&gateInfo,}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00086}00086                                \textcolor{keyword}{const} std::vector<std::string> \&inputExprs);}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00087}00087 \};}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00088}00088 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00089}00089 \textcolor{comment}{// -\/-\/-\/ Function Declaration -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00090}00090 \textcolor{comment}{// For Step 1, this function will just run the visitor and maybe print summary}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00091}00091 \textcolor{keywordtype}{void} \mbox{\hyperlink{LogicExtractor_8hpp_a2276f971f6bd1d8f34f635811cc65e08}{extractAndPrintNetlistInfo}}(\textcolor{keyword}{const} std::string \&verilog\_file, \textcolor{keyword}{const} std::string \&cell);}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00092}00092 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00093}00093 \textcolor{comment}{// Function to be implemented in Step 2}}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00094}00094 std::map<std::string, std::string> \mbox{\hyperlink{LogicExtractor_8hpp_ae057244a8c2cf0f12f0fa95ce36c8a5d}{extractLogicFromVerilog}}(\textcolor{keyword}{const} std::string \&verilog\_file,}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00095}00095                                                            \textcolor{keyword}{const} std::string \&cell);}
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00096}00096 }
-\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00097}00097 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LOGIC\_EXTRACTOR\_HPP}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00036}00036   \textcolor{comment}{// -\/-\/-\/ Access Extracted Info (for Step 1 debugging) -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00037}\mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{00037}}   \textcolor{keyword}{const} std::unordered\_map<std::string, GateInfo> \&\mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{getExtractedGates}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00038}00038     \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}};}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00039}00039   \}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00040}\mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{00040}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{getPrimaryInputs}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}}; \}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00041}\mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{00041}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a9086b5ae491778be70e0f78f83bf7b77}{getPrimaryOutputs}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}}; \}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00042}\mbox{\hyperlink{classLogicExtractor_a8fa7c2d7d0f96602169c4572c56f9292}{00042}}   \textcolor{keyword}{const} std::unordered\_set<std::string> \&\mbox{\hyperlink{classLogicExtractor_a8fa7c2d7d0f96602169c4572c56f9292}{getInternalWires}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}; \}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00044}00044   \textcolor{comment}{// -\/-\/-\/ Logic Derivation (Commented out for Step 1) -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00045}00045   std::map<std::string, std::string> \mbox{\hyperlink{classLogicExtractor_a234c934f2b8824311dbeca77f4d8ad52}{getLogicExpressions}}();}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00047}00047 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00048}00048   \textcolor{comment}{// -\/-\/-\/ Internal State -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00049}\mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{00049}}   \textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classLogicExtractor_a9acb02e853246044d71ff25032a19d95}{targetCell\_}};}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00050}\mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{00050}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicExtractor_acf1fb0d37db64d624e689c123b3b0f30}{inTargetModule\_}};}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00051}\mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{00051}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLogicExtractor_a7083bd7a416253ba80fdb9fe0c8b9555}{parsingComplete\_}}; \textcolor{comment}{// Flag to indicate AST traversal is done}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00053}00053   \textcolor{comment}{// Netlist Information}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00054}\mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{00054}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_a9eed76016f8b8e2f9f5c23c8d328c963}{primaryInputs\_}};}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00055}\mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{00055}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_ae0dc2d2b120bd6f6b49633902c16d077}{primaryOutputs\_}};}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00056}\mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{00056}}   std::unordered\_set<std::string> \mbox{\hyperlink{classLogicExtractor_a49fa470c58c6e9d75677f04aee252f65}{internalWires\_}}; \textcolor{comment}{// Includes gate outputs}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00058}00058   \textcolor{comment}{// Temporary map to store directions found in PortDeclarationSyntax}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00059}00059   \textcolor{comment}{// Key: port name, Value: direction ("{}input"{}, "{}output"{}, "{}inout"{}, "{}unknown"{})}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00060}\mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{00060}}   std::unordered\_map<std::string, std::string> \mbox{\hyperlink{classLogicExtractor_abd308142bbee1acecfdfa0bbfb9eae8f}{portDirections\_}};}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00062}00062   \textcolor{comment}{// Map: output signal name -\/> GateInfo driving it}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00063}\mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{00063}}   std::unordered\_map<std::string, GateInfo> \mbox{\hyperlink{classLogicExtractor_a07b350897e95e1fcea0794f6dbea02ed}{gateOutputDrivers\_}};}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00065}00065   \textcolor{comment}{// Map: signal name -\/> Logic expression string (Memoization Cache) -\/ (Used in Step 2)}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00066}\mbox{\hyperlink{classLogicExtractor_a20e3904f73ad961b667a2df7a713a961}{00066}}   std::unordered\_map<std::string, std::string> \mbox{\hyperlink{classLogicExtractor_a20e3904f73ad961b667a2df7a713a961}{logicCache\_}};}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00068}00068   \textcolor{comment}{// -\/-\/-\/ Helper Methods -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00069}00069   \textcolor{comment}{// Recursive function to derive logic for a given signal (Used in Step 2)}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00070}00070   std::string \mbox{\hyperlink{classLogicExtractor_ad00ef591f9a574c2e1bb9ad6a30c0db4}{deriveLogicRecursive}}(\textcolor{keyword}{const} std::string \&signalName);}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00071}00071   \textcolor{comment}{// Helper to format expressions based on gate type (Used in Step 2)}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00072}00072   std::string \mbox{\hyperlink{classLogicExtractor_a95832f1f42e902556dc36bca8f9796fe}{formatExpression}}(\textcolor{keyword}{const} \mbox{\hyperlink{structGateInfo}{GateInfo}} \&gateInfo,}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00073}00073                                \textcolor{keyword}{const} std::vector<std::string> \&inputExprs);}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00074}00074 \};}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00076}00076 \textcolor{comment}{// -\/-\/-\/ Function Declaration -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00077}00077 \textcolor{comment}{// For Step 1, this function will just run the visitor and maybe print summary}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00078}00078 \textcolor{keywordtype}{void} \mbox{\hyperlink{LogicExtractor_8hpp_a2276f971f6bd1d8f34f635811cc65e08}{extractAndPrintNetlistInfo}}(\textcolor{keyword}{const} std::string \&verilog\_file, \textcolor{keyword}{const} std::string \&cell);}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00080}00080 \textcolor{comment}{// Function to be implemented in Step 2}}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00081}00081 std::map<std::string, std::string> \mbox{\hyperlink{LogicExtractor_8hpp_ae057244a8c2cf0f12f0fa95ce36c8a5d}{extractLogicFromVerilog}}(\textcolor{keyword}{const} std::string \&verilog\_file,}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00082}00082                                                            \textcolor{keyword}{const} std::string \&cell);}
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{LogicExtractor_8hpp_source_l00084}00084 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LOGIC\_EXTRACTOR\_HPP}}
 
 \end{DoxyCode}

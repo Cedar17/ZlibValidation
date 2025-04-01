@@ -1,0 +1,1982 @@
+\hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details}{}\doxysection{exprtk\+::details\+::numeric\+::details Namespace Reference}
+\label{namespaceexprtk_1_1details_1_1numeric_1_1details}\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1number__type}{number\+\_\+type}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1unknown__type__tag}{unknown\+\_\+type\+\_\+tag}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ae779dd4f69ac15f96267e5fb7cf08f39}{exprtk\+\_\+register\+\_\+real\+\_\+type\+\_\+tag}} (float) exprtk\+\_\+register\+\_\+real\+\_\+type\+\_\+tag(double) exprtk\+\_\+register\+\_\+real\+\_\+type\+\_\+tag(long double) \mbox{\hyperlink{exprtk_8hpp_aaca1cd177dcb13632fd0c20a3b3a3a3c}{exprtk\+\_\+register\+\_\+int\+\_\+type\+\_\+tag}}(short) \mbox{\hyperlink{exprtk_8hpp_aaca1cd177dcb13632fd0c20a3b3a3a3c}{exprtk\+\_\+register\+\_\+int\+\_\+type\+\_\+tag}}(int) \mbox{\hyperlink{exprtk_8hpp_aaca1cd177dcb13632fd0c20a3b3a3a3c}{exprtk\+\_\+register\+\_\+int\+\_\+type\+\_\+tag}}(\mbox{\hyperlink{namespaceexprtk_1_1details_a2b8b9aea8a463c9bdc41aa110815da28}{\+\_\+int64\+\_\+t}}) \mbox{\hyperlink{exprtk_8hpp_aaca1cd177dcb13632fd0c20a3b3a3a3c}{exprtk\+\_\+register\+\_\+int\+\_\+type\+\_\+tag}}(unsigned short) \mbox{\hyperlink{exprtk_8hpp_aaca1cd177dcb13632fd0c20a3b3a3a3c}{exprtk\+\_\+register\+\_\+int\+\_\+type\+\_\+tag}}(unsigned int) \mbox{\hyperlink{exprtk_8hpp_aaca1cd177dcb13632fd0c20a3b3a3a3c}{exprtk\+\_\+register\+\_\+int\+\_\+type\+\_\+tag}}(\mbox{\hyperlink{namespaceexprtk_1_1details_aa251575709d3fcd7be5eed82741a3f9e}{\+\_\+uint64\+\_\+t}}) template$<$ typename T $>$ struct epsilon\+\_\+type
+\item 
+\mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a8e97f23153d23f352d5311c321caf985}{exprtk\+\_\+define\+\_\+epsilon\+\_\+type}} (float, 0.\+00000100000f) exprtk\+\_\+define\+\_\+epsilon\+\_\+type(double
+\item 
+\mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ae079a776cad6a245bf15c4f3b9a2df93}{exprtk\+\_\+define\+\_\+epsilon\+\_\+type}} (long double, 0.\+000000000001) template$<$ typename T $>$ inline bool is\+\_\+nan\+\_\+impl(const T v
+\item 
+{\footnotesize template$<$typename T $>$ }\\int \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_add9f0fc8e8fdca4e62ebdaca5740df7e}{to\+\_\+int32\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{namespaceexprtk_1_1details_a2b8b9aea8a463c9bdc41aa110815da28}{\+\_\+int64\+\_\+t}} \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a64803003c9f73cbcf1a72951f31a4ada}{to\+\_\+int64\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{namespaceexprtk_1_1details_aa251575709d3fcd7be5eed82741a3f9e}{\+\_\+uint64\+\_\+t}} \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a5886fe43d1f36dc813ecb0c341148c97}{to\+\_\+uint64\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ac7d906e01d0b8c2aac42d56c77615971}{is\+\_\+true\+\_\+impl}} (const T v)
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a05dd03115f428077622d0e987d338ef3}{is\+\_\+false\+\_\+impl}} (const T v)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_acf58ba8abffaca7bb644486ccae56ddb}{abs\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_aa95e2c4dadf0a3d96fcf4f5132b47b91}{min\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ab8c2abb2b63cd647efea1681a8701435}{max\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_aae9c1fc4597aef4b0e4ab92786c9bf23}{equal\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+float \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ace7ad4b12c17c037fd136eff4daefc54}{equal\+\_\+impl}} (const float v0, const float v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_afae646a45e4db91bb52fd19fd3a11785}{equal\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ad87c96d998c7d8cdf05cb67a6e7e54bb}{expm1\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a4f032006172a14a2888b0b92e7205724}{expm1\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ab6a98ac472eeab3fee298696df516238}{nequal\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+float \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a2a029585d3535cabed00b96ad26e2d0a}{nequal\+\_\+impl}} (const float v0, const float v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a7512e4943e00ff6f02da719d4d6b97fa}{nequal\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a86f075a22e1e85958ae8928b12009a76}{modulus\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a7b58cff93f26f5a6eae27c8dcc8a0e1c}{modulus\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a859f289a93027f175cd3c8f65348991f}{pow\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a471ff46155c7bfbb8c7a9e58a2c0232b}{pow\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a319c63d82943be3083b8bff1ce2e6d3c}{logn\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_aca8c5fbc9c0a3ced1ec3448a0c4fdfa7}{logn\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a8707e4586ea352735477d6d68b46a732}{log1p\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ac6569b29ad3d9713263b1feab3a1982a}{log1p\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a5256b79e873db5fd823bdce9c3f85497}{root\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_aedf0f0e75fd211406b2fa7ce91e62317}{root\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_acd0bcb383628f18b946e8712ff190bd3}{round\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a78cc63e5ed18d24c183864f3ea2d31d1}{roundn\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_acce57e58fdc55019d2a510fb5506c3e8}{roundn\+\_\+impl}} (const T v0, const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a969d62aee15aa653f21f2093d17b4a24}{hypot\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a2f1512f4be33d04b956b5bd282f30d8f}{hypot\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a8259f6be8bcdc18b1e4ece33ecd74752}{atan2\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a1200e644cf98dc2f4e607c140b2aef1e}{atan2\+\_\+impl}} (const T, const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a0fae6e7daa646f846bdc0424151aa4cb}{shr\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ac9bfcd1202a023b59bec2f4149f89ee9}{shr\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a3165179d9f24b796a41993388f3f83d5}{shl\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a370db5876cff76450e8377ebda53b662}{shl\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ad0562ecf078bdd3872e828aa7bf140d1}{sgn\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a9f93e4e6b2ccf0d5d784aef4e85691db}{sgn\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a553d0f3859489056f25082450f3a2725}{and\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ae76bb548295549ef5e2a6294840221ab}{and\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_aa774fc4fb3bec9a3dcbc0f0c34956354}{nand\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a3f1cb05c8f19b2095b4e85e305b25c72}{nand\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a6f83c481e0b1b6ad5ecebb96b4d0268c}{or\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_af793d7173cbb78ce328894261d37b566}{or\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a1d583aea653ffde1f11d6905d33c87ab}{nor\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ad77f456ece613af7e2416d62ee25153a}{nor\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ad7c2dc6256af9f12f2b09313c2337ee0}{xor\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a06247cddec111bbe880f8f04c886f71b}{xor\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a38c340be75b8359cc0d4d69388a3a1ae}{xnor\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_af1c048bfb4d5146de573d83e33f33190}{xnor\+\_\+impl}} (const T v0, const T v1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+\mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a8e33463bba006edbe2f5a2cb83cb932d}{exprtk\+\_\+define\+\_\+erf}} (float, \+::erff) exprtk\+\_\+define\+\_\+erf(double
+\item 
+\+::erf \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a04ab5d3f7e17588b9b088da18ad010bf}{exprtk\+\_\+define\+\_\+erf}} (long double, \+::erfl) template$<$ typename T $>$ inline T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a3dc008059fb4e84d446f2b7fec453694}{erf\+\_\+impl}}(const T v
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a3dc008059fb4e84d446f2b7fec453694}{erf\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+\mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a6bb39f4186f40936d2a8d1823d5b5fbd}{exprtk\+\_\+define\+\_\+erfc}} (float,\+::erfcf) exprtk\+\_\+define\+\_\+erfc(double
+\item 
+\+::erfc \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_aa2945b87d53a0aaf3a7b4d9c9761d1bb}{exprtk\+\_\+define\+\_\+erfc}} (long double,\+::erfcl) template$<$ typename T $>$ inline T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a51f55a48a31552557997cc620e036e9a}{erfc\+\_\+impl}}(const T v
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a51f55a48a31552557997cc620e036e9a}{erfc\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a5b785f56681c22bea472423a13d7a9b1}{ncdf\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a3e19aadd45e50735562b6bf912069f12}{ncdf\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a20393773553ab6a0216282ed389601d8}{sinc\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a15f5ff2dc06ff1638773a6d477f334e9}{sinc\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a140ae333d1e4fb063e703af33608d650}{acosh\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a38f29f0bee3b9a850619cf813ac07867}{asinh\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_aee5617a04d6f889840ae531b1149cb29}{atanh\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a88d5c216fa965e65cbdcb7acad53f221}{trunc\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ad20041ebb8d1c7fb44da8fc3804039c1}{acos\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a2882c4f965108111bd5a97a0b98b57c7}{asin\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_af1d2004ed275cd4718d049210856fda9}{atan\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a0a5174b9a9ee137dbbe530aac737603d}{ceil\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a72c10ba7cf74eeb822ef89c28b7074bc}{cos\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_af8a17216e89c49d18a18ab7ae77b1845}{cosh\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ab928552d03bd427ee175bb8f39d45ecf}{exp\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a05a7b010abcdfb5184ff8a511907f52d}{floor\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a580693cb5407b7b50e1636df7b729f1d}{log\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a2ec72f265cd2e6ef1fbf5f25b875463d}{log10\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a6a1eb90bf5857227aa915f236a374b55}{log2\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a46ee6c14f5b3f7892e026e5ef84df177}{neg\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a57dbe6c4233766387ce077211882b1a9}{pos\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_acb3a65424a61ab44f44a5b61ea185dae}{sin\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a74b2d1debc1735acfcf94521da198ae8}{sinh\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a383b7620a6b9df4120538f95598c6ca3}{sqrt\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ad5540b425e8f17a9ab9fee24234deda3}{tan\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a1251303a832742a8a0332790c4b99a34}{tanh\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a6b257761b19a54e1f9d06ba1b229cf43}{cot\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a80b9b44704b999f185962d47e6ffe76a}{sec\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a62a0a9b098be1234c4a384ec2bf0beec}{csc\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a30bced5520b3d09a8e7034cabc7ae4ca}{r2d\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a44ca8c9e272a9b0a2479280ebf22a9c3}{d2r\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ad187cd217b12dccce966cf398b66faf7}{d2g\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ab6be3b8275de50b70b0cb5d97fefec62}{g2d\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_af4e25c35d650743f31bd8be7e2536b14}{notl\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a93e2cd372c0f87a87ddb9eda5cbe98e9}{frac\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a2857a3c6788fe3807eea72a86d863ccd}{const\+\_\+pi\+\_\+impl}} (\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a3f447d3a739237c535c8dca06b3b61fd}{const\+\_\+e\+\_\+impl}} (\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_aab610e0704981c68daf18c255818b550}{const\+\_\+qnan\+\_\+impl}} (\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a071761a91951a41c0a01399700fc3bf9}{abs\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a551b790ce7ae8d06f0565fdce9c509fe}{exp\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a292de086f7bac46ed23736d7a3b03aa7}{log\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a8569ac3db6a312d568a33229bcb929bb}{log10\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a428b8f4899e2db5121cd80b5b7dd64dc}{log2\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a33f5b4fab18ea05dcbd29bf17e3bb532}{neg\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a67a3274e24a226929fe5af64cef2e981}{pos\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a5d53898ea8c07ee8d0c46292df71e08f}{ceil\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_af3f670171c2efda88a565fc95165933a}{floor\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_adca042897a66a90709142256315ef6de}{round\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a2e10aae63eff28aa5a35f0764aeb763e}{notl\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a51b9291faabaa31f5e3f97d1064e2660}{sqrt\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a90c668a377e2ac7a01f8960710c870f7}{frac\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a0cea086f6721af3040dd42e21302ec35}{trunc\+\_\+impl}} (const T v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a62836320ceef9cb4574f99e3bf455eb4}{acos\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a787295df1225c6fbc09044f2c673c734}{acosh\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ab9997e3388314926b2b2cc8f132eb81b}{asin\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a9ad44523c055b375673e1276f28b9001}{asinh\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ad45f8cc87554cbe2f6baa6ad8244dad2}{atan\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a1267a91fbe931a518ed2e204e753f857}{atanh\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_af35356ec40cfd6b332926ea180d2fe3d}{cos\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ad2994b625803493e31725c71c7970575}{cosh\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a44e2afece9a184a6cd1a4eed7ba06b39}{sin\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ae8de3d482ceefbdc769ea6328b412ec2}{sinh\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a61552df25e4f4d231f592d2c0d4f3a1e}{tan\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ae7511d9d62a96cfd19e0cca4d72800c1}{tanh\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a2569406f6e5c247a8c08a72066c7c28a}{cot\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a0862b6333ae9c6f3139d84ab5f3622af}{sec\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_ab173bf29218f0dfa19cb094b02a3d547}{csc\+\_\+impl}} (const T, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a1e3e86c52473fea69c6174f5799bdcc5}{is\+\_\+integer\+\_\+impl}} (const T \&v, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a78e1cb9e6a5d24694f2004bd546e33f5}{is\+\_\+integer\+\_\+impl}} (const T \&, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a4b00f5c407a4a420e3da84583bd9bfea}{process\+\_\+impl}} (const \mbox{\hyperlink{namespaceexprtk_1_1details_a9f92c94d6eb47edbf0af17e8eabe57f7}{operator\+\_\+type}} operation, const T arg)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a802d56d363e11ba344730b730fa27501}{process\+\_\+impl}} (const \mbox{\hyperlink{namespaceexprtk_1_1details_a9f92c94d6eb47edbf0af17e8eabe57f7}{operator\+\_\+type}} operation, const T arg0, const T arg1)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a4a1fc6c64410bd5f75de6d5815435205}{process\+\_\+impl}} (const \mbox{\hyperlink{namespaceexprtk_1_1details_a9f92c94d6eb47edbf0af17e8eabe57f7}{operator\+\_\+type}} operation, const T arg0, const T arg1, \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceexprtk_1_1details_1_1numeric_1_1details_a5dd4339a913aa5c8f34392aec4aa5a38}{real\+\_\+type\+\_\+tag}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a071761a91951a41c0a01399700fc3bf9}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a071761a91951a41c0a01399700fc3bf9}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!abs\_impl@{abs\_impl}}
+\index{abs\_impl@{abs\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{abs\_impl()}{abs\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::abs\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01429}{1429}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_acf58ba8abffaca7bb644486ccae56ddb}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_acf58ba8abffaca7bb644486ccae56ddb}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!abs\_impl@{abs\_impl}}
+\index{abs\_impl@{abs\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{abs\_impl()}{abs\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::abs\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00921}{921}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_acf58ba8abffaca7bb644486ccae56ddb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ad20041ebb8d1c7fb44da8fc3804039c1}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ad20041ebb8d1c7fb44da8fc3804039c1}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!acos\_impl@{acos\_impl}}
+\index{acos\_impl@{acos\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{acos\_impl()}{acos\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::acos\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01397}{1397}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a62836320ceef9cb4574f99e3bf455eb4}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a62836320ceef9cb4574f99e3bf455eb4}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!acos\_impl@{acos\_impl}}
+\index{acos\_impl@{acos\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{acos\_impl()}{acos\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::acos\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01443}{1443}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a140ae333d1e4fb063e703af33608d650}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a140ae333d1e4fb063e703af33608d650}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!acosh\_impl@{acosh\_impl}}
+\index{acosh\_impl@{acosh\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{acosh\_impl()}{acosh\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::acosh\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01373}{1373}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a787295df1225c6fbc09044f2c673c734}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a787295df1225c6fbc09044f2c673c734}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!acosh\_impl@{acosh\_impl}}
+\index{acosh\_impl@{acosh\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{acosh\_impl()}{acosh\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::acosh\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01444}{1444}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ae76bb548295549ef5e2a6294840221ab}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ae76bb548295549ef5e2a6294840221ab}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!and\_impl@{and\_impl}}
+\index{and\_impl@{and\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{and\_impl()}{and\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::and\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01172}{1172}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a553d0f3859489056f25082450f3a2725}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a553d0f3859489056f25082450f3a2725}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!and\_impl@{and\_impl}}
+\index{and\_impl@{and\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{and\_impl()}{and\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::and\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01166}{1166}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a553d0f3859489056f25082450f3a2725_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a2882c4f965108111bd5a97a0b98b57c7}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a2882c4f965108111bd5a97a0b98b57c7}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!asin\_impl@{asin\_impl}}
+\index{asin\_impl@{asin\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{asin\_impl()}{asin\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::asin\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01398}{1398}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ab9997e3388314926b2b2cc8f132eb81b}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ab9997e3388314926b2b2cc8f132eb81b}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!asin\_impl@{asin\_impl}}
+\index{asin\_impl@{asin\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{asin\_impl()}{asin\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::asin\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01445}{1445}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a38f29f0bee3b9a850619cf813ac07867}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a38f29f0bee3b9a850619cf813ac07867}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!asinh\_impl@{asinh\_impl}}
+\index{asinh\_impl@{asinh\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{asinh\_impl()}{asinh\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::asinh\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01379}{1379}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a9ad44523c055b375673e1276f28b9001}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a9ad44523c055b375673e1276f28b9001}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!asinh\_impl@{asinh\_impl}}
+\index{asinh\_impl@{asinh\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{asinh\_impl()}{asinh\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::asinh\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01446}{1446}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a8259f6be8bcdc18b1e4ece33ecd74752}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a8259f6be8bcdc18b1e4ece33ecd74752}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!atan2\_impl@{atan2\_impl}}
+\index{atan2\_impl@{atan2\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{atan2\_impl()}{atan2\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::atan2\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01114}{1114}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a1200e644cf98dc2f4e607c140b2aef1e}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a1200e644cf98dc2f4e607c140b2aef1e}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!atan2\_impl@{atan2\_impl}}
+\index{atan2\_impl@{atan2\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{atan2\_impl()}{atan2\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::atan2\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01120}{1120}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_af1d2004ed275cd4718d049210856fda9}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_af1d2004ed275cd4718d049210856fda9}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!atan\_impl@{atan\_impl}}
+\index{atan\_impl@{atan\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{atan\_impl()}{atan\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::atan\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01399}{1399}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ad45f8cc87554cbe2f6baa6ad8244dad2}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ad45f8cc87554cbe2f6baa6ad8244dad2}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!atan\_impl@{atan\_impl}}
+\index{atan\_impl@{atan\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{atan\_impl()}{atan\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::atan\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01447}{1447}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_aee5617a04d6f889840ae531b1149cb29}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_aee5617a04d6f889840ae531b1149cb29}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!atanh\_impl@{atanh\_impl}}
+\index{atanh\_impl@{atanh\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{atanh\_impl()}{atanh\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::atanh\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01385}{1385}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a1267a91fbe931a518ed2e204e753f857}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a1267a91fbe931a518ed2e204e753f857}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!atanh\_impl@{atanh\_impl}}
+\index{atanh\_impl@{atanh\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{atanh\_impl()}{atanh\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::atanh\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01448}{1448}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a5d53898ea8c07ee8d0c46292df71e08f}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a5d53898ea8c07ee8d0c46292df71e08f}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!ceil\_impl@{ceil\_impl}}
+\index{ceil\_impl@{ceil\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{ceil\_impl()}{ceil\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::ceil\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01436}{1436}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a0a5174b9a9ee137dbbe530aac737603d}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a0a5174b9a9ee137dbbe530aac737603d}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!ceil\_impl@{ceil\_impl}}
+\index{ceil\_impl@{ceil\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{ceil\_impl()}{ceil\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::ceil\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01400}{1400}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a3f447d3a739237c535c8dca06b3b61fd}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a3f447d3a739237c535c8dca06b3b61fd}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!const\_e\_impl@{const\_e\_impl}}
+\index{const\_e\_impl@{const\_e\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{const\_e\_impl()}{const\_e\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::const\+\_\+e\+\_\+impl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01426}{1426}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a2857a3c6788fe3807eea72a86d863ccd}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a2857a3c6788fe3807eea72a86d863ccd}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!const\_pi\_impl@{const\_pi\_impl}}
+\index{const\_pi\_impl@{const\_pi\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{const\_pi\_impl()}{const\_pi\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::const\+\_\+pi\+\_\+impl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01425}{1425}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_aab610e0704981c68daf18c255818b550}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_aab610e0704981c68daf18c255818b550}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!const\_qnan\_impl@{const\_qnan\_impl}}
+\index{const\_qnan\_impl@{const\_qnan\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{const\_qnan\_impl()}{const\_qnan\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::const\+\_\+qnan\+\_\+impl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01427}{1427}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a72c10ba7cf74eeb822ef89c28b7074bc}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a72c10ba7cf74eeb822ef89c28b7074bc}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!cos\_impl@{cos\_impl}}
+\index{cos\_impl@{cos\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{cos\_impl()}{cos\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::cos\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01401}{1401}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_af35356ec40cfd6b332926ea180d2fe3d}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_af35356ec40cfd6b332926ea180d2fe3d}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!cos\_impl@{cos\_impl}}
+\index{cos\_impl@{cos\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{cos\_impl()}{cos\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::cos\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01449}{1449}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_af8a17216e89c49d18a18ab7ae77b1845}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_af8a17216e89c49d18a18ab7ae77b1845}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!cosh\_impl@{cosh\_impl}}
+\index{cosh\_impl@{cosh\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{cosh\_impl()}{cosh\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::cosh\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01402}{1402}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ad2994b625803493e31725c71c7970575}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ad2994b625803493e31725c71c7970575}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!cosh\_impl@{cosh\_impl}}
+\index{cosh\_impl@{cosh\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{cosh\_impl()}{cosh\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::cosh\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01450}{1450}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a6b257761b19a54e1f9d06ba1b229cf43}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a6b257761b19a54e1f9d06ba1b229cf43}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!cot\_impl@{cot\_impl}}
+\index{cot\_impl@{cot\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{cot\_impl()}{cot\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::cot\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01415}{1415}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a2569406f6e5c247a8c08a72066c7c28a}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a2569406f6e5c247a8c08a72066c7c28a}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!cot\_impl@{cot\_impl}}
+\index{cot\_impl@{cot\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{cot\_impl()}{cot\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::cot\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01455}{1455}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a62a0a9b098be1234c4a384ec2bf0beec}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a62a0a9b098be1234c4a384ec2bf0beec}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!csc\_impl@{csc\_impl}}
+\index{csc\_impl@{csc\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{csc\_impl()}{csc\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::csc\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01417}{1417}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ab173bf29218f0dfa19cb094b02a3d547}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ab173bf29218f0dfa19cb094b02a3d547}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!csc\_impl@{csc\_impl}}
+\index{csc\_impl@{csc\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{csc\_impl()}{csc\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::csc\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01457}{1457}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ad187cd217b12dccce966cf398b66faf7}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ad187cd217b12dccce966cf398b66faf7}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!d2g\_impl@{d2g\_impl}}
+\index{d2g\_impl@{d2g\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{d2g\_impl()}{d2g\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::d2g\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01420}{1420}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a44ca8c9e272a9b0a2479280ebf22a9c3}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a44ca8c9e272a9b0a2479280ebf22a9c3}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!d2r\_impl@{d2r\_impl}}
+\index{d2r\_impl@{d2r\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{d2r\_impl()}{d2r\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::d2r\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01419}{1419}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ace7ad4b12c17c037fd136eff4daefc54}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ace7ad4b12c17c037fd136eff4daefc54}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!equal\_impl@{equal\_impl}}
+\index{equal\_impl@{equal\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{equal\_impl()}{equal\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily float exprtk\+::details\+::numeric\+::details\+::equal\+\_\+impl (\begin{DoxyParamCaption}\item[{const float}]{v0,  }\item[{const float}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00945}{945}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_ace7ad4b12c17c037fd136eff4daefc54_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_afae646a45e4db91bb52fd19fd3a11785}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_afae646a45e4db91bb52fd19fd3a11785}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!equal\_impl@{equal\_impl}}
+\index{equal\_impl@{equal\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{equal\_impl()}{equal\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::equal\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00952}{952}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_aae9c1fc4597aef4b0e4ab92786c9bf23}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_aae9c1fc4597aef4b0e4ab92786c9bf23}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!equal\_impl@{equal\_impl}}
+\index{equal\_impl@{equal\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{equal\_impl()}{equal\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::equal\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00939}{939}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_aae9c1fc4597aef4b0e4ab92786c9bf23_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a3dc008059fb4e84d446f2b7fec453694}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a3dc008059fb4e84d446f2b7fec453694}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!erf\_impl@{erf\_impl}}
+\index{erf\_impl@{erf\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{erf\_impl()}{erf\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::erf\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01289}{1289}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a3dc008059fb4e84d446f2b7fec453694_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a3dc008059fb4e84d446f2b7fec453694_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a51f55a48a31552557997cc620e036e9a}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a51f55a48a31552557997cc620e036e9a}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!erfc\_impl@{erfc\_impl}}
+\index{erfc\_impl@{erfc\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{erfc\_impl()}{erfc\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::erfc\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01315}{1315}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a51f55a48a31552557997cc620e036e9a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a51f55a48a31552557997cc620e036e9a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a551b790ce7ae8d06f0565fdce9c509fe}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a551b790ce7ae8d06f0565fdce9c509fe}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!exp\_impl@{exp\_impl}}
+\index{exp\_impl@{exp\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{exp\_impl()}{exp\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::exp\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01430}{1430}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ab928552d03bd427ee175bb8f39d45ecf}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ab928552d03bd427ee175bb8f39d45ecf}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!exp\_impl@{exp\_impl}}
+\index{exp\_impl@{exp\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{exp\_impl()}{exp\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::exp\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01403}{1403}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a4f032006172a14a2888b0b92e7205724}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a4f032006172a14a2888b0b92e7205724}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!expm1\_impl@{expm1\_impl}}
+\index{expm1\_impl@{expm1\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{expm1\_impl()}{expm1\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::expm1\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00968}{968}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ad87c96d998c7d8cdf05cb67a6e7e54bb}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ad87c96d998c7d8cdf05cb67a6e7e54bb}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!expm1\_impl@{expm1\_impl}}
+\index{expm1\_impl@{expm1\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{expm1\_impl()}{expm1\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::expm1\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00958}{958}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_ad87c96d998c7d8cdf05cb67a6e7e54bb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a8e97f23153d23f352d5311c321caf985}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a8e97f23153d23f352d5311c321caf985}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!exprtk\_define\_epsilon\_type@{exprtk\_define\_epsilon\_type}}
+\index{exprtk\_define\_epsilon\_type@{exprtk\_define\_epsilon\_type}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{exprtk\_define\_epsilon\_type()}{exprtk\_define\_epsilon\_type()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily exprtk\+::details\+::numeric\+::details\+::exprtk\+\_\+define\+\_\+epsilon\+\_\+type (\begin{DoxyParamCaption}\item[{float}]{,  }\item[{0.}]{00000100000f }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ae079a776cad6a245bf15c4f3b9a2df93}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ae079a776cad6a245bf15c4f3b9a2df93}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!exprtk\_define\_epsilon\_type@{exprtk\_define\_epsilon\_type}}
+\index{exprtk\_define\_epsilon\_type@{exprtk\_define\_epsilon\_type}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{exprtk\_define\_epsilon\_type()}{exprtk\_define\_epsilon\_type()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily exprtk\+::details\+::numeric\+::details\+::exprtk\+\_\+define\+\_\+epsilon\+\_\+type (\begin{DoxyParamCaption}\item[{long double}]{,  }\item[{0.}]{000000000001 }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a8e33463bba006edbe2f5a2cb83cb932d}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a8e33463bba006edbe2f5a2cb83cb932d}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!exprtk\_define\_erf@{exprtk\_define\_erf}}
+\index{exprtk\_define\_erf@{exprtk\_define\_erf}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{exprtk\_define\_erf()}{exprtk\_define\_erf()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily exprtk\+::details\+::numeric\+::details\+::exprtk\+\_\+define\+\_\+erf (\begin{DoxyParamCaption}\item[{float}]{,  }\item[{\+::erff}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a04ab5d3f7e17588b9b088da18ad010bf}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a04ab5d3f7e17588b9b088da18ad010bf}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!exprtk\_define\_erf@{exprtk\_define\_erf}}
+\index{exprtk\_define\_erf@{exprtk\_define\_erf}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{exprtk\_define\_erf()}{exprtk\_define\_erf()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \+::erf exprtk\+::details\+::numeric\+::details\+::exprtk\+\_\+define\+\_\+erf (\begin{DoxyParamCaption}\item[{long double}]{,  }\item[{\+::erfl}]{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a04ab5d3f7e17588b9b088da18ad010bf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a6bb39f4186f40936d2a8d1823d5b5fbd}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a6bb39f4186f40936d2a8d1823d5b5fbd}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!exprtk\_define\_erfc@{exprtk\_define\_erfc}}
+\index{exprtk\_define\_erfc@{exprtk\_define\_erfc}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{exprtk\_define\_erfc()}{exprtk\_define\_erfc()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily exprtk\+::details\+::numeric\+::details\+::exprtk\+\_\+define\+\_\+erfc (\begin{DoxyParamCaption}\item[{float}]{,  }\item[{\+::erfcf}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_aa2945b87d53a0aaf3a7b4d9c9761d1bb}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_aa2945b87d53a0aaf3a7b4d9c9761d1bb}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!exprtk\_define\_erfc@{exprtk\_define\_erfc}}
+\index{exprtk\_define\_erfc@{exprtk\_define\_erfc}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{exprtk\_define\_erfc()}{exprtk\_define\_erfc()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \+::erfc exprtk\+::details\+::numeric\+::details\+::exprtk\+\_\+define\+\_\+erfc (\begin{DoxyParamCaption}\item[{long double}]{,  }\item[{\+::erfcl}]{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_aa2945b87d53a0aaf3a7b4d9c9761d1bb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ae779dd4f69ac15f96267e5fb7cf08f39}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ae779dd4f69ac15f96267e5fb7cf08f39}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!exprtk\_register\_real\_type\_tag@{exprtk\_register\_real\_type\_tag}}
+\index{exprtk\_register\_real\_type\_tag@{exprtk\_register\_real\_type\_tag}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{exprtk\_register\_real\_type\_tag()}{exprtk\_register\_real\_type\_tag()}}
+{\footnotesize\ttfamily exprtk\+::details\+::numeric\+::details\+::exprtk\+\_\+register\+\_\+real\+\_\+type\+\_\+tag (\begin{DoxyParamCaption}\item[{float}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00851}{851}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_af3f670171c2efda88a565fc95165933a}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_af3f670171c2efda88a565fc95165933a}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!floor\_impl@{floor\_impl}}
+\index{floor\_impl@{floor\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{floor\_impl()}{floor\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::floor\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01437}{1437}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a05a7b010abcdfb5184ff8a511907f52d}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a05a7b010abcdfb5184ff8a511907f52d}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!floor\_impl@{floor\_impl}}
+\index{floor\_impl@{floor\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{floor\_impl()}{floor\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::floor\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01404}{1404}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a93e2cd372c0f87a87ddb9eda5cbe98e9}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a93e2cd372c0f87a87ddb9eda5cbe98e9}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!frac\_impl@{frac\_impl}}
+\index{frac\_impl@{frac\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{frac\_impl()}{frac\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::frac\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01423}{1423}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a93e2cd372c0f87a87ddb9eda5cbe98e9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a90c668a377e2ac7a01f8960710c870f7}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a90c668a377e2ac7a01f8960710c870f7}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!frac\_impl@{frac\_impl}}
+\index{frac\_impl@{frac\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{frac\_impl()}{frac\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::frac\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01441}{1441}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ab6be3b8275de50b70b0cb5d97fefec62}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ab6be3b8275de50b70b0cb5d97fefec62}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!g2d\_impl@{g2d\_impl}}
+\index{g2d\_impl@{g2d\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{g2d\_impl()}{g2d\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::g2d\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01421}{1421}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a2f1512f4be33d04b956b5bd282f30d8f}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a2f1512f4be33d04b956b5bd282f30d8f}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!hypot\_impl@{hypot\_impl}}
+\index{hypot\_impl@{hypot\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{hypot\_impl()}{hypot\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::hypot\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01108}{1108}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a969d62aee15aa653f21f2093d17b4a24}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a969d62aee15aa653f21f2093d17b4a24}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!hypot\_impl@{hypot\_impl}}
+\index{hypot\_impl@{hypot\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{hypot\_impl()}{hypot\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::hypot\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01102}{1102}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a05dd03115f428077622d0e987d338ef3}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a05dd03115f428077622d0e987d338ef3}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!is\_false\_impl@{is\_false\_impl}}
+\index{is\_false\_impl@{is\_false\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{is\_false\_impl()}{is\_false\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool exprtk\+::details\+::numeric\+::details\+::is\+\_\+false\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00915}{915}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a05dd03115f428077622d0e987d338ef3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a78e1cb9e6a5d24694f2004bd546e33f5}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a78e1cb9e6a5d24694f2004bd546e33f5}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!is\_integer\_impl@{is\_integer\_impl}}
+\index{is\_integer\_impl@{is\_integer\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{is\_integer\_impl()}{is\_integer\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool exprtk\+::details\+::numeric\+::details\+::is\+\_\+integer\+\_\+impl (\begin{DoxyParamCaption}\item[{const T \&}]{,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01466}{1466}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a1e3e86c52473fea69c6174f5799bdcc5}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a1e3e86c52473fea69c6174f5799bdcc5}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!is\_integer\_impl@{is\_integer\_impl}}
+\index{is\_integer\_impl@{is\_integer\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{is\_integer\_impl()}{is\_integer\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool exprtk\+::details\+::numeric\+::details\+::is\+\_\+integer\+\_\+impl (\begin{DoxyParamCaption}\item[{const T \&}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01460}{1460}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ac7d906e01d0b8c2aac42d56c77615971}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ac7d906e01d0b8c2aac42d56c77615971}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!is\_true\_impl@{is\_true\_impl}}
+\index{is\_true\_impl@{is\_true\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{is\_true\_impl()}{is\_true\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool exprtk\+::details\+::numeric\+::details\+::is\+\_\+true\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00909}{909}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_ac7d906e01d0b8c2aac42d56c77615971_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a8569ac3db6a312d568a33229bcb929bb}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a8569ac3db6a312d568a33229bcb929bb}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!log10\_impl@{log10\_impl}}
+\index{log10\_impl@{log10\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{log10\_impl()}{log10\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::log10\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01432}{1432}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a2ec72f265cd2e6ef1fbf5f25b875463d}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a2ec72f265cd2e6ef1fbf5f25b875463d}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!log10\_impl@{log10\_impl}}
+\index{log10\_impl@{log10\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{log10\_impl()}{log10\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::log10\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01406}{1406}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ac6569b29ad3d9713263b1feab3a1982a}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ac6569b29ad3d9713263b1feab3a1982a}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!log1p\_impl@{log1p\_impl}}
+\index{log1p\_impl@{log1p\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{log1p\_impl()}{log1p\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::log1p\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01047}{1047}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a8707e4586ea352735477d6d68b46a732}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a8707e4586ea352735477d6d68b46a732}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!log1p\_impl@{log1p\_impl}}
+\index{log1p\_impl@{log1p\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{log1p\_impl()}{log1p\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::log1p\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01031}{1031}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a8707e4586ea352735477d6d68b46a732_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a428b8f4899e2db5121cd80b5b7dd64dc}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a428b8f4899e2db5121cd80b5b7dd64dc}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!log2\_impl@{log2\_impl}}
+\index{log2\_impl@{log2\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{log2\_impl()}{log2\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::log2\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01433}{1433}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a6a1eb90bf5857227aa915f236a374b55}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a6a1eb90bf5857227aa915f236a374b55}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!log2\_impl@{log2\_impl}}
+\index{log2\_impl@{log2\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{log2\_impl()}{log2\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::log2\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01407}{1407}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a292de086f7bac46ed23736d7a3b03aa7}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a292de086f7bac46ed23736d7a3b03aa7}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!log\_impl@{log\_impl}}
+\index{log\_impl@{log\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{log\_impl()}{log\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::log\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01431}{1431}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a580693cb5407b7b50e1636df7b729f1d}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a580693cb5407b7b50e1636df7b729f1d}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!log\_impl@{log\_impl}}
+\index{log\_impl@{log\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{log\_impl()}{log\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::log\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01405}{1405}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_aca8c5fbc9c0a3ced1ec3448a0c4fdfa7}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_aca8c5fbc9c0a3ced1ec3448a0c4fdfa7}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!logn\_impl@{logn\_impl}}
+\index{logn\_impl@{logn\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{logn\_impl()}{logn\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::logn\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01025}{1025}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a319c63d82943be3083b8bff1ce2e6d3c}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a319c63d82943be3083b8bff1ce2e6d3c}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!logn\_impl@{logn\_impl}}
+\index{logn\_impl@{logn\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{logn\_impl()}{logn\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::logn\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01019}{1019}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ab8c2abb2b63cd647efea1681a8701435}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ab8c2abb2b63cd647efea1681a8701435}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!max\_impl@{max\_impl}}
+\index{max\_impl@{max\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{max\_impl()}{max\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::max\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00933}{933}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_aa95e2c4dadf0a3d96fcf4f5132b47b91}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_aa95e2c4dadf0a3d96fcf4f5132b47b91}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!min\_impl@{min\_impl}}
+\index{min\_impl@{min\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{min\_impl()}{min\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::min\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00927}{927}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a7b58cff93f26f5a6eae27c8dcc8a0e1c}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a7b58cff93f26f5a6eae27c8dcc8a0e1c}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!modulus\_impl@{modulus\_impl}}
+\index{modulus\_impl@{modulus\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{modulus\_impl()}{modulus\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::modulus\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01001}{1001}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a86f075a22e1e85958ae8928b12009a76}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a86f075a22e1e85958ae8928b12009a76}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!modulus\_impl@{modulus\_impl}}
+\index{modulus\_impl@{modulus\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{modulus\_impl()}{modulus\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::modulus\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00995}{995}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a86f075a22e1e85958ae8928b12009a76_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a3f1cb05c8f19b2095b4e85e305b25c72}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a3f1cb05c8f19b2095b4e85e305b25c72}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!nand\_impl@{nand\_impl}}
+\index{nand\_impl@{nand\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{nand\_impl()}{nand\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::nand\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01184}{1184}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_aa774fc4fb3bec9a3dcbc0f0c34956354}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_aa774fc4fb3bec9a3dcbc0f0c34956354}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!nand\_impl@{nand\_impl}}
+\index{nand\_impl@{nand\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{nand\_impl()}{nand\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::nand\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01178}{1178}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_aa774fc4fb3bec9a3dcbc0f0c34956354_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a3e19aadd45e50735562b6bf912069f12}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a3e19aadd45e50735562b6bf912069f12}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!ncdf\_impl@{ncdf\_impl}}
+\index{ncdf\_impl@{ncdf\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{ncdf\_impl()}{ncdf\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::ncdf\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01327}{1327}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a3e19aadd45e50735562b6bf912069f12_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a5b785f56681c22bea472423a13d7a9b1}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a5b785f56681c22bea472423a13d7a9b1}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!ncdf\_impl@{ncdf\_impl}}
+\index{ncdf\_impl@{ncdf\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{ncdf\_impl()}{ncdf\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::ncdf\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01321}{1321}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a5b785f56681c22bea472423a13d7a9b1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a5b785f56681c22bea472423a13d7a9b1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a33f5b4fab18ea05dcbd29bf17e3bb532}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a33f5b4fab18ea05dcbd29bf17e3bb532}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!neg\_impl@{neg\_impl}}
+\index{neg\_impl@{neg\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{neg\_impl()}{neg\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::neg\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01434}{1434}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a46ee6c14f5b3f7892e026e5ef84df177}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a46ee6c14f5b3f7892e026e5ef84df177}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!neg\_impl@{neg\_impl}}
+\index{neg\_impl@{neg\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{neg\_impl()}{neg\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::neg\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01408}{1408}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a2a029585d3535cabed00b96ad26e2d0a}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a2a029585d3535cabed00b96ad26e2d0a}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!nequal\_impl@{nequal\_impl}}
+\index{nequal\_impl@{nequal\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{nequal\_impl()}{nequal\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily float exprtk\+::details\+::numeric\+::details\+::nequal\+\_\+impl (\begin{DoxyParamCaption}\item[{const float}]{v0,  }\item[{const float}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00981}{981}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a2a029585d3535cabed00b96ad26e2d0a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a7512e4943e00ff6f02da719d4d6b97fa}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a7512e4943e00ff6f02da719d4d6b97fa}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!nequal\_impl@{nequal\_impl}}
+\index{nequal\_impl@{nequal\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{nequal\_impl()}{nequal\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::nequal\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00989}{989}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ab6a98ac472eeab3fee298696df516238}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ab6a98ac472eeab3fee298696df516238}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!nequal\_impl@{nequal\_impl}}
+\index{nequal\_impl@{nequal\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{nequal\_impl()}{nequal\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::nequal\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00974}{974}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_ab6a98ac472eeab3fee298696df516238_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ad77f456ece613af7e2416d62ee25153a}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ad77f456ece613af7e2416d62ee25153a}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!nor\_impl@{nor\_impl}}
+\index{nor\_impl@{nor\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{nor\_impl()}{nor\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::nor\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01208}{1208}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a1d583aea653ffde1f11d6905d33c87ab}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a1d583aea653ffde1f11d6905d33c87ab}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!nor\_impl@{nor\_impl}}
+\index{nor\_impl@{nor\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{nor\_impl()}{nor\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::nor\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01202}{1202}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a1d583aea653ffde1f11d6905d33c87ab_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a2e10aae63eff28aa5a35f0764aeb763e}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a2e10aae63eff28aa5a35f0764aeb763e}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!notl\_impl@{notl\_impl}}
+\index{notl\_impl@{notl\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{notl\_impl()}{notl\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::notl\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01439}{1439}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_af4e25c35d650743f31bd8be7e2536b14}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_af4e25c35d650743f31bd8be7e2536b14}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!notl\_impl@{notl\_impl}}
+\index{notl\_impl@{notl\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{notl\_impl()}{notl\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::notl\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01422}{1422}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_af793d7173cbb78ce328894261d37b566}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_af793d7173cbb78ce328894261d37b566}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!or\_impl@{or\_impl}}
+\index{or\_impl@{or\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{or\_impl()}{or\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::or\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01196}{1196}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a6f83c481e0b1b6ad5ecebb96b4d0268c}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a6f83c481e0b1b6ad5ecebb96b4d0268c}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!or\_impl@{or\_impl}}
+\index{or\_impl@{or\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{or\_impl()}{or\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::or\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01190}{1190}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a6f83c481e0b1b6ad5ecebb96b4d0268c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a67a3274e24a226929fe5af64cef2e981}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a67a3274e24a226929fe5af64cef2e981}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!pos\_impl@{pos\_impl}}
+\index{pos\_impl@{pos\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{pos\_impl()}{pos\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::pos\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01435}{1435}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a57dbe6c4233766387ce077211882b1a9}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a57dbe6c4233766387ce077211882b1a9}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!pos\_impl@{pos\_impl}}
+\index{pos\_impl@{pos\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{pos\_impl()}{pos\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::pos\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01409}{1409}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a471ff46155c7bfbb8c7a9e58a2c0232b}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a471ff46155c7bfbb8c7a9e58a2c0232b}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!pow\_impl@{pow\_impl}}
+\index{pow\_impl@{pow\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{pow\_impl()}{pow\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::pow\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01013}{1013}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a859f289a93027f175cd3c8f65348991f}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a859f289a93027f175cd3c8f65348991f}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!pow\_impl@{pow\_impl}}
+\index{pow\_impl@{pow\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{pow\_impl()}{pow\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::pow\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01007}{1007}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a4b00f5c407a4a420e3da84583bd9bfea}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a4b00f5c407a4a420e3da84583bd9bfea}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!process\_impl@{process\_impl}}
+\index{process\_impl@{process\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{process\_impl()}{process\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::process\+\_\+impl (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceexprtk_1_1details_a9f92c94d6eb47edbf0af17e8eabe57f7}{operator\+\_\+type}}}]{operation,  }\item[{const T}]{arg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l05424}{5424}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a4b00f5c407a4a420e3da84583bd9bfea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a802d56d363e11ba344730b730fa27501}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a802d56d363e11ba344730b730fa27501}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!process\_impl@{process\_impl}}
+\index{process\_impl@{process\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{process\_impl()}{process\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::process\+\_\+impl (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceexprtk_1_1details_a9f92c94d6eb47edbf0af17e8eabe57f7}{operator\+\_\+type}}}]{operation,  }\item[{const T}]{arg0,  }\item[{const T}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l05475}{5475}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a4a1fc6c64410bd5f75de6d5815435205}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a4a1fc6c64410bd5f75de6d5815435205}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!process\_impl@{process\_impl}}
+\index{process\_impl@{process\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{process\_impl()}{process\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::process\+\_\+impl (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceexprtk_1_1details_a9f92c94d6eb47edbf0af17e8eabe57f7}{operator\+\_\+type}}}]{operation,  }\item[{const T}]{arg0,  }\item[{const T}]{arg1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l05515}{5515}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a30bced5520b3d09a8e7034cabc7ae4ca}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a30bced5520b3d09a8e7034cabc7ae4ca}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!r2d\_impl@{r2d\_impl}}
+\index{r2d\_impl@{r2d\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{r2d\_impl()}{r2d\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::r2d\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01418}{1418}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_aedf0f0e75fd211406b2fa7ce91e62317}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_aedf0f0e75fd211406b2fa7ce91e62317}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!root\_impl@{root\_impl}}
+\index{root\_impl@{root\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{root\_impl()}{root\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::root\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01072}{1072}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a5256b79e873db5fd823bdce9c3f85497}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a5256b79e873db5fd823bdce9c3f85497}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!root\_impl@{root\_impl}}
+\index{root\_impl@{root\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{root\_impl()}{root\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::root\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01058}{1058}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a5256b79e873db5fd823bdce9c3f85497_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_adca042897a66a90709142256315ef6de}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_adca042897a66a90709142256315ef6de}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!round\_impl@{round\_impl}}
+\index{round\_impl@{round\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{round\_impl()}{round\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::round\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01438}{1438}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_acd0bcb383628f18b946e8712ff190bd3}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_acd0bcb383628f18b946e8712ff190bd3}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!round\_impl@{round\_impl}}
+\index{round\_impl@{round\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{round\_impl()}{round\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::round\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01078}{1078}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a78cc63e5ed18d24c183864f3ea2d31d1}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a78cc63e5ed18d24c183864f3ea2d31d1}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!roundn\_impl@{roundn\_impl}}
+\index{roundn\_impl@{roundn\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{roundn\_impl()}{roundn\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::roundn\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01084}{1084}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_acce57e58fdc55019d2a510fb5506c3e8}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_acce57e58fdc55019d2a510fb5506c3e8}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!roundn\_impl@{roundn\_impl}}
+\index{roundn\_impl@{roundn\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{roundn\_impl()}{roundn\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::roundn\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01096}{1096}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a80b9b44704b999f185962d47e6ffe76a}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a80b9b44704b999f185962d47e6ffe76a}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!sec\_impl@{sec\_impl}}
+\index{sec\_impl@{sec\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{sec\_impl()}{sec\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::sec\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01416}{1416}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a0862b6333ae9c6f3139d84ab5f3622af}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a0862b6333ae9c6f3139d84ab5f3622af}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!sec\_impl@{sec\_impl}}
+\index{sec\_impl@{sec\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{sec\_impl()}{sec\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::sec\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01456}{1456}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a9f93e4e6b2ccf0d5d784aef4e85691db}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a9f93e4e6b2ccf0d5d784aef4e85691db}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!sgn\_impl@{sgn\_impl}}
+\index{sgn\_impl@{sgn\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{sgn\_impl()}{sgn\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::sgn\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01158}{1158}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ad0562ecf078bdd3872e828aa7bf140d1}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ad0562ecf078bdd3872e828aa7bf140d1}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!sgn\_impl@{sgn\_impl}}
+\index{sgn\_impl@{sgn\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{sgn\_impl()}{sgn\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::sgn\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01150}{1150}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a370db5876cff76450e8377ebda53b662}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a370db5876cff76450e8377ebda53b662}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!shl\_impl@{shl\_impl}}
+\index{shl\_impl@{shl\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{shl\_impl()}{shl\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::shl\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01144}{1144}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a3165179d9f24b796a41993388f3f83d5}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a3165179d9f24b796a41993388f3f83d5}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!shl\_impl@{shl\_impl}}
+\index{shl\_impl@{shl\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{shl\_impl()}{shl\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::shl\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01138}{1138}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ac9bfcd1202a023b59bec2f4149f89ee9}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ac9bfcd1202a023b59bec2f4149f89ee9}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!shr\_impl@{shr\_impl}}
+\index{shr\_impl@{shr\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{shr\_impl()}{shr\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::shr\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01132}{1132}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a0fae6e7daa646f846bdc0424151aa4cb}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a0fae6e7daa646f846bdc0424151aa4cb}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!shr\_impl@{shr\_impl}}
+\index{shr\_impl@{shr\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{shr\_impl()}{shr\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::shr\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01126}{1126}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_acb3a65424a61ab44f44a5b61ea185dae}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_acb3a65424a61ab44f44a5b61ea185dae}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!sin\_impl@{sin\_impl}}
+\index{sin\_impl@{sin\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{sin\_impl()}{sin\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::sin\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01410}{1410}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a44e2afece9a184a6cd1a4eed7ba06b39}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a44e2afece9a184a6cd1a4eed7ba06b39}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!sin\_impl@{sin\_impl}}
+\index{sin\_impl@{sin\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{sin\_impl()}{sin\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::sin\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01451}{1451}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a15f5ff2dc06ff1638773a6d477f334e9}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a15f5ff2dc06ff1638773a6d477f334e9}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!sinc\_impl@{sinc\_impl}}
+\index{sinc\_impl@{sinc\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{sinc\_impl()}{sinc\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::sinc\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01342}{1342}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a15f5ff2dc06ff1638773a6d477f334e9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a20393773553ab6a0216282ed389601d8}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a20393773553ab6a0216282ed389601d8}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!sinc\_impl@{sinc\_impl}}
+\index{sinc\_impl@{sinc\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{sinc\_impl()}{sinc\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::sinc\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01333}{1333}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a20393773553ab6a0216282ed389601d8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a74b2d1debc1735acfcf94521da198ae8}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a74b2d1debc1735acfcf94521da198ae8}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!sinh\_impl@{sinh\_impl}}
+\index{sinh\_impl@{sinh\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{sinh\_impl()}{sinh\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::sinh\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01411}{1411}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ae8de3d482ceefbdc769ea6328b412ec2}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ae8de3d482ceefbdc769ea6328b412ec2}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!sinh\_impl@{sinh\_impl}}
+\index{sinh\_impl@{sinh\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{sinh\_impl()}{sinh\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::sinh\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01452}{1452}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a51b9291faabaa31f5e3f97d1064e2660}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a51b9291faabaa31f5e3f97d1064e2660}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!sqrt\_impl@{sqrt\_impl}}
+\index{sqrt\_impl@{sqrt\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{sqrt\_impl()}{sqrt\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::sqrt\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01440}{1440}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a383b7620a6b9df4120538f95598c6ca3}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a383b7620a6b9df4120538f95598c6ca3}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!sqrt\_impl@{sqrt\_impl}}
+\index{sqrt\_impl@{sqrt\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{sqrt\_impl()}{sqrt\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::sqrt\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01412}{1412}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ad5540b425e8f17a9ab9fee24234deda3}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ad5540b425e8f17a9ab9fee24234deda3}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!tan\_impl@{tan\_impl}}
+\index{tan\_impl@{tan\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{tan\_impl()}{tan\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::tan\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01413}{1413}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a61552df25e4f4d231f592d2c0d4f3a1e}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a61552df25e4f4d231f592d2c0d4f3a1e}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!tan\_impl@{tan\_impl}}
+\index{tan\_impl@{tan\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{tan\_impl()}{tan\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::tan\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01453}{1453}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a1251303a832742a8a0332790c4b99a34}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a1251303a832742a8a0332790c4b99a34}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!tanh\_impl@{tanh\_impl}}
+\index{tanh\_impl@{tanh\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{tanh\_impl()}{tanh\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::tanh\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01414}{1414}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ae7511d9d62a96cfd19e0cca4d72800c1}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ae7511d9d62a96cfd19e0cca4d72800c1}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!tanh\_impl@{tanh\_impl}}
+\index{tanh\_impl@{tanh\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{tanh\_impl()}{tanh\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::tanh\+\_\+impl (\begin{DoxyParamCaption}\item[{const}]{T,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01454}{1454}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_add9f0fc8e8fdca4e62ebdaca5740df7e}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_add9f0fc8e8fdca4e62ebdaca5740df7e}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!to\_int32\_impl@{to\_int32\_impl}}
+\index{to\_int32\_impl@{to\_int32\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{to\_int32\_impl()}{to\_int32\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+int exprtk\+::details\+::numeric\+::details\+::to\+\_\+int32\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00891}{891}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a64803003c9f73cbcf1a72951f31a4ada}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a64803003c9f73cbcf1a72951f31a4ada}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!to\_int64\_impl@{to\_int64\_impl}}
+\index{to\_int64\_impl@{to\_int64\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{to\_int64\_impl()}{to\_int64\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{namespaceexprtk_1_1details_a2b8b9aea8a463c9bdc41aa110815da28}{\+\_\+int64\+\_\+t}} exprtk\+::details\+::numeric\+::details\+::to\+\_\+int64\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00897}{897}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a5886fe43d1f36dc813ecb0c341148c97}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a5886fe43d1f36dc813ecb0c341148c97}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!to\_uint64\_impl@{to\_uint64\_impl}}
+\index{to\_uint64\_impl@{to\_uint64\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{to\_uint64\_impl()}{to\_uint64\_impl()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{namespaceexprtk_1_1details_aa251575709d3fcd7be5eed82741a3f9e}{\+\_\+uint64\+\_\+t}} exprtk\+::details\+::numeric\+::details\+::to\+\_\+uint64\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00903}{903}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a0cea086f6721af3040dd42e21302ec35}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a0cea086f6721af3040dd42e21302ec35}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!trunc\_impl@{trunc\_impl}}
+\index{trunc\_impl@{trunc\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{trunc\_impl()}{trunc\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::trunc\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01442}{1442}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a88d5c216fa965e65cbdcb7acad53f221}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a88d5c216fa965e65cbdcb7acad53f221}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!trunc\_impl@{trunc\_impl}}
+\index{trunc\_impl@{trunc\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{trunc\_impl()}{trunc\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::trunc\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01391}{1391}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a88d5c216fa965e65cbdcb7acad53f221_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_af1c048bfb4d5146de573d83e33f33190}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_af1c048bfb4d5146de573d83e33f33190}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!xnor\_impl@{xnor\_impl}}
+\index{xnor\_impl@{xnor\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{xnor\_impl()}{xnor\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::xnor\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01238}{1238}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_af1c048bfb4d5146de573d83e33f33190_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a38c340be75b8359cc0d4d69388a3a1ae}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a38c340be75b8359cc0d4d69388a3a1ae}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!xnor\_impl@{xnor\_impl}}
+\index{xnor\_impl@{xnor\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{xnor\_impl()}{xnor\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::xnor\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01226}{1226}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_a38c340be75b8359cc0d4d69388a3a1ae_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a06247cddec111bbe880f8f04c886f71b}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a06247cddec111bbe880f8f04c886f71b}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!xor\_impl@{xor\_impl}}
+\index{xor\_impl@{xor\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{xor\_impl()}{xor\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::xor\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1int__type__tag}{int\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01220}{1220}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_ad7c2dc6256af9f12f2b09313c2337ee0}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_ad7c2dc6256af9f12f2b09313c2337ee0}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!xor\_impl@{xor\_impl}}
+\index{xor\_impl@{xor\_impl}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{xor\_impl()}{xor\_impl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T exprtk\+::details\+::numeric\+::details\+::xor\+\_\+impl (\begin{DoxyParamCaption}\item[{const T}]{v0,  }\item[{const T}]{v1,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{real\+\_\+type\+\_\+tag}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l01214}{1214}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceexprtk_1_1details_1_1numeric_1_1details_ad7c2dc6256af9f12f2b09313c2337ee0_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceexprtk_1_1details_1_1numeric_1_1details_a5dd4339a913aa5c8f34392aec4aa5a38}\label{namespaceexprtk_1_1details_1_1numeric_1_1details_a5dd4339a913aa5c8f34392aec4aa5a38}} 
+\index{exprtk::details::numeric::details@{exprtk::details::numeric::details}!real\_type\_tag@{real\_type\_tag}}
+\index{real\_type\_tag@{real\_type\_tag}!exprtk::details::numeric::details@{exprtk::details::numeric::details}}
+\doxysubsubsection{\texorpdfstring{real\_type\_tag}{real\_type\_tag}}
+{\footnotesize\ttfamily erfc \mbox{\hyperlink{structexprtk_1_1details_1_1numeric_1_1details_1_1real__type__tag}{exprtk\+::details\+::numeric\+::details\+::real\+\_\+type\+\_\+tag}}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{               \textcolor{keywordflow}{return} std::not\_equal\_to<T>()(v,v)}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l00885}{885}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+

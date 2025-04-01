@@ -100,18 +100,58 @@ $(document).ready(function(){initNavTree('LogicComparator_8cpp_source.html','');
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>                                 <span class="keyword">const</span> std::map&lt;std::string, std::string&gt; &amp;comp_outpin_map,</div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>                                 <span class="keyword">const</span> std::string &amp;cell_name)</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    : ref_outpin_map_(ref_outpin_map), comp_outpin_map_(comp_outpin_map), cell_name_(cell_name) {}</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">    8</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">LogicComparator::generateReport</a>(<span class="keyword">const</span> std::string &amp;output_file) {}</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="classLogicComparator.html#a4ce5e98ddd78aafb760d49f7201e78a9">    7</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">void</span> <a class="code hl_function" href="classLogicComparator.html#a4ce5e98ddd78aafb760d49f7201e78a9">LogicComparator::logic</a>() {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>  <span class="keyword">typedef</span> <a class="code hl_class" href="classexprtk_1_1symbol__table.html">exprtk::symbol_table&lt;T&gt;</a> symbol_table_t;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  <span class="keyword">typedef</span> <a class="code hl_class" href="classexprtk_1_1expression.html">exprtk::expression&lt;T&gt;</a> expression_t;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  <span class="keyword">typedef</span> <a class="code hl_class" href="classexprtk_1_1parser.html">exprtk::parser&lt;T&gt;</a> parser_t;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <span class="keyword">const</span> std::string expression_string = <span class="stringliteral">&quot;not(A and B) or C&quot;</span>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  symbol_table_t symbol_table;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  symbol_table.create_variable(<span class="stringliteral">&quot;A&quot;</span>);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  symbol_table.create_variable(<span class="stringliteral">&quot;B&quot;</span>);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  symbol_table.create_variable(<span class="stringliteral">&quot;C&quot;</span>);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  expression_t expression;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  expression.register_symbol_table(symbol_table);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  parser_t parser;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  parser.<a class="code hl_function" href="classexprtk_1_1parser.html#a1d44f3682429df87cea0572774b7a0f5">compile</a>(expression_string, expression);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  printf(<span class="stringliteral">&quot; # | A | B | C | %s\n&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>         <span class="stringliteral">&quot;---+---+---+---+-%s\n&quot;</span>,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>         expression_string.c_str(), std::string(expression_string.size(), <span class="charliteral">&#39;-&#39;</span>).c_str());</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 8; ++i) {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    symbol_table.get_variable(<span class="stringliteral">&quot;A&quot;</span>)-&gt;ref() = T(i &amp; 0x01 ? 1 : 0);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    symbol_table.get_variable(<span class="stringliteral">&quot;B&quot;</span>)-&gt;ref() = T(i &amp; 0x02 ? 1 : 0);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    symbol_table.get_variable(<span class="stringliteral">&quot;C&quot;</span>)-&gt;ref() = T(i &amp; 0x04 ? 1 : 0);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> result = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(expression.value());</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    printf(<span class="stringliteral">&quot; %d | %d | %d | %d | %d \n&quot;</span>, i,</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>           <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(symbol_table.get_variable(<span class="stringliteral">&quot;A&quot;</span>)-&gt;value()),</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>           <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(symbol_table.get_variable(<span class="stringliteral">&quot;B&quot;</span>)-&gt;value()),</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>           <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(symbol_table.get_variable(<span class="stringliteral">&quot;C&quot;</span>)-&gt;value()), result);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">template</span> <span class="keywordtype">void</span> LogicComparator::logic&lt;double&gt;();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">   43</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">LogicComparator::generateReport</a>(<span class="keyword">const</span> std::string &amp;output_file) {}</div>
 <div class="ttc" id="aLogicComparator_8hpp_html"><div class="ttname"><a href="LogicComparator_8hpp.html">LogicComparator.hpp</a></div></div>
-<div class="ttc" id="aclassLogicComparator_html_a11238591d905205ad26839e1977634f5"><div class="ttname"><a href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">LogicComparator::generateReport</a></div><div class="ttdeci">void generateReport(const std::string &amp;output_file)</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00008">LogicComparator.cpp:8</a></div></div>
+<div class="ttc" id="aclassLogicComparator_html_a11238591d905205ad26839e1977634f5"><div class="ttname"><a href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">LogicComparator::generateReport</a></div><div class="ttdeci">void generateReport(const std::string &amp;output_file)</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00043">LogicComparator.cpp:43</a></div></div>
 <div class="ttc" id="aclassLogicComparator_html_a35436d01eabacaeb34d88883ab141613"><div class="ttname"><a href="classLogicComparator.html#a35436d01eabacaeb34d88883ab141613">LogicComparator::LogicComparator</a></div><div class="ttdeci">LogicComparator(const std::map&lt; std::string, std::string &gt; &amp;ref_outpin_map, const std::map&lt; std::string, std::string &gt; &amp;comp_outpin_map, const std::string &amp;cell_name)</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00003">LogicComparator.cpp:3</a></div></div>
+<div class="ttc" id="aclassLogicComparator_html_a4ce5e98ddd78aafb760d49f7201e78a9"><div class="ttname"><a href="classLogicComparator.html#a4ce5e98ddd78aafb760d49f7201e78a9">LogicComparator::logic</a></div><div class="ttdeci">void logic()</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00007">LogicComparator.cpp:7</a></div></div>
+<div class="ttc" id="aclassexprtk_1_1expression_html"><div class="ttname"><a href="classexprtk_1_1expression.html">exprtk::expression</a></div><div class="ttdef"><b>Definition:</b> <a href="exprtk_8hpp_source.html#l21576">exprtk.hpp:21577</a></div></div>
+<div class="ttc" id="aclassexprtk_1_1parser_html"><div class="ttname"><a href="classexprtk_1_1parser.html">exprtk::parser</a></div><div class="ttdef"><b>Definition:</b> <a href="exprtk_8hpp_source.html#l22265">exprtk.hpp:22266</a></div></div>
+<div class="ttc" id="aclassexprtk_1_1parser_html_a1d44f3682429df87cea0572774b7a0f5"><div class="ttname"><a href="classexprtk_1_1parser.html#a1d44f3682429df87cea0572774b7a0f5">exprtk::parser::compile</a></div><div class="ttdeci">bool compile(const std::string &amp;expression_string, expression&lt; T &gt; &amp;expr)</div><div class="ttdef"><b>Definition:</b> <a href="exprtk_8hpp_source.html#l24567">exprtk.hpp:24567</a></div></div>
+<div class="ttc" id="aclassexprtk_1_1symbol__table_html"><div class="ttname"><a href="classexprtk_1_1symbol__table.html">exprtk::symbol_table</a></div><div class="ttdef"><b>Definition:</b> <a href="exprtk_8hpp_source.html#l19834">exprtk.hpp:19835</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="LogicComparator_8cpp.html">LogicComparator.cpp</a></li>
-    <li class="footer">Generated on Mon Mar 31 2025 23:18:38 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Apr 1 2025 10:13:31 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

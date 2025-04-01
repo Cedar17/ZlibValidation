@@ -1,0 +1,184 @@
+\hypertarget{structexprtk_1_1type__store}{}\doxysection{exprtk\+::type\+\_\+store\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Struct Template Reference}
+\label{structexprtk_1_1type__store}\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}
+
+
+{\ttfamily \#include $<$exprtk.\+hpp$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classexprtk_1_1type__store_1_1parameter__list}{parameter\+\_\+list}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1type__store_1_1scalar__view}{scalar\+\_\+view}}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1type__store_1_1type__view}{type\+\_\+view}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06}{store\+\_\+type}} \{ \mbox{\hyperlink{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06acd874e5db814b359d8802cee35f268cd}{e\+\_\+unknown}}
+, \mbox{\hyperlink{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06a4b9a7a31c69f284a2cab774b6a42599d}{e\+\_\+scalar}}
+, \mbox{\hyperlink{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06a12884ba5d0ed489f9cfc27d43bd4fa2d}{e\+\_\+vector}}
+, \mbox{\hyperlink{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06a1ba863aae781b8eec1886ae71d61becf}{e\+\_\+string}}
+ \}
+\item 
+typedef \mbox{\hyperlink{structexprtk_1_1type__store_1_1type__view}{type\+\_\+view}}$<$ T $>$ \mbox{\hyperlink{structexprtk_1_1type__store_a1b7a9dc5075d6cfff4e80cec61498619}{vector\+\_\+view}}
+\item 
+typedef \mbox{\hyperlink{structexprtk_1_1type__store_1_1type__view}{type\+\_\+view}}$<$ char $>$ \mbox{\hyperlink{structexprtk_1_1type__store_a893820aba3e822ddc96d1c3ae090adf2}{string\+\_\+view}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structexprtk_1_1type__store_a393c112881627abe5053ef46e6dfcdd6}{type\+\_\+store}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>void $\ast$ \mbox{\hyperlink{structexprtk_1_1type__store_a6c6049de52a6228b037bac0d8bb1600d}{data}}\\
+\>T $\ast$ \mbox{\hyperlink{structexprtk_1_1type__store_a88c4f43df35d125de1bb08b2c75bfcae}{vec\_data}}\\
+\}; \\
+
+\end{tabbing}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{structexprtk_1_1type__store_a67a0160ea7db1d28ee6b5b51cb30f8bd}{size}}
+\item 
+\mbox{\hyperlink{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06}{store\+\_\+type}} \mbox{\hyperlink{structexprtk_1_1type__store_a92be0a9002602ba91c1f8c81c6d59fe8}{type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+struct exprtk\+::type\+\_\+store$<$ T $>$}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04726}{4726}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{structexprtk_1_1type__store_a893820aba3e822ddc96d1c3ae090adf2}\label{structexprtk_1_1type__store_a893820aba3e822ddc96d1c3ae090adf2}} 
+\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}!string\_view@{string\_view}}
+\index{string\_view@{string\_view}!exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{string\_view}{string\_view}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{structexprtk_1_1type__store_1_1type__view}{type\+\_\+view}}$<$char$>$ \mbox{\hyperlink{structexprtk_1_1type__store}{exprtk\+::type\+\_\+store}}$<$ T $>$\+::string\+\_\+view}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04855}{4855}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1type__store_a1b7a9dc5075d6cfff4e80cec61498619}\label{structexprtk_1_1type__store_a1b7a9dc5075d6cfff4e80cec61498619}} 
+\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}!vector\_view@{vector\_view}}
+\index{vector\_view@{vector\_view}!exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{vector\_view}{vector\_view}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{structexprtk_1_1type__store_1_1type__view}{type\+\_\+view}}$<$T$>$ \mbox{\hyperlink{structexprtk_1_1type__store}{exprtk\+::type\+\_\+store}}$<$ T $>$\+::vector\+\_\+view}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04854}{4854}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06}\label{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06}} 
+\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}!store\_type@{store\_type}}
+\index{store\_type@{store\_type}!exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{store\_type}{store\_type}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+enum \mbox{\hyperlink{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06}{exprtk\+::type\+\_\+store\+::store\+\_\+type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{e\_unknown@{e\_unknown}!exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}!e\_unknown@{e\_unknown}}}\mbox{\Hypertarget{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06acd874e5db814b359d8802cee35f268cd}\label{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06acd874e5db814b359d8802cee35f268cd}} 
+e\+\_\+unknown&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{e\_scalar@{e\_scalar}!exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}!e\_scalar@{e\_scalar}}}\mbox{\Hypertarget{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06a4b9a7a31c69f284a2cab774b6a42599d}\label{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06a4b9a7a31c69f284a2cab774b6a42599d}} 
+e\+\_\+scalar&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{e\_vector@{e\_vector}!exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}!e\_vector@{e\_vector}}}\mbox{\Hypertarget{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06a12884ba5d0ed489f9cfc27d43bd4fa2d}\label{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06a12884ba5d0ed489f9cfc27d43bd4fa2d}} 
+e\+\_\+vector&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{e\_string@{e\_string}!exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}!e\_string@{e\_string}}}\mbox{\Hypertarget{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06a1ba863aae781b8eec1886ae71d61becf}\label{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06a1ba863aae781b8eec1886ae71d61becf}} 
+e\+\_\+string&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04728}{4728}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structexprtk_1_1type__store_a393c112881627abe5053ef46e6dfcdd6}\label{structexprtk_1_1type__store_a393c112881627abe5053ef46e6dfcdd6}} 
+\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}!type\_store@{type\_store}}
+\index{type\_store@{type\_store}!exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{type\_store()}{type\_store()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structexprtk_1_1type__store}{exprtk\+::type\+\_\+store}}$<$ T $>$\+::type\+\_\+store (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04736}{4736}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structexprtk_1_1type__store_a983e0644dc9923fdec997a8c55b3cf01}\label{structexprtk_1_1type__store_a983e0644dc9923fdec997a8c55b3cf01}} 
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily union  \{ ... \}  \mbox{\hyperlink{structexprtk_1_1type__store}{exprtk\+::type\+\_\+store}}$<$ T $>$\+::@6}
+
+\mbox{\Hypertarget{structexprtk_1_1type__store_a6c6049de52a6228b037bac0d8bb1600d}\label{structexprtk_1_1type__store_a6c6049de52a6228b037bac0d8bb1600d}} 
+\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}!data@{data}}
+\index{data@{data}!exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void$\ast$ \mbox{\hyperlink{structexprtk_1_1type__store}{exprtk\+::type\+\_\+store}}$<$ T $>$\+::data}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04744}{4744}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1type__store_a67a0160ea7db1d28ee6b5b51cb30f8bd}\label{structexprtk_1_1type__store_a67a0160ea7db1d28ee6b5b51cb30f8bd}} 
+\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}!size@{size}}
+\index{size@{size}!exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{structexprtk_1_1type__store}{exprtk\+::type\+\_\+store}}$<$ T $>$\+::size}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04748}{4748}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1type__store_a92be0a9002602ba91c1f8c81c6d59fe8}\label{structexprtk_1_1type__store_a92be0a9002602ba91c1f8c81c6d59fe8}} 
+\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}!type@{type}}
+\index{type@{type}!exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structexprtk_1_1type__store_a3128cb7743bd9ff47dad3af1dc820c06}{store\+\_\+type}} \mbox{\hyperlink{structexprtk_1_1type__store}{exprtk\+::type\+\_\+store}}$<$ T $>$\+::type}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04749}{4749}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1type__store_a88c4f43df35d125de1bb08b2c75bfcae}\label{structexprtk_1_1type__store_a88c4f43df35d125de1bb08b2c75bfcae}} 
+\index{exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}!vec\_data@{vec\_data}}
+\index{vec\_data@{vec\_data}!exprtk::type\_store$<$ T $>$@{exprtk::type\_store$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{vec\_data}{vec\_data}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T$\ast$ \mbox{\hyperlink{structexprtk_1_1type__store}{exprtk\+::type\+\_\+store}}$<$ T $>$\+::vec\+\_\+data}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04745}{4745}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{exprtk_8hpp}{exprtk.\+hpp}}\end{DoxyCompactItemize}

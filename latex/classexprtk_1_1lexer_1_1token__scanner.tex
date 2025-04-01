@@ -1,0 +1,173 @@
+\hypertarget{classexprtk_1_1lexer_1_1token__scanner}{}\doxysection{exprtk\+::lexer\+::token\+\_\+scanner Class Reference}
+\label{classexprtk_1_1lexer_1_1token__scanner}\index{exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}}
+
+
+{\ttfamily \#include $<$exprtk.\+hpp$>$}
+
+
+
+Inheritance diagram for exprtk\+::lexer\+::token\+\_\+scanner\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{classexprtk_1_1lexer_1_1token__scanner__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for exprtk\+::lexer\+::token\+\_\+scanner\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{classexprtk_1_1lexer_1_1token__scanner__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classexprtk_1_1lexer_1_1token__scanner_ae5a18048185ec090a661914778297cde}{$\sim$token\+\_\+scanner}} ()
+\item 
+\mbox{\hyperlink{classexprtk_1_1lexer_1_1token__scanner_a3165bb88a2a8e39de940c5796731cc3f}{token\+\_\+scanner}} (const std\+::size\+\_\+t \&stride)
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1lexer_1_1token__scanner_ae2045dd33acc8c21f69ba27975c902da}{process}} (\mbox{\hyperlink{classexprtk_1_1lexer_1_1generator}{generator}} \&g) \mbox{\hyperlink{exprtk_8hpp_ac8eb7683d67c0546d6f64462ba3220f3}{exprtk\+\_\+override}}
+\item 
+virtual bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1token__scanner_a75277246b3b8a7e3c721a197fb809bec}{operator()}} (const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&)
+\item 
+virtual bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1token__scanner_a567dc82f3d6c417cb02d3eefc596f71d}{operator()}} (const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&, const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&)
+\item 
+virtual bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1token__scanner_aeed34f88fc15e15d0804fc1b49318676}{operator()}} (const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&, const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&, const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&)
+\item 
+virtual bool \mbox{\hyperlink{classexprtk_1_1lexer_1_1token__scanner_a54deb403efd457bdd6526a224458c3ae}{operator()}} (const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&, const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&, const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&, const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1lexer_1_1token__scanner_addc0dad7c7c8f25a7e81c42dda64a415}{stride\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l03144}{3144}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1token__scanner_ae5a18048185ec090a661914778297cde}\label{classexprtk_1_1lexer_1_1token__scanner_ae5a18048185ec090a661914778297cde}} 
+\index{exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}!````~token\_scanner@{$\sim$token\_scanner}}
+\index{````~token\_scanner@{$\sim$token\_scanner}!exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}}
+\doxysubsubsection{\texorpdfstring{$\sim$token\_scanner()}{~token\_scanner()}}
+{\footnotesize\ttfamily virtual exprtk\+::lexer\+::token\+\_\+scanner\+::$\sim$token\+\_\+scanner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l03148}{3148}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1token__scanner_a3165bb88a2a8e39de940c5796731cc3f}\label{classexprtk_1_1lexer_1_1token__scanner_a3165bb88a2a8e39de940c5796731cc3f}} 
+\index{exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}!token\_scanner@{token\_scanner}}
+\index{token\_scanner@{token\_scanner}!exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}}
+\doxysubsubsection{\texorpdfstring{token\_scanner()}{token\_scanner()}}
+{\footnotesize\ttfamily exprtk\+::lexer\+::token\+\_\+scanner\+::token\+\_\+scanner (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{stride }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l03151}{3151}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1token__scanner_a75277246b3b8a7e3c721a197fb809bec}\label{classexprtk_1_1lexer_1_1token__scanner_a75277246b3b8a7e3c721a197fb809bec}} 
+\index{exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}!operator()@{operator()}}
+\index{operator()@{operator()}!exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily virtual bool exprtk\+::lexer\+::token\+\_\+scanner\+::operator() (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classexprtk_1_1lexer_1_1helper_1_1exprtk__final_a7fcdb6b7c0bb0efe708c4c4179298e4f}{exprtk\+::lexer\+::helper\+::exprtk\+\_\+final$<$ T $>$}}, and \mbox{\hyperlink{classexprtk_1_1lexer_1_1helper_1_1exprtk__final_a7fcdb6b7c0bb0efe708c4c4179298e4f}{exprtk\+::lexer\+::helper\+::exprtk\+\_\+final$<$ T $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l03226}{3226}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1token__scanner_a567dc82f3d6c417cb02d3eefc596f71d}\label{classexprtk_1_1lexer_1_1token__scanner_a567dc82f3d6c417cb02d3eefc596f71d}} 
+\index{exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}!operator()@{operator()}}
+\index{operator()@{operator()}!exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily virtual bool exprtk\+::lexer\+::token\+\_\+scanner\+::operator() (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&}]{,  }\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classexprtk_1_1lexer_1_1helper_1_1exprtk__final_a6834545b050ab7c2507c0e1bc484ed05}{exprtk\+::lexer\+::helper\+::exprtk\+\_\+final$<$ T $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l03231}{3231}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1token__scanner_aeed34f88fc15e15d0804fc1b49318676}\label{classexprtk_1_1lexer_1_1token__scanner_aeed34f88fc15e15d0804fc1b49318676}} 
+\index{exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}!operator()@{operator()}}
+\index{operator()@{operator()}!exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily virtual bool exprtk\+::lexer\+::token\+\_\+scanner\+::operator() (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&}]{,  }\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&}]{,  }\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classexprtk_1_1lexer_1_1helper_1_1exprtk__final_a46f8f79c862931e15eb344dcf9618956}{exprtk\+::lexer\+::helper\+::exprtk\+\_\+final$<$ T $>$}}.
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l03236}{3236}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1token__scanner_a54deb403efd457bdd6526a224458c3ae}\label{classexprtk_1_1lexer_1_1token__scanner_a54deb403efd457bdd6526a224458c3ae}} 
+\index{exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}!operator()@{operator()}}
+\index{operator()@{operator()}!exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily virtual bool exprtk\+::lexer\+::token\+\_\+scanner\+::operator() (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&}]{,  }\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&}]{,  }\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&}]{,  }\item[{const \mbox{\hyperlink{structexprtk_1_1lexer_1_1token}{token}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l03241}{3241}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1token__scanner_ae2045dd33acc8c21f69ba27975c902da}\label{classexprtk_1_1lexer_1_1token__scanner_ae2045dd33acc8c21f69ba27975c902da}} 
+\index{exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}!process@{process}}
+\index{process@{process}!exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t exprtk\+::lexer\+::token\+\_\+scanner\+::process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classexprtk_1_1lexer_1_1generator}{generator}} \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classexprtk_1_1lexer_1_1helper__interface_a6e14d833ba351c1dcc80ee353d2f2b88}{exprtk\+::lexer\+::helper\+\_\+interface}}.
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l03160}{3160}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1lexer_1_1token__scanner_ae2045dd33acc8c21f69ba27975c902da_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classexprtk_1_1lexer_1_1token__scanner_addc0dad7c7c8f25a7e81c42dda64a415}\label{classexprtk_1_1lexer_1_1token__scanner_addc0dad7c7c8f25a7e81c42dda64a415}} 
+\index{exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}!stride\_@{stride\_}}
+\index{stride\_@{stride\_}!exprtk::lexer::token\_scanner@{exprtk::lexer::token\_scanner}}
+\doxysubsubsection{\texorpdfstring{stride\_}{stride\_}}
+{\footnotesize\ttfamily const std\+::size\+\_\+t exprtk\+::lexer\+::token\+\_\+scanner\+::stride\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l03248}{3248}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{exprtk_8hpp}{exprtk.\+hpp}}\end{DoxyCompactItemize}

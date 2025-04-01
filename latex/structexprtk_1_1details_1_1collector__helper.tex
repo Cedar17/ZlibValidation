@@ -1,0 +1,123 @@
+\hypertarget{structexprtk_1_1details_1_1collector__helper}{}\doxysection{exprtk\+::details\+::collector\+\_\+helper\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Struct Template Reference}
+\label{structexprtk_1_1details_1_1collector__helper}\index{exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}}
+
+
+{\ttfamily \#include $<$exprtk.\+hpp$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper_1_1resolve__as__vector}{resolve\+\_\+as\+\_\+vector}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1symbol__table}{exprtk\+::symbol\+\_\+table}}$<$ T $>$ \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper_a6c22cee846ab555d011230e997daabd2}{symbol\+\_\+table\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$ \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper_ad55e5e9ea2dff4219962058108181d35}{expression\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$ \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper_acc146ab94c37017ca00fe539013fbf1b}{parser\+\_\+t}}
+\item 
+typedef parser\+\_\+t\+::dependent\+\_\+entity\+\_\+collector\+::symbol\+\_\+t \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper_a4af0dd7290d4211da7e5019836828522}{symbol\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver}{parser\+\_\+t\+::unknown\+\_\+symbol\+\_\+resolver}} \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper_a99b7cefb9d60d2bdb06add5dfa7714bb}{usr\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper_a27942b9471185320035125634198d424}{collection\+\_\+pass}} (const std\+::string \&expression\+\_\+string, std\+::set$<$ std\+::string $>$ \&symbol\+\_\+set, const bool \mbox{\hyperlink{namespaceexprtk_a14a44b50483d43e31d96ac22943b748f}{collect\+\_\+variables}}, const bool \mbox{\hyperlink{namespaceexprtk_a752c86132d67a140fb0ebd45c8cf7ba0}{collect\+\_\+functions}}, const bool vector\+\_\+pass, \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper_a6c22cee846ab555d011230e997daabd2}{symbol\+\_\+table\+\_\+t}} \&ext\+\_\+symbol\+\_\+table)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+struct exprtk\+::details\+::collector\+\_\+helper$<$ T $>$}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l41978}{41978}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{structexprtk_1_1details_1_1collector__helper_ad55e5e9ea2dff4219962058108181d35}\label{structexprtk_1_1details_1_1collector__helper_ad55e5e9ea2dff4219962058108181d35}} 
+\index{exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}!expression\_t@{expression\_t}}
+\index{expression\_t@{expression\_t}!exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{expression\_t}{expression\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$T$>$ \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper}{exprtk\+::details\+::collector\+\_\+helper}}$<$ T $>$\+::expression\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l41981}{41981}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1details_1_1collector__helper_acc146ab94c37017ca00fe539013fbf1b}\label{structexprtk_1_1details_1_1collector__helper_acc146ab94c37017ca00fe539013fbf1b}} 
+\index{exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}!parser\_t@{parser\_t}}
+\index{parser\_t@{parser\_t}!exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{parser\_t}{parser\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$T$>$ \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper}{exprtk\+::details\+::collector\+\_\+helper}}$<$ T $>$\+::parser\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l41982}{41982}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1details_1_1collector__helper_a4af0dd7290d4211da7e5019836828522}\label{structexprtk_1_1details_1_1collector__helper_a4af0dd7290d4211da7e5019836828522}} 
+\index{exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}!symbol\_t@{symbol\_t}}
+\index{symbol\_t@{symbol\_t}!exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{symbol\_t}{symbol\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef parser\+\_\+t\+::dependent\+\_\+entity\+\_\+collector\+::symbol\+\_\+t \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper}{exprtk\+::details\+::collector\+\_\+helper}}$<$ T $>$\+::symbol\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l41983}{41983}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1details_1_1collector__helper_a6c22cee846ab555d011230e997daabd2}\label{structexprtk_1_1details_1_1collector__helper_a6c22cee846ab555d011230e997daabd2}} 
+\index{exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}!symbol\_table\_t@{symbol\_table\_t}}
+\index{symbol\_table\_t@{symbol\_table\_t}!exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{symbol\_table\_t}{symbol\_table\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1symbol__table}{exprtk\+::symbol\+\_\+table}}$<$T$>$ \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper}{exprtk\+::details\+::collector\+\_\+helper}}$<$ T $>$\+::symbol\+\_\+table\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l41980}{41980}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1details_1_1collector__helper_a99b7cefb9d60d2bdb06add5dfa7714bb}\label{structexprtk_1_1details_1_1collector__helper_a99b7cefb9d60d2bdb06add5dfa7714bb}} 
+\index{exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}!usr\_t@{usr\_t}}
+\index{usr\_t@{usr\_t}!exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{usr\_t}{usr\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver}{parser\+\_\+t\+::unknown\+\_\+symbol\+\_\+resolver}} \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper}{exprtk\+::details\+::collector\+\_\+helper}}$<$ T $>$\+::usr\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l41984}{41984}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structexprtk_1_1details_1_1collector__helper_a27942b9471185320035125634198d424}\label{structexprtk_1_1details_1_1collector__helper_a27942b9471185320035125634198d424}} 
+\index{exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}!collection\_pass@{collection\_pass}}
+\index{collection\_pass@{collection\_pass}!exprtk::details::collector\_helper$<$ T $>$@{exprtk::details::collector\_helper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{collection\_pass()}{collection\_pass()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+static bool \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper}{exprtk\+::details\+::collector\+\_\+helper}}$<$ T $>$\+::collection\+\_\+pass (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{expression\+\_\+string,  }\item[{std\+::set$<$ std\+::string $>$ \&}]{symbol\+\_\+set,  }\item[{const bool}]{collect\+\_\+variables,  }\item[{const bool}]{collect\+\_\+functions,  }\item[{const bool}]{vector\+\_\+pass,  }\item[{\mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper_a6c22cee846ab555d011230e997daabd2}{symbol\+\_\+table\+\_\+t}} \&}]{ext\+\_\+symbol\+\_\+table }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l42006}{42006}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1details_1_1collector__helper_a27942b9471185320035125634198d424_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{exprtk_8hpp}{exprtk.\+hpp}}\end{DoxyCompactItemize}

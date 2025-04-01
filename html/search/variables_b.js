@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['macros_0',['macros',['../classslang_1_1syntax_1_1SyntaxTree.html#a82980e68654cb5a61aae45b6b7c57de3',1,'slang::syntax::SyntaxTree']]],
-  ['metadata_1',['metadata',['../classslang_1_1syntax_1_1SyntaxTree.html#a22a4f70f1a148fe00ad4beee24c53955',1,'slang::syntax::SyntaxTree']]],
-  ['modulename_5f_2',['moduleName_',['../classModuleRewriter.html#ac5bdc3d50b39f851fa1bb728d08c1bfb',1,'ModuleRewriter']]]
+  ['kind_0',['kind',['../structGateInfo.html#a8e4b8c967fffb9f3e5044e8ef184e811',1,'GateInfo::kind()'],['../classslang_1_1syntax_1_1SyntaxNode.html#ac893a4d23a77a55eb8eb17d67099ac43',1,'slang::syntax::SyntaxNode::kind()']]]
 ];

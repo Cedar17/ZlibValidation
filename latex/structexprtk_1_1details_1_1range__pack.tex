@@ -1,0 +1,292 @@
+\hypertarget{structexprtk_1_1details_1_1range__pack}{}\doxysection{exprtk\+::details\+::range\+\_\+pack\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Struct Template Reference}
+\label{structexprtk_1_1details_1_1range__pack}\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+
+
+{\ttfamily \#include $<$exprtk.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1expression__node}{expression\+\_\+node}}$<$ T $>$ $\ast$ \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a66f1ea1390a2a1d1ed0940eb999824e0}{expression\+\_\+node\+\_\+ptr}}
+\item 
+typedef std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a7cdab02cd1de2cd39bab8df9974eb0c6}{cached\+\_\+range\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a58fcb252292e6a95e91d9e878f4728ab}{range\+\_\+pack}} ()
+\item 
+void \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_acde7632a3f23450e287c171c247d381f}{clear}} ()
+\item 
+void \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_aa10331baa776b0f4bb41bb41332228d1}{free}} ()
+\item 
+bool \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_acc181149b4326736eb878d0de1e0f5db}{const\+\_\+range}} () const
+\item 
+bool \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_aa3a5348d41e03c46d751be33777d2496}{var\+\_\+range}} () const
+\item 
+bool \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a9179f584a44666ca247eb3dd0bcb7195}{operator()}} (std\+::size\+\_\+t \&r0, std\+::size\+\_\+t \&r1, const std\+::size\+\_\+t \&\mbox{\hyperlink{namespaceexprtk_1_1details_a19649068794420a5b838e26ede836b5c}{size}}=std\+::numeric\+\_\+limits$<$ std\+::size\+\_\+t $>$\+::max()) const
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a07cd285bfb089642b3d2de9251f7c134}{const\+\_\+size}} () const
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a3844626bfb084ce765a3ad1919b5091a}{cache\+\_\+size}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::pair$<$ bool, \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a66f1ea1390a2a1d1ed0940eb999824e0}{expression\+\_\+node\+\_\+ptr}} $>$ \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_aa95a9180e83edf01eafb94f004435c46}{n0\+\_\+e}}
+\item 
+std\+::pair$<$ bool, \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a66f1ea1390a2a1d1ed0940eb999824e0}{expression\+\_\+node\+\_\+ptr}} $>$ \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a62f09fa9fc4c5749df214b6acc0676d4}{n1\+\_\+e}}
+\item 
+std\+::pair$<$ bool, std\+::size\+\_\+t $>$ \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a7fcf7514fca3fec6ab166cfbbc7a30cf}{n0\+\_\+c}}
+\item 
+std\+::pair$<$ bool, std\+::size\+\_\+t $>$ \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a856a9bd1b2157c008dd7fd54d558489d}{n1\+\_\+c}}
+\item 
+\mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a7cdab02cd1de2cd39bab8df9974eb0c6}{cached\+\_\+range\+\_\+t}} \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a11e6d24bdc7fef8315ea8fa6a2ad1163}{cache}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+struct exprtk\+::details\+::range\+\_\+pack$<$ T $>$}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08348}{8348}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_a7cdab02cd1de2cd39bab8df9974eb0c6}\label{structexprtk_1_1details_1_1range__pack_a7cdab02cd1de2cd39bab8df9974eb0c6}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!cached\_range\_t@{cached\_range\_t}}
+\index{cached\_range\_t@{cached\_range\_t}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{cached\_range\_t}{cached\_range\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef std\+::pair$<$std\+::size\+\_\+t,std\+::size\+\_\+t$>$ \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::cached\+\_\+range\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08351}{8351}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_a66f1ea1390a2a1d1ed0940eb999824e0}\label{structexprtk_1_1details_1_1range__pack_a66f1ea1390a2a1d1ed0940eb999824e0}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!expression\_node\_ptr@{expression\_node\_ptr}}
+\index{expression\_node\_ptr@{expression\_node\_ptr}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{expression\_node\_ptr}{expression\_node\_ptr}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1expression__node}{expression\+\_\+node}}$<$T$>$$\ast$ \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::expression\+\_\+node\+\_\+ptr}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08350}{8350}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_a58fcb252292e6a95e91d9e878f4728ab}\label{structexprtk_1_1details_1_1range__pack_a58fcb252292e6a95e91d9e878f4728ab}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!range\_pack@{range\_pack}}
+\index{range\_pack@{range\_pack}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{range\_pack()}{range\_pack()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::range\+\_\+pack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08353}{8353}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_a3844626bfb084ce765a3ad1919b5091a}\label{structexprtk_1_1details_1_1range__pack_a3844626bfb084ce765a3ad1919b5091a}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!cache\_size@{cache\_size}}
+\index{cache\_size@{cache\_size}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{cache\_size()}{cache\_size()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::cache\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08455}{8455}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1details_1_1range__pack_a3844626bfb084ce765a3ad1919b5091a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_acde7632a3f23450e287c171c247d381f}\label{structexprtk_1_1details_1_1range__pack_acde7632a3f23450e287c171c247d381f}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!clear@{clear}}
+\index{clear@{clear}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08361}{8361}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1details_1_1range__pack_acde7632a3f23450e287c171c247d381f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_acc181149b4326736eb878d0de1e0f5db}\label{structexprtk_1_1details_1_1range__pack_acc181149b4326736eb878d0de1e0f5db}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!const\_range@{const\_range}}
+\index{const\_range@{const\_range}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{const\_range()}{const\_range()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::const\+\_\+range (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08399}{8399}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1details_1_1range__pack_acc181149b4326736eb878d0de1e0f5db_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_a07cd285bfb089642b3d2de9251f7c134}\label{structexprtk_1_1details_1_1range__pack_a07cd285bfb089642b3d2de9251f7c134}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!const\_size@{const\_size}}
+\index{const\_size@{const\_size}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{const\_size()}{const\_size()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::const\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08450}{8450}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1details_1_1range__pack_a07cd285bfb089642b3d2de9251f7c134_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_aa10331baa776b0f4bb41bb41332228d1}\label{structexprtk_1_1details_1_1range__pack_aa10331baa776b0f4bb41bb41332228d1}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!free@{free}}
+\index{free@{free}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{free()}{free()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08370}{8370}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1details_1_1range__pack_aa10331baa776b0f4bb41bb41332228d1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1details_1_1range__pack_aa10331baa776b0f4bb41bb41332228d1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_a9179f584a44666ca247eb3dd0bcb7195}\label{structexprtk_1_1details_1_1range__pack_a9179f584a44666ca247eb3dd0bcb7195}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t \&}]{r0,  }\item[{std\+::size\+\_\+t \&}]{r1,  }\item[{const std\+::size\+\_\+t \&}]{size = {\ttfamily std\+:\+:numeric\+\_\+limits$<$std\+:\+:size\+\_\+t$>$\+:\+:max()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08411}{8411}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1details_1_1range__pack_a9179f584a44666ca247eb3dd0bcb7195_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_aa3a5348d41e03c46d751be33777d2496}\label{structexprtk_1_1details_1_1range__pack_aa3a5348d41e03c46d751be33777d2496}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!var\_range@{var\_range}}
+\index{var\_range@{var\_range}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{var\_range()}{var\_range()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::var\+\_\+range (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08405}{8405}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_a11e6d24bdc7fef8315ea8fa6a2ad1163}\label{structexprtk_1_1details_1_1range__pack_a11e6d24bdc7fef8315ea8fa6a2ad1163}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!cache@{cache}}
+\index{cache@{cache}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{cache}{cache}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a7cdab02cd1de2cd39bab8df9974eb0c6}{cached\+\_\+range\+\_\+t}} \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::cache\hspace{0.3cm}{\ttfamily [mutable]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08464}{8464}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_a7fcf7514fca3fec6ab166cfbbc7a30cf}\label{structexprtk_1_1details_1_1range__pack_a7fcf7514fca3fec6ab166cfbbc7a30cf}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!n0\_c@{n0\_c}}
+\index{n0\_c@{n0\_c}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{n0\_c}{n0\_c}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::pair$<$bool,std\+::size\+\_\+t $>$ \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::n0\+\_\+c}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08462}{8462}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_aa95a9180e83edf01eafb94f004435c46}\label{structexprtk_1_1details_1_1range__pack_aa95a9180e83edf01eafb94f004435c46}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!n0\_e@{n0\_e}}
+\index{n0\_e@{n0\_e}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{n0\_e}{n0\_e}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::pair$<$bool,\mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a66f1ea1390a2a1d1ed0940eb999824e0}{expression\+\_\+node\+\_\+ptr}}$>$ \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::n0\+\_\+e}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08460}{8460}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_a856a9bd1b2157c008dd7fd54d558489d}\label{structexprtk_1_1details_1_1range__pack_a856a9bd1b2157c008dd7fd54d558489d}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!n1\_c@{n1\_c}}
+\index{n1\_c@{n1\_c}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{n1\_c}{n1\_c}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::pair$<$bool,std\+::size\+\_\+t $>$ \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::n1\+\_\+c}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08463}{8463}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1details_1_1range__pack_a62f09fa9fc4c5749df214b6acc0676d4}\label{structexprtk_1_1details_1_1range__pack_a62f09fa9fc4c5749df214b6acc0676d4}} 
+\index{exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}!n1\_e@{n1\_e}}
+\index{n1\_e@{n1\_e}!exprtk::details::range\_pack$<$ T $>$@{exprtk::details::range\_pack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{n1\_e}{n1\_e}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::pair$<$bool,\mbox{\hyperlink{structexprtk_1_1details_1_1range__pack_a66f1ea1390a2a1d1ed0940eb999824e0}{expression\+\_\+node\+\_\+ptr}}$>$ \mbox{\hyperlink{structexprtk_1_1details_1_1range__pack}{exprtk\+::details\+::range\+\_\+pack}}$<$ T $>$\+::n1\+\_\+e}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l08461}{8461}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{exprtk_8hpp}{exprtk.\+hpp}}\end{DoxyCompactItemize}

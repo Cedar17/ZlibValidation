@@ -1,0 +1,187 @@
+\hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver}{}\doxysection{exprtk\+::parser\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+::unknown\+\_\+symbol\+\_\+resolver Struct Reference}
+\label{structexprtk_1_1parser_1_1unknown__symbol__resolver}\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}
+
+
+{\ttfamily \#include $<$exprtk.\+hpp$>$}
+
+
+
+Inheritance diagram for exprtk\+::parser\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+::unknown\+\_\+symbol\+\_\+resolver\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{structexprtk_1_1parser_1_1unknown__symbol__resolver__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bce}{usr\+\_\+symbol\+\_\+type}} \{ \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bcea1dd1bfa528d29453266f8407428e2a3b}{e\+\_\+usr\+\_\+unknown\+\_\+type}} = 0
+, \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bceaa7c5ec97f81716296ffbccc843187260}{e\+\_\+usr\+\_\+variable\+\_\+type}} = 1
+, \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bceac104eaccfbb986413384d19016aa05c8}{e\+\_\+usr\+\_\+constant\+\_\+type}} = 2
+ \}
+\item 
+enum \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849d}{usr\+\_\+mode}} \{ \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849daab5dff1e58b006c2cc6747622cc256a1}{e\+\_\+usrmode\+\_\+default}} = 0
+, \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849da45215b4bd2c6f7742331b53cd9ed55da}{e\+\_\+usrmode\+\_\+extended}} = 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_aa705609f834b216386400d927ace2183}{unknown\+\_\+symbol\+\_\+resolver}} (const \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849d}{usr\+\_\+mode}} m=\mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849daab5dff1e58b006c2cc6747622cc256a1}{e\+\_\+usrmode\+\_\+default}})
+\item 
+virtual \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_a44e1720d1c32fd761d8ae3e1bcf8e6bf}{$\sim$unknown\+\_\+symbol\+\_\+resolver}} ()
+\item 
+virtual bool \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_ad861f055709eafe1f0a12824af445de1}{process}} (const std\+::string \&, \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bce}{usr\+\_\+symbol\+\_\+type}} \&st, T \&default\+\_\+value, std\+::string \&error\+\_\+message)
+\item 
+virtual bool \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_ab647531e4377df501505b72bbd1c5364}{process}} (const std\+::string \&, \mbox{\hyperlink{classexprtk_1_1parser_af42d67f70f0c4880db7bdf7d5be356e3}{symbol\+\_\+table\+\_\+t}} \&, std\+::string \&)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849d}{usr\+\_\+mode}} \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_af9d6b039b490d6a709d5a667012437db}{mode}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+struct exprtk\+::parser$<$ T $>$\+::unknown\+\_\+symbol\+\_\+resolver}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l23538}{23538}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849d}\label{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849d}} 
+\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}!usr\_mode@{usr\_mode}}
+\index{usr\_mode@{usr\_mode}!exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}
+\doxysubsubsection{\texorpdfstring{usr\_mode}{usr\_mode}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+enum \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849d}{exprtk\+::parser\+::unknown\+\_\+symbol\+\_\+resolver\+::usr\+\_\+mode}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{e\_usrmode\_default@{e\_usrmode\_default}!exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}!e\_usrmode\_default@{e\_usrmode\_default}}}\mbox{\Hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849daab5dff1e58b006c2cc6747622cc256a1}\label{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849daab5dff1e58b006c2cc6747622cc256a1}} 
+e\+\_\+usrmode\+\_\+default&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{e\_usrmode\_extended@{e\_usrmode\_extended}!exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}!e\_usrmode\_extended@{e\_usrmode\_extended}}}\mbox{\Hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849da45215b4bd2c6f7742331b53cd9ed55da}\label{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849da45215b4bd2c6f7742331b53cd9ed55da}} 
+e\+\_\+usrmode\+\_\+extended&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l23548}{23548}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bce}\label{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bce}} 
+\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}!usr\_symbol\_type@{usr\_symbol\_type}}
+\index{usr\_symbol\_type@{usr\_symbol\_type}!exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}
+\doxysubsubsection{\texorpdfstring{usr\_symbol\_type}{usr\_symbol\_type}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+enum \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bce}{exprtk\+::parser\+::unknown\+\_\+symbol\+\_\+resolver\+::usr\+\_\+symbol\+\_\+type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{e\_usr\_unknown\_type@{e\_usr\_unknown\_type}!exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}!e\_usr\_unknown\_type@{e\_usr\_unknown\_type}}}\mbox{\Hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bcea1dd1bfa528d29453266f8407428e2a3b}\label{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bcea1dd1bfa528d29453266f8407428e2a3b}} 
+e\+\_\+usr\+\_\+unknown\+\_\+type&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{e\_usr\_variable\_type@{e\_usr\_variable\_type}!exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}!e\_usr\_variable\_type@{e\_usr\_variable\_type}}}\mbox{\Hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bceaa7c5ec97f81716296ffbccc843187260}\label{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bceaa7c5ec97f81716296ffbccc843187260}} 
+e\+\_\+usr\+\_\+variable\+\_\+type&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{e\_usr\_constant\_type@{e\_usr\_constant\_type}!exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}!e\_usr\_constant\_type@{e\_usr\_constant\_type}}}\mbox{\Hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bceac104eaccfbb986413384d19016aa05c8}\label{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bceac104eaccfbb986413384d19016aa05c8}} 
+e\+\_\+usr\+\_\+constant\+\_\+type&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l23541}{23541}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver_aa705609f834b216386400d927ace2183}\label{structexprtk_1_1parser_1_1unknown__symbol__resolver_aa705609f834b216386400d927ace2183}} 
+\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}!unknown\_symbol\_resolver@{unknown\_symbol\_resolver}}
+\index{unknown\_symbol\_resolver@{unknown\_symbol\_resolver}!exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}
+\doxysubsubsection{\texorpdfstring{unknown\_symbol\_resolver()}{unknown\_symbol\_resolver()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::unknown\+\_\+symbol\+\_\+resolver\+::unknown\+\_\+symbol\+\_\+resolver (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849d}{usr\+\_\+mode}}}]{m = {\ttfamily \mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849daab5dff1e58b006c2cc6747622cc256a1}{e\+\_\+usrmode\+\_\+default}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l23556}{23556}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver_a44e1720d1c32fd761d8ae3e1bcf8e6bf}\label{structexprtk_1_1parser_1_1unknown__symbol__resolver_a44e1720d1c32fd761d8ae3e1bcf8e6bf}} 
+\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}!````~unknown\_symbol\_resolver@{$\sim$unknown\_symbol\_resolver}}
+\index{````~unknown\_symbol\_resolver@{$\sim$unknown\_symbol\_resolver}!exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}
+\doxysubsubsection{\texorpdfstring{$\sim$unknown\_symbol\_resolver()}{~unknown\_symbol\_resolver()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::unknown\+\_\+symbol\+\_\+resolver\+::$\sim$unknown\+\_\+symbol\+\_\+resolver (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l23560}{23560}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver_ab647531e4377df501505b72bbd1c5364}\label{structexprtk_1_1parser_1_1unknown__symbol__resolver_ab647531e4377df501505b72bbd1c5364}} 
+\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}!process@{process}}
+\index{process@{process}!exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual bool \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::unknown\+\_\+symbol\+\_\+resolver\+::process (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{,  }\item[{\mbox{\hyperlink{classexprtk_1_1parser_af42d67f70f0c4880db7bdf7d5be356e3}{symbol\+\_\+table\+\_\+t}} \&}]{,  }\item[{std\+::string \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper_1_1resolve__as__vector_ab647531e4377df501505b72bbd1c5364}{exprtk\+::details\+::collector\+\_\+helper$<$ T $>$\+::resolve\+\_\+as\+\_\+vector}}, and \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper_1_1resolve__as__vector_a008dde59b020dd83696536928d58c08b}{exprtk\+::details\+::collector\+\_\+helper$<$ T $>$\+::resolve\+\_\+as\+\_\+vector}}.
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l23578}{23578}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver_ad861f055709eafe1f0a12824af445de1}\label{structexprtk_1_1parser_1_1unknown__symbol__resolver_ad861f055709eafe1f0a12824af445de1}} 
+\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}!process@{process}}
+\index{process@{process}!exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual bool \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::unknown\+\_\+symbol\+\_\+resolver\+::process (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{,  }\item[{\mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_adccce198816195d1db2d0b73da8c6bce}{usr\+\_\+symbol\+\_\+type}} \&}]{st,  }\item[{T \&}]{default\+\_\+value,  }\item[{std\+::string \&}]{error\+\_\+message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{structexprtk_1_1details_1_1collector__helper_1_1resolve__as__vector_ad861f055709eafe1f0a12824af445de1}{exprtk\+::details\+::collector\+\_\+helper$<$ T $>$\+::resolve\+\_\+as\+\_\+vector}}.
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l23563}{23563}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structexprtk_1_1parser_1_1unknown__symbol__resolver_ad861f055709eafe1f0a12824af445de1_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structexprtk_1_1parser_1_1unknown__symbol__resolver_af9d6b039b490d6a709d5a667012437db}\label{structexprtk_1_1parser_1_1unknown__symbol__resolver_af9d6b039b490d6a709d5a667012437db}} 
+\index{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}!mode@{mode}}
+\index{mode@{mode}!exprtk::parser$<$ T $>$::unknown\_symbol\_resolver@{exprtk::parser$<$ T $>$::unknown\_symbol\_resolver}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structexprtk_1_1parser_1_1unknown__symbol__resolver_a37bc5f95058d3128b868072b9c8a849d}{usr\+\_\+mode}} \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::unknown\+\_\+symbol\+\_\+resolver\+::mode}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l23554}{23554}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{exprtk_8hpp}{exprtk.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,506 @@
+\hypertarget{classexprtk_1_1parser_1_1scope__element__manager}{}\doxysection{exprtk\+::parser\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+::scope\+\_\+element\+\_\+manager Class Reference}
+\label{classexprtk_1_1parser_1_1scope__element__manager}\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+
+
+Collaboration diagram for exprtk\+::parser\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+::scope\+\_\+element\+\_\+manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1parser_a55ff6f0c5e67d25582693e32dc8aa573}{expression\+\_\+node\+\_\+t}} $\ast$ \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a8affbf12ca55b760af84ca83d58cc418}{expression\+\_\+node\+\_\+ptr}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1parser_a90f031e52fd51cbd570f5b82cccbb86b}{variable\+\_\+node\+\_\+t}} $\ast$ \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_acf47bc5b01ad8d0f123c6faabbd22f36}{variable\+\_\+node\+\_\+ptr}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1parser}{parser}}$<$ T $>$ \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_af050fcef696447173ed7e5e4e9cfd1ba}{parser\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a5a7f219964a932de917d27fc81616b28}{scope\+\_\+element\+\_\+manager}} (\mbox{\hyperlink{classexprtk_1_1parser}{parser}}$<$ T $>$ \&p)
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a8285faa572d6aa1600c17aca606e6418}{size}} () const
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a55fb4a9226e547ed34a449f06761b1aa}{empty}} () const
+\item 
+\mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} \& \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a1f98bcc8126764cceeab9b1565bc45c7}{get\+\_\+element}} (const std\+::size\+\_\+t \&index)
+\item 
+\mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} \& \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a54895e32c92debca15243d0b6d8d5ff8}{get\+\_\+element}} (const std\+::string \&var\+\_\+name, const std\+::size\+\_\+t index=std\+::numeric\+\_\+limits$<$ std\+::size\+\_\+t $>$\+::max())
+\item 
+\mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} \& \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_ae742925f26ed9908c10b0b41c2af9dad}{get\+\_\+active\+\_\+element}} (const std\+::string \&var\+\_\+name, const std\+::size\+\_\+t index=std\+::numeric\+\_\+limits$<$ std\+::size\+\_\+t $>$\+::max())
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a581cfa348e860ebccb5b90fbdd22d468}{add\+\_\+element}} (const \mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} \&se)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_afce3fb42705c144c1785cdde400209d0}{deactivate}} (const std\+::size\+\_\+t \&scope\+\_\+depth)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a8847861182fa1a479b2082735375415c}{free\+\_\+element}} (\mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} \&se)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a67ae36677373f7e9676bd56f3a9f705d}{cleanup}} ()
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a7c12f0265e51b52a9f3f0d4d6bea6bea}{total\+\_\+local\+\_\+symb\+\_\+size\+\_\+bytes}} () const
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_ad4ed9baee79be4eab83d9585bad3de50}{next\+\_\+ip\+\_\+index}} ()
+\item 
+\mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a8affbf12ca55b760af84ca83d58cc418}{expression\+\_\+node\+\_\+ptr}} \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a64ac3d981ec5aaa015986624f36a0653}{get\+\_\+variable}} (const T \&v)
+\item 
+std\+::string \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_ac7d5a43dcec7d01ef696318046eed3a0}{get\+\_\+vector\+\_\+name}} (const T $\ast$data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a7b00e336d36e8b5b3677de6610acd71c}{scope\+\_\+element\+\_\+manager}} (const \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager}{scope\+\_\+element\+\_\+manager}} \&) \mbox{\hyperlink{exprtk_8hpp_afd504ae5a0de6d4dd7b3ad777dda9cfd}{exprtk\+\_\+delete}}
+\item 
+\mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager}{scope\+\_\+element\+\_\+manager}} \& \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a18b774e0d9e3c62e992465ffb2e81740}{operator=}} (const \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager}{scope\+\_\+element\+\_\+manager}} \&) \mbox{\hyperlink{exprtk_8hpp_afd504ae5a0de6d4dd7b3ad777dda9cfd}{exprtk\+\_\+delete}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_af050fcef696447173ed7e5e4e9cfd1ba}{parser\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a6611bc57460a506a4397285784e681f3}{parser\+\_\+}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} $>$ \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_ad93980808d802754b67ec37c2633ca6d}{element\+\_\+}}
+\item 
+\mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a5ab67c6e10e18988295cc28e36c70a4e}{null\+\_\+element\+\_\+}}
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a971c1c10190588a5cd0fbd67ba08762e}{input\+\_\+param\+\_\+cnt\+\_\+}}
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_ac94a9a7b368b0300b59a3b92b125fef8}{total\+\_\+local\+\_\+symb\+\_\+size\+\_\+bytes\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class exprtk\+::parser$<$ T $>$\+::scope\+\_\+element\+\_\+manager}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22486}{22486}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a8affbf12ca55b760af84ca83d58cc418}\label{classexprtk_1_1parser_1_1scope__element__manager_a8affbf12ca55b760af84ca83d58cc418}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!expression\_node\_ptr@{expression\_node\_ptr}}
+\index{expression\_node\_ptr@{expression\_node\_ptr}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{expression\_node\_ptr}{expression\_node\_ptr}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1parser_a55ff6f0c5e67d25582693e32dc8aa573}{expression\+\_\+node\+\_\+t}}$\ast$ \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::expression\+\_\+node\+\_\+ptr}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22490}{22490}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_af050fcef696447173ed7e5e4e9cfd1ba}\label{classexprtk_1_1parser_1_1scope__element__manager_af050fcef696447173ed7e5e4e9cfd1ba}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!parser\_t@{parser\_t}}
+\index{parser\_t@{parser\_t}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{parser\_t}{parser\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1parser}{parser}}$<$T$>$ \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::parser\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22492}{22492}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_acf47bc5b01ad8d0f123c6faabbd22f36}\label{classexprtk_1_1parser_1_1scope__element__manager_acf47bc5b01ad8d0f123c6faabbd22f36}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!variable\_node\_ptr@{variable\_node\_ptr}}
+\index{variable\_node\_ptr@{variable\_node\_ptr}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{variable\_node\_ptr}{variable\_node\_ptr}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1parser_a90f031e52fd51cbd570f5b82cccbb86b}{variable\+\_\+node\+\_\+t}}$\ast$ \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::variable\+\_\+node\+\_\+ptr}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22491}{22491}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a5a7f219964a932de917d27fc81616b28}\label{classexprtk_1_1parser_1_1scope__element__manager_a5a7f219964a932de917d27fc81616b28}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!scope\_element\_manager@{scope\_element\_manager}}
+\index{scope\_element\_manager@{scope\_element\_manager}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{scope\_element\_manager()}{scope\_element\_manager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::scope\+\_\+element\+\_\+manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classexprtk_1_1parser}{parser}}$<$ T $>$ \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22494}{22494}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a7b00e336d36e8b5b3677de6610acd71c}\label{classexprtk_1_1parser_1_1scope__element__manager_a7b00e336d36e8b5b3677de6610acd71c}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!scope\_element\_manager@{scope\_element\_manager}}
+\index{scope\_element\_manager@{scope\_element\_manager}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{scope\_element\_manager()}{scope\_element\_manager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::scope\+\_\+element\+\_\+manager (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager}{scope\+\_\+element\+\_\+manager}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a581cfa348e860ebccb5b90fbdd22d468}\label{classexprtk_1_1parser_1_1scope__element__manager_a581cfa348e860ebccb5b90fbdd22d468}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!add\_element@{add\_element}}
+\index{add\_element@{add\_element}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{add\_element()}{add\_element()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::add\+\_\+element (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} \&}]{se }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22561}{22561}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a581cfa348e860ebccb5b90fbdd22d468_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a581cfa348e860ebccb5b90fbdd22d468_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a67ae36677373f7e9676bd56f3a9f705d}\label{classexprtk_1_1parser_1_1scope__element__manager_a67ae36677373f7e9676bd56f3a9f705d}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::cleanup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22651}{22651}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a67ae36677373f7e9676bd56f3a9f705d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a67ae36677373f7e9676bd56f3a9f705d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_afce3fb42705c144c1785cdde400209d0}\label{classexprtk_1_1parser_1_1scope__element__manager_afce3fb42705c144c1785cdde400209d0}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!deactivate@{deactivate}}
+\index{deactivate@{deactivate}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{deactivate()}{deactivate()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::deactivate (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{scope\+\_\+depth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22598}{22598}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_afce3fb42705c144c1785cdde400209d0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a55fb4a9226e547ed34a449f06761b1aa}\label{classexprtk_1_1parser_1_1scope__element__manager_a55fb4a9226e547ed34a449f06761b1aa}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!empty@{empty}}
+\index{empty@{empty}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22505}{22505}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a55fb4a9226e547ed34a449f06761b1aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a8847861182fa1a479b2082735375415c}\label{classexprtk_1_1parser_1_1scope__element__manager_a8847861182fa1a479b2082735375415c}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!free\_element@{free\_element}}
+\index{free\_element@{free\_element}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{free\_element()}{free\_element()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::free\+\_\+element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} \&}]{se }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22618}{22618}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a8847861182fa1a479b2082735375415c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a8847861182fa1a479b2082735375415c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_ae742925f26ed9908c10b0b41c2af9dad}\label{classexprtk_1_1parser_1_1scope__element__manager_ae742925f26ed9908c10b0b41c2af9dad}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!get\_active\_element@{get\_active\_element}}
+\index{get\_active\_element@{get\_active\_element}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{get\_active\_element()}{get\_active\_element()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} \& \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::get\+\_\+active\+\_\+element (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{var\+\_\+name,  }\item[{const std\+::size\+\_\+t}]{index = {\ttfamily std\+:\+:numeric\+\_\+limits$<$std\+:\+:size\+\_\+t$>$\+:\+:max()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22539}{22539}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_ae742925f26ed9908c10b0b41c2af9dad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_ae742925f26ed9908c10b0b41c2af9dad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a1f98bcc8126764cceeab9b1565bc45c7}\label{classexprtk_1_1parser_1_1scope__element__manager_a1f98bcc8126764cceeab9b1565bc45c7}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!get\_element@{get\_element}}
+\index{get\_element@{get\_element}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{get\_element()}{get\_element()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} \& \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::get\+\_\+element (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22510}{22510}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a1f98bcc8126764cceeab9b1565bc45c7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a54895e32c92debca15243d0b6d8d5ff8}\label{classexprtk_1_1parser_1_1scope__element__manager_a54895e32c92debca15243d0b6d8d5ff8}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!get\_element@{get\_element}}
+\index{get\_element@{get\_element}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{get\_element()}{get\_element()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} \& \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::get\+\_\+element (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{var\+\_\+name,  }\item[{const std\+::size\+\_\+t}]{index = {\ttfamily std\+:\+:numeric\+\_\+limits$<$std\+:\+:size\+\_\+t$>$\+:\+:max()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22518}{22518}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a54895e32c92debca15243d0b6d8d5ff8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a64ac3d981ec5aaa015986624f36a0653}\label{classexprtk_1_1parser_1_1scope__element__manager_a64ac3d981ec5aaa015986624f36a0653}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!get\_variable@{get\_variable}}
+\index{get\_variable@{get\_variable}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{get\_variable()}{get\_variable()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_a8affbf12ca55b760af84ca83d58cc418}{expression\+\_\+node\+\_\+ptr}} \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::get\+\_\+variable (\begin{DoxyParamCaption}\item[{const T \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22674}{22674}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a64ac3d981ec5aaa015986624f36a0653_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a64ac3d981ec5aaa015986624f36a0653_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_ac7d5a43dcec7d01ef696318046eed3a0}\label{classexprtk_1_1parser_1_1scope__element__manager_ac7d5a43dcec7d01ef696318046eed3a0}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!get\_vector\_name@{get\_vector\_name}}
+\index{get\_vector\_name@{get\_vector\_name}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{get\_vector\_name()}{get\_vector\_name()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::get\+\_\+vector\+\_\+name (\begin{DoxyParamCaption}\item[{const T $\ast$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22698}{22698}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_ac7d5a43dcec7d01ef696318046eed3a0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_ac7d5a43dcec7d01ef696318046eed3a0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_ad4ed9baee79be4eab83d9585bad3de50}\label{classexprtk_1_1parser_1_1scope__element__manager_ad4ed9baee79be4eab83d9585bad3de50}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!next\_ip\_index@{next\_ip\_index}}
+\index{next\_ip\_index@{next\_ip\_index}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{next\_ip\_index()}{next\_ip\_index()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::next\+\_\+ip\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22669}{22669}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_ad4ed9baee79be4eab83d9585bad3de50_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a18b774e0d9e3c62e992465ffb2e81740}\label{classexprtk_1_1parser_1_1scope__element__manager_a18b774e0d9e3c62e992465ffb2e81740}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!operator=@{operator=}}
+\index{operator=@{operator=}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager}{scope\+\_\+element\+\_\+manager}} \& \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager}{scope\+\_\+element\+\_\+manager}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a8285faa572d6aa1600c17aca606e6418}\label{classexprtk_1_1parser_1_1scope__element__manager_a8285faa572d6aa1600c17aca606e6418}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!size@{size}}
+\index{size@{size}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22500}{22500}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a8285faa572d6aa1600c17aca606e6418_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a7c12f0265e51b52a9f3f0d4d6bea6bea}\label{classexprtk_1_1parser_1_1scope__element__manager_a7c12f0265e51b52a9f3f0d4d6bea6bea}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!total\_local\_symb\_size\_bytes@{total\_local\_symb\_size\_bytes}}
+\index{total\_local\_symb\_size\_bytes@{total\_local\_symb\_size\_bytes}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{total\_local\_symb\_size\_bytes()}{total\_local\_symb\_size\_bytes()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::total\+\_\+local\+\_\+symb\+\_\+size\+\_\+bytes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22664}{22664}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1parser_1_1scope__element__manager_a7c12f0265e51b52a9f3f0d4d6bea6bea_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_ad93980808d802754b67ec37c2633ca6d}\label{classexprtk_1_1parser_1_1scope__element__manager_ad93980808d802754b67ec37c2633ca6d}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!element\_@{element\_}}
+\index{element\_@{element\_}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{element\_}{element\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}}$>$ \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::element\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22723}{22723}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a971c1c10190588a5cd0fbd67ba08762e}\label{classexprtk_1_1parser_1_1scope__element__manager_a971c1c10190588a5cd0fbd67ba08762e}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!input\_param\_cnt\_@{input\_param\_cnt\_}}
+\index{input\_param\_cnt\_@{input\_param\_cnt\_}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{input\_param\_cnt\_}{input\_param\_cnt\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::input\+\_\+param\+\_\+cnt\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22725}{22725}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a5ab67c6e10e18988295cc28e36c70a4e}\label{classexprtk_1_1parser_1_1scope__element__manager_a5ab67c6e10e18988295cc28e36c70a4e}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!null\_element\_@{null\_element\_}}
+\index{null\_element\_@{null\_element\_}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{null\_element\_}{null\_element\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structexprtk_1_1parser_1_1scope__element}{scope\+\_\+element}} \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::null\+\_\+element\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22724}{22724}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_a6611bc57460a506a4397285784e681f3}\label{classexprtk_1_1parser_1_1scope__element__manager_a6611bc57460a506a4397285784e681f3}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!parser\_@{parser\_}}
+\index{parser\_@{parser\_}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{parser\_}{parser\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1parser_1_1scope__element__manager_af050fcef696447173ed7e5e4e9cfd1ba}{parser\+\_\+t}}\& \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::parser\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22722}{22722}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1parser_1_1scope__element__manager_ac94a9a7b368b0300b59a3b92b125fef8}\label{classexprtk_1_1parser_1_1scope__element__manager_ac94a9a7b368b0300b59a3b92b125fef8}} 
+\index{exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}!total\_local\_symb\_size\_bytes\_@{total\_local\_symb\_size\_bytes\_}}
+\index{total\_local\_symb\_size\_bytes\_@{total\_local\_symb\_size\_bytes\_}!exprtk::parser$<$ T $>$::scope\_element\_manager@{exprtk::parser$<$ T $>$::scope\_element\_manager}}
+\doxysubsubsection{\texorpdfstring{total\_local\_symb\_size\_bytes\_}{total\_local\_symb\_size\_bytes\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1parser}{exprtk\+::parser}}$<$ T $>$\+::scope\+\_\+element\+\_\+manager\+::total\+\_\+local\+\_\+symb\+\_\+size\+\_\+bytes\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l22726}{22726}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{exprtk_8hpp}{exprtk.\+hpp}}\end{DoxyCompactItemize}

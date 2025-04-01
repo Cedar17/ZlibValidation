@@ -1,0 +1,677 @@
+\hypertarget{classexprtk_1_1expression}{}\doxysection{exprtk\+::expression\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classexprtk_1_1expression}\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+
+
+{\ttfamily \#include $<$exprtk.\+hpp$>$}
+
+
+
+Collaboration diagram for exprtk\+::expression\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{classexprtk_1_1expression__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structexprtk_1_1expression_1_1control__block}{control\+\_\+block}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1results__context}{results\+\_\+context}}$<$ T $>$ \mbox{\hyperlink{classexprtk_1_1expression_aac51a44eae0ce25d4f6b75320f5d962b}{results\+\_\+context\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexprtk_1_1expression_a059104ddac06f492637b21d878d4f68d}{expression}} ()
+\item 
+\mbox{\hyperlink{classexprtk_1_1expression_a40e288eeed71d95b5139233c9007878a}{expression}} (const \mbox{\hyperlink{classexprtk_1_1expression}{expression}}$<$ T $>$ \&e)
+\item 
+\mbox{\hyperlink{classexprtk_1_1expression_a850fb40c82eca91936265e3e5b63a1c1}{expression}} (const \mbox{\hyperlink{classexprtk_1_1symbol__table}{symbol\+\_\+table}}$<$ T $>$ \&\mbox{\hyperlink{classexprtk_1_1symbol__table}{symbol\+\_\+table}})
+\item 
+\mbox{\hyperlink{classexprtk_1_1expression}{expression}}$<$ T $>$ \& \mbox{\hyperlink{classexprtk_1_1expression_ac98b80aaf2d6f6440461c1026018242a}{operator=}} (const \mbox{\hyperlink{classexprtk_1_1expression}{expression}}$<$ T $>$ \&e)
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1expression_a7892a8c1bef577b4755af011ecc4e3d6}{operator==}} (const \mbox{\hyperlink{classexprtk_1_1expression}{expression}}$<$ T $>$ \&e) const
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1expression_a5fb9ccf2a4b0e1d016adcb506b44f88e}{operator!}} () const
+\item 
+\mbox{\hyperlink{classexprtk_1_1expression}{expression}}$<$ T $>$ \& \mbox{\hyperlink{classexprtk_1_1expression_a2296d4d81dd60b2ff41cde31c8fbe7ec}{release}} ()
+\item 
+\mbox{\hyperlink{classexprtk_1_1expression_aaf536a4fcb47546c829ae4e96e9de72a}{$\sim$expression}} ()
+\item 
+T \mbox{\hyperlink{classexprtk_1_1expression_ad919419586983eabe596868c09cdd555}{value}} () const
+\item 
+T \mbox{\hyperlink{classexprtk_1_1expression_a2f871171410dfe81cc7829f42a13ab9f}{operator()}} () const
+\item 
+\mbox{\hyperlink{classexprtk_1_1expression_a3cbee9a55b1b34d31f27325d4a0eec8a}{operator T}} () const
+\item 
+\mbox{\hyperlink{classexprtk_1_1expression_ae3482a70bef5ebc48c4964b08fbc62b1}{operator bool}} () const
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1expression_a52978dd5c48291cde0d6b6b8e5a754f2}{register\+\_\+symbol\+\_\+table}} (\mbox{\hyperlink{classexprtk_1_1symbol__table}{symbol\+\_\+table}}$<$ T $>$ \&st)
+\item 
+const \mbox{\hyperlink{classexprtk_1_1symbol__table}{symbol\+\_\+table}}$<$ T $>$ \& \mbox{\hyperlink{classexprtk_1_1expression_a1364e279bb33abf56ead186530f8944b}{get\+\_\+symbol\+\_\+table}} (const std\+::size\+\_\+t \&index=0) const
+\item 
+\mbox{\hyperlink{classexprtk_1_1symbol__table}{symbol\+\_\+table}}$<$ T $>$ \& \mbox{\hyperlink{classexprtk_1_1expression_a198bd85302abf5680f2bcbf8b38fb933}{get\+\_\+symbol\+\_\+table}} (const std\+::size\+\_\+t \&index=0)
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1expression_a2051ef3035a2729caa330178647687fb}{num\+\_\+symbol\+\_\+tables}} () const
+\item 
+const \mbox{\hyperlink{classexprtk_1_1expression_aac51a44eae0ce25d4f6b75320f5d962b}{results\+\_\+context\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1expression_a7a27d40806bb1335cdaad1dc28840335}{results}} () const
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1expression_aa673e778b3c9f0cf1a1bb3d69d6fa580}{return\+\_\+invoked}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1expression__node}{details\+::expression\+\_\+node}}$<$ T $>$ $\ast$ \mbox{\hyperlink{classexprtk_1_1expression_af6fd66ec5ec727fe62d2d75123848e0a}{expression\+\_\+ptr}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1vector__holder}{details\+::vector\+\_\+holder}}$<$ T $>$ $\ast$ \mbox{\hyperlink{classexprtk_1_1expression_a2a50e7569ce9784abd7b557c6f5750ef}{vector\+\_\+holder\+\_\+ptr}}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{classexprtk_1_1symbol__table}{symbol\+\_\+table}}$<$ T $>$ $>$ \mbox{\hyperlink{classexprtk_1_1expression_aa38506047bae44bdfac90a5b38e57480}{symtab\+\_\+list\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexprtk_1_1expression_aa38506047bae44bdfac90a5b38e57480}{symtab\+\_\+list\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1expression_a87a904a6d653bdc66f6d6362a76127c5}{get\+\_\+symbol\+\_\+table\+\_\+list}} () const
+\item 
+void \mbox{\hyperlink{classexprtk_1_1expression_a44f0178f264985adafd8c2a83a1e0f00}{set\+\_\+expression}} (const \mbox{\hyperlink{classexprtk_1_1expression_af6fd66ec5ec727fe62d2d75123848e0a}{expression\+\_\+ptr}} expr)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1expression_a5ba5ff7b1b3b5775539a69a08a6d4a56}{register\+\_\+local\+\_\+var}} (\mbox{\hyperlink{classexprtk_1_1expression_af6fd66ec5ec727fe62d2d75123848e0a}{expression\+\_\+ptr}} expr)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1expression_aa4f7ff171cc5c5fec98a3aaf43edaa3a}{register\+\_\+local\+\_\+var}} (\mbox{\hyperlink{classexprtk_1_1expression_a2a50e7569ce9784abd7b557c6f5750ef}{vector\+\_\+holder\+\_\+ptr}} vec\+\_\+holder)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1expression_ad138cc6e9fe70f7ae52e292d5d2b5a29}{register\+\_\+local\+\_\+data}} (void $\ast$data, const std\+::size\+\_\+t \&size=0, const std\+::size\+\_\+t data\+\_\+mode=0)
+\item 
+const \mbox{\hyperlink{structexprtk_1_1expression_1_1control__block_a0cab7f5cdaf2e6cf6424e322f0a04a17}{control\+\_\+block\+::local\+\_\+data\+\_\+list\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1expression_ab51620498f88f75f078858892a049ba6}{local\+\_\+data\+\_\+list}} ()
+\item 
+void \mbox{\hyperlink{classexprtk_1_1expression_af5fd6a5f57ed9393f04cc2ea54051c3f}{register\+\_\+return\+\_\+results}} (\mbox{\hyperlink{classexprtk_1_1expression_aac51a44eae0ce25d4f6b75320f5d962b}{results\+\_\+context\+\_\+t}} $\ast$rc)
+\item 
+void \mbox{\hyperlink{classexprtk_1_1expression_abb47ad7885c2f598d60aac5acde99843}{set\+\_\+retinvk}} (bool $\ast$retinvk\+\_\+ptr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structexprtk_1_1expression_1_1control__block}{control\+\_\+block}} $\ast$ \mbox{\hyperlink{classexprtk_1_1expression_aef76587a497204543dea38271fe5121f}{control\+\_\+block\+\_\+}}
+\item 
+\mbox{\hyperlink{classexprtk_1_1expression_aa38506047bae44bdfac90a5b38e57480}{symtab\+\_\+list\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1expression_ae147057e46fe8177f4aaec6c57511e5f}{symbol\+\_\+table\+\_\+list\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classexprtk_1_1expression_a136fe7445ef47063c7c80e3b834d74d1}{parser$<$ T $>$}}
+\item 
+class \mbox{\hyperlink{classexprtk_1_1expression_a0f6e85f66ee27e41723552285c4671d9}{expression\+\_\+helper$<$ T $>$}}
+\item 
+class \mbox{\hyperlink{classexprtk_1_1expression_a3d0ee7bd11879a4cd8dc5fbfedd39d72}{function\+\_\+compositor$<$ T $>$}}
+\item 
+{\footnotesize template$<$typename TT $>$ }\\bool \mbox{\hyperlink{classexprtk_1_1expression_aa787dfe76e0fc2723d5f55f94ea6795a}{is\+\_\+valid}} (const \mbox{\hyperlink{classexprtk_1_1expression}{expression}}$<$ TT $>$ \&expr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class exprtk\+::expression$<$ T $>$}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21576}{21576}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classexprtk_1_1expression_af6fd66ec5ec727fe62d2d75123848e0a}\label{classexprtk_1_1expression_af6fd66ec5ec727fe62d2d75123848e0a}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!expression\_ptr@{expression\_ptr}}
+\index{expression\_ptr@{expression\_ptr}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{expression\_ptr}{expression\_ptr}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1expression__node}{details\+::expression\+\_\+node}}$<$T$>$$\ast$ \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::expression\+\_\+ptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21580}{21580}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_aac51a44eae0ce25d4f6b75320f5d962b}\label{classexprtk_1_1expression_aac51a44eae0ce25d4f6b75320f5d962b}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!results\_context\_t@{results\_context\_t}}
+\index{results\_context\_t@{results\_context\_t}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{results\_context\_t}{results\_context\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1results__context}{results\+\_\+context}}$<$T$>$ \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::results\+\_\+context\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21845}{21845}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_aa38506047bae44bdfac90a5b38e57480}\label{classexprtk_1_1expression_aa38506047bae44bdfac90a5b38e57480}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!symtab\_list\_t@{symtab\_list\_t}}
+\index{symtab\_list\_t@{symtab\_list\_t}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{symtab\_list\_t}{symtab\_list\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef std\+::vector$<$\mbox{\hyperlink{classexprtk_1_1symbol__table}{symbol\+\_\+table}}$<$T$>$ $>$ \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::symtab\+\_\+list\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21582}{21582}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_a2a50e7569ce9784abd7b557c6f5750ef}\label{classexprtk_1_1expression_a2a50e7569ce9784abd7b557c6f5750ef}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!vector\_holder\_ptr@{vector\_holder\_ptr}}
+\index{vector\_holder\_ptr@{vector\_holder\_ptr}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{vector\_holder\_ptr}{vector\_holder\_ptr}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1details_1_1vector__holder}{details\+::vector\+\_\+holder}}$<$T$>$$\ast$ \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::vector\+\_\+holder\+\_\+ptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21581}{21581}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classexprtk_1_1expression_a059104ddac06f492637b21d878d4f68d}\label{classexprtk_1_1expression_a059104ddac06f492637b21d878d4f68d}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!expression@{expression}}
+\index{expression@{expression}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{expression()}{expression()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::expression (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21722}{21722}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_a059104ddac06f492637b21d878d4f68d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_a40e288eeed71d95b5139233c9007878a}\label{classexprtk_1_1expression_a40e288eeed71d95b5139233c9007878a}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!expression@{expression}}
+\index{expression@{expression}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{expression()}{expression()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::expression (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1expression}{expression}}$<$ T $>$ \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21728}{21728}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_a850fb40c82eca91936265e3e5b63a1c1}\label{classexprtk_1_1expression_a850fb40c82eca91936265e3e5b63a1c1}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!expression@{expression}}
+\index{expression@{expression}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{expression()}{expression()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::expression (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1symbol__table}{symbol\+\_\+table}}$<$ T $>$ \&}]{symbol\+\_\+table }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21735}{21735}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_a850fb40c82eca91936265e3e5b63a1c1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_aaf536a4fcb47546c829ae4e96e9de72a}\label{classexprtk_1_1expression_aaf536a4fcb47546c829ae4e96e9de72a}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!````~expression@{$\sim$expression}}
+\index{````~expression@{$\sim$expression}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$expression()}{~expression()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{classexprtk_1_1expression}{expression}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21788}{21788}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_aaf536a4fcb47546c829ae4e96e9de72a_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classexprtk_1_1expression_a198bd85302abf5680f2bcbf8b38fb933}\label{classexprtk_1_1expression_a198bd85302abf5680f2bcbf8b38fb933}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!get\_symbol\_table@{get\_symbol\_table}}
+\index{get\_symbol\_table@{get\_symbol\_table}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_symbol\_table()}{get\_symbol\_table()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1symbol__table}{symbol\+\_\+table}}$<$ T $>$ \& \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::get\+\_\+symbol\+\_\+table (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{index = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21835}{21835}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_a1364e279bb33abf56ead186530f8944b}\label{classexprtk_1_1expression_a1364e279bb33abf56ead186530f8944b}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!get\_symbol\_table@{get\_symbol\_table}}
+\index{get\_symbol\_table@{get\_symbol\_table}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_symbol\_table()}{get\_symbol\_table()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const \mbox{\hyperlink{classexprtk_1_1symbol__table}{symbol\+\_\+table}}$<$ T $>$ \& \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::get\+\_\+symbol\+\_\+table (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{index = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21830}{21830}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_a87a904a6d653bdc66f6d6362a76127c5}\label{classexprtk_1_1expression_a87a904a6d653bdc66f6d6362a76127c5}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!get\_symbol\_table\_list@{get\_symbol\_table\_list}}
+\index{get\_symbol\_table\_list@{get\_symbol\_table\_list}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_symbol\_table\_list()}{get\_symbol\_table\_list()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1expression_aa38506047bae44bdfac90a5b38e57480}{symtab\+\_\+list\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::get\+\_\+symbol\+\_\+table\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21865}{21865}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_a87a904a6d653bdc66f6d6362a76127c5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_ab51620498f88f75f078858892a049ba6}\label{classexprtk_1_1expression_ab51620498f88f75f078858892a049ba6}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!local\_data\_list@{local\_data\_list}}
+\index{local\_data\_list@{local\_data\_list}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{local\_data\_list()}{local\_data\_list()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const \mbox{\hyperlink{structexprtk_1_1expression_1_1control__block_a0cab7f5cdaf2e6cf6424e322f0a04a17}{control\+\_\+block\+::local\+\_\+data\+\_\+list\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::local\+\_\+data\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21939}{21939}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_ab51620498f88f75f078858892a049ba6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_a2051ef3035a2729caa330178647687fb}\label{classexprtk_1_1expression_a2051ef3035a2729caa330178647687fb}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!num\_symbol\_tables@{num\_symbol\_tables}}
+\index{num\_symbol\_tables@{num\_symbol\_tables}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{num\_symbol\_tables()}{num\_symbol\_tables()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::num\+\_\+symbol\+\_\+tables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21840}{21840}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_ae3482a70bef5ebc48c4964b08fbc62b1}\label{classexprtk_1_1expression_ae3482a70bef5ebc48c4964b08fbc62b1}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::operator bool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21811}{21811}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_ae3482a70bef5ebc48c4964b08fbc62b1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_a3cbee9a55b1b34d31f27325d4a0eec8a}\label{classexprtk_1_1expression_a3cbee9a55b1b34d31f27325d4a0eec8a}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!operator T@{operator T}}
+\index{operator T@{operator T}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator T()}{operator T()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::operator T (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21806}{21806}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_a3cbee9a55b1b34d31f27325d4a0eec8a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_a5fb9ccf2a4b0e1d016adcb506b44f88e}\label{classexprtk_1_1expression_a5fb9ccf2a4b0e1d016adcb506b44f88e}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!operator"!@{operator"!}}
+\index{operator"!@{operator"!}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator"!()}{operator!()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::operator! (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21772}{21772}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_a2f871171410dfe81cc7829f42a13ab9f}\label{classexprtk_1_1expression_a2f871171410dfe81cc7829f42a13ab9f}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21801}{21801}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_a2f871171410dfe81cc7829f42a13ab9f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_ac98b80aaf2d6f6440461c1026018242a}\label{classexprtk_1_1expression_ac98b80aaf2d6f6440461c1026018242a}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1expression}{expression}}$<$ T $>$ \& \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1expression}{expression}}$<$ T $>$ \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21742}{21742}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_a7892a8c1bef577b4755af011ecc4e3d6}\label{classexprtk_1_1expression_a7892a8c1bef577b4755af011ecc4e3d6}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1expression}{expression}}$<$ T $>$ \&}]{e }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21767}{21767}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_ad138cc6e9fe70f7ae52e292d5d2b5a29}\label{classexprtk_1_1expression_ad138cc6e9fe70f7ae52e292d5d2b5a29}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!register\_local\_data@{register\_local\_data}}
+\index{register\_local\_data@{register\_local\_data}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{register\_local\_data()}{register\_local\_data()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::register\+\_\+local\+\_\+data (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{const std\+::size\+\_\+t \&}]{size = {\ttfamily 0},  }\item[{const std\+::size\+\_\+t}]{data\+\_\+mode = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21916}{21916}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{classexprtk_1_1expression_ad138cc6e9fe70f7ae52e292d5d2b5a29_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_a5ba5ff7b1b3b5775539a69a08a6d4a56}\label{classexprtk_1_1expression_a5ba5ff7b1b3b5775539a69a08a6d4a56}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!register\_local\_var@{register\_local\_var}}
+\index{register\_local\_var@{register\_local\_var}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{register\_local\_var()}{register\_local\_var()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::register\+\_\+local\+\_\+var (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classexprtk_1_1expression_af6fd66ec5ec727fe62d2d75123848e0a}{expression\+\_\+ptr}}}]{expr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21886}{21886}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{classexprtk_1_1expression_a5ba5ff7b1b3b5775539a69a08a6d4a56_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_aa4f7ff171cc5c5fec98a3aaf43edaa3a}\label{classexprtk_1_1expression_aa4f7ff171cc5c5fec98a3aaf43edaa3a}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!register\_local\_var@{register\_local\_var}}
+\index{register\_local\_var@{register\_local\_var}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{register\_local\_var()}{register\_local\_var()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::register\+\_\+local\+\_\+var (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classexprtk_1_1expression_a2a50e7569ce9784abd7b557c6f5750ef}{vector\+\_\+holder\+\_\+ptr}}}]{vec\+\_\+holder }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21901}{21901}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{classexprtk_1_1expression_aa4f7ff171cc5c5fec98a3aaf43edaa3a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_af5fd6a5f57ed9393f04cc2ea54051c3f}\label{classexprtk_1_1expression_af5fd6a5f57ed9393f04cc2ea54051c3f}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!register\_return\_results@{register\_return\_results}}
+\index{register\_return\_results@{register\_return\_results}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{register\_return\_results()}{register\_return\_results()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::register\+\_\+return\+\_\+results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classexprtk_1_1expression_aac51a44eae0ce25d4f6b75320f5d962b}{results\+\_\+context\+\_\+t}} $\ast$}]{rc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21952}{21952}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_a52978dd5c48291cde0d6b6b8e5a754f2}\label{classexprtk_1_1expression_a52978dd5c48291cde0d6b6b8e5a754f2}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!register\_symbol\_table@{register\_symbol\_table}}
+\index{register\_symbol\_table@{register\_symbol\_table}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{register\_symbol\_table()}{register\_symbol\_table()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::register\+\_\+symbol\+\_\+table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classexprtk_1_1symbol__table}{symbol\+\_\+table}}$<$ T $>$ \&}]{st }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21816}{21816}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_a52978dd5c48291cde0d6b6b8e5a754f2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_a2296d4d81dd60b2ff41cde31c8fbe7ec}\label{classexprtk_1_1expression_a2296d4d81dd60b2ff41cde31c8fbe7ec}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!release@{release}}
+\index{release@{release}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{release()}{release()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1expression}{expression}}$<$ T $>$ \& \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::release (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21780}{21780}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_a2296d4d81dd60b2ff41cde31c8fbe7ec_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_a7a27d40806bb1335cdaad1dc28840335}\label{classexprtk_1_1expression_a7a27d40806bb1335cdaad1dc28840335}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!results@{results}}
+\index{results@{results}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{results()}{results()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const \mbox{\hyperlink{classexprtk_1_1expression_aac51a44eae0ce25d4f6b75320f5d962b}{results\+\_\+context\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::results (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21847}{21847}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_aa673e778b3c9f0cf1a1bb3d69d6fa580}\label{classexprtk_1_1expression_aa673e778b3c9f0cf1a1bb3d69d6fa580}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!return\_invoked@{return\_invoked}}
+\index{return\_invoked@{return\_invoked}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{return\_invoked()}{return\_invoked()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::return\+\_\+invoked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21858}{21858}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_a44f0178f264985adafd8c2a83a1e0f00}\label{classexprtk_1_1expression_a44f0178f264985adafd8c2a83a1e0f00}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!set\_expression@{set\_expression}}
+\index{set\_expression@{set\_expression}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{set\_expression()}{set\_expression()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::set\+\_\+expression (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1expression_af6fd66ec5ec727fe62d2d75123848e0a}{expression\+\_\+ptr}}}]{expr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21870}{21870}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_a44f0178f264985adafd8c2a83a1e0f00_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_a44f0178f264985adafd8c2a83a1e0f00_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_abb47ad7885c2f598d60aac5acde99843}\label{classexprtk_1_1expression_abb47ad7885c2f598d60aac5acde99843}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!set\_retinvk@{set\_retinvk}}
+\index{set\_retinvk@{set\_retinvk}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{set\_retinvk()}{set\_retinvk()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::set\+\_\+retinvk (\begin{DoxyParamCaption}\item[{bool $\ast$}]{retinvk\+\_\+ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21960}{21960}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_abb47ad7885c2f598d60aac5acde99843_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1expression_ad919419586983eabe596868c09cdd555}\label{classexprtk_1_1expression_ad919419586983eabe596868c09cdd555}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!value@{value}}
+\index{value@{value}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21793}{21793}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1expression_ad919419586983eabe596868c09cdd555_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{classexprtk_1_1expression_ad919419586983eabe596868c09cdd555_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classexprtk_1_1expression_a0f6e85f66ee27e41723552285c4671d9}\label{classexprtk_1_1expression_a0f6e85f66ee27e41723552285c4671d9}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!expression\_helper$<$ T $>$@{expression\_helper$<$ T $>$}}
+\index{expression\_helper$<$ T $>$@{expression\_helper$<$ T $>$}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{expression\_helper$<$ T $>$}{expression\_helper< T >}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+friend class \mbox{\hyperlink{classexprtk_1_1expression__helper}{expression\+\_\+helper}}$<$ T $>$\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21969}{21969}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_a3d0ee7bd11879a4cd8dc5fbfedd39d72}\label{classexprtk_1_1expression_a3d0ee7bd11879a4cd8dc5fbfedd39d72}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!function\_compositor$<$ T $>$@{function\_compositor$<$ T $>$}}
+\index{function\_compositor$<$ T $>$@{function\_compositor$<$ T $>$}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{function\_compositor$<$ T $>$}{function\_compositor< T >}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+friend class \mbox{\hyperlink{classexprtk_1_1function__compositor}{function\+\_\+compositor}}$<$ T $>$\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21969}{21969}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_aa787dfe76e0fc2723d5f55f94ea6795a}\label{classexprtk_1_1expression_aa787dfe76e0fc2723d5f55f94ea6795a}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!is\_valid@{is\_valid}}
+\index{is\_valid@{is\_valid}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{is\_valid}{is\_valid}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename TT $>$ \\
+bool is\+\_\+valid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1expression}{expression}}$<$ TT $>$ \&}]{expr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{classexprtk_1_1expression_a136fe7445ef47063c7c80e3b834d74d1}\label{classexprtk_1_1expression_a136fe7445ef47063c7c80e3b834d74d1}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!parser$<$ T $>$@{parser$<$ T $>$}}
+\index{parser$<$ T $>$@{parser$<$ T $>$}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{parser$<$ T $>$}{parser< T >}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+friend class \mbox{\hyperlink{classexprtk_1_1parser}{parser}}$<$ T $>$\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21969}{21969}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classexprtk_1_1expression_aef76587a497204543dea38271fe5121f}\label{classexprtk_1_1expression_aef76587a497204543dea38271fe5121f}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!control\_block\_@{control\_block\_}}
+\index{control\_block\_@{control\_block\_}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{control\_block\_}{control\_block\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{structexprtk_1_1expression_1_1control__block}{control\+\_\+block}}$\ast$ \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::control\+\_\+block\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21968}{21968}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1expression_ae147057e46fe8177f4aaec6c57511e5f}\label{classexprtk_1_1expression_ae147057e46fe8177f4aaec6c57511e5f}} 
+\index{exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}!symbol\_table\_list\_@{symbol\_table\_list\_}}
+\index{symbol\_table\_list\_@{symbol\_table\_list\_}!exprtk::expression$<$ T $>$@{exprtk::expression$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{symbol\_table\_list\_}{symbol\_table\_list\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1expression_aa38506047bae44bdfac90a5b38e57480}{symtab\+\_\+list\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1expression}{exprtk\+::expression}}$<$ T $>$\+::symbol\+\_\+table\+\_\+list\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l21969}{21969}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{exprtk_8hpp}{exprtk.\+hpp}}\end{DoxyCompactItemize}

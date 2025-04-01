@@ -1,0 +1,346 @@
+\hypertarget{classexprtk_1_1results__context}{}\doxysection{exprtk\+::results\+\_\+context\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classexprtk_1_1results__context}\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+
+
+{\ttfamily \#include $<$exprtk.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{structexprtk_1_1type__store}{type\+\_\+store}}$<$ T $>$ \mbox{\hyperlink{classexprtk_1_1results__context_af70deb8828de0209efc908165ddabf29}{type\+\_\+store\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{structexprtk_1_1type__store_1_1scalar__view}{type\+\_\+store\+\_\+t\+::scalar\+\_\+view}} \mbox{\hyperlink{classexprtk_1_1results__context_a0fda7ba36f4e7c637e06eec0af150731}{scalar\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{structexprtk_1_1type__store_a1b7a9dc5075d6cfff4e80cec61498619}{type\+\_\+store\+\_\+t\+::vector\+\_\+view}} \mbox{\hyperlink{classexprtk_1_1results__context_a2e9fddb1b94edbe7015ee5e36cc24ea9}{vector\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{structexprtk_1_1type__store_a893820aba3e822ddc96d1c3ae090adf2}{type\+\_\+store\+\_\+t\+::string\+\_\+view}} \mbox{\hyperlink{classexprtk_1_1results__context_a79e8289c0d8995fad0551ff3109893f0}{string\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexprtk_1_1results__context_a6b09183ff6bf5947d6ead9579d6d33a4}{results\+\_\+context}} ()
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1results__context_a5c0a99c679c10b4de5c8b2e39677470f}{count}} () const
+\item 
+\mbox{\hyperlink{classexprtk_1_1results__context_af70deb8828de0209efc908165ddabf29}{type\+\_\+store\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1results__context_aae02fc7fb2241f3e3ae35b0511b6c31c}{operator\mbox{[}$\,$\mbox{]}}} (const std\+::size\+\_\+t \&index)
+\item 
+const \mbox{\hyperlink{classexprtk_1_1results__context_af70deb8828de0209efc908165ddabf29}{type\+\_\+store\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1results__context_a4c13ca0dc1b1a781105200228a55a4a0}{operator\mbox{[}$\,$\mbox{]}}} (const std\+::size\+\_\+t \&index) const
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1results__context_ac7a0d0c8f186dc3b044a41de2201479f}{get\+\_\+scalar}} (const std\+::size\+\_\+t \&index, T \&out) const
+\item 
+{\footnotesize template$<$typename Output\+Iterator $>$ }\\bool \mbox{\hyperlink{classexprtk_1_1results__context_acb7bab6d497a0c52a1b70e7ad133dd8f}{get\+\_\+vector}} (const std\+::size\+\_\+t \&index, Output\+Iterator out\+\_\+itr) const
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1results__context_ab6825feeb9e256ccf88fe9e0fea12bfe}{get\+\_\+vector}} (const std\+::size\+\_\+t \&index, std\+::vector$<$ T $>$ \&out) const
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1results__context_a447042f376bd54c50b28c892c4bf4ba3}{get\+\_\+string}} (const std\+::size\+\_\+t \&index, std\+::string \&out) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ \mbox{\hyperlink{classexprtk_1_1results__context_af70deb8828de0209efc908165ddabf29}{type\+\_\+store\+\_\+t}} $>$ \mbox{\hyperlink{classexprtk_1_1results__context_adc5ebea0d8d33be9aa455e5fb0bc64a8}{ts\+\_\+list\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{classexprtk_1_1type__store_1_1parameter__list}{type\+\_\+store\+\_\+t\+::parameter\+\_\+list}} \mbox{\hyperlink{classexprtk_1_1results__context_a02d26c2e026463e5c07f05162d39c7d3}{parameter\+\_\+list\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classexprtk_1_1results__context_ae2409a40811a39a76123e1b89d557333}{clear}} ()
+\item 
+void \mbox{\hyperlink{classexprtk_1_1results__context_a6057310506d78527d06384282fcd6924}{assign}} (const \mbox{\hyperlink{classexprtk_1_1results__context_a02d26c2e026463e5c07f05162d39c7d3}{parameter\+\_\+list\+\_\+t}} \&pl)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classexprtk_1_1results__context_ad724f527d99b606862bc252d0dc11415}{results\+\_\+available\+\_\+}}
+\item 
+\mbox{\hyperlink{classexprtk_1_1results__context_adc5ebea0d8d33be9aa455e5fb0bc64a8}{ts\+\_\+list\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1results__context_a222c6c097fb85cf829c57aef73244076}{parameter\+\_\+list\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classexprtk_1_1results__context_ad42003d7a2a4058825f76e494a9b2fb7}{details\+::return\+\_\+node$<$ T $>$}}
+\item 
+class \mbox{\hyperlink{classexprtk_1_1results__context_a797a7abd289659ef0b45ea8e682444a4}{details\+::return\+\_\+envelope\+\_\+node$<$ T $>$}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class exprtk\+::results\+\_\+context$<$ T $>$}
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04933}{4933}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classexprtk_1_1results__context_a02d26c2e026463e5c07f05162d39c7d3}\label{classexprtk_1_1results__context_a02d26c2e026463e5c07f05162d39c7d3}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!parameter\_list\_t@{parameter\_list\_t}}
+\index{parameter\_list\_t@{parameter\_list\_t}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{parameter\_list\_t}{parameter\_list\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{classexprtk_1_1type__store_1_1parameter__list}{type\+\_\+store\+\_\+t\+::parameter\+\_\+list}} \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::parameter\+\_\+list\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l05027}{5027}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1results__context_a0fda7ba36f4e7c637e06eec0af150731}\label{classexprtk_1_1results__context_a0fda7ba36f4e7c637e06eec0af150731}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!scalar\_t@{scalar\_t}}
+\index{scalar\_t@{scalar\_t}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{scalar\_t}{scalar\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{structexprtk_1_1type__store_1_1scalar__view}{type\+\_\+store\+\_\+t\+::scalar\+\_\+view}} \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::scalar\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04938}{4938}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1results__context_a79e8289c0d8995fad0551ff3109893f0}\label{classexprtk_1_1results__context_a79e8289c0d8995fad0551ff3109893f0}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!string\_t@{string\_t}}
+\index{string\_t@{string\_t}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{string\_t}{string\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{structexprtk_1_1type__store_a893820aba3e822ddc96d1c3ae090adf2}{type\+\_\+store\+\_\+t\+::string\+\_\+view}} \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::string\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04940}{4940}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1results__context_adc5ebea0d8d33be9aa455e5fb0bc64a8}\label{classexprtk_1_1results__context_adc5ebea0d8d33be9aa455e5fb0bc64a8}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!ts\_list\_t@{ts\_list\_t}}
+\index{ts\_list\_t@{ts\_list\_t}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ts\_list\_t}{ts\_list\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef std\+::vector$<$\mbox{\hyperlink{classexprtk_1_1results__context_af70deb8828de0209efc908165ddabf29}{type\+\_\+store\+\_\+t}}$>$ \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::ts\+\_\+list\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l05026}{5026}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1results__context_af70deb8828de0209efc908165ddabf29}\label{classexprtk_1_1results__context_af70deb8828de0209efc908165ddabf29}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!type\_store\_t@{type\_store\_t}}
+\index{type\_store\_t@{type\_store\_t}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{type\_store\_t}{type\_store\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{structexprtk_1_1type__store}{type\+\_\+store}}$<$T$>$ \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::type\+\_\+store\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04937}{4937}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1results__context_a2e9fddb1b94edbe7015ee5e36cc24ea9}\label{classexprtk_1_1results__context_a2e9fddb1b94edbe7015ee5e36cc24ea9}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!vector\_t@{vector\_t}}
+\index{vector\_t@{vector\_t}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{vector\_t}{vector\_t}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+typedef \mbox{\hyperlink{structexprtk_1_1type__store_a1b7a9dc5075d6cfff4e80cec61498619}{type\+\_\+store\+\_\+t\+::vector\+\_\+view}} \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::vector\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04939}{4939}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classexprtk_1_1results__context_a6b09183ff6bf5947d6ead9579d6d33a4}\label{classexprtk_1_1results__context_a6b09183ff6bf5947d6ead9579d6d33a4}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!results\_context@{results\_context}}
+\index{results\_context@{results\_context}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{results\_context()}{results\_context()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::results\+\_\+context (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04942}{4942}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classexprtk_1_1results__context_a6057310506d78527d06384282fcd6924}\label{classexprtk_1_1results__context_a6057310506d78527d06384282fcd6924}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!assign@{assign}}
+\index{assign@{assign}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::assign (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classexprtk_1_1results__context_a02d26c2e026463e5c07f05162d39c7d3}{parameter\+\_\+list\+\_\+t}} \&}]{pl }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l05029}{5029}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1results__context_ae2409a40811a39a76123e1b89d557333}\label{classexprtk_1_1results__context_ae2409a40811a39a76123e1b89d557333}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!clear@{clear}}
+\index{clear@{clear}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l05021}{5021}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1results__context_a5c0a99c679c10b4de5c8b2e39677470f}\label{classexprtk_1_1results__context_a5c0a99c679c10b4de5c8b2e39677470f}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!count@{count}}
+\index{count@{count}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{count()}{count()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04946}{4946}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1results__context_ac7a0d0c8f186dc3b044a41de2201479f}\label{classexprtk_1_1results__context_ac7a0d0c8f186dc3b044a41de2201479f}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!get\_scalar@{get\_scalar}}
+\index{get\_scalar@{get\_scalar}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_scalar()}{get\_scalar()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::get\+\_\+scalar (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{index,  }\item[{T \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04964}{4964}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1results__context_a447042f376bd54c50b28c892c4bf4ba3}\label{classexprtk_1_1results__context_a447042f376bd54c50b28c892c4bf4ba3}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!get\_string@{get\_string}}
+\index{get\_string@{get\_string}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_string()}{get\_string()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::get\+\_\+string (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{index,  }\item[{std\+::string \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l05004}{5004}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1results__context_a447042f376bd54c50b28c892c4bf4ba3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1results__context_acb7bab6d497a0c52a1b70e7ad133dd8f}\label{classexprtk_1_1results__context_acb7bab6d497a0c52a1b70e7ad133dd8f}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!get\_vector@{get\_vector}}
+\index{get\_vector@{get\_vector}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_vector()}{get\_vector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename Output\+Iterator $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::get\+\_\+vector (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{index,  }\item[{Output\+Iterator}]{out\+\_\+itr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04980}{4980}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1results__context_acb7bab6d497a0c52a1b70e7ad133dd8f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1results__context_acb7bab6d497a0c52a1b70e7ad133dd8f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1results__context_ab6825feeb9e256ccf88fe9e0fea12bfe}\label{classexprtk_1_1results__context_ab6825feeb9e256ccf88fe9e0fea12bfe}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!get\_vector@{get\_vector}}
+\index{get\_vector@{get\_vector}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get\_vector()}{get\_vector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::get\+\_\+vector (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{index,  }\item[{std\+::vector$<$ T $>$ \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04999}{4999}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classexprtk_1_1results__context_ab6825feeb9e256ccf88fe9e0fea12bfe_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classexprtk_1_1results__context_aae02fc7fb2241f3e3ae35b0511b6c31c}\label{classexprtk_1_1results__context_aae02fc7fb2241f3e3ae35b0511b6c31c}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1results__context_af70deb8828de0209efc908165ddabf29}{type\+\_\+store\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04954}{4954}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1results__context_a4c13ca0dc1b1a781105200228a55a4a0}\label{classexprtk_1_1results__context_a4c13ca0dc1b1a781105200228a55a4a0}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const \mbox{\hyperlink{classexprtk_1_1results__context_af70deb8828de0209efc908165ddabf29}{type\+\_\+store\+\_\+t}} \& \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l04959}{4959}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classexprtk_1_1results__context_a797a7abd289659ef0b45ea8e682444a4}\label{classexprtk_1_1results__context_a797a7abd289659ef0b45ea8e682444a4}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!details::return\_envelope\_node$<$ T $>$@{details::return\_envelope\_node$<$ T $>$}}
+\index{details::return\_envelope\_node$<$ T $>$@{details::return\_envelope\_node$<$ T $>$}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{details::return\_envelope\_node$<$ T $>$}{details::return\_envelope\_node< T >}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+friend class \mbox{\hyperlink{classexprtk_1_1details_1_1return__envelope__node}{details\+::return\+\_\+envelope\+\_\+node}}$<$ T $>$\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l05036}{5036}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1results__context_ad42003d7a2a4058825f76e494a9b2fb7}\label{classexprtk_1_1results__context_ad42003d7a2a4058825f76e494a9b2fb7}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!details::return\_node$<$ T $>$@{details::return\_node$<$ T $>$}}
+\index{details::return\_node$<$ T $>$@{details::return\_node$<$ T $>$}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{details::return\_node$<$ T $>$}{details::return\_node< T >}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+friend class \mbox{\hyperlink{classexprtk_1_1details_1_1return__node}{details\+::return\+\_\+node}}$<$ T $>$\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l05036}{5036}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classexprtk_1_1results__context_a222c6c097fb85cf829c57aef73244076}\label{classexprtk_1_1results__context_a222c6c097fb85cf829c57aef73244076}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!parameter\_list\_@{parameter\_list\_}}
+\index{parameter\_list\_@{parameter\_list\_}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{parameter\_list\_}{parameter\_list\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classexprtk_1_1results__context_adc5ebea0d8d33be9aa455e5fb0bc64a8}{ts\+\_\+list\+\_\+t}} \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::parameter\+\_\+list\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l05036}{5036}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+\mbox{\Hypertarget{classexprtk_1_1results__context_ad724f527d99b606862bc252d0dc11415}\label{classexprtk_1_1results__context_ad724f527d99b606862bc252d0dc11415}} 
+\index{exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}!results\_available\_@{results\_available\_}}
+\index{results\_available\_@{results\_available\_}!exprtk::results\_context$<$ T $>$@{exprtk::results\_context$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{results\_available\_}{results\_available\_}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classexprtk_1_1results__context}{exprtk\+::results\+\_\+context}}$<$ T $>$\+::results\+\_\+available\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{exprtk_8hpp_source_l05035}{5035}} of file \mbox{\hyperlink{exprtk_8hpp_source}{exprtk.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include\+\_\+3rd\+\_\+party/\mbox{\hyperlink{exprtk_8hpp}{exprtk.\+hpp}}\end{DoxyCompactItemize}

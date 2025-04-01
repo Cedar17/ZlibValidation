@@ -7,6 +7,6 @@ var structsi2drExprT =
     [ "right", "structsi2drExprT.html#ab371e646d9b794b3edae4e35fa966d16", null ],
     [ "s", "structsi2drExprT.html#a5e7979d08c96a9b368264198429b36f2", null ],
     [ "type", "structsi2drExprT.html#ac335882008c198adf8f3f3a611c9157a", null ],
-    [ "u", "structsi2drExprT.html#abafee872dfe92f2efd561bed777c4361", null ],
+    [ "u", "structsi2drExprT.html#a80762351244e5bd118d436c4c2efc546", null ],
     [ "valuetype", "structsi2drExprT.html#a4b0d008d19a1e2bcd6477cb12b321007", null ]
 ];
