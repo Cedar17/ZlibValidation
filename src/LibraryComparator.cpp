@@ -1,14 +1,4 @@
-#include <chrono>
-#include <filesystem>
-#include <fstream>
-#include <iostream>
-
-#include "spdlog/spdlog.h"
-#include <tabulate/markdown_exporter.hpp>
-
 #include "LibraryComparator.hpp"
-#include "version.h"
-
 
 /**
  * @brief Constructor for the LibraryComparator class

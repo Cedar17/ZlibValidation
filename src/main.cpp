@@ -1,9 +1,7 @@
 // ./src/main.cpp
 #include <filesystem>
 #include <iostream>
-#include <string>
 #include <thread>
-#include <vector>
 
 #include "CLI/CLI.hpp"
 #include "si2dr_liberty.h"
@@ -321,6 +319,7 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
 
     // TODO Perform functional equivalence check
     LogicComparator comparator(ref_outpin_map, comp_outpin_map, cell);
+    comparator.logic<double>();
     comparator.generateReport(report_file_name);
     spdlog::info("Functional equivalence check completed for cell: '{}'", cell);
   }

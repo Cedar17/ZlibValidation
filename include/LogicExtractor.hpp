@@ -3,19 +3,6 @@
 #ifndef LOGIC_EXTRACTOR_HPP
 #define LOGIC_EXTRACTOR_HPP
 
-#include <fstream>
-#include <iostream>
-#include <map>
-#include <string>
-#include <unordered_map>
-#include <unordered_set>
-#include <vector>
-
-#include "slang/parsing/Token.h" // Include Token header for TokenKind
-#include "slang/syntax/SyntaxPrinter.h"
-#include "slang/syntax/SyntaxVisitor.h"
-#include "spdlog/spdlog.h" // Include spdlog
-
 #include "verilog_utils.hpp"
 
 // Structure to represent a gate instance's information

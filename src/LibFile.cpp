@@ -1,17 +1,4 @@
-#include <chrono>
-#include <filesystem>
-#include <fstream>
-#include <sstream>
-#include <unordered_set>
-
-#include "spdlog/sinks/basic_file_sink.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
-#include "spdlog/spdlog.h"
-
-#include "Iterators.hpp"
-#include "json_utils.hpp"
 #include "LibFile.hpp"
-#include "verilog_utils.hpp"
 
 /**
  * @brief Constructs a LibFile object with specified file path and logger name

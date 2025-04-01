@@ -1,12 +1,22 @@
 #ifndef LIB_FILE_H
 #define LIB_FILE_H
 
+#include <chrono>
 #include <filesystem>
+#include <fstream>
+// #include <sstream>
 #include <string>
-#include <vector>
+#include <unordered_set>
 
 #include "nlohmann/json.hpp"
 #include "si2dr_liberty.h"
+#include "spdlog/sinks/basic_file_sink.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/spdlog.h"
+
+#include "Iterators.hpp"
+#include "json_utils.hpp"
+#include "verilog_utils.hpp"
 
 using json = nlohmann::json;
 
