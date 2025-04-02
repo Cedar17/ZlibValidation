@@ -381,7 +381,7 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \item 如果后接其他元素（如 {\ttfamily (}、其他运算符或表达式结尾），保留原样，让 Expr\+Tk 处理 {\ttfamily not(表达式)} 形式。
 \item 对其他 token，直接添加到最终 token 列表，不做特殊处理。
 \end{DoxyItemize}
-\item 实现了 {\ttfamily \mbox{\hyperlink{classLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6}{Logic\+Comparator\+::compare\+Single\+Expression\+Pair()}}} 方法，用于比较两个逻辑表达式的等价性：
+\item 实现了 {\ttfamily \mbox{\hyperlink{classLogicComparator_a626ddc1bb2057eef7862cea7bbc860bb}{Logic\+Comparator\+::compare\+Single\+Expression\+Pair()}}} 方法，用于比较两个逻辑表达式的等价性：
 \begin{DoxyItemize}
 \item 接收预处理后的表达式字符串和已排序的变量列表作为输入参数。
 \item 为参考表达式和比较表达式分别创建 Expr\+Tk 环境（符号表、表达式对象和解析器）。
@@ -398,12 +398,16 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \item 比较两个结果向量判断表达式是否等价。
 \item 将生成的真值表存入 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象的 {\ttfamily std\+::optional} 成员中，以便后续报告生成。
 \end{DoxyItemize}
-\item 实现了{\ttfamily template \texorpdfstring{$<$}{<}typename T\texorpdfstring{$>$}{>} std\+::map\texorpdfstring{$<$}{<}std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}\texorpdfstring{$>$}{>} \mbox{\hyperlink{classLogicComparator_af14395e54450c738c39033a364c23c0f}{Logic\+Comparator\+::compare\+Cell\+Logic()}};}
+\item 实现了{\ttfamily template \texorpdfstring{$<$}{<}typename T\texorpdfstring{$>$}{>} std\+::map\texorpdfstring{$<$}{<}std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}\texorpdfstring{$>$}{>} \mbox{\hyperlink{classLogicComparator_ae5c1b36b4a05b18c36d7fe1cbeb3ec49}{Logic\+Comparator\+::compare\+Cell\+Logic()}};}
 \begin{DoxyItemize}
 \item 该方法用于比较两个 cell 的逻辑表达式，返回一个 {\ttfamily std\+::map}，键为 cell 名称，值为 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 结构体。
 \item 遍历在类私有属性里的整个独立输出引脚键，提取其值作为逻辑字符串表达式，首先使用 {\ttfamily preprocess\+Expression} 进行预处理，然后使用 {\ttfamily extract\+Variables} 提取变量向量。
-\item 调用 {\ttfamily \mbox{\hyperlink{classLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6}{Logic\+Comparator\+::compare\+Single\+Expression\+Pair()}}} 方法进行比较，结果存入 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象。
+\item 调用 {\ttfamily \mbox{\hyperlink{classLogicComparator_a626ddc1bb2057eef7862cea7bbc860bb}{Logic\+Comparator\+::compare\+Single\+Expression\+Pair()}}} 方法进行比较，结果存入 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象。
 \item 最后将 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象存入 {\ttfamily std\+::map} 中，键为 cell 名称，值为 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象，返回。
 \end{DoxyItemize}
-\item 实现了 {\ttfamily \mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{Logic\+Comparator\+::generate\+Report()}}} 方法，报告格式仍需要调整。 
+\item 实现了 {\ttfamily \mbox{\hyperlink{classLogicComparator_a11238591d905205ad26839e1977634f5}{Logic\+Comparator\+::generate\+Report()}}} 方法，报告格式仍需要调整。
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md38}{}\doxysubsection{2025-\/04-\/02}\label{md_README_autotoc_md38}
+
+\begin{DoxyItemize}
+\item 取消所有模板函数的 {\ttfamily template \texorpdfstring{$<$}{<}typename T\texorpdfstring{$>$}{>}} 声明，改为使用 {\ttfamily double} 作为参数类型，加快编译速度。 
 \end{DoxyItemize}

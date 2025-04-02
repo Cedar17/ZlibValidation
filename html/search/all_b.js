@@ -18,7 +18,7 @@ var searchData=
   ['librarycomparator_2ehpp_15',['LibraryComparator.hpp',['../LibraryComparator_8hpp.html',1,'']]],
   ['logger_5f_16',['logger_',['../classLibFile.html#a347261b9d7d365b9f91c651efdfeb70d',1,'LibFile::logger_()'],['../classModuleRewriter.html#a35bc880b11364a5c980c70be72ab42ab',1,'ModuleRewriter::logger_()']]],
   ['loggername_5f_17',['loggername_',['../classLibFile.html#ac603785bfcf7fb11172603e0777b3332',1,'LibFile']]],
-  ['logic_18',['logic',['../classLibFile.html#a90b6274f928d77388864ba61583a030f',1,'LibFile::logic()'],['../classLogicComparator.html#a4ce5e98ddd78aafb760d49f7201e78a9',1,'LogicComparator::logic()']]],
+  ['logic_18',['logic',['../classLibFile.html#a90b6274f928d77388864ba61583a030f',1,'LibFile::logic()'],['../classLogicComparator.html#a1be219c18555e95192b758be8a4b4e2f',1,'LogicComparator::logic()']]],
   ['logiccache_5f_19',['logicCache_',['../classLogicExtractor.html#a20e3904f73ad961b667a2df7a713a961',1,'LogicExtractor']]],
   ['logiccomparator_20',['LogicComparator',['../classLogicComparator.html',1,'LogicComparator'],['../classLogicComparator.html#a35436d01eabacaeb34d88883ab141613',1,'LogicComparator::LogicComparator()']]],
   ['logiccomparator_2ecpp_21',['LogicComparator.cpp',['../LogicComparator_8cpp.html',1,'']]],

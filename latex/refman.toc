@@ -37,6 +37,7 @@
 \contentsline {subsection}{\numberline {1.3.32}2025-\/03-\/30}{11}{subsection.1.3.32}%
 \contentsline {subsection}{\numberline {1.3.33}2025-\/03-\/31}{12}{subsection.1.3.33}%
 \contentsline {subsection}{\numberline {1.3.34}2025-\/04-\/01}{13}{subsection.1.3.34}%
+\contentsline {subsection}{\numberline {1.3.35}2025-\/04-\/02}{15}{subsection.1.3.35}%
 \contentsline {chapter}{\numberline {2}Hierarchical Index}{17}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Class Hierarchy}{17}{section.2.1}%
 \contentsline {chapter}{\numberline {3}Class Index}{19}{chapter.3}%
@@ -177,15 +178,16 @@
 \contentsline {subsubsection}{\numberline {5.10.2.1}LogicComparator()}{71}{subsubsection.5.10.2.1}%
 \contentsline {subsection}{\numberline {5.10.3}Member Function Documentation}{71}{subsection.5.10.3}%
 \contentsline {subsubsection}{\numberline {5.10.3.1}compareCellLogic()}{71}{subsubsection.5.10.3.1}%
-\contentsline {subsubsection}{\numberline {5.10.3.2}compareSingleExpressionPair()}{73}{subsubsection.5.10.3.2}%
+\contentsline {subsubsection}{\numberline {5.10.3.2}compareSingleExpressionPair()}{72}{subsubsection.5.10.3.2}%
 \contentsline {subsubsection}{\numberline {5.10.3.3}extractVariables()}{73}{subsubsection.5.10.3.3}%
 \contentsline {subsubsection}{\numberline {5.10.3.4}generateReport()}{75}{subsubsection.5.10.3.4}%
-\contentsline {subsubsection}{\numberline {5.10.3.5}logic()}{76}{subsubsection.5.10.3.5}%
+\contentsline {subsubsection}{\numberline {5.10.3.5}logic()}{75}{subsubsection.5.10.3.5}%
 \contentsline {subsubsection}{\numberline {5.10.3.6}preprocessExpression()}{76}{subsubsection.5.10.3.6}%
 \contentsline {subsection}{\numberline {5.10.4}Member Data Documentation}{76}{subsection.5.10.4}%
-\contentsline {subsubsection}{\numberline {5.10.4.1}cell\_name\_}{77}{subsubsection.5.10.4.1}%
-\contentsline {subsubsection}{\numberline {5.10.4.2}comp\_outpin\_map\_}{77}{subsubsection.5.10.4.2}%
-\contentsline {subsubsection}{\numberline {5.10.4.3}ref\_outpin\_map\_}{77}{subsubsection.5.10.4.3}%
+\contentsline {subsubsection}{\numberline {5.10.4.1}all\_pin\_results\_}{76}{subsubsection.5.10.4.1}%
+\contentsline {subsubsection}{\numberline {5.10.4.2}cell\_name\_}{76}{subsubsection.5.10.4.2}%
+\contentsline {subsubsection}{\numberline {5.10.4.3}comp\_outpin\_map\_}{77}{subsubsection.5.10.4.3}%
+\contentsline {subsubsection}{\numberline {5.10.4.4}ref\_outpin\_map\_}{77}{subsubsection.5.10.4.4}%
 \contentsline {section}{\numberline {5.11}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor Class Reference}{77}{section.5.11}%
 \contentsline {subsection}{\numberline {5.11.1}Detailed Description}{79}{subsection.5.11.1}%
 \contentsline {subsection}{\numberline {5.11.2}Constructor \& Destructor Documentation}{79}{subsection.5.11.2}%
@@ -368,7 +370,7 @@
 \contentsline {section}{\numberline {6.39}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comparator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{198}{section.6.39}%
 \contentsline {section}{\numberline {6.40}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.cpp File Reference}{211}{section.6.40}%
 \contentsline {subsection}{\numberline {6.40.1}Function Documentation}{211}{subsection.6.40.1}%
-\contentsline {subsubsection}{\numberline {6.40.1.1}extractAndPrintNetlistInfo()}{212}{subsubsection.6.40.1.1}%
+\contentsline {subsubsection}{\numberline {6.40.1.1}extractAndPrintNetlistInfo()}{211}{subsubsection.6.40.1.1}%
 \contentsline {subsubsection}{\numberline {6.40.1.2}extractLogicFromVerilog()}{212}{subsubsection.6.40.1.2}%
 \contentsline {section}{\numberline {6.41}Logic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Extractor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{213}{section.6.41}%
 \contentsline {section}{\numberline {6.42}src/main.cpp File Reference}{222}{section.6.42}%
@@ -379,4 +381,4 @@
 \contentsline {subsection}{\numberline {6.44.1}Function Documentation}{228}{subsection.6.44.1}%
 \contentsline {subsubsection}{\numberline {6.44.1.1}getAST()}{228}{subsubsection.6.44.1.1}%
 \contentsline {section}{\numberline {6.45}verilog\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}utils.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{229}{section.6.45}%
-\contentsline {chapter}{索引}{239}{section*.215}%
+\contentsline {chapter}{索引}{239}{section*.216}%

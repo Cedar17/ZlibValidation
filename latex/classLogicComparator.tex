@@ -9,17 +9,17 @@
 \item 
 \mbox{\hyperlink{classLogicComparator_a35436d01eabacaeb34d88883ab141613}{Logic\+Comparator}} (const std\+::map$<$ std\+::string, std\+::string $>$ \&ref\+\_\+outpin\+\_\+map, const std\+::map$<$ std\+::string, std\+::string $>$ \&comp\+\_\+outpin\+\_\+map, const std\+::string \&cell\+\_\+name)
 \item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classLogicComparator_a4ce5e98ddd78aafb760d49f7201e78a9}{logic}} ()
+void \mbox{\hyperlink{classLogicComparator_a1be219c18555e95192b758be8a4b4e2f}{logic}} ()
 \item 
 std\+::string \mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{preprocess\+Expression}} (const std\+::string \&input\+\_\+expr)
 \item 
 bool \mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{extract\+Variables}} (const std\+::string \&expr1, const std\+::string \&expr2, std\+::vector$<$ std\+::string $>$ \&sorted\+\_\+vars)
 \begin{DoxyCompactList}\small\item\em Extracts and validates variables from two expressions, ensuring they match. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6}{compare\+Single\+Expression\+Pair}} (const std\+::string \&ref\+\_\+expression\+\_\+processed, const std\+::string \&comp\+\_\+expression\+\_\+processed, const std\+::vector$<$ std\+::string $>$ \&sorted\+\_\+vars, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} \&result)
+void \mbox{\hyperlink{classLogicComparator_a626ddc1bb2057eef7862cea7bbc860bb}{compare\+Single\+Expression\+Pair}} (const std\+::string \&ref\+\_\+expression\+\_\+processed, const std\+::string \&comp\+\_\+expression\+\_\+processed, const std\+::vector$<$ std\+::string $>$ \&sorted\+\_\+vars, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} \&result)
 \begin{DoxyCompactList}\small\item\em Compares two preprocessed logic expression strings for equivalence. Internal helper function. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\std\+::map$<$ std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} $>$ \mbox{\hyperlink{classLogicComparator_af14395e54450c738c39033a364c23c0f}{compare\+Cell\+Logic}} ()
-\begin{DoxyCompactList}\small\item\em Compares logic for all output pins defined in the input maps. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{generate\+Report}} (const std\+::string \&output\+\_\+file, const std\+::map$<$ std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} $>$ \&comparison\+\_\+results)
+void \mbox{\hyperlink{classLogicComparator_ae5c1b36b4a05b18c36d7fe1cbeb3ec49}{compare\+Cell\+Logic}} ()
+\begin{DoxyCompactList}\small\item\em Compares logic for all output pins defined in the input maps, and stores results in all\+\_\+pin\+\_\+results\+\_\+. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLogicComparator_a11238591d905205ad26839e1977634f5}{generate\+Report}} (const std\+::string \&output\+\_\+file)
 \begin{DoxyCompactList}\small\item\em Generates a comparison report file based on cell logic comparison results. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -29,13 +29,15 @@ std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classLogicCompar
 std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}{comp\+\_\+outpin\+\_\+map\+\_\+}}
 \item 
 std\+::string \mbox{\hyperlink{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}{cell\+\_\+name\+\_\+}}
+\item 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} $>$ \mbox{\hyperlink{classLogicComparator_a069909b14b298cc968a8896e5573fd62}{all\+\_\+pin\+\_\+results\+\_\+}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00040}{40}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
 
 
 
@@ -53,34 +55,23 @@ Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00003}{3}} of f
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classLogicComparator_af14395e54450c738c39033a364c23c0f}\label{classLogicComparator_af14395e54450c738c39033a364c23c0f}} 
+\mbox{\Hypertarget{classLogicComparator_ae5c1b36b4a05b18c36d7fe1cbeb3ec49}\label{classLogicComparator_ae5c1b36b4a05b18c36d7fe1cbeb3ec49}} 
 \index{LogicComparator@{LogicComparator}!compareCellLogic@{compareCellLogic}}
 \index{compareCellLogic@{compareCellLogic}!LogicComparator@{LogicComparator}}
 \doxysubsubsection{\texorpdfstring{compareCellLogic()}{compareCellLogic()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-template std\+::map$<$ std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} $>$ Logic\+Comparator\+::compare\+Cell\+Logic$<$ double $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Logic\+Comparator\+::compare\+Cell\+Logic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Compares logic for all output pins defined in the input maps. 
+Compares logic for all output pins defined in the input maps, and stores results in all\+\_\+pin\+\_\+results\+\_\+. 
 
 Compares logic for all output pins defined in the input maps for a specific cell.
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em T} & Numeric type for Expr\+Tk (e.\+g., double). \\
-\hline
-\end{DoxyTemplParams}
-\begin{DoxyReturn}{Returns}
-A map where the key is the pin name and the value is the \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} struct containing comparison details.
-\end{DoxyReturn}
-
 
 Iterates through all unique output pins found in either the reference or comparison maps. For each pin, it preprocesses the expressions, extracts and validates variables, and then compares the logic using truth tables via compare\+Single\+Expression\+Pair.
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em T} & Numeric type for Expr\+Tk (e.\+g., double). \\
+{\em double} & Numeric type for Expr\+Tk (e.\+g., double). \\
 \hline
 \end{DoxyTemplParams}
 \begin{DoxyReturn}{Returns}
@@ -88,14 +79,14 @@ A map where the key is the pin name and the value is the \mbox{\hyperlink{struct
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00732}{732}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00724}{724}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classLogicComparator_af14395e54450c738c39033a364c23c0f_cgraph}
+\includegraphics[width=350pt]{classLogicComparator_ae5c1b36b4a05b18c36d7fe1cbeb3ec49_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -103,15 +94,14 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classLogicComparator_af14395e54450c738c39033a364c23c0f_icgraph}
+\includegraphics[width=350pt]{classLogicComparator_ae5c1b36b4a05b18c36d7fe1cbeb3ec49_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6}\label{classLogicComparator_abb88d10e0cb7a1a436e41a4179ef92a6}} 
+\mbox{\Hypertarget{classLogicComparator_a626ddc1bb2057eef7862cea7bbc860bb}\label{classLogicComparator_a626ddc1bb2057eef7862cea7bbc860bb}} 
 \index{LogicComparator@{LogicComparator}!compareSingleExpressionPair@{compareSingleExpressionPair}}
 \index{compareSingleExpressionPair@{compareSingleExpressionPair}!LogicComparator@{LogicComparator}}
 \doxysubsubsection{\texorpdfstring{compareSingleExpressionPair()}{compareSingleExpressionPair()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-template void Logic\+Comparator\+::compare\+Single\+Expression\+Pair$<$ double $>$ (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{ref\+\_\+expression\+\_\+processed,  }\item[{const std\+::string \&}]{comp\+\_\+expression\+\_\+processed,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{sorted\+\_\+vars,  }\item[{\mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} \&}]{result }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Logic\+Comparator\+::compare\+Single\+Expression\+Pair (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{ref\+\_\+expression\+\_\+processed,  }\item[{const std\+::string \&}]{comp\+\_\+expression\+\_\+processed,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{sorted\+\_\+vars,  }\item[{\mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} \&}]{result }\end{DoxyParamCaption})}
 
 
 
@@ -130,6 +120,8 @@ Compares two preprocessed logic expression strings for equivalence using truth t
 \hline
 {\em comp\+\_\+expression\+\_\+processed} & The preprocessed comparison logic expression. \\
 \hline
+{\em sorted\+\_\+vars} & A sorted vector of unique variable names common to both expressions. \\
+\hline
 {\em result} & Reference to a \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} object to store detailed results.\\
 \hline
 \end{DoxyParams}
@@ -137,7 +129,7 @@ Compares two preprocessed logic expression strings for equivalence using truth t
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em T} & The numeric type used by Expr\+Tk (e.\+g., double, float). \\
+{\em double} & The numeric type used by Expr\+Tk (e.\+g., double, float). \\
 \hline
 \end{DoxyTemplParams}
 
@@ -153,8 +145,16 @@ Compares two preprocessed logic expression strings for equivalence using truth t
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00498}{498}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00497}{497}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogicComparator_a626ddc1bb2057eef7862cea7bbc860bb_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}\label{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}} 
 \index{LogicComparator@{LogicComparator}!extractVariables@{extractVariables}}
 \index{extractVariables@{extractVariables}!LogicComparator@{LogicComparator}}
@@ -194,7 +194,7 @@ The function uses spdlog for logging debug, trace, info, and warning messages.
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00287}{287}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00286}{286}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -212,11 +212,11 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}\label{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}} 
+\mbox{\Hypertarget{classLogicComparator_a11238591d905205ad26839e1977634f5}\label{classLogicComparator_a11238591d905205ad26839e1977634f5}} 
 \index{LogicComparator@{LogicComparator}!generateReport@{generateReport}}
 \index{generateReport@{generateReport}!LogicComparator@{LogicComparator}}
 \doxysubsubsection{\texorpdfstring{generateReport()}{generateReport()}}
-{\footnotesize\ttfamily void Logic\+Comparator\+::generate\+Report (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{output\+\_\+file,  }\item[{const std\+::map$<$ std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} $>$ \&}]{comparison\+\_\+results }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Logic\+Comparator\+::generate\+Report (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{output\+\_\+file }\end{DoxyParamCaption})}
 
 
 
@@ -226,38 +226,24 @@ Generates a comparison report file based on cell logic comparison results.
 \begin{DoxyParams}{Parameters}
 {\em output\+\_\+file} & Path to the output report file. \\
 \hline
-{\em comparison\+\_\+results} & The results obtained from compare\+Cell\+Logic.\\
-\hline
 \end{DoxyParams}
 
 
-Creates a Markdown file summarizing the logic comparison for each pin of a cell. Includes raw and processed expressions, comparison status, and detailed truth tables if the expressions are found to be non-\/equivalent but comparable.
-
-
-\begin{DoxyParams}{Parameters}
-{\em output\+\_\+file} & Path to the output report file (should end with .md). \\
-\hline
-{\em comparison\+\_\+results} & The results obtained from compare\+Cell\+Logic. \\
-\hline
-\end{DoxyParams}
-
-
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00878}{878}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00847}{847}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73_icgraph}
+\includegraphics[width=350pt]{classLogicComparator_a11238591d905205ad26839e1977634f5_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classLogicComparator_a4ce5e98ddd78aafb760d49f7201e78a9}\label{classLogicComparator_a4ce5e98ddd78aafb760d49f7201e78a9}} 
+\mbox{\Hypertarget{classLogicComparator_a1be219c18555e95192b758be8a4b4e2f}\label{classLogicComparator_a1be219c18555e95192b758be8a4b4e2f}} 
 \index{LogicComparator@{LogicComparator}!logic@{logic}}
 \index{logic@{logic}!LogicComparator@{LogicComparator}}
 \doxysubsubsection{\texorpdfstring{logic()}{logic()}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-template void Logic\+Comparator\+::logic$<$ double $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Logic\+Comparator\+::logic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -271,7 +257,7 @@ Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00007}{7}} of f
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00088}{88}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -292,6 +278,16 @@ Here is the caller graph for this function\+:
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLogicComparator_a069909b14b298cc968a8896e5573fd62}\label{classLogicComparator_a069909b14b298cc968a8896e5573fd62}} 
+\index{LogicComparator@{LogicComparator}!all\_pin\_results\_@{all\_pin\_results\_}}
+\index{all\_pin\_results\_@{all\_pin\_results\_}!LogicComparator@{LogicComparator}}
+\doxysubsubsection{\texorpdfstring{all\_pin\_results\_}{all\_pin\_results\_}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}$>$ Logic\+Comparator\+::all\+\_\+pin\+\_\+results\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+
 \mbox{\Hypertarget{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}\label{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}} 
 \index{LogicComparator@{LogicComparator}!cell\_name\_@{cell\_name\_}}
 \index{cell\_name\_@{cell\_name\_}!LogicComparator@{LogicComparator}}
@@ -300,7 +296,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
 
 \mbox{\Hypertarget{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}\label{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}} 
 \index{LogicComparator@{LogicComparator}!comp\_outpin\_map\_@{comp\_outpin\_map\_}}
@@ -310,7 +306,7 @@ Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00090}{90}} of 
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
 
 \mbox{\Hypertarget{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}\label{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}} 
 \index{LogicComparator@{LogicComparator}!ref\_outpin\_map\_@{ref\_outpin\_map\_}}
@@ -320,7 +316,7 @@ Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00089}{89}} of 
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
 
 
 

@@ -17,6 +17,8 @@
 
   \item {abstol\_}
     \subitem {LibraryComparator}, \hyperpage{69}
+  \item {all\_pin\_results\_}
+    \subitem {LogicComparator}, \hyperpage{76}
   \item {APP\_AUTHOR}
     \subitem {version.h}, \hyperpage{143}
   \item {APP\_CONTACT}
@@ -88,7 +90,7 @@
   \item {comp\_lib\_path\_}
     \subitem {LibraryComparator}, \hyperpage{69}
   \item {comp\_outpin\_map\_}
-    \subitem {LogicComparator}, \hyperpage{77}
+    \subitem {LogicComparator}, \hyperpage{76}
   \item {comp\_truth\_table}
     \subitem {PinComparisonResult}, \hyperpage{91}
   \item {compareCell}
@@ -363,7 +365,7 @@
   \item {LibFileOperations.hpp}
     \subitem {compareLibFiles}, \hyperpage{118}
     \subitem {funcLibFile}, \hyperpage{119}
-    \subitem {monoCheckLibFile}, \hyperpage{120}
+    \subitem {monoCheckLibFile}, \hyperpage{121}
     \subitem {parseLibFile}, \hyperpage{122}
     \subitem {printInfo}, \hyperpage{125}
     \subitem {supercellLibFile}, \hyperpage{125}
@@ -401,19 +403,20 @@
     \subitem {LibFile}, \hyperpage{56}
   \item {logic}
     \subitem {LibFile}, \hyperpage{43}
-    \subitem {LogicComparator}, \hyperpage{76}
+    \subitem {LogicComparator}, \hyperpage{75}
   \item {logicCache\_}
     \subitem {LogicExtractor}, \hyperpage{84}
   \item {LogicComparator}, \hyperpage{70}
+    \subitem {all\_pin\_results\_}, \hyperpage{76}
     \subitem {cell\_name\_}, \hyperpage{76}
-    \subitem {comp\_outpin\_map\_}, \hyperpage{77}
+    \subitem {comp\_outpin\_map\_}, \hyperpage{76}
     \subitem {compareCellLogic}, \hyperpage{71}
     \subitem {compareSingleExpressionPair}, \hyperpage{72}
     \subitem {extractVariables}, \hyperpage{73}
     \subitem {generateReport}, \hyperpage{75}
-    \subitem {logic}, \hyperpage{76}
+    \subitem {logic}, \hyperpage{75}
     \subitem {LogicComparator}, \hyperpage{71}
-    \subitem {preprocessExpression}, \hyperpage{76}
+    \subitem {preprocessExpression}, \hyperpage{75}
     \subitem {ref\_outpin\_map\_}, \hyperpage{77}
   \item {LogicComparator.cpp}
     \subitem {isIdentifier}, \hyperpage{196}
@@ -469,7 +472,7 @@
     \subitem {LibFile}, \hyperpage{45}
   \item {monoCheckLibFile}
     \subitem {LibFileOperations.cpp}, \hyperpage{176}
-    \subitem {LibFileOperations.hpp}, \hyperpage{120}
+    \subitem {LibFileOperations.hpp}, \hyperpage{121}
 
   \indexspace
 
@@ -518,7 +521,7 @@
   \item {portInfoMap\_}
     \subitem {ModuleRewriter}, \hyperpage{89}
   \item {preprocessExpression}
-    \subitem {LogicComparator}, \hyperpage{76}
+    \subitem {LogicComparator}, \hyperpage{75}
   \item {primaryInputs\_}
     \subitem {LogicExtractor}, \hyperpage{84}
   \item {primaryOutputs\_}

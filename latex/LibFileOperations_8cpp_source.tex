@@ -215,7 +215,7 @@
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00303}00303 }
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00304}00304     \textcolor{comment}{// TODO Perform functional equivalence check}}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00305}00305     \mbox{\hyperlink{classLogicComparator}{LogicComparator}} comparator(ref\_outpin\_map, comp\_outpin\_map, cell);}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00306}00306     \textcolor{comment}{// comparator.logic<double>();}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00306}00306     \textcolor{comment}{// comparator.logic();}}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00307}00307 }
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00308}00308     \textcolor{comment}{// // Test for preprocessing}}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00309}00309     \textcolor{comment}{// std::string ref\_expr;}}
@@ -232,12 +232,12 @@
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00320}00320     \textcolor{comment}{// comparator.extractVariables(ref\_expr, comp\_expr, sorted\_vars);}}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00321}00321     \textcolor{comment}{// struct PinComparisonResult pin\_comparison\_result;}}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00322}00322     \textcolor{comment}{// // comp\_expr = "{}not ((not(A1) and not(A2)) or B)"{};}}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00323}00323     \textcolor{comment}{// comparator.compareSingleExpressionPair<double>(ref\_expr, comp\_expr, sorted\_vars,}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00323}00323     \textcolor{comment}{// comparator.compareSingleExpressionPair(ref\_expr, comp\_expr, sorted\_vars,}}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00324}00324     \textcolor{comment}{//                                                pin\_comparison\_result);}}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00325}00325 }
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00326}00326     \textcolor{comment}{// comparator.compareCellLogic<double>();}}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00327}00327     std::map<std::string, PinComparisonResult> results = comparator.\mbox{\hyperlink{classLogicComparator_af14395e54450c738c39033a364c23c0f}{compareCellLogic}}<\textcolor{keywordtype}{double}>();}
-\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00328}00328     comparator.\mbox{\hyperlink{classLogicComparator_a7c0ccb67d6136a1982ef8d5094087c73}{generateReport}}(report\_file\_name, results);}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00326}00326     \textcolor{comment}{// comparator.compareCellLogic();}}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00327}00327     comparator.\mbox{\hyperlink{classLogicComparator_ae5c1b36b4a05b18c36d7fe1cbeb3ec49}{compareCellLogic}}();}
+\DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00328}00328     comparator.\mbox{\hyperlink{classLogicComparator_a11238591d905205ad26839e1977634f5}{generateReport}}(report\_file\_name);}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00329}00329     }
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00330}00330     spdlog::info(\textcolor{stringliteral}{"{}Functional equivalence check completed for cell: '\{\}'"{}}, cell);}
 \DoxyCodeLine{\Hypertarget{LibFileOperations_8cpp_source_l00331}00331   \}}
