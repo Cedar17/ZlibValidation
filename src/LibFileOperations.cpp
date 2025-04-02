@@ -253,6 +253,15 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
                  report_file_name);
   }
 
+  // Clear the report file
+  std::ofstream report_file(report_file_name);
+  if (!report_file.is_open()) {
+    spdlog::error("Failed to open report file: '{}'", report_file_name);
+    return;
+  }
+  report_file.close();
+  spdlog::info("Report file cleared: '{}'", report_file_name);
+
   // Declare LibFile objects as pointers, initialized to nullptr
   LibFile *ref_libfile = nullptr;
   LibFile *comp_libfile = nullptr;
@@ -301,9 +310,13 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
     spdlog::info("Logic function expressions collected for cell: '{}'", cell);
     spdlog::info("Starting logic comparison ...");
 
-    // TODO Perform functional equivalence check
     LogicComparator comparator(ref_outpin_map, comp_outpin_map, cell);
-    // comparator.logic();
+    // Easter egg
+    if (cell == "easteregg") {
+      spdlog::info("Easter egg🥚 found! 😍 Running ExprTk Eample 07...");
+      comparator.logic();
+      return;
+    }
 
     // // Test for preprocessing
     // std::string ref_expr;
@@ -326,7 +339,7 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
     // comparator.compareCellLogic();
     comparator.compareCellLogic();
     comparator.generateReport(report_file_name);
-    
+
     spdlog::info("Functional equivalence check completed for cell: '{}'", cell);
   }
   spdlog::info("Functional equivalence check completed for all cells,");

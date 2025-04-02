@@ -4,6 +4,23 @@ LogicComparator::LogicComparator(const std::map<std::string, std::string> &ref_o
                                  const std::map<std::string, std::string> &comp_outpin_map,
                                  const std::string &cell_name)
     : ref_outpin_map_(ref_outpin_map), comp_outpin_map_(comp_outpin_map), cell_name_(cell_name) {}
+/**
+ * @brief This function demonstrates the usage of the exprtk library to evaluate a boolean logic
+ * expression.
+ *
+ * It defines a boolean expression "not(A and B) or C" and evaluates it for all possible
+ * combinations of boolean values for the variables A, B, and C. The results are then printed to the
+ * console in a tabular format.
+ *
+ * The function utilizes the exprtk library for:
+ *   - Defining a symbol table to hold the variables A, B, and C.
+ *   - Creating an expression object and registering the symbol table with it.
+ *   - Compiling the boolean expression string into the expression object.
+ *   - Iterating through all possible boolean combinations for A, B, and C.
+ *   - Assigning the boolean values to the variables in the symbol table.
+ *   - Evaluating the expression using expression.value().
+ *   - Printing the input values and the result to the console.
+ */
 void LogicComparator::logic() {
   typedef exprtk::symbol_table<double> symbol_table_t;
   typedef exprtk::expression<double> expression_t;
@@ -482,18 +499,33 @@ bool LogicComparator::extractVariables(const std::string &expr1_raw, const std::
 }
 
 // --- Implementation of compareSingleExpressionPair ---
-
 /**
- * @brief Compares two preprocessed logic expression strings for equivalence using truth tables.
- *        Internal helper function.
+ * @brief Compares two boolean expressions for logical equivalence using a truth table.
  *
- * @tparam double The numeric type used by ExprTk (e.g., double, float).
- * @param ref_expression_processed The preprocessed reference logic expression.
- * @param comp_expression_processed The preprocessed comparison logic expression.
- * @param sorted_vars A sorted vector of unique variable names common to both expressions.
- * @param result Reference to a PinComparisonResult object to store detailed results.
+ * This function takes two processed boolean expressions (ref_expression_processed and
+ * comp_expression_processed), a sorted list of variable names (sorted_vars), and a
+ * PinComparisonResult struct to store the results. It evaluates both expressions for all
+ * possible combinations of variable values and compares the resulting truth tables.
+ *
+ * The function uses the ExprTk library to parse and evaluate the boolean expressions.
+ * It generates a truth table for each expression and compares the results. If the truth
+ * tables are identical, the expressions are considered logically equivalent.
+ *
+ * @param ref_expression_processed The processed reference boolean expression.
+ * @param comp_expression_processed The processed comparison boolean expression.
+ * @param sorted_vars A sorted vector of variable names used in the expressions.
+ * @param result A PinComparisonResult struct to store the comparison results,
+ *               including processed expressions, compilation status, equivalence,
+ *               error messages, and the generated truth tables.
+ *
+ * @note The function limits the number of variables to 20 to prevent excessively large
+ *       truth tables.  It also performs overflow checking on the number of combinations.
+ *
+ * @note The function uses spdlog for logging debug, warning, and error messages.
+ *
+ * @note The function assumes that the input expressions are valid boolean expressions
+ *       containing only the variables listed in sorted_vars.
  */
-
 void LogicComparator::compareSingleExpressionPair(const std::string &ref_expression_processed,
                                                   const std::string &comp_expression_processed,
                                                   const std::vector<std::string> &sorted_vars,
@@ -709,18 +741,50 @@ void LogicComparator::compareSingleExpressionPair(const std::string &ref_express
 }
 
 /**
- * @brief Compares logic for all output pins defined in the input maps for a specific cell.
+ * @brief Compares the logic expressions for each output pin of a cell between a reference and a
+ * comparison design.
  *
- * Iterates through all unique output pins found in either the reference or
- * comparison maps. For each pin, it preprocesses the expressions, extracts
- * and validates variables, and then compares the logic using truth tables via
- * compareSingleExpressionPair.
+ * This method performs a detailed comparison of the logic expressions associated with each output
+ * pin of a cell. It iterates through each unique pin name found in both the reference and
+ * comparison designs, retrieves their corresponding logic expressions, preprocesses them, extracts
+ * and validates the variables used, and then compares the processed expressions. The results of
+ * each pin comparison, including any errors or discrepancies, are stored in the `all_pin_results_`
+ * map.
  *
- * @tparam double Numeric type for ExprTk (e.g., double).
- * @return A map where the key is the pin name and the value is the
- *         PinComparisonResult struct containing detailed comparison results for that pin.
+ * The comparison process includes the following steps:
+ * 1. **Pin Collection:** Collects all unique pin names from both the reference (`ref_outpin_map_`)
+ * and comparison
+ *    (`comp_outpin_map_`) maps.
+ * 2. **Iteration:** Iterates through each unique pin name.
+ * 3. **Expression Retrieval:** Retrieves the raw logic expressions for the current pin from both
+ * the reference and comparison maps. If a pin is missing in either map, an error is logged, and the
+ * comparison is marked as impossible for that pin.
+ * 4. **Preprocessing:** Preprocesses the raw expressions to simplify them and remove any irrelevant
+ * characters or formatting. If preprocessing results in an empty expression, an error is logged,
+ * and the comparison is marked as impossible.
+ * 5. **Variable Extraction and Validation:** Extracts the variables used in both expressions and
+ * validates that the sets of variables match. If the variable sets do not match, an error is
+ * logged, and the comparison is marked as impossible.
+ * 6. **Expression Comparison:** Compares the preprocessed expressions using the extracted
+ * variables. This step determines whether the logic functions represented by the expressions are
+ * equivalent.
+ * 7. **Result Storage:** Stores the detailed results of the pin comparison, including the raw and
+ * processed expressions, any errors encountered, and the comparison result, in the
+ * `all_pin_results_` map.
+ *
+ * @note The `spdlog` library is used for logging information, warnings, and errors throughout the
+ * comparison process.
+ * @note The `preprocessExpression` method is used to simplify the raw logic expressions before
+ * comparison.
+ * @note The `extractVariables` method is used to extract and validate the variables used in the
+ * logic expressions.
+ * @note The `compareSingleExpressionPair` method is used to compare the preprocessed expressions
+ * and determine whether they are equivalent.
+ *
+ * @see preprocessExpression
+ * @see extractVariables
+ * @see compareSingleExpressionPair
  */
-
 void LogicComparator::compareCellLogic() {
 
   // 1. Collect all unique pin names from both maps
@@ -845,70 +909,154 @@ void LogicComparator::compareCellLogic() {
 }
 
 void LogicComparator::generateReport(const std::string &output_file) {
+  // --- 0. Start Info ---
+  spdlog::info("Generating report for cell '{}' to '{}'...", cell_name_, output_file);
 
-  std::ofstream outfile(output_file);
+  // --- 1. Determine Output Format ---
+  bool output_markdown = false;
+  try {
+    // Use std::filesystem to reliably get the extension
+    std::filesystem::path file_path(output_file);
+    if (file_path.has_extension() && file_path.extension() == ".md") {
+      output_markdown = true;
+    }
+  } catch (const std::exception &e) {
+    spdlog::warn("Could not determine file extension for '{}': {}. Defaulting to plain text.",
+                 output_file, e.what());
+    output_markdown = false; // Default to plain text on error
+  }
+
+  // --- 2. Open Output File ---
+  std::ofstream outfile(output_file,
+                        std::ios::app); // Use app to append if file exists, or create new
   if (!outfile.is_open()) {
     spdlog::error("Failed to open output report file: {}", output_file);
     return;
   }
+  spdlog::info("Generating report for cell '{}' to '{}' (Format: {})...", cell_name_, output_file,
+               output_markdown ? "Markdown" : "Plain Text");
 
+  // --- 3. Report Header ---
   outfile << "# Logic Equivalence Comparison Report\n\n";
   outfile << "**Cell Name: " << cell_name_ << "**\n\n";
-  // Assuming ref_lib_path_ and comp_lib_path_ are accessible if needed
-  // outfile << "**Reference Source: [Path to Ref]**\n";
-  // outfile << "**Comparison Source: [Path to Comp]**\n\n";
-
-  auto now = std::chrono::system_clock::now();
-  std::time_t now_time_t = std::chrono::system_clock::to_time_t(now);
-  // Use localtime_s or equivalent thread-safe version if available/necessary
-  // std::tm now_tm;
-  // localtime_s(&now_tm, &now_time_t); // Example for MSVC/C11
-  std::tm *now_tm_ptr = std::localtime(&now_time_t); // Standard C++, potentially not thread-safe
-  if (now_tm_ptr) {
-    outfile << "**Generated on: " << std::put_time(now_tm_ptr, "%Y-%m-%d %H:%M:%S") << "**\n\n";
+  // Reference Pin Functions Table
+  Table ref_pin_table;
+  ref_pin_table.add_row({"Reference Pin", "Function"});
+  ref_pin_table[0][0].format().font_style({FontStyle::bold});
+  ref_pin_table[0][1].format().font_style({FontStyle::bold});
+  for (const auto &[pin, function] : ref_outpin_map_) {
+    ref_pin_table.add_row({pin, "`" + function + "`"}); // Add backticks to function
+  }
+  // Comparison Pin Functions Table
+  Table comp_pin_table;
+  comp_pin_table.add_row({"Comparison Pin", "Function"});
+  comp_pin_table[0][0].format().font_style({FontStyle::bold});
+  comp_pin_table[0][1].format().font_style({FontStyle::bold});
+  for (const auto &[pin, function] : comp_outpin_map_) {
+    comp_pin_table.add_row({pin, "`" + function + "`"}); // Add backticks to function
   }
 
+  // --- 4. Report Metadata ---
+  outfile << "**Performed by " << APP_NAME << " v" << APP_VERSION << " from " << APP_AUTHOR;
+  auto now = std::chrono::system_clock::now();
+  std::time_t now_time_t = std::chrono::system_clock::to_time_t(now);
+  std::tm *now_tm = std::localtime(&now_time_t);
+  outfile << ". on: " << std::put_time(now_tm, "%c") << "**\n" << std::endl;
+
+  // --- 5. Legend Generation ---
   outfile << "## Legend\n\n";
-  outfile << "| Symbol | Meaning                       |\n";
-  outfile << "| :----: | :---------------------------- |\n";
-  outfile << "|   ✅   | Logically Equivalent          |\n";
-  outfile << "|   ❌   | Not Logically Equivalent      |\n";
-  outfile << "|   ➖   | Comparison Not Possible       |\n";
-  outfile << "|   ⚠️V  | Variable Mismatch           |\n";
-  outfile << "|   ⚠️C  | Compilation Error           |\n";
-  outfile << "|   ⚠️E  | Evaluation Error            |\n";
-  outfile << "|   ⚠️P  | Preprocessing/Pin Error     |\n";
-  outfile << "\n";
+  Table legend_table;
+  legend_table.add_row({"Symbol", "Meaning"});
+  legend_table[0][0].format().font_style({FontStyle::bold});
+  legend_table[0][1].format().font_style({FontStyle::bold});
+  legend_table.add_row({"[OK]", "Logically Equivalent"});
+  legend_table.add_row({"[NO]", "Not Logically Equivalent"});
+  legend_table.add_row({"[NA]", "Comparison Not Applicable (General)"}); // Changed from possible
+  legend_table.add_row({"[VM]", "Variable Mismatch (Cannot Compare)"});
+  legend_table.add_row({"[CE]", "Compilation Error (Cannot Compare)"});
+  legend_table.add_row({"[EE]", "Evaluation Error (Cannot Compare)"});
+  legend_table.add_row({"[PE]", "Preprocessing/Pin/Setup Error (Cannot Compare)"});
 
-  spdlog::info("Generating report for cell '{}' to '{}'...", cell_name_, output_file);
+  // --- 6. Export Legend Table ---
+  if (output_markdown) {
+    MarkdownExporter exporter;
+    outfile << exporter.dump(ref_pin_table) << "\n";  // Export ref pin table
+    outfile << exporter.dump(comp_pin_table) << "\n"; // Export comp pin table
+    outfile << exporter.dump(legend_table) << "\n";   // Export legend table
+  } else {
+    outfile << ref_pin_table << "\n";  // Export ref pin table
+    outfile << comp_pin_table << "\n"; // Export comp pin table
+    outfile << legend_table << "\n";   // Export legend table (plain text)
+  }
 
-  tabulate::MarkdownExporter exporter; // Create exporter once
+  // --- 7. Process Pin Results ---
+  for (const auto &[pin_name, result] : all_pin_results_) { // Use passed argument
+    outfile << "## Pin: `" << pin_name << "`\n\n";          // Use backticks for pin name
 
-  for (const auto &[pin_name, result] : all_pin_results_) {
-    outfile << "## Pin: " << pin_name << "\n\n";
+    // --- Output Truth Tables (Always if available) ---
+    if (result.ref_truth_table.has_value()) {
+      outfile << "### Reference Truth Table\n\n";
+      Table ref_table = result.ref_truth_table.value();
+      if (output_markdown) {
+        MarkdownExporter exporter;
+        outfile << exporter.dump(ref_table) << "\n";
+      } else {
+        outfile << ref_table << "\n";
+      }
+    } else {
+      outfile << "*Reference truth table not generated (e.g., due to compilation error).*\n\n";
+    }
 
+    if (result.comp_truth_table.has_value()) {
+      outfile << "### Comparison Truth Table\n\n";
+      Table comp_table = result.comp_truth_table.value();
+      if (output_markdown) {
+        MarkdownExporter exporter;
+        outfile << exporter.dump(comp_table) << "\n";
+      } else {
+        outfile << comp_table << "\n";
+      }
+    } else {
+      outfile << "*Comparison truth table not generated (e.g., due to compilation error).*\n\n";
+    }
+
+    // --- Generate Summary Table ---
+    outfile << "### Comparison Summary\n\n";
     Table summary_table;
     summary_table.add_row({"Property", "Value"});
     summary_table[0][0].format().font_style({FontStyle::bold});
     summary_table[0][1].format().font_style({FontStyle::bold});
+    summary_table[0][0].format().font_color(Color::yellow);
+    summary_table[0][1].format().font_color(Color::yellow);
 
-    // Determine Status Symbol
+    // Determine Status Symbol using ASCII codes
     std::string status_symbol;
     if (!result.comparison_possible) {
-      status_symbol = "➖";
-      // Add specific warning symbol based on error message content maybe?
-      if (result.error_message.find("Variable sets do not match") != std::string::npos)
-        status_symbol += " (⚠️V)";
-      else if (result.error_message.find("compilation failed") != std::string::npos)
-        status_symbol += " (⚠️C)";
-      else if (result.error_message.find("evaluation failed") != std::string::npos)
-        status_symbol += " (⚠️E)";
-      else
-        status_symbol += " (⚠️P)"; // General preprocessing/pin error
+      status_symbol = "[NA]"; // Default Not Applicable
+      if (!result.error_message.empty()) {
+        if (result.error_message.find("Variable sets do not match") != std::string::npos) {
+          status_symbol = "[VM]";
+        } else if (!result.ref_compiles || !result.comp_compiles ||
+                   result.error_message.find("compilation failed") != std::string::npos) {
+          // Check flags first, then error message as fallback
+          status_symbol = "[CE]";
+        } else if (result.error_message.find("evaluation failed") != std::string::npos) {
+          status_symbol = "[EE]";
+        } else {
+          // If comparison_possible is false for other reasons (e.g., pin missing, setup errors)
+          status_symbol = "[PE]";
+        }
+      } else if (!result.ref_compiles || !result.comp_compiles) {
+        // Handle cases where comparison_possible might be true but compilation failed (should
+        // ideally not happen if logic is sound)
+        status_symbol = "[CE]";
+      } else {
+        status_symbol = "[PE]"; // Fallback if no error message but still not possible
+      }
     } else if (result.are_equivalent) {
-      status_symbol = "✅";
+      status_symbol = "[OK]";
     } else {
-      status_symbol = "❌";
+      status_symbol = "[NO]";
     }
 
     summary_table.add_row({"Status", status_symbol});
@@ -916,37 +1064,42 @@ void LogicComparator::generateReport(const std::string &output_file) {
     summary_table.add_row({"Comparison (Raw)", "`" + result.comp_expr_raw + "`"});
     summary_table.add_row({"Reference (Processed)", "`" + result.ref_expr_processed + "`"});
     summary_table.add_row({"Comparison (Processed)", "`" + result.comp_expr_processed + "`"});
-    summary_table.add_row({"Ref Compiles", result.ref_compiles ? "Yes" : "No"});
-    summary_table.add_row({"Comp Compiles", result.comp_compiles ? "Yes" : "No"});
+    summary_table.add_row({"Ref Expression Compiled", result.ref_compiles ? "Yes" : "No"});
+    summary_table.add_row({"Comp Expression Compiled", result.comp_compiles ? "Yes" : "No"});
+    summary_table.add_row({"Logically Equivalent", result.comparison_possible
+                                                       ? (result.are_equivalent ? "Yes" : "No")
+                                                       : "N/A"});
+    summary_table[1][0].format().font_style({FontStyle::bold});
+    summary_table[2][0].format().font_style({FontStyle::bold});
+    summary_table[3][0].format().font_style({FontStyle::bold});
+    summary_table[4][0].format().font_style({FontStyle::bold});
+    summary_table[5][0].format().font_style({FontStyle::bold});
+    summary_table[6][0].format().font_style({FontStyle::bold});
+    summary_table[7][0].format().font_style({FontStyle::bold});
+    summary_table[8][0].format().font_style({FontStyle::bold});
 
     if (!result.error_message.empty()) {
-      // Format error message for Markdown (e.g., replace newlines with <br>)
       std::string formatted_error = result.error_message;
-      // Basic newline replacement for Markdown
-      size_t pos = 0;
-      while ((pos = formatted_error.find('\n', pos)) != std::string::npos) {
-        formatted_error.replace(pos, 1, "<br>");
-        pos += 4; // Length of "<br>"
+      if (output_markdown) {
+        // Basic newline replacement for Markdown
+        size_t pos = 0;
+        while ((pos = formatted_error.find('\n', pos)) != std::string::npos) {
+          formatted_error.replace(pos, 1, "<br>");
+          pos += 4; // Length of "<br>"
+        }
       }
       summary_table.add_row({"Details/Error", formatted_error});
     }
 
-    // Output summary table
-    outfile << exporter.dump(summary_table) << "\n";
-
-    // Optional: Output truth tables if they are different but comparable
-    if (!result.are_equivalent && result.comparison_possible &&
-        result.ref_truth_table.has_value() && result.comp_truth_table.has_value()) {
-      outfile << "### Truth Tables (Differences Detected)\n\n";
-
-      outfile << "#### Reference Truth Table\n\n";
-      Table ref_table = result.ref_truth_table.value();
-      outfile << exporter.dump(ref_table) << "\n";
-
-      outfile << "#### Comparison Truth Table\n\n";
-      Table comp_table = result.comp_truth_table.value();
-      outfile << exporter.dump(comp_table) << "\n";
+    // Output Summary Table
+    if (output_markdown) {
+      MarkdownExporter exporter;
+      outfile << exporter.dump(summary_table) << "\n";
+    } else {
+      outfile << summary_table << "\n";
     }
+    std::cout << summary_table << "\n"; // Print to console for immediate feedback
+
     outfile << "---\n\n"; // Separator between pins
 
   } // End of pin results loop

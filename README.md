@@ -373,3 +373,20 @@ Subcommands:
 ### 2025-04-02
 
 - 取消所有模板函数的 `template <typename T>` 声明，改为使用 `double` 作为参数类型，加快编译速度。
+- 完善了 `LogicComparator::generateReport()` 方法，增加了对逻辑比较结果的详细报告输出，包括：
+  - 元数据，例如：**Performed by ZlibValidation v0.1.0 from Song Zixuan. on: Wed Apr  2 11:11:39 2025**
+  - 图例，包括参考pin名称、pin function，参考pin名称、pin function，符号解释表。
+  - 参考pin的真值表
+  - 比较pin的真值表
+  - 比较结果表格，例如：
+  
+| Property                 | Value                             |
+| :----                    | :----                             |
+| Status                   | [OK]                              |
+| Reference (Raw)          | `(!((!(A1+A2))+B))`               |
+| Comparison (Raw)         | `!((!A1 * !A2) + B)`              |
+| Reference (Processed)    | `(not((not(A1 or A2)) or B))`     |
+| Comparison (Processed)   | `not((not(A1) and not(A2)) or B)` |
+| Ref Expression Compiled  | Yes                               |
+| Comp Expression Compiled | Yes                               |
+| Logically Equivalent     | Yes                               |

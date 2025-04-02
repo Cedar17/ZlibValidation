@@ -2,17 +2,17 @@
 
 /**
  * @brief Constructor for the LibraryComparator class
- * 
- * Initializes a LibraryComparator object by loading JSON data from reference and comparison library files.
- * If JSON files don't exist, parses the library files first and creates the JSON files.
- * 
+ *
+ * Initializes a LibraryComparator object by loading JSON data from reference and comparison library
+ * files. If JSON files don't exist, parses the library files first and creates the JSON files.
+ *
  * The constructor performs the following steps:
  * 1. Looks for reference JSON file, parses library file if not found
  * 2. Loads reference JSON data into ref_json_ member
  * 3. Looks for comparison JSON file, parses library file if not found
  * 4. Loads comparison JSON data into comp_json_ member
  * 5. Stores file paths and initializes tolerance values for comparison
- * 
+ *
  * @param ref_libfile Reference library file object
  * @param comp_libfile Comparison library file object
  * @param reltol Relative tolerance for numerical comparisons (default defined elsewhere)
@@ -68,13 +68,14 @@ LibraryComparator::LibraryComparator(LibFile &ref_libfile, LibFile &comp_libfile
 }
 
 /**
- * @brief Compares lookup tables (LUTs) between reference and comparison libraries for a specific timing
- * arc.
+ * @brief Compares lookup tables (LUTs) between reference and comparison libraries for a specific
+ * timing arc.
  *
- * This function compares the lookup table values between reference and comparison libraries for a given
- * timing arc, checking the consistency of indices and values. It verifies that the indices match between
- * libraries and then compares each value in the LUT against relative and absolute tolerance thresholds.
- * Any discrepancies that exceed the tolerance limits are recorded in the provided table.
+ * This function compares the lookup table values between reference and comparison libraries for a
+ * given timing arc, checking the consistency of indices and values. It verifies that the indices
+ * match between libraries and then compares each value in the LUT against relative and absolute
+ * tolerance thresholds. Any discrepancies that exceed the tolerance limits are recorded in the
+ * provided table.
  *
  * @param cell_name The name of the cell containing the LUT.
  * @param pin_name The name of the pin associated with the LUT.
@@ -117,11 +118,11 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
       std::vector<double> row_data;
       // Check if the row value is an array
       if (!row_val.is_array()) {
-        spdlog::error("Invalid LUT format: '{}' values should be an array of arrays in comp_lib '{}', "
-                      "cell '{}', pin '{}', "
-                      "related_pin '{}', timing_type '{}'",
-                      arc_name, this->comp_lib_path_.string(), cell_name, pin_name, related_pin,
-                      timing_type);
+        spdlog::error(
+            "Invalid LUT format: '{}' values should be an array of arrays in comp_lib '{}', "
+            "cell '{}', pin '{}', "
+            "related_pin '{}', timing_type '{}'",
+            arc_name, this->comp_lib_path_.string(), cell_name, pin_name, related_pin, timing_type);
         return;
       }
       // Check if non-numeric values
@@ -129,11 +130,11 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
         if (val.is_number()) {
           row_data.push_back(val.get<double>());
         } else {
-          spdlog::error(
-              "Non-numeric value found in '{}'.values, skipping value: {} in comp_lib '{}', cell '{}', "
-              "pin '{}', related_pin '{}', timing_type '{}'",
-              arc_name, val.dump(), this->comp_lib_path_.string(), cell_name, pin_name, related_pin,
-              timing_type);
+          spdlog::error("Non-numeric value found in '{}'.values, skipping value: {} in comp_lib "
+                        "'{}', cell '{}', "
+                        "pin '{}', related_pin '{}', timing_type '{}'",
+                        arc_name, val.dump(), this->comp_lib_path_.string(), cell_name, pin_name,
+                        related_pin, timing_type);
           return;
         }
       }
@@ -145,11 +146,11 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
       std::vector<double> row_data;
       // Check if the row value is an array
       if (!row_val.is_array()) {
-        spdlog::error("Invalid LUT format: '{}' values should be an array of arrays in ref_lib '{}', "
-                      "cell '{}', pin '{}', "
-                      "related_pin '{}', timing_type '{}'",
-                      arc_name, this->ref_lib_path_.string(), cell_name, pin_name, related_pin,
-                      timing_type);
+        spdlog::error(
+            "Invalid LUT format: '{}' values should be an array of arrays in ref_lib '{}', "
+            "cell '{}', pin '{}', "
+            "related_pin '{}', timing_type '{}'",
+            arc_name, this->ref_lib_path_.string(), cell_name, pin_name, related_pin, timing_type);
         return;
       }
       // Check if non-numeric values
@@ -157,11 +158,11 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
         if (val.is_number()) {
           row_data.push_back(val.get<double>());
         } else {
-          spdlog::error(
-              "Non-numeric value found in '{}'.values, skipping value: {} in ref_lib '{}', cell '{}', "
-              "pin '{}', related_pin '{}', timing_type '{}'",
-              arc_name, val.dump(), this->ref_lib_path_.string(), cell_name, pin_name, related_pin,
-              timing_type);
+          spdlog::error("Non-numeric value found in '{}'.values, skipping value: {} in ref_lib "
+                        "'{}', cell '{}', "
+                        "pin '{}', related_pin '{}', timing_type '{}'",
+                        arc_name, val.dump(), this->ref_lib_path_.string(), cell_name, pin_name,
+                        related_pin, timing_type);
           return;
         }
       }
@@ -179,13 +180,13 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
                           ref_index_1[i], ref_index_2[j]);
             table.add_row({related_pin + "->" + pin_name, std::to_string(ref_val),
                            std::to_string(comp_val), std::to_string(comp_val - ref_val),
-                           std::to_string((comp_val - ref_val) / ref_val * 100), timing_type, arc_name,
-                           std::to_string(i + 1), std::to_string(ref_index_1[i]), std::to_string(j + 1),
-                           std::to_string(ref_index_2[j]), "<"});
+                           std::to_string((comp_val - ref_val) / ref_val * 100), timing_type,
+                           arc_name, std::to_string(i + 1), std::to_string(ref_index_1[i]),
+                           std::to_string(j + 1), std::to_string(ref_index_2[j]), "<"});
             spdlog::debug("table size: {}", table.size());
           } else {
-            spdlog::debug("LUT value match for '{}', index_1: {}, index_2: {}", arc_name, ref_index_1[i],
-                          ref_index_2[j]);
+            spdlog::debug("LUT value match for '{}', index_1: {}, index_2: {}", arc_name,
+                          ref_index_1[i], ref_index_2[j]);
           }
         }
       }
@@ -202,12 +203,12 @@ void LibraryComparator::compareLut(const std::string &cell_name, const std::stri
  * @brief Compares a timing arc between two JSON objects.
  *
  * This function compares a specific timing arc (e.g., cell_rise, cell_fall, rise_transition,
- * fall_transition) between a reference JSON object and a comparison JSON object. It extracts the related
- * pin from the reference timing arc and iterates through a predefined list of arc names. If an arc name
- * is found in the comparison timing arc, it checks if the same arc name exists in the reference timing
- * arc. If both exist, it calls the compareLut function to compare the LUT data associated with the arc.
- * If the arc name is found in the comparison JSON but not in the reference JSON, a warning message is
- * logged.
+ * fall_transition) between a reference JSON object and a comparison JSON object. It extracts the
+ * related pin from the reference timing arc and iterates through a predefined list of arc names. If
+ * an arc name is found in the comparison timing arc, it checks if the same arc name exists in the
+ * reference timing arc. If both exist, it calls the compareLut function to compare the LUT data
+ * associated with the arc. If the arc name is found in the comparison JSON but not in the reference
+ * JSON, a warning message is logged.
  *
  * @param cell_name The name of the cell.
  * @param pin_name The name of the pin.
@@ -224,7 +225,8 @@ void LibraryComparator::compareTimingArc(const std::string &cell_name, const std
   std::string related_pin = ref_timing_arc["related_pin"].get<std::string>();
   spdlog::debug("Related pin: '{}'", related_pin);
 
-  std::vector<std::string> arc_names = {"cell_rise", "cell_fall", "rise_transition", "fall_transition"};
+  std::vector<std::string> arc_names = {"cell_rise", "cell_fall", "rise_transition",
+                                        "fall_transition"};
   for (auto arc_name : arc_names) {
     if (comp_timing_arc.contains(arc_name)) {
       spdlog::debug("Comparing timing arc: '{}'", arc_name);
@@ -232,8 +234,8 @@ void LibraryComparator::compareTimingArc(const std::string &cell_name, const std
       if (ref_timing_arc.contains(arc_name)) {
         // Found this arc
         spdlog::debug("Found timing arc: '{}'", arc_name);
-        compareLut(cell_name, pin_name, timing_type, related_pin, arc_name, ref_timing_arc[arc_name],
-                   comp_timing_arc[arc_name], table);
+        compareLut(cell_name, pin_name, timing_type, related_pin, arc_name,
+                   ref_timing_arc[arc_name], comp_timing_arc[arc_name], table);
       } else {
         // arc not found in reference JSON
         spdlog::warn("Timing arc: '{}' not found in reference JSON", arc_name);
@@ -287,8 +289,9 @@ void LibraryComparator::comparePin(const std::string &cell_name, const std::stri
  *
  * This function iterates through the output pins of the comparison cell and checks if each pin
  * exists in the reference cell. If a pin is found in both cells, it calls the comparePin function
- * to compare the details of the pin. If a pin is not found in the reference cell, a warning is logged.
- * If the comparison cell does not contain any output pins, an informational message is logged.
+ * to compare the details of the pin. If a pin is not found in the reference cell, a warning is
+ * logged. If the comparison cell does not contain any output pins, an informational message is
+ * logged.
  *
  * @param cell_name The name of the cell being compared.
  * @param ref_cell The reference JSON object containing the cell data.
@@ -304,9 +307,9 @@ void LibraryComparator::compareCell(const std::string &cell_name, const json &re
       std::string pin_name = comp_pin["pin_name"].get<std::string>();
       spdlog::debug("Comparing pin: '{}'", pin_name);
       // Look for the pin in the reference JSON
-      auto ref_pin_it =
-          std::find_if(ref_cell["output_pins"].begin(), ref_cell["output_pins"].end(),
-                       [&pin_name](const json &ref_pin) { return ref_pin["pin_name"] == pin_name; });
+      auto ref_pin_it = std::find_if(
+          ref_cell["output_pins"].begin(), ref_cell["output_pins"].end(),
+          [&pin_name](const json &ref_pin) { return ref_pin["pin_name"] == pin_name; });
       if (ref_pin_it != ref_cell["output_pins"].end()) {
         // Found this pin
         spdlog::debug("Found pin: '{}'", pin_name);
@@ -352,8 +355,8 @@ void LibraryComparator::generateReport(const std::string &output_file) {
   outfile << "> Legend: < outlier, * scaled, ! indices switched, ^ slews extrapolated, ~ loads "
              "extrapolated,\n";
   outfile << "> \n";
-  outfile
-      << "> Legend: + padding added, /0 divide by zero, / slews interpolated, # loads interpolated\n";
+  outfile << "> Legend: + padding added, /0 divide by zero, / slews interpolated, # loads "
+             "interpolated\n";
   outfile << "> \n";
   outfile << "> Legend: << value is less but unknown, >> value is more but unknown\n\n";
 
@@ -362,9 +365,9 @@ void LibraryComparator::generateReport(const std::string &output_file) {
     std::string cell_name = comp_cell["cell_name"].get<std::string>();
     spdlog::debug("Comparing cell: '{}'", cell_name);
     // Look for the cell in the reference JSON
-    auto ref_cell_it =
-        std::find_if(ref_json_["cells"].begin(), ref_json_["cells"].end(),
-                     [&cell_name](const json &ref_cell) { return ref_cell["cell_name"] == cell_name; });
+    auto ref_cell_it = std::find_if(
+        ref_json_["cells"].begin(), ref_json_["cells"].end(),
+        [&cell_name](const json &ref_cell) { return ref_cell["cell_name"] == cell_name; });
     if (ref_cell_it != ref_json_["cells"].end()) {
       // Found this cell
       spdlog::debug("Found cell: '{}'", cell_name);
@@ -440,7 +443,9 @@ void LibraryComparator::generateReport(const std::string &output_file) {
                                std::to_string(outlier_count)});
 
         // Output summary table
-        if (output_file.substr(output_file.size() - 3) == ".md") {
+        // Use std::filesystem to reliably get the extension
+        std::filesystem::path file_path(output_file);
+        if (file_path.has_extension() && file_path.extension() == ".md") {
           MarkdownExporter exporter;
           auto markdown = exporter.dump(summary_table);
           outfile << markdown << std::endl;

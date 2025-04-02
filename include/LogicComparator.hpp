@@ -4,21 +4,18 @@
 #include <algorithm>
 #include <chrono>
 #include <cmath>
-#include <ctime>
-#include <fstream>
 #include <iomanip>
-#include <map>
 #include <optional> // To store tables optionally
 #include <regex>    // For regular expressions
-#include <set>
-#include <string>
 #include <variant>
-#include <vector>
+#include <filesystem>
 
 #include "exprtk.hpp"
 #include "tabulate/markdown_exporter.hpp"
 #include "tabulate/table.hpp"
 #include <spdlog/spdlog.h>
+
+#include "version.h"
 
 using namespace tabulate;
 
