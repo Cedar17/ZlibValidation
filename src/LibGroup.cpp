@@ -1,4 +1,4 @@
-#include "lib_group.hpp"
+#include "LibGroup.hpp"
 
 LibGroup::LibGroup(si2drGroupIdT group, si2drErrorT &err) : group_(group), err_(err) {}
 

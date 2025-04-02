@@ -1,6 +1,4 @@
-#include <unordered_set>
-
-#include "spdlog/spdlog.h"
+// verilog_utils.cpp
 
 #include "verilog_utils.hpp"
 
@@ -21,7 +19,7 @@ void VerilogVisitor::handle(const slang::syntax::ModuleDeclarationSyntax &module
 
   if (module.header && module.header->name.valid()) {
     std::string_view moduleName = module.header->name.valueText();
-    spdlog::info("{}Module Name:{}", indent, moduleName);
+    spdlog::debug("{}Module Name:{}", indent, moduleName);
 
     inTargetModule_ = !targetCell_.empty() && moduleName == targetCell_;
     if (!inTargetModule_) {
@@ -187,7 +185,7 @@ void VerilogVisitor::handle(const slang::syntax::HierarchyInstantiationSyntax &h
     depth_--;
   }
 }
-
+/*
 // Handle primitive gate instantiation
 void VerilogVisitor::handle(const slang::syntax::PrimitiveInstantiationSyntax &primitiveInst) {
   if (!inTargetModule_) {
@@ -237,9 +235,10 @@ void VerilogVisitor::handle(const slang::syntax::PrimitiveInstantiationSyntax &p
     // Continue to traverse deeper when specific standard gate type
     // Create a set of safe standard gate types
     static const std::unordered_set<std::string_view> safeGateTypes = {
-        "and",    "or",     "nand",   "nor",    "xor",      "xnor",    "not",      "buf",     "bufif0",
-        "bufif1", "notif0", "notif1", "pullup", "pulldown", "cmos",    "rcmos",    "nmos",    "pmos",
-        "rnmos",  "rpmos",  "tran",   "rtran",  "tranif0",  "tranif1", "rtranif0", "rtranif1"};
+        "and",   "or",      "nand",    "nor",      "xor",     "xnor",   "not",
+        "buf",   "bufif0",  "bufif1",  "notif0",   "notif1",  "pullup", "pulldown",
+        "cmos",  "rcmos",   "nmos",    "pmos",     "rnmos",   "rpmos",  "tran",
+        "rtran", "tranif0", "tranif1", "rtranif0", "rtranif1"};
 
     if (safeGateTypes.find(gateType) != safeGateTypes.end()) {
       // Continue processing child nodes
@@ -254,7 +253,7 @@ void VerilogVisitor::handle(const slang::syntax::PrimitiveInstantiationSyntax &p
     spdlog::warn("{}Primitive instantiation missing gate type", indent);
   }
 }
-
+*/
 // Handle specify block
 void VerilogVisitor::handle(const slang::syntax::SpecifyBlockSyntax &specifyBlock) {
   if (!inTargetModule_) {
@@ -293,8 +292,9 @@ void VerilogVisitor::handle(const slang::syntax::SpecifyBlockSyntax &specifyBloc
                   pathDst = identifier->identifier.valueText();
                 }
               }
-            } else if (auto *edgeSuffix = pathDecl->desc->suffix
-                                              ->as_if<slang::syntax::EdgeSensitivePathSuffixSyntax>()) {
+            } else if (auto *edgeSuffix =
+                           pathDecl->desc->suffix
+                               ->as_if<slang::syntax::EdgeSensitivePathSuffixSyntax>()) {
               if (!edgeSuffix->outputs.empty()) {
                 if (auto *identifier =
                         edgeSuffix->outputs[0]->as_if<slang::syntax::IdentifierNameSyntax>()) {
@@ -510,8 +510,8 @@ void ModuleRewriter::handle(const slang::syntax::ModuleDeclarationSyntax &module
         }
       } else if (direction == "output") { // Handle other output ports
         if (i < instance_count_ - 1) {
-          connectionName =
-              "P_" + std::to_string(i) + "__" + portName; // Connect to intermediate P_i__portName wire
+          connectionName = "P_" + std::to_string(i) + "__" +
+                           portName; // Connect to intermediate P_i__portName wire
         } else {
           connectionName = portName; // Last instance: connect to module output port
         }
@@ -578,14 +578,14 @@ void getAST(const std::string &verilog_file, const std::string &cell) {
           }
         }
 
-        spdlog::info("Print full source code to 'full_source_code.v'");
-        // Optionally save the entire syntax tree
-        std::string fullOutput = slang::syntax::SyntaxPrinter::printFile(*result.value());
-        std::ofstream out("full_source_code.v");
-        out << fullOutput;
-        out.close();
+        // spdlog::info("Print full source code to 'full_source_code.v'");
+        // // Optionally save the entire syntax tree
+        // std::string fullOutput = slang::syntax::SyntaxPrinter::printFile(*result.value());
+        // std::ofstream out("full_source_code.v");
+        // out << fullOutput;
+        // out.close();
 
-        spdlog::info("Print target cell code to 'cell_code.v'");
+        spdlog::info("Print target cell code to 'cell_code.v using toString()'");
         // Use CellPrinter to print the target cell's code
         std::ofstream cellOut("cell_code.v");
         CellPrinter cellPrinter(cell, cellOut);

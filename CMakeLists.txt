@@ -27,6 +27,14 @@ configure_file(
 # This may be required for certain libraries that assume absolute addressing
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -no-pie")
 
+# Force to use ccache for faster compilation
+set(CMAKE_CXX_COMPILER_LAUNCHER "ccache")
+
+# Force to use lld linker to speed up linking
+if (CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fuse-ld=lld")
+endif()
+
 # Fetch Content for dependencies
 include(FetchContent)
 

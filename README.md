@@ -272,3 +272,121 @@ Subcommands:
   - 采用 action marketplace 提供的 `xu-cheng/texlive-action@v2` 安装全量的 texlive2024。
   - 进入 `./doc_doxygen/latex` 目录，运行 `make` 命令使用 lualatex 编译 tex 文件，生成 pdf 文件。
   - 使用 `JamesIves/github-pages-deploy-action@v4` 将生成的 pdf 文件上传到 GitHub Pages 发布，并保留 `README.md` 和 `index.html` 文件。
+
+### 2025-03-30
+
+- 完成了 `LibFile::logic(const std::string &cell_name)` 方法，该方法返回指定 cell_name 所有输出引脚对应的逻辑表达式，以 `std::map<std::string, std::string>` 的形式返回，存储输出引脚名称到其逻辑表达式字符串的映射关系.
+- 实现了 `func` 子命令的基本框架，用于检查库或 Verilog 文件的逻辑等价性。
+  - 完善了 `funcLibFile` 函数，能够处理 Liberty 文件和 Verilog 文件作为参考和比较对象。
+  - 增加了文件类型判断，根据文件扩展名选择不同的处理方式。
+  - 实现了对 `.lib` 文件的解析，并提取指定 cell 的逻辑表达式。
+  - 目前仅支持 Liberty 文件的逻辑表达式提取，Verilog 文件的逻辑表达式提取功能尚未完成（TODO）。
+  - 增加了对 report 文件名的检查，确保其以 `.md` 或 `.txt` 结尾。若不符合，则给出警告并自动添加 `.md` 后缀。
+  - 实现了从 Liberty 文件中提取逻辑表达式的功能，使用了 `LibFile::logic` 方法。
+  - 增加了日志输出，记录每个 cell 的逻辑表达式提取和比较过程。
+  - 逻辑比较部分目前为空，待实现（TODO）。
+
+### 2025-03-31
+
+- 实现了从 Verilog 结构网表中提取逻辑表达式的功能，使用了 `LogicExtractor` 类。
+  - 设计了如何使用 Slang 库从 Verilog 结构网表中提取逻辑表达式的方案：
+    - 使用 Slang 解析 Verilog 文件获取语法树(AST)。
+    - 遍历 AST 定位目标模块。
+    - 在目标模块内构建网表的内部表示，识别输入、输出、线网及门级连接关系。
+    - 对每个输出端口，递归反向追踪门和线网直至到达主输入端口。
+    - 在回溯过程中根据遇到的门类型构建逻辑表达式。
+    - 应用记忆化技术避免对相同线网/信号的重复计算。
+  - 创建了 `LogicExtractor` 类，用于从 Verilog 代码中提取逻辑表达式。
+    - `LogicExtractor` 类使用 Slang 库解析 Verilog 文件，并构建目标模块的网表表示。
+    - 实现了 `handle(const slang::syntax::ModuleDeclarationSyntax &module)` 方法，用于定位目标模块，并初始化内部数据结构。
+    - 实现了 `handle(const slang::syntax::PortDeclarationSyntax &portDecl)` 方法，用于提取端口信息，包括端口方向和名称。
+    - 实现了 `handle(const slang::syntax::NetDeclarationSyntax &netDecl)` 方法，用于提取线网信息。
+    - 实现了 `handle(const slang::syntax::PrimitiveInstantiationSyntax &primitiveInst)` 方法，用于提取门级单元信息，包括门类型、输入和输出信号。
+    - 实现了 `getLogicExpressions()` 方法，用于根据提取的网表信息，递归地推导每个输出端口的逻辑表达式。
+    - 实现了 `deriveLogicRecursive(const std::string &signalName)` 方法，用于递归地推导指定信号的逻辑表达式。
+    - 实现了 `formatExpression(const GateInfo &gateInfo, const std::vector<std::string> &inputExprs)` 方法，用于根据门类型和输入表达式，生成逻辑表达式字符串。
+  - 实现了 `extractAndPrintNetlistInfo(const std::string &verilog_file, const std::string &cell)` 函数，用于提取并打印网表信息，包括输入、输出、线网和门级单元。
+  - 实现了 `extractLogicFromVerilog(const std::string &verilog_file, const std::string &cell)` 函数，用于从 Verilog 文件中提取指定 cell 的逻辑表达式，并以 `std::map<std::string, std::string>` 的形式返回。
+- 为了更好地组织代码结构，将 `LogicExtractor` 类从 `verilog_utils.hpp` 和 `verilog_utils.cpp` 中分离出来，并创建了独立的 `LogicExtractor.hpp` 和 `LogicExtractor.cpp` 文件。同时，统一了所有 hpp 和 cpp 文件的命名规范，使其与对应的类名保持一致。
+- 新增 `LogicComparator` 类及其头文件、源文件，用于比较两个逻辑表达式的等价性，并生成比较报告。
+
+### 2025-04-01
+
+- 整理头文件引用，删除了不必要的引用，提高编译效率。
+- 引入 `exprtk.cpp` 到第三方头文件目录，为后续的表达式解析做准备。
+- 完善了 `LogicComparator` 类的实现，增加了其示例代码模板 `template <typename T> void logic();`，该模板能够对一个表达式遍历输入变量的所有组合，计算出逻辑值，并打印真值表，为逻辑等价性验证提供基础。
+- 实现了 `LogicComparator::preprocessExpression()` 方法，用于预处理逻辑表达式，目的是简化表达式，使其更易于比较。预处理的逻辑如下：
+  - **统一 AND 处理**：将 `*` 和空格隐式 AND 都转换为带空格的 `and`，保证 AND 运算符的显式性。
+  - **显式符号处理**：
+    - 在所有括号 `()` 周围添加空格，方便后续分词。
+    - 将 `+` 替换为 `or`。
+    - 将 `^` 替换为 `xor`。
+    - 将 `!` (非 `!=` 中的 `!`) 替换为 `not`。
+    - 将 `*` 替换为 `and`。
+  - **分词**：基于空格将处理后的字符串分割为 token 列表。
+  - **精确插入隐式 AND**：
+    - 遍历 token 列表。
+    - 检查当前 token 和下一个 token，如果满足以下条件，则在当前 token 之后插入 `and`：
+      - 当前 token 是一个标识符 (如 `A`, `CIX`) 或右括号 `)`。
+      - 下一个 token 是一个标识符或左括号 `(`。
+      - 当前 token 不是一个显式逻辑运算符 (`and`, `or`, `xor`, `not`) 或左括号 `(`。
+      - 下一个 token 不是一个显式逻辑运算符或右括号 `)`。
+  - **重组与清理**：将处理后的 token 列表用单个空格连接起来，并进行最终的空格清理（去除多余空格，修剪首尾空格），得到最终的预处理表达式。
+- 在 `CMakeLists.txt` 中，强制启用了 lld 链接器和 ccache，以提升链接和编译速度。
+- 为了保持 `main.cpp` 的整洁，将 `LibFile()` 函数的相关操作剥离出来，并放入 `LibFileOperations.cpp` 文件中。
+- 实现了 `LogicComparator::extractVariables()` 方法，用于从两个表达式中提取并验证变量名，确保它们一致。
+  - 该方法使用正则表达式初步提取所有可能的标识符。
+  - 对每个提取出的标识符，先用 `isIdentifier` 函数（检查大写开头等）进行验证。
+  - 通过 `isIdentifier` 验证后，仍然将其转换为小写并与 `keywords` 集合比较，以过滤掉可能的关键词（这是一个保守但安全的操作）。
+  - 只有通过这两步验证的标识符才被认为是有效变量，并以原始大小写形式添加到各自的 `std::set` 中。
+  - 最后比较两个 `std::set` 是否相等，如果不等则报告差异并返回 `false`，如果相等则将变量列表（保留原始大小写）排序后存入 `sorted_vars` 并返回 `true`。
+
+- 修复了 `LogicComparator::preprocessExpression()` 方法中对 not 操作符的处理。exprtk 库要求 not 关键字后必须跟着括号，如 `not(A)` 而非 `not A`。为此增加了专门的处理步骤：
+  - 遍历预处理后的 token 列表，识别所有 `not` 关键字。
+  - 当发现 `not` 后，检查其后是否跟随标识符（通过 `isIdentifier()` 函数判断）。
+  - 如果后接标识符，自动将 `not A` 形式转换为 `not(A)`，具体做法是依次添加 `not`、`(`、标识符和 `)`，并跳过已处理的标识符。
+  - 如果后接其他元素（如 `(`、其他运算符或表达式结尾），保留原样，让 ExprTk 处理 `not(表达式)` 形式。
+  - 对其他 token，直接添加到最终 token 列表，不做特殊处理。
+
+- 实现了 `LogicComparator::compareSingleExpressionPair()` 方法，用于比较两个逻辑表达式的等价性：
+  - 接收预处理后的表达式字符串和已排序的变量列表作为输入参数。
+  - 为参考表达式和比较表达式分别创建 ExprTk 环境（符号表、表达式对象和解析器）。
+  - 将所有变量添加到两个符号表中，确保变量一致性和顺序性。
+  - 使用 ExprTk 解析器编译两个表达式，并检查可能的语法错误。
+  - 通过二进制计数法，遍历所有可能的输入变量组合（2^N 种），其中 N 为变量数量。
+  - 对每种组合：
+    - 设置两个符号表中的变量值（0或1）。
+    - 计算两个表达式的值，并处理可能的运行时错误。
+    - 将计算结果转换为布尔值并存入结果向量。
+    - 同步构建真值表，记录输入组合和对应的输出值。
+  - 比较两个结果向量判断表达式是否等价。
+  - 将生成的真值表存入 `PinComparisonResult` 对象的 `std::optional` 成员中，以便后续报告生成。
+
+- 实现了`template <typename T> std::map<std::string, PinComparisonResult> LogicComparator::compareCellLogic();`
+  - 该方法用于比较两个 cell 的逻辑表达式，返回一个 `std::map`，键为 cell 名称，值为 `PinComparisonResult` 结构体。
+  - 遍历在类私有属性里的整个独立输出引脚键，提取其值作为逻辑字符串表达式，首先使用 `preprocessExpression` 进行预处理，然后使用 `extractVariables` 提取变量向量。
+  - 调用 `LogicComparator::compareSingleExpressionPair()` 方法进行比较，结果存入 `PinComparisonResult` 对象。
+  - 最后将 `PinComparisonResult` 对象存入 `std::map` 中，键为 cell 名称，值为 `PinComparisonResult` 对象，返回。
+
+- 实现了 `LogicComparator::generateReport()` 方法，报告格式仍需要调整。
+
+### 2025-04-02
+
+- 取消所有模板函数的 `template <typename T>` 声明，改为使用 `double` 作为参数类型，加快编译速度。
+- 完善了 `LogicComparator::generateReport()` 方法，增加了对逻辑比较结果的详细报告输出，包括：
+  - 元数据，例如：**Performed by ZlibValidation v0.1.0 from Song Zixuan. on: Wed Apr  2 11:11:39 2025**
+  - 图例，包括参考pin名称、pin function，参考pin名称、pin function，符号解释表。
+  - 参考pin的真值表
+  - 比较pin的真值表
+  - 比较结果表格，例如：
+  
+| Property                 | Value                             |
+| :----                    | :----                             |
+| Status                   | [OK]                              |
+| Reference (Raw)          | `(!((!(A1+A2))+B))`               |
+| Comparison (Raw)         | `!((!A1 * !A2) + B)`              |
+| Reference (Processed)    | `(not((not(A1 or A2)) or B))`     |
+| Comparison (Processed)   | `not((not(A1) and not(A2)) or B)` |
+| Ref Expression Compiled  | Yes                               |
+| Comp Expression Compiled | Yes                               |
+| Logically Equivalent     | Yes                               |

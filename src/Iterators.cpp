@@ -1,4 +1,4 @@
-#include "iterators.hpp"
+#include "Iterators.hpp"
 
 GroupsIterator::GroupsIterator(si2drGroupsIdT groups, si2drErrorT &err) : groups_(groups), err_(err) {
   group_ = si2drIterNextGroup(groups_, &err_);

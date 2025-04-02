@@ -1,10 +1,17 @@
 #ifndef COMPARE_HPP
 #define COMPARE_HPP
 
-#include "lib_file.hpp"
+#include <chrono>
+#include <filesystem>
+#include <fstream>
 
 #include "nlohmann/json.hpp"
+#include "spdlog/spdlog.h"
 #include "tabulate/table.hpp"
+#include <tabulate/markdown_exporter.hpp>
+
+#include "LibFile.hpp"
+#include "version.h"
 
 using json = nlohmann::json;
 using namespace tabulate;
@@ -31,7 +38,8 @@ private:
                         const json &comp_timing_arc, Table &table);
   void compareLut(const std::string &cell_name, const std::string &pin_name,
                   const std::string &timing_type, const std::string &related_pin,
-                  const std::string &arc_name, const json &ref_lut, const json &comp_lut, Table &table);
+                  const std::string &arc_name, const json &ref_lut, const json &comp_lut,
+                  Table &table);
   // void configureTableFormat(Table &table);
 };
 
