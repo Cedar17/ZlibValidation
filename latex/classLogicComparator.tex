@@ -10,7 +10,7 @@
 \mbox{\hyperlink{classLogicComparator_a35436d01eabacaeb34d88883ab141613}{Logic\+Comparator}} (const std\+::map$<$ std\+::string, std\+::string $>$ \&ref\+\_\+outpin\+\_\+map, const std\+::map$<$ std\+::string, std\+::string $>$ \&comp\+\_\+outpin\+\_\+map, const std\+::string \&cell\+\_\+name)
 \item 
 void \mbox{\hyperlink{classLogicComparator_a1be219c18555e95192b758be8a4b4e2f}{logic}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em This function demonstrates the usage of the exprtk library to evaluate a boolean logic expression. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{preprocess\+Expression}} (const std\+::string \&input\+\_\+expr)
 \item 
 bool \mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{extract\+Variables}} (const std\+::string \&expr1, const std\+::string \&expr2, std\+::vector$<$ std\+::string $>$ \&sorted\+\_\+vars)
@@ -37,7 +37,7 @@ std\+::map$<$ std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Co
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00041}{41}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
 
 
 
@@ -65,21 +65,40 @@ Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00003}{3}} of f
 
 Compares logic for all output pins defined in the input maps, and stores results in all\+\_\+pin\+\_\+results\+\_\+. 
 
-Compares logic for all output pins defined in the input maps for a specific cell.
+Compares the logic expressions for each output pin of a cell between a reference and a comparison design.
 
-Iterates through all unique output pins found in either the reference or comparison maps. For each pin, it preprocesses the expressions, extracts and validates variables, and then compares the logic using truth tables via compare\+Single\+Expression\+Pair.
+This method performs a detailed comparison of the logic expressions associated with each output pin of a cell. It iterates through each unique pin name found in both the reference and comparison designs, retrieves their corresponding logic expressions, preprocesses them, extracts and validates the variables used, and then compares the processed expressions. The results of each pin comparison, including any errors or discrepancies, are stored in the {\ttfamily all\+\_\+pin\+\_\+results\+\_\+} map.
+
+The comparison process includes the following steps\+:
+\begin{DoxyEnumerate}
+\item {\bfseries{Pin Collection\+:}} Collects all unique pin names from both the reference ({\ttfamily ref\+\_\+outpin\+\_\+map\+\_\+}) and comparison ({\ttfamily comp\+\_\+outpin\+\_\+map\+\_\+}) maps.
+\item {\bfseries{Iteration\+:}} Iterates through each unique pin name.
+\item {\bfseries{Expression Retrieval\+:}} Retrieves the raw logic expressions for the current pin from both the reference and comparison maps. If a pin is missing in either map, an error is logged, and the comparison is marked as impossible for that pin.
+\item {\bfseries{Preprocessing\+:}} Preprocesses the raw expressions to simplify them and remove any irrelevant characters or formatting. If preprocessing results in an empty expression, an error is logged, and the comparison is marked as impossible.
+\item {\bfseries{Variable Extraction and Validation\+:}} Extracts the variables used in both expressions and validates that the sets of variables match. If the variable sets do not match, an error is logged, and the comparison is marked as impossible.
+\item {\bfseries{Expression Comparison\+:}} Compares the preprocessed expressions using the extracted variables. This step determines whether the logic functions represented by the expressions are equivalent.
+\item {\bfseries{Result Storage\+:}} Stores the detailed results of the pin comparison, including the raw and processed expressions, any errors encountered, and the comparison result, in the {\ttfamily all\+\_\+pin\+\_\+results\+\_\+} map.
+\end{DoxyEnumerate}
+
+\begin{DoxyNote}{Note}
+The {\ttfamily spdlog} library is used for logging information, warnings, and errors throughout the comparison process. 
+
+The {\ttfamily preprocess\+Expression} method is used to simplify the raw logic expressions before comparison. 
+
+The {\ttfamily extract\+Variables} method is used to extract and validate the variables used in the logic expressions. 
+
+The {\ttfamily compare\+Single\+Expression\+Pair} method is used to compare the preprocessed expressions and determine whether they are equivalent.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{preprocess\+Expression}} 
+
+\mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{extract\+Variables}} 
+
+\mbox{\hyperlink{classLogicComparator_a626ddc1bb2057eef7862cea7bbc860bb}{compare\+Single\+Expression\+Pair}} 
+\end{DoxySeeAlso}
 
 
-\begin{DoxyTemplParams}{Template Parameters}
-{\em double} & Numeric type for Expr\+Tk (e.\+g., double). \\
-\hline
-\end{DoxyTemplParams}
-\begin{DoxyReturn}{Returns}
-A map where the key is the pin name and the value is the \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} struct containing detailed comparison results for that pin. 
-\end{DoxyReturn}
-
-
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00724}{724}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00788}{788}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -107,7 +126,7 @@ Here is the caller graph for this function\+:
 
 Compares two preprocessed logic expression strings for equivalence. Internal helper function. 
 
-Compares two preprocessed logic expression strings for equivalence using truth tables. Internal helper function.
+Compares two boolean expressions for logical equivalence using a truth table.
 
 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -127,25 +146,31 @@ Compares two preprocessed logic expression strings for equivalence using truth t
 \end{DoxyParams}
 
 
+This function takes two processed boolean expressions (ref\+\_\+expression\+\_\+processed and comp\+\_\+expression\+\_\+processed), a sorted list of variable names (sorted\+\_\+vars), and a \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} struct to store the results. It evaluates both expressions for all possible combinations of variable values and compares the resulting truth tables.
 
-\begin{DoxyTemplParams}{Template Parameters}
-{\em double} & The numeric type used by Expr\+Tk (e.\+g., double, float). \\
-\hline
-\end{DoxyTemplParams}
+The function uses the Expr\+Tk library to parse and evaluate the boolean expressions. It generates a truth table for each expression and compares the results. If the truth tables are identical, the expressions are considered logically equivalent.
+
 
 \begin{DoxyParams}{Parameters}
-{\em ref\+\_\+expression\+\_\+processed} & The preprocessed reference logic expression. \\
+{\em ref\+\_\+expression\+\_\+processed} & The processed reference boolean expression. \\
 \hline
-{\em comp\+\_\+expression\+\_\+processed} & The preprocessed comparison logic expression. \\
+{\em comp\+\_\+expression\+\_\+processed} & The processed comparison boolean expression. \\
 \hline
-{\em sorted\+\_\+vars} & A sorted vector of unique variable names common to both expressions. \\
+{\em sorted\+\_\+vars} & A sorted vector of variable names used in the expressions. \\
 \hline
-{\em result} & Reference to a \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} object to store detailed results. \\
+{\em result} & A \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} struct to store the comparison results, including processed expressions, compilation status, equivalence, error messages, and the generated truth tables.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function limits the number of variables to 20 to prevent excessively large truth tables. It also performs overflow checking on the number of combinations.
+
+The function uses spdlog for logging debug, warning, and error messages.
+
+The function assumes that the input expressions are valid boolean expressions containing only the variables listed in sorted\+\_\+vars. 
+\end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00497}{497}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00529}{529}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -194,7 +219,7 @@ The function uses spdlog for logging debug, trace, info, and warning messages.
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00286}{286}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00303}{303}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -229,7 +254,7 @@ Generates a comparison report file based on cell logic comparison results.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00847}{847}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00911}{911}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -247,8 +272,31 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+This function demonstrates the usage of the exprtk library to evaluate a boolean logic expression. 
 
+It defines a boolean expression \char`\"{}not(\+A and B) or C\char`\"{} and evaluates it for all possible combinations of boolean values for the variables A, B, and C. The results are then printed to the console in a tabular format.
+
+The function utilizes the exprtk library for\+:
+\begin{DoxyItemize}
+\item Defining a symbol table to hold the variables A, B, and C.
+\item Creating an expression object and registering the symbol table with it.
+\item Compiling the boolean expression string into the expression object.
+\item Iterating through all possible boolean combinations for A, B, and C.
+\item Assigning the boolean values to the variables in the symbol table.
+\item Evaluating the expression using expression.\+value().
+\item Printing the input values and the result to the console. 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLogicComparator_a1be219c18555e95192b758be8a4b4e2f_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}\label{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}} 
 \index{LogicComparator@{LogicComparator}!preprocessExpression@{preprocessExpression}}
 \index{preprocessExpression@{preprocessExpression}!LogicComparator@{LogicComparator}}
@@ -257,7 +305,7 @@ Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00007}{7}} of f
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -286,7 +334,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
 
 \mbox{\Hypertarget{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}\label{classLogicComparator_a51ab3436638590be5044e84536bf9f9f}} 
 \index{LogicComparator@{LogicComparator}!cell\_name\_@{cell\_name\_}}
@@ -296,7 +344,7 @@ Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00089}{89}} of 
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00085}{85}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
 
 \mbox{\Hypertarget{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}\label{classLogicComparator_aa931edd41dbaaa5bb4c6cf33f06d915a}} 
 \index{LogicComparator@{LogicComparator}!comp\_outpin\_map\_@{comp\_outpin\_map\_}}
@@ -306,7 +354,7 @@ Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00088}{88}} of 
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
 
 \mbox{\Hypertarget{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}\label{classLogicComparator_a380ca36e75733aa6e1bcb1858c7fadd9}} 
 \index{LogicComparator@{LogicComparator}!ref\_outpin\_map\_@{ref\_outpin\_map\_}}
@@ -316,7 +364,7 @@ Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00087}{87}} of 
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8hpp_source_l00083}{83}} of file \mbox{\hyperlink{LogicComparator_8hpp_source}{Logic\+Comparator.\+hpp}}.
 
 
 

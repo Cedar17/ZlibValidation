@@ -257,85 +257,98 @@ $(document).ready(function(){initNavTree('LibFileOperations_8cpp_source.html',''
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>                 report_file_name);</div>
 <div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>  }</div>
 <div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>  <span class="comment">// Declare LibFile objects as pointers, initialized to nullptr</span></div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>  <a class="code hl_class" href="classLibFile.html">LibFile</a> *ref_libfile = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>  <a class="code hl_class" href="classLibFile.html">LibFile</a> *comp_libfile = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>  <span class="comment">// Check the reference file extension</span></div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>  <span class="keywordflow">if</span> (ref_ext == <span class="stringliteral">&quot;.v&quot;</span>) {</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    spdlog::info(<span class="stringliteral">&quot;Reference file in Verilog format.&quot;</span>);</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ref_ext == <span class="stringliteral">&quot;.lib&quot;</span>) {</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    spdlog::info(<span class="stringliteral">&quot;Reference file in Liberty format.&quot;</span>);</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    ref_libfile = <span class="keyword">new</span> <a class="code hl_class" href="classLibFile.html">LibFile</a>(ref_file, ref_logname);</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    spdlog::error(<span class="stringliteral">&quot;Unsupported reference file format: &#39;{}&#39;&quot;</span>, ref_ext);</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>  }</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>  <span class="comment">// Check the comparison file extension</span></div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>  <span class="keywordflow">if</span> (comp_ext == <span class="stringliteral">&quot;.v&quot;</span>) {</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    spdlog::info(<span class="stringliteral">&quot;Comparison file in Verilog format.&quot;</span>);</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (comp_ext == <span class="stringliteral">&quot;.lib&quot;</span>) {</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    spdlog::info(<span class="stringliteral">&quot;Comparison file in Liberty format.&quot;</span>);</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    comp_libfile = <span class="keyword">new</span> <a class="code hl_class" href="classLibFile.html">LibFile</a>(comp_file, comp_logname);</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    spdlog::error(<span class="stringliteral">&quot;Unsupported comparison file format: &#39;{}&#39;&quot;</span>, comp_ext);</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>  }</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>  <span class="comment">// Tranverse the cell names and check functional equivalence</span></div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cell : cell_names) {</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    spdlog::info(<span class="stringliteral">&quot;Checking functional equivalence for cell: &#39;{}&#39;&quot;</span>, cell);</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    std::map&lt;std::string, std::string&gt; ref_outpin_map;</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    std::map&lt;std::string, std::string&gt; comp_outpin_map;</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keywordflow">if</span> (ref_ext == <span class="stringliteral">&quot;.v&quot;</span>) {</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>      ref_outpin_map = <a class="code hl_function" href="LogicExtractor_8hpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d">extractLogicFromVerilog</a>(ref_file, cell);</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ref_ext == <span class="stringliteral">&quot;.lib&quot;</span>) {</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>      ref_outpin_map = ref_libfile-&gt;<a class="code hl_function" href="classLibFile.html#a90b6274f928d77388864ba61583a030f">logic</a>(cell);</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    }</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    <span class="keywordflow">if</span> (comp_ext == <span class="stringliteral">&quot;.v&quot;</span>) {</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>      <span class="comment">// getAST(comp_file, cell);</span></div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>      <span class="comment">// extractAndPrintNetlistInfo(comp_file, cell);</span></div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>      comp_outpin_map = <a class="code hl_function" href="LogicExtractor_8hpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d">extractLogicFromVerilog</a>(comp_file, cell);</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (comp_ext == <span class="stringliteral">&quot;.lib&quot;</span>) {</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>      comp_outpin_map = comp_libfile-&gt;<a class="code hl_function" href="classLibFile.html#a90b6274f928d77388864ba61583a030f">logic</a>(cell);</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    }</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    spdlog::info(<span class="stringliteral">&quot;Logic function expressions collected for cell: &#39;{}&#39;&quot;</span>, cell);</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    spdlog::info(<span class="stringliteral">&quot;Starting logic comparison ...&quot;</span>);</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <span class="comment">// TODO Perform functional equivalence check</span></div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <a class="code hl_class" href="classLogicComparator.html">LogicComparator</a> comparator(ref_outpin_map, comp_outpin_map, cell);</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    <span class="comment">// comparator.logic();</span></div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    <span class="comment">// // Test for preprocessing</span></div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    <span class="comment">// std::string ref_expr;</span></div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    <span class="comment">// std::string comp_expr;</span></div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    <span class="comment">// for (const auto &amp;pin : ref_outpin_map) {</span></div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    <span class="comment">//   spdlog::info(&quot;Pin -&gt; Expression: {} -&gt; {}&quot;, pin.first, pin.second);</span></div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    <span class="comment">//   ref_expr = comparator.preprocessExpression(pin.second);</span></div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="comment">// }</span></div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    <span class="comment">// for (const auto &amp;pin : comp_outpin_map) {</span></div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <span class="comment">//   spdlog::info(&quot;Pin =&gt; Expression: {} =&gt; {}&quot;, pin.first, pin.second);</span></div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    <span class="comment">//   comp_expr = comparator.preprocessExpression(pin.second);</span></div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <span class="comment">// }</span></div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    <span class="comment">// std::vector&lt;std::string&gt; sorted_vars;</span></div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    <span class="comment">// comparator.extractVariables(ref_expr, comp_expr, sorted_vars);</span></div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <span class="comment">// struct PinComparisonResult pin_comparison_result;</span></div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    <span class="comment">// // comp_expr = &quot;not ((not(A1) and not(A2)) or B)&quot;;</span></div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    <span class="comment">// comparator.compareSingleExpressionPair(ref_expr, comp_expr, sorted_vars,</span></div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    <span class="comment">//                                                pin_comparison_result);</span></div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span> </div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>    <span class="comment">// comparator.compareCellLogic();</span></div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    comparator.<a class="code hl_function" href="classLogicComparator.html#ae5c1b36b4a05b18c36d7fe1cbeb3ec49">compareCellLogic</a>();</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    comparator.<a class="code hl_function" href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">generateReport</a>(report_file_name);</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    </div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    spdlog::info(<span class="stringliteral">&quot;Functional equivalence check completed for cell: &#39;{}&#39;&quot;</span>, cell);</div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>  }</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>  spdlog::info(<span class="stringliteral">&quot;Functional equivalence check completed for all cells,&quot;</span>);</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>  spdlog::info(<span class="stringliteral">&quot;Report written to: &#39;{}&#39;&quot;</span>, report_file_name);</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>}</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>  <span class="comment">// Clear the report file</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>  std::ofstream report_file(report_file_name);</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>  <span class="keywordflow">if</span> (!report_file.is_open()) {</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    spdlog::error(<span class="stringliteral">&quot;Failed to open report file: &#39;{}&#39;&quot;</span>, report_file_name);</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>  }</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>  report_file.close();</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>  spdlog::info(<span class="stringliteral">&quot;Report file cleared: &#39;{}&#39;&quot;</span>, report_file_name);</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>  <span class="comment">// Declare LibFile objects as pointers, initialized to nullptr</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>  <a class="code hl_class" href="classLibFile.html">LibFile</a> *ref_libfile = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>  <a class="code hl_class" href="classLibFile.html">LibFile</a> *comp_libfile = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>  <span class="comment">// Check the reference file extension</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>  <span class="keywordflow">if</span> (ref_ext == <span class="stringliteral">&quot;.v&quot;</span>) {</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    spdlog::info(<span class="stringliteral">&quot;Reference file in Verilog format.&quot;</span>);</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ref_ext == <span class="stringliteral">&quot;.lib&quot;</span>) {</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    spdlog::info(<span class="stringliteral">&quot;Reference file in Liberty format.&quot;</span>);</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    ref_libfile = <span class="keyword">new</span> <a class="code hl_class" href="classLibFile.html">LibFile</a>(ref_file, ref_logname);</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    spdlog::error(<span class="stringliteral">&quot;Unsupported reference file format: &#39;{}&#39;&quot;</span>, ref_ext);</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>  }</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>  <span class="comment">// Check the comparison file extension</span></div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>  <span class="keywordflow">if</span> (comp_ext == <span class="stringliteral">&quot;.v&quot;</span>) {</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    spdlog::info(<span class="stringliteral">&quot;Comparison file in Verilog format.&quot;</span>);</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (comp_ext == <span class="stringliteral">&quot;.lib&quot;</span>) {</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    spdlog::info(<span class="stringliteral">&quot;Comparison file in Liberty format.&quot;</span>);</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    comp_libfile = <span class="keyword">new</span> <a class="code hl_class" href="classLibFile.html">LibFile</a>(comp_file, comp_logname);</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    spdlog::error(<span class="stringliteral">&quot;Unsupported comparison file format: &#39;{}&#39;&quot;</span>, comp_ext);</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>  }</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>  <span class="comment">// Tranverse the cell names and check functional equivalence</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cell : cell_names) {</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    spdlog::info(<span class="stringliteral">&quot;Checking functional equivalence for cell: &#39;{}&#39;&quot;</span>, cell);</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    std::map&lt;std::string, std::string&gt; ref_outpin_map;</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    std::map&lt;std::string, std::string&gt; comp_outpin_map;</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    <span class="keywordflow">if</span> (ref_ext == <span class="stringliteral">&quot;.v&quot;</span>) {</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>      ref_outpin_map = <a class="code hl_function" href="LogicExtractor_8hpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d">extractLogicFromVerilog</a>(ref_file, cell);</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ref_ext == <span class="stringliteral">&quot;.lib&quot;</span>) {</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>      ref_outpin_map = ref_libfile-&gt;<a class="code hl_function" href="classLibFile.html#a90b6274f928d77388864ba61583a030f">logic</a>(cell);</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    }</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    <span class="keywordflow">if</span> (comp_ext == <span class="stringliteral">&quot;.v&quot;</span>) {</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>      <span class="comment">// getAST(comp_file, cell);</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>      <span class="comment">// extractAndPrintNetlistInfo(comp_file, cell);</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>      comp_outpin_map = <a class="code hl_function" href="LogicExtractor_8hpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d">extractLogicFromVerilog</a>(comp_file, cell);</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (comp_ext == <span class="stringliteral">&quot;.lib&quot;</span>) {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>      comp_outpin_map = comp_libfile-&gt;<a class="code hl_function" href="classLibFile.html#a90b6274f928d77388864ba61583a030f">logic</a>(cell);</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    }</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    spdlog::info(<span class="stringliteral">&quot;Logic function expressions collected for cell: &#39;{}&#39;&quot;</span>, cell);</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    spdlog::info(<span class="stringliteral">&quot;Starting logic comparison ...&quot;</span>);</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    <a class="code hl_class" href="classLogicComparator.html">LogicComparator</a> comparator(ref_outpin_map, comp_outpin_map, cell);</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="comment">// Easter egg</span></div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    <span class="keywordflow">if</span> (cell == <span class="stringliteral">&quot;easteregg&quot;</span>) {</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>      spdlog::info(<span class="stringliteral">&quot;Easter egg🥚 found! 😍 Running ExprTk Eample 07...&quot;</span>);</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>      comparator.<a class="code hl_function" href="classLogicComparator.html#a1be219c18555e95192b758be8a4b4e2f">logic</a>();</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>      <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    }</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span> </div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <span class="comment">// // Test for preprocessing</span></div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    <span class="comment">// std::string ref_expr;</span></div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    <span class="comment">// std::string comp_expr;</span></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    <span class="comment">// for (const auto &amp;pin : ref_outpin_map) {</span></div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    <span class="comment">//   spdlog::info(&quot;Pin -&gt; Expression: {} -&gt; {}&quot;, pin.first, pin.second);</span></div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>    <span class="comment">//   ref_expr = comparator.preprocessExpression(pin.second);</span></div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    <span class="comment">// for (const auto &amp;pin : comp_outpin_map) {</span></div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    <span class="comment">//   spdlog::info(&quot;Pin =&gt; Expression: {} =&gt; {}&quot;, pin.first, pin.second);</span></div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    <span class="comment">//   comp_expr = comparator.preprocessExpression(pin.second);</span></div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    <span class="comment">// std::vector&lt;std::string&gt; sorted_vars;</span></div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    <span class="comment">// comparator.extractVariables(ref_expr, comp_expr, sorted_vars);</span></div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    <span class="comment">// struct PinComparisonResult pin_comparison_result;</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <span class="comment">// // comp_expr = &quot;not ((not(A1) and not(A2)) or B)&quot;;</span></div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    <span class="comment">// comparator.compareSingleExpressionPair(ref_expr, comp_expr, sorted_vars,</span></div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <span class="comment">//                                                pin_comparison_result);</span></div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    <span class="comment">// comparator.compareCellLogic();</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    comparator.<a class="code hl_function" href="classLogicComparator.html#ae5c1b36b4a05b18c36d7fe1cbeb3ec49">compareCellLogic</a>();</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    comparator.<a class="code hl_function" href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">generateReport</a>(report_file_name);</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> </div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    spdlog::info(<span class="stringliteral">&quot;Functional equivalence check completed for cell: &#39;{}&#39;&quot;</span>, cell);</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>  }</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>  spdlog::info(<span class="stringliteral">&quot;Functional equivalence check completed for all cells,&quot;</span>);</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>  spdlog::info(<span class="stringliteral">&quot;Report written to: &#39;{}&#39;&quot;</span>, report_file_name);</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>}</div>
 <div class="ttc" id="aLibFileOperations_8cpp_html_a0d7485f0df82adbd1671def221103a4e"><div class="ttname"><a href="LibFileOperations_8cpp.html#a0d7485f0df82adbd1671def221103a4e">supercellLibFile</a></div><div class="ttdeci">void supercellLibFile(const std::string &amp;library_path, const std::string &amp;log_file_name, int chain_length, const std::vector&lt; std::string &gt; &amp;cell_names)</div><div class="ttdoc">Creates supercell map structures from a Liberty library file.</div><div class="ttdef"><b>Definition:</b> <a href="LibFileOperations_8cpp_source.html#l00116">LibFileOperations.cpp:116</a></div></div>
 <div class="ttc" id="aLibFileOperations_8cpp_html_a2dbaf5580b5305d54cff6848ae7deb30"><div class="ttname"><a href="LibFileOperations_8cpp.html#a2dbaf5580b5305d54cff6848ae7deb30">printInfo</a></div><div class="ttdeci">void printInfo()</div><div class="ttdoc">Sets up and configures the global logger and prints application information.</div><div class="ttdef"><b>Definition:</b> <a href="LibFileOperations_8cpp_source.html#l00018">LibFileOperations.cpp:18</a></div></div>
 <div class="ttc" id="aLibFileOperations_8cpp_html_a3ac24d33b321364527447f166fd31edf"><div class="ttname"><a href="LibFileOperations_8cpp.html#a3ac24d33b321364527447f166fd31edf">parseLibFile</a></div><div class="ttdeci">void parseLibFile(const std::string &amp;library_path, const std::string log_file_name)</div><div class="ttdoc">Parses a library file and generates corresponding output.</div><div class="ttdef"><b>Definition:</b> <a href="LibFileOperations_8cpp_source.html#l00049">LibFileOperations.cpp:49</a></div></div>
@@ -355,10 +368,11 @@ $(document).ready(function(){initNavTree('LibFileOperations_8cpp_source.html',''
 <div class="ttc" id="aclassLibFile_html_ace2977ea0c9cd5fa0ada4c3277500188"><div class="ttname"><a href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188">LibFile::supercell</a></div><div class="ttdeci">void supercell(const int chain_length, const std::vector&lt; std::string &gt; &amp;cell_names)</div><div class="ttdoc">Creates supercells based on standard cells in the library file.</div><div class="ttdef"><b>Definition:</b> <a href="LibFile_8cpp_source.html#l00460">LibFile.cpp:460</a></div></div>
 <div class="ttc" id="aclassLibFile_html_af8446d3ee82f3fabed848c23ec262cbe"><div class="ttname"><a href="classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe">LibFile::mono</a></div><div class="ttdeci">void mono(const bool is_slew)</div><div class="ttdoc">Validates that lookup tables are monotonically increasing with respect to the output load.</div><div class="ttdef"><b>Definition:</b> <a href="LibFile_8cpp_source.html#l00331">LibFile.cpp:331</a></div></div>
 <div class="ttc" id="aclassLibraryComparator_html"><div class="ttname"><a href="classLibraryComparator.html">LibraryComparator</a></div><div class="ttdef"><b>Definition:</b> <a href="LibraryComparator_8hpp_source.html#l00019">LibraryComparator.hpp:19</a></div></div>
-<div class="ttc" id="aclassLibraryComparator_html_a4f150829d621ad8f199813a0f9fc8be5"><div class="ttname"><a href="classLibraryComparator.html#a4f150829d621ad8f199813a0f9fc8be5">LibraryComparator::generateReport</a></div><div class="ttdeci">void generateReport(const std::string &amp;output_file)</div><div class="ttdoc">Generates a comparison report between the reference and comparison libraries.</div><div class="ttdef"><b>Definition:</b> <a href="LibraryComparator_8cpp_source.html#l00340">LibraryComparator.cpp:340</a></div></div>
-<div class="ttc" id="aclassLogicComparator_html"><div class="ttname"><a href="classLogicComparator.html">LogicComparator</a></div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8hpp_source.html#l00041">LogicComparator.hpp:41</a></div></div>
-<div class="ttc" id="aclassLogicComparator_html_a11238591d905205ad26839e1977634f5"><div class="ttname"><a href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">LogicComparator::generateReport</a></div><div class="ttdeci">void generateReport(const std::string &amp;output_file)</div><div class="ttdoc">Generates a comparison report file based on cell logic comparison results.</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00847">LogicComparator.cpp:847</a></div></div>
-<div class="ttc" id="aclassLogicComparator_html_ae5c1b36b4a05b18c36d7fe1cbeb3ec49"><div class="ttname"><a href="classLogicComparator.html#ae5c1b36b4a05b18c36d7fe1cbeb3ec49">LogicComparator::compareCellLogic</a></div><div class="ttdeci">void compareCellLogic()</div><div class="ttdoc">Compares logic for all output pins defined in the input maps, and stores results in all_pin_results_.</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00724">LogicComparator.cpp:724</a></div></div>
+<div class="ttc" id="aclassLibraryComparator_html_a4f150829d621ad8f199813a0f9fc8be5"><div class="ttname"><a href="classLibraryComparator.html#a4f150829d621ad8f199813a0f9fc8be5">LibraryComparator::generateReport</a></div><div class="ttdeci">void generateReport(const std::string &amp;output_file)</div><div class="ttdoc">Generates a comparison report between the reference and comparison libraries.</div><div class="ttdef"><b>Definition:</b> <a href="LibraryComparator_8cpp_source.html#l00343">LibraryComparator.cpp:343</a></div></div>
+<div class="ttc" id="aclassLogicComparator_html"><div class="ttname"><a href="classLogicComparator.html">LogicComparator</a></div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8hpp_source.html#l00038">LogicComparator.hpp:38</a></div></div>
+<div class="ttc" id="aclassLogicComparator_html_a11238591d905205ad26839e1977634f5"><div class="ttname"><a href="classLogicComparator.html#a11238591d905205ad26839e1977634f5">LogicComparator::generateReport</a></div><div class="ttdeci">void generateReport(const std::string &amp;output_file)</div><div class="ttdoc">Generates a comparison report file based on cell logic comparison results.</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00911">LogicComparator.cpp:911</a></div></div>
+<div class="ttc" id="aclassLogicComparator_html_a1be219c18555e95192b758be8a4b4e2f"><div class="ttname"><a href="classLogicComparator.html#a1be219c18555e95192b758be8a4b4e2f">LogicComparator::logic</a></div><div class="ttdeci">void logic()</div><div class="ttdoc">This function demonstrates the usage of the exprtk library to evaluate a boolean logic expression.</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00024">LogicComparator.cpp:24</a></div></div>
+<div class="ttc" id="aclassLogicComparator_html_ae5c1b36b4a05b18c36d7fe1cbeb3ec49"><div class="ttname"><a href="classLogicComparator.html#ae5c1b36b4a05b18c36d7fe1cbeb3ec49">LogicComparator::compareCellLogic</a></div><div class="ttdeci">void compareCellLogic()</div><div class="ttdoc">Compares logic for all output pins defined in the input maps, and stores results in all_pin_results_.</div><div class="ttdef"><b>Definition:</b> <a href="LogicComparator_8cpp_source.html#l00788">LogicComparator.cpp:788</a></div></div>
 <div class="ttc" id="aversion_8h_html_a50e40f98b0a2e1338e46f50d178434c1"><div class="ttname"><a href="version_8h.html#a50e40f98b0a2e1338e46f50d178434c1">BUILD_TIMESTAMP</a></div><div class="ttdeci">#define BUILD_TIMESTAMP</div><div class="ttdef"><b>Definition:</b> <a href="version_8h_source.html#l00012">version.h:12</a></div></div>
 <div class="ttc" id="aversion_8h_html_a6a4aa5160b6f6575332a971ca421f042"><div class="ttname"><a href="version_8h.html#a6a4aa5160b6f6575332a971ca421f042">APP_CONTACT</a></div><div class="ttdeci">#define APP_CONTACT</div><div class="ttdef"><b>Definition:</b> <a href="version_8h_source.html#l00011">version.h:11</a></div></div>
 <div class="ttc" id="aversion_8h_html_a87832488ddb61266f75ab21e1b6402cb"><div class="ttname"><a href="version_8h.html#a87832488ddb61266f75ab21e1b6402cb">APP_AUTHOR</a></div><div class="ttdeci">#define APP_AUTHOR</div><div class="ttdef"><b>Definition:</b> <a href="version_8h_source.html#l00010">version.h:10</a></div></div>
@@ -370,7 +384,7 @@ $(document).ready(function(){initNavTree('LibFileOperations_8cpp_source.html',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="LibFileOperations_8cpp.html">LibFileOperations.cpp</a></li>
-    <li class="footer">Generated on Wed Apr 2 2025 10:01:35 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Wed Apr 2 2025 11:35:50 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

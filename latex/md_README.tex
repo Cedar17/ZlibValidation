@@ -409,5 +409,33 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \end{DoxyItemize}\hypertarget{md_README_autotoc_md38}{}\doxysubsection{2025-\/04-\/02}\label{md_README_autotoc_md38}
 
 \begin{DoxyItemize}
-\item 取消所有模板函数的 {\ttfamily template \texorpdfstring{$<$}{<}typename T\texorpdfstring{$>$}{>}} 声明，改为使用 {\ttfamily double} 作为参数类型，加快编译速度。 
+\item 取消所有模板函数的 {\ttfamily template \texorpdfstring{$<$}{<}typename T\texorpdfstring{$>$}{>}} 声明，改为使用 {\ttfamily double} 作为参数类型，加快编译速度。
+\item 完善了 {\ttfamily \mbox{\hyperlink{classLogicComparator_a11238591d905205ad26839e1977634f5}{Logic\+Comparator\+::generate\+Report()}}} 方法，增加了对逻辑比较结果的详细报告输出，包括：
+\begin{DoxyItemize}
+\item 元数据，例如：$\ast$$\ast$\+Performed by Zlib\+Validation v0.\+1.\+0 from Song Zixuan. on\+: Wed Apr 2 11\+:11\+:39 2025$\ast$$\ast$
+\item 图例，包括参考pin名称、pin function，参考pin名称、pin function，符号解释表。
+\item 参考pin的真值表
+\item 比较pin的真值表
+\item 比较结果表格，例如：
 \end{DoxyItemize}
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Property   }&\cellcolor{\tableheadbgcolor}\textbf{ Value    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Property   }&\cellcolor{\tableheadbgcolor}\textbf{ Value    }\\\cline{1-2}
+\endhead
+Status   &\mbox{[}OK\mbox{]}    \\\cline{1-2}
+Reference (Raw)   &{\ttfamily (!((!(A1+\+A2))+B))}    \\\cline{1-2}
+Comparison (Raw)   &{\ttfamily !((!\+A1 $\ast$ !\+A2) + B)}    \\\cline{1-2}
+Reference (Processed)   &{\ttfamily (not((not(\+A1 or A2)) or B))}    \\\cline{1-2}
+Comparison (Processed)   &{\ttfamily not((not(\+A1) and not(\+A2)) or B)}    \\\cline{1-2}
+Ref Expression Compiled   &Yes    \\\cline{1-2}
+Comp Expression Compiled   &Yes    \\\cline{1-2}
+Logically Equivalent   &Yes   \\\cline{1-2}
+\end{longtabu}

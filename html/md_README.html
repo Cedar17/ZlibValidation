@@ -539,15 +539,43 @@ Development Diary</h1>
 <h2><a class="anchor" id="autotoc_md38"></a>
 2025-04-02</h2>
 <ul>
-<li>取消所有模板函数的 <code>template &lt;typename T&gt;</code> 声明，改为使用 <code>double</code> 作为参数类型，加快编译速度。 </li>
+<li>取消所有模板函数的 <code>template &lt;typename T&gt;</code> 声明，改为使用 <code>double</code> 作为参数类型，加快编译速度。</li>
+<li>完善了 <code><a class="el" href="classLogicComparator.html#a11238591d905205ad26839e1977634f5" title="Generates a comparison report file based on cell logic comparison results.">LogicComparator::generateReport()</a></code> 方法，增加了对逻辑比较结果的详细报告输出，包括：<ul>
+<li>元数据，例如：**Performed by ZlibValidation v0.1.0 from Song Zixuan. on: Wed Apr 2 11:11:39 2025**</li>
+<li>图例，包括参考pin名称、pin function，参考pin名称、pin function，符号解释表。</li>
+<li>参考pin的真值表</li>
+<li>比较pin的真值表</li>
+<li>比较结果表格，例如：</li>
 </ul>
+</li>
+</ul>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Property   </th><th class="markdownTableHeadLeft">Value    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Status   </td><td class="markdownTableBodyLeft">[OK]    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Reference (Raw)   </td><td class="markdownTableBodyLeft"><code>(!((!(A1+A2))+B))</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Comparison (Raw)   </td><td class="markdownTableBodyLeft"><code>!((!A1 * !A2) + B)</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Reference (Processed)   </td><td class="markdownTableBodyLeft"><code>(not((not(A1 or A2)) or B))</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Comparison (Processed)   </td><td class="markdownTableBodyLeft"><code>not((not(A1) and not(A2)) or B)</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Ref Expression Compiled   </td><td class="markdownTableBodyLeft">Yes    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Comp Expression Compiled   </td><td class="markdownTableBodyLeft">Yes    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Logically Equivalent   </td><td class="markdownTableBodyLeft">Yes   </td></tr>
+</table>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Apr 2 2025 10:01:35 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Wed Apr 2 2025 11:35:50 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

@@ -106,6 +106,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a35436d01eabacaeb34d88883ab141613"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#a35436d01eabacaeb34d88883ab141613">LogicComparator</a> (const std::map&lt; std::string, std::string &gt; &amp;ref_outpin_map, const std::map&lt; std::string, std::string &gt; &amp;comp_outpin_map, const std::string &amp;cell_name)</td></tr>
 <tr class="separator:a35436d01eabacaeb34d88883ab141613"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1be219c18555e95192b758be8a4b4e2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#a1be219c18555e95192b758be8a4b4e2f">logic</a> ()</td></tr>
+<tr class="memdesc:a1be219c18555e95192b758be8a4b4e2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function demonstrates the usage of the exprtk library to evaluate a boolean logic expression.  <a href="classLogicComparator.html#a1be219c18555e95192b758be8a4b4e2f">More...</a><br /></td></tr>
 <tr class="separator:a1be219c18555e95192b758be8a4b4e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accce3c590846e3fdf1a66aaa6a5c465a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">preprocessExpression</a> (const std::string &amp;input_expr)</td></tr>
 <tr class="separator:accce3c590846e3fdf1a66aaa6a5c465a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,7 +136,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00041">41</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00038">38</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a35436d01eabacaeb34d88883ab141613" name="a35436d01eabacaeb34d88883ab141613"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a35436d01eabacaeb34d88883ab141613">&#9670;&#160;</a></span>LogicComparator()</h2>
@@ -190,17 +191,31 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Compares logic for all output pins defined in the input maps, and stores results in all_pin_results_. </p>
-<p >Compares logic for all output pins defined in the input maps for a specific cell.</p>
-<p >Iterates through all unique output pins found in either the reference or comparison maps. For each pin, it preprocesses the expressions, extracts and validates variables, and then compares the logic using truth tables via compareSingleExpressionPair.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">double</td><td>Numeric type for ExprTk (e.g., double). </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A map where the key is the pin name and the value is the <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> struct containing detailed comparison results for that pin. </dd></dl>
+<p >Compares the logic expressions for each output pin of a cell between a reference and a comparison design.</p>
+<p >This method performs a detailed comparison of the logic expressions associated with each output pin of a cell. It iterates through each unique pin name found in both the reference and comparison designs, retrieves their corresponding logic expressions, preprocesses them, extracts and validates the variables used, and then compares the processed expressions. The results of each pin comparison, including any errors or discrepancies, are stored in the <code>all_pin_results_</code> map.</p>
+<p >The comparison process includes the following steps:</p><ol type="1">
+<li><b>Pin Collection:</b> Collects all unique pin names from both the reference (<code>ref_outpin_map_</code>) and comparison (<code>comp_outpin_map_</code>) maps.</li>
+<li><b>Iteration:</b> Iterates through each unique pin name.</li>
+<li><b>Expression Retrieval:</b> Retrieves the raw logic expressions for the current pin from both the reference and comparison maps. If a pin is missing in either map, an error is logged, and the comparison is marked as impossible for that pin.</li>
+<li><b>Preprocessing:</b> Preprocesses the raw expressions to simplify them and remove any irrelevant characters or formatting. If preprocessing results in an empty expression, an error is logged, and the comparison is marked as impossible.</li>
+<li><b>Variable Extraction and Validation:</b> Extracts the variables used in both expressions and validates that the sets of variables match. If the variable sets do not match, an error is logged, and the comparison is marked as impossible.</li>
+<li><b>Expression Comparison:</b> Compares the preprocessed expressions using the extracted variables. This step determines whether the logic functions represented by the expressions are equivalent.</li>
+<li><b>Result Storage:</b> Stores the detailed results of the pin comparison, including the raw and processed expressions, any errors encountered, and the comparison result, in the <code>all_pin_results_</code> map.</li>
+</ol>
+<dl class="section note"><dt>Note</dt><dd>The <code>spdlog</code> library is used for logging information, warnings, and errors throughout the comparison process. </dd>
+<dd>
+The <code>preprocessExpression</code> method is used to simplify the raw logic expressions before comparison. </dd>
+<dd>
+The <code>extractVariables</code> method is used to extract and validate the variables used in the logic expressions. </dd>
+<dd>
+The <code>compareSingleExpressionPair</code> method is used to compare the preprocessed expressions and determine whether they are equivalent.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">preprocessExpression</a> </dd>
+<dd>
+<a class="el" href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666" title="Extracts and validates variables from two expressions, ensuring they match.">extractVariables</a> </dd>
+<dd>
+<a class="el" href="classLogicComparator.html#a626ddc1bb2057eef7862cea7bbc860bb" title="Compares two preprocessed logic expression strings for equivalence. Internal helper function.">compareSingleExpressionPair</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00724">724</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00788">788</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -266,7 +281,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Compares two preprocessed logic expression strings for equivalence. Internal helper function. </p>
-<p >Compares two preprocessed logic expression strings for equivalence using truth tables. Internal helper function.</p>
+<p >Compares two boolean expressions for logical equivalence using a truth table.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>The numeric type used by ExprTk (e.g., double, float). </td></tr>
@@ -282,23 +297,24 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">double</td><td>The numeric type used by ExprTk (e.g., double, float). </td></tr>
-  </table>
-  </dd>
-</dl>
+<p >This function takes two processed boolean expressions (ref_expression_processed and comp_expression_processed), a sorted list of variable names (sorted_vars), and a <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> struct to store the results. It evaluates both expressions for all possible combinations of variable values and compares the resulting truth tables.</p>
+<p >The function uses the ExprTk library to parse and evaluate the boolean expressions. It generates a truth table for each expression and compares the results. If the truth tables are identical, the expressions are considered logically equivalent.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ref_expression_processed</td><td>The preprocessed reference logic expression. </td></tr>
-    <tr><td class="paramname">comp_expression_processed</td><td>The preprocessed comparison logic expression. </td></tr>
-    <tr><td class="paramname">sorted_vars</td><td>A sorted vector of unique variable names common to both expressions. </td></tr>
-    <tr><td class="paramname">result</td><td>Reference to a <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> object to store detailed results. </td></tr>
+    <tr><td class="paramname">ref_expression_processed</td><td>The processed reference boolean expression. </td></tr>
+    <tr><td class="paramname">comp_expression_processed</td><td>The processed comparison boolean expression. </td></tr>
+    <tr><td class="paramname">sorted_vars</td><td>A sorted vector of variable names used in the expressions. </td></tr>
+    <tr><td class="paramname">result</td><td>A <a class="el" href="structPinComparisonResult.html">PinComparisonResult</a> struct to store the comparison results, including processed expressions, compilation status, equivalence, error messages, and the generated truth tables.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>The function limits the number of variables to 20 to prevent excessively large truth tables. It also performs overflow checking on the number of combinations.</dd>
+<dd>
+The function uses spdlog for logging debug, warning, and error messages.</dd>
+<dd>
+The function assumes that the input expressions are valid boolean expressions containing only the variables listed in sorted_vars. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00497">497</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00529">529</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -366,7 +382,7 @@ The <code>keywords</code> set contains a list of reserved words that cannot be u
 <dd>
 The function uses spdlog for logging debug, trace, info, and warning messages. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00286">286</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00303">303</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -414,7 +430,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00847">847</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00911">911</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -443,7 +459,29 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00007">7</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p>This function demonstrates the usage of the exprtk library to evaluate a boolean logic expression. </p>
+<p >It defines a boolean expression "not(A and B) or C" and evaluates it for all possible combinations of boolean values for the variables A, B, and C. The results are then printed to the console in a tabular format.</p>
+<p >The function utilizes the exprtk library for:</p><ul>
+<li>Defining a symbol table to hold the variables A, B, and C.</li>
+<li>Creating an expression object and registering the symbol table with it.</li>
+<li>Compiling the boolean expression string into the expression object.</li>
+<li>Iterating through all possible boolean combinations for A, B, and C.</li>
+<li>Assigning the boolean values to the variables in the symbol table.</li>
+<li>Evaluating the expression using expression.value().</li>
+<li>Printing the input values and the result to the console. </li>
+</ul>
+
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00024">24</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLogicComparator_a1be219c18555e95192b758be8a4b4e2f_icgraph.png" border="0" usemap="#aclassLogicComparator_a1be219c18555e95192b758be8a4b4e2f_icgraph" alt=""/></div>
+<map name="aclassLogicComparator_a1be219c18555e95192b758be8a4b4e2f_icgraph" id="aclassLogicComparator_a1be219c18555e95192b758be8a4b4e2f_icgraph">
+<area shape="rect" title="This function demonstrates the usage of the exprtk library to evaluate a boolean logic expression." alt="" coords="248,5,420,31"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,5,200,31"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -463,7 +501,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00087">87</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00104">104</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -509,7 +547,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00089">89</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00086">86</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
 
 </div>
 </div>
@@ -533,7 +571,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00088">88</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00085">85</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
 
 </div>
 </div>
@@ -557,7 +595,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00087">87</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00084">84</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
 
 </div>
 </div>
@@ -581,7 +619,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00086">86</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8hpp_source.html#l00083">83</a> of file <a class="el" href="LogicComparator_8hpp_source.html">LogicComparator.hpp</a>.</p>
 
 </div>
 </div>
@@ -595,7 +633,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classLogicComparator.html">LogicComparator</a></li>
-    <li class="footer">Generated on Wed Apr 2 2025 10:01:35 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Wed Apr 2 2025 11:35:50 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
