@@ -369,3 +369,7 @@ Subcommands:
   - 最后将 `PinComparisonResult` 对象存入 `std::map` 中，键为 cell 名称，值为 `PinComparisonResult` 对象，返回。
 
 - 实现了 `LogicComparator::generateReport()` 方法，报告格式仍需要调整。
+
+### 2025-04-02
+
+- 取消所有模板函数的 `template <typename T>` 声明，改为使用 `double` 作为参数类型，加快编译速度。

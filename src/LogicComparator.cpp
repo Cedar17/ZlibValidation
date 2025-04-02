@@ -4,10 +4,10 @@ LogicComparator::LogicComparator(const std::map<std::string, std::string> &ref_o
                                  const std::map<std::string, std::string> &comp_outpin_map,
                                  const std::string &cell_name)
     : ref_outpin_map_(ref_outpin_map), comp_outpin_map_(comp_outpin_map), cell_name_(cell_name) {}
-template <typename T> void LogicComparator::logic() {
-  typedef exprtk::symbol_table<T> symbol_table_t;
-  typedef exprtk::expression<T> expression_t;
-  typedef exprtk::parser<T> parser_t;
+void LogicComparator::logic() {
+  typedef exprtk::symbol_table<double> symbol_table_t;
+  typedef exprtk::expression<double> expression_t;
+  typedef exprtk::parser<double> parser_t;
 
   const std::string expression_string = "not(A and B) or C";
 
@@ -27,9 +27,9 @@ template <typename T> void LogicComparator::logic() {
          expression_string.c_str(), std::string(expression_string.size(), '-').c_str());
 
   for (int i = 0; i < 8; ++i) {
-    symbol_table.get_variable("A")->ref() = T(i & 0x01 ? 1 : 0);
-    symbol_table.get_variable("B")->ref() = T(i & 0x02 ? 1 : 0);
-    symbol_table.get_variable("C")->ref() = T(i & 0x04 ? 1 : 0);
+    symbol_table.get_variable("A")->ref() = double(i & 0x01 ? 1 : 0);
+    symbol_table.get_variable("B")->ref() = double(i & 0x02 ? 1 : 0);
+    symbol_table.get_variable("C")->ref() = double(i & 0x04 ? 1 : 0);
 
     const int result = static_cast<int>(expression.value());
 
@@ -39,7 +39,6 @@ template <typename T> void LogicComparator::logic() {
            static_cast<int>(symbol_table.get_variable("C")->value()), result);
   }
 }
-template void LogicComparator::logic<double>();
 
 // --- Preprocessing Function ---
 
@@ -488,13 +487,13 @@ bool LogicComparator::extractVariables(const std::string &expr1_raw, const std::
  * @brief Compares two preprocessed logic expression strings for equivalence using truth tables.
  *        Internal helper function.
  *
- * @tparam T The numeric type used by ExprTk (e.g., double, float).
+ * @tparam double The numeric type used by ExprTk (e.g., double, float).
  * @param ref_expression_processed The preprocessed reference logic expression.
  * @param comp_expression_processed The preprocessed comparison logic expression.
  * @param sorted_vars A sorted vector of unique variable names common to both expressions.
  * @param result Reference to a PinComparisonResult object to store detailed results.
  */
-template <typename T>
+
 void LogicComparator::compareSingleExpressionPair(const std::string &ref_expression_processed,
                                                   const std::string &comp_expression_processed,
                                                   const std::vector<std::string> &sorted_vars,
@@ -509,9 +508,9 @@ void LogicComparator::compareSingleExpressionPair(const std::string &ref_express
   spdlog::debug("  Comp: {}", comp_expression_processed);
 
   // --- ExprTk Setup ---
-  typedef exprtk::symbol_table<T> symbol_table_t;
-  typedef exprtk::expression<T> expression_t;
-  typedef exprtk::parser<T> parser_t;
+  typedef exprtk::symbol_table<double> symbol_table_t;
+  typedef exprtk::expression<double> expression_t;
+  typedef exprtk::parser<double> parser_t;
 
   // Setup for Reference Expression
   symbol_table_t ref_symbol_table;
@@ -635,7 +634,7 @@ void LogicComparator::compareSingleExpressionPair(const std::string &ref_express
     for (size_t j = 0; j < num_vars; ++j) {
       // The j-th bit of i determines the value of the j-th variable
       bool bit_value = ((i >> j) & 1ULL);
-      T var_value = bit_value ? T(1.0) : T(0.0); // ExprTk uses floating point
+      double var_value = bit_value ? double(1.0) : double(0.0); // ExprTk uses floating point
 
       // Get variable reference and assign value
       // Need error checking here in theory, but create_variable should have caught issues
@@ -649,7 +648,7 @@ void LogicComparator::compareSingleExpressionPair(const std::string &ref_express
     }
 
     // Evaluate expressions
-    T ref_val, comp_val;
+    double ref_val, comp_val;
     try {
       ref_val = ref_expression.value();
     } catch (const std::exception &e) {
@@ -672,8 +671,8 @@ void LogicComparator::compareSingleExpressionPair(const std::string &ref_express
     }
 
     // Store boolean results (commonly, non-zero is true in logic contexts)
-    bool ref_bool_result = (ref_val != T(0.0));
-    bool comp_bool_result = (comp_val != T(0.0));
+    bool ref_bool_result = (ref_val != double(0.0));
+    bool comp_bool_result = (comp_val != double(0.0));
 
     ref_results.push_back(ref_bool_result);
     comp_results.push_back(comp_bool_result);
@@ -709,13 +708,6 @@ void LogicComparator::compareSingleExpressionPair(const std::string &ref_express
   }
 }
 
-// Explicit template instantiation (usually in the .cpp file)
-template void LogicComparator::compareSingleExpressionPair<double>(const std::string &,
-                                                                   const std::string &,
-                                                                   const std::vector<std::string> &,
-                                                                   PinComparisonResult &);
-// Add other types if needed, e.g., <float>
-
 /**
  * @brief Compares logic for all output pins defined in the input maps for a specific cell.
  *
@@ -724,13 +716,12 @@ template void LogicComparator::compareSingleExpressionPair<double>(const std::st
  * and validates variables, and then compares the logic using truth tables via
  * compareSingleExpressionPair.
  *
- * @tparam T Numeric type for ExprTk (e.g., double).
+ * @tparam double Numeric type for ExprTk (e.g., double).
  * @return A map where the key is the pin name and the value is the
  *         PinComparisonResult struct containing detailed comparison results for that pin.
  */
-template <typename T>
-std::map<std::string, PinComparisonResult> LogicComparator::compareCellLogic() {
-  std::map<std::string, PinComparisonResult> all_pin_results;
+
+void LogicComparator::compareCellLogic() {
 
   // 1. Collect all unique pin names from both maps
   std::set<std::string> unique_pin_names;
@@ -783,7 +774,7 @@ std::map<std::string, PinComparisonResult> LogicComparator::compareCellLogic() {
 
     // If pin missing in either, we can't compare, but store result and continue
     if (!pin_result.comparison_possible) {
-      all_pin_results[pin_name] = pin_result;
+      all_pin_results_[pin_name] = pin_result;
       continue;
     }
 
@@ -808,7 +799,7 @@ std::map<std::string, PinComparisonResult> LogicComparator::compareCellLogic() {
     if (ref_processed.empty() || comp_processed.empty()) {
       pin_result.ref_expr_processed = ref_processed; // Store possibly empty strings
       pin_result.comp_expr_processed = comp_processed;
-      all_pin_results[pin_name] = pin_result;
+      all_pin_results_[pin_name] = pin_result;
       continue;
     }
 
@@ -824,7 +815,7 @@ std::map<std::string, PinComparisonResult> LogicComparator::compareCellLogic() {
       pin_result.comparison_possible = false;
       pin_result.ref_expr_processed = ref_processed; // Store processed even if vars mismatch
       pin_result.comp_expr_processed = comp_processed;
-      all_pin_results[pin_name] = pin_result;
+      all_pin_results_[pin_name] = pin_result;
       continue;
     }
     // --- Helper function: build log string ---
@@ -843,41 +834,17 @@ std::map<std::string, PinComparisonResult> LogicComparator::compareCellLogic() {
 
     // 6. Compare the single pair using the processed expressions
     // Pass pin_result by reference - it will be populated by the function
-    compareSingleExpressionPair<T>(ref_processed, comp_processed, sorted_vars, pin_result);
+    compareSingleExpressionPair(ref_processed, comp_processed, sorted_vars, pin_result);
 
     // 7. Store the detailed result for this pin
-    all_pin_results[pin_name] = pin_result;
+    all_pin_results_[pin_name] = pin_result;
 
   } // End of pin loop
 
   spdlog::info("Logic comparison finished for cell '{}'.", cell_name_);
-  return all_pin_results;
 }
 
-// Explicit template instantiation (usually in the .cpp file)
-template std::map<std::string, PinComparisonResult> LogicComparator::compareCellLogic<double>();
-// Add other types if needed, e.g., <float>
-
-#include "LogicComparator.hpp"
-#include "tabulate/markdown_exporter.hpp" // Include MarkdownExporter
-#include <chrono>                         // For system_clock
-#include <ctime>                          // For time_t, tm, localtime
-#include <fstream>
-#include <iomanip> // For std::put_time
-
-/**
- * @brief Generates a comparison report file based on cell logic comparison results.
- *
- * Creates a Markdown file summarizing the logic comparison for each pin of a cell.
- * Includes raw and processed expressions, comparison status, and detailed truth tables
- * if the expressions are found to be non-equivalent but comparable.
- *
- * @param output_file Path to the output report file (should end with .md).
- * @param comparison_results The results obtained from compareCellLogic.
- */
-void LogicComparator::generateReport(
-    const std::string &output_file,
-    const std::map<std::string, PinComparisonResult> &comparison_results) {
+void LogicComparator::generateReport(const std::string &output_file) {
 
   std::ofstream outfile(output_file);
   if (!outfile.is_open()) {
@@ -917,7 +884,7 @@ void LogicComparator::generateReport(
 
   tabulate::MarkdownExporter exporter; // Create exporter once
 
-  for (const auto &[pin_name, result] : comparison_results) {
+  for (const auto &[pin_name, result] : all_pin_results_) {
     outfile << "## Pin: " << pin_name << "\n\n";
 
     Table summary_table;

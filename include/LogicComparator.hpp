@@ -16,6 +16,7 @@
 #include <vector>
 
 #include "exprtk.hpp"
+#include "tabulate/markdown_exporter.hpp"
 #include "tabulate/table.hpp"
 #include <spdlog/spdlog.h>
 
@@ -42,7 +43,9 @@ public:
   LogicComparator(const std::map<std::string, std::string> &ref_outpin_map,
                   const std::map<std::string, std::string> &comp_outpin_map,
                   const std::string &cell_name);
-  template <typename T> void logic();
+
+  // Example code from exprtk documentation
+  void logic();
 
   // Preprocessing function
   std::string preprocessExpression(const std::string &input_expr);
@@ -58,36 +61,32 @@ public:
    * @tparam T The numeric type used by ExprTk (e.g., double, float).
    * @param ref_expression_processed The preprocessed reference logic expression.
    * @param comp_expression_processed The preprocessed comparison logic expression.
+   * @param sorted_vars A sorted vector of unique variable names common to both expressions.
    * @param result Reference to a PinComparisonResult object to store detailed results.
    */
-  template <typename T>
   void compareSingleExpressionPair(const std::string &ref_expression_processed,
                                    const std::string &comp_expression_processed,
                                    const std::vector<std::string> &sorted_vars,
                                    PinComparisonResult &result); // Pass result struct
 
   /**
-   * @brief Compares logic for all output pins defined in the input maps.
-   *
-   * @tparam T Numeric type for ExprTk (e.g., double).
-   * @return A map where the key is the pin name and the value is the
-   *         PinComparisonResult struct containing comparison details.
+   * @brief Compares logic for all output pins defined in the input maps,
+   *        and stores results in all_pin_results_.
    */
-  template <typename T> std::map<std::string, PinComparisonResult> compareCellLogic();
+  void compareCellLogic();
 
   /**
    * @brief Generates a comparison report file based on cell logic comparison results.
    *
    * @param output_file Path to the output report file.
-   * @param comparison_results The results obtained from compareCellLogic.
    */
-  void generateReport(const std::string &output_file,
-                      const std::map<std::string, PinComparisonResult> &comparison_results);
+  void generateReport(const std::string &output_file);
 
 private:
   std::map<std::string, std::string> ref_outpin_map_;
   std::map<std::string, std::string> comp_outpin_map_;
   std::string cell_name_;
+  std::map<std::string, PinComparisonResult> all_pin_results_;
 };
 
 #endif // LOGIC_COMPARATOR_HPP

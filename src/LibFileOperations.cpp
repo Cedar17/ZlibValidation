@@ -303,7 +303,7 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
 
     // TODO Perform functional equivalence check
     LogicComparator comparator(ref_outpin_map, comp_outpin_map, cell);
-    // comparator.logic<double>();
+    // comparator.logic();
 
     // // Test for preprocessing
     // std::string ref_expr;
@@ -320,12 +320,12 @@ void funcLibFile(const std::string &ref_file, const std::string &comp_file,
     // comparator.extractVariables(ref_expr, comp_expr, sorted_vars);
     // struct PinComparisonResult pin_comparison_result;
     // // comp_expr = "not ((not(A1) and not(A2)) or B)";
-    // comparator.compareSingleExpressionPair<double>(ref_expr, comp_expr, sorted_vars,
+    // comparator.compareSingleExpressionPair(ref_expr, comp_expr, sorted_vars,
     //                                                pin_comparison_result);
 
-    // comparator.compareCellLogic<double>();
-    std::map<std::string, PinComparisonResult> results = comparator.compareCellLogic<double>();
-    comparator.generateReport(report_file_name, results);
+    // comparator.compareCellLogic();
+    comparator.compareCellLogic();
+    comparator.generateReport(report_file_name);
     
     spdlog::info("Functional equivalence check completed for cell: '{}'", cell);
   }
