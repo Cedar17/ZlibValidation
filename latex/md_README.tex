@@ -1,5 +1,118 @@
 \hypertarget{md_README_autotoc_md1}{}\doxysection{Description}\label{md_README_autotoc_md1}
-Command line tool to validate standard cell libraries in {\ttfamily .lib} format.\hypertarget{md_README_autotoc_md2}{}\doxysection{Usage}\label{md_README_autotoc_md2}
+Command line tool to validate standard cell libraries in {\ttfamily .lib} format.
+
+{\ttfamily Zlib\+Validation} provides a suite of tools for engineers working with digital IC standard cell libraries in the Liberty format (.lib). It helps ensure library quality, consistency, and facilitates comparison and conversion tasks. Built with C++ for performance and leveraging robust libraries for parsing and command-\/line interaction.\hypertarget{md_README_autotoc_md2}{}\doxysection{Table of Contents}\label{md_README_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Zlib\+Validation
+\begin{DoxyItemize}
+\item Description
+\item Table of Contents
+\item Motivation
+\item Installation
+\begin{DoxyItemize}
+\item Prerequisites
+\item Building from Source (Recommended Method)
+\item Running Zlib\+Validation
+\item (Optional) Adding to your PATH
+\end{DoxyItemize}
+\item Help Message / Features
+\item Example Usage
+\item Documentation and Reference Manual
+\item Acknowledgements
+\begin{DoxyItemize}
+\item Core Functionality Libraries\+:
+\item Build, Documentation, and External Tools\+:
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md3}{}\doxysection{Motivation}\label{md_README_autotoc_md3}
+Validating standard cell libraries (.lib) is critical in chip design, but current solutions pose challenges. Commercial tools are expensive, locking out many users (students, startups, researchers), and their closed-\/source nature prevents customization and hinders innovation. This creates a gap, especially for those needing rapid validation within tight resource constraints.
+
+{\ttfamily Zlib\+Validation} aims to fill this gap. It is a {\bfseries{free, open-\/source command-\/line tool}} designed for comprehensive and efficient .lib file validation. Our goals are to\+:
+
+
+\begin{DoxyItemize}
+\item Lower the barrier to entry for library quality assurance.
+\item Provide {\bfseries{fast}}, {\bfseries{reliable checks}} (parsing, consistency, function, parameters, comparison).
+\item Enable {\bfseries{transparency}}, {\bfseries{customization}}, and {\bfseries{community collaboration}} through open source.
+\item Bridge the divide between academic research and industrial needs in validation technology.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md4}{}\doxysection{Installation}\label{md_README_autotoc_md4}
+{\ttfamily Zlib\+Validation} is designed to be easily built and run directly from source {\bfseries{without requiring administrator}} ({\ttfamily sudo}) {\bfseries{privileges}} on Linux systems. This makes it ideal for environments where users have restricted permissions. The recommended installation method is building from source.\hypertarget{md_README_autotoc_md5}{}\doxysubsection{Prerequisites}\label{md_README_autotoc_md5}
+Before you begin, ensure you have the following installed on your {\bfseries{Linux}} system\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Git\+:}} To clone the repository.
+\item {\bfseries{C++ Compiler\+:}} C++20 standard support required (e.\+g., GCC \texorpdfstring{$>$}{>}= 10, Clang \texorpdfstring{$>$}{>}= 12). Developed with GCC 14.\+2.\+0.
+\item {\bfseries{CMake\+:}} Version 3.\+25 or higher (used for configuring the build).
+\item {\bfseries{Ninja}} (recommended) or {\bfseries{Make}}\+: Build systems. Ninja is preferred for its speed.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md6}{}\doxysubsection{Building from Source (\+Recommended Method)}\label{md_README_autotoc_md6}
+Follow these steps to compile {\ttfamily Zlib\+Validation} in your user directory\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Clone the repository\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https://github.com/Cedar17/ZlibValidation.git}
+\DoxyCodeLine{cd ZlibValidation}
+
+\end{DoxyCode}
+
+\item {\bfseries{Configure the build using CMake\+:}} Create a build directory and run CMake from within it. This keeps build files separate from your source code. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir build}
+\DoxyCodeLine{cd build}
+\DoxyCodeLine{\# Use Ninja as the build system (recommended):}
+\DoxyCodeLine{cmake .. -\/G Ninja}
+\DoxyCodeLine{\# or if you prefer Make:}
+\DoxyCodeLine{cmake .. -\/G "{}Unix Makefiles"{}}
+
+\end{DoxyCode}
+ {\itshape Note\+: No {\ttfamily sudo} is needed here.}
+\item {\bfseries{Compile the project\+:}} Use {\ttfamily ninja} to build the executable. If you chose Make, use {\ttfamily make} instead, the {\ttfamily -\/j} flag speeds up compilation by using multiple processor cores. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# If you used Ninja:}
+\DoxyCodeLine{ninja}
+\DoxyCodeLine{\# or if you used Make:}
+\DoxyCodeLine{make -\/j\$(nproc) \# Adjust \$(nproc) or use a specific number like -\/j4}
+
+\end{DoxyCode}
+
+\item {\bfseries{Locate the Executable\+:}} Upon successful compilation, the {\ttfamily zlibvalidation} executable will be located inside the {\ttfamily build} directory\+: {\ttfamily ./build/zlibvalidation}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# Check the executable version:}
+\DoxyCodeLine{./zlibvalidation -\/-\/version}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md7}{}\doxysubsection{Running Zlib\+Validation}\label{md_README_autotoc_md7}
+Since we haven\textquotesingle{}t performed a system-\/wide install (which would typically require {\ttfamily sudo}), you need to run the executable using its path relative to your current location.
+
+
+\begin{DoxyItemize}
+\item If you are in the project\textquotesingle{}s root directory ({\ttfamily Zlib\+Validation/}), run it like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./build/zlibvalidation -\/-\/help}
+
+\end{DoxyCode}
+
+\item If you are inside the {\ttfamily build} directory, run it like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./zlibvalidation -\/-\/help}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md8}{}\doxysubsection{(\+Optional) Adding to your PATH}\label{md_README_autotoc_md8}
+For convenience, you can temporarily add the {\ttfamily build} directory to your shell\textquotesingle{}s {\ttfamily PATH} variable for the current session\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{export PATH="{}\$PWD/build:\$PATH"{} \# Assumes you are in the ZlibValidation root directory}
+\DoxyCodeLine{\# Now you can run it directly:}
+\DoxyCodeLine{zlibvalidation -\/h}
+
+\end{DoxyCode}
+ To make this change permanent, you can add the above line to your shell\textquotesingle{}s configuration file (e.\+g., {\ttfamily $\sim$/.bashrc}, {\ttfamily $\sim$/.zshrc}).\hypertarget{md_README_autotoc_md9}{}\doxysection{Help Message / Features}\label{md_README_autotoc_md9}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{ZlibValidation}
@@ -21,450 +134,64 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \DoxyCodeLine{  func                        Check functional equivalence of two Liberty files or Verilog files}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md3}{}\doxysection{Development Diary}\label{md_README_autotoc_md3}
-\hypertarget{md_README_autotoc_md4}{}\doxysubsection{2025-\/01-\/27}\label{md_README_autotoc_md4}
+\hypertarget{md_README_autotoc_md10}{}\doxysection{Example Usage}\label{md_README_autotoc_md10}
+see \mbox{[}test\mbox{]}(test) directory. There are some shell scripts showing how to use {\ttfamily Zlib\+Validation}. You can modify them to validate your own standard cell library pdk.\hypertarget{md_README_autotoc_md11}{}\doxysection{Documentation and Reference Manual}\label{md_README_autotoc_md11}
+see \href{https://cedar17.github.io/ZlibValidation/}{\texttt{ https\+://cedar17.\+github.\+io/\+Zlib\+Validation/}} for HTML documentation and PDF reference manual.\hypertarget{md_README_autotoc_md12}{}\doxysection{Acknowledgements}\label{md_README_autotoc_md12}
+{\ttfamily Zlib\+Validation} leverages the power of several excellent third-\/party libraries, build tools, and external utilities. We extend our sincere gratitude to the developers and communities behind these projects, which were instrumental in building this tool\+:\hypertarget{md_README_autotoc_md13}{}\doxysubsection{Core Functionality Libraries\+:}\label{md_README_autotoc_md13}
 
 \begin{DoxyItemize}
-\item 创建了一个\+C++空项目，使用\+CMake管理编译链，并手动添加了外部库 {\ttfamily libsi2dr\+\_\+liberty.\+a}。
-\item 添加了 {\ttfamily CLI11} 库以处理命令行参数解析。
-\item 添加了 {\ttfamily spdlog} 日志库，实现高效的日志格式化输出。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md5}{}\doxysubsection{2025-\/01-\/28}\label{md_README_autotoc_md5}
-
+\item {\bfseries{\href{https://github.com/csguth/LibertyParser}{\texttt{ Liberty Parser (csguth/\+Liberty\+Parser)}}\+:}}
 \begin{DoxyItemize}
-\item 添加 {\ttfamily nlohmann/json} 库用于 JSON 数据存储和检索。
-\item 在 {\ttfamily \mbox{\hyperlink{version_8h}{version.\+h}}} 中存储项目作者、版本、构建日期等信息，由 {\ttfamily CMake} 自动维护。
-\item 简化了 {\ttfamily -\/-\/version} 参数解析的代码实现，并添加了 {\ttfamily -\/-\/mode} 选项以选择工作模式。
-\item 使用 {\ttfamily spdlog} 库的日志记录器将 debug 级别及以上的日志输出到文件，将 info 级别及以上的日志输出到控制台。
-\item 将库文件顶层封装为{\ttfamily \mbox{\hyperlink{classLibFile}{Lib\+File}}}对象，提供了读取、解析和修改库文件的方法，包含名称和 PVT 信息作为公共属性。
-\begin{DoxyItemize}
-\item 但仍然使用过程化方法循环迭代读取库文件名称和 PVT 信息。
+\item {\bfseries{Purpose\+:}} Provides the core functionality for parsing the {\ttfamily .lib} (Liberty) standard cell library format. This open-\/source implementation forms the basis of our library reading capabilities.
+\item {\bfseries{Integration\+:}} The source code was cloned from the repository, manually compiled into a static library ({\ttfamily libsi2dr\+\_\+liberty.\+a}), and included directly within this project\textquotesingle{}s {\ttfamily include\+\_\+3rd\+\_\+party} directory.
+\item {\bfseries{License\+:}} SYNOPSYS Open Source License Version 1.\+0.
 \end{DoxyItemize}
-\item 按照 C++ 标准库、第三方库和本地库的顺序重新排列了 {\ttfamily \#include} 语句。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md6}{}\doxysubsection{2025-\/02-\/01}\label{md_README_autotoc_md6}
-
+\item {\bfseries{\href{https://github.com/CLIUtils/CLI11}{\texttt{ CLI11}}\+:}}
 \begin{DoxyItemize}
-\item 使用面向对象编程（\+OOP）重构了原先用\+C语言循环遍历的代码，将简单属性的读取封装为{\ttfamily \mbox{\hyperlink{classLibAttribute}{Lib\+Attribute}}}类，
-\begin{DoxyItemize}
-\item 并将函数返回的{\ttfamily char $\ast$}类型的属性值转换为{\ttfamily std\+::string}类型，便于外部使用。
+\item {\bfseries{Purpose\+:}} Enables the robust, feature-\/rich, and user-\/friendly command-\/line interface, handling subcommands and options parsing.
+\item {\bfseries{Integration\+:}} Managed via CMake\textquotesingle{}s {\ttfamily Fetch\+Content} mechanism during the build process.
+\item {\bfseries{License\+:}} BSD 3-\/Clause License.
 \end{DoxyItemize}
-\item 将属性迭代过程封装为{\ttfamily \mbox{\hyperlink{classAttributesIterator}{Attributes\+Iterator}}}类，在析构函数中处理迭代退出，实现资源获取即初始化（\+RAII）。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md7}{}\doxysubsection{2025-\/02-\/10}\label{md_README_autotoc_md7}
-
+\item {\bfseries{\href{https://github.com/gabime/spdlog}{\texttt{ spdlog}}\+:}}
 \begin{DoxyItemize}
-\item 将组的迭代过程封装为{\ttfamily \mbox{\hyperlink{classGroupsIterator}{Groups\+Iterator}}}类，同样在析构函数中处理迭代退出。
-\item 封装了{\ttfamily \mbox{\hyperlink{classLibGroup}{Lib\+Group}}}类，提供了读取组名、类别、属性、子组的方法。
-\item 将类的定义和实现分离，将类的实现放在{\ttfamily src}目录下，将类的定义放在{\ttfamily include}目录下，修改了{\ttfamily CMake\+Lists.\+txt}自动收集文件，便于模块化编译。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md8}{}\doxysubsection{2025-\/02-\/11}\label{md_README_autotoc_md8}
-
-\begin{DoxyItemize}
-\item 类的头文件改为{\ttfamily hpp}后缀，修改了{\ttfamily CMake\+Lists.\+txt}中的文件收集规则，\+CMake编译时间戳更新。
-\item 为{\ttfamily \mbox{\hyperlink{classLibFile}{Lib\+File}}}类添加了输出同名json格式文件的方法{\ttfamily \mbox{\hyperlink{classLibFile_a88de22798a64acdb38faefc0d785804f}{Lib\+File\+::write\+Json\+To\+File}}}，目前能输出\+PVT、cell\+\_\+name、cell\+\_\+footprint、cell\+\_\+area信息。
-\item \mbox{[}x\mbox{]} voltage 浮点数误差未解决。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md9}{}\doxysubsection{2025-\/02-\/14}\label{md_README_autotoc_md9}
-
-\begin{DoxyItemize}
-\item 在 {\ttfamily \mbox{\hyperlink{json__utils_8cpp}{json\+\_\+utils.\+cpp}}} 中，实现了以 JSON 数据结构循环迭代存储库 (lib) 信息的功能，具体包括 {\ttfamily generate\+Cell\+Json, generate\+Pin\+Json, generate\+Power\+Json, generate\+Lut\+Json} 等函数，并添加了同名的 hpp 头文件。
-\item \mbox{[}x\mbox{]} 时序 (timing) 信息解析功能待完成。
-\item 新增辅助函数 {\ttfamily parse\+String\+To\+Vector}，该函数可将以逗号分隔的字符串解析为浮点数向量，以便于读取 Look Up Table (LUT)。
-\item 为 {\ttfamily \mbox{\hyperlink{classLibFile}{Lib\+File}}} 对象添加了私有属性 {\ttfamily lib\+\_\+json\+\_\+}，用于存储库 (lib) 的 JSON 对象。
-\item 封装了用于迭代复杂属性值的 {\ttfamily \mbox{\hyperlink{classValuesIterator}{Values\+Iterator}}} 类。
-\item 修改了 {\ttfamily \mbox{\hyperlink{classLibAttribute_a74acacf80f0155dbcc07e863cc79cfbc}{Lib\+Attribute\+::is\+Complex()}}} 函数的返回值类型，由原类型变更为 {\ttfamily bool} 类型。
-\item 重写了 {\ttfamily \mbox{\hyperlink{classLibGroup_a5de2a5c697f684c1d809c3e944cf6db0}{Lib\+Group\+::get\+Name()}}} 函数，使其直接返回 {\ttfamily std\+::string} 类型的组名字。
-\item 重构了迭代器使用代码。移除了中间变量类似{\ttfamily si2dr\+Groups\+IdT sub\+\_\+groups} 的声明步骤。直接使用 {\ttfamily lib\+\_\+group.\+get\+Groups()}的返回值进行初始化{\ttfamily \mbox{\hyperlink{classGroupsIterator}{Groups\+Iterator}}}，提升了代码的可读性和简洁性。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md10}{}\doxysubsection{2025-\/02-\/15}\label{md_README_autotoc_md10}
-
-\begin{DoxyItemize}
-\item 实现{\ttfamily generate\+Timing\+Json}函数，用于全面解析时序信息。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md11}{}\doxysubsection{2025-\/02-\/17}\label{md_README_autotoc_md11}
-
-\begin{DoxyItemize}
-\item 简化了迭代器在外部的调用流程，删除所有迭代器的{\ttfamily begin()}方法，改为在构造函数内部初始化。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md12}{}\doxysubsection{2025-\/02-\/18}\label{md_README_autotoc_md12}
-
-\begin{DoxyItemize}
-\item 新建{\ttfamily \mbox{\hyperlink{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}{Lib\+File\+::mono()}}}方法，准备实现库文件输出引脚的values单调递增性检查。
-\item 修改了{\ttfamily setup\+Logger()}函数，将日志文件名可作为参数传入，便于根据不同工作模式切换日志文件。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md13}{}\doxysubsection{2025-\/02-\/19}\label{md_README_autotoc_md13}
-
-\begin{DoxyItemize}
-\item 修改了{\ttfamily mode == \char`\"{}mono\char`\"{}}情况下的逻辑，使用 C++17 引入的 {\ttfamily std\+::filesystem\+::exists()} 函数检查同名 JSON 文件是否存在，如果 JSON 文件不存在，则先调用库文件解析功能，生成 JSON 文件，然后再执行单调性检查。
-\item 实现了{\ttfamily \mbox{\hyperlink{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}{Lib\+File\+::mono()}}}方法，检查cell\+\_\+rise、cell\+\_\+fall、rise\+\_\+transition、fall\+\_\+transition这四种timing信息，针对其 LUT 数据结构，检查其 value 值在表格的每一行是否保持单调递增。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md14}{}\doxysubsection{2025-\/02-\/20}\label{md_README_autotoc_md14}
-
-\begin{DoxyItemize}
-\item {\ttfamily \mbox{\hyperlink{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}{Lib\+File\+::mono()}}}方法增加结果统计功能，在程序运行的最后输出单调性检查中 {\ttfamily passed} (通过) 和 {\ttfamily failed} (失败) 的 cell 数量，输出格式参考 {\ttfamily liberate\+\_\+lv} 工具的风格。
-\item 以 {\ttfamily sl018\+\_\+ff\+\_\+3.\+96\+\_\+-\/40.\+lib} 为例，与 {\ttfamily liberate\+\_\+lv} 工具对比测试，结果均为 205 out of 559 cells failed。
-\item 对于非单调信息警告，增加输出 when 信息，方便用户查看具体位置。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md15}{}\doxysubsection{2025-\/02-\/25}\label{md_README_autotoc_md15}
-
-\begin{DoxyItemize}
-\item 重构命令行参数解析，使用 {\ttfamily CLI11} 库的子命令，在每个回调函数中实现 {\ttfamily parse}、{\ttfamily mono} 功能。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md16}{}\doxysubsection{2025-\/02-\/26}\label{md_README_autotoc_md16}
-
-\begin{DoxyItemize}
-\item 子命令可自定义输出文件名、日志文件名，并设置了相应的默认值。
-\item 改为在 Logger 初始化时打印版本信息，避免在 {\ttfamily -\/h}，{\ttfamily -\/v} 时多余打印。
-\item {\ttfamily \mbox{\hyperlink{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}{Lib\+File\+::mono()}}} 方法增加对 {\ttfamily input\+\_\+slew} 的单调性检查，如果在输入时有指定，就检查 value 矩阵的每一列是否单调。经过测试，{\ttfamily tcbn65lpbc.\+lib} 输出与 {\ttfamily liberate\+\_\+lv} 工具一致。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md17}{}\doxysubsection{2025-\/02-\/27}\label{md_README_autotoc_md17}
-
-\begin{DoxyItemize}
-\item 多线程并行尝试，采用\+GDB调试：
-\begin{DoxyItemize}
-\item si2dr\+\_\+liberty 库在解析 Liberty 文件时，可能使用了共享的数据结构（例如哈希表、字符串表）来存储解析结果或中间数据。
-\item 在多线程并行解析多个文件时，不同的线程同时调用 si2dr\+\_\+liberty 库的函数，并发地访问和操作这些共享数据结构。
-\item si2dr\+\_\+liberty 库可能没有采取足够的线程同步措施来保护这些共享数据结构，导致了数据竞争。
-\item 数据竞争最终导致了内存损坏，使得 strcmp 函数在后续操作中访问了无效内存，触发了段错误。
+\item {\bfseries{Purpose\+:}} Provides a highly efficient and flexible library for structured logging throughout the application, critical for debugging and user feedback.
+\item {\bfseries{Integration\+:}} Managed via CMake\textquotesingle{}s {\ttfamily Fetch\+Content}.
+\item {\bfseries{License\+:}} MIT License.
 \end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md18}{}\doxysubsection{2025-\/02-\/28}\label{md_README_autotoc_md18}
-
+\item {\bfseries{\href{https://github.com/nlohmann/json}{\texttt{ nlohmann/json}}\+:}}
 \begin{DoxyItemize}
-\item 修改{\ttfamily \mbox{\hyperlink{classLibFile}{Lib\+File}}}的构造函数与析构函数，{\ttfamily read}方法改为私有，移入parse方法。将si2dr初始化与销毁放在{\ttfamily parse}方法中，使得{\ttfamily mono}方法与si2dr库解耦，从而实现多线程并行验证单调性。
-\item \mbox{[}x\mbox{]} 顶层{\ttfamily si2dr\+PIGet\+Groups}未退出的bug\+: {\ttfamily WARNING\+: si2dr\+PIQuit\+: Get\+Groups called 1 more times than Iter\+Quit}，内存泄漏？
-\item 学到了可以在{\ttfamily CMake\+Lists.\+txt}中使用{\ttfamily set(\+CMAKE\+\_\+\+BUILD\+\_\+\+TYPE Release)}减少编译器优化程度，配合\+GDB等调试工具检查堆栈信息。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md19}{}\doxysubsection{2025-\/03-\/01}\label{md_README_autotoc_md19}
-
-\begin{DoxyItemize}
-\item {\ttfamily sub\+\_\+groups\+\_\+iter}是在每次{\ttfamily for}循环的迭代中声明的局部变量，在每次迭代结束后其作用域结束，析构函数被调用，释放相关资源。所以{\ttfamily si2dr\+PIQuit}未发现内存泄漏。
-\item 顶层{\ttfamily group\+\_\+iter}的析构函数发生在{\ttfamily parse}方法结束时，所以{\ttfamily parse}方法末尾的{\ttfamily si2dr\+PIQuit}检测到了顶层groups未退出的情况。
-\item 综上，{\ttfamily si2dr\+PIQuit}的警告是由于当时顶层groups未退出导致的，在{\ttfamily parse}方法结束后能正确释放，不会造成实际上的内存泄漏。
-\item \mbox{[} \mbox{]} 顺序执行{\ttfamily parse}，log输出仍存在问题：解析第二第三个库的时候会多余打印之前库的\+PVT信息，时间上也比单独解析一个库的总和要慢(parse 6s 左右，mono 1s)。并行执行{\ttfamily mono}，log输出会集中到最后一个库的文件。
-\item 给{\ttfamily \mbox{\hyperlink{classLibFile}{Lib\+File}}}类的私有属性添加了初始值，避免了未初始化的问题，吗？
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md20}{}\doxysubsection{2025-\/03-\/07}\label{md_README_autotoc_md20}
-
-\begin{DoxyItemize}
-\item 实现了 {\ttfamily compare} 子命令的解析，能够对两个库文件依次进行解析，并生成对应的 JSON 文件。
-\item \mbox{[} \mbox{]} 仍然存在日志重复输出的问题，多文件处理时数据可能会相互干扰。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md21}{}\doxysubsection{2025-\/03-\/10}\label{md_README_autotoc_md21}
-
-\begin{DoxyItemize}
-\item 新增 {\ttfamily supercell} 子命令和 {\ttfamily \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{Lib\+File\+::supercell}}} 方法，用于生成超级单元以供验证。
-\item 集成了 {\ttfamily zlibboost} 子命令，支持调用开源库特征化工具 \href{https://github.com/skycrapers/ZlibBoost}{\texttt{ zlibboost}}。已与开发者取得联系。
-\item 调整了子命令输出文件的位置为当前目录，避免文件混淆。
-\item 添加了 {\ttfamily clear} 子命令，方便清理生成的 JSON 文件和日志文件。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md22}{}\doxysubsection{2025-\/03-\/14}\label{md_README_autotoc_md22}
-
-\begin{DoxyItemize}
-\item 添加了 {\ttfamily tabulate/table} 库，通过 CMake Fetch\+Content 进行管理，用于生成格式化的表格输出。
-\item 新建了 {\ttfamily compare.\+cpp} 和 {\ttfamily compare.\+hpp} 文件，创建了 {\ttfamily \mbox{\hyperlink{classLibraryComparator}{Library\+Comparator}}} 类，用于比较两个库文件的差异。目前实现了读取参考库 JSON 文件的功能。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md23}{}\doxysubsection{2025-\/03-\/15}\label{md_README_autotoc_md23}
-
-\begin{DoxyItemize}
-\item 使用 {\ttfamily std\+::filesystem\+::path} 重构了 {\ttfamily \mbox{\hyperlink{classLibFile}{Lib\+File}}} 类的文件路径管理，方便文件路径的拼接和处理。{\ttfamily \mbox{\hyperlink{classLibFile}{Lib\+File}}} 类添加了成员变量 {\ttfamily basename\+\_\+}、{\ttfamily filename\+\_\+}、{\ttfamily libname\+\_\+}、{\ttfamily jsonname\+\_\+} 和 {\ttfamily loggername\+\_\+}，用于存储文件名、库名、\+JSON 文件名和日志文件名。
-\item 通过作用域 (scope) 管理 {\ttfamily \mbox{\hyperlink{classLibFile_a84d29423705e2dea8a382dc6437640d9}{Lib\+File\+::parse}}} 方法中的顶层迭代器的生命周期，提前结束并调用 {\ttfamily si2dr\+PIQuit} 保证资源释放，解决了分析多个库时日志重复输出和数据保存错误的问题。
-\item {\ttfamily clear} 子命令增加了删除 {\ttfamily .map} 和 {\ttfamily .md} 文件的功能。
-\item 实现了 {\ttfamily mono} 子命令的多线程并行。首先检查是否是多文件输入，如果是，就顺序检查是否准备好了每个文件的 JSON 文件，否则顺序进行多文件库解析。在所有文件的 JSON 准备就绪后，根据文件数量创建线程池，每个线程负责一个库的单调性检查。
-\item 重构了 {\ttfamily spdlog} 日志初始化，返回 logger 对象而不是设置全局默认 logger。保留名为 {\ttfamily APP\+\_\+\+NAME} 的全局 logger，用于输出总体提示信息。
-\item 为 {\ttfamily \mbox{\hyperlink{classLibFile}{Lib\+File}}} 类添加了独立的成员变量 logger，用于记录每个库文件的日志信息。
-\item 完成了 {\ttfamily supercell} 子命令的多线程并行，处理逻辑与 {\ttfamily mono} 子命令类似。
-\item {\ttfamily \mbox{\hyperlink{classLibraryComparator_a4f150829d621ad8f199813a0f9fc8be5}{Library\+Comparator\+::generate\+Report()}}} 方法测试了 {\ttfamily tabulate} 库的markdown表格输出功能，完善了报告的头部信息输出，包括参考库、比较库、相对容差、软件信息、报告生成时间和图例说明。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md24}{}\doxysubsection{2025-\/03-\/16}\label{md_README_autotoc_md24}
-
-\begin{DoxyItemize}
-\item 针对 {\ttfamily compare} 子命令，增加了对报告文件名的检查，确保其以 {\ttfamily .md} 或 {\ttfamily .txt} 结尾。若不符合，则给出警告并自动添加 {\ttfamily .md} 后缀。
-\item 进一步完善了 {\ttfamily \mbox{\hyperlink{classLibraryComparator_a4f150829d621ad8f199813a0f9fc8be5}{Library\+Comparator\+::generate\+Report()}}} 方法。现在，该方法能够遍历比较库中的所有 cell，并在参考库中查找对应的 cell。如果找到，则调用 {\ttfamily \mbox{\hyperlink{classLibraryComparator_a33d180a887ce7b69245b1be5ffaf1e01}{Library\+Comparator\+::compare\+Cell()}}} 方法进行比较；否则，会记录 cell 未找到的警告信息。
-\item 新增了 {\ttfamily \mbox{\hyperlink{classLibraryComparator_a33d180a887ce7b69245b1be5ffaf1e01}{Library\+Comparator\+::compare\+Cell()}}} 方法，用于比较两个库中同名 cell 的输出引脚。该方法会遍历比较库 cell 的每个输出引脚，在参考库 cell 中寻找同名引脚。如果找到，则调用 {\ttfamily compare\+Pin} 函数比较引脚；如果未找到，则记录警告信息。如果比较库 cell 没有输出引脚，则会记录一条信息级别的日志。
-\item 新增了 {\ttfamily \mbox{\hyperlink{classLibraryComparator_ac65c88728ce78808f4b067b55ef12ed6}{Library\+Comparator\+::compare\+Pin()}}} 方法，用于比较两个库中同名 cell 的同名引脚。它会遍历比较库 pin 的每个 timing arc，并在参考库 pin 中查找相同类型的 timing arc。如果找到，则调用 {\ttfamily compare\+Timing\+Arc} 函数进行比较；如果未找到，则记录警告信息。如果比较库 pin 没有 timing arc，则记录一条信息级别的日志。
-\item 修改了 {\ttfamily \mbox{\hyperlink{classLibraryComparator_a4906e6ba933a1aaa436c5a3bee0c5340}{Library\+Comparator\+::compare\+Timing\+Arc()}}} 方法，用于比较两个 timing arc JSON 对象。该方法首先记录正在比较的 timing arc 的类型，然后提取 \char`\"{}related\+\_\+pin\char`\"{} 属性。接着，它遍历预定义的 timing arc 名称列表（\char`\"{}cell\+\_\+rise\char`\"{}, \char`\"{}cell\+\_\+fall\char`\"{}, \char`\"{}rise\+\_\+transition\char`\"{}, \char`\"{}fall\+\_\+transition\char`\"{}），并在比较库中查找这些 timing arc。如果找到，则在参考库中查找对应的 timing arc，并调用 {\ttfamily compare\+Lut} 方法进行比较。如果参考库中未找到对应的 timing arc，则记录警告信息。
-\item 修改了 {\ttfamily \mbox{\hyperlink{classLibraryComparator_afef02627c853b4956fb5f9bdf7f0e6ee}{Library\+Comparator\+::compare\+Lut()}}} 方法（原 {\ttfamily compare\+Value} 方法，已更正命名），用于比较两个 JSON 对象中具有相同名称的 value。它首先提取两个 JSON 对象中的 \char`\"{}index\+\_\+1\char`\"{} 和 \char`\"{}index\+\_\+2\char`\"{} 数组，如果这两个数组不相等，则记录错误信息并返回。如果索引匹配，则比较 LUT 中的实际 value 值，并根据相对容差 ({\ttfamily reltol}) 和绝对容差 ({\ttfamily abstol}) 标记差异。
-\item 重新设计了层级比较方法，现在可以逐层级地传入 {\ttfamily cell\+\_\+name}、{\ttfamily pin\+\_\+name}、{\ttfamily timing\+\_\+type}、{\ttfamily related\+\_\+pin} 和 {\ttfamily arc\+\_\+name}，以便在最内层制表或提示时能够准确输出层级信息。
-\item 修复了 {\ttfamily Library\+Comparator\+::compare\+Value()} 方法的命名错误，已更正为 {\ttfamily \mbox{\hyperlink{classLibraryComparator_afef02627c853b4956fb5f9bdf7f0e6ee}{Library\+Comparator\+::compare\+Lut()}}}。
-\item 已经可以输出表格，数据数量和商用工具结果一致，但格式还需要进一步调整。
-\item 新增了 {\ttfamily abstol} 参数，默认值为 0.\+002ns，用于设置绝对容差，与库验证工具保持一致。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md25}{}\doxysubsection{2025-\/03-\/17}\label{md_README_autotoc_md25}
-
-\begin{DoxyItemize}
-\item 新增 {\ttfamily verilog} 和 {\ttfamily spice} 子命令，用于生成 Verilog 和 SPICE 代码。
-\item 完善 {\ttfamily \mbox{\hyperlink{classLibraryComparator}{Library\+Comparator}}} 报告生成：
-\begin{DoxyItemize}
-\item 为每个 cell 增加表头，仅在存在表格数据时输出表格，避免冗余输出。
-\item 增加 cell 结果统计功能，输出结果统计表格，目前仅支持 Timing 中 Delay 的比较。
+\item {\bfseries{Purpose\+:}} Used extensively for representing the parsed Liberty library data internally as JSON objects, facilitating data storage, retrieval, and manipulation (e.\+g., for monotonicity checks and comparisons).
+\item {\bfseries{Integration\+:}} Managed via CMake\textquotesingle{}s {\ttfamily Fetch\+Content}.
+\item {\bfseries{License\+:}} MIT License.
 \end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md26}{}\doxysubsection{2025-\/03-\/18}\label{md_README_autotoc_md26}
+\item {\bfseries{\href{https://github.com/p-ranav/tabulate}{\texttt{ tabulate}}\+:}}
+\begin{DoxyItemize}
+\item {\bfseries{Purpose\+:}} Generates formatted text-\/based tables, significantly improving the readability of reports generated by the {\ttfamily compare} subcommand.
+\item {\bfseries{Integration\+:}} Managed via CMake\textquotesingle{}s {\ttfamily Fetch\+Content}.
+\item {\bfseries{License\+:}} MIT License.
+\end{DoxyItemize}
+\item {\bfseries{\href{https://github.com/MikePopoloski/slang}{\texttt{ slang}}\+:}}
+\begin{DoxyItemize}
+\item {\bfseries{Purpose\+:}} A powerful library for parsing System\+Verilog/\+Verilog code. It\textquotesingle{}s used here to analyze Verilog netlists, extract Abstract Syntax Trees (AST), generate structural Verilog ({\ttfamily verilog} subcommand), and extract logic for functional equivalence checks ({\ttfamily func} subcommand).
+\item {\bfseries{Integration\+:}} Managed via CMake\textquotesingle{}s {\ttfamily Fetch\+Content}.
+\item {\bfseries{License\+:}} MIT License.
+\end{DoxyItemize}
+\item {\bfseries{\href{http://www.partow.net/programming/exprtk/index.html}{\texttt{ Expr\+Tk (Expression Toolkit Library)}}\+:}}
+\begin{DoxyItemize}
+\item {\bfseries{Purpose\+:}} A fast mathematical expression parser and evaluation engine. It is used in the {\ttfamily func} subcommand to dynamically evaluate the logical function strings extracted from libraries or Verilog, enabling the functional equivalence check by comparing truth tables.
+\item {\bfseries{Integration\+:}} The header file ({\ttfamily exprtk.\+hpp}) is included directly within this project\textquotesingle{}s {\ttfamily include\+\_\+3rd\+\_\+party} directory.
+\item {\bfseries{License\+:}} MIT License.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md14}{}\doxysubsection{Build, Documentation, and External Tools\+:}\label{md_README_autotoc_md14}
 
 \begin{DoxyItemize}
-\item 优化统计表格，包含 $\vert$ Cell Name $\vert$ Data Type $\vert$ Failed Count $\vert$ Avg Diff $\vert$ Avg Diff\% $\vert$ Max Diff $\vert$ Max Diff\% $\vert$ Outliers $\vert$。
-\item 优化报告对比表格，包含 $\vert$ Pin Name $\vert$ Reference $\vert$ Comparison $\vert$ Diff $\vert$ Diff \% $\vert$ Type $\vert$ Arc Name $\vert$ Row \# $\vert$ Index\+\_\+1 $\vert$ Column \# $\vert$ Index\+\_\+2 $\vert$ Note $\vert$
-\item 报告表格的 stdout 输出增加表头加粗、黄色的格式化。
-\item 增加 {\ttfamily si2dr\+Simple\+Attr\+Get\+Boolean\+Value} 封装，用于获取布尔类型的属性值，以判断引脚是否是时钟引脚。
-\item {\ttfamily \mbox{\hyperlink{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}{Lib\+File\+::mono()}}} 增加对 {\ttfamily min\+\_\+pulse\+\_\+width} 的单调性检查：
+\item {\bfseries{\href{https://cmake.org/}{\texttt{ CMake}}}}\+: The cross-\/platform build system generator used to configure and manage the entire compilation process.
+\item {\bfseries{\href{https://www.doxygen.nl/}{\texttt{ Doxygen}}}} \& {\bfseries{\href{https://graphviz.org/}{\texttt{ Graphviz}}}}\+: Employed for automatically generating source code documentation and visualizing relationships, aiding development and understanding.
+\item {\bfseries{\href{https://resources.sw.siemens.com/en-US/video-how-to-translate-verilog-netlists-to-spice-using-calibre-v2lvs-utility/}{\texttt{ V2\+LVS (Calibre® Utility)}}\+:}}
 \begin{DoxyItemize}
-\item 针对包含 \char`\"{}input\+\_\+pins\char`\"{} 的 cell，遍历每个输入引脚。
-\item 如果引脚是时钟引脚，则检查其 \char`\"{}timing\+\_\+arcs\char`\"{}。
-\item 针对 \char`\"{}timing\+\_\+type\char`\"{} 为 \char`\"{}min\+\_\+pulse\+\_\+width\char`\"{} 的 timing arc，对 \char`\"{}rise\+\_\+constraint\char`\"{} 和 \char`\"{}fall\+\_\+constraint\char`\"{} 调用 {\ttfamily check\+Timing\+Arc\+Monotonicity} 进行单调性检查。
-\end{DoxyItemize}
-\item {\ttfamily check\+Timing\+Arc\+Monotonicity} 函数日志区分有无 when 信息，输出不同日志。
-\item {\ttfamily check\+Timing\+Arc\+Monotonicity} 核心比较功能取消了等于的情况，相等情况默认为通过。
-\item {\ttfamily check\+Timing\+Arc\+Monotonicity} 核心比较功能增加了判断 {\ttfamily related\+\_\+pin} 是否等于当前 pin，不等于则跳过。最终改为：如果矩阵中当前的值小于前一个值，并且当前引脚不是相关引脚，或者当前值和前一个值都为零，那么就认为这些值不是单调递增的。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md27}{}\doxysubsection{2025-\/03-\/19}\label{md_README_autotoc_md27}
-
-\begin{DoxyItemize}
-\item 完善supercell方法，如果有有时钟信号引脚，链式长度被设为1，再生成超级单元。
-\item 解决 voltage 浮点数误差问题，std\+::round(voltage\+\_\+ $\ast$ 100) / 100.\+0 保留两位小数。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md28}{}\doxysubsection{2025-\/03-\/21}\label{md_README_autotoc_md28}
-
-\begin{DoxyItemize}
-\item 新增 func 子命令，用于检查库或者\+Verilog文件的逻辑等价性。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md29}{}\doxysubsection{2025-\/03-\/24}\label{md_README_autotoc_md29}
-
-\begin{DoxyItemize}
-\item 调研了 C++ 操作 Verilog 相关的库，找到了一个实用的 Verilog 库：\href{https://github.com/MikePopoloski/slang}{\texttt{ slang}}，它可以解析出抽象语法树 (AST)。已修改 CMake\+Lists 文件，将 slang 集成到项目中，目前正在研究其 API。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md30}{}\doxysubsection{2025-\/03-\/25}\label{md_README_autotoc_md30}
-
-\begin{DoxyItemize}
-\item 新增 {\ttfamily \mbox{\hyperlink{verilog__utils_8cpp}{verilog\+\_\+utils.\+cpp}}} 和 {\ttfamily \mbox{\hyperlink{verilog__utils_8hpp}{verilog\+\_\+utils.\+hpp}}} 文件，并创建了 {\ttfamily \mbox{\hyperlink{classVerilogVisitor}{Verilog\+Visitor}}} 类，用于自定义遍历 Verilog AST。
-\item 验证了 slang 对不同类型逻辑单元的解析能力：
-\begin{DoxyItemize}
-\item 简单组合逻辑（如 {\ttfamily AND2\+D0}）、复杂时序逻辑（如 {\ttfamily CMPE42\+D1}）和基本时序逻辑（如 {\ttfamily DFQD1}）均能被正确解析。
-\item 用户自定义原语 (UDP)，例如 {\ttfamily tsmc\+\_\+dff}，会被错误地识别为模块实例化，并产生 \char`\"{}\+Invalid instance declaration\char`\"{} 警告。
-\item 成功提取了模块名、端口方向（{\ttfamily input}、{\ttfamily output}）及名称。
-\item 能够解析命名端口连接的层次化实例化，并获取模块名、实例名称和端口映射关系。
-\item 能够解析门级原语实例化，并获取门类型、实例名称、输出端口和输入端口。
-\end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md31}{}\doxysubsection{2025-\/03-\/26}\label{md_README_autotoc_md31}
-
-\begin{DoxyItemize}
-\item 进一步完善了对 UDP（如 {\ttfamily tsmc\+\_\+dff}）端口映射关系的解析，但其内部 Entry 尚未处理。
-\item 尝试了通过继承 {\ttfamily slang\+::syntax\+::\+Syntax\+Rewriter} 类创建自定义类 {\ttfamily \mbox{\hyperlink{classCellExtractor}{Cell\+Extractor}}}，实现了只保留目标模块、删除其他模块，并将修改后的语法树另存为新文件。使用 {\ttfamily slang\+::syntax\+::\+Syntax\+Printer\+::print\+File()} 方法可以将 Verilog 代码输出到文件。
-\item 创建了 {\ttfamily \mbox{\hyperlink{classCellPrinter}{Cell\+Printer}}} 类，继承自 {\ttfamily slang\+::syntax\+::\+Syntax\+Visitor} 类。当访问到目标模块时，使用 {\ttfamily module.\+to\+String()} 方法也能将 Verilog 代码输出到文件，但发现输出结果中空行会被删除。
-\item 修改了 {\ttfamily \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{Lib\+File\+::supercell()}}} 方法，该方法可以根据输入的 {\ttfamily cell\+\_\+names} 生成指定的 supercell，并在遇到未找到的单元时提示警告信息。
-\item 优化了时钟引脚的处理方式，现在时钟引脚不再被视为 supercell 的输入引脚，而是仅记录为时序单元，并跳过存入 {\ttfamily input\+\_\+pins} 集合的步骤。
-\item 引入了 Doxygen 文档生成工具，用于可视化分析项目，并生成了 Doxygen HTML 文档和 La\+TeX 参考手册。
-\item \mbox{[}x\mbox{]} 尚未解决手册中文显示不正确的问题，可能需要自定义 La\+TeX 头文件。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md32}{}\doxysubsection{2025-\/03-\/27}\label{md_README_autotoc_md32}
-
-\begin{DoxyItemize}
-\item {\bfseries{重大失误！}} 误操作 Git 分支，导致部分代码修改丢失。务必牢记：$\ast$$\ast$及时提交代码！$\ast$$\ast$
-\item 实现了 {\ttfamily \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{Lib\+File\+::verilog}}} 方法的核心流程：
-\begin{DoxyItemize}
-\item 首先调用 {\ttfamily this-\/\texorpdfstring{$>$}{>}supercell()} 生成超级单元。
-\item 读取 {\ttfamily .map} 文件，提取单元映射关系到 {\ttfamily std\+::pair\texorpdfstring{$<$}{<}std\+::string, std\+::string\texorpdfstring{$>$}{>}} 中（原始单元名 -\/\texorpdfstring{$>$}{>} 超级单元名/模块名）。
-\item 从 {\ttfamily lib\+\_\+json\+\_\+} 中提取单元的输入/输出端口信息。
-\item 根据是否存在时钟引脚，确定 Verilog 模块中 instance 的生成数量（时序逻辑为 1，组合逻辑等于 chain length）。
-\item 通过字符串操作生成 ANSI 风格的端口列表，并与模块名组合成完整的 {\ttfamily full\+Module\+Text}。
-\item 使用 {\ttfamily slang\+::syntax\+::\+Syntax\+Tree\+::from\+Text} 从 {\ttfamily full\+Module\+Text} 生成语法树。
-\item 将语法树传递给 {\ttfamily \mbox{\hyperlink{classModuleRewriter}{Module\+Rewriter}}} 类，使用其 {\ttfamily transform} 方法遍历模块成员，并通过 {\ttfamily handle()} 方法进行处理。
-\item 最后，使用 {\ttfamily slang\+::syntax\+::\+Syntax\+Printer\+::print\+File($\ast$tree)} 将处理后的语法树输出到文件。
-\end{DoxyItemize}
-\item {\ttfamily \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{Lib\+File\+::verilog}}} 目前能够正确输出模块名和 ANSI 风格的端口声明。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md33}{}\doxysubsection{2025-\/03-\/28}\label{md_README_autotoc_md33}
-
-\begin{DoxyItemize}
-\item 实现了在模块成员列表中插入新节点的功能。具体而言，在 {\ttfamily \mbox{\hyperlink{classModuleRewriter_aa57bf8f3d6692468013a52a0154f08e8}{Module\+Rewriter\+::handle}}(const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&module)} 方法中，通过 {\ttfamily insert\+At\+Back(module.\+members, new\+Data\+Node)} 函数，成功地在模块成员的末尾插入了链式单元所需的中间变量声明，例如 {\ttfamily wire OP\+\_\+i;}。
-\item 成功地在模块内部添加了关键连接网络变量。通过解析 {\ttfamily CELLNAME\+\_\+\+\_\+X\#\+\_\+\+\_\+\+CRITICALPORT\+\_\+\+\_\+\+OUTPUTPORT} 格式的字符串，提取出关键输入端口 ({\ttfamily critical input port}) 和输出端口 ({\ttfamily OUTPUTPORT})，用于后续的实例化端口连接。
-\item 增加了用于处理多输出接口的中间网络变量 {\ttfamily P\+\_\+\+\_\+\+UNUSEOUTPUTPORT}，用于连接不需要考察的输出端口。
-\item 成功地在模块内添加了模块实例化所需的模块名和实例名称，完成了端口映射关系的连接处理。
-\item 验证了代码对简单组合逻辑单元（如 {\ttfamily INVD0} 反相器）和复杂组合逻辑单元（如 {\ttfamily FA1\+D0} 全加器）的输出能力，结果均符合预期。
-\item 为 {\ttfamily \mbox{\hyperlink{classModuleRewriter}{Module\+Rewriter}}} 类添加了私有属性 {\ttfamily std\+::map\texorpdfstring{$<$}{<}std\+::string, std\+::string\texorpdfstring{$>$}{>} port\+Info\+Map\+\_\+}，用于存储端口映射关系，将端口名映射到其方向（{\ttfamily input/output}）。
-\item 完成了实例化端口连接的细节处理：
-\begin{DoxyItemize}
-\item 如果是关键输入端口且为第一个实例，则直接连接到输入端口；否则，连接到 {\ttfamily OP\+\_\+(i-\/1)} 这样的中间网络变量。
-\item 如果是关键输出端口，且为最后一个实例，则连接到输出端口；否则，连接到 {\ttfamily OP\+\_\+i} 中间网络变量。
-\item 如果是其他输出端口且不是最后一个实例，则连接到 {\ttfamily P\+\_\+i\+\_\+\+\_\+port\+Name} 这样的中间网络变量；否则，连接名等于端口名。
-\item 其余输入端口，连接名等于端口名。
-\end{DoxyItemize}
-\item 文档方面，\+Git\+Hub 远程仓库已开放为公开访问，并配置了 Git\+Hub Pages。可以通过 \href{https://cedar17.github.io/ZlibValidation/}{\texttt{ https\+://cedar17.\+github.\+io/\+Zlib\+Validation/}} 访问项目文档，该页面包含 Doxygen 生成的 HTML 文档和仓库地址的链接。
-\item 配置了 Git\+Hub Actions，实现了 Doxygen 文档和 Graphviz 图的自动化构建，以及 La\+TeX 参考手册的自动编译（暂不支持中文）。每次在 {\ttfamily dev} 和 {\ttfamily main} 分支的提交都会触发文档和参考手册的生成，并发布到 {\ttfamily gh-\/pages} 分支。
-\item 将第三方库放置到 {\ttfamily include\+\_\+3rd\+\_\+party} 目录下，方便管理。修改了 CMake\+Lists 文件，将第三方库的头文件路径添加到 {\ttfamily include\+\_\+directories} 中。修改了 Doxyfile 文件，将第三方库的头文件路径添加到 {\ttfamily INPUT} 中，便于文档生成工具理解第三方库函数、类的关系及使用方法。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md34}{}\doxysubsection{2025-\/03-\/29}\label{md_README_autotoc_md34}
-
-\begin{DoxyItemize}
-\item 修复了 Doxygen 生成 La\+TeX 参考手册时中文显示不正确的问题。通过修改 Doxyfile 文件，添加 {\ttfamily EXTRA\+\_\+\+PACKAGES = ctex} 选项，并指定 {\ttfamily lualatex} 作为编译器，成功解决了中文显示问题。同时，从 {\ttfamily include\+\_\+3rd\+\_\+party} 目录中移除了 {\ttfamily Allsyntax.\+h} 文件，避免了由于 La\+TeX 文档过大导致的 \char`\"{}\+Te\+X capacity exceeded, sorry \mbox{[}main memory size=5000000\mbox{]}\char`\"{} 内存不足问题。
-\item 实现了 Verilog 文件的顶层模块生成功能，采用非 ANSI 风格的端口声明方式，格式与 {\ttfamily liberate\+\_\+lv} 工具生成的完全一致。实现过程如下：
-\begin{DoxyItemize}
-\item 首先将各模块的 Verilog 代码存放到临时文件中。
-\item 在处理模块的过程中，使用 {\ttfamily std\+::vector\texorpdfstring{$<$}{<}std\+::string\texorpdfstring{$>$}{>}} 收集每个模块的 {\ttfamily input\+\_\+pins} 和 {\ttfamily output\+\_\+pins}。
-\item 遍历所有模块名称列表，拼接模块名和引脚名，生成顶层模块的 {\ttfamily all\+\_\+input\+\_\+ports} 和 {\ttfamily all\+\_\+output\+\_\+ports}。
-\item 使用字符串拼接方式构建 {\ttfamily validate\+\_\+top} 模块的完整代码。
-\item 最后将临时文件内容与顶层模块代码合并，输出到最终的 Verilog 文件中。
-\end{DoxyItemize}
-\item 更改{\ttfamily deploy-\/docs.\+yml}，修复了 Git\+Hub Action 生成的 La\+TeX 参考手册中的图像显示问题。具体步骤如下：
-\begin{DoxyItemize}
-\item 设置系统时区为 Asia/\+Shanghai (东八区)。
-\item 安装 miniconda 并更新 conda。
-\item 通过 conda 安装 1.\+9.\+5 版本的 Doxygen，并安装 graphviz 以解决依赖关系，确保每个 dot 图都能正确编译出 pdf 文件。
-\item 使用 {\ttfamily doxygen} 命令生成 HTML 文档和 tex 文件。
-\item 采用 action marketplace 提供的 {\ttfamily xu-\/cheng/texlive-\/action@v2} 安装全量的 texlive2024。
-\item 进入 {\ttfamily ./doc\+\_\+doxygen/latex} 目录，运行 {\ttfamily make} 命令使用 lualatex 编译 tex 文件，生成 pdf 文件。
-\item 使用 {\ttfamily James\+Ives/github-\/pages-\/deploy-\/action@v4} 将生成的 pdf 文件上传到 Git\+Hub Pages 发布，并保留 {\ttfamily \mbox{\hyperlink{README_8md}{README.\+md}}} 和 {\ttfamily index.\+html} 文件。
-\end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md35}{}\doxysubsection{2025-\/03-\/30}\label{md_README_autotoc_md35}
-
-\begin{DoxyItemize}
-\item 完成了 {\ttfamily \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{Lib\+File\+::logic}}(const std\+::string \&cell\+\_\+name)} 方法，该方法返回指定 cell\+\_\+name 所有输出引脚对应的逻辑表达式，以 {\ttfamily std\+::map\texorpdfstring{$<$}{<}std\+::string, std\+::string\texorpdfstring{$>$}{>}} 的形式返回，存储输出引脚名称到其逻辑表达式字符串的映射关系.
-\item 实现了 {\ttfamily func} 子命令的基本框架，用于检查库或 Verilog 文件的逻辑等价性。
-\begin{DoxyItemize}
-\item 完善了 {\ttfamily func\+Lib\+File} 函数，能够处理 Liberty 文件和 Verilog 文件作为参考和比较对象。
-\item 增加了文件类型判断，根据文件扩展名选择不同的处理方式。
-\item 实现了对 {\ttfamily .lib} 文件的解析，并提取指定 cell 的逻辑表达式。
-\item 目前仅支持 Liberty 文件的逻辑表达式提取，\+Verilog 文件的逻辑表达式提取功能尚未完成（\+TODO）。
-\item 增加了对 report 文件名的检查，确保其以 {\ttfamily .md} 或 {\ttfamily .txt} 结尾。若不符合，则给出警告并自动添加 {\ttfamily .md} 后缀。
-\item 实现了从 Liberty 文件中提取逻辑表达式的功能，使用了 {\ttfamily \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{Lib\+File\+::logic}}} 方法。
-\item 增加了日志输出，记录每个 cell 的逻辑表达式提取和比较过程。
-\item 逻辑比较部分目前为空，待实现（\+TODO）。
-\end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md36}{}\doxysubsection{2025-\/03-\/31}\label{md_README_autotoc_md36}
-
-\begin{DoxyItemize}
-\item 实现了从 Verilog 结构网表中提取逻辑表达式的功能，使用了 {\ttfamily \mbox{\hyperlink{classLogicExtractor}{Logic\+Extractor}}} 类。
-\begin{DoxyItemize}
-\item 设计了如何使用 Slang 库从 Verilog 结构网表中提取逻辑表达式的方案：
-\begin{DoxyItemize}
-\item 使用 Slang 解析 Verilog 文件获取语法树(\+AST)。
-\item 遍历 AST 定位目标模块。
-\item 在目标模块内构建网表的内部表示，识别输入、输出、线网及门级连接关系。
-\item 对每个输出端口，递归反向追踪门和线网直至到达主输入端口。
-\item 在回溯过程中根据遇到的门类型构建逻辑表达式。
-\item 应用记忆化技术避免对相同线网/信号的重复计算。
-\end{DoxyItemize}
-\item 创建了 {\ttfamily \mbox{\hyperlink{classLogicExtractor}{Logic\+Extractor}}} 类，用于从 Verilog 代码中提取逻辑表达式。
-\begin{DoxyItemize}
-\item {\ttfamily \mbox{\hyperlink{classLogicExtractor}{Logic\+Extractor}}} 类使用 Slang 库解析 Verilog 文件，并构建目标模块的网表表示。
-\item 实现了 {\ttfamily handle(const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&module)} 方法，用于定位目标模块，并初始化内部数据结构。
-\item 实现了 {\ttfamily handle(const slang\+::syntax\+::\+Port\+Declaration\+Syntax \&port\+Decl)} 方法，用于提取端口信息，包括端口方向和名称。
-\item 实现了 {\ttfamily handle(const slang\+::syntax\+::\+Net\+Declaration\+Syntax \&net\+Decl)} 方法，用于提取线网信息。
-\item 实现了 {\ttfamily handle(const slang\+::syntax\+::\+Primitive\+Instantiation\+Syntax \&primitive\+Inst)} 方法，用于提取门级单元信息，包括门类型、输入和输出信号。
-\item 实现了 {\ttfamily get\+Logic\+Expressions()} 方法，用于根据提取的网表信息，递归地推导每个输出端口的逻辑表达式。
-\item 实现了 {\ttfamily derive\+Logic\+Recursive(const std\+::string \&signal\+Name)} 方法，用于递归地推导指定信号的逻辑表达式。
-\item 实现了 {\ttfamily format\+Expression(const \mbox{\hyperlink{structGateInfo}{Gate\+Info}} \&gate\+Info, const std\+::vector\texorpdfstring{$<$}{<}std\+::string\texorpdfstring{$>$}{>} \&input\+Exprs)} 方法，用于根据门类型和输入表达式，生成逻辑表达式字符串。
-\end{DoxyItemize}
-\item 实现了 {\ttfamily extract\+And\+Print\+Netlist\+Info(const std\+::string \&verilog\+\_\+file, const std\+::string \&cell)} 函数，用于提取并打印网表信息，包括输入、输出、线网和门级单元。
-\item 实现了 {\ttfamily extract\+Logic\+From\+Verilog(const std\+::string \&verilog\+\_\+file, const std\+::string \&cell)} 函数，用于从 Verilog 文件中提取指定 cell 的逻辑表达式，并以 {\ttfamily std\+::map\texorpdfstring{$<$}{<}std\+::string, std\+::string\texorpdfstring{$>$}{>}} 的形式返回。
-\end{DoxyItemize}
-\item 为了更好地组织代码结构，将 {\ttfamily \mbox{\hyperlink{classLogicExtractor}{Logic\+Extractor}}} 类从 {\ttfamily \mbox{\hyperlink{verilog__utils_8hpp}{verilog\+\_\+utils.\+hpp}}} 和 {\ttfamily \mbox{\hyperlink{verilog__utils_8cpp}{verilog\+\_\+utils.\+cpp}}} 中分离出来，并创建了独立的 {\ttfamily \mbox{\hyperlink{LogicExtractor_8hpp}{Logic\+Extractor.\+hpp}}} 和 {\ttfamily \mbox{\hyperlink{LogicExtractor_8cpp}{Logic\+Extractor.\+cpp}}} 文件。同时，统一了所有 hpp 和 cpp 文件的命名规范，使其与对应的类名保持一致。
-\item 新增 {\ttfamily \mbox{\hyperlink{classLogicComparator}{Logic\+Comparator}}} 类及其头文件、源文件，用于比较两个逻辑表达式的等价性，并生成比较报告。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md37}{}\doxysubsection{2025-\/04-\/01}\label{md_README_autotoc_md37}
-
-\begin{DoxyItemize}
-\item 整理头文件引用，删除了不必要的引用，提高编译效率。
-\item 引入 {\ttfamily exprtk.\+cpp} 到第三方头文件目录，为后续的表达式解析做准备。
-\item 完善了 {\ttfamily \mbox{\hyperlink{classLogicComparator}{Logic\+Comparator}}} 类的实现，增加了其示例代码模板 {\ttfamily template \texorpdfstring{$<$}{<}typename T\texorpdfstring{$>$}{>} void logic();}，该模板能够对一个表达式遍历输入变量的所有组合，计算出逻辑值，并打印真值表，为逻辑等价性验证提供基础。
-\item 实现了 {\ttfamily \mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{Logic\+Comparator\+::preprocess\+Expression()}}} 方法，用于预处理逻辑表达式，目的是简化表达式，使其更易于比较。预处理的逻辑如下：
-\begin{DoxyItemize}
-\item $\ast$$\ast$统一 AND 处理$\ast$$\ast$：将 {\ttfamily $\ast$} 和空格隐式 AND 都转换为带空格的 {\ttfamily and}，保证 AND 运算符的显式性。
-\item $\ast$$\ast$显式符号处理$\ast$$\ast$：
-\begin{DoxyItemize}
-\item 在所有括号 {\ttfamily ()} 周围添加空格，方便后续分词。
-\item 将 {\ttfamily +} 替换为 {\ttfamily or}。
-\item 将 {\ttfamily $^\wedge$} 替换为 {\ttfamily xor}。
-\item 将 {\ttfamily !} (非 {\ttfamily !=} 中的 {\ttfamily !}) 替换为 {\ttfamily not}。
-\item 将 {\ttfamily $\ast$} 替换为 {\ttfamily and}。
-\end{DoxyItemize}
-\item $\ast$$\ast$分词$\ast$$\ast$：基于空格将处理后的字符串分割为 token 列表。
-\item $\ast$$\ast$精确插入隐式 AND$\ast$$\ast$：
-\begin{DoxyItemize}
-\item 遍历 token 列表。
-\item 检查当前 token 和下一个 token，如果满足以下条件，则在当前 token 之后插入 {\ttfamily and}：
-\begin{DoxyItemize}
-\item 当前 token 是一个标识符 (如 {\ttfamily A}, {\ttfamily CIX}) 或右括号 {\ttfamily )}。
-\item 下一个 token 是一个标识符或左括号 {\ttfamily (}。
-\item 当前 token 不是一个显式逻辑运算符 ({\ttfamily and}, {\ttfamily or}, {\ttfamily xor}, {\ttfamily not}) 或左括号 {\ttfamily (}。
-\item 下一个 token 不是一个显式逻辑运算符或右括号 {\ttfamily )}。
-\end{DoxyItemize}
-\end{DoxyItemize}
-\item $\ast$$\ast$重组与清理$\ast$$\ast$：将处理后的 token 列表用单个空格连接起来，并进行最终的空格清理（去除多余空格，修剪首尾空格），得到最终的预处理表达式。
-\end{DoxyItemize}
-\item 在 {\ttfamily CMake\+Lists.\+txt} 中，强制启用了 lld 链接器和 ccache，以提升链接和编译速度。
-\item 为了保持 {\ttfamily \mbox{\hyperlink{main_8cpp}{main.\+cpp}}} 的整洁，将 {\ttfamily \mbox{\hyperlink{classLibFile}{Lib\+File()}}} 函数的相关操作剥离出来，并放入 {\ttfamily \mbox{\hyperlink{LibFileOperations_8cpp}{Lib\+File\+Operations.\+cpp}}} 文件中。
-\item 实现了 {\ttfamily \mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{Logic\+Comparator\+::extract\+Variables()}}} 方法，用于从两个表达式中提取并验证变量名，确保它们一致。
-\begin{DoxyItemize}
-\item 该方法使用正则表达式初步提取所有可能的标识符。
-\item 对每个提取出的标识符，先用 {\ttfamily is\+Identifier} 函数（检查大写开头等）进行验证。
-\item 通过 {\ttfamily is\+Identifier} 验证后，仍然将其转换为小写并与 {\ttfamily keywords} 集合比较，以过滤掉可能的关键词（这是一个保守但安全的操作）。
-\item 只有通过这两步验证的标识符才被认为是有效变量，并以原始大小写形式添加到各自的 {\ttfamily std\+::set} 中。
-\item 最后比较两个 {\ttfamily std\+::set} 是否相等，如果不等则报告差异并返回 {\ttfamily false}，如果相等则将变量列表（保留原始大小写）排序后存入 {\ttfamily sorted\+\_\+vars} 并返回 {\ttfamily true}。
-\end{DoxyItemize}
-\item 修复了 {\ttfamily \mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{Logic\+Comparator\+::preprocess\+Expression()}}} 方法中对 not 操作符的处理。exprtk 库要求 not 关键字后必须跟着括号，如 {\ttfamily not(\+A)} 而非 {\ttfamily not A}。为此增加了专门的处理步骤：
-\begin{DoxyItemize}
-\item 遍历预处理后的 token 列表，识别所有 {\ttfamily not} 关键字。
-\item 当发现 {\ttfamily not} 后，检查其后是否跟随标识符（通过 {\ttfamily \mbox{\hyperlink{LogicComparator_8cpp_a6334f80db7207e331e587be0f9eae2df}{is\+Identifier()}}} 函数判断）。
-\item 如果后接标识符，自动将 {\ttfamily not A} 形式转换为 {\ttfamily not(\+A)}，具体做法是依次添加 {\ttfamily not}、{\ttfamily (}、标识符和 {\ttfamily )}，并跳过已处理的标识符。
-\item 如果后接其他元素（如 {\ttfamily (}、其他运算符或表达式结尾），保留原样，让 Expr\+Tk 处理 {\ttfamily not(表达式)} 形式。
-\item 对其他 token，直接添加到最终 token 列表，不做特殊处理。
-\end{DoxyItemize}
-\item 实现了 {\ttfamily \mbox{\hyperlink{classLogicComparator_a626ddc1bb2057eef7862cea7bbc860bb}{Logic\+Comparator\+::compare\+Single\+Expression\+Pair()}}} 方法，用于比较两个逻辑表达式的等价性：
-\begin{DoxyItemize}
-\item 接收预处理后的表达式字符串和已排序的变量列表作为输入参数。
-\item 为参考表达式和比较表达式分别创建 Expr\+Tk 环境（符号表、表达式对象和解析器）。
-\item 将所有变量添加到两个符号表中，确保变量一致性和顺序性。
-\item 使用 Expr\+Tk 解析器编译两个表达式，并检查可能的语法错误。
-\item 通过二进制计数法，遍历所有可能的输入变量组合（2$^\wedge$N 种），其中 N 为变量数量。
-\item 对每种组合：
-\begin{DoxyItemize}
-\item 设置两个符号表中的变量值（0或1）。
-\item 计算两个表达式的值，并处理可能的运行时错误。
-\item 将计算结果转换为布尔值并存入结果向量。
-\item 同步构建真值表，记录输入组合和对应的输出值。
-\end{DoxyItemize}
-\item 比较两个结果向量判断表达式是否等价。
-\item 将生成的真值表存入 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象的 {\ttfamily std\+::optional} 成员中，以便后续报告生成。
-\end{DoxyItemize}
-\item 实现了{\ttfamily template \texorpdfstring{$<$}{<}typename T\texorpdfstring{$>$}{>} std\+::map\texorpdfstring{$<$}{<}std\+::string, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}\texorpdfstring{$>$}{>} \mbox{\hyperlink{classLogicComparator_ae5c1b36b4a05b18c36d7fe1cbeb3ec49}{Logic\+Comparator\+::compare\+Cell\+Logic()}};}
-\begin{DoxyItemize}
-\item 该方法用于比较两个 cell 的逻辑表达式，返回一个 {\ttfamily std\+::map}，键为 cell 名称，值为 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 结构体。
-\item 遍历在类私有属性里的整个独立输出引脚键，提取其值作为逻辑字符串表达式，首先使用 {\ttfamily preprocess\+Expression} 进行预处理，然后使用 {\ttfamily extract\+Variables} 提取变量向量。
-\item 调用 {\ttfamily \mbox{\hyperlink{classLogicComparator_a626ddc1bb2057eef7862cea7bbc860bb}{Logic\+Comparator\+::compare\+Single\+Expression\+Pair()}}} 方法进行比较，结果存入 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象。
-\item 最后将 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象存入 {\ttfamily std\+::map} 中，键为 cell 名称，值为 {\ttfamily \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}}} 对象，返回。
-\end{DoxyItemize}
-\item 实现了 {\ttfamily \mbox{\hyperlink{classLogicComparator_a11238591d905205ad26839e1977634f5}{Logic\+Comparator\+::generate\+Report()}}} 方法，报告格式仍需要调整。
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md38}{}\doxysubsection{2025-\/04-\/02}\label{md_README_autotoc_md38}
-
-\begin{DoxyItemize}
-\item 取消所有模板函数的 {\ttfamily template \texorpdfstring{$<$}{<}typename T\texorpdfstring{$>$}{>}} 声明，改为使用 {\ttfamily double} 作为参数类型，加快编译速度。
-\item 完善了 {\ttfamily \mbox{\hyperlink{classLogicComparator_a11238591d905205ad26839e1977634f5}{Logic\+Comparator\+::generate\+Report()}}} 方法，增加了对逻辑比较结果的详细报告输出，包括：
-\begin{DoxyItemize}
-\item 元数据，例如：$\ast$$\ast$\+Performed by Zlib\+Validation v0.\+1.\+0 from Song Zixuan. on\+: Wed Apr 2 11\+:11\+:39 2025$\ast$$\ast$
-\item 图例，包括参考pin名称、pin function，参考pin名称、pin function，符号解释表。
-\item 参考pin的真值表
-\item 比较pin的真值表
-\item 比较结果表格，例如：
+\item {\bfseries{Purpose\+:}} A command-\/line tool included with the Siemens EDA Calibre® platform, designed to translate structural Verilog netlists into a basic SPICE format, typically for Layout Versus Schematic (LVS) verification.
+\item {\bfseries{Integration\+:}} The {\ttfamily spice} subcommand {\bfseries{optionally}} utilizes {\ttfamily v2lvs} if it\textquotesingle{}s found in the system\textquotesingle{}s PATH. It serves as the first-\/pass engine to convert the intermediate Verilog representation into a raw SPICE netlist. {\ttfamily Zlib\+Validation} then performs post-\/processing on this output, and ensure correct formatting.
 \end{DoxyItemize}
 \end{DoxyItemize}
 
-\tabulinesep=1mm
-\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
-\hline
-\cellcolor{\tableheadbgcolor}\textbf{ Property   }&\cellcolor{\tableheadbgcolor}\textbf{ Value    }\\\cline{1-2}
-\endfirsthead
-\hline
-\endfoot
-\hline
-\cellcolor{\tableheadbgcolor}\textbf{ Property   }&\cellcolor{\tableheadbgcolor}\textbf{ Value    }\\\cline{1-2}
-\endhead
-Status   &\mbox{[}OK\mbox{]}    \\\cline{1-2}
-Reference (Raw)   &{\ttfamily (!((!(A1+\+A2))+B))}    \\\cline{1-2}
-Comparison (Raw)   &{\ttfamily !((!\+A1 $\ast$ !\+A2) + B)}    \\\cline{1-2}
-Reference (Processed)   &{\ttfamily (not((not(\+A1 or A2)) or B))}    \\\cline{1-2}
-Comparison (Processed)   &{\ttfamily not((not(\+A1) and not(\+A2)) or B)}    \\\cline{1-2}
-Ref Expression Compiled   &Yes    \\\cline{1-2}
-Comp Expression Compiled   &Yes    \\\cline{1-2}
-Logically Equivalent   &Yes   \\\cline{1-2}
-\end{longtabu}
-\hypertarget{md_README_autotoc_md39}{}\doxysubsection{2025-\/04-\/05}\label{md_README_autotoc_md39}
-
-\begin{DoxyItemize}
-\item 新增了 {\ttfamily \mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{Lib\+File\+::spice()}}} 方法，为 {\ttfamily spice} 子命令添加了 SPICE 网表生成功能。   -\/ 通过执行 {\ttfamily which v2lvs} 命令检测系统中是否安装了 {\ttfamily V2\+LVS} 工具。如果已安装，则调用该工具生成基本的 SPICE 网表。   -\/ 添加了 {\ttfamily -\/-\/vl} 和 {\ttfamily -\/-\/sl} 命令行选项，允许用户指定 Verilog 库文件和 SPICE 库文件的路径。   -\/ 目前已能生成基本的 SPICE 网表，后续需要进一步完善输出格式。
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{Generate SPICE file for given Liberty file}
-\DoxyCodeLine{Usage: ./zlibvalidation spice [OPTIONS] library\_path...}
-\DoxyCodeLine{}
-\DoxyCodeLine{Positionals:}
-\DoxyCodeLine{  library\_path TEXT:FILE ... REQUIRED}
-\DoxyCodeLine{                              Specify the library file to process}
-\DoxyCodeLine{}
-\DoxyCodeLine{Options:}
-\DoxyCodeLine{  -\/h,-\/-\/help                   Print this help message and exit}
-\DoxyCodeLine{  -\/l,-\/-\/log TEXT               Specify the log file name. Default: <basename>.spice.log}
-\DoxyCodeLine{  -\/c,-\/-\/chain INT              Specify the chain length for SPICE generation. Default: 1}
-\DoxyCodeLine{  -\/-\/cells TEXT ...            Specify the cell names to generate SPICE for}
-\DoxyCodeLine{  -\/-\/vl TEXT                   Specify the location of the Verilog primitive library file}
-\DoxyCodeLine{  -\/-\/sl TEXT                   Specify the location of the SPICE library file to be included in the output}
-
-\end{DoxyCode}
-
-\item 实现私有方法{\ttfamily \mbox{\hyperlink{classLibFile_a42ba6a2e11bc60e26ce4c13c26dcaca2}{Lib\+File\+::split\+String()}}}，用于将字符串按空格分割成多个子字符串，并返回一个 {\ttfamily std\+::vector\texorpdfstring{$<$}{<}std\+::string\texorpdfstring{$>$}{>}}。
-\item 实现了 {\ttfamily \mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{Lib\+File\+::generate\+RCLines()}}} 方法，用于为给定的 net 生成 RC lines。   -\/ 该方法根据 {\ttfamily is\+Final\+Stage} 参数，生成不同的 RC 结构。   -\/ 如果 {\ttfamily is\+Final\+Stage} 为 {\ttfamily false}，则生成 {\ttfamily R1-\/\+C1-\/\+R2} 结构。   -\/ 如果 {\ttfamily is\+Final\+Stage} 为 {\ttfamily true}，则生成 {\ttfamily R1-\/\+C1} 结构。   -\/ RC 的默认值参考目标 SPICE 文件。
-\item 实现了 {\ttfamily \mbox{\hyperlink{classLibFile_a25b6fd7453e8a200a70b2d19a6e216e2}{Lib\+File\+::modify\+Spice\+Netlist()}}} 方法，用于修改 {\ttfamily v2lvs} 生成的 SPICE 网表。   -\/ 该方法添加元数据注释，包括应用名称、版本、作者和时间戳。   -\/ 在第一个 {\ttfamily .INCLUDE} 指令后插入指定的 global line。   -\/ 修改 subcircuit，在 {\ttfamily .SUBCKT} 定义的端口列表中添加 {\ttfamily VDD VSS}。   -\/ 对于 subcircuit 中的每个 instance line（以 `\textquotesingle{}X'{\ttfamily 或}\textquotesingle{}x\textquotesingle{}{\ttfamily 开头），修改输出引脚名称，添加}VDD/\+VSS{\ttfamily 连接，并调用}generate\+RCLines{\ttfamily 生成 R/C lines。   -\/ 保留原始注释，跳过空行、}v2lvs{\ttfamily header line 和原始的}.GLOBAL{\ttfamily line。}
-\item {\ttfamily 完全实现了}\mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{Lib\+File\+::spice()}}\`{} 方法，能够生成 SPICE 网表并输出到指定文件中。\+SPICE 网表的生成过程如下：   -\/ 检查是否指定了 Verilog 库文件和 SPICE 库文件，如果没有指定，则使用默认路径。   -\/ 调用 {\ttfamily v2lvs} 工具生成初步的 SPICE 网表。   -\/ 调用 {\ttfamily \mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{Lib\+File\+::generate\+RCLines()}}} 方法，为 SPICE 网表中的每个 instance 生成对应的 RC lines。   -\/ 调用 {\ttfamily \mbox{\hyperlink{classLibFile_a25b6fd7453e8a200a70b2d19a6e216e2}{Lib\+File\+::modify\+Spice\+Netlist()}}} 方法，修改 SPICE 网表，添加元数据、插入 global line、调整 instance lines，并生成最终的 SPICE 网表。   -\/ 将最终的 SPICE 网表输出到指定文件中。 
-\end{DoxyItemize}
+The seamless integration facilitated by CMake Fetch\+Content for many of these libraries, combined with the direct inclusion of others, significantly streamlined development and enabled the rich feature set of {\ttfamily Zlib\+Validation}. We encourage users to consult the individual project licenses for detailed terms of use. 
