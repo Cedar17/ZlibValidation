@@ -207,14 +207,14 @@ This function generates SPICE-\/like resistor-\/capacitor (RC) lines and writes 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{comment}{// Example usage:}}
 \DoxyCodeLine{std::ofstream outFile(\textcolor{stringliteral}{"{}rc\_lines.sp"{}});}
-\DoxyCodeLine{\mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{LibFile::generateRCLines}}(outFile, \textcolor{stringliteral}{"{}net123"{}}, 5, \textcolor{keyword}{false}); \textcolor{comment}{// Generate intermediate RC lines for net "{}net123"{}, instance 5}}
-\DoxyCodeLine{\mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{LibFile::generateRCLines}}(outFile, \textcolor{stringliteral}{"{}net123"{}}, 5, \textcolor{keyword}{true});  \textcolor{comment}{// Generate final RC lines for net "{}net123"{}, instance 5}}
-\DoxyCodeLine{outFile.close();}
+\DoxyCodeLine{\mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{LibFile::generateRCLines}}(outFile, \textcolor{stringliteral}{"{}net123"{}}, 5, \textcolor{keyword}{false}); \textcolor{comment}{// Generate intermediate RC lines for net}}
+\DoxyCodeLine{\textcolor{stringliteral}{"{}net123"{}}, instance 5 \mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{LibFile::generateRCLines}}(outFile, \textcolor{stringliteral}{"{}net123"{}}, 5, \textcolor{keyword}{true});  \textcolor{comment}{// Generate final RC}}
+\DoxyCodeLine{lines \textcolor{keywordflow}{for} net \textcolor{stringliteral}{"{}net123"{}}, instance 5 outFile.close();}
 
 \end{DoxyCode}
  
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00926}{926}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00931}{931}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -248,7 +248,7 @@ A map containing the logic functions for the output pins of the specified cell. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01380}{1380}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01392}{1392}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -329,7 +329,7 @@ The function assumes that the second to last token in an instance line is the ou
 \end{DoxySeeAlso}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01008}{1008}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01013}{1013}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -533,7 +533,7 @@ Temporary files (Verilog and intermediate SPICE) are kept for debugging purposes
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01267}{1267}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01279}{1279}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak

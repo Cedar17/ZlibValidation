@@ -406,12 +406,12 @@ Here is the caller graph for this function:</div>
 </ul>
 <div class="fragment"><div class="line"><span class="comment">// Example usage:</span></div>
 <div class="line">std::ofstream outFile(<span class="stringliteral">&quot;rc_lines.sp&quot;</span>);</div>
-<div class="line"><a class="code hl_function" href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255">LibFile::generateRCLines</a>(outFile, <span class="stringliteral">&quot;net123&quot;</span>, 5, <span class="keyword">false</span>); <span class="comment">// Generate intermediate RC lines for net &quot;net123&quot;, instance 5</span></div>
-<div class="line"><a class="code hl_function" href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255">LibFile::generateRCLines</a>(outFile, <span class="stringliteral">&quot;net123&quot;</span>, 5, <span class="keyword">true</span>);  <span class="comment">// Generate final RC lines for net &quot;net123&quot;, instance 5</span></div>
-<div class="line">outFile.close();</div>
-<div class="ttc" id="aclassLibFile_html_ad40cfe46d09d29f28034d10bc92ae255"><div class="ttname"><a href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255">LibFile::generateRCLines</a></div><div class="ttdeci">void generateRCLines(std::ofstream &amp;outFile, const std::string &amp;netName, int instanceIndex, bool isFinalStage)</div><div class="ttdoc">Generates RC lines for a given net in either an intermediate or final stage.</div><div class="ttdef"><b>Definition:</b> <a href="LibFile_8cpp_source.html#l00926">LibFile.cpp:926</a></div></div>
+<div class="line"><a class="code hl_function" href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255">LibFile::generateRCLines</a>(outFile, <span class="stringliteral">&quot;net123&quot;</span>, 5, <span class="keyword">false</span>); <span class="comment">// Generate intermediate RC lines for net</span></div>
+<div class="line"><span class="stringliteral">&quot;net123&quot;</span>, instance 5 <a class="code hl_function" href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255">LibFile::generateRCLines</a>(outFile, <span class="stringliteral">&quot;net123&quot;</span>, 5, <span class="keyword">true</span>);  <span class="comment">// Generate final RC</span></div>
+<div class="line">lines <span class="keywordflow">for</span> net <span class="stringliteral">&quot;net123&quot;</span>, instance 5 outFile.close();</div>
+<div class="ttc" id="aclassLibFile_html_ad40cfe46d09d29f28034d10bc92ae255"><div class="ttname"><a href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255">LibFile::generateRCLines</a></div><div class="ttdeci">void generateRCLines(std::ofstream &amp;outFile, const std::string &amp;netName, int instanceIndex, bool isFinalStage)</div><div class="ttdoc">Generates RC lines for a given net in either an intermediate or final stage.</div><div class="ttdef"><b>Definition:</b> <a href="LibFile_8cpp_source.html#l00931">LibFile.cpp:931</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00926">926</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00931">931</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -454,7 +454,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A map containing the logic functions for the output pins of the specified cell. The keys of the map are the pin names, and the values are the corresponding logic function strings. Returns an empty map if no logic functions are found or if an error occurs during file processing. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01380">1380</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01392">1392</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -594,7 +594,7 @@ Here is the caller graph for this function:</div>
 <dl class="section note"><dt>Note</dt><dd>The function assumes that the second to last token in an instance line is the output net. It also assumes a specific format for instance lines where VDD/VSS insertion and R/C line generation are applicable. The <code>generateRCLines</code> method is expected to handle the actual generation of R/C components.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255" title="Generates RC lines for a given net in either an intermediate or final stage.">generateRCLines</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01008">1008</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01013">1013</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -927,7 +927,7 @@ The generated SPICE netlist is post-processed to adjust global signals. </dd>
 <dd>
 Temporary files (Verilog and intermediate SPICE) are kept for debugging purposes. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01267">1267</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01279">1279</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1507,7 +1507,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classLibFile.html">LibFile</a></li>
-    <li class="footer">Generated on Sat Apr 5 2025 16:35:27 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Apr 5 2025 16:52:50 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
