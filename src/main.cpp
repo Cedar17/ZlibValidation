@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
   std::string ref_lib, comp_lib, report_file_name;
   CLI::App *compare_cmd = app.add_subcommand(
       "compare",
-      "Compare the comparison library against the reference library and report differences");
+      "Compare the comparison library against the reference one and report differences");
   compare_cmd->add_option("--ref", ref_lib, "Specify the reference library file")
       ->check(CLI::ExistingFile)
       ->required();

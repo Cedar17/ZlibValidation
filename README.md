@@ -17,10 +17,10 @@ Options:
 Subcommands:
   parse                       Parse the Liberty file and write JSON to a file
   mono                        Check the monotonicity of timing arc values
-  compare                     Compare the comparison library against the reference library and report differences
+  compare                     Compare the comparison library against the reference one and report differences
   supercell                   Generate supercells for the given Liberty file
   zlibboost                   ZlibBoost - Multi-threaded Library Processing Tool
-  clear                       Clear the log, JSON, map, markdown files in this directory
+  clear                       Clear the log, JSON, map, markdown, Verilog, SPICE files in this directory
   verilog                     Generate Verilog file for given Liberty file
   spice                       Generate SPICE file for given Liberty file
   func                        Check functional equivalence of two Liberty files or Verilog files
