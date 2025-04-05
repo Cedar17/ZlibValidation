@@ -8,6 +8,7 @@ var classLibFile =
     [ "mono", "classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe", null ],
     [ "parse", "classLibFile.html#a84d29423705e2dea8a382dc6437640d9", null ],
     [ "read", "classLibFile.html#a070b5da7981c5b5dc049349404d2f5a4", null ],
+    [ "spice", "classLibFile.html#a290f9bfef8ea2f8039837fffceeaa465", null ],
     [ "supercell", "classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188", null ],
     [ "verilog", "classLibFile.html#a92ef7304afa302f98a69bd371b7955dd", null ],
     [ "writeJsonToFile", "classLibFile.html#a88de22798a64acdb38faefc0d785804f", null ],

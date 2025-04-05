@@ -417,14 +417,14 @@ Development Diary</h1>
 <h2><a class="anchor" id="autotoc_md35"></a>
 2025-03-30</h2>
 <ul>
-<li>完成了 <code><a class="el" href="classLibFile.html#a90b6274f928d77388864ba61583a030f">LibFile::logic</a>(const std::string &amp;cell_name)</code> 方法，该方法返回指定 cell_name 所有输出引脚对应的逻辑表达式，以 <code>std::map&lt;std::string, std::string&gt;</code> 的形式返回，存储输出引脚名称到其逻辑表达式字符串的映射关系.</li>
+<li>完成了 <code><a class="el" href="classLibFile.html#a90b6274f928d77388864ba61583a030f" title="Retrieves the logic functions for the output pins of a specified cell within the Liberty file.">LibFile::logic</a>(const std::string &amp;cell_name)</code> 方法，该方法返回指定 cell_name 所有输出引脚对应的逻辑表达式，以 <code>std::map&lt;std::string, std::string&gt;</code> 的形式返回，存储输出引脚名称到其逻辑表达式字符串的映射关系.</li>
 <li>实现了 <code>func</code> 子命令的基本框架，用于检查库或 Verilog 文件的逻辑等价性。<ul>
 <li>完善了 <code>funcLibFile</code> 函数，能够处理 Liberty 文件和 Verilog 文件作为参考和比较对象。</li>
 <li>增加了文件类型判断，根据文件扩展名选择不同的处理方式。</li>
 <li>实现了对 <code>.lib</code> 文件的解析，并提取指定 cell 的逻辑表达式。</li>
 <li>目前仅支持 Liberty 文件的逻辑表达式提取，Verilog 文件的逻辑表达式提取功能尚未完成（TODO）。</li>
 <li>增加了对 report 文件名的检查，确保其以 <code>.md</code> 或 <code>.txt</code> 结尾。若不符合，则给出警告并自动添加 <code>.md</code> 后缀。</li>
-<li>实现了从 Liberty 文件中提取逻辑表达式的功能，使用了 <code><a class="el" href="classLibFile.html#a90b6274f928d77388864ba61583a030f">LibFile::logic</a></code> 方法。</li>
+<li>实现了从 Liberty 文件中提取逻辑表达式的功能，使用了 <code><a class="el" href="classLibFile.html#a90b6274f928d77388864ba61583a030f" title="Retrieves the logic functions for the output pins of a specified cell within the Liberty file.">LibFile::logic</a></code> 方法。</li>
 <li>增加了日志输出，记录每个 cell 的逻辑表达式提取和比较过程。</li>
 <li>逻辑比较部分目前为空，待实现（TODO）。</li>
 </ul>
@@ -569,13 +569,37 @@ Development Diary</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyLeft">Logically Equivalent   </td><td class="markdownTableBodyLeft">Yes   </td></tr>
 </table>
+<h2><a class="anchor" id="autotoc_md39"></a>
+2025-04-05</h2>
+<ul>
+<li><p class="startli">新增了 <code><a class="el" href="classLibFile.html#a290f9bfef8ea2f8039837fffceeaa465">LibFile::spice()</a></code> 方法，为 <code>spice</code> 子命令添加了 SPICE网表生成功能。</p><ul>
+<li>通过执行 <code>which v2lvs</code> 命令检测系统中是否安装了 <code>V2LVS</code> 工具。如果已安装，则调用该工具生成基本的 SPICE 网表。</li>
+<li>添加了 <code>--vl</code> 和 <code>--sl</code> 命令行选项，允许用户指定 Verilog 库文件和 SPICE 库文件的路径。</li>
+<li>目前已能生成基本的 SPICE 网表，后续需要进一步完善输出格式。</li>
+</ul>
+<div class="fragment"><div class="line">Generate SPICE file for given Liberty file</div>
+<div class="line">Usage: ./zlibvalidation spice [OPTIONS] library_path...</div>
+<div class="line"> </div>
+<div class="line">Positionals:</div>
+<div class="line">  library_path TEXT:FILE ... REQUIRED</div>
+<div class="line">                              Specify the library file to process</div>
+<div class="line"> </div>
+<div class="line">Options:</div>
+<div class="line">  -h,--help                   Print this help message and exit</div>
+<div class="line">  -l,--log TEXT               Specify the log file name. Default: &lt;basename&gt;.spice.log</div>
+<div class="line">  -c,--chain INT              Specify the chain length for SPICE generation. Default: 1</div>
+<div class="line">  --cells TEXT ...            Specify the cell names to generate SPICE for</div>
+<div class="line">  --vl TEXT                   Specify the location of the Verilog primitive library file</div>
+<div class="line">  --sl TEXT                   Specify the location of the SPICE library file to be included in the output</div>
+</div><!-- fragment --> </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Apr 2 2025 11:35:50 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Apr 5 2025 14:07:22 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

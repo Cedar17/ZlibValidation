@@ -9,186 +9,186 @@
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{LibFileOperations_8hpp}{LibFileOperations.hpp}}"{}}}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{version_8h}{version.h}}"{}}}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}\mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{00009}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[]) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010   \textcolor{comment}{// Parse command line arguments}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011   std::vector<std::string> library\_paths; \textcolor{comment}{// Support multiple files}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012   std::string log\_file\_name = \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014   \textcolor{comment}{// Command line parameter parsing using CLI11}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015   CLI::App app\{\mbox{\hyperlink{version_8h_af0b5cfa4242ae7f98ba80fd23ef8afa9}{APP\_NAME}}\};}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016   app.set\_version\_flag(\textcolor{stringliteral}{"{}-\/v,-\/-\/version"{}}, \mbox{\hyperlink{version_8h_a92673e33f27532767749b79edb8ef806}{APP\_VERSION}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018   \textcolor{comment}{// Add subcommand for parse mode}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019   CLI::App *parse\_cmd =}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020       app.add\_subcommand(\textcolor{stringliteral}{"{}parse"{}}, \textcolor{stringliteral}{"{}Parse the Liberty file and write JSON to a file"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021   parse\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}library\_path"{}}, library\_paths, \textcolor{stringliteral}{"{}Specify the library file to process"{}})}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022       -\/>check(CLI::ExistingFile)}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023       -\/>required();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}00024   parse\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/l,-\/-\/log"{}}, log\_file\_name,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025                         \textcolor{stringliteral}{"{}Specify the log file name. Default: <basename>.parse.log"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026   parse\_cmd-\/>callback([\&] \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028     \textcolor{comment}{// Check if multi files}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}00029     \textcolor{keywordflow}{if} (library\_paths.size() > 1) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030       spdlog::info(\textcolor{stringliteral}{"{}Running sequential parsing for \{\} files."{}}, library\_paths.size());}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031       spdlog::info(\textcolor{stringliteral}{"{}Each library will write to its own log file."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032       \textcolor{comment}{// Sequential parsing}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}00033       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}00034         \mbox{\hyperlink{LibFileOperations_8hpp_a3ac24d33b321364527447f166fd31edf}{parseLibFile}}(library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00035}00035       \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}00036     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037       \mbox{\hyperlink{LibFileOperations_8hpp_a3ac24d33b321364527447f166fd31edf}{parseLibFile}}(library\_paths[0], log\_file\_name);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038     \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039   \});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041   \textcolor{comment}{// Add subcommand for mono check mode}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042   \textcolor{keywordtype}{bool} is\_slew = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043   CLI::App *mono\_cmd = app.add\_subcommand(\textcolor{stringliteral}{"{}mono"{}}, \textcolor{stringliteral}{"{}Check the monotonicity of timing arc values"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044   mono\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}library\_path"{}}, library\_paths, \textcolor{stringliteral}{"{}Specify the library file to process"{}})}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}00045       -\/>check(CLI::ExistingFile)}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046       -\/>required();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047   mono\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/l,-\/-\/log"{}}, log\_file\_name,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048                        \textcolor{stringliteral}{"{}Specify the log file name. Default: <basename>.mono.log"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049   mono\_cmd-\/>add\_flag(\textcolor{stringliteral}{"{}-\/s,-\/-\/slew"{}}, is\_slew,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050                      \textcolor{stringliteral}{"{}Specify that monotonicity checks also include input slew."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051   mono\_cmd-\/>callback([\&] \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053     \textcolor{comment}{// Check if multi files}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054     \textcolor{keywordflow}{if} (library\_paths.size() > 1) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055       spdlog::info(\textcolor{stringliteral}{"{}Running multi-\/threaded monotonicity check for \{\} files."{}}, library\_paths.size());}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056       spdlog::info(\textcolor{stringliteral}{"{}Each thread will write to its own log file."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058       \textcolor{comment}{// Sequential json file check}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060         \textcolor{keywordflow}{if} (!std::filesystem::exists(std::filesystem::path(library\_path).stem().\textcolor{keywordtype}{string}() +}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061                                      \textcolor{stringliteral}{"{}.json"{}})) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062           spdlog::info(\textcolor{stringliteral}{"{}JSON file not found for '\{\}'. Parsing Liberty file first."{}}, library\_path);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063           \mbox{\hyperlink{LibFileOperations_8hpp_a3ac24d33b321364527447f166fd31edf}{parseLibFile}}(library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064         \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065       \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066       spdlog::info(\textcolor{stringliteral}{"{}All JSON files prepared."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067       \textcolor{comment}{// Parallel monotonicity check}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068       std::vector<std::thread> threads;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070         threads.emplace\_back(\mbox{\hyperlink{LibFileOperations_8hpp_aebef9d1797be7b2aafcbc107bcc513cb}{monoCheckLibFile}}, library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}}, is\_slew);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071       \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&thread : threads) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073         thread.join();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074       \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075       spdlog::info(\textcolor{stringliteral}{"{}All threads completed."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077       \mbox{\hyperlink{LibFileOperations_8hpp_aebef9d1797be7b2aafcbc107bcc513cb}{monoCheckLibFile}}(library\_paths[0], log\_file\_name, is\_slew);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078     \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079   \});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081   \textcolor{comment}{// Add subcommand for compare mode}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082   std::string ref\_lib, comp\_lib, report\_file\_name;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083   CLI::App *compare\_cmd = app.add\_subcommand(}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084       \textcolor{stringliteral}{"{}compare"{}},}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085       \textcolor{stringliteral}{"{}Compare the comparison library against the reference library and report differences"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086   compare\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/ref"{}}, ref\_lib, \textcolor{stringliteral}{"{}Specify the reference library file"{}})}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087       -\/>check(CLI::ExistingFile)}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088       -\/>required();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089   compare\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/comp"{}}, comp\_lib, \textcolor{stringliteral}{"{}Specify the comparison library file"{}})}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090       -\/>check(CLI::ExistingFile)}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091       -\/>required();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092   \textcolor{keywordtype}{double} abstol = 0.002;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093   compare\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/abstol"{}}, abstol,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094                           \textcolor{stringliteral}{"{}Specify the absolute tolerance for comparison. Default: 0.002ns"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095   \textcolor{keywordtype}{double} reltol = 0.02;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096   compare\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/reltol"{}}, reltol,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097                           \textcolor{stringliteral}{"{}Specify the relative tolerance for comparison. Default: 0.02/2.0\%"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098   compare\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/report"{}}, report\_file\_name,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099                           \textcolor{stringliteral}{"{}Specify the report file name. Default: <comp\_lib>.cmp.md"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100   compare\_cmd-\/>callback([\&] \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102     \mbox{\hyperlink{LibFileOperations_8hpp_aefb52455235a664c6dc21709237f77a1}{compareLibFiles}}(ref\_lib, comp\_lib, reltol, abstol, report\_file\_name);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103   \});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105   \textcolor{comment}{// Add subcommand for supercell generation}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106   \textcolor{keywordtype}{int} chain\_length = 1;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107   CLI::App *supercell\_cmd =}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108       app.add\_subcommand(\textcolor{stringliteral}{"{}supercell"{}}, \textcolor{stringliteral}{"{}Generate supercells for the given Liberty file"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109   supercell\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}library\_path"{}}, library\_paths, \textcolor{stringliteral}{"{}Specify the library file to process"{}})}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110       -\/>check(CLI::ExistingFile)}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111       -\/>required();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112   supercell\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/l,-\/-\/log"{}}, log\_file\_name,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113                             \textcolor{stringliteral}{"{}Specify the log file name. Default: <basename>.supercell.log"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114   supercell\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/c,-\/-\/chain"{}}, chain\_length,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115                             \textcolor{stringliteral}{"{}Specify the chain length for supercell generation. Default: 1"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116   std::vector<std::string> cell\_names = \{\}; \textcolor{comment}{// "{}CMPE42D1"{} "{}AN2D0"{}, "{}DFQD1"{}}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117   supercell\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/cells"{}}, cell\_names,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118                             \textcolor{stringliteral}{"{}Specify the cell names to generate supercells for"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119   supercell\_cmd-\/>callback([\&] \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121     \textcolor{comment}{// Check if multi files}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122     \textcolor{keywordflow}{if} (library\_paths.size() > 1) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123       spdlog::info(\textcolor{stringliteral}{"{}Running multi-\/threaded supercell generation for \{\} files."{}},}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124                    library\_paths.size());}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125       spdlog::info(\textcolor{stringliteral}{"{}Each library will write to its own log file."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127       \textcolor{comment}{// Sequential json file check}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129         \textcolor{keywordflow}{if} (!std::filesystem::exists(std::filesystem::path(library\_path).stem().\textcolor{keywordtype}{string}() +}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00130}00130                                      \textcolor{stringliteral}{"{}.json"{}})) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00131}00131           spdlog::info(\textcolor{stringliteral}{"{}JSON file not found for '\{\}'. Parsing Liberty file first."{}}, library\_path);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00132}00132           \mbox{\hyperlink{LibFileOperations_8hpp_a3ac24d33b321364527447f166fd31edf}{parseLibFile}}(library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00133}00133         \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00134}00134       \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00135}00135       spdlog::info(\textcolor{stringliteral}{"{}All JSON files prepared."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00136}00136       \textcolor{comment}{// Parallel supercell generation}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00137}00137       std::vector<std::thread> threads;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00138}00138       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00139}00139         threads.emplace\_back(\mbox{\hyperlink{LibFileOperations_8hpp_a0d7485f0df82adbd1671def221103a4e}{supercellLibFile}}, library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}}, chain\_length,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00140}00140                              cell\_names);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00141}00141       \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00142}00142       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&thread : threads) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00143}00143         thread.join();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00144}00144       \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00145}00145       spdlog::info(\textcolor{stringliteral}{"{}All threads completed."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00146}00146     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00147}00147       \mbox{\hyperlink{LibFileOperations_8hpp_a0d7485f0df82adbd1671def221103a4e}{supercellLibFile}}(library\_paths[0], log\_file\_name, chain\_length, cell\_names);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00148}00148     \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00149}00149   \});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00150}00150 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00151}00151   \textcolor{comment}{// Add subcommand for zlibboost}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00152}00152   CLI::App *zlibboost\_cmd =}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00153}00153       app.add\_subcommand(\textcolor{stringliteral}{"{}zlibboost"{}}, \textcolor{stringliteral}{"{}ZlibBoost -\/ Multi-\/threaded Library Processing Tool"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00154}00154   std::string config\_dir = \textcolor{stringliteral}{"{}/home/songzx/Projects/zlibboost/config.tcl"{}};}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00155}00155   std::string python\_dir = \textcolor{stringliteral}{"{}/home/guocj/anaconda3/envs/myenv/bin/python"{}};}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00156}00156   std::string main\_py\_dir = \textcolor{stringliteral}{"{}/home/songzx/Projects/zlibboost/zlibboost.py"{}};}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00157}00157   zlibboost\_cmd-\/>add\_option(}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00158}00158       \textcolor{stringliteral}{"{}-\/c, -\/-\/config"{}}, config\_dir,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00159}00159       \textcolor{stringliteral}{"{}Specify the configuration TCL file. Default: /home/songzx/Projects/zlibboost/config.tcl"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00160}00160   zlibboost\_cmd-\/>add\_option(}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00161}00161       \textcolor{stringliteral}{"{}-\/-\/python"{}}, python\_dir,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00162}00162       \textcolor{stringliteral}{"{}Specify the python directory. Default: /home/guocj/anaconda3/envs/myenv/bin/python"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00163}00163   zlibboost\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/main"{}}, main\_py\_dir,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00164}00164                             \textcolor{stringliteral}{"{}Specify the main python script directory. Default: "{}}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00165}00165                             \textcolor{stringliteral}{"{}/home/songzx/Projects/zlibboost/zlibboost.py"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00166}00166   zlibboost\_cmd-\/>callback([\&] \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00167}00167     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00168}00168     \textcolor{comment}{// Run the ZlibBoost tool}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00169}00169     std::string command = python\_dir + \textcolor{stringliteral}{"{} "{}} + main\_py\_dir + \textcolor{stringliteral}{"{} -\/c "{}} + config\_dir;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00170}00170     spdlog::info(\textcolor{stringliteral}{"{}Running ZlibBoost with command: '\{\}'"{}}, command);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00171}00171     \textcolor{keywordtype}{int} ret = std::system(command.c\_str());}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00172}00172     \textcolor{keywordflow}{if} (ret == 0) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00173}00173       spdlog::info(\textcolor{stringliteral}{"{}ZlibBoost completed successfully."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00174}00174     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00175}00175       spdlog::error(\textcolor{stringliteral}{"{}ZlibBoost failed with return code: \{\}"{}}, ret);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00176}00176     \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00177}00177   \});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00178}00178 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00179}00179   \textcolor{comment}{// Add subcommand for clear}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00180}00180   CLI::App *clear\_cmd =}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00181}00181       app.add\_subcommand(\textcolor{stringliteral}{"{}clear"{}}, \textcolor{stringliteral}{"{}Clear the log, JSON, map, markdown files in this directory"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00182}00182   clear\_cmd-\/>callback([\&] \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00183}00183     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00184}00184     std::filesystem::path current\_dir = std::filesystem::current\_path();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00185}00185     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&entry : std::filesystem::directory\_iterator(current\_dir)) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00186}00186       \textcolor{keywordflow}{if} (entry.path().extension() == \textcolor{stringliteral}{"{}.log"{}} || entry.path().extension() == \textcolor{stringliteral}{"{}.json"{}} ||}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00187}00187           entry.path().extension() == \textcolor{stringliteral}{"{}.map"{}} || entry.path().extension() == \textcolor{stringliteral}{"{}.md"{}}) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}\mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{00008}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[]) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009   \textcolor{comment}{// Parse command line arguments}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010   std::vector<std::string> library\_paths; \textcolor{comment}{// Support multiple files}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011   std::string log\_file\_name = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013   \textcolor{comment}{// Command line parameter parsing using CLI11}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014   CLI::App app\{\mbox{\hyperlink{version_8h_af0b5cfa4242ae7f98ba80fd23ef8afa9}{APP\_NAME}}\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015   app.set\_version\_flag(\textcolor{stringliteral}{"{}-\/v,-\/-\/version"{}}, \mbox{\hyperlink{version_8h_a92673e33f27532767749b79edb8ef806}{APP\_VERSION}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017   \textcolor{comment}{// Add subcommand for parse mode}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018   CLI::App *parse\_cmd =}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019       app.add\_subcommand(\textcolor{stringliteral}{"{}parse"{}}, \textcolor{stringliteral}{"{}Parse the Liberty file and write JSON to a file"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020   parse\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}library\_path"{}}, library\_paths, \textcolor{stringliteral}{"{}Specify the library file to process"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021       -\/>check(CLI::ExistingFile)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022       -\/>required();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023   parse\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/l,-\/-\/log"{}}, log\_file\_name,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}00024                         \textcolor{stringliteral}{"{}Specify the log file name. Default: <basename>.parse.log"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025   parse\_cmd-\/>callback([\&] \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027     \textcolor{comment}{// Check if multi files}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028     \textcolor{keywordflow}{if} (library\_paths.size() > 1) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}00029       spdlog::info(\textcolor{stringliteral}{"{}Running sequential parsing for \{\} files."{}}, library\_paths.size());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030       spdlog::info(\textcolor{stringliteral}{"{}Each library will write to its own log file."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031       \textcolor{comment}{// Sequential parsing}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}00033         \mbox{\hyperlink{LibFileOperations_8hpp_a3ac24d33b321364527447f166fd31edf}{parseLibFile}}(library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}00034       \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00035}00035     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}00036       \mbox{\hyperlink{LibFileOperations_8hpp_a3ac24d33b321364527447f166fd31edf}{parseLibFile}}(library\_paths[0], log\_file\_name);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038   \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040   \textcolor{comment}{// Add subcommand for mono check mode}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041   \textcolor{keywordtype}{bool} is\_slew = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042   CLI::App *mono\_cmd = app.add\_subcommand(\textcolor{stringliteral}{"{}mono"{}}, \textcolor{stringliteral}{"{}Check the monotonicity of timing arc values"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043   mono\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}library\_path"{}}, library\_paths, \textcolor{stringliteral}{"{}Specify the library file to process"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044       -\/>check(CLI::ExistingFile)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}00045       -\/>required();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046   mono\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/l,-\/-\/log"{}}, log\_file\_name,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047                        \textcolor{stringliteral}{"{}Specify the log file name. Default: <basename>.mono.log"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048   mono\_cmd-\/>add\_flag(\textcolor{stringliteral}{"{}-\/s,-\/-\/slew"{}}, is\_slew,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049                      \textcolor{stringliteral}{"{}Specify that monotonicity checks also include input slew."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050   mono\_cmd-\/>callback([\&] \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052     \textcolor{comment}{// Check if multi files}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053     \textcolor{keywordflow}{if} (library\_paths.size() > 1) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054       spdlog::info(\textcolor{stringliteral}{"{}Running multi-\/threaded monotonicity check for \{\} files."{}}, library\_paths.size());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055       spdlog::info(\textcolor{stringliteral}{"{}Each thread will write to its own log file."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057       \textcolor{comment}{// Sequential json file check}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059         \textcolor{keywordflow}{if} (!std::filesystem::exists(std::filesystem::path(library\_path).stem().\textcolor{keywordtype}{string}() +}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060                                      \textcolor{stringliteral}{"{}.json"{}})) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061           spdlog::info(\textcolor{stringliteral}{"{}JSON file not found for '\{\}'. Parsing Liberty file first."{}}, library\_path);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062           \mbox{\hyperlink{LibFileOperations_8hpp_a3ac24d33b321364527447f166fd31edf}{parseLibFile}}(library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064       \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065       spdlog::info(\textcolor{stringliteral}{"{}All JSON files prepared."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066       \textcolor{comment}{// Parallel monotonicity check}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067       std::vector<std::thread> threads;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069         threads.emplace\_back(\mbox{\hyperlink{LibFileOperations_8hpp_aebef9d1797be7b2aafcbc107bcc513cb}{monoCheckLibFile}}, library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}}, is\_slew);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070       \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&thread : threads) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072         thread.join();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073       \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074       spdlog::info(\textcolor{stringliteral}{"{}All threads completed."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076       \mbox{\hyperlink{LibFileOperations_8hpp_aebef9d1797be7b2aafcbc107bcc513cb}{monoCheckLibFile}}(library\_paths[0], log\_file\_name, is\_slew);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078   \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080   \textcolor{comment}{// Add subcommand for compare mode}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081   std::string ref\_lib, comp\_lib, report\_file\_name;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082   CLI::App *compare\_cmd = app.add\_subcommand(}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083       \textcolor{stringliteral}{"{}compare"{}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084       \textcolor{stringliteral}{"{}Compare the comparison library against the reference library and report differences"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085   compare\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/ref"{}}, ref\_lib, \textcolor{stringliteral}{"{}Specify the reference library file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086       -\/>check(CLI::ExistingFile)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087       -\/>required();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088   compare\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/comp"{}}, comp\_lib, \textcolor{stringliteral}{"{}Specify the comparison library file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089       -\/>check(CLI::ExistingFile)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090       -\/>required();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091   \textcolor{keywordtype}{double} abstol = 0.002;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092   compare\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/abstol"{}}, abstol,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093                           \textcolor{stringliteral}{"{}Specify the absolute tolerance for comparison. Default: 0.002ns"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094   \textcolor{keywordtype}{double} reltol = 0.02;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095   compare\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/reltol"{}}, reltol,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096                           \textcolor{stringliteral}{"{}Specify the relative tolerance for comparison. Default: 0.02/2.0\%"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097   compare\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/report"{}}, report\_file\_name,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098                           \textcolor{stringliteral}{"{}Specify the report file name. Default: <comp\_lib>.cmp.md"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099   compare\_cmd-\/>callback([\&] \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101     \mbox{\hyperlink{LibFileOperations_8hpp_aefb52455235a664c6dc21709237f77a1}{compareLibFiles}}(ref\_lib, comp\_lib, reltol, abstol, report\_file\_name);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102   \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104   \textcolor{comment}{// Add subcommand for supercell generation}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105   \textcolor{keywordtype}{int} chain\_length = 1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106   CLI::App *supercell\_cmd =}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107       app.add\_subcommand(\textcolor{stringliteral}{"{}supercell"{}}, \textcolor{stringliteral}{"{}Generate supercells for the given Liberty file"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108   supercell\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}library\_path"{}}, library\_paths, \textcolor{stringliteral}{"{}Specify the library file to process"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109       -\/>check(CLI::ExistingFile)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110       -\/>required();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111   supercell\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/l,-\/-\/log"{}}, log\_file\_name,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112                             \textcolor{stringliteral}{"{}Specify the log file name. Default: <basename>.supercell.log"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113   supercell\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/c,-\/-\/chain"{}}, chain\_length,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114                             \textcolor{stringliteral}{"{}Specify the chain length for supercell generation. Default: 1"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115   std::vector<std::string> cell\_names = \{\}; \textcolor{comment}{// "{}CMPE42D1"{} "{}AN2D0"{}, "{}DFQD1"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116   supercell\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/cells"{}}, cell\_names,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117                             \textcolor{stringliteral}{"{}Specify the cell names to generate supercells for"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118   supercell\_cmd-\/>callback([\&] \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120     \textcolor{comment}{// Check if multi files}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121     \textcolor{keywordflow}{if} (library\_paths.size() > 1) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122       spdlog::info(\textcolor{stringliteral}{"{}Running multi-\/threaded supercell generation for \{\} files."{}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123                    library\_paths.size());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124       spdlog::info(\textcolor{stringliteral}{"{}Each library will write to its own log file."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126       \textcolor{comment}{// Sequential json file check}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128         \textcolor{keywordflow}{if} (!std::filesystem::exists(std::filesystem::path(library\_path).stem().\textcolor{keywordtype}{string}() +}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129                                      \textcolor{stringliteral}{"{}.json"{}})) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00130}00130           spdlog::info(\textcolor{stringliteral}{"{}JSON file not found for '\{\}'. Parsing Liberty file first."{}}, library\_path);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00131}00131           \mbox{\hyperlink{LibFileOperations_8hpp_a3ac24d33b321364527447f166fd31edf}{parseLibFile}}(library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00132}00132         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00133}00133       \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00134}00134       spdlog::info(\textcolor{stringliteral}{"{}All JSON files prepared."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00135}00135       \textcolor{comment}{// Parallel supercell generation}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00136}00136       std::vector<std::thread> threads;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00137}00137       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00138}00138         threads.emplace\_back(\mbox{\hyperlink{LibFileOperations_8hpp_a0d7485f0df82adbd1671def221103a4e}{supercellLibFile}}, library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}}, chain\_length,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00139}00139                              cell\_names);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00140}00140       \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00141}00141       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&thread : threads) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00142}00142         thread.join();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00143}00143       \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00144}00144       spdlog::info(\textcolor{stringliteral}{"{}All threads completed."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00145}00145     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00146}00146       \mbox{\hyperlink{LibFileOperations_8hpp_a0d7485f0df82adbd1671def221103a4e}{supercellLibFile}}(library\_paths[0], log\_file\_name, chain\_length, cell\_names);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00147}00147     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00148}00148   \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00150}00150   \textcolor{comment}{// Add subcommand for zlibboost}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00151}00151   CLI::App *zlibboost\_cmd =}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00152}00152       app.add\_subcommand(\textcolor{stringliteral}{"{}zlibboost"{}}, \textcolor{stringliteral}{"{}ZlibBoost -\/ Multi-\/threaded Library Processing Tool"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00153}00153   std::string config\_dir = \textcolor{stringliteral}{"{}/home/songzx/Projects/zlibboost/config.tcl"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00154}00154   std::string python\_dir = \textcolor{stringliteral}{"{}/home/guocj/anaconda3/envs/myenv/bin/python"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00155}00155   std::string main\_py\_dir = \textcolor{stringliteral}{"{}/home/songzx/Projects/zlibboost/zlibboost.py"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00156}00156   zlibboost\_cmd-\/>add\_option(}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00157}00157       \textcolor{stringliteral}{"{}-\/c, -\/-\/config"{}}, config\_dir,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00158}00158       \textcolor{stringliteral}{"{}Specify the configuration TCL file. Default: /home/songzx/Projects/zlibboost/config.tcl"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00159}00159   zlibboost\_cmd-\/>add\_option(}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00160}00160       \textcolor{stringliteral}{"{}-\/-\/python"{}}, python\_dir,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00161}00161       \textcolor{stringliteral}{"{}Specify the python directory. Default: /home/guocj/anaconda3/envs/myenv/bin/python"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00162}00162   zlibboost\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/main"{}}, main\_py\_dir,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00163}00163                             \textcolor{stringliteral}{"{}Specify the main python script directory. Default: "{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00164}00164                             \textcolor{stringliteral}{"{}/home/songzx/Projects/zlibboost/zlibboost.py"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00165}00165   zlibboost\_cmd-\/>callback([\&] \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00166}00166     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00167}00167     \textcolor{comment}{// Run the ZlibBoost tool}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00168}00168     std::string command = python\_dir + \textcolor{stringliteral}{"{} "{}} + main\_py\_dir + \textcolor{stringliteral}{"{} -\/c "{}} + config\_dir;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00169}00169     spdlog::info(\textcolor{stringliteral}{"{}Running ZlibBoost with command: '\{\}'"{}}, command);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00170}00170     \textcolor{keywordtype}{int} ret = std::system(command.c\_str());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00171}00171     \textcolor{keywordflow}{if} (ret == 0) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00172}00172       spdlog::info(\textcolor{stringliteral}{"{}ZlibBoost completed successfully."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00173}00173     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00174}00174       spdlog::error(\textcolor{stringliteral}{"{}ZlibBoost failed with return code: \{\}"{}}, ret);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00175}00175     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00176}00176   \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00177}00177 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00178}00178   \textcolor{comment}{// Add subcommand for clear}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00179}00179   CLI::App *clear\_cmd = app.add\_subcommand(}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00180}00180       \textcolor{stringliteral}{"{}clear"{}}, \textcolor{stringliteral}{"{}Clear the log, JSON, map, markdown, Verilog, SPICE files in this directory"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00181}00181   clear\_cmd-\/>callback([\&] \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00182}00182     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00183}00183     std::filesystem::path current\_dir = std::filesystem::current\_path();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00184}00184     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&entry : std::filesystem::directory\_iterator(current\_dir)) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00185}00185       \textcolor{keywordflow}{if} (entry.path().extension() == \textcolor{stringliteral}{"{}.log"{}} || entry.path().extension() == \textcolor{stringliteral}{"{}.json"{}} ||}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00186}00186           entry.path().extension() == \textcolor{stringliteral}{"{}.map"{}} || entry.path().extension() == \textcolor{stringliteral}{"{}.md"{}} ||}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00187}00187           entry.path().extension() == \textcolor{stringliteral}{"{}.v"{}} || entry.path().extension() == \textcolor{stringliteral}{"{}.spi"{}}) \{}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00188}00188         spdlog::info(\textcolor{stringliteral}{"{}Removing file: '\{\}'"{}}, entry.path().string());}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00189}00189         std::filesystem::remove(entry.path());}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00190}00190       \}}
@@ -245,70 +245,85 @@
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00241}00241       -\/>required();}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00242}00242   spice\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/l,-\/-\/log"{}}, log\_file\_name,}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00243}00243                         \textcolor{stringliteral}{"{}Specify the log file name. Default: <basename>.spice.log"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00244}00244   spice\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/cells"{}}, cell\_names, \textcolor{stringliteral}{"{}Specify the cell names to generate SPICE for"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00245}00245   spice\_cmd-\/>callback([\&] \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00246}00246     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00247}00247     \textcolor{comment}{// Check if multi files}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00248}00248     \textcolor{keywordflow}{if} (library\_paths.size() > 1) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00249}00249       spdlog::info(\textcolor{stringliteral}{"{}Running multi-\/threaded SPICE generation for \{\} files."{}}, library\_paths.size());}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00250}00250       spdlog::info(\textcolor{stringliteral}{"{}Each library will write to its own log file."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00251}00251 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00252}00252       \textcolor{comment}{// Sequential json file check}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00253}00253       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00254}00254         \textcolor{keywordflow}{if} (!std::filesystem::exists(std::filesystem::path(library\_path).stem().\textcolor{keywordtype}{string}() +}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00255}00255                                      \textcolor{stringliteral}{"{}.json"{}})) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00256}00256           spdlog::info(\textcolor{stringliteral}{"{}JSON file not found for '\{\}'. Parsing Liberty file first."{}}, library\_path);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00257}00257           \mbox{\hyperlink{LibFileOperations_8hpp_a3ac24d33b321364527447f166fd31edf}{parseLibFile}}(library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00258}00258         \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00259}00259       \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00260}00260       spdlog::info(\textcolor{stringliteral}{"{}All JSON files prepared."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00261}00261       \textcolor{comment}{// Parallel SPICE generation}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00262}00262       std::vector<std::thread> threads;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00263}00263       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00264}00264         \textcolor{comment}{// threads.emplace\_back(spiceLibFile, library\_path, log\_file\_name = "{}"{}, cell\_names);}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00265}00265       \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00266}00266       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&thread : threads) \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00267}00267         thread.join();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00268}00268       \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00269}00269       spdlog::info(\textcolor{stringliteral}{"{}All threads completed."{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00270}00270     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00271}00271       \textcolor{comment}{// spiceLibFile(library\_paths[0], log\_file\_name, cell\_names);}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00272}00272     \}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00273}00273   \});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00274}00274 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00275}00275   \textcolor{comment}{// Add subcommand for funtional equivalence check}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00276}00276   CLI::App *func\_cmd = app.add\_subcommand(}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00277}00277       \textcolor{stringliteral}{"{}func"{}}, \textcolor{stringliteral}{"{}Check functional equivalence of two Liberty files or Verilog files"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00278}00278   std::string ref\_file, comp\_file;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00279}00279   func\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/ref"{}}, ref\_file, \textcolor{stringliteral}{"{}Specify the reference Liberty or Verilog file"{}})}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00280}00280       -\/>check(CLI::ExistingFile)}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00281}00281       -\/>required();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00282}00282   func\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/comp"{}}, comp\_file, \textcolor{stringliteral}{"{}Specify the comparison Liberty or Verilog file"{}})}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00283}00283       -\/>check(CLI::ExistingFile)}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00284}00284       -\/>required();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00285}00285   func\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/cells"{}}, cell\_names,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00286}00286                        \textcolor{stringliteral}{"{}Specify the cell names to check functional equivalence for"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00287}00287   func\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/report"{}}, report\_file\_name,}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00288}00288                        \textcolor{stringliteral}{"{}Specify the report file name. Default: <comp\_lib>.cmp.md"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00244}00244   spice\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/c,-\/-\/chain"{}}, chain\_length,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00245}00245                         \textcolor{stringliteral}{"{}Specify the chain length for SPICE generation. Default: 1"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00246}00246   spice\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/cells"{}}, cell\_names, \textcolor{stringliteral}{"{}Specify the cell names to generate SPICE for"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00247}00247   std::string verilog\_lib\_file =}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00248}00248       \textcolor{stringliteral}{"{}/home/songzx/examples/mypdk/TSMC65/TSMC65NM\_CLN65LP\_STDIO\_STDCELL/tcbn65lp\_220a/"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00249}00249       \textcolor{stringliteral}{"{}0396011\_20170308/TSMCHOME/digital/Front\_End/verilog/tcbn65lp.v"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00250}00250   std::string spice\_lib\_file =}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00251}00251       \textcolor{stringliteral}{"{}/home/songzx/examples/mypdk/TSMC65/TSMC65NM\_CLN65LP\_STDIO\_STDCELL/tcbn65lp\_220a/"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00252}00252       \textcolor{stringliteral}{"{}0396011\_20170308/TSMCHOME/digital/Back\_End/lpe\_spice/tcbn65lp\_200a/tcbn65lp\_200a\_lpe.spi"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00253}00253   spice\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/vl"{}}, verilog\_lib\_file,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00254}00254                         \textcolor{stringliteral}{"{}Specify the location of the Verilog primitive library file"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00255}00255   spice\_cmd-\/>add\_option(}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00256}00256       \textcolor{stringliteral}{"{}-\/-\/sl"{}}, spice\_lib\_file,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00257}00257       \textcolor{stringliteral}{"{}Specify the location of the SPICE library file to be included in the output"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00258}00258   spice\_cmd-\/>callback([\&] \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00259}00259     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00260}00260     \textcolor{comment}{// Check if multi files}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00261}00261     \textcolor{keywordflow}{if} (library\_paths.size() > 1) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00262}00262       spdlog::info(\textcolor{stringliteral}{"{}Running multi-\/threaded SPICE generation for \{\} files."{}}, library\_paths.size());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00263}00263       spdlog::info(\textcolor{stringliteral}{"{}Each library will write to its own log file."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00264}00264 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00265}00265       \textcolor{comment}{// Sequential json file check}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00266}00266       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00267}00267         \textcolor{keywordflow}{if} (!std::filesystem::exists(std::filesystem::path(library\_path).stem().\textcolor{keywordtype}{string}() +}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00268}00268                                      \textcolor{stringliteral}{"{}.json"{}})) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00269}00269           spdlog::info(\textcolor{stringliteral}{"{}JSON file not found for '\{\}'. Parsing Liberty file first."{}}, library\_path);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00270}00270           \mbox{\hyperlink{LibFileOperations_8hpp_a3ac24d33b321364527447f166fd31edf}{parseLibFile}}(library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00271}00271         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00272}00272       \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00273}00273       spdlog::info(\textcolor{stringliteral}{"{}All JSON files prepared."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00274}00274       \textcolor{comment}{// Parallel SPICE generation}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00275}00275       std::vector<std::thread> threads;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00276}00276       \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&library\_path : library\_paths) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00277}00277         threads.emplace\_back(\mbox{\hyperlink{LibFileOperations_8hpp_a249215076db60dd83d4ed0b17fb132f7}{spiceLibFile}}, library\_path, log\_file\_name = \textcolor{stringliteral}{"{}"{}}, chain\_length,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00278}00278                              cell\_names, verilog\_lib\_file, spice\_lib\_file);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00279}00279       \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00280}00280       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&thread : threads) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00281}00281         thread.join();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00282}00282       \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00283}00283       spdlog::info(\textcolor{stringliteral}{"{}All threads completed."{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00284}00284     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00285}00285       \mbox{\hyperlink{LibFileOperations_8hpp_a249215076db60dd83d4ed0b17fb132f7}{spiceLibFile}}(library\_paths[0], log\_file\_name, chain\_length, cell\_names, verilog\_lib\_file,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00286}00286                    spice\_lib\_file);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00287}00287     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00288}00288   \});}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00289}00289 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00290}00290   func\_cmd-\/>callback([\&] \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00291}00291     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00292}00292     \mbox{\hyperlink{LibFileOperations_8hpp_a56d944f0ea8b38f2f61c046c7fb44476}{funcLibFile}}(ref\_file, comp\_file, cell\_names, report\_file\_name);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00293}00293   \});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00294}00294 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00295}00295   CLI11\_PARSE(app, argc, argv);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00296}00296 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00297}00297   \textcolor{comment}{// End of program}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00298}00298   \textcolor{keywordtype}{char} hostname[256];}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00299}00299   gethostname(hostname, \textcolor{keyword}{sizeof}(hostname));}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00300}00300 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00301}00301   \textcolor{keyword}{auto} now = std::chrono::system\_clock::now();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00302}00302   \textcolor{keyword}{auto} time\_now = std::chrono::system\_clock::to\_time\_t(now);}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00303}00303   std::stringstream ss;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00304}00304   ss << std::put\_time(std::localtime(\&time\_now), \textcolor{stringliteral}{"{}\%c"{}});}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00305}00305 }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00306}00306   spdlog::info(\textcolor{stringliteral}{"{}ZlibValidation exited on '\{\}' at \{\}"{}}, hostname, ss.str());}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00307}00307   \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00308}00308 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00290}00290   \textcolor{comment}{// Add subcommand for funtional equivalence check}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00291}00291   CLI::App *func\_cmd = app.add\_subcommand(}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00292}00292       \textcolor{stringliteral}{"{}func"{}}, \textcolor{stringliteral}{"{}Check functional equivalence of two Liberty files or Verilog files"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00293}00293   std::string ref\_file, comp\_file;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00294}00294   func\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/ref"{}}, ref\_file, \textcolor{stringliteral}{"{}Specify the reference Liberty or Verilog file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00295}00295       -\/>check(CLI::ExistingFile)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00296}00296       -\/>required();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00297}00297   func\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/comp"{}}, comp\_file, \textcolor{stringliteral}{"{}Specify the comparison Liberty or Verilog file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00298}00298       -\/>check(CLI::ExistingFile)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00299}00299       -\/>required();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00300}00300   func\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/cells"{}}, cell\_names,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00301}00301                        \textcolor{stringliteral}{"{}Specify the cell names to check functional equivalence for"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00302}00302   func\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}-\/-\/report"{}}, report\_file\_name,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00303}00303                        \textcolor{stringliteral}{"{}Specify the report file name. Default: <comp\_lib>.cmp.md"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00304}00304 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00305}00305   func\_cmd-\/>callback([\&] \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00306}00306     \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{printInfo}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00307}00307     \mbox{\hyperlink{LibFileOperations_8hpp_a56d944f0ea8b38f2f61c046c7fb44476}{funcLibFile}}(ref\_file, comp\_file, cell\_names, report\_file\_name);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00308}00308   \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00309}00309 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00310}00310   CLI11\_PARSE(app, argc, argv);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00312}00312   \textcolor{comment}{// End of program}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00313}00313   \textcolor{keywordtype}{char} hostname[256];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00314}00314   gethostname(hostname, \textcolor{keyword}{sizeof}(hostname));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00315}00315 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00316}00316   \textcolor{keyword}{auto} now = std::chrono::system\_clock::now();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00317}00317   \textcolor{keyword}{auto} time\_now = std::chrono::system\_clock::to\_time\_t(now);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00318}00318   std::stringstream ss;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00319}00319   ss << std::put\_time(std::localtime(\&time\_now), \textcolor{stringliteral}{"{}\%c"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00320}00320 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00321}00321   spdlog::info(\textcolor{stringliteral}{"{}ZlibValidation exited on '\{\}' at \{\}"{}}, hostname, ss.str());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00322}00322   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00323}00323 \}}
 
 \end{DoxyCode}

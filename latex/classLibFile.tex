@@ -23,8 +23,10 @@ void \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{supercell}
 \begin{DoxyCompactList}\small\item\em Creates supercells based on standard cells in the library file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{verilog}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
 \begin{DoxyCompactList}\small\item\em Generates Verilog files for cell validation based on the library file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{spice}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names, const std\+::string \&verilog\+\_\+lib\+\_\+file, const std\+::string \&spice\+\_\+lib\+\_\+file)
+\item 
 std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{logic}} (const std\+::string \&cell\+\_\+name)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retrieves the logic functions for the output pins of a specified cell within the Liberty file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -172,7 +174,23 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00878}{878}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Retrieves the logic functions for the output pins of a specified cell within the Liberty file. 
+
+This method searches for a cell with the given name in the parsed Liberty file (either by parsing the file directly or reading from a JSON representation). It then iterates through the output pins of the cell, extracting the logic function associated with each pin. The logic functions are stored in a map, where the key is the pin name and the value is the logic function string.
+
+If the JSON file does not exist, the Liberty file is parsed, and a JSON file is created. If the JSON file exists but cannot be opened or parsed, an error is logged, and an empty map is returned. If the specified cell is not found or if no logic functions are found for the cell, a warning is logged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cell\+\_\+name} & The name of the cell for which to retrieve the logic functions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A map containing the logic functions for the output pins of the specified cell. The keys of the map are the pin names, and the values are the corresponding logic function strings. Returns an empty map if no logic functions are found or if an error occurs during file processing. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00950}{950}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -345,6 +363,32 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{classLibFile_a070b5da7981c5b5dc049349404d2f5a4_icgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}\label{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}} 
+\index{LibFile@{LibFile}!spice@{spice}}
+\index{spice@{spice}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{spice()}{spice()}}
+{\footnotesize\ttfamily void Lib\+File\+::spice (\begin{DoxyParamCaption}\item[{const int}]{chain\+\_\+length,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{cell\+\_\+names,  }\item[{const std\+::string \&}]{verilog\+\_\+lib\+\_\+file,  }\item[{const std\+::string \&}]{spice\+\_\+lib\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00878}{878}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLibFile_a290f9bfef8ea2f8039837fffceeaa465_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{classLibFile_a290f9bfef8ea2f8039837fffceeaa465_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}\label{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}} 
 \index{LibFile@{LibFile}!supercell@{supercell}}
 \index{supercell@{supercell}!LibFile@{LibFile}}
@@ -496,7 +540,7 @@ Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00028}{28}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
 
 \mbox{\Hypertarget{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}\label{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}} 
 \index{LibFile@{LibFile}!filename\_@{filename\_}}
@@ -576,7 +620,7 @@ Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00032}{32}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00044}{44}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
 
 \mbox{\Hypertarget{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}\label{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}} 
 \index{LibFile@{LibFile}!temperature\_@{temperature\_}}
@@ -586,7 +630,7 @@ Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00044}{44}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
 
 \mbox{\Hypertarget{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}\label{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}} 
 \index{LibFile@{LibFile}!voltage\_@{voltage\_}}
@@ -596,7 +640,7 @@ Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00046}{46}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00045}{45}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
 
 
 

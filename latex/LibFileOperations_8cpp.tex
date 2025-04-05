@@ -22,6 +22,8 @@ void \mbox{\hyperlink{LibFileOperations_8cpp_a0d7485f0df82adbd1671def221103a4e}{
 \begin{DoxyCompactList}\small\item\em Creates supercell map structures from a Liberty library file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{LibFileOperations_8cpp_ab649fe3c5663201c3e23700250f7b1c2}{verilog\+Lib\+File}} (const std\+::string \&library\+\_\+path, const std\+::string \&log\+\_\+file\+\_\+name, int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
 \begin{DoxyCompactList}\small\item\em Generates Verilog files from a library file for specified cells. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{LibFileOperations_8cpp_a249215076db60dd83d4ed0b17fb132f7}{spice\+Lib\+File}} (const std\+::string \&library\+\_\+path, const std\+::string \&log\+\_\+file\+\_\+name, int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names, const std\+::string \&verilog\+\_\+lib\+\_\+file, const std\+::string \&spice\+\_\+lib\+\_\+file)
+\item 
 void \mbox{\hyperlink{LibFileOperations_8cpp_aefb52455235a664c6dc21709237f77a1}{compare\+Lib\+Files}} (const std\+::string \&ref\+\_\+lib, const std\+::string \&comp\+\_\+lib, const double reltol, const double abstol, std\+::string \&report\+\_\+file\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Compares two library files and generates a detailed comparison report. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{LibFileOperations_8cpp_a56d944f0ea8b38f2f61c046c7fb44476}{func\+Lib\+File}} (const std\+::string \&ref\+\_\+file, const std\+::string \&comp\+\_\+file, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names, std\+::string \&report\+\_\+file\+\_\+name)
@@ -63,7 +65,7 @@ The function uses the \mbox{\hyperlink{classLibraryComparator}{Library\+Comparat
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00203}{203}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00231}{231}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -89,7 +91,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00231}{231}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00259}{259}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -235,6 +237,32 @@ Here is the caller graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=215pt]{LibFileOperations_8cpp_a2dbaf5580b5305d54cff6848ae7deb30_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{LibFileOperations_8cpp_a249215076db60dd83d4ed0b17fb132f7}\label{LibFileOperations_8cpp_a249215076db60dd83d4ed0b17fb132f7}} 
+\index{LibFileOperations.cpp@{LibFileOperations.cpp}!spiceLibFile@{spiceLibFile}}
+\index{spiceLibFile@{spiceLibFile}!LibFileOperations.cpp@{LibFileOperations.cpp}}
+\doxysubsubsection{\texorpdfstring{spiceLibFile()}{spiceLibFile()}}
+{\footnotesize\ttfamily void spice\+Lib\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{library\+\_\+path,  }\item[{const std\+::string \&}]{log\+\_\+file\+\_\+name,  }\item[{int}]{chain\+\_\+length,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{cell\+\_\+names,  }\item[{const std\+::string \&}]{verilog\+\_\+lib\+\_\+file,  }\item[{const std\+::string \&}]{spice\+\_\+lib\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00184}{184}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LibFileOperations_8cpp_a249215076db60dd83d4ed0b17fb132f7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{LibFileOperations_8cpp_a249215076db60dd83d4ed0b17fb132f7_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{LibFileOperations_8cpp_a0d7485f0df82adbd1671def221103a4e}\label{LibFileOperations_8cpp_a0d7485f0df82adbd1671def221103a4e}} 

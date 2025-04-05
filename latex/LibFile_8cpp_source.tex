@@ -734,63 +734,118 @@
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00875}00875   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Verilog creation complete in '\{\}'"{}}, \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}} + \textcolor{stringliteral}{"{}.v"{}});}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00876}00876 \}}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00877}00877 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00878}\mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{00878}} std::map<std::string, std::string> \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{LibFile::logic}}(\textcolor{keyword}{const} std::string \&cell\_name) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00879}00879   std::map<std::string, std::string> logic\_map = \{\};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00880}00880 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00881}00881   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Getting output pin logic function for '\{\}'"{}}, \mbox{\hyperlink{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}{filename\_}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00882}00882 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00883}00883   \textcolor{keywordflow}{if} (!std::filesystem::exists(\mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00884}00884     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}JSON file not found. Parsing Liberty file first."{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00885}00885     this-\/>\mbox{\hyperlink{classLibFile_a84d29423705e2dea8a382dc6437640d9}{parse}}();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00886}00886     this-\/>\mbox{\hyperlink{classLibFile_a88de22798a64acdb38faefc0d785804f}{writeJsonToFile}}();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00887}00887   \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00888}00888     \textcolor{comment}{// Read the JSON file into json object}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00889}00889     std::ifstream in(\mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00890}00890     \textcolor{keywordflow}{if} (!in.is\_open()) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00891}00891       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could not open file '\{\}' for reading"{}}, \mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00892}00892       \textcolor{keywordflow}{return} logic\_map;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00893}00893     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00894}00894     \textcolor{keywordflow}{try} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00895}00895       \mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\_json\_}} = json::parse(in);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00896}00896     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} json::parse\_error \&e) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00897}00897       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}JSON parsing error in file '\{\}': \{\}"{}}, \mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}}, e.what());}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00898}00898       in.close();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00899}00899       \textcolor{keywordflow}{return} logic\_map;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00900}00900     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00901}00901     in.close();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00878}\mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{00878}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{LibFile::spice}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} chain\_length, \textcolor{keyword}{const} std::vector<std::string> \&cell\_names,}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00879}00879                     \textcolor{keyword}{const} std::string \&verilog\_lib\_file, \textcolor{keyword}{const} std::string \&spice\_lib\_file) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00880}00880   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Creating SPICE for '\{\}'"{}}, \mbox{\hyperlink{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}{filename\_}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00881}00881 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00882}00882   this-\/>\mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{verilog}}(chain\_length, cell\_names);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00883}00883 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00884}00884   \textcolor{comment}{// Read netlist from temporary verilog file}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00885}00885   std::ifstream in(\mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}} + \textcolor{stringliteral}{"{}\_temp.v"{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00886}00886   \textcolor{keywordflow}{if} (!in.is\_open()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00887}00887     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could not open file \{\} for reading"{}}, \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}} + \textcolor{stringliteral}{"{}\_temp.v"{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00888}00888     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00889}00889   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00890}00890 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00891}00891   \textcolor{comment}{// Check if V2LVS tool is available by typing "{}which v2lvs"{}}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00892}00892   std::string v2lvs\_cmd = \textcolor{stringliteral}{"{}which v2lvs"{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00893}00893   std::string result;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00894}00894   std::array<char, 128> buffer;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00895}00895   std::unique\_ptr<FILE, \textcolor{keyword}{decltype}(\&pclose)> pipe(popen(v2lvs\_cmd.c\_str(), \textcolor{stringliteral}{"{}r"{}}), pclose);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00896}00896   \textcolor{keywordflow}{if} (!pipe) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00897}00897     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Failed to run command: \{\}"{}}, v2lvs\_cmd);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00898}00898     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00899}00899   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00900}00900   \textcolor{keywordflow}{while} (fgets(buffer.data(), buffer.size(), pipe.get()) != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00901}00901     result += buffer.data();}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00902}00902   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00903}00903 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00904}00904   \textcolor{comment}{// Check if the cell name exists in the JSON object}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00905}00905   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&cell : \mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\_json\_}}[\textcolor{stringliteral}{"{}cells"{}}]) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00906}00906     \textcolor{keywordflow}{if} (cell[\textcolor{stringliteral}{"{}cell\_name"{}}].get<std::string>() == cell\_name) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00907}00907       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Found cell: '\{\}'"{}}, cell\_name);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00908}00908 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00909}00909       \textcolor{comment}{// Tranverse all output pins}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00910}00910       \textcolor{keywordflow}{if} (cell.contains(\textcolor{stringliteral}{"{}output\_pins"{}})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00911}00911         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pin : cell[\textcolor{stringliteral}{"{}output\_pins"{}}]) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00912}00912           std::string pin\_name = pin[\textcolor{stringliteral}{"{}pin\_name"{}}].get<std::string>();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00913}00913           \textcolor{comment}{// Check if the pin has a "{}timing\_arcs"{} attribute}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00914}00914           \textcolor{keywordflow}{if} (pin.contains(\textcolor{stringliteral}{"{}function"{}})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00915}00915             std::string function = pin[\textcolor{stringliteral}{"{}function"{}}].get<std::string>();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00916}00916             logic\_map[pin\_name] = function;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00917}00917             \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Pin: '\{\}' Logic Function: '\{\}'"{}}, pin\_name, function);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00918}00918           \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00919}00919             \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Pin: '\{\}' does not have a 'function' attribute"{}}, pin\_name);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00920}00920           \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00921}00921         \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00922}00922       \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00923}00923     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00924}00924   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00925}00925   \textcolor{keywordflow}{if} (logic\_map.empty()) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00926}00926     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}No logic functions found for cell: '\{\}'"{}}, cell\_name);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00927}00927   \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00928}00928     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Found \{\} Logic functions for cell: '\{\}'"{}}, logic\_map.size(), cell\_name);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00929}00929     \textcolor{comment}{// Print the logic functions}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00930}00930     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pair : logic\_map) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00931}00931       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Pin -\/> Logic Function: \{\} -\/> \{\}"{}}, pair.first, pair.second);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00932}00932     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00933}00933   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00934}00934   \textcolor{keywordflow}{return} logic\_map;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00935}00935 \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00903}00903   \textcolor{keywordflow}{if} (result.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00904}00904     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}V2LVS tool not found. Please install it to use this feature."{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00905}00905     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00906}00906   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00907}00907     \textcolor{comment}{// Log the path of the V2LVS tool}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00908}00908     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}V2LVS tool found at: \{\}"{}}, result);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00909}00909   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00910}00910 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00911}00911   \textcolor{comment}{// Run V2LVS command}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00912}00912   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Running V2LVS to generate SPICE netlist..."{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00913}00913   std::string v2lvs\_cmd\_full = \textcolor{stringliteral}{"{}v2lvs -\/v "{}} + \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}} + \textcolor{stringliteral}{"{}\_temp.v -\/o "{}} + \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}} + \textcolor{stringliteral}{"{}.spi"{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00914}00914   \textcolor{comment}{// Add more options for V2LVS}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00915}00915   \textcolor{comment}{// TODO}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00916}00916   \textcolor{comment}{// Add verilog and spice library files}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00917}00917   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/l "{}} + verilog\_lib\_file + \textcolor{stringliteral}{"{} -\/s "{}} + spice\_lib\_file;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00918}00918   \textcolor{comment}{// Specifies that calls to subcircuits with pins be done in order according to traditional Spice}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00919}00919   \textcolor{comment}{// rather than with \$PINS.}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00920}00920   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/i"{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00921}00921   \textcolor{keywordtype}{int} ret = system(v2lvs\_cmd\_full.c\_str());}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00922}00922   \textcolor{keywordflow}{if} (ret != 0) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00923}00923     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Failed to run command: \{\}"{}}, v2lvs\_cmd\_full);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00924}00924     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00925}00925   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00926}00926 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00927}00927   \textcolor{comment}{// Add T-\/port connections}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00928}00928 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00929}00929   \textcolor{comment}{// Final}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00930}00930   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}SPICE generation complete in '\{\}'"{}}, \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}} + \textcolor{stringliteral}{"{}.spi"{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00931}00931 \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00932}00932 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00950}\mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{00950}} std::map<std::string, std::string> \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{LibFile::logic}}(\textcolor{keyword}{const} std::string \&cell\_name) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00951}00951   std::map<std::string, std::string> logic\_map = \{\};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00952}00952 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00953}00953   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Getting output pin logic function for '\{\}'"{}}, \mbox{\hyperlink{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}{filename\_}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00954}00954 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00955}00955   \textcolor{keywordflow}{if} (!std::filesystem::exists(\mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00956}00956     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}JSON file not found. Parsing Liberty file first."{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00957}00957     this-\/>\mbox{\hyperlink{classLibFile_a84d29423705e2dea8a382dc6437640d9}{parse}}();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00958}00958     this-\/>\mbox{\hyperlink{classLibFile_a88de22798a64acdb38faefc0d785804f}{writeJsonToFile}}();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00959}00959   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00960}00960     \textcolor{comment}{// Read the JSON file into json object}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00961}00961     std::ifstream in(\mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00962}00962     \textcolor{keywordflow}{if} (!in.is\_open()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00963}00963       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could not open file '\{\}' for reading"{}}, \mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00964}00964       \textcolor{keywordflow}{return} logic\_map;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00965}00965     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00966}00966     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00967}00967       \mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\_json\_}} = json::parse(in);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00968}00968     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} json::parse\_error \&e) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00969}00969       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}JSON parsing error in file '\{\}': \{\}"{}}, \mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}}, e.what());}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00970}00970       in.close();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00971}00971       \textcolor{keywordflow}{return} logic\_map;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00972}00972     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00973}00973     in.close();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00974}00974   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00975}00975 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00976}00976   \textcolor{comment}{// Check if the cell name exists in the JSON object}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00977}00977   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&cell : \mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\_json\_}}[\textcolor{stringliteral}{"{}cells"{}}]) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00978}00978     \textcolor{keywordflow}{if} (cell[\textcolor{stringliteral}{"{}cell\_name"{}}].get<std::string>() == cell\_name) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00979}00979       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Found cell: '\{\}'"{}}, cell\_name);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00980}00980 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00981}00981       \textcolor{comment}{// Tranverse all output pins}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00982}00982       \textcolor{keywordflow}{if} (cell.contains(\textcolor{stringliteral}{"{}output\_pins"{}})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00983}00983         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pin : cell[\textcolor{stringliteral}{"{}output\_pins"{}}]) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00984}00984           std::string pin\_name = pin[\textcolor{stringliteral}{"{}pin\_name"{}}].get<std::string>();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00985}00985           \textcolor{comment}{// Check if the pin has a "{}timing\_arcs"{} attribute}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00986}00986           \textcolor{keywordflow}{if} (pin.contains(\textcolor{stringliteral}{"{}function"{}})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00987}00987             std::string function = pin[\textcolor{stringliteral}{"{}function"{}}].get<std::string>();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00988}00988             logic\_map[pin\_name] = function;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00989}00989             \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Pin: '\{\}' Logic Function: '\{\}'"{}}, pin\_name, function);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00990}00990           \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00991}00991             \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Pin: '\{\}' does not have a 'function' attribute"{}}, pin\_name);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00992}00992           \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00993}00993         \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00994}00994       \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00995}00995     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00996}00996   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00997}00997   \textcolor{keywordflow}{if} (logic\_map.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00998}00998     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}No logic functions found for cell: '\{\}'"{}}, cell\_name);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00999}00999   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01000}01000     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Found \{\} Logic functions for cell: '\{\}'"{}}, logic\_map.size(), cell\_name);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01001}01001     \textcolor{comment}{// Print the logic functions}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01002}01002     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pair : logic\_map) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01003}01003       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Pin -\/> Logic Function: \{\} -\/> \{\}"{}}, pair.first, pair.second);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01004}01004     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01005}01005   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01006}01006   \textcolor{keywordflow}{return} logic\_map;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01007}01007 \}}
 
 \end{DoxyCode}
