@@ -23,6 +23,9 @@ void supercellLibFile(const std::string &library_path, const std::string &log_fi
                       int chain_length, const std::vector<std::string> &cell_names);
 void verilogLibFile(const std::string &library_path, const std::string &log_file_name,
                     int chain_length, const std::vector<std::string> &cell_names);
+void spiceLibFile(const std::string &library_path, const std::string &log_file_name,
+                  int chain_length, const std::vector<std::string> &cell_names,
+                  const std::string &verilog_lib_file, const std::string &spice_lib_file);
 void compareLibFiles(const std::string &ref_lib, const std::string &comp_lib, const double reltol,
                      const double abstol, std::string &report_file_name);
 void funcLibFile(const std::string &ref_file, const std::string &comp_file,

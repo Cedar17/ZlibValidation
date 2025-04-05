@@ -390,3 +390,27 @@ Subcommands:
 | Ref Expression Compiled  | Yes                               |
 | Comp Expression Compiled | Yes                               |
 | Logically Equivalent     | Yes                               |
+
+### 2025-04-05
+
+- 新增了 `LibFile::spice()` 方法，为 `spice` 子命令添加了 SPICE网表生成功能。
+  - 通过执行 `which v2lvs` 命令检测系统中是否安装了 `V2LVS` 工具。如果已安装，则调用该工具生成基本的 SPICE 网表。
+  - 添加了 `--vl` 和 `--sl` 命令行选项，允许用户指定 Verilog 库文件和 SPICE 库文件的路径。
+  - 目前已能生成基本的 SPICE 网表，后续需要进一步完善输出格式。
+
+  ```shell
+  Generate SPICE file for given Liberty file
+  Usage: ./zlibvalidation spice [OPTIONS] library_path...
+
+  Positionals:
+    library_path TEXT:FILE ... REQUIRED
+                                Specify the library file to process
+
+  Options:
+    -h,--help                   Print this help message and exit
+    -l,--log TEXT               Specify the log file name. Default: <basename>.spice.log
+    -c,--chain INT              Specify the chain length for SPICE generation. Default: 1
+    --cells TEXT ...            Specify the cell names to generate SPICE for
+    --vl TEXT                   Specify the location of the Verilog primitive library file
+    --sl TEXT                   Specify the location of the SPICE library file to be included in the output
+  ```

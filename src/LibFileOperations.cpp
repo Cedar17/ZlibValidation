@@ -181,6 +181,34 @@ void verilogLibFile(const std::string &library_path, const std::string &log_file
   }
 }
 
+void spiceLibFile(const std::string &library_path, const std::string &log_file_name,
+                  int chain_length, const std::vector<std::string> &cell_names,
+                  const std::string &verilog_lib_file, const std::string &spice_lib_file) {
+  std::string logname = log_file_name.empty()
+                            ? std::filesystem::path(library_path).stem().string() + ".spice.log"
+                            : log_file_name;
+  LibFile libfile(library_path, logname);
+
+  // Check chain length validity
+  if (chain_length < 1) {
+    libfile.logger_->error("Invalid chain length: {}. Chain length must be >= 1.", chain_length);
+    return;
+  }
+  std::stringstream ss;
+  for (const auto &cell : cell_names) {
+    ss << cell << ", ";
+  }
+  libfile.logger_->info("Starting SPICE generation for file: '{}', chain length: {}, cells: {}",
+                        library_path, chain_length, ss.str());
+  try {
+    libfile.spice(chain_length, cell_names, verilog_lib_file, spice_lib_file);
+    libfile.logger_->info("Successfully generated SPICE for file: '{}'", library_path);
+  } catch (const std::exception &e) {
+    libfile.logger_->error("Error during SPICE generation for file '{}': {}", library_path,
+                           e.what());
+  }
+}
+
 /**
  * @brief Compares two library files and generates a detailed comparison report.
  *

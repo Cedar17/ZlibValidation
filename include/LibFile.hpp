@@ -37,6 +37,8 @@ public:
   void mono(const bool is_slew);
   void supercell(const int chain_length, const std::vector<std::string> &cell_names);
   void verilog(const int chain_length, const std::vector<std::string> &cell_names);
+  void spice(const int chain_length, const std::vector<std::string> &cell_names,
+             const std::string &verilog_lib_file, const std::string &spice_lib_file);
   std::map<std::string, std::string> logic(const std::string &cell_name);
 
 private:

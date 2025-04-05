@@ -875,6 +875,78 @@ void LibFile::verilog(const int chain_length, const std::vector<std::string> &ce
   logger_->info("Verilog creation complete in '{}'", basename_ + ".v");
 }
 
+void LibFile::spice(const int chain_length, const std::vector<std::string> &cell_names,
+                    const std::string &verilog_lib_file, const std::string &spice_lib_file) {
+  logger_->info("Creating SPICE for '{}'", filename_);
+
+  this->verilog(chain_length, cell_names);
+
+  // Read netlist from temporary verilog file
+  std::ifstream in(basename_ + "_temp.v");
+  if (!in.is_open()) {
+    logger_->error("Could not open file {} for reading", basename_ + "_temp.v");
+    return;
+  }
+
+  // Check if V2LVS tool is available by typing "which v2lvs"
+  std::string v2lvs_cmd = "which v2lvs";
+  std::string result;
+  std::array<char, 128> buffer;
+  std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(v2lvs_cmd.c_str(), "r"), pclose);
+  if (!pipe) {
+    logger_->error("Failed to run command: {}", v2lvs_cmd);
+    return;
+  }
+  while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+    result += buffer.data();
+  }
+  if (result.empty()) {
+    logger_->error("V2LVS tool not found. Please install it to use this feature.");
+    return;
+  } else {
+    // Log the path of the V2LVS tool
+    logger_->info("V2LVS tool found at: {}", result);
+  }
+
+  // Run V2LVS command
+  logger_->info("Running V2LVS to generate SPICE netlist...");
+  std::string v2lvs_cmd_full = "v2lvs -v " + basename_ + "_temp.v -o " + basename_ + ".spi";
+  // Add more options for V2LVS
+  // TODO
+  // Add verilog and spice library files
+  v2lvs_cmd_full += " -l " + verilog_lib_file + " -s " + spice_lib_file;
+  // Specifies that calls to subcircuits with pins be done in order according to traditional Spice
+  // rather than with $PINS.
+  v2lvs_cmd_full += " -i";
+  int ret = system(v2lvs_cmd_full.c_str());
+  if (ret != 0) {
+    logger_->error("Failed to run command: {}", v2lvs_cmd_full);
+    return;
+  }
+
+  // Add T-port connections
+
+  // Final
+  logger_->info("SPICE generation complete in '{}'", basename_ + ".spi");
+}
+
+/**
+ * @brief Retrieves the logic functions for the output pins of a specified cell within the Liberty file.
+ *
+ * This method searches for a cell with the given name in the parsed Liberty file (either by parsing the file
+ * directly or reading from a JSON representation). It then iterates through the output pins of the cell,
+ * extracting the logic function associated with each pin. The logic functions are stored in a map, where
+ * the key is the pin name and the value is the logic function string.
+ *
+ * If the JSON file does not exist, the Liberty file is parsed, and a JSON file is created. If the JSON file
+ * exists but cannot be opened or parsed, an error is logged, and an empty map is returned. If the specified
+ * cell is not found or if no logic functions are found for the cell, a warning is logged.
+ *
+ * @param cell_name The name of the cell for which to retrieve the logic functions.
+ * @return A map containing the logic functions for the output pins of the specified cell. The keys of the map
+ *         are the pin names, and the values are the corresponding logic function strings. Returns an empty map
+ *         if no logic functions are found or if an error occurs during file processing.
+ */
 std::map<std::string, std::string> LibFile::logic(const std::string &cell_name) {
   std::map<std::string, std::string> logic_map = {};
 

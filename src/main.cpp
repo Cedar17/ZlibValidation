@@ -5,7 +5,6 @@
 #include "LibFileOperations.hpp"
 #include "version.h"
 
-
 int main(int argc, char *argv[]) {
   // Parse command line arguments
   std::vector<std::string> library_paths; // Support multiple files
@@ -177,14 +176,15 @@ int main(int argc, char *argv[]) {
   });
 
   // Add subcommand for clear
-  CLI::App *clear_cmd =
-      app.add_subcommand("clear", "Clear the log, JSON, map, markdown files in this directory");
+  CLI::App *clear_cmd = app.add_subcommand(
+      "clear", "Clear the log, JSON, map, markdown, Verilog, SPICE files in this directory");
   clear_cmd->callback([&] {
     printInfo();
     std::filesystem::path current_dir = std::filesystem::current_path();
     for (const auto &entry : std::filesystem::directory_iterator(current_dir)) {
       if (entry.path().extension() == ".log" || entry.path().extension() == ".json" ||
-          entry.path().extension() == ".map" || entry.path().extension() == ".md") {
+          entry.path().extension() == ".map" || entry.path().extension() == ".md" ||
+          entry.path().extension() == ".v" || entry.path().extension() == ".spi") {
         spdlog::info("Removing file: '{}'", entry.path().string());
         std::filesystem::remove(entry.path());
       }
@@ -241,7 +241,20 @@ int main(int argc, char *argv[]) {
       ->required();
   spice_cmd->add_option("-l,--log", log_file_name,
                         "Specify the log file name. Default: <basename>.spice.log");
+  spice_cmd->add_option("-c,--chain", chain_length,
+                        "Specify the chain length for SPICE generation. Default: 1");
   spice_cmd->add_option("--cells", cell_names, "Specify the cell names to generate SPICE for");
+  std::string verilog_lib_file =
+      "/home/songzx/examples/mypdk/TSMC65/TSMC65NM_CLN65LP_STDIO_STDCELL/tcbn65lp_220a/"
+      "0396011_20170308/TSMCHOME/digital/Front_End/verilog/tcbn65lp.v";
+  std::string spice_lib_file =
+      "/home/songzx/examples/mypdk/TSMC65/TSMC65NM_CLN65LP_STDIO_STDCELL/tcbn65lp_220a/"
+      "0396011_20170308/TSMCHOME/digital/Back_End/lpe_spice/tcbn65lp_200a/tcbn65lp_200a_lpe.spi";
+  spice_cmd->add_option("--vl", verilog_lib_file,
+                        "Specify the location of the Verilog primitive library file");
+  spice_cmd->add_option(
+      "--sl", spice_lib_file,
+      "Specify the location of the SPICE library file to be included in the output");
   spice_cmd->callback([&] {
     printInfo();
     // Check if multi files
@@ -261,14 +274,16 @@ int main(int argc, char *argv[]) {
       // Parallel SPICE generation
       std::vector<std::thread> threads;
       for (const auto &library_path : library_paths) {
-        // threads.emplace_back(spiceLibFile, library_path, log_file_name = "", cell_names);
+        threads.emplace_back(spiceLibFile, library_path, log_file_name = "", chain_length,
+                             cell_names, verilog_lib_file, spice_lib_file);
       }
       for (auto &thread : threads) {
         thread.join();
       }
       spdlog::info("All threads completed.");
     } else {
-      // spiceLibFile(library_paths[0], log_file_name, cell_names);
+      spiceLibFile(library_paths[0], log_file_name, chain_length, cell_names, verilog_lib_file,
+                   spice_lib_file);
     }
   });
 
