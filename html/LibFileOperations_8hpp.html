@@ -156,7 +156,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <map name="ainclude_2LibFileOperations_8hppdep" id="ainclude_2LibFileOperations_8hppdep">
 <area shape="rect" title=" " alt="" coords="75,5,289,31"/>
 <area shape="rect" href="LibFileOperations_8cpp.html" title=" " alt="" coords="5,79,191,104"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="215,79,320,104"/>
+<area shape="rect" href="main_8cpp.html" title="This file contains the main function for the ZlibValidation tool." alt="" coords="215,79,320,104"/>
 </map>
 </div>
 </div>
@@ -180,11 +180,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:ab649fe3c5663201c3e23700250f7b1c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates Verilog files from a library file for specified cells.  <a href="LibFileOperations_8hpp.html#ab649fe3c5663201c3e23700250f7b1c2">More...</a><br /></td></tr>
 <tr class="separator:ab649fe3c5663201c3e23700250f7b1c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a249215076db60dd83d4ed0b17fb132f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LibFileOperations_8hpp.html#a249215076db60dd83d4ed0b17fb132f7">spiceLibFile</a> (const std::string &amp;library_path, const std::string &amp;log_file_name, int chain_length, const std::vector&lt; std::string &gt; &amp;cell_names, const std::string &amp;verilog_lib_file, const std::string &amp;spice_lib_file)</td></tr>
+<tr class="memdesc:a249215076db60dd83d4ed0b17fb132f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a SPICE library file from a given library file, applying a specified chain length and cell names.  <a href="LibFileOperations_8hpp.html#a249215076db60dd83d4ed0b17fb132f7">More...</a><br /></td></tr>
 <tr class="separator:a249215076db60dd83d4ed0b17fb132f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefb52455235a664c6dc21709237f77a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LibFileOperations_8hpp.html#aefb52455235a664c6dc21709237f77a1">compareLibFiles</a> (const std::string &amp;ref_lib, const std::string &amp;comp_lib, const double reltol, const double abstol, std::string &amp;report_file_name)</td></tr>
 <tr class="memdesc:aefb52455235a664c6dc21709237f77a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two library files and generates a detailed comparison report.  <a href="LibFileOperations_8hpp.html#aefb52455235a664c6dc21709237f77a1">More...</a><br /></td></tr>
 <tr class="separator:aefb52455235a664c6dc21709237f77a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56d944f0ea8b38f2f61c046c7fb44476"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LibFileOperations_8hpp.html#a56d944f0ea8b38f2f61c046c7fb44476">funcLibFile</a> (const std::string &amp;ref_file, const std::string &amp;comp_file, const std::vector&lt; std::string &gt; &amp;cell_names, std::string &amp;report_file_name)</td></tr>
+<tr class="memdesc:a56d944f0ea8b38f2f61c046c7fb44476"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cells.  <a href="LibFileOperations_8hpp.html#a56d944f0ea8b38f2f61c046c7fb44476">More...</a><br /></td></tr>
 <tr class="separator:a56d944f0ea8b38f2f61c046c7fb44476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -250,7 +252,7 @@ Log files will be created with the naming pattern [library_basename].cmp.log </d
 <dd>
 The function uses the <a class="el" href="classLibraryComparator.html">LibraryComparator</a> class to perform the actual comparison. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFileOperations_8cpp_source.html#l00231">231</a> of file <a class="el" href="LibFileOperations_8cpp_source.html">LibFileOperations.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFileOperations_8cpp_source.html#l00246">246</a> of file <a class="el" href="LibFileOperations_8cpp_source.html">LibFileOperations.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -314,26 +316,48 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibFileOperations_8cpp_source.html#l00259">259</a> of file <a class="el" href="LibFileOperations_8cpp_source.html">LibFileOperations.cpp</a>.</p>
+<p>Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cells. </p>
+<p >This function compares the logic functions of specified cells in two files, which can be either in Liberty (.lib) or Verilog (.v) format. It extracts the logic functions for each cell from both files, compares them, and generates a report summarizing the comparison results.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ref_file</td><td>The path to the reference file (Liberty or Verilog). </td></tr>
+    <tr><td class="paramname">comp_file</td><td>The path to the comparison file (Liberty or Verilog). </td></tr>
+    <tr><td class="paramname">cell_names</td><td>A vector of cell names to be checked for functional equivalence. </td></tr>
+    <tr><td class="paramname">report_file_name</td><td>A string to store the name of the report file. If empty, a default name is generated. If the provided name does not end with ".txt" or ".md", ".md" is appended.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The function first checks the file extensions to determine the file format. It then extracts the logic functions for each specified cell from both files. The logic functions are then compared, and a report is generated, which includes the comparison results for each cell. The report is written to the specified report file.</p>
+<dl class="section note"><dt>Note</dt><dd><ul>
+<li>If no cell names are provided, the function logs an error and returns.</li>
+<li>If the reference or comparison file format is not supported (i.e., not .lib or .v), the function logs an error and returns.</li>
+<li>The report file is cleared before writing the comparison results.</li>
+<li>The function uses spdlog for logging information, warnings, and errors.</li>
+<li>The function utilizes the <a class="el" href="classLogicComparator.html">LogicComparator</a> class to perform the logic comparison and generate the report.</li>
+<li>Memory allocated for <a class="el" href="classLibFile.html">LibFile</a> objects is managed using raw pointers and must be manually deallocated to prevent memory leaks. </li>
+</ul>
+</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LibFileOperations_8cpp_source.html#l00299">299</a> of file <a class="el" href="LibFileOperations_8cpp_source.html">LibFileOperations.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="LibFileOperations_8hpp_a56d944f0ea8b38f2f61c046c7fb44476_cgraph.png" border="0" usemap="#aLibFileOperations_8hpp_a56d944f0ea8b38f2f61c046c7fb44476_cgraph" alt=""/></div>
 <map name="aLibFileOperations_8hpp_a56d944f0ea8b38f2f61c046c7fb44476_cgraph" id="aLibFileOperations_8hpp_a56d944f0ea8b38f2f61c046c7fb44476_cgraph">
-<area shape="rect" title=" " alt="" coords="5,275,97,301"/>
+<area shape="rect" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="5,275,97,301"/>
 <area shape="rect" href="classLogicComparator.html#ae5c1b36b4a05b18c36d7fe1cbeb3ec49" title="Compares logic for all output pins defined in the input maps, and stores results in all_pin_results_." alt="" coords="145,101,344,141"/>
-<area shape="rect" href="LogicExtractor_8cpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d" title=" " alt="" coords="155,218,335,243"/>
+<area shape="rect" href="LogicExtractor_8cpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d" title="Extracts logic expressions from a Verilog file for a specified cell." alt="" coords="155,218,335,243"/>
 <area shape="rect" href="classLogicComparator.html#a11238591d905205ad26839e1977634f5" title="Generates a comparison report file based on cell logic comparison results." alt="" coords="145,268,344,308"/>
 <area shape="rect" href="classLogicComparator.html#a1be219c18555e95192b758be8a4b4e2f" title="This function demonstrates the usage of the exprtk library to evaluate a boolean logic expression." alt="" coords="159,333,331,358"/>
 <area shape="rect" href="classLibFile.html#a90b6274f928d77388864ba61583a030f" title="Retrieves the logic functions for the output pins of a specified cell within the Liberty file." alt="" coords="193,679,296,705"/>
 <area shape="rect" href="classLogicComparator.html#a626ddc1bb2057eef7862cea7bbc860bb" title="Compares two preprocessed logic expression strings for equivalence. Internal helper function." alt="" coords="399,5,597,45"/>
 <area shape="rect" href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666" title="Extracts and validates variables from two expressions, ensuring they match." alt="" coords="405,69,591,109"/>
-<area shape="rect" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a" title=" " alt="" coords="392,133,604,173"/>
+<area shape="rect" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a" title="Preprocesses a logical expression string to prepare it for evaluation." alt="" coords="392,133,604,173"/>
 <area shape="rect" href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df" title="Checks if a given string is a valid identifier." alt="" coords="706,81,797,106"/>
 <area shape="rect" href="LogicComparator_8cpp.html#a1c875672f908868869e6cce7cbd92c1c" title="Checks if a given token is a logical operator." alt="" coords="706,137,797,162"/>
-<area shape="rect" href="classLogicExtractor.html#a234c934f2b8824311dbeca77f4d8ad52" title=" " alt="" coords="409,211,587,251"/>
-<area shape="rect" href="classLogicExtractor.html#ad00ef591f9a574c2e1bb9ad6a30c0db4" title=" " alt="" coords="652,211,851,251"/>
-<area shape="rect" href="classLogicExtractor.html#a95832f1f42e902556dc36bca8f9796fe" title=" " alt="" coords="899,218,1137,243"/>
+<area shape="rect" href="classLogicExtractor.html#a234c934f2b8824311dbeca77f4d8ad52" title="Extracts logic expressions for all primary output ports of the target cell." alt="" coords="409,211,587,251"/>
+<area shape="rect" href="classLogicExtractor.html#ad00ef591f9a574c2e1bb9ad6a30c0db4" title="Recursively derives the logic expression for a given signal." alt="" coords="652,211,851,251"/>
+<area shape="rect" href="classLogicExtractor.html#a95832f1f42e902556dc36bca8f9796fe" title="Formats a logic expression based on the gate type and input expressions." alt="" coords="899,218,1137,243"/>
 <area shape="rect" href="classLibFile.html#a84d29423705e2dea8a382dc6437640d9" title="Parses the Liberty file and extracts library information into a JSON structure." alt="" coords="444,679,552,705"/>
 <area shape="rect" href="classLibFile.html#a88de22798a64acdb38faefc0d785804f" title="Writes the JSON data stored in the object to a file." alt="" coords="413,729,583,754"/>
 <area shape="rect" href="classGroupsIterator.html#a4391410c34cdfcc26a0540310ea48ad7" title=" " alt="" coords="1422,833,1570,858"/>
@@ -368,7 +392,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="LibFileOperations_8hpp_a56d944f0ea8b38f2f61c046c7fb44476_icgraph.png" border="0" usemap="#aLibFileOperations_8hpp_a56d944f0ea8b38f2f61c046c7fb44476_icgraph" alt=""/></div>
 <map name="aLibFileOperations_8hpp_a56d944f0ea8b38f2f61c046c7fb44476_icgraph" id="aLibFileOperations_8hpp_a56d944f0ea8b38f2f61c046c7fb44476_icgraph">
-<area shape="rect" title=" " alt="" coords="108,5,200,31"/>
+<area shape="rect" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="108,5,200,31"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
 </map>
 </div>
@@ -658,13 +682,27 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibFileOperations_8cpp_source.html#l00184">184</a> of file <a class="el" href="LibFileOperations_8cpp_source.html">LibFileOperations.cpp</a>.</p>
+<p>Generates a SPICE library file from a given library file, applying a specified chain length and cell names. </p>
+<p >This function takes a library file path, a log file name, a chain length, a vector of cell names, a Verilog library file path, and a SPICE library file path as input. It initializes a <a class="el" href="classLibFile.html">LibFile</a> object, validates the chain length, and then calls the spice method of the <a class="el" href="classLibFile.html">LibFile</a> object to generate the SPICE library file. It logs the start and end of the SPICE generation process, as well as any errors that occur.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">library_path</td><td>The path to the input library file. </td></tr>
+    <tr><td class="paramname">log_file_name</td><td>The name of the log file. If empty, a default log file name is generated based on the library file name. </td></tr>
+    <tr><td class="paramname">chain_length</td><td>The chain length to use during SPICE generation. Must be &gt;= 1. </td></tr>
+    <tr><td class="paramname">cell_names</td><td>A vector of cell names to include in the SPICE generation. </td></tr>
+    <tr><td class="paramname">verilog_lib_file</td><td>The path to the Verilog library file. </td></tr>
+    <tr><td class="paramname">spice_lib_file</td><td>The path to the output SPICE library file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="LibFileOperations_8cpp_source.html#l00199">199</a> of file <a class="el" href="LibFileOperations_8cpp_source.html">LibFileOperations.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="LibFileOperations_8hpp_a249215076db60dd83d4ed0b17fb132f7_cgraph.png" border="0" usemap="#aLibFileOperations_8hpp_a249215076db60dd83d4ed0b17fb132f7_cgraph" alt=""/></div>
 <map name="aLibFileOperations_8hpp_a249215076db60dd83d4ed0b17fb132f7_cgraph" id="aLibFileOperations_8hpp_a249215076db60dd83d4ed0b17fb132f7_cgraph">
-<area shape="rect" title=" " alt="" coords="5,1487,104,1513"/>
+<area shape="rect" title="Generates a SPICE library file from a given library file, applying a specified chain length and cell ..." alt="" coords="5,1487,104,1513"/>
 <area shape="rect" href="classLibFile.html#a290f9bfef8ea2f8039837fffceeaa465" title="Generates a SPICE netlist for the library based on a temporary Verilog file, using the V2LVS tool." alt="" coords="152,1487,259,1513"/>
 <area shape="rect" href="classLibFile.html#a25b6fd7453e8a200a70b2d19a6e216e2" title="Modifies a SPICE netlist generated by v2lvs, adding metadata, inserting a global line,..." alt="" coords="307,1462,501,1487"/>
 <area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file." alt="" coords="345,1511,463,1537"/>
@@ -705,7 +743,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="LibFileOperations_8hpp_a249215076db60dd83d4ed0b17fb132f7_icgraph.png" border="0" usemap="#aLibFileOperations_8hpp_a249215076db60dd83d4ed0b17fb132f7_icgraph" alt=""/></div>
 <map name="aLibFileOperations_8hpp_a249215076db60dd83d4ed0b17fb132f7_icgraph" id="aLibFileOperations_8hpp_a249215076db60dd83d4ed0b17fb132f7_icgraph">
-<area shape="rect" title=" " alt="" coords="108,5,207,31"/>
+<area shape="rect" title="Generates a SPICE library file from a given library file, applying a specified chain length and cell ..." alt="" coords="108,5,207,31"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
 </map>
 </div>
@@ -930,7 +968,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="LibFileOperations_8hpp.html">LibFileOperations.hpp</a></li>
-    <li class="footer">Generated on Sat Apr 5 2025 16:13:16 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Apr 5 2025 16:35:27 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

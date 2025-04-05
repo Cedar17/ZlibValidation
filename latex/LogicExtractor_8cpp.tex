@@ -13,9 +13,9 @@ Include dependency graph for Logic\+Extractor.\+cpp\+:
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{LogicExtractor_8cpp_a2276f971f6bd1d8f34f635811cc65e08}{extract\+And\+Print\+Netlist\+Info}} (const std\+::string \&verilog\+\_\+file, const std\+::string \&cell)
-\item 
+\begin{DoxyCompactList}\small\item\em Extracts and prints netlist information from a Verilog file for a specified cell. \end{DoxyCompactList}\item 
 std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{LogicExtractor_8cpp_ae057244a8c2cf0f12f0fa95ce36c8a5d}{extract\+Logic\+From\+Verilog}} (const std\+::string \&verilog\+\_\+file, const std\+::string \&cell)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Extracts logic expressions from a Verilog file for a specified cell. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -27,7 +27,28 @@ std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{LogicExtractor_8
 
 
 
-Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00514}{514}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
+Extracts and prints netlist information from a Verilog file for a specified cell. 
+
+This function parses a Verilog file using the slang library, extracts information about the primary inputs, primary outputs, internal wires, and gate drivers within a specified cell (module). It then prints a summary of the extracted information to the console using spdlog.
+
+
+\begin{DoxyParams}{Parameters}
+{\em verilog\+\_\+file} & The path to the Verilog file to be parsed. \\
+\hline
+{\em cell} & The name of the cell (module) for which to extract netlist information.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::exception} & If any error occurs during Verilog parsing or info extraction.\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Note}
+The function uses the slang library for Verilog parsing and a custom \mbox{\hyperlink{classLogicExtractor}{Logic\+Extractor}} class to extract the desired information. Error messages are logged using spdlog. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00673}{673}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -45,7 +66,30 @@ Here is the call graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00575}{575}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
+Extracts logic expressions from a Verilog file for a specified cell. 
+
+This function parses a Verilog file using the slang library, identifies the specified cell, and extracts the logic expressions for its outputs. It returns a map where the keys are output signal names and the values are their corresponding logic expressions as strings.
+
+
+\begin{DoxyParams}{Parameters}
+{\em verilog\+\_\+file} & The path to the Verilog file to parse. \\
+\hline
+{\em cell} & The name of the cell (module) for which to extract logic expressions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A map of output signal names to their logic expressions. Returns an empty map if parsing fails, the cell is not found, or no logic expressions can be derived.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The function uses the slang library for Verilog parsing. Ensure that slang is properly installed and configured before using this function. 
+
+The logic extraction process involves traversing the syntax tree of the Verilog code and identifying relevant assignments and expressions within the specified cell. 
+
+Error messages and warnings are logged using the spdlog library. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00752}{752}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak

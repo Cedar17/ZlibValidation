@@ -96,6 +96,9 @@ $(document).ready(function(){initNavTree('main_8cpp.html',''); initResizable(); 
   <div class="headertitle"><div class="title">main.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file contains the main function for the ZlibValidation tool.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;CLI/CLI.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="LibFileOperations_8hpp_source.html">LibFileOperations.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="version_8h_source.html">version.h</a>&quot;</code><br />
@@ -104,7 +107,7 @@ Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#asrc_2main_8cpp" alt=""/></div>
 <map name="asrc_2main_8cpp" id="asrc_2main_8cpp">
-<area shape="rect" title=" " alt="" coords="1467,5,1573,31"/>
+<area shape="rect" title="This file contains the main function for the ZlibValidation tool." alt="" coords="1467,5,1573,31"/>
 <area shape="rect" title=" " alt="" coords="1319,79,1414,104"/>
 <area shape="rect" href="LibFileOperations_8hpp.html" title=" " alt="" coords="1439,79,1601,104"/>
 <area shape="rect" href="version_8h.html" title=" " alt="" coords="1853,306,1936,331"/>
@@ -151,7 +154,40 @@ Functions</h2></td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >This file contains the main function for the ZlibValidation tool. </p>
+<p >The ZlibValidation tool is a command-line application that provides several functionalities for processing and validating Liberty files, including parsing, monotonicity checking, comparison, supercell generation, Verilog/SPICE netlist generation, functional equivalence check, and a utility to clear generated files. It uses the CLI11 library for command-line argument parsing and spdlog for logging.</p>
+<p >The main function parses command-line arguments using CLI11 to determine the desired operation and its parameters. It then calls the appropriate functions to perform the requested task. The tool supports processing multiple Liberty files in parallel using multi-threading for monotonicity checking, supercell generation, Verilog generation, and SPICE generation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>The number of command-line arguments. </td></tr>
+    <tr><td class="paramname">argv</td><td>An array of command-line argument strings. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if the program executes successfully, or an error code otherwise.</dd></dl>
+<p>The main function performs the following steps:</p><ol type="1">
+<li>Initializes command-line argument parsing using CLI11.</li>
+<li>Defines subcommands for each supported operation:<ul>
+<li><code>parse</code>: Parses a Liberty file and writes JSON to a file.</li>
+<li><code>mono</code>: Checks the monotonicity of timing arc values in a Liberty file.</li>
+<li><code>compare</code>: Compares two Liberty files and reports differences.</li>
+<li><code>supercell</code>: Generates supercells for a given Liberty file.</li>
+<li><code>zlibboost</code>: Runs the ZlibBoost tool for multi-threaded library processing.</li>
+<li><code>clear</code>: Clears log, JSON, map, markdown, Verilog, and SPICE files in the current directory.</li>
+<li><code>verilog</code>: Generates Verilog netlist for a given Liberty file.</li>
+<li><code>spice</code>: Generates SPICE netlist for a given Liberty file.</li>
+<li><code>func</code>: Checks functional equivalence of two Liberty or Verilog files.</li>
+</ul>
+</li>
+<li>Parses the command-line arguments using CLI11.</li>
+<li>Calls the appropriate function based on the selected subcommand.</li>
+<li>Logs the program's exit status and timestamp.</li>
+</ol>
+<dl class="section note"><dt>Note</dt><dd>The tool relies on external libraries such as CLI11, spdlog, and potentially others depending on the specific operation being performed. Ensure that these libraries are properly installed and configured before running the tool. </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&#160;</a></span>main()</h2>
 
@@ -178,7 +214,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00008">8</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00048">48</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -186,28 +222,28 @@ Here is the call graph for this function:</div>
 <map name="amain_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph" id="amain_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph">
 <area shape="rect" title=" " alt="" coords="5,695,60,721"/>
 <area shape="rect" href="LibFileOperations_8cpp.html#aefb52455235a664c6dc21709237f77a1" title="Compares two library files and generates a detailed comparison report." alt="" coords="115,441,243,466"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="549,502,641,527"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="549,502,641,527"/>
 <area shape="rect" href="LibFileOperations_8cpp.html#aebef9d1797be7b2aafcbc107bcc513cb" title="Performs monotonicity check on a library file." alt="" coords="108,619,249,645"/>
 <area shape="rect" href="LibFileOperations_8cpp.html#a3ac24d33b321364527447f166fd31edf" title="Parses a library file and generates corresponding output." alt="" coords="789,822,889,847"/>
 <area shape="rect" href="LibFileOperations_8cpp.html#a2dbaf5580b5305d54cff6848ae7deb30" title="Sets up and configures the global logger and prints application information." alt="" coords="140,873,217,898"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a249215076db60dd83d4ed0b17fb132f7" title=" " alt="" coords="129,771,228,797"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a249215076db60dd83d4ed0b17fb132f7" title="Generates a SPICE library file from a given library file, applying a specified chain length and cell ..." alt="" coords="129,771,228,797"/>
 <area shape="rect" href="LibFileOperations_8cpp.html#a0d7485f0df82adbd1671def221103a4e" title="Creates supercell map structures from a Liberty library file." alt="" coords="312,670,435,695"/>
 <area shape="rect" href="LibFileOperations_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2" title="Generates Verilog files from a library file for specified cells." alt="" coords="319,721,428,746"/>
 <area shape="rect" href="classLibraryComparator.html#a4f150829d621ad8f199813a0f9fc8be5" title="Generates a comparison report between the reference and comparison libraries." alt="" coords="297,399,449,439"/>
 <area shape="rect" href="classLibraryComparator.html#a33d180a887ce7b69245b1be5ffaf1e01" title="Compares the output pins of a cell between a reference JSON and a comparison JSON." alt="" coords="519,283,671,323"/>
 <area shape="rect" href="classLibraryComparator.html#ac65c88728ce78808f4b067b55ef12ed6" title="Compares the timing arcs of a given pin between a reference JSON and a comparison JSON." alt="" coords="763,69,915,109"/>
 <area shape="rect" href="classLogicComparator.html#ae5c1b36b4a05b18c36d7fe1cbeb3ec49" title="Compares logic for all output pins defined in the input maps, and stores results in all_pin_results_." alt="" coords="740,133,939,173"/>
-<area shape="rect" href="LogicExtractor_8cpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d" title=" " alt="" coords="749,351,929,377"/>
+<area shape="rect" href="LogicExtractor_8cpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d" title="Extracts logic expressions from a Verilog file for a specified cell." alt="" coords="749,351,929,377"/>
 <area shape="rect" href="classLogicComparator.html#a11238591d905205ad26839e1977634f5" title="Generates a comparison report file based on cell logic comparison results." alt="" coords="740,465,939,505"/>
 <area shape="rect" href="classLogicComparator.html#a1be219c18555e95192b758be8a4b4e2f" title="This function demonstrates the usage of the exprtk library to evaluate a boolean logic expression." alt="" coords="753,530,925,555"/>
 <area shape="rect" href="classLibFile.html#a90b6274f928d77388864ba61583a030f" title="Retrieves the logic functions for the output pins of a specified cell within the Liberty file." alt="" coords="788,673,891,698"/>
 <area shape="rect" href="classLogicComparator.html#a626ddc1bb2057eef7862cea7bbc860bb" title="Compares two preprocessed logic expression strings for equivalence. Internal helper function." alt="" coords="1018,5,1217,45"/>
 <area shape="rect" href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666" title="Extracts and validates variables from two expressions, ensuring they match." alt="" coords="1024,69,1211,109"/>
-<area shape="rect" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a" title=" " alt="" coords="1011,133,1223,173"/>
+<area shape="rect" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a" title="Preprocesses a logical expression string to prepare it for evaluation." alt="" coords="1011,133,1223,173"/>
 <area shape="rect" href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df" title="Checks if a given string is a valid identifier." alt="" coords="1350,77,1441,102"/>
 <area shape="rect" href="LogicComparator_8cpp.html#a1c875672f908868869e6cce7cbd92c1c" title="Checks if a given token is a logical operator." alt="" coords="1350,126,1441,151"/>
-<area shape="rect" href="classLogicExtractor.html#a234c934f2b8824311dbeca77f4d8ad52" title=" " alt="" coords="1028,323,1207,363"/>
-<area shape="rect" href="classLogicExtractor.html#ad00ef591f9a574c2e1bb9ad6a30c0db4" title=" " alt="" coords="1296,200,1495,240"/>
+<area shape="rect" href="classLogicExtractor.html#a234c934f2b8824311dbeca77f4d8ad52" title="Extracts logic expressions for all primary output ports of the target cell." alt="" coords="1028,323,1207,363"/>
+<area shape="rect" href="classLogicExtractor.html#ad00ef591f9a574c2e1bb9ad6a30c0db4" title="Recursively derives the logic expression for a given signal." alt="" coords="1296,200,1495,240"/>
 <area shape="rect" href="classLibFile.html#a84d29423705e2dea8a382dc6437640d9" title="Parses the Liberty file and extracts library information into a JSON structure." alt="" coords="1063,822,1171,847"/>
 <area shape="rect" href="classLibFile.html#a88de22798a64acdb38faefc0d785804f" title="Writes the JSON data stored in the object to a file." alt="" coords="1033,697,1202,722"/>
 <area shape="rect" href="classGroupsIterator.html#a4391410c34cdfcc26a0540310ea48ad7" title=" " alt="" coords="1727,1379,1875,1405"/>
@@ -245,7 +281,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="main_8cpp.html">main.cpp</a></li>
-    <li class="footer">Generated on Sat Apr 5 2025 16:13:16 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Apr 5 2025 16:35:27 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

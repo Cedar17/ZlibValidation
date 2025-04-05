@@ -1,5 +1,10 @@
 \hypertarget{main_8cpp}{}\doxysection{src/main.cpp File Reference}
 \label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+
+
+This file contains the main function for the Zlib\+Validation tool.  
+
+
 {\ttfamily \#include \char`\"{}CLI/\+CLI.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Lib\+File\+Operations.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}version.\+h\char`\"{}}\newline
@@ -18,6 +23,52 @@ int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int ar
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+This file contains the main function for the Zlib\+Validation tool. 
+
+The Zlib\+Validation tool is a command-\/line application that provides several functionalities for processing and validating Liberty files, including parsing, monotonicity checking, comparison, supercell generation, Verilog/\+SPICE netlist generation, functional equivalence check, and a utility to clear generated files. It uses the CLI11 library for command-\/line argument parsing and spdlog for logging.
+
+The main function parses command-\/line arguments using CLI11 to determine the desired operation and its parameters. It then calls the appropriate functions to perform the requested task. The tool supports processing multiple Liberty files in parallel using multi-\/threading for monotonicity checking, supercell generation, Verilog generation, and SPICE generation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of command-\/line arguments. \\
+\hline
+{\em argv} & An array of command-\/line argument strings. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the program executes successfully, or an error code otherwise.
+\end{DoxyReturn}
+The main function performs the following steps\+:
+\begin{DoxyEnumerate}
+\item Initializes command-\/line argument parsing using CLI11.
+\item Defines subcommands for each supported operation\+:
+\begin{DoxyItemize}
+\item {\ttfamily parse}\+: Parses a Liberty file and writes JSON to a file.
+\item {\ttfamily mono}\+: Checks the monotonicity of timing arc values in a Liberty file.
+\item {\ttfamily compare}\+: Compares two Liberty files and reports differences.
+\item {\ttfamily supercell}\+: Generates supercells for a given Liberty file.
+\item {\ttfamily zlibboost}\+: Runs the Zlib\+Boost tool for multi-\/threaded library processing.
+\item {\ttfamily clear}\+: Clears log, JSON, map, markdown, Verilog, and SPICE files in the current directory.
+\item {\ttfamily verilog}\+: Generates Verilog netlist for a given Liberty file.
+\item {\ttfamily spice}\+: Generates SPICE netlist for a given Liberty file.
+\item {\ttfamily func}\+: Checks functional equivalence of two Liberty or Verilog files.
+\end{DoxyItemize}
+\item Parses the command-\/line arguments using CLI11.
+\item Calls the appropriate function based on the selected subcommand.
+\item Logs the program\textquotesingle{}s exit status and timestamp.
+\end{DoxyEnumerate}
+
+\begin{DoxyNote}{Note}
+The tool relies on external libraries such as CLI11, spdlog, and potentially others depending on the specific operation being performed. Ensure that these libraries are properly installed and configured before running the tool. 
+\end{DoxyNote}
+
+
+Definition in file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
 \index{main.cpp@{main.cpp}!main@{main}}
@@ -27,7 +78,7 @@ int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int ar
 
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak

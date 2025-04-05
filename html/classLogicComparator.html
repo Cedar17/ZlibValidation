@@ -109,6 +109,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1be219c18555e95192b758be8a4b4e2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function demonstrates the usage of the exprtk library to evaluate a boolean logic expression.  <a href="classLogicComparator.html#a1be219c18555e95192b758be8a4b4e2f">More...</a><br /></td></tr>
 <tr class="separator:a1be219c18555e95192b758be8a4b4e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accce3c590846e3fdf1a66aaa6a5c465a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">preprocessExpression</a> (const std::string &amp;input_expr)</td></tr>
+<tr class="memdesc:accce3c590846e3fdf1a66aaa6a5c465a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preprocesses a logical expression string to prepare it for evaluation.  <a href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">More...</a><br /></td></tr>
 <tr class="separator:accce3c590846e3fdf1a66aaa6a5c465a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75c9d6faa38a1003670c59e5f60d1666"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666">extractVariables</a> (const std::string &amp;expr1, const std::string &amp;expr2, std::vector&lt; std::string &gt; &amp;sorted_vars)</td></tr>
 <tr class="memdesc:a75c9d6faa38a1003670c59e5f60d1666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts and validates variables from two expressions, ensuring they match.  <a href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666">More...</a><br /></td></tr>
@@ -209,13 +210,13 @@ The <code>preprocessExpression</code> method is used to simplify the raw logic e
 The <code>extractVariables</code> method is used to extract and validate the variables used in the logic expressions. </dd>
 <dd>
 The <code>compareSingleExpressionPair</code> method is used to compare the preprocessed expressions and determine whether they are equivalent.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">preprocessExpression</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a" title="Preprocesses a logical expression string to prepare it for evaluation.">preprocessExpression</a> </dd>
 <dd>
 <a class="el" href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666" title="Extracts and validates variables from two expressions, ensuring they match.">extractVariables</a> </dd>
 <dd>
 <a class="el" href="classLogicComparator.html#a626ddc1bb2057eef7862cea7bbc860bb" title="Compares two preprocessed logic expression strings for equivalence. Internal helper function.">compareSingleExpressionPair</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00788">788</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00808">808</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -224,7 +225,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" title="Compares logic for all output pins defined in the input maps, and stores results in all_pin_results_." alt="" coords="5,69,204,109"/>
 <area shape="rect" href="classLogicComparator.html#a626ddc1bb2057eef7862cea7bbc860bb" title="Compares two preprocessed logic expression strings for equivalence. Internal helper function." alt="" coords="259,5,457,45"/>
 <area shape="rect" href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666" title="Extracts and validates variables from two expressions, ensuring they match." alt="" coords="265,69,451,109"/>
-<area shape="rect" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a" title=" " alt="" coords="252,133,464,173"/>
+<area shape="rect" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a" title="Preprocesses a logical expression string to prepare it for evaluation." alt="" coords="252,133,464,173"/>
 <area shape="rect" href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df" title="Checks if a given string is a valid identifier." alt="" coords="512,85,603,110"/>
 <area shape="rect" href="LogicComparator_8cpp.html#a1c875672f908868869e6cce7cbd92c1c" title="Checks if a given token is a logical operator." alt="" coords="512,141,603,166"/>
 </map>
@@ -235,7 +236,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classLogicComparator_ae5c1b36b4a05b18c36d7fe1cbeb3ec49_icgraph.png" border="0" usemap="#aclassLogicComparator_ae5c1b36b4a05b18c36d7fe1cbeb3ec49_icgraph" alt=""/></div>
 <map name="aclassLogicComparator_ae5c1b36b4a05b18c36d7fe1cbeb3ec49_icgraph" id="aclassLogicComparator_ae5c1b36b4a05b18c36d7fe1cbeb3ec49_icgraph">
 <area shape="rect" title="Compares logic for all output pins defined in the input maps, and stores results in all_pin_results_." alt="" coords="248,5,447,45"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="108,13,200,38"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
 </map>
 </div>
@@ -314,7 +315,7 @@ The function uses spdlog for logging debug, warning, and error messages.</dd>
 <dd>
 The function assumes that the input expressions are valid boolean expressions containing only the variables listed in sorted_vars. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00529">529</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00549">549</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -322,7 +323,7 @@ Here is the caller graph for this function:</div>
 <map name="aclassLogicComparator_a626ddc1bb2057eef7862cea7bbc860bb_icgraph" id="aclassLogicComparator_a626ddc1bb2057eef7862cea7bbc860bb_icgraph">
 <area shape="rect" title="Compares two preprocessed logic expression strings for equivalence. Internal helper function." alt="" coords="495,5,693,45"/>
 <area shape="rect" href="classLogicComparator.html#ae5c1b36b4a05b18c36d7fe1cbeb3ec49" title="Compares logic for all output pins defined in the input maps, and stores results in all_pin_results_." alt="" coords="248,5,447,45"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="108,13,200,38"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
 </map>
 </div>
@@ -382,7 +383,7 @@ The <code>keywords</code> set contains a list of reserved words that cannot be u
 <dd>
 The function uses spdlog for logging debug, trace, info, and warning messages. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00303">303</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00323">323</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -399,7 +400,7 @@ Here is the caller graph for this function:</div>
 <map name="aclassLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_icgraph" id="aclassLogicComparator_a75c9d6faa38a1003670c59e5f60d1666_icgraph">
 <area shape="rect" title="Extracts and validates variables from two expressions, ensuring they match." alt="" coords="495,5,681,45"/>
 <area shape="rect" href="classLogicComparator.html#ae5c1b36b4a05b18c36d7fe1cbeb3ec49" title="Compares logic for all output pins defined in the input maps, and stores results in all_pin_results_." alt="" coords="248,5,447,45"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="108,13,200,38"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
 </map>
 </div>
@@ -423,21 +424,57 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Generates a comparison report file based on cell logic comparison results. </p>
+<p >Generates a comprehensive report comparing the logic equivalence of a cell's reference and comparison expressions.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output_file</td><td>Path to the output report file. </td></tr>
+    <tr><td class="paramname">output_file</td><td>Path to the output report file.</td></tr>
   </table>
   </dd>
 </dl>
+<p >This function performs the following steps:</p><ol type="1">
+<li><b>Initialization:</b> Sets up logging and determines the output format (Markdown or plain text) based on the file extension.</li>
+<li><b>File Handling:</b> Opens the specified output file in append mode, creating it if it doesn't exist. Handles potential file opening errors.</li>
+<li><b>Report Header:</b> Writes a header section to the report, including the cell name, application version, author, and timestamp.</li>
+<li><b>Legend Generation:</b> Creates a legend explaining the status symbols used in the report (e.g., [OK], [NO], [NA]).</li>
+<li><b>Table Generation:</b> Creates tables for reference pin functions, comparison pin functions, and the legend.</li>
+<li><b>Pin Result Processing:</b> Iterates through the results for each pin, generating detailed information including:<ul>
+<li>Pin Name</li>
+<li>Reference and Comparison Truth Tables (if available)</li>
+<li>Comparison Summary Table:<ul>
+<li>Status (Logic Equivalence)</li>
+<li>Raw and Processed Expressions</li>
+<li>Compilation Status</li>
+<li>Error Messages (if any)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><b>Output:</b> Exports the generated tables and pin results to the output file in the determined format (Markdown or plain text).</li>
+<li><b>Closure:</b> Closes the output file and logs the completion of the report generation.</li>
+</ol>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">output_file</td><td>The path to the output report file. If the file extension is ".md", the report will be generated in Markdown format; otherwise, it will be generated in plain text.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The function uses <code>spdlog</code> for logging and relies on several helper classes/structs:<ul>
+<li><code>Table</code>: For creating formatted tables.</li>
+<li><code>MarkdownExporter</code>: For exporting tables to Markdown format.</li>
+<li><code>LogicComparator::PinResult</code>: A struct containing the results of the logic comparison for a single pin.</li>
+</ul>
+</dd>
+<dd>
+The function appends to the output file if it already exists. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00911">911</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00960">960</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLogicComparator_a11238591d905205ad26839e1977634f5_icgraph.png" border="0" usemap="#aclassLogicComparator_a11238591d905205ad26839e1977634f5_icgraph" alt=""/></div>
 <map name="aclassLogicComparator_a11238591d905205ad26839e1977634f5_icgraph" id="aclassLogicComparator_a11238591d905205ad26839e1977634f5_icgraph">
 <area shape="rect" title="Generates a comparison report file based on cell logic comparison results." alt="" coords="248,5,447,45"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="108,13,200,38"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
 </map>
 </div>
@@ -478,7 +515,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classLogicComparator_a1be219c18555e95192b758be8a4b4e2f_icgraph.png" border="0" usemap="#aclassLogicComparator_a1be219c18555e95192b758be8a4b4e2f_icgraph" alt=""/></div>
 <map name="aclassLogicComparator_a1be219c18555e95192b758be8a4b4e2f_icgraph" id="aclassLogicComparator_a1be219c18555e95192b758be8a4b4e2f_icgraph">
 <area shape="rect" title="This function demonstrates the usage of the exprtk library to evaluate a boolean logic expression." alt="" coords="248,5,420,31"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,5,200,31"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="108,5,200,31"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
 </map>
 </div>
@@ -501,13 +538,36 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00104">104</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
+<p>Preprocesses a logical expression string to prepare it for evaluation. </p>
+<p >This function performs several steps to transform the input expression:</p><ol type="1">
+<li>Trims leading/trailing whitespace.</li>
+<li>Replaces the logical NOT operator '!' with " not " (except for '!=').</li>
+<li>Adds spaces around operators (+, ^, *) and parentheses.</li>
+<li>Replaces symbolic operators (+, ^, *) with their keyword equivalents (or, xor, and).</li>
+<li>Tokenizes the expression based on spaces.</li>
+<li>Inserts implied 'and' operators between operands where necessary. For example, "A B" becomes "A and B".</li>
+<li>Handles 'not Identifier' sequences by converting them to 'not(Identifier)'.</li>
+<li>Reconstructs the final expression string from the processed tokens, adding spaces appropriately.</li>
+<li>Performs a final cleanup to consolidate multiple spaces and trim the result.</li>
+</ol>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_expr</td><td>The input logical expression string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The preprocessed logical expression string, ready for evaluation. Returns an empty string if the input is empty or if no tokens are found after processing.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The function uses spdlog for debugging and tracing. </dd>
+<dd>
+The function assumes the existence of helper functions <code>isIdentifier</code> and <code>isOperator</code> to classify tokens. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LogicComparator_8cpp_source.html#l00124">124</a> of file <a class="el" href="LogicComparator_8cpp_source.html">LogicComparator.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_cgraph.png" border="0" usemap="#aclassLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_cgraph" alt=""/></div>
 <map name="aclassLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_cgraph" id="aclassLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_cgraph">
-<area shape="rect" title=" " alt="" coords="5,23,217,63"/>
+<area shape="rect" title="Preprocesses a logical expression string to prepare it for evaluation." alt="" coords="5,23,217,63"/>
 <area shape="rect" href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df" title="Checks if a given string is a valid identifier." alt="" coords="265,5,356,31"/>
 <area shape="rect" href="LogicComparator_8cpp.html#a1c875672f908868869e6cce7cbd92c1c" title="Checks if a given token is a logical operator." alt="" coords="265,55,356,80"/>
 </map>
@@ -517,9 +577,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_icgraph.png" border="0" usemap="#aclassLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_icgraph" alt=""/></div>
 <map name="aclassLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_icgraph" id="aclassLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a_icgraph">
-<area shape="rect" title=" " alt="" coords="495,5,707,45"/>
+<area shape="rect" title="Preprocesses a logical expression string to prepare it for evaluation." alt="" coords="495,5,707,45"/>
 <area shape="rect" href="classLogicComparator.html#ae5c1b36b4a05b18c36d7fe1cbeb3ec49" title="Compares logic for all output pins defined in the input maps, and stores results in all_pin_results_." alt="" coords="248,5,447,45"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,13,200,38"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="108,13,200,38"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
 </map>
 </div>
@@ -633,7 +693,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classLogicComparator.html">LogicComparator</a></li>
-    <li class="footer">Generated on Sat Apr 5 2025 16:13:16 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Apr 5 2025 16:35:27 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

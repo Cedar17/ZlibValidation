@@ -467,7 +467,7 @@ Development Diary</h1>
 <li>整理头文件引用，删除了不必要的引用，提高编译效率。</li>
 <li>引入 <code>exprtk.cpp</code> 到第三方头文件目录，为后续的表达式解析做准备。</li>
 <li>完善了 <code><a class="el" href="classLogicComparator.html">LogicComparator</a></code> 类的实现，增加了其示例代码模板 <code>template &lt;typename T&gt; void logic();</code>，该模板能够对一个表达式遍历输入变量的所有组合，计算出逻辑值，并打印真值表，为逻辑等价性验证提供基础。</li>
-<li>实现了 <code><a class="el" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">LogicComparator::preprocessExpression()</a></code> 方法，用于预处理逻辑表达式，目的是简化表达式，使其更易于比较。预处理的逻辑如下：<ul>
+<li>实现了 <code><a class="el" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a" title="Preprocesses a logical expression string to prepare it for evaluation.">LogicComparator::preprocessExpression()</a></code> 方法，用于预处理逻辑表达式，目的是简化表达式，使其更易于比较。预处理的逻辑如下：<ul>
 <li>**统一 AND 处理**：将 <code>*</code> 和空格隐式 AND 都转换为带空格的 <code>and</code>，保证 AND 运算符的显式性。</li>
 <li>**显式符号处理**：<ul>
 <li>在所有括号 <code>()</code> 周围添加空格，方便后续分词。</li>
@@ -493,7 +493,7 @@ Development Diary</h1>
 </ul>
 </li>
 <li>在 <code>CMakeLists.txt</code> 中，强制启用了 lld 链接器和 ccache，以提升链接和编译速度。</li>
-<li>为了保持 <code><a class="el" href="main_8cpp.html">main.cpp</a></code> 的整洁，将 <code><a class="el" href="classLibFile.html">LibFile()</a></code> 函数的相关操作剥离出来，并放入 <code><a class="el" href="LibFileOperations_8cpp.html">LibFileOperations.cpp</a></code> 文件中。</li>
+<li>为了保持 <code><a class="el" href="main_8cpp.html" title="This file contains the main function for the ZlibValidation tool.">main.cpp</a></code> 的整洁，将 <code><a class="el" href="classLibFile.html">LibFile()</a></code> 函数的相关操作剥离出来，并放入 <code><a class="el" href="LibFileOperations_8cpp.html">LibFileOperations.cpp</a></code> 文件中。</li>
 <li>实现了 <code><a class="el" href="classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666" title="Extracts and validates variables from two expressions, ensuring they match.">LogicComparator::extractVariables()</a></code> 方法，用于从两个表达式中提取并验证变量名，确保它们一致。<ul>
 <li>该方法使用正则表达式初步提取所有可能的标识符。</li>
 <li>对每个提取出的标识符，先用 <code>isIdentifier</code> 函数（检查大写开头等）进行验证。</li>
@@ -502,7 +502,7 @@ Development Diary</h1>
 <li>最后比较两个 <code>std::set</code> 是否相等，如果不等则报告差异并返回 <code>false</code>，如果相等则将变量列表（保留原始大小写）排序后存入 <code>sorted_vars</code> 并返回 <code>true</code>。</li>
 </ul>
 </li>
-<li>修复了 <code><a class="el" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a">LogicComparator::preprocessExpression()</a></code> 方法中对 not 操作符的处理。exprtk 库要求 not 关键字后必须跟着括号，如 <code>not(A)</code> 而非 <code>not A</code>。为此增加了专门的处理步骤：<ul>
+<li>修复了 <code><a class="el" href="classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a" title="Preprocesses a logical expression string to prepare it for evaluation.">LogicComparator::preprocessExpression()</a></code> 方法中对 not 操作符的处理。exprtk 库要求 not 关键字后必须跟着括号，如 <code>not(A)</code> 而非 <code>not A</code>。为此增加了专门的处理步骤：<ul>
 <li>遍历预处理后的 token 列表，识别所有 <code>not</code> 关键字。</li>
 <li>当发现 <code>not</code> 后，检查其后是否跟随标识符（通过 <code><a class="el" href="LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df" title="Checks if a given string is a valid identifier.">isIdentifier()</a></code> 函数判断）。</li>
 <li>如果后接标识符，自动将 <code>not A</code> 形式转换为 <code>not(A)</code>，具体做法是依次添加 <code>not</code>、<code>(</code>、标识符和 <code>)</code>，并跳过已处理的标识符。</li>
@@ -599,7 +599,7 @@ Development Diary</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Apr 5 2025 16:13:16 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Apr 5 2025 16:35:27 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

@@ -119,8 +119,10 @@ Include dependency graph for LogicExtractor.cpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a2276f971f6bd1d8f34f635811cc65e08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LogicExtractor_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08">extractAndPrintNetlistInfo</a> (const std::string &amp;verilog_file, const std::string &amp;cell)</td></tr>
+<tr class="memdesc:a2276f971f6bd1d8f34f635811cc65e08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts and prints netlist information from a Verilog file for a specified cell.  <a href="LogicExtractor_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08">More...</a><br /></td></tr>
 <tr class="separator:a2276f971f6bd1d8f34f635811cc65e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae057244a8c2cf0f12f0fa95ce36c8a5d"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LogicExtractor_8cpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d">extractLogicFromVerilog</a> (const std::string &amp;verilog_file, const std::string &amp;cell)</td></tr>
+<tr class="memdesc:ae057244a8c2cf0f12f0fa95ce36c8a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts logic expressions from a Verilog file for a specified cell.  <a href="LogicExtractor_8cpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d">More...</a><br /></td></tr>
 <tr class="separator:ae057244a8c2cf0f12f0fa95ce36c8a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -150,13 +152,30 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LogicExtractor_8cpp_source.html#l00514">514</a> of file <a class="el" href="LogicExtractor_8cpp_source.html">LogicExtractor.cpp</a>.</p>
+<p>Extracts and prints netlist information from a Verilog file for a specified cell. </p>
+<p >This function parses a Verilog file using the slang library, extracts information about the primary inputs, primary outputs, internal wires, and gate drivers within a specified cell (module). It then prints a summary of the extracted information to the console using spdlog.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">verilog_file</td><td>The path to the Verilog file to be parsed. </td></tr>
+    <tr><td class="paramname">cell</td><td>The name of the cell (module) for which to extract netlist information.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::exception</td><td>If any error occurs during Verilog parsing or info extraction.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The function uses the slang library for Verilog parsing and a custom <a class="el" href="classLogicExtractor.html">LogicExtractor</a> class to extract the desired information. Error messages are logged using spdlog. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LogicExtractor_8cpp_source.html#l00673">673</a> of file <a class="el" href="LogicExtractor_8cpp_source.html">LogicExtractor.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="LogicExtractor_8cpp_a2276f971f6bd1d8f34f635811cc65e08_cgraph.png" border="0" usemap="#aLogicExtractor_8cpp_a2276f971f6bd1d8f34f635811cc65e08_cgraph" alt=""/></div>
 <map name="aLogicExtractor_8cpp_a2276f971f6bd1d8f34f635811cc65e08_cgraph" id="aLogicExtractor_8cpp_a2276f971f6bd1d8f34f635811cc65e08_cgraph">
-<area shape="rect" title=" " alt="" coords="5,109,196,134"/>
+<area shape="rect" title="Extracts and prints netlist information from a Verilog file for a specified cell." alt="" coords="5,109,196,134"/>
 <area shape="rect" href="classLogicExtractor.html#a1526e2569cae9fee072b8fc90c159567" title=" " alt="" coords="244,5,451,45"/>
 <area shape="rect" href="classLogicExtractor.html#a8fa7c2d7d0f96602169c4572c56f9292" title=" " alt="" coords="250,69,445,109"/>
 <area shape="rect" href="classLogicExtractor.html#a8bd2720fc5c89953124e82e56cd0d13d" title=" " alt="" coords="250,133,445,173"/>
@@ -192,16 +211,32 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LogicExtractor_8cpp_source.html#l00575">575</a> of file <a class="el" href="LogicExtractor_8cpp_source.html">LogicExtractor.cpp</a>.</p>
+<p>Extracts logic expressions from a Verilog file for a specified cell. </p>
+<p >This function parses a Verilog file using the slang library, identifies the specified cell, and extracts the logic expressions for its outputs. It returns a map where the keys are output signal names and the values are their corresponding logic expressions as strings.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">verilog_file</td><td>The path to the Verilog file to parse. </td></tr>
+    <tr><td class="paramname">cell</td><td>The name of the cell (module) for which to extract logic expressions. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A map of output signal names to their logic expressions. Returns an empty map if parsing fails, the cell is not found, or no logic expressions can be derived.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The function uses the slang library for Verilog parsing. Ensure that slang is properly installed and configured before using this function. </dd>
+<dd>
+The logic extraction process involves traversing the syntax tree of the Verilog code and identifying relevant assignments and expressions within the specified cell. </dd>
+<dd>
+Error messages and warnings are logged using the spdlog library. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="LogicExtractor_8cpp_source.html#l00752">752</a> of file <a class="el" href="LogicExtractor_8cpp_source.html">LogicExtractor.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="LogicExtractor_8cpp_ae057244a8c2cf0f12f0fa95ce36c8a5d_cgraph.png" border="0" usemap="#aLogicExtractor_8cpp_ae057244a8c2cf0f12f0fa95ce36c8a5d_cgraph" alt=""/></div>
 <map name="aLogicExtractor_8cpp_ae057244a8c2cf0f12f0fa95ce36c8a5d_cgraph" id="aLogicExtractor_8cpp_ae057244a8c2cf0f12f0fa95ce36c8a5d_cgraph">
-<area shape="rect" title=" " alt="" coords="5,37,185,62"/>
-<area shape="rect" href="classLogicExtractor.html#a234c934f2b8824311dbeca77f4d8ad52" title=" " alt="" coords="233,29,412,69"/>
-<area shape="rect" href="classLogicExtractor.html#ad00ef591f9a574c2e1bb9ad6a30c0db4" title=" " alt="" coords="460,29,659,69"/>
-<area shape="rect" href="classLogicExtractor.html#a95832f1f42e902556dc36bca8f9796fe" title=" " alt="" coords="707,37,945,62"/>
+<area shape="rect" title="Extracts logic expressions from a Verilog file for a specified cell." alt="" coords="5,37,185,62"/>
+<area shape="rect" href="classLogicExtractor.html#a234c934f2b8824311dbeca77f4d8ad52" title="Extracts logic expressions for all primary output ports of the target cell." alt="" coords="233,29,412,69"/>
+<area shape="rect" href="classLogicExtractor.html#ad00ef591f9a574c2e1bb9ad6a30c0db4" title="Recursively derives the logic expression for a given signal." alt="" coords="460,29,659,69"/>
+<area shape="rect" href="classLogicExtractor.html#a95832f1f42e902556dc36bca8f9796fe" title="Formats a logic expression based on the gate type and input expressions." alt="" coords="707,37,945,62"/>
 </map>
 </div>
 <div class="dynheader">
@@ -209,8 +244,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="LogicExtractor_8cpp_ae057244a8c2cf0f12f0fa95ce36c8a5d_icgraph.png" border="0" usemap="#aLogicExtractor_8cpp_ae057244a8c2cf0f12f0fa95ce36c8a5d_icgraph" alt=""/></div>
 <map name="aLogicExtractor_8cpp_ae057244a8c2cf0f12f0fa95ce36c8a5d_icgraph" id="aLogicExtractor_8cpp_ae057244a8c2cf0f12f0fa95ce36c8a5d_icgraph">
-<area shape="rect" title=" " alt="" coords="248,5,428,31"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title=" " alt="" coords="108,5,200,31"/>
+<area shape="rect" title="Extracts logic expressions from a Verilog file for a specified cell." alt="" coords="248,5,428,31"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="108,5,200,31"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
 </map>
 </div>
@@ -223,7 +258,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="LogicExtractor_8cpp.html">LogicExtractor.cpp</a></li>
-    <li class="footer">Generated on Sat Apr 5 2025 16:13:16 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Sat Apr 5 2025 16:35:27 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

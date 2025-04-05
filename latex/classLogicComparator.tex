@@ -12,7 +12,7 @@
 void \mbox{\hyperlink{classLogicComparator_a1be219c18555e95192b758be8a4b4e2f}{logic}} ()
 \begin{DoxyCompactList}\small\item\em This function demonstrates the usage of the exprtk library to evaluate a boolean logic expression. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classLogicComparator_accce3c590846e3fdf1a66aaa6a5c465a}{preprocess\+Expression}} (const std\+::string \&input\+\_\+expr)
-\item 
+\begin{DoxyCompactList}\small\item\em Preprocesses a logical expression string to prepare it for evaluation. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classLogicComparator_a75c9d6faa38a1003670c59e5f60d1666}{extract\+Variables}} (const std\+::string \&expr1, const std\+::string \&expr2, std\+::vector$<$ std\+::string $>$ \&sorted\+\_\+vars)
 \begin{DoxyCompactList}\small\item\em Extracts and validates variables from two expressions, ensuring they match. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLogicComparator_a626ddc1bb2057eef7862cea7bbc860bb}{compare\+Single\+Expression\+Pair}} (const std\+::string \&ref\+\_\+expression\+\_\+processed, const std\+::string \&comp\+\_\+expression\+\_\+processed, const std\+::vector$<$ std\+::string $>$ \&sorted\+\_\+vars, \mbox{\hyperlink{structPinComparisonResult}{Pin\+Comparison\+Result}} \&result)
@@ -98,7 +98,7 @@ The {\ttfamily compare\+Single\+Expression\+Pair} method is used to compare the 
 \end{DoxySeeAlso}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00788}{788}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00808}{808}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -170,7 +170,7 @@ The function assumes that the input expressions are valid boolean expressions co
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00529}{529}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00549}{549}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -219,7 +219,7 @@ The function uses spdlog for logging debug, trace, info, and warning messages.
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00303}{303}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00323}{323}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -247,14 +247,56 @@ Here is the caller graph for this function\+:
 
 Generates a comparison report file based on cell logic comparison results. 
 
+Generates a comprehensive report comparing the logic equivalence of a cell\textquotesingle{}s reference and comparison expressions.
+
 
 \begin{DoxyParams}{Parameters}
-{\em output\+\_\+file} & Path to the output report file. \\
+{\em output\+\_\+file} & Path to the output report file.\\
 \hline
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00911}{911}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+This function performs the following steps\+:
+\begin{DoxyEnumerate}
+\item {\bfseries{Initialization\+:}} Sets up logging and determines the output format (Markdown or plain text) based on the file extension.
+\item {\bfseries{File Handling\+:}} Opens the specified output file in append mode, creating it if it doesn\textquotesingle{}t exist. Handles potential file opening errors.
+\item {\bfseries{Report Header\+:}} Writes a header section to the report, including the cell name, application version, author, and timestamp.
+\item {\bfseries{Legend Generation\+:}} Creates a legend explaining the status symbols used in the report (e.\+g., \mbox{[}OK\mbox{]}, \mbox{[}NO\mbox{]}, \mbox{[}NA\mbox{]}).
+\item {\bfseries{Table Generation\+:}} Creates tables for reference pin functions, comparison pin functions, and the legend.
+\item {\bfseries{Pin Result Processing\+:}} Iterates through the results for each pin, generating detailed information including\+:
+\begin{DoxyItemize}
+\item Pin Name
+\item Reference and Comparison Truth Tables (if available)
+\item Comparison Summary Table\+:
+\begin{DoxyItemize}
+\item Status (Logic Equivalence)
+\item Raw and Processed Expressions
+\item Compilation Status
+\item Error Messages (if any)
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item {\bfseries{Output\+:}} Exports the generated tables and pin results to the output file in the determined format (Markdown or plain text).
+\item {\bfseries{Closure\+:}} Closes the output file and logs the completion of the report generation.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+\_\+file} & The path to the output report file. If the file extension is \char`\"{}.\+md\char`\"{}, the report will be generated in Markdown format; otherwise, it will be generated in plain text.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function uses {\ttfamily spdlog} for logging and relies on several helper classes/structs\+:
+\begin{DoxyItemize}
+\item {\ttfamily Table}\+: For creating formatted tables.
+\item {\ttfamily Markdown\+Exporter}\+: For exporting tables to Markdown format.
+\item {\ttfamily Logic\+Comparator\+::\+Pin\+Result}\+: A struct containing the results of the logic comparison for a single pin.
+\end{DoxyItemize}
+
+The function appends to the output file if it already exists. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00960}{960}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -305,7 +347,37 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
+Preprocesses a logical expression string to prepare it for evaluation. 
+
+This function performs several steps to transform the input expression\+:
+\begin{DoxyEnumerate}
+\item Trims leading/trailing whitespace.
+\item Replaces the logical NOT operator \textquotesingle{}!\textquotesingle{} with \char`\"{} not \char`\"{} (except for \textquotesingle{}!=\textquotesingle{}).
+\item Adds spaces around operators (+, $^\wedge$, $\ast$) and parentheses.
+\item Replaces symbolic operators (+, $^\wedge$, $\ast$) with their keyword equivalents (or, xor, and).
+\item Tokenizes the expression based on spaces.
+\item Inserts implied \textquotesingle{}and\textquotesingle{} operators between operands where necessary. For example, \char`\"{}\+A B\char`\"{} becomes \char`\"{}\+A and B\char`\"{}.
+\item Handles \textquotesingle{}not Identifier\textquotesingle{} sequences by converting them to \textquotesingle{}not(\+Identifier)\textquotesingle{}.
+\item Reconstructs the final expression string from the processed tokens, adding spaces appropriately.
+\item Performs a final cleanup to consolidate multiple spaces and trim the result.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+expr} & The input logical expression string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The preprocessed logical expression string, ready for evaluation. Returns an empty string if the input is empty or if no tokens are found after processing.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The function uses spdlog for debugging and tracing. 
+
+The function assumes the existence of helper functions {\ttfamily is\+Identifier} and {\ttfamily is\+Operator} to classify tokens. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{LogicComparator_8cpp_source_l00124}{124}} of file \mbox{\hyperlink{LogicComparator_8cpp_source}{Logic\+Comparator.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak

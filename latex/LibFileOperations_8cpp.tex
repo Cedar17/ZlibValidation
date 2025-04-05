@@ -23,11 +23,11 @@ void \mbox{\hyperlink{LibFileOperations_8cpp_a0d7485f0df82adbd1671def221103a4e}{
 void \mbox{\hyperlink{LibFileOperations_8cpp_ab649fe3c5663201c3e23700250f7b1c2}{verilog\+Lib\+File}} (const std\+::string \&library\+\_\+path, const std\+::string \&log\+\_\+file\+\_\+name, int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
 \begin{DoxyCompactList}\small\item\em Generates Verilog files from a library file for specified cells. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{LibFileOperations_8cpp_a249215076db60dd83d4ed0b17fb132f7}{spice\+Lib\+File}} (const std\+::string \&library\+\_\+path, const std\+::string \&log\+\_\+file\+\_\+name, int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names, const std\+::string \&verilog\+\_\+lib\+\_\+file, const std\+::string \&spice\+\_\+lib\+\_\+file)
-\item 
+\begin{DoxyCompactList}\small\item\em Generates a SPICE library file from a given library file, applying a specified chain length and cell names. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{LibFileOperations_8cpp_aefb52455235a664c6dc21709237f77a1}{compare\+Lib\+Files}} (const std\+::string \&ref\+\_\+lib, const std\+::string \&comp\+\_\+lib, const double reltol, const double abstol, std\+::string \&report\+\_\+file\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Compares two library files and generates a detailed comparison report. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{LibFileOperations_8cpp_a56d944f0ea8b38f2f61c046c7fb44476}{func\+Lib\+File}} (const std\+::string \&ref\+\_\+file, const std\+::string \&comp\+\_\+file, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names, std\+::string \&report\+\_\+file\+\_\+name)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cells. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -65,7 +65,7 @@ The function uses the \mbox{\hyperlink{classLibraryComparator}{Library\+Comparat
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00231}{231}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00246}{246}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -91,7 +91,37 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00259}{259}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cells. 
+
+This function compares the logic functions of specified cells in two files, which can be either in Liberty (.lib) or Verilog (.v) format. It extracts the logic functions for each cell from both files, compares them, and generates a report summarizing the comparison results.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref\+\_\+file} & The path to the reference file (Liberty or Verilog). \\
+\hline
+{\em comp\+\_\+file} & The path to the comparison file (Liberty or Verilog). \\
+\hline
+{\em cell\+\_\+names} & A vector of cell names to be checked for functional equivalence. \\
+\hline
+{\em report\+\_\+file\+\_\+name} & A string to store the name of the report file. If empty, a default name is generated. If the provided name does not end with \char`\"{}.\+txt\char`\"{} or \char`\"{}.\+md\char`\"{}, \char`\"{}.\+md\char`\"{} is appended.\\
+\hline
+\end{DoxyParams}
+The function first checks the file extensions to determine the file format. It then extracts the logic functions for each specified cell from both files. The logic functions are then compared, and a report is generated, which includes the comparison results for each cell. The report is written to the specified report file.
+
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item If no cell names are provided, the function logs an error and returns.
+\item If the reference or comparison file format is not supported (i.\+e., not .lib or .v), the function logs an error and returns.
+\item The report file is cleared before writing the comparison results.
+\item The function uses spdlog for logging information, warnings, and errors.
+\item The function utilizes the \mbox{\hyperlink{classLogicComparator}{Logic\+Comparator}} class to perform the logic comparison and generate the report.
+\item Memory allocated for \mbox{\hyperlink{classLibFile}{Lib\+File}} objects is managed using raw pointers and must be manually deallocated to prevent memory leaks. 
+\end{DoxyItemize}
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00299}{299}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -247,7 +277,28 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00184}{184}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
+Generates a SPICE library file from a given library file, applying a specified chain length and cell names. 
+
+This function takes a library file path, a log file name, a chain length, a vector of cell names, a Verilog library file path, and a SPICE library file path as input. It initializes a \mbox{\hyperlink{classLibFile}{Lib\+File}} object, validates the chain length, and then calls the spice method of the \mbox{\hyperlink{classLibFile}{Lib\+File}} object to generate the SPICE library file. It logs the start and end of the SPICE generation process, as well as any errors that occur.
+
+
+\begin{DoxyParams}{Parameters}
+{\em library\+\_\+path} & The path to the input library file. \\
+\hline
+{\em log\+\_\+file\+\_\+name} & The name of the log file. If empty, a default log file name is generated based on the library file name. \\
+\hline
+{\em chain\+\_\+length} & The chain length to use during SPICE generation. Must be \texorpdfstring{$>$}{>}= 1. \\
+\hline
+{\em cell\+\_\+names} & A vector of cell names to include in the SPICE generation. \\
+\hline
+{\em verilog\+\_\+lib\+\_\+file} & The path to the Verilog library file. \\
+\hline
+{\em spice\+\_\+lib\+\_\+file} & The path to the output SPICE library file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{LibFileOperations_8cpp_source_l00199}{199}} of file \mbox{\hyperlink{LibFileOperations_8cpp_source}{Lib\+File\+Operations.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak

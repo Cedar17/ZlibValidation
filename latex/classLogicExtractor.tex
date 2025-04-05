@@ -30,15 +30,15 @@ Collaboration diagram for Logic\+Extractor\+:
 \mbox{\hyperlink{classLogicExtractor_ab706a64dee71621803f98b5b6eee5ac9}{Logic\+Extractor}} (const std\+::string \&target\+Cell)
 \item 
 void \mbox{\hyperlink{classLogicExtractor_af93dcee415210a87001fad3fc7d77a2a}{handle}} (const slang\+::syntax\+::\+Module\+Declaration\+Syntax \&module)
-\item 
+\begin{DoxyCompactList}\small\item\em Handles a module declaration syntax node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLogicExtractor_a8c4196c94570f6689ee5a68afd38eaad}{handle}} (const slang\+::syntax\+::\+Port\+Declaration\+Syntax \&port\+Decl)
-\item 
+\begin{DoxyCompactList}\small\item\em Handles a port declaration syntax node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLogicExtractor_a29481733320a0fb7b1f4f59ecc3fb5d0}{handle}} (const slang\+::syntax\+::\+Non\+Ansi\+Port\+List\+Syntax \&port\+List)
-\item 
+\begin{DoxyCompactList}\small\item\em Handles a non-\/\+ANSI port list in a module. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLogicExtractor_aa0da0dc5655fa5d4105875b466ab90ff}{handle}} (const slang\+::syntax\+::\+Net\+Declaration\+Syntax \&net\+Decl)
-\item 
+\begin{DoxyCompactList}\small\item\em Handles a net declaration syntax node. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLogicExtractor_a9f79d51e917503506632eeecb2a2a2f0}{handle}} (const slang\+::syntax\+::\+Primitive\+Instantiation\+Syntax \&primitive\+Inst)
-\item 
+\begin{DoxyCompactList}\small\item\em Handles the extraction of logic gate information from a primitive instantiation syntax node. \end{DoxyCompactList}\item 
 const std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{structGateInfo}{Gate\+Info}} $>$ \& \mbox{\hyperlink{classLogicExtractor_a1526e2569cae9fee072b8fc90c159567}{get\+Extracted\+Gates}} () const
 \item 
 const std\+::unordered\+\_\+set$<$ std\+::string $>$ \& \mbox{\hyperlink{classLogicExtractor_a8bd2720fc5c89953124e82e56cd0d13d}{get\+Primary\+Inputs}} () const
@@ -48,14 +48,14 @@ const std\+::unordered\+\_\+set$<$ std\+::string $>$ \& \mbox{\hyperlink{classLo
 const std\+::unordered\+\_\+set$<$ std\+::string $>$ \& \mbox{\hyperlink{classLogicExtractor_a8fa7c2d7d0f96602169c4572c56f9292}{get\+Internal\+Wires}} () const
 \item 
 std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classLogicExtractor_a234c934f2b8824311dbeca77f4d8ad52}{get\+Logic\+Expressions}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Extracts logic expressions for all primary output ports of the target cell. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 std\+::string \mbox{\hyperlink{classLogicExtractor_ad00ef591f9a574c2e1bb9ad6a30c0db4}{derive\+Logic\+Recursive}} (const std\+::string \&signal\+Name)
-\item 
+\begin{DoxyCompactList}\small\item\em Recursively derives the logic expression for a given signal. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classLogicExtractor_a95832f1f42e902556dc36bca8f9796fe}{format\+Expression}} (const \mbox{\hyperlink{structGateInfo}{Gate\+Info}} \&gate\+Info, const std\+::vector$<$ std\+::string $>$ \&input\+Exprs)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Formats a logic expression based on the gate type and input expressions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -108,7 +108,33 @@ Definition at line \mbox{\hyperlink{LogicExtractor_8hpp_source_l00020}{20}} of f
 
 
 
-Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00380}{380}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
+Recursively derives the logic expression for a given signal. 
+
+This function traces back the signal to its driving gates and primary inputs, constructing a logic expression that represents the signal\textquotesingle{}s behavior. It uses memoization to cache previously computed expressions, avoiding redundant calculations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em signal\+Name} & The name of the signal for which to derive the logic expression. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string representing the logic expression for the signal. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the signal is not a primary input, a known wire, or driven by a recognized gate/assignment. Also thrown if an empty input signal name is encountered or if an internal wire has no identified driver.\\
+\hline
+\end{DoxyExceptions}
+The function operates in the following steps\+:
+\begin{DoxyEnumerate}
+\item {\bfseries{Check Cache (Memoization)\+:}} If the logic expression for the signal is already cached in {\ttfamily logic\+Cache\+\_\+}, it is immediately returned.
+\item {\bfseries{Base Case\+: Is it a primary input?}} If the signal is a primary input (present in {\ttfamily primary\+Inputs\+\_\+}), its logic expression is simply its own name.
+\item {\bfseries{Recursive Step\+: Is it driven by a gate?}} If the signal is driven by a gate (present in {\ttfamily gate\+Output\+Drivers\+\_\+}), the function recursively derives the logic expressions for all input signals of the gate. These input expressions are then used to format the overall expression for the current signal based on the gate type.
+\item {\bfseries{Handle Assign statements\+:}} (Currently not implemented but reserved for future use).
+\item {\bfseries{Error Case\+:}} If the signal is not found in any of the above categories, it indicates an error. An exception is thrown, indicating that the signal is either an undriven internal wire or an unknown signal. 
+\end{DoxyEnumerate}
+
+Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00507}{507}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -134,7 +160,23 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00437}{437}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
+Formats a logic expression based on the gate type and input expressions. 
+
+This function takes a \mbox{\hyperlink{structGateInfo}{Gate\+Info}} structure describing the gate and a vector of input expressions (strings) and constructs a logic expression string representing the gate\textquotesingle{}s operation. It handles AND, NAND, OR, NOR, XOR, XNOR, NOT, and BUF gates. It uses \textquotesingle{}$\ast$\textquotesingle{}, \textquotesingle{}+\textquotesingle{}, \textquotesingle{}$^\wedge$\textquotesingle{}, and \textquotesingle{}!\textquotesingle{} operators for AND, OR, XOR, and NOT respectively. If the gate type is unsupported, or if the number of inputs is incorrect for NOT/\+BUF gates, or if a gate requiring inputs receives none, an error string is returned, and a warning is logged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em gate\+Info} & A \mbox{\hyperlink{structGateInfo}{Gate\+Info}} struct containing information about the gate, including its type (slang\+::parsing\+::\+Token\+Kind) and name. \\
+\hline
+{\em input\+Exprs} & A vector of strings representing the input expressions to the gate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string representing the formatted logic expression, or an error string if formatting fails due to unsupported gate type or incorrect number of inputs. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00581}{581}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
 
 Here is the caller graph for this function\+:
 \nopagebreak
@@ -188,7 +230,16 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00350}{350}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
+Extracts logic expressions for all primary output ports of the target cell. 
+
+This method iterates through the primary output ports, derives the logic expression for each, and stores the result in a map. If an error occurs during the derivation of logic for a particular output, an error message is stored in the map instead.
+
+\begin{DoxyReturn}{Returns}
+A map where the key is the output port name (std\+::string) and the value is the corresponding logic expression (std\+::string). If AST parsing is not complete or the target module is not found, an empty map is returned. If an error occurs during logic derivation for a specific output, the corresponding value in the map will be an error message. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00448}{448}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -250,7 +301,20 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
+Handles a module declaration syntax node. 
+
+This function is the entry point for processing a module declaration. It checks if the module is the target module and, if so, extracts relevant information such as primary inputs, primary outputs, and internal wires. It also visits the children of the module node to process ports, declarations, and instances.
+
+The function ensures that the target module is only processed once and that parsing stops after the target module is found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em module} & A reference to the module declaration syntax node. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
 
 \mbox{\Hypertarget{classLogicExtractor_aa0da0dc5655fa5d4105875b466ab90ff}\label{classLogicExtractor_aa0da0dc5655fa5d4105875b466ab90ff}} 
 \index{LogicExtractor@{LogicExtractor}!handle@{handle}}
@@ -260,7 +324,18 @@ Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00005}{5}} of fi
 
 
 
-Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00201}{201}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
+Handles a net declaration syntax node. 
+
+This function processes a net declaration syntax node, extracting the names of declared wires. It checks if the current scope is within the target module and avoids adding ports again if they were already declared as nets. The extracted wire names are added to the internal wires set.
+
+
+\begin{DoxyParams}{Parameters}
+{\em net\+Decl} & A reference to the Net\+Declaration\+Syntax node to handle. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00277}{277}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
 
 \mbox{\Hypertarget{classLogicExtractor_a29481733320a0fb7b1f4f59ecc3fb5d0}\label{classLogicExtractor_a29481733320a0fb7b1f4f59ecc3fb5d0}} 
 \index{LogicExtractor@{LogicExtractor}!handle@{handle}}
@@ -270,7 +345,35 @@ Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00201}{201}} of 
 
 
 
-Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00112}{112}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
+Handles a non-\/\+ANSI port list in a module. 
+
+This method iterates through the ports in a non-\/\+ANSI port list, extracts the port name, determines its direction (input, output, or inout), and adds it to the appropriate sets (primary\+Inputs\+\_\+, primary\+Outputs\+\_\+, internal\+Wires\+\_\+). It also handles different types of port declarations, including implicit, explicit, and empty ports.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port\+List} & A reference to the Non\+Ansi\+Port\+List\+Syntax object representing the port list.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyItemize}
+\item Skips processing if not in the target module (in\+Target\+Module\+\_\+ is false).
+\item Extracts port names from Implicit\+Non\+Ansi\+Port\+Syntax and Explicit\+Non\+Ansi\+Port\+Syntax.
+\item Handles Port\+Concatenation\+Syntax by logging a warning and skipping the port.
+\item Skips Empty\+Non\+Ansi\+Port\+Syntax (placeholders).
+\item Uses the port\+Directions\+\_\+ map to determine the direction of each port.
+\item Adds ports to primary\+Inputs\+\_\+ and internal\+Wires\+\_\+ if the direction is \char`\"{}input\char`\"{}.
+\item Adds ports to primary\+Outputs\+\_\+ and internal\+Wires\+\_\+ if the direction is \char`\"{}output\char`\"{}.
+\item Adds ports to both primary\+Inputs\+\_\+ and primary\+Outputs\+\_\+ if the direction is \char`\"{}inout\char`\"{}.
+\item Logs warnings for ports with unknown or missing directions.
+\item Logs warnings if the port name cannot be determined.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This method does not call visit\+Default. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00179}{179}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
 
 \mbox{\Hypertarget{classLogicExtractor_a8c4196c94570f6689ee5a68afd38eaad}\label{classLogicExtractor_a8c4196c94570f6689ee5a68afd38eaad}} 
 \index{LogicExtractor@{LogicExtractor}!handle@{handle}}
@@ -280,7 +383,40 @@ Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00112}{112}} of 
 
 
 
-Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
+Handles a port declaration syntax node. 
+
+This method extracts information about port declarations within a System\+Verilog module, including the port\textquotesingle{}s direction (input, output, or inout) and name. It updates internal data structures to track primary inputs, primary outputs, internal wires, and port directions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port\+Decl} & A reference to the Port\+Declaration\+Syntax node being processed.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyItemize}
+\item It first checks if the current processing context is within the target module. If not, the method returns early.
+\item It determines the port\textquotesingle{}s direction by inspecting the port header (Variable\+Port\+Header\+Syntax or Net\+Port\+Header\+Syntax). The direction is extracted using {\ttfamily value\+Text()} to handle keywords represented as text tokens.
+\item It iterates through the declarators in the port declaration to extract port names.
+\item If multiple direction declarations are found for the same port, a warning is logged, and the first declared direction is retained.
+\item Based on the port\textquotesingle{}s direction, the port name is added to the appropriate sets\+:
+\begin{DoxyItemize}
+\item {\ttfamily primary\+Inputs\+\_\+}\+: For input and inout ports.
+\item {\ttfamily primary\+Outputs\+\_\+}\+: For output and inout ports.
+\item {\ttfamily internal\+Wires\+\_\+}\+: For all ports (input, output, inout, and ports with unknown directions).
+\end{DoxyItemize}
+\item If a port has an unknown or missing direction, it\textquotesingle{}s treated as an internal wire, and a warning is logged.
+\item The method avoids calling {\ttfamily visit\+Default} to prevent unexpected revisits of syntax nodes.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+The {\ttfamily logic\+Cache\+\_\+} update is commented out, indicating it\textquotesingle{}s part of a later processing step. 
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+Logs warnings for port declarations without headers, port declarators without names, and multiple direction declarations for the same port. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00092}{92}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
 
 \mbox{\Hypertarget{classLogicExtractor_a9f79d51e917503506632eeecb2a2a2f0}\label{classLogicExtractor_a9f79d51e917503506632eeecb2a2a2f0}} 
 \index{LogicExtractor@{LogicExtractor}!handle@{handle}}
@@ -290,7 +426,18 @@ Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00049}{49}} of f
 
 
 
-Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00221}{221}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
+Handles the extraction of logic gate information from a primitive instantiation syntax node. 
+
+This method processes a primitive instantiation, extracting the gate type, input signals, and output signal. It populates the {\ttfamily gate\+Output\+Drivers\+\_\+} map, which stores the driving gate information for each output signal. It also identifies internal wires and checks for multiple drivers on the same signal.
+
+
+\begin{DoxyParams}{Parameters}
+{\em primitive\+Inst} & A reference to the Primitive\+Instantiation\+Syntax node representing the gate instance. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{LogicExtractor_8cpp_source_l00306}{306}} of file \mbox{\hyperlink{LogicExtractor_8cpp_source}{Logic\+Extractor.\+cpp}}.
 
 
 
