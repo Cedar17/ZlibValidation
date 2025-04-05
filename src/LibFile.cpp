@@ -899,28 +899,33 @@ std::vector<std::string> LibFile::splitString(const std::string &s) {
 /**
  * @brief Generates RC lines for a given net in either an intermediate or final stage.
  *
- * This function generates SPICE-like resistor-capacitor (RC) lines and writes them to the provided output file stream.
- * The generated RC structure differs based on whether it's an intermediate stage or the final stage.
- * In the intermediate stage, an R1-C1-R2 structure is created. In the final stage, a simplified R1-C1 structure is used.
+ * This function generates SPICE-like resistor-capacitor (RC) lines and writes them to the provided
+ * output file stream. The generated RC structure differs based on whether it's an intermediate
+ * stage or the final stage. In the intermediate stage, an R1-C1-R2 structure is created. In the
+ * final stage, a simplified R1-C1 structure is used.
  *
  * @param outFile       The output file stream to write the RC lines to.
- * @param netName       The name of the net to generate RC lines for. This name is used to construct node names.
- * @param instanceIndex A unique index for the instance, used to create unique component names (R1, C1, R2).
- * @param isFinalStage  A boolean flag indicating whether this is the final stage. If true, a simplified RC structure is generated.
- *                      If false, an intermediate RCR structure is generated.
+ * @param netName       The name of the net to generate RC lines for. This name is used to construct
+ * node names.
+ * @param instanceIndex A unique index for the instance, used to create unique component names (R1,
+ * C1, R2).
+ * @param isFinalStage  A boolean flag indicating whether this is the final stage. If true, a
+ * simplified RC structure is generated. If false, an intermediate RCR structure is generated.
  *
  * @details
- * - The function uses predefined default RC values (R1, C1, R2) that are specific to either the intermediate or final stage.
+ * - The function uses predefined default RC values (R1, C1, R2) that are specific to either the
+ * intermediate or final stage.
  * - The `CAP_GROUND` constant defines the ground node to which capacitors are connected.
- * - The output is formatted in scientific notation with a precision of 1 before writing the RC lines and then reset to default.
+ * - The output is formatted in scientific notation with a precision of 1 before writing the RC
+ * lines and then reset to default.
  * - Node names are constructed by appending ":1" or ":2" to the `netName` for intermediate nodes.
  *
  * @code
  * // Example usage:
  * std::ofstream outFile("rc_lines.sp");
- * LibFile::generateRCLines(outFile, "net123", 5, false); // Generate intermediate RC lines for net "net123", instance 5
- * LibFile::generateRCLines(outFile, "net123", 5, true);  // Generate final RC lines for net "net123", instance 5
- * outFile.close();
+ * LibFile::generateRCLines(outFile, "net123", 5, false); // Generate intermediate RC lines for net
+ * "net123", instance 5 LibFile::generateRCLines(outFile, "net123", 5, true);  // Generate final RC
+ * lines for net "net123", instance 5 outFile.close();
  * @endcode
  */
 void LibFile::generateRCLines(std::ofstream &outFile, const std::string &netName, int instanceIndex,
@@ -1244,23 +1249,30 @@ bool LibFile::modifySpiceNetlist(const std::string &v2lvsSpiceFile, // Input is 
 }
 
 /**
- * @brief Generates a SPICE netlist for the library based on a temporary Verilog file, using the V2LVS tool.
+ * @brief Generates a SPICE netlist for the library based on a temporary Verilog file, using the
+ * V2LVS tool.
  *
  * This function automates the process of converting a Verilog representation of the library
  * into a SPICE netlist suitable for simulation. It involves the following steps:
  *   1. Generates a temporary Verilog file using the `verilog` method.
  *   2. Checks for the availability of the V2LVS tool in the system's PATH.
- *   3. Constructs and executes the V2LVS command with appropriate options to generate an initial SPICE netlist.
- *   4. Post-processes the generated SPICE netlist to adjust global signals using the `modifySpiceNetlist` method.
+ *   3. Constructs and executes the V2LVS command with appropriate options to generate an initial
+ * SPICE netlist.
+ *   4. Post-processes the generated SPICE netlist to adjust global signals using the
+ * `modifySpiceNetlist` method.
  *   5. Logs the progress and any errors encountered during the process.
  *
  * @param chain_length The length of the transistor chain for Verilog generation.
  * @param cell_names A vector of cell names to be included in the Verilog generation.
- * @param verilog_lib_file The path to the Verilog library file used by V2LVS for pin order information.
- * @param spice_lib_file The path to the SPICE library file to be included in the generated SPICE netlist.
+ * @param verilog_lib_file The path to the Verilog library file used by V2LVS for pin order
+ * information.
+ * @param spice_lib_file The path to the SPICE library file to be included in the generated SPICE
+ * netlist.
  *
- * @note The function assumes that the `verilog` method is available and correctly generates a temporary Verilog file.
- * @note The V2LVS tool must be installed and accessible in the system's PATH for this function to work correctly.
+ * @note The function assumes that the `verilog` method is available and correctly generates a
+ * temporary Verilog file.
+ * @note The V2LVS tool must be installed and accessible in the system's PATH for this function to
+ * work correctly.
  * @note The generated SPICE netlist is post-processed to adjust global signals.
  * @note Temporary files (Verilog and intermediate SPICE) are kept for debugging purposes.
  */

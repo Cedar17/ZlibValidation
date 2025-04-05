@@ -295,13 +295,16 @@ void LogicExtractor::handle(const slang::syntax::NetDeclarationSyntax &netDecl) 
 
 // Handle primitive gate instantiations (MOST IMPORTANT PART)
 /**
- * @brief Handles the extraction of logic gate information from a primitive instantiation syntax node.
+ * @brief Handles the extraction of logic gate information from a primitive instantiation syntax
+ * node.
  *
- * This method processes a primitive instantiation, extracting the gate type, input signals, and output signal.
- * It populates the `gateOutputDrivers_` map, which stores the driving gate information for each output signal.
- * It also identifies internal wires and checks for multiple drivers on the same signal.
+ * This method processes a primitive instantiation, extracting the gate type, input signals, and
+ * output signal. It populates the `gateOutputDrivers_` map, which stores the driving gate
+ * information for each output signal. It also identifies internal wires and checks for multiple
+ * drivers on the same signal.
  *
- * @param primitiveInst A reference to the PrimitiveInstantiationSyntax node representing the gate instance.
+ * @param primitiveInst A reference to the PrimitiveInstantiationSyntax node representing the gate
+ * instance.
  */
 void LogicExtractor::handle(const slang::syntax::PrimitiveInstantiationSyntax &primitiveInst) {
   if (!inTargetModule_)
@@ -740,8 +743,8 @@ void extractAndPrintNetlistInfo(const std::string &verilog_file, const std::stri
  *
  * @param verilog_file The path to the Verilog file to parse.
  * @param cell The name of the cell (module) for which to extract logic expressions.
- * @return A map of output signal names to their logic expressions. Returns an empty map if parsing fails,
- *         the cell is not found, or no logic expressions can be derived.
+ * @return A map of output signal names to their logic expressions. Returns an empty map if parsing
+ * fails, the cell is not found, or no logic expressions can be derived.
  *
  * @note The function uses the slang library for Verilog parsing. Ensure that slang is properly
  *       installed and configured before using this function.

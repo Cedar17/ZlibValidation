@@ -1,6 +1,7 @@
 #include "Iterators.hpp"
 
-GroupsIterator::GroupsIterator(si2drGroupsIdT groups, si2drErrorT &err) : groups_(groups), err_(err) {
+GroupsIterator::GroupsIterator(si2drGroupsIdT groups, si2drErrorT &err)
+    : groups_(groups), err_(err) {
   group_ = si2drIterNextGroup(groups_, &err_);
 }
 GroupsIterator::~GroupsIterator() { si2drIterQuit(groups_, &err_); }
@@ -21,7 +22,8 @@ bool AttributesIterator::end() { return si2drObjectIsNull(attr_, &err_); }
 
 LibAttribute AttributesIterator::get() { return LibAttribute(attr_, err_); }
 
-ValuesIterator::ValuesIterator(si2drValuesIdT values, si2drErrorT &err) : values_(values), err_(err) {
+ValuesIterator::ValuesIterator(si2drValuesIdT values, si2drErrorT &err)
+    : values_(values), err_(err) {
   si2drIterNextComplexValue(values_, &vtype_, &int_, &float_, &str_, &bool_, &exprp_, &err_);
 }
 ValuesIterator::~ValuesIterator() { si2drIterQuit(values_, &err_); }

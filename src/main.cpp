@@ -12,8 +12,8 @@
  * The ZlibValidation tool is a command-line application that provides several functionalities
  * for processing and validating Liberty files, including parsing, monotonicity checking,
  * comparison, supercell generation, Verilog/SPICE netlist generation, functional equivalence check,
- * and a utility to clear generated files. It uses the CLI11 library for command-line argument parsing
- * and spdlog for logging.
+ * and a utility to clear generated files. It uses the CLI11 library for command-line argument
+ * parsing and spdlog for logging.
  *
  * The main function parses command-line arguments using CLI11 to determine the desired operation
  * and its parameters. It then calls the appropriate functions to perform the requested task.
@@ -33,7 +33,8 @@
  *     - `compare`: Compares two Liberty files and reports differences.
  *     - `supercell`: Generates supercells for a given Liberty file.
  *     - `zlibboost`: Runs the ZlibBoost tool for multi-threaded library processing.
- *     - `clear`: Clears log, JSON, map, markdown, Verilog, and SPICE files in the current directory.
+ *     - `clear`: Clears log, JSON, map, markdown, Verilog, and SPICE files in the current
+ * directory.
  *     - `verilog`: Generates Verilog netlist for a given Liberty file.
  *     - `spice`: Generates SPICE netlist for a given Liberty file.
  *     - `func`: Checks functional equivalence of two Liberty or Verilog files.
@@ -120,8 +121,7 @@ int main(int argc, char *argv[]) {
   // Add subcommand for compare mode
   std::string ref_lib, comp_lib, report_file_name;
   CLI::App *compare_cmd = app.add_subcommand(
-      "compare",
-      "Compare the comparison library against the reference one and report differences");
+      "compare", "Compare the comparison library against the reference one and report differences");
   compare_cmd->add_option("--ref", ref_lib, "Specify the reference library file")
       ->check(CLI::ExistingFile)
       ->required();

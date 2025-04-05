@@ -54,7 +54,8 @@ std::vector<double> parseStringToVector(const std::string &str) {
  *
  * @param lib_lut_group The LibGroup object containing the LUT data to be converted
  * @param err Reference to an si2drErrorT object to track any errors during processing
- * @return json A JSON object representing the LUT data with keys for "index_1", "index_2", and "values"
+ * @return json A JSON object representing the LUT data with keys for "index_1", "index_2", and
+ * "values"
  */
 json generateLutJson(LibGroup &lib_lut_group, si2drErrorT &err) {
   json lut_json;
@@ -89,13 +90,13 @@ json generateLutJson(LibGroup &lib_lut_group, si2drErrorT &err) {
 
 /**
  * @brief Generates a JSON representation of timing information from a library timing group.
- * 
+ *
  * This function extracts timing attributes and sub-groups from a Liberty timing group
  * and organizes them into a JSON object. It processes standard timing attributes like
  * 'related_pin', 'timing_type', 'timing_sense', and 'when', as well as timing tables
- * such as 'cell_fall', 'cell_rise', 'fall_transition', 'rise_transition', 
+ * such as 'cell_fall', 'cell_rise', 'fall_transition', 'rise_transition',
  * 'fall_constraint', and 'rise_constraint'.
- * 
+ *
  * @param lib_timing_group The Liberty timing group to process
  * @param err Reference to an si2drErrorT object for error reporting
  * @return json A JSON object containing the extracted timing information
@@ -182,20 +183,21 @@ json generatePowerJson(LibGroup &lib_power_group, si2drErrorT &err) {
 
 /**
  * @brief Generates a JSON representation of a Liberty pin group
- * 
+ *
  * This function traverses a Liberty pin group, extracts relevant attributes and sub-groups,
  * and converts them into a JSON object. It also determines the pin's direction.
- * 
+ *
  * Processes the following pin attributes:
  * - direction
  * - max_transition, capacitance, rise_capacitance, fall_capacitance, max_capacitance (float types)
- * - function, power_down_function, related_ground_pin, related_power_pin, three_state (string types)
+ * - function, power_down_function, related_ground_pin, related_power_pin, three_state (string
+ * types)
  * - clock (boolean type)
- * 
+ *
  * Handles the following sub-groups:
  * - internal_power: Converted using generatePowerJson()
  * - timing: Converted using generateTimingJson()
- * 
+ *
  * @param lib_pin_group The Liberty pin group to process
  * @param err Reference to an error object for tracking Liberty API errors
  * @return A pair containing the pin direction (string) and the JSON representation of the pin
@@ -248,12 +250,12 @@ std::pair<std::string, json> generatePinJson(LibGroup &lib_pin_group, si2drError
 
 /**
  * @brief Generates a JSON representation of a cell from a LibGroup object
- * 
+ *
  * This function processes a LibGroup representing a cell and converts it into a JSON object.
  * It extracts the cell name and processes specific attributes such as area, cell_leakage_power,
- * and cell_footprint. It also processes pins within the cell by categorizing them based on 
+ * and cell_footprint. It also processes pins within the cell by categorizing them based on
  * their direction (input, output, internal, inout).
- * 
+ *
  * @param lib_cell_group The LibGroup object representing the cell
  * @param err Reference to a si2drErrorT object for error handling
  * @return json A JSON object containing the cell's information with the following structure:

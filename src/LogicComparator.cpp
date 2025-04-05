@@ -110,16 +110,20 @@ bool isOperator(const std::string &token) {
  * 3. Adds spaces around operators (+, ^, *) and parentheses.
  * 4. Replaces symbolic operators (+, ^, *) with their keyword equivalents (or, xor, and).
  * 5. Tokenizes the expression based on spaces.
- * 6. Inserts implied 'and' operators between operands where necessary.  For example, "A B" becomes "A and B".
+ * 6. Inserts implied 'and' operators between operands where necessary.  For example, "A B" becomes
+ * "A and B".
  * 7. Handles 'not Identifier' sequences by converting them to 'not(Identifier)'.
- * 8. Reconstructs the final expression string from the processed tokens, adding spaces appropriately.
+ * 8. Reconstructs the final expression string from the processed tokens, adding spaces
+ * appropriately.
  * 9. Performs a final cleanup to consolidate multiple spaces and trim the result.
  *
  * @param input_expr The input logical expression string.
- * @return The preprocessed logical expression string, ready for evaluation.  Returns an empty string if the input is empty or if no tokens are found after processing.
+ * @return The preprocessed logical expression string, ready for evaluation.  Returns an empty
+ * string if the input is empty or if no tokens are found after processing.
  *
  * @note The function uses spdlog for debugging and tracing.
- * @note The function assumes the existence of helper functions `isIdentifier` and `isOperator` to classify tokens.
+ * @note The function assumes the existence of helper functions `isIdentifier` and `isOperator` to
+ * classify tokens.
  */
 std::string LogicComparator::preprocessExpression(const std::string &input_expr) {
   std::string processed = input_expr;
@@ -929,15 +933,22 @@ void LogicComparator::compareCellLogic() {
 }
 
 /**
- * @brief Generates a comprehensive report comparing the logic equivalence of a cell's reference and comparison expressions.
+ * @brief Generates a comprehensive report comparing the logic equivalence of a cell's reference and
+ * comparison expressions.
  *
  * This function performs the following steps:
- * 1. **Initialization:** Sets up logging and determines the output format (Markdown or plain text) based on the file extension.
- * 2. **File Handling:** Opens the specified output file in append mode, creating it if it doesn't exist.  Handles potential file opening errors.
- * 3. **Report Header:** Writes a header section to the report, including the cell name, application version, author, and timestamp.
- * 4. **Legend Generation:** Creates a legend explaining the status symbols used in the report (e.g., [OK], [NO], [NA]).
- * 5. **Table Generation:** Creates tables for reference pin functions, comparison pin functions, and the legend.
- * 6. **Pin Result Processing:** Iterates through the results for each pin, generating detailed information including:
+ * 1. **Initialization:** Sets up logging and determines the output format (Markdown or plain text)
+ * based on the file extension.
+ * 2. **File Handling:** Opens the specified output file in append mode, creating it if it doesn't
+ * exist.  Handles potential file opening errors.
+ * 3. **Report Header:** Writes a header section to the report, including the cell name, application
+ * version, author, and timestamp.
+ * 4. **Legend Generation:** Creates a legend explaining the status symbols used in the report
+ * (e.g., [OK], [NO], [NA]).
+ * 5. **Table Generation:** Creates tables for reference pin functions, comparison pin functions,
+ * and the legend.
+ * 6. **Pin Result Processing:** Iterates through the results for each pin, generating detailed
+ * information including:
  *    - Pin Name
  *    - Reference and Comparison Truth Tables (if available)
  *    - Comparison Summary Table:
@@ -945,15 +956,18 @@ void LogicComparator::compareCellLogic() {
  *      - Raw and Processed Expressions
  *      - Compilation Status
  *      - Error Messages (if any)
- * 7. **Output:** Exports the generated tables and pin results to the output file in the determined format (Markdown or plain text).
+ * 7. **Output:** Exports the generated tables and pin results to the output file in the determined
+ * format (Markdown or plain text).
  * 8. **Closure:** Closes the output file and logs the completion of the report generation.
  *
- * @param output_file The path to the output report file. If the file extension is ".md", the report will be generated in Markdown format; otherwise, it will be generated in plain text.
+ * @param output_file The path to the output report file. If the file extension is ".md", the report
+ * will be generated in Markdown format; otherwise, it will be generated in plain text.
  *
  * @note The function uses `spdlog` for logging and relies on several helper classes/structs:
  *   - `Table`: For creating formatted tables.
  *   - `MarkdownExporter`: For exporting tables to Markdown format.
- *   - `LogicComparator::PinResult`: A struct containing the results of the logic comparison for a single pin.
+ *   - `LogicComparator::PinResult`: A struct containing the results of the logic comparison for a
+ * single pin.
  *
  * @note The function appends to the output file if it already exists.
  */
