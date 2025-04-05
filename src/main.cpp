@@ -5,6 +5,46 @@
 #include "LibFileOperations.hpp"
 #include "version.h"
 
+/**
+ * @file main.cpp
+ * @brief This file contains the main function for the ZlibValidation tool.
+ *
+ * The ZlibValidation tool is a command-line application that provides several functionalities
+ * for processing and validating Liberty files, including parsing, monotonicity checking,
+ * comparison, supercell generation, Verilog/SPICE netlist generation, functional equivalence check,
+ * and a utility to clear generated files. It uses the CLI11 library for command-line argument parsing
+ * and spdlog for logging.
+ *
+ * The main function parses command-line arguments using CLI11 to determine the desired operation
+ * and its parameters. It then calls the appropriate functions to perform the requested task.
+ * The tool supports processing multiple Liberty files in parallel using multi-threading for
+ * monotonicity checking, supercell generation, Verilog generation, and SPICE generation.
+ *
+ * @param argc The number of command-line arguments.
+ * @param argv An array of command-line argument strings.
+ * @return 0 if the program executes successfully, or an error code otherwise.
+ *
+ * @details
+ * The main function performs the following steps:
+ *   1. Initializes command-line argument parsing using CLI11.
+ *   2. Defines subcommands for each supported operation:
+ *     - `parse`: Parses a Liberty file and writes JSON to a file.
+ *     - `mono`: Checks the monotonicity of timing arc values in a Liberty file.
+ *     - `compare`: Compares two Liberty files and reports differences.
+ *     - `supercell`: Generates supercells for a given Liberty file.
+ *     - `zlibboost`: Runs the ZlibBoost tool for multi-threaded library processing.
+ *     - `clear`: Clears log, JSON, map, markdown, Verilog, and SPICE files in the current directory.
+ *     - `verilog`: Generates Verilog netlist for a given Liberty file.
+ *     - `spice`: Generates SPICE netlist for a given Liberty file.
+ *     - `func`: Checks functional equivalence of two Liberty or Verilog files.
+ *   3. Parses the command-line arguments using CLI11.
+ *   4. Calls the appropriate function based on the selected subcommand.
+ *   5. Logs the program's exit status and timestamp.
+ *
+ * @note The tool relies on external libraries such as CLI11, spdlog, and potentially others
+ *       depending on the specific operation being performed. Ensure that these libraries are
+ *       properly installed and configured before running the tool.
+ */
 int main(int argc, char *argv[]) {
   // Parse command line arguments
   std::vector<std::string> library_paths; // Support multiple files

@@ -181,6 +181,21 @@ void verilogLibFile(const std::string &library_path, const std::string &log_file
   }
 }
 
+/**
+ * @brief Generates a SPICE library file from a given library file, applying a specified chain length and cell names.
+ *
+ * This function takes a library file path, a log file name, a chain length, a vector of cell names,
+ * a Verilog library file path, and a SPICE library file path as input. It initializes a LibFile object,
+ * validates the chain length, and then calls the spice method of the LibFile object to generate the SPICE library file.
+ * It logs the start and end of the SPICE generation process, as well as any errors that occur.
+ *
+ * @param library_path The path to the input library file.
+ * @param log_file_name The name of the log file. If empty, a default log file name is generated based on the library file name.
+ * @param chain_length The chain length to use during SPICE generation. Must be >= 1.
+ * @param cell_names A vector of cell names to include in the SPICE generation.
+ * @param verilog_lib_file The path to the Verilog library file.
+ * @param spice_lib_file The path to the output SPICE library file.
+ */
 void spiceLibFile(const std::string &library_path, const std::string &log_file_name,
                   int chain_length, const std::vector<std::string> &cell_names,
                   const std::string &verilog_lib_file, const std::string &spice_lib_file) {
@@ -256,6 +271,31 @@ void compareLibFiles(const std::string &ref_lib, const std::string &comp_lib, co
   spdlog::info("Comparison completed. Report written to: '{}'", report_file_name);
 }
 
+/**
+ * @brief Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cells.
+ *
+ * This function compares the logic functions of specified cells in two files, which can be either in Liberty (.lib) or Verilog (.v) format.
+ * It extracts the logic functions for each cell from both files, compares them, and generates a report summarizing the comparison results.
+ *
+ * @param ref_file The path to the reference file (Liberty or Verilog).
+ * @param comp_file The path to the comparison file (Liberty or Verilog).
+ * @param cell_names A vector of cell names to be checked for functional equivalence.
+ * @param report_file_name A string to store the name of the report file. If empty, a default name is generated.
+ *                         If the provided name does not end with ".txt" or ".md", ".md" is appended.
+ *
+ * @details
+ * The function first checks the file extensions to determine the file format. It then extracts the logic functions for each specified cell
+ * from both files.  The logic functions are then compared, and a report is generated, which includes the comparison results for each cell.
+ * The report is written to the specified report file.
+ *
+ * @note
+ * - If no cell names are provided, the function logs an error and returns.
+ * - If the reference or comparison file format is not supported (i.e., not .lib or .v), the function logs an error and returns.
+ * - The report file is cleared before writing the comparison results.
+ * - The function uses spdlog for logging information, warnings, and errors.
+ * - The function utilizes the LogicComparator class to perform the logic comparison and generate the report.
+ * - Memory allocated for LibFile objects is managed using raw pointers and must be manually deallocated to prevent memory leaks.
+ */
 void funcLibFile(const std::string &ref_file, const std::string &comp_file,
                  const std::vector<std::string> &cell_names, std::string &report_file_name) {
   // Check if the files are Liberty or Verilog
