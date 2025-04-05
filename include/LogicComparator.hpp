@@ -4,11 +4,11 @@
 #include <algorithm>
 #include <chrono>
 #include <cmath>
+#include <filesystem>
 #include <iomanip>
 #include <optional> // To store tables optionally
 #include <regex>    // For regular expressions
 #include <variant>
-#include <filesystem>
 
 #include "exprtk.hpp"
 #include "tabulate/markdown_exporter.hpp"

@@ -17,10 +17,10 @@ Options:
 Subcommands:
   parse                       Parse the Liberty file and write JSON to a file
   mono                        Check the monotonicity of timing arc values
-  compare                     Compare the comparison library against the reference library and report differences
+  compare                     Compare the comparison library against the reference one and report differences
   supercell                   Generate supercells for the given Liberty file
   zlibboost                   ZlibBoost - Multi-threaded Library Processing Tool
-  clear                       Clear the log, JSON, map, markdown files in this directory
+  clear                       Clear the log, JSON, map, markdown, Verilog, SPICE files in this directory
   verilog                     Generate Verilog file for given Liberty file
   spice                       Generate SPICE file for given Liberty file
   func                        Check functional equivalence of two Liberty files or Verilog files
@@ -393,10 +393,10 @@ Subcommands:
 
 ### 2025-04-05
 
-- 新增了 `LibFile::spice()` 方法，为 `spice` 子命令添加了 SPICE网表生成功能。
-  - 通过执行 `which v2lvs` 命令检测系统中是否安装了 `V2LVS` 工具。如果已安装，则调用该工具生成基本的 SPICE 网表。
-  - 添加了 `--vl` 和 `--sl` 命令行选项，允许用户指定 Verilog 库文件和 SPICE 库文件的路径。
-  - 目前已能生成基本的 SPICE 网表，后续需要进一步完善输出格式。
+- 新增了 `LibFile::spice()` 方法，为 `spice` 子命令添加了 SPICE 网表生成功能。
+  - 通过执行 `which v2lvs` 命令检测系统中是否安装了 `V2LVS` 工具。如果已安装，则调用该工具生成基本的 SPICE 网表。
+  - 添加了 `--vl` 和 `--sl` 命令行选项，允许用户指定 Verilog 库文件和 SPICE 库文件的路径。
+  - 目前已能生成基本的 SPICE 网表，后续需要进一步完善输出格式。
 
   ```shell
   Generate SPICE file for given Liberty file
@@ -414,3 +414,21 @@ Subcommands:
     --vl TEXT                   Specify the location of the Verilog primitive library file
     --sl TEXT                   Specify the location of the SPICE library file to be included in the output
   ```
+- 实现私有方法`LibFile::splitString()`，用于将字符串按空格分割成多个子字符串，并返回一个 `std::vector<std::string>`。
+- 实现了 `LibFile::generateRCLines()` 方法，用于为给定的 net 生成 RC lines。
+  - 该方法根据 `isFinalStage` 参数，生成不同的 RC 结构。
+  - 如果 `isFinalStage` 为 `false`，则生成 `R1-C1-R2` 结构。
+  - 如果 `isFinalStage` 为 `true`，则生成 `R1-C1` 结构。
+  - RC 的默认值参考目标 SPICE 文件。
+- 实现了 `LibFile::modifySpiceNetlist()` 方法，用于修改 `v2lvs` 生成的 SPICE 网表。
+  - 该方法添加元数据注释，包括应用名称、版本、作者和时间戳。
+  - 在第一个 `.INCLUDE` 指令后插入指定的 global line。
+  - 修改 subcircuit，在 `.SUBCKT` 定义的端口列表中添加 `VDD VSS`。
+  - 对于 subcircuit 中的每个 instance line（以 `'X'` 或 `'x'` 开头），修改输出引脚名称，添加 `VDD/VSS` 连接，并调用 `generateRCLines` 生成 R/C lines。
+  - 保留原始注释，跳过空行、`v2lvs` header line 和原始的 `.GLOBAL` line。
+- 完全实现了 `LibFile::spice()` 方法，能够生成 SPICE 网表并输出到指定文件中。SPICE 网表的生成过程如下：
+  - 检查是否指定了 Verilog 库文件和 SPICE 库文件，如果没有指定，则使用默认路径。
+  - 调用 `v2lvs` 工具生成初步的 SPICE 网表。
+  - 调用 `LibFile::generateRCLines()` 方法，为 SPICE 网表中的每个 instance 生成对应的 RC lines。
+  - 调用 `LibFile::modifySpiceNetlist()` 方法，修改 SPICE 网表，添加元数据、插入 global line、调整 instance lines，并生成最终的 SPICE 网表。
+  - 将最终的 SPICE 网表输出到指定文件中。

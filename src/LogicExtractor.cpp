@@ -2,6 +2,19 @@
 
 // --- Implementation for LogicExtractor ---
 
+/**
+ * @brief Handles a module declaration syntax node.
+ *
+ * This function is the entry point for processing a module declaration. It checks if the module
+ * is the target module and, if so, extracts relevant information such as primary inputs,
+ * primary outputs, and internal wires. It also visits the children of the module node to
+ * process ports, declarations, and instances.
+ *
+ * The function ensures that the target module is only processed once and that parsing stops
+ * after the target module is found.
+ *
+ * @param module A reference to the module declaration syntax node.
+ */
 void LogicExtractor::handle(const slang::syntax::ModuleDeclarationSyntax &module) {
   if (parsingComplete_)
     return; // Don't re-process if called again
@@ -46,6 +59,36 @@ void LogicExtractor::handle(const slang::syntax::ModuleDeclarationSyntax &module
 }
 
 // Handle Port Declarations (defines direction and type, usually inside module body)
+/**
+ * @brief Handles a port declaration syntax node.
+ *
+ * This method extracts information about port declarations within a SystemVerilog module,
+ * including the port's direction (input, output, or inout) and name. It updates internal
+ * data structures to track primary inputs, primary outputs, internal wires, and port directions.
+ *
+ * @param portDecl A reference to the PortDeclarationSyntax node being processed.
+ *
+ * @details
+ * - It first checks if the current processing context is within the target module. If not, the
+ *   method returns early.
+ * - It determines the port's direction by inspecting the port header (VariablePortHeaderSyntax or
+ *   NetPortHeaderSyntax). The direction is extracted using `valueText()` to handle keywords
+ *   represented as text tokens.
+ * - It iterates through the declarators in the port declaration to extract port names.
+ * - If multiple direction declarations are found for the same port, a warning is logged, and the
+ *   first declared direction is retained.
+ * - Based on the port's direction, the port name is added to the appropriate sets:
+ *   - `primaryInputs_`: For input and inout ports.
+ *   - `primaryOutputs_`: For output and inout ports.
+ *   - `internalWires_`: For all ports (input, output, inout, and ports with unknown directions).
+ * - If a port has an unknown or missing direction, it's treated as an internal wire, and a warning
+ *   is logged.
+ * - The method avoids calling `visitDefault` to prevent unexpected revisits of syntax nodes.
+ *
+ * @note The `logicCache_` update is commented out, indicating it's part of a later processing step.
+ * @warning Logs warnings for port declarations without headers, port declarators without names, and
+ *          multiple direction declarations for the same port.
+ */
 void LogicExtractor::handle(const slang::syntax::PortDeclarationSyntax &portDecl) {
   if (!inTargetModule_)
     return;
@@ -109,6 +152,30 @@ void LogicExtractor::handle(const slang::syntax::PortDeclarationSyntax &portDecl
 }
 
 // Handle Non-ANSI Port List (defines names, usually in module header)
+/**
+ * @brief Handles a non-ANSI port list in a module.
+ *
+ * This method iterates through the ports in a non-ANSI port list, extracts the port name,
+ * determines its direction (input, output, or inout), and adds it to the appropriate sets
+ * (primaryInputs_, primaryOutputs_, internalWires_). It also handles different types of
+ * port declarations, including implicit, explicit, and empty ports.
+ *
+ * @param portList A reference to the NonAnsiPortListSyntax object representing the port list.
+ *
+ * @details
+ * - Skips processing if not in the target module (inTargetModule_ is false).
+ * - Extracts port names from ImplicitNonAnsiPortSyntax and ExplicitNonAnsiPortSyntax.
+ * - Handles PortConcatenationSyntax by logging a warning and skipping the port.
+ * - Skips EmptyNonAnsiPortSyntax (placeholders).
+ * - Uses the portDirections_ map to determine the direction of each port.
+ * - Adds ports to primaryInputs_ and internalWires_ if the direction is "input".
+ * - Adds ports to primaryOutputs_ and internalWires_ if the direction is "output".
+ * - Adds ports to both primaryInputs_ and primaryOutputs_ if the direction is "inout".
+ * - Logs warnings for ports with unknown or missing directions.
+ * - Logs warnings if the port name cannot be determined.
+ *
+ * @note This method does not call visitDefault.
+ */
 void LogicExtractor::handle(const slang::syntax::NonAnsiPortListSyntax &portList) {
   if (!inTargetModule_)
     return;
@@ -198,6 +265,15 @@ void LogicExtractor::handle(const slang::syntax::NonAnsiPortListSyntax &portList
 }
 
 // Handle explicit wire declarations
+/**
+ * @brief Handles a net declaration syntax node.
+ *
+ * This function processes a net declaration syntax node, extracting the names of declared wires.
+ * It checks if the current scope is within the target module and avoids adding ports again if they
+ * were already declared as nets. The extracted wire names are added to the internal wires set.
+ *
+ * @param netDecl A reference to the NetDeclarationSyntax node to handle.
+ */
 void LogicExtractor::handle(const slang::syntax::NetDeclarationSyntax &netDecl) {
   if (!inTargetModule_)
     return;
@@ -218,6 +294,18 @@ void LogicExtractor::handle(const slang::syntax::NetDeclarationSyntax &netDecl) 
 }
 
 // Handle primitive gate instantiations (MOST IMPORTANT PART)
+/**
+ * @brief Handles the extraction of logic gate information from a primitive instantiation syntax
+ * node.
+ *
+ * This method processes a primitive instantiation, extracting the gate type, input signals, and
+ * output signal. It populates the `gateOutputDrivers_` map, which stores the driving gate
+ * information for each output signal. It also identifies internal wires and checks for multiple
+ * drivers on the same signal.
+ *
+ * @param primitiveInst A reference to the PrimitiveInstantiationSyntax node representing the gate
+ * instance.
+ */
 void LogicExtractor::handle(const slang::syntax::PrimitiveInstantiationSyntax &primitiveInst) {
   if (!inTargetModule_)
     return;
@@ -347,6 +435,19 @@ void LogicExtractor::handle(const slang::syntax::PrimitiveInstantiationSyntax &p
 // --- Logic Derivation Implementation ---
 
 // Public method called after visiting the tree
+/**
+ * @brief Extracts logic expressions for all primary output ports of the target cell.
+ *
+ * This method iterates through the primary output ports, derives the logic expression
+ * for each, and stores the result in a map. If an error occurs during the derivation
+ * of logic for a particular output, an error message is stored in the map instead.
+ *
+ * @return A map where the key is the output port name (std::string) and the value is the
+ *         corresponding logic expression (std::string).  If AST parsing is not complete
+ *         or the target module is not found, an empty map is returned.  If an error
+ *         occurs during logic derivation for a specific output, the corresponding value
+ *         in the map will be an error message.
+ */
 std::map<std::string, std::string> LogicExtractor::getLogicExpressions() {
   std::map<std::string, std::string> result_map;
   if (!parsingComplete_) {
@@ -377,6 +478,35 @@ std::map<std::string, std::string> LogicExtractor::getLogicExpressions() {
 }
 
 // Recursive function with memoization
+/**
+ * @brief Recursively derives the logic expression for a given signal.
+ *
+ * This function traces back the signal to its driving gates and primary inputs,
+ * constructing a logic expression that represents the signal's behavior. It uses
+ * memoization to cache previously computed expressions, avoiding redundant calculations.
+ *
+ * @param signalName The name of the signal for which to derive the logic expression.
+ * @return A string representing the logic expression for the signal.
+ * @throws std::runtime_error if the signal is not a primary input, a known wire,
+ *                            or driven by a recognized gate/assignment. Also thrown if an
+ *                            empty input signal name is encountered or if an internal wire
+ *                            has no identified driver.
+ *
+ * @details
+ * The function operates in the following steps:
+ * 1. **Check Cache (Memoization):** If the logic expression for the signal is already
+ *    cached in `logicCache_`, it is immediately returned.
+ * 2. **Base Case: Is it a primary input?** If the signal is a primary input
+ *    (present in `primaryInputs_`), its logic expression is simply its own name.
+ * 3. **Recursive Step: Is it driven by a gate?** If the signal is driven by a gate
+ *    (present in `gateOutputDrivers_`), the function recursively derives the logic
+ *    expressions for all input signals of the gate. These input expressions are then
+ *    used to format the overall expression for the current signal based on the gate type.
+ * 4. **Handle Assign statements:**  (Currently not implemented but reserved for future use).
+ * 5. **Error Case:** If the signal is not found in any of the above categories, it indicates
+ *    an error. An exception is thrown, indicating that the signal is either an undriven
+ *    internal wire or an unknown signal.
+ */
 std::string LogicExtractor::deriveLogicRecursive(const std::string &signalName) {
   // 1. Check Cache (Memoization)
   if (logicCache_.count(signalName)) {
@@ -434,6 +564,23 @@ std::string LogicExtractor::deriveLogicRecursive(const std::string &signalName) 
 }
 
 // Helper to format the expression string based on gate type
+/**
+ * @brief Formats a logic expression based on the gate type and input expressions.
+ *
+ * This function takes a GateInfo structure describing the gate and a vector of input
+ * expressions (strings) and constructs a logic expression string representing the gate's
+ * operation. It handles AND, NAND, OR, NOR, XOR, XNOR, NOT, and BUF gates.  It uses
+ * '*', '+', '^', and '!' operators for AND, OR, XOR, and NOT respectively.  If the gate
+ * type is unsupported, or if the number of inputs is incorrect for NOT/BUF gates, or if
+ * a gate requiring inputs receives none, an error string is returned, and a warning is
+ * logged.
+ *
+ * @param gateInfo A GateInfo struct containing information about the gate, including its type
+ *                 (slang::parsing::TokenKind) and name.
+ * @param inputExprs A vector of strings representing the input expressions to the gate.
+ * @return A string representing the formatted logic expression, or an error string if
+ *         formatting fails due to unsupported gate type or incorrect number of inputs.
+ */
 std::string LogicExtractor::formatExpression(const GateInfo &gateInfo,
                                              const std::vector<std::string> &inputExprs) {
   if (inputExprs.empty() && gateInfo.kind != slang::parsing::TokenKind::NotKeyword &&
@@ -511,6 +658,21 @@ std::string LogicExtractor::formatExpression(const GateInfo &gateInfo,
 
 // --- New Function Implementation (Step 1: Visit and Print) ---
 
+/**
+ * @brief Extracts and prints netlist information from a Verilog file for a specified cell.
+ *
+ * This function parses a Verilog file using the slang library, extracts information about
+ * the primary inputs, primary outputs, internal wires, and gate drivers within a specified
+ * cell (module). It then prints a summary of the extracted information to the console using spdlog.
+ *
+ * @param verilog_file The path to the Verilog file to be parsed.
+ * @param cell The name of the cell (module) for which to extract netlist information.
+ *
+ * @exception std::exception If any error occurs during Verilog parsing or info extraction.
+ *
+ * @note The function uses the slang library for Verilog parsing and a custom LogicExtractor
+ *       class to extract the desired information.  Error messages are logged using spdlog.
+ */
 void extractAndPrintNetlistInfo(const std::string &verilog_file, const std::string &cell) {
   spdlog::info("--- Step 1: Starting Netlist Info Extraction ---");
   spdlog::info("Verilog file: '{}', Target cell: '{}'", verilog_file, cell);
@@ -572,6 +734,24 @@ void extractAndPrintNetlistInfo(const std::string &verilog_file, const std::stri
 
 // --- (Step 2: Extract Logic Expressions) ---
 
+/**
+ * @brief Extracts logic expressions from a Verilog file for a specified cell.
+ *
+ * This function parses a Verilog file using the slang library, identifies the specified cell,
+ * and extracts the logic expressions for its outputs. It returns a map where the keys are
+ * output signal names and the values are their corresponding logic expressions as strings.
+ *
+ * @param verilog_file The path to the Verilog file to parse.
+ * @param cell The name of the cell (module) for which to extract logic expressions.
+ * @return A map of output signal names to their logic expressions. Returns an empty map if parsing
+ * fails, the cell is not found, or no logic expressions can be derived.
+ *
+ * @note The function uses the slang library for Verilog parsing. Ensure that slang is properly
+ *       installed and configured before using this function.
+ * @note The logic extraction process involves traversing the syntax tree of the Verilog code
+ *       and identifying relevant assignments and expressions within the specified cell.
+ * @note Error messages and warnings are logged using the spdlog library.
+ */
 std::map<std::string, std::string> extractLogicFromVerilog(const std::string &verilog_file,
                                                            const std::string &cell) {
   spdlog::info("--- Starting Logic Expression Extraction for cell: '{}' ---", cell);
