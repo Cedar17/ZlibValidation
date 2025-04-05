@@ -442,12 +442,7 @@ Logically Equivalent   &Yes   \\\cline{1-2}
 \hypertarget{md_README_autotoc_md39}{}\doxysubsection{2025-\/04-\/05}\label{md_README_autotoc_md39}
 
 \begin{DoxyItemize}
-\item 新增了 {\ttfamily \mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{Lib\+File\+::spice()}}} 方法，为 {\ttfamily spice} 子命令添加了 SPICE网表生成功能。
-\begin{DoxyItemize}
-\item 通过执行 {\ttfamily which v2lvs} 命令检测系统中是否安装了 {\ttfamily V2\+LVS} 工具。如果已安装，则调用该工具生成基本的 SPICE 网表。
-\item 添加了 {\ttfamily -\/-\/vl} 和 {\ttfamily -\/-\/sl} 命令行选项，允许用户指定 Verilog 库文件和 SPICE 库文件的路径。
-\item 目前已能生成基本的 SPICE 网表，后续需要进一步完善输出格式。
-\end{DoxyItemize}
+\item 新增了 {\ttfamily \mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{Lib\+File\+::spice()}}} 方法，为 {\ttfamily spice} 子命令添加了 SPICE 网表生成功能。   -\/ 通过执行 {\ttfamily which v2lvs} 命令检测系统中是否安装了 {\ttfamily V2\+LVS} 工具。如果已安装，则调用该工具生成基本的 SPICE 网表。   -\/ 添加了 {\ttfamily -\/-\/vl} 和 {\ttfamily -\/-\/sl} 命令行选项，允许用户指定 Verilog 库文件和 SPICE 库文件的路径。   -\/ 目前已能生成基本的 SPICE 网表，后续需要进一步完善输出格式。
 
 
 \begin{DoxyCode}{0}
@@ -467,5 +462,9 @@ Logically Equivalent   &Yes   \\\cline{1-2}
 \DoxyCodeLine{  -\/-\/sl TEXT                   Specify the location of the SPICE library file to be included in the output}
 
 \end{DoxyCode}
- 
+
+\item 实现私有方法{\ttfamily \mbox{\hyperlink{classLibFile_a42ba6a2e11bc60e26ce4c13c26dcaca2}{Lib\+File\+::split\+String()}}}，用于将字符串按空格分割成多个子字符串，并返回一个 {\ttfamily std\+::vector\texorpdfstring{$<$}{<}std\+::string\texorpdfstring{$>$}{>}}。
+\item 实现了 {\ttfamily \mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{Lib\+File\+::generate\+RCLines()}}} 方法，用于为给定的 net 生成 RC lines。   -\/ 该方法根据 {\ttfamily is\+Final\+Stage} 参数，生成不同的 RC 结构。   -\/ 如果 {\ttfamily is\+Final\+Stage} 为 {\ttfamily false}，则生成 {\ttfamily R1-\/\+C1-\/\+R2} 结构。   -\/ 如果 {\ttfamily is\+Final\+Stage} 为 {\ttfamily true}，则生成 {\ttfamily R1-\/\+C1} 结构。   -\/ RC 的默认值参考目标 SPICE 文件。
+\item 实现了 {\ttfamily \mbox{\hyperlink{classLibFile_a25b6fd7453e8a200a70b2d19a6e216e2}{Lib\+File\+::modify\+Spice\+Netlist()}}} 方法，用于修改 {\ttfamily v2lvs} 生成的 SPICE 网表。   -\/ 该方法添加元数据注释，包括应用名称、版本、作者和时间戳。   -\/ 在第一个 {\ttfamily .INCLUDE} 指令后插入指定的 global line。   -\/ 修改 subcircuit，在 {\ttfamily .SUBCKT} 定义的端口列表中添加 {\ttfamily VDD VSS}。   -\/ 对于 subcircuit 中的每个 instance line（以 `\textquotesingle{}X'{\ttfamily 或}\textquotesingle{}x\textquotesingle{}{\ttfamily 开头），修改输出引脚名称，添加}VDD/\+VSS{\ttfamily 连接，并调用}generate\+RCLines{\ttfamily 生成 R/C lines。   -\/ 保留原始注释，跳过空行、}v2lvs{\ttfamily header line 和原始的}.GLOBAL{\ttfamily line。}
+\item {\ttfamily 完全实现了}\mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{Lib\+File\+::spice()}}\`{} 方法，能够生成 SPICE 网表并输出到指定文件中。\+SPICE 网表的生成过程如下：   -\/ 检查是否指定了 Verilog 库文件和 SPICE 库文件，如果没有指定，则使用默认路径。   -\/ 调用 {\ttfamily v2lvs} 工具生成初步的 SPICE 网表。   -\/ 调用 {\ttfamily \mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{Lib\+File\+::generate\+RCLines()}}} 方法，为 SPICE 网表中的每个 instance 生成对应的 RC lines。   -\/ 调用 {\ttfamily \mbox{\hyperlink{classLibFile_a25b6fd7453e8a200a70b2d19a6e216e2}{Lib\+File\+::modify\+Spice\+Netlist()}}} 方法，修改 SPICE 网表，添加元数据、插入 global line、调整 instance lines，并生成最终的 SPICE 网表。   -\/ 将最终的 SPICE 网表输出到指定文件中。 
 \end{DoxyItemize}

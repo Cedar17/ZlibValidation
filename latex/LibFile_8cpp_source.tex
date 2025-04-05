@@ -734,462 +734,438 @@
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00875}00875   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Verilog creation complete in '\{\}'"{}}, \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}} + \textcolor{stringliteral}{"{}.v"{}});}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00876}00876 \}}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00877}00877 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00878}\mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03}{00878}} \textcolor{keyword}{namespace }\{ \textcolor{comment}{// Keep helper functions private to this compilation unit}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00879}00879 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00880}00880 \textcolor{comment}{// Helper function to split a string by whitespace}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00881}\mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a878508ace57db04b7d26fc9228e0882d}{00881}} std::vector<std::string> \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a878508ace57db04b7d26fc9228e0882d}{splitString}}(\textcolor{keyword}{const} std::string \&s) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00882}00882   std::vector<std::string> tokens;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00883}00883   std::stringstream ss(s);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00884}00884   std::string token;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00885}00885   \textcolor{keywordflow}{while} (ss >> token) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00886}00886     tokens.push\_back(token);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00887}00887   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00888}00888   \textcolor{keywordflow}{return} tokens;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00889}00889 \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00890}00890 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00891}00891 \textcolor{comment}{// Function to generate RC lines based on instance index and stage}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00892}\mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a0f04bcaf23e63a099e502af0a6c1c648}{00892}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a0f04bcaf23e63a099e502af0a6c1c648}{generateRCLines}}(std::ofstream \&outFile, \textcolor{keyword}{const} std::string \&netName, \textcolor{keywordtype}{int} instanceIndex,}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00893}00893                      \textcolor{keywordtype}{bool} isFinalStage) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00894}00894   \textcolor{comment}{// -\/-\/-\/ Default RC Values (as observed in the target SPICE) -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00895}00895   \textcolor{keyword}{const} \textcolor{keywordtype}{double} R1\_INTERMEDIATE = 0.01;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00896}00896   \textcolor{keyword}{const} \textcolor{keywordtype}{double} C1\_INTERMEDIATE = 5.3e-\/16;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00897}00897   \textcolor{keyword}{const} \textcolor{keywordtype}{double} R2\_INTERMEDIATE = 0.01;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00898}00898   \textcolor{keyword}{const} \textcolor{keywordtype}{double} R1\_FINAL = 1e-\/2;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00899}00899   \textcolor{keyword}{const} \textcolor{keywordtype}{double} C1\_FINAL = 1e-\/18;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00900}00900   \textcolor{keyword}{const} std::string CAP\_GROUND = \textcolor{stringliteral}{"{}COREGND1"{}}; \textcolor{comment}{// Assumed ground for capacitors}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00901}00901   \textcolor{comment}{// -\/-\/-\/ -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00902}00902 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00903}00903   std::string r1Name = \textcolor{stringliteral}{"{}R1\_"{}} + std::to\_string(instanceIndex);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00904}00904   std::string c1Name = \textcolor{stringliteral}{"{}C1\_"{}} + std::to\_string(instanceIndex);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00905}00905   std::string r2Name = \textcolor{stringliteral}{"{}R2\_"{}} + std::to\_string(instanceIndex);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00906}00906   std::string node1 = netName + \textcolor{stringliteral}{"{}:1"{}}; \textcolor{comment}{// Intermediate node 1}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00907}00907   std::string node2 = netName + \textcolor{stringliteral}{"{}:2"{}}; \textcolor{comment}{// Intermediate node 2}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00908}00908 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00909}00909   \textcolor{comment}{// Set precision for scientific notation output}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00910}00910   outFile << std::scientific << std::setprecision(1);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00911}00911 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00912}00912   \textcolor{keywordflow}{if} (!isFinalStage) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00913}00913     \textcolor{comment}{// Intermediate RCR structure (R1-\/C1-\/R2)}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00914}00914     outFile << r1Name << \textcolor{stringliteral}{"{} "{}} << node1 << \textcolor{stringliteral}{"{} "{}} << node2 << \textcolor{stringliteral}{"{} "{}} << R1\_INTERMEDIATE << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00915}00915     outFile << c1Name << \textcolor{stringliteral}{"{} "{}} << node2 << \textcolor{stringliteral}{"{} "{}} << CAP\_GROUND << \textcolor{stringliteral}{"{} "{}} << C1\_INTERMEDIATE << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00916}00916     outFile << r2Name << \textcolor{stringliteral}{"{} "{}} << node2 << \textcolor{stringliteral}{"{} "{}} << netName << \textcolor{stringliteral}{"{} "{}} << R2\_INTERMEDIATE << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00917}00917   \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00918}00918     \textcolor{comment}{// Final RC structure (R1-\/C1 connected to the instance output node :1)}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00919}00919     \textcolor{comment}{// Note: The target SPICE connects R1 between node1 and the final port (netName).}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00920}00920     outFile << r1Name << \textcolor{stringliteral}{"{} "{}} << node1 << \textcolor{stringliteral}{"{} "{}} << netName << \textcolor{stringliteral}{"{} "{}} << R1\_FINAL << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00921}00921     outFile << c1Name << \textcolor{stringliteral}{"{} "{}} << node1 << \textcolor{stringliteral}{"{} "{}} << CAP\_GROUND << \textcolor{stringliteral}{"{} "{}} << C1\_FINAL << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00922}00922   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00923}00923   \textcolor{comment}{// Reset precision/format to default}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00924}00924   outFile << std::defaultfloat << std::setprecision(6);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00925}00925 \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00926}00926 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00927}00927 \textcolor{comment}{// Function to modify the SPICE netlist generated by v2lvs}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00928}\mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_abc176ffe6a37322a362b05cab1fd6c82}{00928}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_abc176ffe6a37322a362b05cab1fd6c82}{modifySpiceNetlist}}(\textcolor{keyword}{const} std::string \&spiceFile, \textcolor{keyword}{const} std::string \&targetGlobalLine,}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00929}00929                         std::shared\_ptr<spdlog::logger> logger) \textcolor{comment}{// Pass logger}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00930}00930 \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00931}00931   logger-\/>info(\textcolor{stringliteral}{"{}Modifying SPICE netlist: \{\}"{}}, spiceFile);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00932}00932   std::string tempFile = spiceFile + \textcolor{stringliteral}{"{}.tmp"{}}; \textcolor{comment}{// Temporary output file}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00933}00933 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00934}00934   std::ifstream inFile(spiceFile);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00935}00935   std::ofstream outFile(tempFile);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00936}00936 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00937}00937   \textcolor{keywordflow}{if} (!inFile) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00938}00938     logger-\/>error(\textcolor{stringliteral}{"{}Could not open input SPICE file for modification: \{\}"{}}, spiceFile);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00939}00939     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00940}00940   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00941}00941   \textcolor{keywordflow}{if} (!outFile) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00942}00942     logger-\/>error(\textcolor{stringliteral}{"{}Could not open temporary output SPICE file: \{\}"{}}, tempFile);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00943}00943     inFile.close(); \textcolor{comment}{// Close input file if output fails}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00944}00944     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00945}00945   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00946}00946 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00947}00947   std::string line;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00948}00948   \textcolor{keywordtype}{bool} includeFound = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00949}00949   \textcolor{keywordtype}{bool} globalInserted = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00950}00950   \textcolor{keywordtype}{bool} inSubckt = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00951}00951   std::string previousInstanceLine = \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00952}00952   \textcolor{keywordtype}{int} instanceIndex = 0; \textcolor{comment}{// Counter for R/C naming within a subckt}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00953}00953 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00954}00954   \textcolor{keywordflow}{while} (std::getline(inFile, line)) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00955}00955     \textcolor{comment}{// Trim leading/trailing whitespace (optional but good practice)}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00956}00956     line.erase(0, line.find\_first\_not\_of(\textcolor{stringliteral}{"{} \(\backslash\)t\(\backslash\)n\(\backslash\)r\(\backslash\)f\(\backslash\)v"{}}));}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00957}00957     line.erase(line.find\_last\_not\_of(\textcolor{stringliteral}{"{} \(\backslash\)t\(\backslash\)n\(\backslash\)r\(\backslash\)f\(\backslash\)v"{}}) + 1);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00958}00958 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00959}00959     \textcolor{comment}{// Skip empty lines and v2lvs header comments}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00960}00960     \textcolor{keywordflow}{if} (line.empty() || line.find(\textcolor{stringliteral}{"{}\$ Spice netlist generated by v2lvs"{}}) == 0 ||}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00961}00961         line.find(\textcolor{stringliteral}{"{}\$ v2"{}}) == 0 || \textcolor{comment}{// Catch version line too}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00962}00962         line.find(\textcolor{stringliteral}{"{}*.BUSDELIMITER"{}}) == 0) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00963}00963       \textcolor{keywordflow}{continue}; \textcolor{comment}{// Skip these lines entirely}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00964}00964     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00965}00965 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00966}00966     \textcolor{comment}{// Write other comments directly after processing any pending instance}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00967}00967     \textcolor{keywordflow}{if} (line[0] == \textcolor{charliteral}{'*'}) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00968}00968       \textcolor{comment}{// Process previous instance before writing comment if needed}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00969}00969       \textcolor{keywordflow}{if} (!previousInstanceLine.empty()) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00970}00970         std::vector<std::string> tokens = \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a878508ace57db04b7d26fc9228e0882d}{splitString}}(previousInstanceLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00971}00971         \textcolor{comment}{// Basic check: needs instance name, pins..., module name}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00972}00972         \textcolor{keywordflow}{if} (tokens.size() > 2 \&\& (tokens[0][0] == \textcolor{charliteral}{'X'} || tokens[0][0] == \textcolor{charliteral}{'x'})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00973}00973           std::string moduleName = tokens.back();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00974}00974           \textcolor{comment}{// *** Assumption: The relevant output pin for the *next* stage or final connection}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00975}00975           \textcolor{comment}{// *** is the second to last token in the v2lvs output line.}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00976}00976           std::string outputNet = tokens[tokens.size() -\/ 2];}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00977}00977           \textcolor{comment}{// Determine if it's a final stage based on typical output port names}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00978}00978           \textcolor{keywordtype}{bool} isFinal = (outputNet == \textcolor{stringliteral}{"{}CO"{}} || outputNet == \textcolor{stringliteral}{"{}S"{}} || outputNet == \textcolor{stringliteral}{"{}ZN"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00979}00979 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00980}00980           \textcolor{comment}{// Modify output pin name (add :1) and add VDD VSS}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00981}00981           tokens[tokens.size() -\/ 2] = outputNet + \textcolor{stringliteral}{"{}:1"{}};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00982}00982           tokens.push\_back(\textcolor{stringliteral}{"{}VDD"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00983}00983           tokens.push\_back(\textcolor{stringliteral}{"{}VSS"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00984}00984 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00985}00985           \textcolor{comment}{// Reconstruct and write modified instance line}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00986}00986           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < tokens.size(); ++i) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00987}00987             outFile << tokens[i] << (i == tokens.size() -\/ 1 ? \textcolor{stringliteral}{"{}"{}} : \textcolor{stringliteral}{"{} "{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00988}00988           \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00989}00989           outFile << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00990}00990 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00991}00991           \textcolor{comment}{// Generate and write RC lines for the processed instance}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00992}00992           \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a0f04bcaf23e63a099e502af0a6c1c648}{generateRCLines}}(outFile, outputNet, instanceIndex -\/ 1,}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00993}00993                           isFinal); \textcolor{comment}{// instanceIndex was already incremented}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00994}00994         \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00995}00995           logger-\/>warn(\textcolor{stringliteral}{"{}Previous line stored but not recognized as instance: \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00996}00996                        previousInstanceLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00997}00997           outFile << previousInstanceLine << std::endl; \textcolor{comment}{// Write unmodified if not recognized}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00998}00998         \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00999}00999         previousInstanceLine = \textcolor{stringliteral}{"{}"{}}; \textcolor{comment}{// Clear after processing}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01000}01000       \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01001}01001       outFile << line << std::endl; \textcolor{comment}{// Write the comment line}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01002}01002       \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01003}01003     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01004}01004 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01005}01005     \textcolor{comment}{// Handle .INCLUDE: Write it and set flag to insert global line next}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01006}01006     \textcolor{keywordflow}{if} (line.find(\textcolor{stringliteral}{"{}.INCLUDE"{}}) == 0) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01007}01007       outFile << line << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01008}01008       includeFound = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01009}01009       \textcolor{keywordflow}{continue}; \textcolor{comment}{// Process next line to insert global}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01010}01010     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01011}01011 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01012}01012     \textcolor{comment}{// Insert the target global line after .INCLUDE}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01013}01013     \textcolor{keywordflow}{if} (includeFound \&\& !globalInserted) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01014}01014       outFile << targetGlobalLine << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01015}01015       globalInserted = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01016}01016       \textcolor{comment}{// Fall through to process the current line}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01017}01017     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01018}01018 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01019}01019     \textcolor{comment}{// Handle .SUBCKT: Add VDD VSS to ports, reset instance counter}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01020}01020     \textcolor{keywordflow}{if} (line.find(\textcolor{stringliteral}{"{}.SUBCKT"{}}) == 0) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01021}01021       \textcolor{comment}{// Process any pending instance from the *previous* subcircuit's end}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01022}01022       \textcolor{keywordflow}{if} (!previousInstanceLine.empty()) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01023}01023         std::vector<std::string> tokens = \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a878508ace57db04b7d26fc9228e0882d}{splitString}}(previousInstanceLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01024}01024         \textcolor{keywordflow}{if} (tokens.size() > 2 \&\& (tokens[0][0] == \textcolor{charliteral}{'X'} || tokens[0][0] == \textcolor{charliteral}{'x'})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01025}01025           std::string moduleName = tokens.back();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01026}01026           std::string outputNet = tokens[tokens.size() -\/ 2];}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01027}01027           \textcolor{keywordtype}{bool} isFinal = (outputNet == \textcolor{stringliteral}{"{}CO"{}} || outputNet == \textcolor{stringliteral}{"{}S"{}} || outputNet == \textcolor{stringliteral}{"{}ZN"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01028}01028           tokens[tokens.size() -\/ 2] = outputNet + \textcolor{stringliteral}{"{}:1"{}};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01029}01029           tokens.push\_back(\textcolor{stringliteral}{"{}VDD"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01030}01030           tokens.push\_back(\textcolor{stringliteral}{"{}VSS"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01031}01031           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < tokens.size(); ++i) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01032}01032             outFile << tokens[i] << (i == tokens.size() -\/ 1 ? \textcolor{stringliteral}{"{}"{}} : \textcolor{stringliteral}{"{} "{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01033}01033           \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01034}01034           outFile << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01035}01035           \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a0f04bcaf23e63a099e502af0a6c1c648}{generateRCLines}}(outFile, outputNet, instanceIndex -\/ 1, isFinal);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01036}01036         \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01037}01037           logger-\/>warn(\textcolor{stringliteral}{"{}Previous line stored but not recognized as instance: \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01038}01038                        previousInstanceLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01039}01039           outFile << previousInstanceLine << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01040}01040         \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01041}01041         previousInstanceLine = \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01042}01042       \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01043}01043 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01044}01044       inSubckt = \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01045}01045       instanceIndex = 0;                          \textcolor{comment}{// Reset R/C counter for new subcircuit}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01046}01046       outFile << line << \textcolor{stringliteral}{"{} VDD VSS"{}} << std::endl; \textcolor{comment}{// Add VDD VSS to ports}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01047}01047     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01048}01048     \textcolor{comment}{// Handle .ENDS: Process the last instance before writing .ENDS}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01049}01049     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (line.find(\textcolor{stringliteral}{"{}.ENDS"{}}) == 0) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01050}01050       inSubckt = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01051}01051       \textcolor{comment}{// Process the last instance line *before* writing .ENDS}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01052}01052       \textcolor{keywordflow}{if} (!previousInstanceLine.empty()) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01053}01053         std::vector<std::string> tokens = \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a878508ace57db04b7d26fc9228e0882d}{splitString}}(previousInstanceLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01054}01054         \textcolor{keywordflow}{if} (tokens.size() > 2 \&\& (tokens[0][0] == \textcolor{charliteral}{'X'} || tokens[0][0] == \textcolor{charliteral}{'x'})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01055}01055           std::string moduleName = tokens.back();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01056}01056           std::string outputNet = tokens[tokens.size() -\/ 2];}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01057}01057           \textcolor{keywordtype}{bool} isFinal = (outputNet == \textcolor{stringliteral}{"{}CO"{}} || outputNet == \textcolor{stringliteral}{"{}S"{}} || outputNet == \textcolor{stringliteral}{"{}ZN"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01058}01058           tokens[tokens.size() -\/ 2] = outputNet + \textcolor{stringliteral}{"{}:1"{}};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01059}01059           tokens.push\_back(\textcolor{stringliteral}{"{}VDD"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01060}01060           tokens.push\_back(\textcolor{stringliteral}{"{}VSS"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01061}01061           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < tokens.size(); ++i) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01062}01062             outFile << tokens[i] << (i == tokens.size() -\/ 1 ? \textcolor{stringliteral}{"{}"{}} : \textcolor{stringliteral}{"{} "{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01063}01063           \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01064}01064           outFile << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01065}01065           \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a0f04bcaf23e63a099e502af0a6c1c648}{generateRCLines}}(outFile, outputNet, instanceIndex -\/ 1, isFinal);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01066}01066         \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01067}01067           logger-\/>warn(\textcolor{stringliteral}{"{}Previous line stored but not recognized as instance: \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01068}01068                        previousInstanceLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01069}01069           outFile << previousInstanceLine << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01070}01070         \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01071}01071         previousInstanceLine = \textcolor{stringliteral}{"{}"{}}; \textcolor{comment}{// Clear after processing}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01072}01072       \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01073}01073       outFile << line << std::endl; \textcolor{comment}{// Write the .ENDS line}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01074}01074     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01075}01075     \textcolor{comment}{// Skip original .GLOBAL lines generated by v2lvs -\/s0/-\/s1}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01076}01076     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (line.find(\textcolor{stringliteral}{"{}.GLOBAL"{}}) == 0) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01077}01077       \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01078}01078     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01079}01079     \textcolor{comment}{// Handle Instance lines (starting with X)}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01080}01080     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (inSubckt \&\& (line[0] == \textcolor{charliteral}{'X'} || line[0] == \textcolor{charliteral}{'x'})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01081}01081       \textcolor{comment}{// Process the *previous* instance line (if any) before storing the current one}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01082}01082       \textcolor{keywordflow}{if} (!previousInstanceLine.empty()) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01083}01083         std::vector<std::string> tokens = \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a878508ace57db04b7d26fc9228e0882d}{splitString}}(previousInstanceLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01084}01084         \textcolor{keywordflow}{if} (tokens.size() > 2 \&\& (tokens[0][0] == \textcolor{charliteral}{'X'} || tokens[0][0] == \textcolor{charliteral}{'x'})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01085}01085           std::string moduleName = tokens.back();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01086}01086           std::string outputNet = tokens[tokens.size() -\/ 2]; \textcolor{comment}{// Assumption}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01087}01087           \textcolor{keywordtype}{bool} isFinal = (outputNet == \textcolor{stringliteral}{"{}CO"{}} || outputNet == \textcolor{stringliteral}{"{}S"{}} || outputNet == \textcolor{stringliteral}{"{}ZN"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01088}01088 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01089}01089           tokens[tokens.size() -\/ 2] = outputNet + \textcolor{stringliteral}{"{}:1"{}}; \textcolor{comment}{// Modify output pin name}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01090}01090           tokens.push\_back(\textcolor{stringliteral}{"{}VDD"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01091}01091           tokens.push\_back(\textcolor{stringliteral}{"{}VSS"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01092}01092 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01093}01093           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < tokens.size(); ++i) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01094}01094             outFile << tokens[i] << (i == tokens.size() -\/ 1 ? \textcolor{stringliteral}{"{}"{}} : \textcolor{stringliteral}{"{} "{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01095}01095           \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01096}01096           outFile << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01097}01097           \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a0f04bcaf23e63a099e502af0a6c1c648}{generateRCLines}}(outFile, outputNet, instanceIndex -\/ 1, isFinal); \textcolor{comment}{// Use previous index}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01098}01098         \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01099}01099           logger-\/>warn(\textcolor{stringliteral}{"{}Previous line stored but not recognized as instance: \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01100}01100                        previousInstanceLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01101}01101           outFile << previousInstanceLine << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01102}01102         \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01103}01103       \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01104}01104       \textcolor{comment}{// Store current instance line for next iteration, increment index}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01105}01105       previousInstanceLine = line;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01106}01106       instanceIndex++;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01107}01107     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01108}01108     \textcolor{comment}{// Handle other lines (should not happen often in this structure)}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01109}01109     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01110}01110       \textcolor{comment}{// Process previous instance if needed before writing this line}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01111}01111       \textcolor{keywordflow}{if} (!previousInstanceLine.empty()) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01112}01112         std::vector<std::string> tokens = \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a878508ace57db04b7d26fc9228e0882d}{splitString}}(previousInstanceLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01113}01113         \textcolor{keywordflow}{if} (tokens.size() > 2 \&\& (tokens[0][0] == \textcolor{charliteral}{'X'} || tokens[0][0] == \textcolor{charliteral}{'x'})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01114}01114           std::string moduleName = tokens.back();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01115}01115           std::string outputNet = tokens[tokens.size() -\/ 2];}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01116}01116           \textcolor{keywordtype}{bool} isFinal = (outputNet == \textcolor{stringliteral}{"{}CO"{}} || outputNet == \textcolor{stringliteral}{"{}S"{}} || outputNet == \textcolor{stringliteral}{"{}ZN"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01117}01117           tokens[tokens.size() -\/ 2] = outputNet + \textcolor{stringliteral}{"{}:1"{}};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01118}01118           tokens.push\_back(\textcolor{stringliteral}{"{}VDD"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01119}01119           tokens.push\_back(\textcolor{stringliteral}{"{}VSS"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01120}01120           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < tokens.size(); ++i) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01121}01121             outFile << tokens[i] << (i == tokens.size() -\/ 1 ? \textcolor{stringliteral}{"{}"{}} : \textcolor{stringliteral}{"{} "{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01122}01122           \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01123}01123           outFile << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01124}01124           \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a0f04bcaf23e63a099e502af0a6c1c648}{generateRCLines}}(outFile, outputNet, instanceIndex -\/ 1, isFinal);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01125}01125         \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01126}01126           logger-\/>warn(\textcolor{stringliteral}{"{}Previous line stored but not recognized as instance: \{\}"{}},}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01127}01127                        previousInstanceLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01128}01128           outFile << previousInstanceLine << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01129}01129         \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01130}01130         previousInstanceLine = \textcolor{stringliteral}{"{}"{}}; \textcolor{comment}{// Clear after processing}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01131}01131       \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01132}01132       \textcolor{comment}{// Write other lines directly}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01133}01133       outFile << line << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01134}01134     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01135}01135   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01136}01136 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01137}01137   \textcolor{comment}{// Process the very last instance line if the file didn't end with .ENDS or other processing}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01138}01138   \textcolor{comment}{// trigger}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01139}01139   \textcolor{keywordflow}{if} (!previousInstanceLine.empty()) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01140}01140     std::vector<std::string> tokens = \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a878508ace57db04b7d26fc9228e0882d}{splitString}}(previousInstanceLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01141}01141     \textcolor{keywordflow}{if} (tokens.size() > 2 \&\& (tokens[0][0] == \textcolor{charliteral}{'X'} || tokens[0][0] == \textcolor{charliteral}{'x'})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01142}01142       std::string moduleName = tokens.back();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01143}01143       std::string outputNet = tokens[tokens.size() -\/ 2];}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01144}01144       \textcolor{keywordtype}{bool} isFinal = (outputNet == \textcolor{stringliteral}{"{}CO"{}} || outputNet == \textcolor{stringliteral}{"{}S"{}} || outputNet == \textcolor{stringliteral}{"{}ZN"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01145}01145       tokens[tokens.size() -\/ 2] = outputNet + \textcolor{stringliteral}{"{}:1"{}};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01146}01146       tokens.push\_back(\textcolor{stringliteral}{"{}VDD"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01147}01147       tokens.push\_back(\textcolor{stringliteral}{"{}VSS"{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01148}01148       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < tokens.size(); ++i) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01149}01149         outFile << tokens[i] << (i == tokens.size() -\/ 1 ? \textcolor{stringliteral}{"{}"{}} : \textcolor{stringliteral}{"{} "{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01150}01150       \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01151}01151       outFile << std::endl;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01152}01152       \mbox{\hyperlink{namespaceanonymous__namespace_02LibFile_8cpp_03_a0f04bcaf23e63a099e502af0a6c1c648}{generateRCLines}}(outFile, outputNet, instanceIndex -\/ 1, isFinal);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01153}01153     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01154}01154       logger-\/>warn(\textcolor{stringliteral}{"{}Last stored line not recognized as instance: \{\}"{}}, previousInstanceLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01155}01155       outFile << previousInstanceLine << std::endl; \textcolor{comment}{// Write unmodified if not recognized}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01156}01156     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01157}01157   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01158}01158 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01159}01159   inFile.close();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01160}01160   outFile.close();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01161}01161 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01162}01162   \textcolor{comment}{// Replace original file with modified temporary file}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01163}01163   \textcolor{keywordflow}{if} (std::remove(spiceFile.c\_str()) != 0) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01164}01164     logger-\/>warn(\textcolor{stringliteral}{"{}Could not remove original SPICE file: \{\}. Keeping temporary file: \{\}"{}}, spiceFile,}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01165}01165                  tempFile);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01166}01166     \textcolor{comment}{// Keep the temp file if original cannot be removed}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01167}01167   \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01168}01168     \textcolor{keywordflow}{if} (std::rename(tempFile.c\_str(), spiceFile.c\_str()) != 0) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01169}01169       logger-\/>error(\textcolor{stringliteral}{"{}Could not rename temporary SPICE file \{\} to \{\}. Check permissions."{}}, tempFile,}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01170}01170                     spiceFile);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01171}01171       \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{// Failed to finalize the modification}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01172}01172     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01173}01173   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01174}01174 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01175}01175   logger-\/>info(\textcolor{stringliteral}{"{}SPICE netlist modification successful for: \{\}"{}}, spiceFile);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01176}01176   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01177}01177 \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00889}\mbox{\hyperlink{classLibFile_a42ba6a2e11bc60e26ce4c13c26dcaca2}{00889}} std::vector<std::string> \mbox{\hyperlink{classLibFile_a42ba6a2e11bc60e26ce4c13c26dcaca2}{LibFile::splitString}}(\textcolor{keyword}{const} std::string \&s) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00890}00890   std::vector<std::string> tokens;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00891}00891   std::stringstream ss(s);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00892}00892   std::string token;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00893}00893   \textcolor{keywordflow}{while} (ss >> token) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00894}00894     tokens.push\_back(token);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00895}00895   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00896}00896   \textcolor{keywordflow}{return} tokens;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00897}00897 \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00898}00898 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00926}\mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{00926}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{LibFile::generateRCLines}}(std::ofstream \&outFile, \textcolor{keyword}{const} std::string \&netName, \textcolor{keywordtype}{int} instanceIndex,}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00927}00927                               \textcolor{keywordtype}{bool} isFinalStage) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00928}00928   \textcolor{comment}{// -\/-\/-\/ Default RC Values (as observed in the target SPICE) -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00929}00929   \textcolor{keyword}{const} \textcolor{keywordtype}{double} R1\_INTERMEDIATE = 0.01;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00930}00930   \textcolor{keyword}{const} \textcolor{keywordtype}{double} C1\_INTERMEDIATE = 5.3e-\/16;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00931}00931   \textcolor{keyword}{const} \textcolor{keywordtype}{double} R2\_INTERMEDIATE = 0.01;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00932}00932   \textcolor{keyword}{const} \textcolor{keywordtype}{double} R1\_FINAL = 1e-\/2;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00933}00933   \textcolor{keyword}{const} \textcolor{keywordtype}{double} C1\_FINAL = 1e-\/18;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00934}00934   \textcolor{keyword}{const} std::string CAP\_GROUND = \textcolor{stringliteral}{"{}COREGND1"{}}; \textcolor{comment}{// Assumed ground for capacitors}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00935}00935 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00936}00936   std::string r1Name = \textcolor{stringliteral}{"{}R1\_"{}} + std::to\_string(instanceIndex);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00937}00937   std::string c1Name = \textcolor{stringliteral}{"{}C1\_"{}} + std::to\_string(instanceIndex);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00938}00938   std::string r2Name = \textcolor{stringliteral}{"{}R2\_"{}} + std::to\_string(instanceIndex);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00939}00939   std::string node1 = netName + \textcolor{stringliteral}{"{}:1"{}}; \textcolor{comment}{// Intermediate node 1}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00940}00940   std::string node2 = netName + \textcolor{stringliteral}{"{}:2"{}}; \textcolor{comment}{// Intermediate node 2}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00941}00941 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00942}00942   \textcolor{comment}{// Set precision for scientific notation output}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00943}00943   outFile << std::scientific << std::setprecision(1);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00944}00944 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00945}00945   \textcolor{keywordflow}{if} (!isFinalStage) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00946}00946     \textcolor{comment}{// Intermediate RCR structure (R1-\/C1-\/R2)}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00947}00947     outFile << r1Name << \textcolor{stringliteral}{"{} "{}} << node1 << \textcolor{stringliteral}{"{} "{}} << node2 << \textcolor{stringliteral}{"{} "{}} << R1\_INTERMEDIATE << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00948}00948     outFile << c1Name << \textcolor{stringliteral}{"{} "{}} << node2 << \textcolor{stringliteral}{"{} "{}} << CAP\_GROUND << \textcolor{stringliteral}{"{} "{}} << C1\_INTERMEDIATE << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00949}00949     outFile << r2Name << \textcolor{stringliteral}{"{} "{}} << node2 << \textcolor{stringliteral}{"{} "{}} << netName << \textcolor{stringliteral}{"{} "{}} << R2\_INTERMEDIATE << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00950}00950   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00951}00951     \textcolor{comment}{// Final RC structure (R1-\/C1 connected to the instance output node :1)}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00952}00952     \textcolor{comment}{// Note: The target SPICE connects R1 between node1 and the final port (netName).}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00953}00953     outFile << r1Name << \textcolor{stringliteral}{"{} "{}} << node1 << \textcolor{stringliteral}{"{} "{}} << netName << \textcolor{stringliteral}{"{} "{}} << R1\_FINAL << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00954}00954     outFile << c1Name << \textcolor{stringliteral}{"{} "{}} << node1 << \textcolor{stringliteral}{"{} "{}} << CAP\_GROUND << \textcolor{stringliteral}{"{} "{}} << C1\_FINAL << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00955}00955   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00956}00956   \textcolor{comment}{// Reset precision/format to default}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00957}00957   outFile << std::defaultfloat << std::setprecision(6);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00958}00958 \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00959}00959 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01008}\mbox{\hyperlink{classLibFile_a25b6fd7453e8a200a70b2d19a6e216e2}{01008}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLibFile_a25b6fd7453e8a200a70b2d19a6e216e2}{LibFile::modifySpiceNetlist}}(\textcolor{keyword}{const} std::string \&v2lvsSpiceFile, \textcolor{comment}{// Input is the v2lvs output}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01009}01009                                  \textcolor{keyword}{const} std::string \&finalSpiceFile, \textcolor{comment}{// Output is the final file}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01010}01010                                  \textcolor{keyword}{const} std::string \&targetGlobalLine) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01011}01011   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Post-\/processing SPICE netlist: \{\} -\/> \{\}"{}}, v2lvsSpiceFile, finalSpiceFile);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01012}01012 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01013}01013   std::ifstream inFile(v2lvsSpiceFile);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01014}01014   \textcolor{comment}{// Write directly to the final output file, overwriting if it exists}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01015}01015   std::ofstream outFile(finalSpiceFile, std::ios::trunc);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01016}01016 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01017}01017   \textcolor{keywordflow}{if} (!inFile) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01018}01018     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could not open input v2lvs SPICE file for modification: \{\}"{}}, v2lvsSpiceFile);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01019}01019     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01020}01020   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01021}01021   \textcolor{keywordflow}{if} (!outFile) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01022}01022     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could not open final output SPICE file for writing: \{\}"{}}, finalSpiceFile);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01023}01023     inFile.close(); \textcolor{comment}{// Close input file if output fails}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01024}01024     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01025}01025   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01026}01026 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01027}01027   \textcolor{comment}{// -\/-\/-\/ Add Metadata Comments -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01028}01028   outFile << \textcolor{stringliteral}{"{}** Generated by "{}} << \mbox{\hyperlink{version_8h_af0b5cfa4242ae7f98ba80fd23ef8afa9}{APP\_NAME}} << \textcolor{stringliteral}{"{} v"{}} << \mbox{\hyperlink{version_8h_a92673e33f27532767749b79edb8ef806}{APP\_VERSION}} << \textcolor{stringliteral}{"{} from "{}} << \mbox{\hyperlink{version_8h_a87832488ddb61266f75ab21e1b6402cb}{APP\_AUTHOR}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01029}01029   \textcolor{keyword}{auto} now = std::chrono::system\_clock::now();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01030}01030   std::time\_t now\_time\_t = std::chrono::system\_clock::to\_time\_t(now);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01031}01031   \textcolor{comment}{// Use localtime\_s on Windows, localtime\_r on POSIX, or std::localtime (less safe)}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01032}01032   \textcolor{comment}{// std::tm now\_tm;}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01033}01033   \textcolor{comment}{// localtime\_s(\&now\_tm, \&now\_time\_t); // Example for Windows}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01034}01034   std::tm *now\_tm\_ptr = std::localtime(\&now\_time\_t); \textcolor{comment}{// Standard C++, potentially less thread-\/safe}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01035}01035   \textcolor{keywordflow}{if} (now\_tm\_ptr) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01036}01036     outFile << \textcolor{stringliteral}{"{}. On: "{}} << std::put\_time(now\_tm\_ptr, \textcolor{stringliteral}{"{}\%c \%Z"{}}) << \textcolor{stringliteral}{"{} **\(\backslash\)n"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01037}01037   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01038}01038     outFile << \textcolor{stringliteral}{"{}. Timestamp unavailable **\(\backslash\)n"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01039}01039   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01040}01040   \textcolor{comment}{// -\/-\/-\/ End Metadata -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01041}01041 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01042}01042   std::string line;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01043}01043   \textcolor{keywordtype}{bool} includeFound = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01044}01044   \textcolor{keywordtype}{bool} globalInserted = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01045}01045   \textcolor{keywordtype}{bool} inSubckt = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01046}01046   std::string previousInstanceLine = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01047}01047   \textcolor{keywordtype}{int} instanceIndex = 0; \textcolor{comment}{// Counter for R/C naming within a subckt}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01048}01048 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01049}01049   \textcolor{keywordflow}{while} (std::getline(inFile, line)) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01050}01050     \textcolor{comment}{// Trim leading/trailing whitespace}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01051}01051     line.erase(0, line.find\_first\_not\_of(\textcolor{stringliteral}{"{} \(\backslash\)t\(\backslash\)n\(\backslash\)r\(\backslash\)f\(\backslash\)v"{}}));}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01052}01052     line.erase(line.find\_last\_not\_of(\textcolor{stringliteral}{"{} \(\backslash\)t\(\backslash\)n\(\backslash\)r\(\backslash\)f\(\backslash\)v"{}}) + 1);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01053}01053 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01054}01054     \textcolor{comment}{// Skip empty lines and v2lvs header comments}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01055}01055     \textcolor{keywordflow}{if} (line.empty() || line.find(\textcolor{stringliteral}{"{}\$ Spice netlist generated by v2lvs"{}}) == 0 ||}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01056}01056         line.find(\textcolor{stringliteral}{"{}\$ v2"{}}) == 0 || \textcolor{comment}{// Catch version line too}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01057}01057         line.find(\textcolor{stringliteral}{"{}*.BUSDELIMITER"{}}) == 0) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01058}01058       \textcolor{keywordflow}{continue}; \textcolor{comment}{// Skip these lines entirely}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01059}01059     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01060}01060 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01061}01061     \textcolor{comment}{// Write other comments directly after processing any pending instance}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01062}01062     \textcolor{keywordflow}{if} (line[0] == \textcolor{charliteral}{'*'}) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01063}01063       \textcolor{comment}{// Process previous instance before writing comment if needed}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01064}01064       \textcolor{keywordflow}{if} (!previousInstanceLine.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01065}01065         std::vector<std::string> tokens = this-\/>\mbox{\hyperlink{classLibFile_a42ba6a2e11bc60e26ce4c13c26dcaca2}{splitString}}(previousInstanceLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01066}01066         \textcolor{keywordflow}{if} (tokens.size() > 2 \&\& (tokens[0][0] == \textcolor{charliteral}{'X'} || tokens[0][0] == \textcolor{charliteral}{'x'})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01067}01067           std::string moduleName = tokens.back();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01068}01068           std::string outputNet = tokens[tokens.size() -\/ 2]; \textcolor{comment}{// Assumption}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01069}01069           \textcolor{keywordtype}{bool} isFinal = (outputNet == \textcolor{stringliteral}{"{}CO"{}} || outputNet == \textcolor{stringliteral}{"{}S"{}} || outputNet == \textcolor{stringliteral}{"{}ZN"{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01070}01070           tokens[tokens.size() -\/ 2] = outputNet + \textcolor{stringliteral}{"{}:1"{}}; \textcolor{comment}{// Modify output pin}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01071}01071 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01072}01072           \textcolor{comment}{// Reconstruct line with correct VDD/VSS order}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01073}01073           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < tokens.size() -\/ 1; ++i) \{ \textcolor{comment}{// Up to module name}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01074}01074             outFile << tokens[i] << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01075}01075           \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01076}01076           outFile << \textcolor{stringliteral}{"{}VDD VSS "{}} << moduleName << std::endl; \textcolor{comment}{// Insert VDD VSS before module name}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01077}01077 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01078}01078           this-\/>\mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{generateRCLines}}(outFile, outputNet, instanceIndex -\/ 1, isFinal);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01079}01079         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01080}01080           \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Previous line stored but not recognized as instance: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01081}01081                         previousInstanceLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01082}01082           outFile << previousInstanceLine << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01083}01083         \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01084}01084         previousInstanceLine = \textcolor{stringliteral}{"{}"{}}; \textcolor{comment}{// Clear after processing}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01085}01085       \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01086}01086       outFile << line << std::endl; \textcolor{comment}{// Write the comment line}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01087}01087       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01088}01088     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01089}01089 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01090}01090     \textcolor{comment}{// Handle .INCLUDE}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01091}01091     \textcolor{keywordflow}{if} (line.find(\textcolor{stringliteral}{"{}.INCLUDE"{}}) == 0) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01092}01092       outFile << line << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01093}01093       includeFound = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01094}01094       \textcolor{keywordflow}{continue}; \textcolor{comment}{// Process next line to insert global}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01095}01095     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01096}01096 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01097}01097     \textcolor{comment}{// Insert the target global line after .INCLUDE}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01098}01098     \textcolor{keywordflow}{if} (includeFound \&\& !globalInserted) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01099}01099       outFile << targetGlobalLine << std::endl << std::endl; \textcolor{comment}{// Add extra newline for spacing}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01100}01100       globalInserted = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01101}01101       \textcolor{comment}{// Fall through to process the current line}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01102}01102     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01103}01103 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01104}01104     \textcolor{comment}{// Handle .SUBCKT}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01105}01105     \textcolor{keywordflow}{if} (line.find(\textcolor{stringliteral}{"{}.SUBCKT"{}}) == 0 || line.find(\textcolor{stringliteral}{"{}.subckt"{}}) == 0) \{ \textcolor{comment}{// Handle case-\/insensitivity}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01106}01106       \textcolor{keywordflow}{if} (!previousInstanceLine.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01107}01107         std::vector<std::string> tokens = this-\/>\mbox{\hyperlink{classLibFile_a42ba6a2e11bc60e26ce4c13c26dcaca2}{splitString}}(previousInstanceLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01108}01108         \textcolor{keywordflow}{if} (tokens.size() > 2 \&\& (tokens[0][0] == \textcolor{charliteral}{'X'} || tokens[0][0] == \textcolor{charliteral}{'x'})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01109}01109           std::string moduleName = tokens.back();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01110}01110           std::string outputNet = tokens[tokens.size() -\/ 2];}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01111}01111           \textcolor{keywordtype}{bool} isFinal = (outputNet == \textcolor{stringliteral}{"{}CO"{}} || outputNet == \textcolor{stringliteral}{"{}S"{}} || outputNet == \textcolor{stringliteral}{"{}ZN"{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01112}01112           tokens[tokens.size() -\/ 2] = outputNet + \textcolor{stringliteral}{"{}:1"{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01113}01113 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01114}01114           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < tokens.size() -\/ 1; ++i) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01115}01115             outFile << tokens[i] << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01116}01116           \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01117}01117           outFile << \textcolor{stringliteral}{"{}VDD VSS "{}} << moduleName << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01118}01118 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01119}01119           this-\/>\mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{generateRCLines}}(outFile, outputNet, instanceIndex -\/ 1, isFinal);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01120}01120         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01121}01121           \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Previous line stored but not recognized as instance: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01122}01122                         previousInstanceLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01123}01123           outFile << previousInstanceLine << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01124}01124         \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01125}01125         previousInstanceLine = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01126}01126       \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01127}01127 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01128}01128       inSubckt = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01129}01129       instanceIndex = 0;                          \textcolor{comment}{// Reset R/C counter for new subcircuit}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01130}01130       outFile << line << \textcolor{stringliteral}{"{} VDD VSS"{}} << std::endl; \textcolor{comment}{// Add VDD VSS to ports}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01131}01131     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01132}01132     \textcolor{comment}{// Handle .ENDS}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01133}01133     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (line.find(\textcolor{stringliteral}{"{}.ENDS"{}}) == 0 || line.find(\textcolor{stringliteral}{"{}.ends"{}}) == 0) \{ \textcolor{comment}{// Handle case-\/insensitivity}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01134}01134       inSubckt = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01135}01135       \textcolor{comment}{// Process the last instance line *before* writing .ENDS}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01136}01136       \textcolor{keywordflow}{if} (!previousInstanceLine.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01137}01137         std::vector<std::string> tokens = this-\/>\mbox{\hyperlink{classLibFile_a42ba6a2e11bc60e26ce4c13c26dcaca2}{splitString}}(previousInstanceLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01138}01138         \textcolor{keywordflow}{if} (tokens.size() > 2 \&\& (tokens[0][0] == \textcolor{charliteral}{'X'} || tokens[0][0] == \textcolor{charliteral}{'x'})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01139}01139           std::string moduleName = tokens.back();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01140}01140           std::string outputNet = tokens[tokens.size() -\/ 2];}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01141}01141           \textcolor{keywordtype}{bool} isFinal = (outputNet == \textcolor{stringliteral}{"{}CO"{}} || outputNet == \textcolor{stringliteral}{"{}S"{}} || outputNet == \textcolor{stringliteral}{"{}ZN"{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01142}01142           tokens[tokens.size() -\/ 2] = outputNet + \textcolor{stringliteral}{"{}:1"{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01143}01143 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01144}01144           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < tokens.size() -\/ 1; ++i) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01145}01145             outFile << tokens[i] << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01146}01146           \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01147}01147           outFile << \textcolor{stringliteral}{"{}VDD VSS "{}} << moduleName << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01148}01148 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01149}01149           this-\/>\mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{generateRCLines}}(outFile, outputNet, instanceIndex -\/ 1, isFinal);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01150}01150         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01151}01151           \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Previous line stored but not recognized as instance: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01152}01152                         previousInstanceLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01153}01153           outFile << previousInstanceLine << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01154}01154         \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01155}01155         previousInstanceLine = \textcolor{stringliteral}{"{}"{}}; \textcolor{comment}{// Clear after processing}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01156}01156       \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01157}01157       outFile << line << std::endl << std::endl; \textcolor{comment}{// Add extra newline after .ENDS}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01158}01158     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01159}01159     \textcolor{comment}{// Skip original .GLOBAL lines}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01160}01160     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (line.find(\textcolor{stringliteral}{"{}.GLOBAL"{}}) == 0 || line.find(\textcolor{stringliteral}{"{}.global"{}}) == 0) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01161}01161       \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01162}01162     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01163}01163     \textcolor{comment}{// Handle Instance lines}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01164}01164     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (inSubckt \&\& (line[0] == \textcolor{charliteral}{'X'} || line[0] == \textcolor{charliteral}{'x'})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01165}01165       \textcolor{keywordflow}{if} (!previousInstanceLine.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01166}01166         std::vector<std::string> tokens = this-\/>\mbox{\hyperlink{classLibFile_a42ba6a2e11bc60e26ce4c13c26dcaca2}{splitString}}(previousInstanceLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01167}01167         \textcolor{keywordflow}{if} (tokens.size() > 2 \&\& (tokens[0][0] == \textcolor{charliteral}{'X'} || tokens[0][0] == \textcolor{charliteral}{'x'})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01168}01168           std::string moduleName = tokens.back();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01169}01169           std::string outputNet = tokens[tokens.size() -\/ 2]; \textcolor{comment}{// Assumption}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01170}01170           \textcolor{keywordtype}{bool} isFinal = (outputNet == \textcolor{stringliteral}{"{}CO"{}} || outputNet == \textcolor{stringliteral}{"{}S"{}} || outputNet == \textcolor{stringliteral}{"{}ZN"{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01171}01171           tokens[tokens.size() -\/ 2] = outputNet + \textcolor{stringliteral}{"{}:1"{}}; \textcolor{comment}{// Modify output pin}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01172}01172 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01173}01173           \textcolor{comment}{// Reconstruct line with correct VDD/VSS order}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01174}01174           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < tokens.size() -\/ 1; ++i) \{ \textcolor{comment}{// Up to module name}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01175}01175             outFile << tokens[i] << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01176}01176           \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01177}01177           outFile << \textcolor{stringliteral}{"{}VDD VSS "{}} << moduleName << std::endl; \textcolor{comment}{// Insert VDD VSS before module name}}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01178}01178 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01179}01179 \} \textcolor{comment}{// end anonymous namespace}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01180}01180 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01181}\mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{01181}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{LibFile::spice}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} chain\_length, \textcolor{keyword}{const} std::vector<std::string> \&cell\_names,}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01182}01182                     \textcolor{keyword}{const} std::string \&verilog\_lib\_file, \textcolor{keyword}{const} std::string \&spice\_lib\_file) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01183}01183   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Creating SPICE for '\{\}'"{}}, \mbox{\hyperlink{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}{filename\_}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01184}01184 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01185}01185   \textcolor{comment}{// Generate the temporary Verilog file first}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01186}01186   this-\/>\mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{verilog}}(chain\_length, cell\_names);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01187}01187 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01188}01188   \textcolor{comment}{// Define input and output filenames}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01189}01189   std::string temp\_verilog\_file = \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}} + \textcolor{stringliteral}{"{}\_temp.v"{}};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01190}01190   std::string output\_spice\_file = \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}} + \textcolor{stringliteral}{"{}.spi"{}};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01191}01191 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01192}01192   \textcolor{comment}{// Check if temporary Verilog file exists (generated by this-\/>verilog)}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01193}01193   std::ifstream check\_v\_in(temp\_verilog\_file);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01194}01194   \textcolor{keywordflow}{if} (!check\_v\_in.is\_open()) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01195}01195     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Temporary Verilog file \{\} not found or could not be opened. Verilog generation "{}}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01196}01196                    \textcolor{stringliteral}{"{}might have failed."{}},}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01197}01197                    temp\_verilog\_file);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01198}01198     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01199}01199   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01200}01200   check\_v\_in.close(); \textcolor{comment}{// Close after checking}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01201}01201 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01202}01202   \textcolor{comment}{// Check if V2LVS tool is available by typing "{}which v2lvs"{}}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01203}01203   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Checking for v2lvs tool..."{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01204}01204   std::string v2lvs\_path\_cmd = \textcolor{stringliteral}{"{}which v2lvs"{}};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01205}01205   std::string v2lvs\_path\_result;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01206}01206   std::array<char, 128> buffer;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01207}01207   \textcolor{comment}{// Use unique\_ptr for automatic pclose}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01208}01208   std::unique\_ptr<FILE, \textcolor{keyword}{decltype}(\&pclose)> pipe(popen(v2lvs\_path\_cmd.c\_str(), \textcolor{stringliteral}{"{}r"{}}), pclose);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01209}01209   \textcolor{keywordflow}{if} (!pipe) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01210}01210     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Failed to run command to find v2lvs: \{\}"{}}, v2lvs\_path\_cmd);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01211}01211     \textcolor{comment}{// Clean up temporary verilog file if popen fails}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01212}01212     std::remove(temp\_verilog\_file.c\_str());}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01213}01213     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01214}01214   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01215}01215   \textcolor{keywordflow}{while} (fgets(buffer.data(), buffer.size(), pipe.get()) != \textcolor{keyword}{nullptr}) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01216}01216     v2lvs\_path\_result += buffer.data();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01217}01217   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01218}01218 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01219}01219   \textcolor{comment}{// Trim potential newline from the result}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01220}01220   \textcolor{keywordflow}{if} (!v2lvs\_path\_result.empty() \&\& v2lvs\_path\_result.back() == \textcolor{charliteral}{'\(\backslash\)n'}) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01221}01221     v2lvs\_path\_result.pop\_back();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01222}01222   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01223}01223 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01224}01224   \textcolor{keywordflow}{if} (v2lvs\_path\_result.empty()) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01225}01225     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01226}01226         \textcolor{stringliteral}{"{}V2LVS tool not found in PATH. Please install Calibre or ensure v2lvs is accessible."{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01227}01227     \textcolor{comment}{// Clean up temporary verilog file if v2lvs is not found}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01228}01228     std::remove(temp\_verilog\_file.c\_str());}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01229}01229     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01230}01230   \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01231}01231     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}V2LVS tool found at: \{\}"{}}, v2lvs\_path\_result);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01232}01232   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01233}01233 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01234}01234   \textcolor{comment}{// Construct and Run V2LVS command}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01235}01235   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Running V2LVS to generate initial SPICE netlist..."{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01236}01236   std::string v2lvs\_cmd\_full = \textcolor{stringliteral}{"{}v2lvs"{}};         \textcolor{comment}{// Start with the command name}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01237}01237   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/v "{}} + temp\_verilog\_file; \textcolor{comment}{// Input Verilog}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01238}01238   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/o "{}} + output\_spice\_file; \textcolor{comment}{// Output SPICE}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01239}01239   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/s0 VSS"{}};                 \textcolor{comment}{// Default ground net, generates .GLOBAL VSS}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01240}01240   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/s1 VDD"{}};                 \textcolor{comment}{// Default power net, generates .GLOBAL VDD}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01241}01241   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/i"{}};                      \textcolor{comment}{// Use positional pins (traditional SPICE)}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01242}01242   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/l "{}} + verilog\_lib\_file;  \textcolor{comment}{// Verilog library for pin order}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01243}01243   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/s "{}} + spice\_lib\_file;    \textcolor{comment}{// SPICE library to include}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01244}01244 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01245}01245   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Executing V2LVS command: \{\}"{}}, v2lvs\_cmd\_full);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01246}01246   \textcolor{keywordtype}{int} ret = system(v2lvs\_cmd\_full.c\_str());}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01247}01247 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01248}01248   \textcolor{comment}{// Clean up the temporary Verilog file regardless of v2lvs success/failure}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01249}01249   \textcolor{keywordflow}{if} (std::remove(temp\_verilog\_file.c\_str()) != 0) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01250}01250     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Could not remove temporary Verilog file: \{\}"{}}, temp\_verilog\_file);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01251}01251   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01252}01252 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01253}01253   \textcolor{keywordflow}{if} (ret != 0) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01254}01254     \textcolor{comment}{// WEXITSTATUS might be needed for more specific error codes on POSIX}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01255}01255     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}V2LVS command failed with exit code: \{\}. Command: \{\}"{}}, ret, v2lvs\_cmd\_full);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01256}01256     \textcolor{comment}{// Attempt to remove potentially incomplete output SPICE file}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01257}01257     std::remove(output\_spice\_file.c\_str());}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01258}01258     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01259}01259   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01260}01260   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}V2LVS completed successfully."{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01261}01261 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01262}01262   \textcolor{comment}{// -\/-\/-\/ Post-\/process the generated SPICE file -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01263}01263   std::string target\_global =}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01264}01264       \textcolor{stringliteral}{"{}.global VSS GND COREGND1 VDD COREVDD1"{}}; \textcolor{comment}{// Define the desired global line}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01265}01265 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01266}01266   \textcolor{comment}{// Call the modification function}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01267}01267   \textcolor{keywordflow}{if} (!modifySpiceNetlist(output\_spice\_file, target\_global, \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01268}01268     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Failed to modify the generated SPICE netlist: \{\}"{}}, output\_spice\_file);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01269}01269     \textcolor{comment}{// Output file might be in an intermediate state or removed/renamed incorrectly}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01270}01270     \textcolor{keywordflow}{return}; \textcolor{comment}{// Stop processing if modification fails}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01271}01271   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01272}01272 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01273}01273   \textcolor{comment}{// Final success message}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01274}01274   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}SPICE generation and modification complete in '\{\}'"{}}, output\_spice\_file);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01275}01275 \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01276}01276 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01297}\mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{01297}} std::map<std::string, std::string> \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{LibFile::logic}}(\textcolor{keyword}{const} std::string \&cell\_name) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01298}01298   std::map<std::string, std::string> logic\_map = \{\};}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01299}01299 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01300}01300   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Getting output pin logic function for '\{\}'"{}}, \mbox{\hyperlink{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}{filename\_}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01301}01301 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01302}01302   \textcolor{keywordflow}{if} (!std::filesystem::exists(\mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01303}01303     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}JSON file not found. Parsing Liberty file first."{}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01304}01304     this-\/>\mbox{\hyperlink{classLibFile_a84d29423705e2dea8a382dc6437640d9}{parse}}();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01305}01305     this-\/>\mbox{\hyperlink{classLibFile_a88de22798a64acdb38faefc0d785804f}{writeJsonToFile}}();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01306}01306   \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01307}01307     \textcolor{comment}{// Read the JSON file into json object}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01308}01308     std::ifstream in(\mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01309}01309     \textcolor{keywordflow}{if} (!in.is\_open()) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01310}01310       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could not open file '\{\}' for reading"{}}, \mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}});}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01311}01311       \textcolor{keywordflow}{return} logic\_map;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01312}01312     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01313}01313     \textcolor{keywordflow}{try} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01314}01314       \mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\_json\_}} = json::parse(in);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01315}01315     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} json::parse\_error \&e) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01316}01316       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}JSON parsing error in file '\{\}': \{\}"{}}, \mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}}, e.what());}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01317}01317       in.close();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01318}01318       \textcolor{keywordflow}{return} logic\_map;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01319}01319     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01320}01320     in.close();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01321}01321   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01322}01322 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01323}01323   \textcolor{comment}{// Check if the cell name exists in the JSON object}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01324}01324   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&cell : \mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\_json\_}}[\textcolor{stringliteral}{"{}cells"{}}]) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01325}01325     \textcolor{keywordflow}{if} (cell[\textcolor{stringliteral}{"{}cell\_name"{}}].get<std::string>() == cell\_name) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01326}01326       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Found cell: '\{\}'"{}}, cell\_name);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01327}01327 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01328}01328       \textcolor{comment}{// Tranverse all output pins}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01329}01329       \textcolor{keywordflow}{if} (cell.contains(\textcolor{stringliteral}{"{}output\_pins"{}})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01330}01330         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pin : cell[\textcolor{stringliteral}{"{}output\_pins"{}}]) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01331}01331           std::string pin\_name = pin[\textcolor{stringliteral}{"{}pin\_name"{}}].get<std::string>();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01332}01332           \textcolor{comment}{// Check if the pin has a "{}timing\_arcs"{} attribute}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01333}01333           \textcolor{keywordflow}{if} (pin.contains(\textcolor{stringliteral}{"{}function"{}})) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01334}01334             std::string function = pin[\textcolor{stringliteral}{"{}function"{}}].get<std::string>();}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01335}01335             logic\_map[pin\_name] = function;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01336}01336             \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Pin: '\{\}' Logic Function: '\{\}'"{}}, pin\_name, function);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01337}01337           \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01338}01338             \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Pin: '\{\}' does not have a 'function' attribute"{}}, pin\_name);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01339}01339           \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01340}01340         \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01341}01341       \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01342}01342     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01343}01343   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01344}01344   \textcolor{keywordflow}{if} (logic\_map.empty()) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01345}01345     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}No logic functions found for cell: '\{\}'"{}}, cell\_name);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01346}01346   \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01347}01347     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Found \{\} Logic functions for cell: '\{\}'"{}}, logic\_map.size(), cell\_name);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01348}01348     \textcolor{comment}{// Print the logic functions}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01349}01349     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pair : logic\_map) \{}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01350}01350       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Pin -\/> Logic Function: \{\} -\/> \{\}"{}}, pair.first, pair.second);}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01351}01351     \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01352}01352   \}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01353}01353   \textcolor{keywordflow}{return} logic\_map;}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01354}01354 \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01179}01179           this-\/>\mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{generateRCLines}}(outFile, outputNet, instanceIndex -\/ 1,}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01180}01180                                 isFinal); \textcolor{comment}{// Use previous index}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01181}01181         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01182}01182           \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Previous line stored but not recognized as instance: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01183}01183                         previousInstanceLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01184}01184           outFile << previousInstanceLine << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01185}01185         \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01186}01186       \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01187}01187       previousInstanceLine = line;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01188}01188       instanceIndex++;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01189}01189     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01190}01190     \textcolor{comment}{// Handle other lines}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01191}01191     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01192}01192       \textcolor{keywordflow}{if} (!previousInstanceLine.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01193}01193         std::vector<std::string> tokens = this-\/>\mbox{\hyperlink{classLibFile_a42ba6a2e11bc60e26ce4c13c26dcaca2}{splitString}}(previousInstanceLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01194}01194         \textcolor{keywordflow}{if} (tokens.size() > 2 \&\& (tokens[0][0] == \textcolor{charliteral}{'X'} || tokens[0][0] == \textcolor{charliteral}{'x'})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01195}01195           std::string moduleName = tokens.back();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01196}01196           std::string outputNet = tokens[tokens.size() -\/ 2];}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01197}01197           \textcolor{keywordtype}{bool} isFinal = (outputNet == \textcolor{stringliteral}{"{}CO"{}} || outputNet == \textcolor{stringliteral}{"{}S"{}} || outputNet == \textcolor{stringliteral}{"{}ZN"{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01198}01198           tokens[tokens.size() -\/ 2] = outputNet + \textcolor{stringliteral}{"{}:1"{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01199}01199 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01200}01200           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < tokens.size() -\/ 1; ++i) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01201}01201             outFile << tokens[i] << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01202}01202           \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01203}01203           outFile << \textcolor{stringliteral}{"{}VDD VSS "{}} << moduleName << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01204}01204 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01205}01205           this-\/>\mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{generateRCLines}}(outFile, outputNet, instanceIndex -\/ 1, isFinal);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01206}01206         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01207}01207           \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Previous line stored but not recognized as instance: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01208}01208                         previousInstanceLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01209}01209           outFile << previousInstanceLine << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01210}01210         \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01211}01211         previousInstanceLine = \textcolor{stringliteral}{"{}"{}}; \textcolor{comment}{// Clear after processing}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01212}01212       \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01213}01213       outFile << line << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01214}01214     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01215}01215   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01216}01216 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01217}01217   \textcolor{comment}{// Process the very last instance line}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01218}01218   \textcolor{keywordflow}{if} (!previousInstanceLine.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01219}01219     std::vector<std::string> tokens = this-\/>\mbox{\hyperlink{classLibFile_a42ba6a2e11bc60e26ce4c13c26dcaca2}{splitString}}(previousInstanceLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01220}01220     \textcolor{keywordflow}{if} (tokens.size() > 2 \&\& (tokens[0][0] == \textcolor{charliteral}{'X'} || tokens[0][0] == \textcolor{charliteral}{'x'})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01221}01221       std::string moduleName = tokens.back();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01222}01222       std::string outputNet = tokens[tokens.size() -\/ 2];}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01223}01223       \textcolor{keywordtype}{bool} isFinal = (outputNet == \textcolor{stringliteral}{"{}CO"{}} || outputNet == \textcolor{stringliteral}{"{}S"{}} || outputNet == \textcolor{stringliteral}{"{}ZN"{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01224}01224       tokens[tokens.size() -\/ 2] = outputNet + \textcolor{stringliteral}{"{}:1"{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01225}01225 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01226}01226       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < tokens.size() -\/ 1; ++i) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01227}01227         outFile << tokens[i] << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01228}01228       \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01229}01229       outFile << \textcolor{stringliteral}{"{}VDD VSS "{}} << moduleName << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01230}01230 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01231}01231       this-\/>\mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{generateRCLines}}(outFile, outputNet, instanceIndex -\/ 1, isFinal);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01232}01232     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01233}01233       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Last stored line not recognized as instance: \{\}"{}}, previousInstanceLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01234}01234       outFile << previousInstanceLine << std::endl;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01235}01235     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01236}01236   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01237}01237 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01238}01238   inFile.close();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01239}01239   outFile.close();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01240}01240 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01241}01241   \textcolor{comment}{// No renaming needed, we wrote directly to the final file}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01242}01242   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}SPICE netlist post-\/processing successful for: \{\}"{}}, finalSpiceFile);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01243}01243   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01244}01244 \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01245}01245 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01267}\mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{01267}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{LibFile::spice}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} chain\_length, \textcolor{keyword}{const} std::vector<std::string> \&cell\_names,}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01268}01268                     \textcolor{keyword}{const} std::string \&verilog\_lib\_file, \textcolor{keyword}{const} std::string \&spice\_lib\_file) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01269}01269   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Creating SPICE for '\{\}'"{}}, \mbox{\hyperlink{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}{filename\_}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01270}01270 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01271}01271   \textcolor{comment}{// 1. Generate the temporary Verilog file first}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01272}01272   this-\/>\mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{verilog}}(chain\_length, cell\_names);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01273}01273 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01274}01274   \textcolor{comment}{// Define input and output filenames}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01275}01275   std::string temp\_verilog\_file = \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}} + \textcolor{stringliteral}{"{}\_temp.v"{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01276}01276   std::string v2lvs\_output\_spice\_file = \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}} + \textcolor{stringliteral}{"{}.v2lvs.spi"{}}; \textcolor{comment}{// v2lvs output}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01277}01277   std::string final\_output\_spice\_file = \mbox{\hyperlink{classLibFile_a167d7e2669926e724247cdd7e7bf48f4}{basename\_}} + \textcolor{stringliteral}{"{}.spi"{}};       \textcolor{comment}{// Final processed output}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01278}01278 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01279}01279   \textcolor{comment}{// Check if temporary Verilog file exists}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01280}01280   std::ifstream check\_v\_in(temp\_verilog\_file);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01281}01281   \textcolor{keywordflow}{if} (!check\_v\_in.is\_open()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01282}01282     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Temporary Verilog file \{\} not found or could not be opened. Verilog generation "{}}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01283}01283                    \textcolor{stringliteral}{"{}might have failed."{}},}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01284}01284                    temp\_verilog\_file);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01285}01285     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01286}01286   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01287}01287   check\_v\_in.close(); \textcolor{comment}{// Close after checking}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01288}01288 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01289}01289   \textcolor{comment}{// 2. Check if V2LVS tool is available}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01290}01290   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Checking for v2lvs tool..."{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01291}01291   std::string v2lvs\_path\_cmd = \textcolor{stringliteral}{"{}which v2lvs"{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01292}01292   std::string v2lvs\_path\_result;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01293}01293   std::array<char, 128> buffer;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01294}01294   std::unique\_ptr<FILE, \textcolor{keyword}{decltype}(\&pclose)> pipe(popen(v2lvs\_path\_cmd.c\_str(), \textcolor{stringliteral}{"{}r"{}}), pclose);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01295}01295   \textcolor{keywordflow}{if} (!pipe) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01296}01296     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Failed to run command to find v2lvs: \{\}"{}}, v2lvs\_path\_cmd);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01297}01297     \textcolor{comment}{// Do NOT delete temp\_verilog\_file here if popen fails}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01298}01298     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01299}01299   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01300}01300   \textcolor{keywordflow}{while} (fgets(buffer.data(), buffer.size(), pipe.get()) != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01301}01301     v2lvs\_path\_result += buffer.data();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01302}01302   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01303}01303 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01304}01304   \textcolor{comment}{// Trim potential newline from the result}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01305}01305   \textcolor{keywordflow}{if} (!v2lvs\_path\_result.empty() \&\& v2lvs\_path\_result.back() == \textcolor{charliteral}{'\(\backslash\)n'}) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01306}01306     v2lvs\_path\_result.pop\_back();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01307}01307   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01308}01308 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01309}01309   \textcolor{keywordflow}{if} (v2lvs\_path\_result.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01310}01310     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01311}01311         \textcolor{stringliteral}{"{}V2LVS tool not found in PATH. Please install Calibre or ensure v2lvs is accessible."{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01312}01312     \textcolor{comment}{// Do NOT delete temp\_verilog\_file}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01313}01313     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01314}01314   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01315}01315     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}V2LVS tool found at: \{\}"{}}, v2lvs\_path\_result);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01316}01316   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01317}01317 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01318}01318   \textcolor{comment}{// 3. Construct and Run V2LVS command}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01319}01319   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Running V2LVS to generate initial SPICE netlist..."{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01320}01320   std::string v2lvs\_cmd\_full = \textcolor{stringliteral}{"{}v2lvs"{}};               \textcolor{comment}{// Start with the command name}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01321}01321   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/v "{}} + temp\_verilog\_file;       \textcolor{comment}{// Input Verilog}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01322}01322   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/o "{}} + v2lvs\_output\_spice\_file; \textcolor{comment}{// Output SPICE}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01323}01323   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/s0 VSS"{}};                       \textcolor{comment}{// Default ground net, generates .GLOBAL VSS}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01324}01324   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/s1 VDD"{}};                       \textcolor{comment}{// Default power net, generates .GLOBAL VDD}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01325}01325   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/i"{}};                            \textcolor{comment}{// Use positional pins (traditional SPICE)}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01326}01326   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/l "{}} + verilog\_lib\_file;        \textcolor{comment}{// Verilog library for pin order}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01327}01327   v2lvs\_cmd\_full += \textcolor{stringliteral}{"{} -\/s "{}} + spice\_lib\_file;          \textcolor{comment}{// SPICE library to include}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01328}01328 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01329}01329   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Executing V2LVS command: \{\}"{}}, v2lvs\_cmd\_full);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01330}01330   \textcolor{keywordtype}{int} ret = system(v2lvs\_cmd\_full.c\_str());}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01331}01331 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01332}01332   \textcolor{comment}{// Do NOT delete temp\_verilog\_file}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01333}01333 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01334}01334   \textcolor{keywordflow}{if} (ret != 0) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01335}01335     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}V2LVS command failed with exit code: \{\}. Command: \{\}"{}}, ret, v2lvs\_cmd\_full);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01336}01336     \textcolor{comment}{// Attempt to remove potentially incomplete v2lvs output SPICE file}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01337}01337     std::remove(v2lvs\_output\_spice\_file.c\_str());}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01338}01338     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01339}01339   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01340}01340   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}V2LVS completed successfully, output at '\{\}'."{}}, v2lvs\_output\_spice\_file);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01341}01341 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01342}01342   \textcolor{comment}{// 4. Post-\/process the generated SPICE file}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01343}01343   std::string target\_global = \textcolor{stringliteral}{"{}.global VSS GND COREGND1 VDD COREVDD1"{}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01344}01344 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01345}01345   \textcolor{comment}{// Call the modification function, reading from .v2lvs.spi and writing to .spi}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01346}01346   \textcolor{keywordflow}{if} (!this-\/>\mbox{\hyperlink{classLibFile_a25b6fd7453e8a200a70b2d19a6e216e2}{modifySpiceNetlist}}(v2lvs\_output\_spice\_file, final\_output\_spice\_file, target\_global)) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01347}01347     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Failed to post-\/process the generated SPICE netlist: \{\}"{}},}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01348}01348                    v2lvs\_output\_spice\_file);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01349}01349     \textcolor{comment}{// Keep both files for debugging if modification fails}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01350}01350     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01351}01351   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01352}01352 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01353}01353   \textcolor{comment}{// 5. Final success message}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01354}01354   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Intermediate v2lvs output kept in '\{\}'"{}}, v2lvs\_output\_spice\_file);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01355}01355   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Temporary Verilog input kept in '\{\}'"{}}, temp\_verilog\_file);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01356}01356   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}SPICE generation and post-\/processing complete. Final output in '\{\}'"{}},}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01357}01357                 final\_output\_spice\_file);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01358}01358 \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01359}01359 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01380}\mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{01380}} std::map<std::string, std::string> \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{LibFile::logic}}(\textcolor{keyword}{const} std::string \&cell\_name) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01381}01381   std::map<std::string, std::string> logic\_map = \{\};}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01382}01382 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01383}01383   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Getting output pin logic function for '\{\}'"{}}, \mbox{\hyperlink{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}{filename\_}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01384}01384 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01385}01385   \textcolor{keywordflow}{if} (!std::filesystem::exists(\mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01386}01386     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}JSON file not found. Parsing Liberty file first."{}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01387}01387     this-\/>\mbox{\hyperlink{classLibFile_a84d29423705e2dea8a382dc6437640d9}{parse}}();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01388}01388     this-\/>\mbox{\hyperlink{classLibFile_a88de22798a64acdb38faefc0d785804f}{writeJsonToFile}}();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01389}01389   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01390}01390     \textcolor{comment}{// Read the JSON file into json object}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01391}01391     std::ifstream in(\mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01392}01392     \textcolor{keywordflow}{if} (!in.is\_open()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01393}01393       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Could not open file '\{\}' for reading"{}}, \mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}});}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01394}01394       \textcolor{keywordflow}{return} logic\_map;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01395}01395     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01396}01396     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01397}01397       \mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\_json\_}} = json::parse(in);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01398}01398     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} json::parse\_error \&e) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01399}01399       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}JSON parsing error in file '\{\}': \{\}"{}}, \mbox{\hyperlink{classLibFile_aa13cd4785ae20080c68a8ecb5e9fe3d2}{jsonname\_}}, e.what());}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01400}01400       in.close();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01401}01401       \textcolor{keywordflow}{return} logic\_map;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01402}01402     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01403}01403     in.close();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01404}01404   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01405}01405 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01406}01406   \textcolor{comment}{// Check if the cell name exists in the JSON object}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01407}01407   \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&cell : \mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\_json\_}}[\textcolor{stringliteral}{"{}cells"{}}]) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01408}01408     \textcolor{keywordflow}{if} (cell[\textcolor{stringliteral}{"{}cell\_name"{}}].get<std::string>() == cell\_name) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01409}01409       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Found cell: '\{\}'"{}}, cell\_name);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01410}01410 }
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01411}01411       \textcolor{comment}{// Tranverse all output pins}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01412}01412       \textcolor{keywordflow}{if} (cell.contains(\textcolor{stringliteral}{"{}output\_pins"{}})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01413}01413         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pin : cell[\textcolor{stringliteral}{"{}output\_pins"{}}]) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01414}01414           std::string pin\_name = pin[\textcolor{stringliteral}{"{}pin\_name"{}}].get<std::string>();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01415}01415           \textcolor{comment}{// Check if the pin has a "{}timing\_arcs"{} attribute}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01416}01416           \textcolor{keywordflow}{if} (pin.contains(\textcolor{stringliteral}{"{}function"{}})) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01417}01417             std::string function = pin[\textcolor{stringliteral}{"{}function"{}}].get<std::string>();}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01418}01418             logic\_map[pin\_name] = function;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01419}01419             \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>debug(\textcolor{stringliteral}{"{}Pin: '\{\}' Logic Function: '\{\}'"{}}, pin\_name, function);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01420}01420           \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01421}01421             \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}Pin: '\{\}' does not have a 'function' attribute"{}}, pin\_name);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01422}01422           \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01423}01423         \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01424}01424       \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01425}01425     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01426}01426   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01427}01427   \textcolor{keywordflow}{if} (logic\_map.empty()) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01428}01428     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>warn(\textcolor{stringliteral}{"{}No logic functions found for cell: '\{\}'"{}}, cell\_name);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01429}01429   \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01430}01430     \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Found \{\} Logic functions for cell: '\{\}'"{}}, logic\_map.size(), cell\_name);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01431}01431     \textcolor{comment}{// Print the logic functions}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01432}01432     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&pair : logic\_map) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01433}01433       \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Pin -\/> Logic Function: \{\} -\/> \{\}"{}}, pair.first, pair.second);}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01434}01434     \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01435}01435   \}}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01436}01436   \textcolor{keywordflow}{return} logic\_map;}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l01437}01437 \}}
 
 \end{DoxyCode}
