@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.21...3.31)
 project(ZlibValidation
     LANGUAGES CXX
-    VERSION 1.0.1
+    VERSION 1.1.0
 )
 
-# Define author information (CMake 3.21+)
+# Define author information
 set(PROJECT_AUTHOR "Song Zixuan" CACHE STRING "Project maintainer")
 set(PROJECT_CONTACT "cedar@zju.edu.cn" CACHE STRING "Contact info")
 
@@ -27,12 +27,25 @@ configure_file(
 # This may be required for certain libraries that assume absolute addressing
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -no-pie")
 
-# Force to use ccache for faster compilation
-set(CMAKE_CXX_COMPILER_LAUNCHER "ccache")
+# Check if ccache is available and use it
+find_program(CCACHE_FOUND ccache)
+if(CCACHE_FOUND)
+    set(CMAKE_CXX_COMPILER_LAUNCHER "ccache")
+    message(STATUS "Using ccache for faster compilation")
+else()
+    message(STATUS "ccache not found, not using it")
+endif()
 
-# Force to use lld linker to speed up linking
+
+# Check if lld is available and use it
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fuse-ld=lld")
+    find_program(LLD_FOUND lld)
+    if(LLD_FOUND)
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fuse-ld=lld")
+        message(STATUS "Using lld linker for faster linking")
+    else()
+        message(STATUS "lld linker not found, using default linker")
+    endif()
 endif()
 
 # Fetch Content for dependencies
@@ -41,7 +54,6 @@ include(FetchContent)
 # Fetch CLI11
 FetchContent_Declare(
     cli11
-    QUIET
     GIT_REPOSITORY https://github.com/CLIUtils/CLI11.git
     GIT_SHALLOW ON
     GIT_TAG v2.4.2
@@ -51,7 +63,6 @@ FetchContent_MakeAvailable(cli11)
 # Fetch spdlog
 FetchContent_Declare(
     spdlog
-    QUIET
     GIT_REPOSITORY https://github.com/gabime/spdlog.git
     GIT_SHALLOW ON
     GIT_TAG v1.15.0
@@ -60,8 +71,9 @@ FetchContent_MakeAvailable(spdlog)
 
 # Fetch nonlohmann/json
 FetchContent_Declare(
-    json 
+    json
     URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
+    DOWNLOAD_EXTRACT_TIMESTAMP TRUE # Extract timestamp for reproducibility
 )
 FetchContent_MakeAvailable(json)
 

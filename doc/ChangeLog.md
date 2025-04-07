@@ -413,3 +413,13 @@
   - 调用 `LibFile::generateRCLines()` 方法，为 SPICE 网表中的每个 instance 生成对应的 RC lines。
   - 调用 `LibFile::modifySpiceNetlist()` 方法，修改 SPICE 网表，添加元数据、插入 global line、调整 instance lines，并生成最终的 SPICE 网表。
   - 将最终的 SPICE 网表输出到指定文件中。
+
+### 2025-04-07
+
+- 将项目研发日记从 `README.md` 迁移至独立的 `ChangeLog.md` 文件，存放于 `doc/` 目录下，集中记录更新与变更历史。
+- 全面完善 `README.md`，补充项目描述、目录、动机、安装指南、使用示例、文档与手册、致谢等内容，提升项目信息的完整性。
+- 调整 `CMakeLists.txt`，取消强制使用 `ccache` 和 `lld` 的设定，改为检测系统环境，仅在存在相应工具时启用，增强项目兼容性。
+- 移除 `FetchContent` 中的 `QUIET` 选项，增加必要提示信息，更清晰地展示依赖库的获取状态。
+- 项目版本更新至 `v1.1.0`。
+- 明确 CMake 版本需求为 `(VERSION 3.21...3.31)`，确保项目在指定版本范围内构建。
+- 在 `README.md` 中，特别感谢 `ZlibBoost` 项目，并新增编译文档和参考手册的教程，同时将 `ccache` 和 `lld` 列为可选编译准备。
