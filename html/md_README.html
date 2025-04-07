@@ -107,6 +107,7 @@ Table of Contents</h1>
 <li>Motivation</li>
 <li>Installation<ul>
 <li>Prerequisites</li>
+<li>Optional Pre-requisites</li>
 <li>Building from Source (Recommended Method)</li>
 <li>Running ZlibValidation</li>
 <li>(Optional) Adding to your PATH</li>
@@ -114,7 +115,10 @@ Table of Contents</h1>
 </li>
 <li>Help Message / Features</li>
 <li>Example Usage</li>
-<li>Documentation and Reference Manual</li>
+<li>Documentation and Reference Manual<ul>
+<li>Doumentation Generation</li>
+</ul>
+</li>
 <li>Acknowledgements<ul>
 <li>Core Functionality Libraries:</li>
 <li>Build, Documentation, and External Tools:</li>
@@ -141,11 +145,17 @@ Prerequisites</h2>
 <p >Before you begin, ensure you have the following installed on your <b>Linux</b> system:</p>
 <ul>
 <li><b>Git:</b> To clone the repository.</li>
-<li><b>C++ Compiler:</b> C++20 standard support required (e.g., GCC &gt;= 10, Clang &gt;= 12). Developed with GCC 14.2.0.</li>
-<li><b>CMake:</b> Version 3.25 or higher (used for configuring the build).</li>
+<li><b>C++ Compiler:</b> C++20 standard support required (e.g., GCC &gt;= 12). Developed with GCC 14.2.0.</li>
+<li><b>CMake:</b> Version 3.25 or higher (versions after 4.0.0 may exhibit compatibility issues).</li>
 <li><b>Ninja</b> (recommended) or <b>Make</b>: Build systems. Ninja is preferred for its speed.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md6"></a>
+Optional Pre-requisites</h2>
+<ul>
+<li><b>ccache:</b> Optional but recommended for speeding up recompilation. Install it via your package manager (e.g., <code>conda install conda-forge::ccache</code>).</li>
+<li><b>lld:</b> Optional but recommended for faster linking. Install it via your package manager (e.g., <code>conda install conda-forge::lld</code>).</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Building from Source (Recommended Method)</h2>
 <p >Follow these steps to compile <code>ZlibValidation</code> in your user directory:</p>
 <ol type="1">
@@ -162,13 +172,13 @@ Building from Source (Recommended Method)</h2>
 <li><b>Compile the project:</b> Use <code>ninja</code> to build the executable. If you chose Make, use <code>make</code> instead, the <code>-j</code> flag speeds up compilation by using multiple processor cores. <div class="fragment"><div class="line"># If you used Ninja:</div>
 <div class="line">ninja</div>
 <div class="line"># or if you used Make:</div>
-<div class="line">make -j$(nproc) # Adjust $(nproc) or use a specific number like -j4</div>
+<div class="line">make -j$(nproc) # Adjust $(nproc) or use a specific number like -j8 for multi-threading</div>
 </div><!-- fragment --></li>
 <li><b>Locate the Executable:</b> Upon successful compilation, the <code>zlibvalidation</code> executable will be located inside the <code>build</code> directory: <code>./build/zlibvalidation</code>. <div class="fragment"><div class="line"># Check the executable version:</div>
 <div class="line">./zlibvalidation --version</div>
 </div><!-- fragment --></li>
 </ol>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Running ZlibValidation</h2>
 <p >Since we haven't performed a system-wide install (which would typically require <code>sudo</code>), you need to run the executable using its path relative to your current location.</p>
 <ul>
@@ -177,14 +187,14 @@ Running ZlibValidation</h2>
 <li>If you are inside the <code>build</code> directory, run it like this: <div class="fragment"><div class="line">./zlibvalidation --help</div>
 </div><!-- fragment --></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 (Optional) Adding to your PATH</h2>
 <p >For convenience, you can temporarily add the <code>build</code> directory to your shell's <code>PATH</code> variable for the current session:</p>
 <div class="fragment"><div class="line">export PATH=&quot;$PWD/build:$PATH&quot; # Assumes you are in the ZlibValidation root directory</div>
 <div class="line"># Now you can run it directly:</div>
 <div class="line">zlibvalidation -h</div>
 </div><!-- fragment --><p> To make this change permanent, you can add the above line to your shell's configuration file (e.g., <code>~/.bashrc</code>, <code>~/.zshrc</code>).</p>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 Help Message / Features</h1>
 <div class="fragment"><div class="line">ZlibValidation</div>
 <div class="line">Usage: ./zlibvalidation [OPTIONS] [SUBCOMMAND]</div>
@@ -203,16 +213,26 @@ Help Message / Features</h1>
 <div class="line">  verilog                     Generate Verilog file for given Liberty file</div>
 <div class="line">  spice                       Generate SPICE file for given Liberty file</div>
 <div class="line">  func                        Check functional equivalence of two Liberty files or Verilog files</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md11"></a>
 Example Usage</h1>
-<p >see [test](test) directory. There are some shell scripts showing how to use <code>ZlibValidation</code>. You can modify them to validate your own standard cell library pdk.</p>
-<h1><a class="anchor" id="autotoc_md11"></a>
-Documentation and Reference Manual</h1>
-<p >see <a href="https://cedar17.github.io/ZlibValidation/">https://cedar17.github.io/ZlibValidation/</a> for HTML documentation and PDF reference manual.</p>
+<p >See [test](test) directory. There are some shell scripts showing how to use <code>ZlibValidation</code>. You can modify them to validate your own standard cell library pdk.</p>
 <h1><a class="anchor" id="autotoc_md12"></a>
+Documentation and Reference Manual</h1>
+<p >See <a href="https://cedar17.github.io/ZlibValidation/">https://cedar17.github.io/ZlibValidation/</a> for HTML documentation and PDF reference manual.</p>
+<h2><a class="anchor" id="autotoc_md13"></a>
+Doumentation Generation</h2>
+<p >To generate the documentation, you need to have Doxygen and Graphviz installed. You can install them via your package manager or using conda:</p>
+<div class="fragment"><div class="line">conda install -c conda-forge doxygen graphviz</div>
+</div><!-- fragment --><p >Then, run the following command in the root directory of the project:</p>
+<div class="fragment"><div class="line">doxygen Doxyfile</div>
+</div><!-- fragment --><p> This will generate the documentation in the <code>doc_soxygen</code> directory. You can open the <code>doc_doxygen\html\index.html</code> file in your web browser to view the documentation.</p>
+<p >Alternatively, you can generate the PDF reference manual by LaTeX.</p>
+<div class="fragment"><div class="line">cd doc_doxygen\latex</div>
+<div class="line">make</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md14"></a>
 Acknowledgements</h1>
 <p ><code>ZlibValidation</code> leverages the power of several excellent third-party libraries, build tools, and external utilities. We extend our sincere gratitude to the developers and communities behind these projects, which were instrumental in building this tool:</p>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Core Functionality Libraries:</h2>
 <ul>
 <li><b><a href="https://github.com/csguth/LibertyParser">Liberty Parser (csguth/LibertyParser)</a>:</b><ul>
@@ -239,6 +259,12 @@ Core Functionality Libraries:</h2>
 <li><b>License:</b> MIT License.</li>
 </ul>
 </li>
+<li><b><a href="https://github.com/skycrapers/ZlibBoost">ZlibBoost</a>:</b><ul>
+<li><b>Purpose:</b> A multi-threaded library processing tool which is the foundation of the <code>zlibboost</code> subcommand. It significantly boost standard cell library characterization with machine learning using Python. See <a href="https://doi.org/10.1145/3658617.3703638">https://doi.org/10.1145/3658617.3703638</a> for detailed paper.</li>
+<li><b>Integration:</b> Need to specify the path to the <code>ZlibBoost</code> main python script and python environment in the <code>ZlibValidation</code> command line.</li>
+<li><b>License:</b> BSD 3-Clause License with Commercial Use Restriction.</li>
+</ul>
+</li>
 <li><b><a href="https://github.com/p-ranav/tabulate">tabulate</a>:</b><ul>
 <li><b>Purpose:</b> Generates formatted text-based tables, significantly improving the readability of reports generated by the <code>compare</code> subcommand.</li>
 <li><b>Integration:</b> Managed via CMake's <code>FetchContent</code>.</li>
@@ -258,7 +284,7 @@ Core Functionality Libraries:</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Build, Documentation, and External Tools:</h2>
 <ul>
 <li><b><a href="https://cmake.org/">CMake</a></b>: The cross-platform build system generator used to configure and manage the entire compilation process.</li>
@@ -276,7 +302,7 @@ Build, Documentation, and External Tools:</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Apr 6 2025 00:47:17 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Apr 7 2025 12:04:51 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

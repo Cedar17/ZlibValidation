@@ -12,6 +12,7 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \item Installation
 \begin{DoxyItemize}
 \item Prerequisites
+\item Optional Pre-\/requisites
 \item Building from Source (Recommended Method)
 \item Running Zlib\+Validation
 \item (Optional) Adding to your PATH
@@ -19,6 +20,9 @@ Command line tool to validate standard cell libraries in {\ttfamily .lib} format
 \item Help Message / Features
 \item Example Usage
 \item Documentation and Reference Manual
+\begin{DoxyItemize}
+\item Doumentation Generation
+\end{DoxyItemize}
 \item Acknowledgements
 \begin{DoxyItemize}
 \item Core Functionality Libraries\+:
@@ -43,10 +47,15 @@ Before you begin, ensure you have the following installed on your {\bfseries{Lin
 
 \begin{DoxyItemize}
 \item {\bfseries{Git\+:}} To clone the repository.
-\item {\bfseries{C++ Compiler\+:}} C++20 standard support required (e.\+g., GCC \texorpdfstring{$>$}{>}= 10, Clang \texorpdfstring{$>$}{>}= 12). Developed with GCC 14.\+2.\+0.
-\item {\bfseries{CMake\+:}} Version 3.\+25 or higher (used for configuring the build).
+\item {\bfseries{C++ Compiler\+:}} C++20 standard support required (e.\+g., GCC \texorpdfstring{$>$}{>}= 12). Developed with GCC 14.\+2.\+0.
+\item {\bfseries{CMake\+:}} Version 3.\+25 or higher (versions after 4.\+0.\+0 may exhibit compatibility issues).
 \item {\bfseries{Ninja}} (recommended) or {\bfseries{Make}}\+: Build systems. Ninja is preferred for its speed.
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md6}{}\doxysubsection{Building from Source (\+Recommended Method)}\label{md_README_autotoc_md6}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md6}{}\doxysubsection{Optional Pre-\/requisites}\label{md_README_autotoc_md6}
+
+\begin{DoxyItemize}
+\item {\bfseries{ccache\+:}} Optional but recommended for speeding up recompilation. Install it via your package manager (e.\+g., {\ttfamily conda install conda-\/forge\+::ccache}).
+\item {\bfseries{lld\+:}} Optional but recommended for faster linking. Install it via your package manager (e.\+g., {\ttfamily conda install conda-\/forge\+::lld}).
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md7}{}\doxysubsection{Building from Source (\+Recommended Method)}\label{md_README_autotoc_md7}
 Follow these steps to compile {\ttfamily Zlib\+Validation} in your user directory\+:
 
 
@@ -74,7 +83,7 @@ Follow these steps to compile {\ttfamily Zlib\+Validation} in your user director
 \DoxyCodeLine{\# If you used Ninja:}
 \DoxyCodeLine{ninja}
 \DoxyCodeLine{\# or if you used Make:}
-\DoxyCodeLine{make -\/j\$(nproc) \# Adjust \$(nproc) or use a specific number like -\/j4}
+\DoxyCodeLine{make -\/j\$(nproc) \# Adjust \$(nproc) or use a specific number like -\/j8 for multi-\/threading}
 
 \end{DoxyCode}
 
@@ -85,7 +94,7 @@ Follow these steps to compile {\ttfamily Zlib\+Validation} in your user director
 
 \end{DoxyCode}
 
-\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md7}{}\doxysubsection{Running Zlib\+Validation}\label{md_README_autotoc_md7}
+\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md8}{}\doxysubsection{Running Zlib\+Validation}\label{md_README_autotoc_md8}
 Since we haven\textquotesingle{}t performed a system-\/wide install (which would typically require {\ttfamily sudo}), you need to run the executable using its path relative to your current location.
 
 
@@ -102,7 +111,7 @@ Since we haven\textquotesingle{}t performed a system-\/wide install (which would
 
 \end{DoxyCode}
 
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md8}{}\doxysubsection{(\+Optional) Adding to your PATH}\label{md_README_autotoc_md8}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md9}{}\doxysubsection{(\+Optional) Adding to your PATH}\label{md_README_autotoc_md9}
 For convenience, you can temporarily add the {\ttfamily build} directory to your shell\textquotesingle{}s {\ttfamily PATH} variable for the current session\+:
 
 
@@ -112,7 +121,7 @@ For convenience, you can temporarily add the {\ttfamily build} directory to your
 \DoxyCodeLine{zlibvalidation -\/h}
 
 \end{DoxyCode}
- To make this change permanent, you can add the above line to your shell\textquotesingle{}s configuration file (e.\+g., {\ttfamily $\sim$/.bashrc}, {\ttfamily $\sim$/.zshrc}).\hypertarget{md_README_autotoc_md9}{}\doxysection{Help Message / Features}\label{md_README_autotoc_md9}
+ To make this change permanent, you can add the above line to your shell\textquotesingle{}s configuration file (e.\+g., {\ttfamily $\sim$/.bashrc}, {\ttfamily $\sim$/.zshrc}).\hypertarget{md_README_autotoc_md10}{}\doxysection{Help Message / Features}\label{md_README_autotoc_md10}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{ZlibValidation}
@@ -134,10 +143,37 @@ For convenience, you can temporarily add the {\ttfamily build} directory to your
 \DoxyCodeLine{  func                        Check functional equivalence of two Liberty files or Verilog files}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md10}{}\doxysection{Example Usage}\label{md_README_autotoc_md10}
-see \mbox{[}test\mbox{]}(test) directory. There are some shell scripts showing how to use {\ttfamily Zlib\+Validation}. You can modify them to validate your own standard cell library pdk.\hypertarget{md_README_autotoc_md11}{}\doxysection{Documentation and Reference Manual}\label{md_README_autotoc_md11}
-see \href{https://cedar17.github.io/ZlibValidation/}{\texttt{ https\+://cedar17.\+github.\+io/\+Zlib\+Validation/}} for HTML documentation and PDF reference manual.\hypertarget{md_README_autotoc_md12}{}\doxysection{Acknowledgements}\label{md_README_autotoc_md12}
-{\ttfamily Zlib\+Validation} leverages the power of several excellent third-\/party libraries, build tools, and external utilities. We extend our sincere gratitude to the developers and communities behind these projects, which were instrumental in building this tool\+:\hypertarget{md_README_autotoc_md13}{}\doxysubsection{Core Functionality Libraries\+:}\label{md_README_autotoc_md13}
+\hypertarget{md_README_autotoc_md11}{}\doxysection{Example Usage}\label{md_README_autotoc_md11}
+See \mbox{[}test\mbox{]}(test) directory. There are some shell scripts showing how to use {\ttfamily Zlib\+Validation}. You can modify them to validate your own standard cell library pdk.\hypertarget{md_README_autotoc_md12}{}\doxysection{Documentation and Reference Manual}\label{md_README_autotoc_md12}
+See \href{https://cedar17.github.io/ZlibValidation/}{\texttt{ https\+://cedar17.\+github.\+io/\+Zlib\+Validation/}} for HTML documentation and PDF reference manual.\hypertarget{md_README_autotoc_md13}{}\doxysubsection{Doumentation Generation}\label{md_README_autotoc_md13}
+To generate the documentation, you need to have Doxygen and Graphviz installed. You can install them via your package manager or using conda\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{conda install -\/c conda-\/forge doxygen graphviz}
+
+\end{DoxyCode}
+
+
+Then, run the following command in the root directory of the project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{doxygen Doxyfile}
+
+\end{DoxyCode}
+ This will generate the documentation in the {\ttfamily doc\+\_\+soxygen} directory. You can open the {\ttfamily doc\+\_\+doxygen\textbackslash{}html\textbackslash{}index.\+html} file in your web browser to view the documentation.
+
+Alternatively, you can generate the PDF reference manual by La\+TeX.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd doc\_doxygen\(\backslash\)latex}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md14}{}\doxysection{Acknowledgements}\label{md_README_autotoc_md14}
+{\ttfamily Zlib\+Validation} leverages the power of several excellent third-\/party libraries, build tools, and external utilities. We extend our sincere gratitude to the developers and communities behind these projects, which were instrumental in building this tool\+:\hypertarget{md_README_autotoc_md15}{}\doxysubsection{Core Functionality Libraries\+:}\label{md_README_autotoc_md15}
 
 \begin{DoxyItemize}
 \item {\bfseries{\href{https://github.com/csguth/LibertyParser}{\texttt{ Liberty Parser (csguth/\+Liberty\+Parser)}}\+:}}
@@ -164,6 +200,12 @@ see \href{https://cedar17.github.io/ZlibValidation/}{\texttt{ https\+://cedar17.
 \item {\bfseries{Integration\+:}} Managed via CMake\textquotesingle{}s {\ttfamily Fetch\+Content}.
 \item {\bfseries{License\+:}} MIT License.
 \end{DoxyItemize}
+\item {\bfseries{\href{https://github.com/skycrapers/ZlibBoost}{\texttt{ Zlib\+Boost}}\+:}}
+\begin{DoxyItemize}
+\item {\bfseries{Purpose\+:}} A multi-\/threaded library processing tool which is the foundation of the {\ttfamily zlibboost} subcommand. It significantly boost standard cell library characterization with machine learning using Python. See \href{https://doi.org/10.1145/3658617.3703638}{\texttt{ https\+://doi.\+org/10.\+1145/3658617.\+3703638}} for detailed paper.
+\item {\bfseries{Integration\+:}} Need to specify the path to the {\ttfamily Zlib\+Boost} main python script and python environment in the {\ttfamily Zlib\+Validation} command line.
+\item {\bfseries{License\+:}} BSD 3-\/Clause License with Commercial Use Restriction.
+\end{DoxyItemize}
 \item {\bfseries{\href{https://github.com/p-ranav/tabulate}{\texttt{ tabulate}}\+:}}
 \begin{DoxyItemize}
 \item {\bfseries{Purpose\+:}} Generates formatted text-\/based tables, significantly improving the readability of reports generated by the {\ttfamily compare} subcommand.
@@ -182,7 +224,7 @@ see \href{https://cedar17.github.io/ZlibValidation/}{\texttt{ https\+://cedar17.
 \item {\bfseries{Integration\+:}} The header file ({\ttfamily exprtk.\+hpp}) is included directly within this project\textquotesingle{}s {\ttfamily include\+\_\+3rd\+\_\+party} directory.
 \item {\bfseries{License\+:}} MIT License.
 \end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md14}{}\doxysubsection{Build, Documentation, and External Tools\+:}\label{md_README_autotoc_md14}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md16}{}\doxysubsection{Build, Documentation, and External Tools\+:}\label{md_README_autotoc_md16}
 
 \begin{DoxyItemize}
 \item {\bfseries{\href{https://cmake.org/}{\texttt{ CMake}}}}\+: The cross-\/platform build system generator used to configure and manage the entire compilation process.

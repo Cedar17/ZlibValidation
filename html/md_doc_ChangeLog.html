@@ -65,7 +65,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('md_doc_ChangeLog.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -94,16 +94,16 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
   <div class="headertitle"><div class="title">Development Diary </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md16"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md18"></a>
 2025-01</h1>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 2025-01-27</h2>
 <ul>
 <li>创建了一个C++空项目，使用CMake管理编译链，并手动添加了外部库 <code>libsi2dr_liberty.a</code>。</li>
 <li>添加了 <code>CLI11</code> 库以处理命令行参数解析。</li>
 <li>添加了 <code>spdlog</code> 日志库，实现高效的日志格式化输出。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md20"></a>
 2025-01-28</h2>
 <ul>
 <li>添加 <code>nlohmann/json</code> 库用于 JSON 数据存储和检索。</li>
@@ -116,9 +116,9 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 </li>
 <li>按照 C++ 标准库、第三方库和本地库的顺序重新排列了 <code>#include</code> 语句。</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md21"></a>
 2025-02</h1>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md22"></a>
 2025-02-01</h2>
 <ul>
 <li>使用面向对象编程（OOP）重构了原先用C语言循环遍历的代码，将简单属性的读取封装为<code><a class="el" href="classLibAttribute.html">LibAttribute</a></code>类，<ul>
@@ -127,21 +127,21 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 </li>
 <li>将属性迭代过程封装为<code><a class="el" href="classAttributesIterator.html">AttributesIterator</a></code>类，在析构函数中处理迭代退出，实现资源获取即初始化（RAII）。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md21"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 2025-02-10</h2>
 <ul>
 <li>将组的迭代过程封装为<code><a class="el" href="classGroupsIterator.html">GroupsIterator</a></code>类，同样在析构函数中处理迭代退出。</li>
 <li>封装了<code><a class="el" href="classLibGroup.html">LibGroup</a></code>类，提供了读取组名、类别、属性、子组的方法。</li>
 <li>将类的定义和实现分离，将类的实现放在<code>src</code>目录下，将类的定义放在<code>include</code>目录下，修改了<code>CMakeLists.txt</code>自动收集文件，便于模块化编译。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<h2><a class="anchor" id="autotoc_md24"></a>
 2025-02-11</h2>
 <ul>
 <li>类的头文件改为<code>hpp</code>后缀，修改了<code>CMakeLists.txt</code>中的文件收集规则，CMake编译时间戳更新。</li>
 <li>为<code><a class="el" href="classLibFile.html">LibFile</a></code>类添加了输出同名json格式文件的方法<code><a class="el" href="classLibFile.html#a88de22798a64acdb38faefc0d785804f" title="Writes the JSON data stored in the object to a file.">LibFile::writeJsonToFile</a></code>，目前能输出PVT、cell_name、cell_footprint、cell_area信息。</li>
 <li>[x] voltage 浮点数误差未解决。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
 2025-02-14</h2>
 <ul>
 <li>在 <code><a class="el" href="json__utils_8cpp.html">json_utils.cpp</a></code> 中，实现了以 JSON 数据结构循环迭代存储库 (lib) 信息的功能，具体包括 <code>generateCellJson, generatePinJson, generatePowerJson, generateLutJson</code> 等函数，并添加了同名的 hpp 头文件。</li>
@@ -153,48 +153,48 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 <li>重写了 <code><a class="el" href="classLibGroup.html#a5de2a5c697f684c1d809c3e944cf6db0">LibGroup::getName()</a></code> 函数，使其直接返回 <code>std::string</code> 类型的组名字。</li>
 <li>重构了迭代器使用代码。移除了中间变量类似<code>si2drGroupsIdT sub_groups</code> 的声明步骤。直接使用 <code>lib_group.getGroups()</code>的返回值进行初始化<code><a class="el" href="classGroupsIterator.html">GroupsIterator</a></code>，提升了代码的可读性和简洁性。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 2025-02-15</h2>
 <ul>
 <li>实现<code>generateTimingJson</code>函数，用于全面解析时序信息。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 2025-02-17</h2>
 <ul>
 <li>简化了迭代器在外部的调用流程，删除所有迭代器的<code>begin()</code>方法，改为在构造函数内部初始化。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md26"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 2025-02-18</h2>
 <ul>
 <li>新建<code><a class="el" href="classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe" title="Validates that lookup tables are monotonically increasing with respect to the output load.">LibFile::mono()</a></code>方法，准备实现库文件输出引脚的values单调递增性检查。</li>
 <li>修改了<code>setupLogger()</code>函数，将日志文件名可作为参数传入，便于根据不同工作模式切换日志文件。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md27"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 2025-02-19</h2>
 <ul>
 <li>修改了<code>mode == "mono"</code>情况下的逻辑，使用 C++17 引入的 <code>std::filesystem::exists()</code> 函数检查同名 JSON 文件是否存在，如果 JSON 文件不存在，则先调用库文件解析功能，生成 JSON 文件，然后再执行单调性检查。</li>
 <li>实现了<code><a class="el" href="classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe" title="Validates that lookup tables are monotonically increasing with respect to the output load.">LibFile::mono()</a></code>方法，检查cell_rise、cell_fall、rise_transition、fall_transition这四种timing信息，针对其 LUT 数据结构，检查其 value 值在表格的每一行是否保持单调递增。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md30"></a>
 2025-02-20</h2>
 <ul>
 <li><code><a class="el" href="classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe" title="Validates that lookup tables are monotonically increasing with respect to the output load.">LibFile::mono()</a></code>方法增加结果统计功能，在程序运行的最后输出单调性检查中 <code>passed</code> (通过) 和 <code>failed</code> (失败) 的 cell 数量，输出格式参考 <code>liberate_lv</code> 工具的风格。</li>
 <li>以 <code>sl018_ff_3.96_-40.lib</code> 为例，与 <code>liberate_lv</code> 工具对比测试，结果均为 205 out of 559 cells failed。</li>
 <li>对于非单调信息警告，增加输出 when 信息，方便用户查看具体位置。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md31"></a>
 2025-02-25</h2>
 <ul>
 <li>重构命令行参数解析，使用 <code>CLI11</code> 库的子命令，在每个回调函数中实现 <code>parse</code>、<code>mono</code> 功能。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 2025-02-26</h2>
 <ul>
 <li>子命令可自定义输出文件名、日志文件名，并设置了相应的默认值。</li>
 <li>改为在 Logger 初始化时打印版本信息，避免在 <code>-h</code>，<code>-v</code> 时多余打印。</li>
 <li><code><a class="el" href="classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe" title="Validates that lookup tables are monotonically increasing with respect to the output load.">LibFile::mono()</a></code> 方法增加对 <code>input_slew</code> 的单调性检查，如果在输入时有指定，就检查 value 矩阵的每一列是否单调。经过测试，<code>tcbn65lpbc.lib</code> 输出与 <code>liberate_lv</code> 工具一致。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md31"></a>
+<h2><a class="anchor" id="autotoc_md33"></a>
 2025-02-27</h2>
 <ul>
 <li>多线程并行尝试，采用GDB调试：<ul>
@@ -205,16 +205,16 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md32"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 2025-02-28</h2>
 <ul>
 <li>修改<code><a class="el" href="classLibFile.html">LibFile</a></code>的构造函数与析构函数，<code>read</code>方法改为私有，移入parse方法。将si2dr初始化与销毁放在<code>parse</code>方法中，使得<code>mono</code>方法与si2dr库解耦，从而实现多线程并行验证单调性。</li>
 <li>[x] 顶层<code>si2drPIGetGroups</code>未退出的bug: <code>WARNING: si2drPIQuit: GetGroups called 1 more times than IterQuit</code>，内存泄漏？</li>
 <li>学到了可以在<code>CMakeLists.txt</code>中使用<code>set(CMAKE_BUILD_TYPE Release)</code>减少编译器优化程度，配合GDB等调试工具检查堆栈信息。</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md33"></a>
+<h1><a class="anchor" id="autotoc_md35"></a>
 2025-03</h1>
-<h2><a class="anchor" id="autotoc_md34"></a>
+<h2><a class="anchor" id="autotoc_md36"></a>
 2025-03-01</h2>
 <ul>
 <li><code>sub_groups_iter</code>是在每次<code>for</code>循环的迭代中声明的局部变量，在每次迭代结束后其作用域结束，析构函数被调用，释放相关资源。所以<code>si2drPIQuit</code>未发现内存泄漏。</li>
@@ -223,13 +223,13 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 <li>[ ] 顺序执行<code>parse</code>，log输出仍存在问题：解析第二第三个库的时候会多余打印之前库的PVT信息，时间上也比单独解析一个库的总和要慢(parse 6s 左右，mono 1s)。并行执行<code>mono</code>，log输出会集中到最后一个库的文件。</li>
 <li>给<code><a class="el" href="classLibFile.html">LibFile</a></code>类的私有属性添加了初始值，避免了未初始化的问题，吗？</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md35"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 2025-03-07</h2>
 <ul>
 <li>实现了 <code>compare</code> 子命令的解析，能够对两个库文件依次进行解析，并生成对应的 JSON 文件。</li>
 <li>[ ] 仍然存在日志重复输出的问题，多文件处理时数据可能会相互干扰。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 2025-03-10</h2>
 <ul>
 <li>新增 <code>supercell</code> 子命令和 <code><a class="el" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188" title="Creates supercells based on standard cells in the library file.">LibFile::supercell</a></code> 方法，用于生成超级单元以供验证。</li>
@@ -237,13 +237,13 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 <li>调整了子命令输出文件的位置为当前目录，避免文件混淆。</li>
 <li>添加了 <code>clear</code> 子命令，方便清理生成的 JSON 文件和日志文件。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md39"></a>
 2025-03-14</h2>
 <ul>
 <li>添加了 <code>tabulate/table</code> 库，通过 CMake FetchContent 进行管理，用于生成格式化的表格输出。</li>
 <li>新建了 <code>compare.cpp</code> 和 <code>compare.hpp</code> 文件，创建了 <code><a class="el" href="classLibraryComparator.html">LibraryComparator</a></code> 类，用于比较两个库文件的差异。目前实现了读取参考库 JSON 文件的功能。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 2025-03-15</h2>
 <ul>
 <li>使用 <code>std::filesystem::path</code> 重构了 <code><a class="el" href="classLibFile.html">LibFile</a></code> 类的文件路径管理，方便文件路径的拼接和处理。<code><a class="el" href="classLibFile.html">LibFile</a></code> 类添加了成员变量 <code>basename_</code>、<code>filename_</code>、<code>libname_</code>、<code>jsonname_</code> 和 <code>loggername_</code>，用于存储文件名、库名、JSON 文件名和日志文件名。</li>
@@ -255,7 +255,7 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 <li>完成了 <code>supercell</code> 子命令的多线程并行，处理逻辑与 <code>mono</code> 子命令类似。</li>
 <li><code><a class="el" href="classLibraryComparator.html#a4f150829d621ad8f199813a0f9fc8be5" title="Generates a comparison report between the reference and comparison libraries.">LibraryComparator::generateReport()</a></code> 方法测试了 <code>tabulate</code> 库的markdown表格输出功能，完善了报告的头部信息输出，包括参考库、比较库、相对容差、软件信息、报告生成时间和图例说明。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md41"></a>
 2025-03-16</h2>
 <ul>
 <li>针对 <code>compare</code> 子命令，增加了对报告文件名的检查，确保其以 <code>.md</code> 或 <code>.txt</code> 结尾。若不符合，则给出警告并自动添加 <code>.md</code> 后缀。</li>
@@ -269,7 +269,7 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 <li>已经可以输出表格，数据数量和商用工具结果一致，但格式还需要进一步调整。</li>
 <li>新增了 <code>abstol</code> 参数，默认值为 0.002ns，用于设置绝对容差，与库验证工具保持一致。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md40"></a>
+<h2><a class="anchor" id="autotoc_md42"></a>
 2025-03-17</h2>
 <ul>
 <li>新增 <code>verilog</code> 和 <code>spice</code> 子命令，用于生成 Verilog 和 SPICE 代码。</li>
@@ -279,7 +279,7 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md41"></a>
+<h2><a class="anchor" id="autotoc_md43"></a>
 2025-03-18</h2>
 <ul>
 <li>优化统计表格，包含 | Cell Name | Data Type | Failed Count | Avg Diff | Avg Diff% | Max Diff | Max Diff% | Outliers |。</li>
@@ -296,23 +296,23 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 <li><code>checkTimingArcMonotonicity</code> 核心比较功能取消了等于的情况，相等情况默认为通过。</li>
 <li><code>checkTimingArcMonotonicity</code> 核心比较功能增加了判断 <code>related_pin</code> 是否等于当前 pin，不等于则跳过。最终改为：如果矩阵中当前的值小于前一个值，并且当前引脚不是相关引脚，或者当前值和前一个值都为零，那么就认为这些值不是单调递增的。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md42"></a>
+<h2><a class="anchor" id="autotoc_md44"></a>
 2025-03-19</h2>
 <ul>
 <li>完善supercell方法，如果有有时钟信号引脚，链式长度被设为1，再生成超级单元。</li>
 <li>解决 voltage 浮点数误差问题，std::round(voltage_ * 100) / 100.0 保留两位小数。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md43"></a>
+<h2><a class="anchor" id="autotoc_md45"></a>
 2025-03-21</h2>
 <ul>
 <li>新增 func 子命令，用于检查库或者Verilog文件的逻辑等价性。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md44"></a>
+<h2><a class="anchor" id="autotoc_md46"></a>
 2025-03-24</h2>
 <ul>
 <li>调研了 C++ 操作 Verilog 相关的库，找到了一个实用的 Verilog 库：<a href="https://github.com/MikePopoloski/slang">slang</a>，它可以解析出抽象语法树 (AST)。已修改 CMakeLists 文件，将 slang 集成到项目中，目前正在研究其 API。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md45"></a>
+<h2><a class="anchor" id="autotoc_md47"></a>
 2025-03-25</h2>
 <ul>
 <li>新增 <code><a class="el" href="verilog__utils_8cpp.html">verilog_utils.cpp</a></code> 和 <code><a class="el" href="verilog__utils_8hpp.html">verilog_utils.hpp</a></code> 文件，并创建了 <code><a class="el" href="classVerilogVisitor.html">VerilogVisitor</a></code> 类，用于自定义遍历 Verilog AST。</li>
@@ -325,7 +325,7 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md46"></a>
+<h2><a class="anchor" id="autotoc_md48"></a>
 2025-03-26</h2>
 <ul>
 <li>进一步完善了对 UDP（如 <code>tsmc_dff</code>）端口映射关系的解析，但其内部 Entry 尚未处理。</li>
@@ -336,7 +336,7 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 <li>引入了 Doxygen 文档生成工具，用于可视化分析项目，并生成了 Doxygen HTML 文档和 LaTeX 参考手册。</li>
 <li>[x] 尚未解决手册中文显示不正确的问题，可能需要自定义 LaTeX 头文件。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md47"></a>
+<h2><a class="anchor" id="autotoc_md49"></a>
 2025-03-27</h2>
 <ul>
 <li><b>重大失误！</b> 误操作 Git 分支，导致部分代码修改丢失。务必牢记：**及时提交代码！**</li>
@@ -353,7 +353,7 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 </li>
 <li><code><a class="el" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file.">LibFile::verilog</a></code> 目前能够正确输出模块名和 ANSI 风格的端口声明。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md48"></a>
+<h2><a class="anchor" id="autotoc_md50"></a>
 2025-03-28</h2>
 <ul>
 <li>实现了在模块成员列表中插入新节点的功能。具体而言，在 <code><a class="el" href="classModuleRewriter.html#aa57bf8f3d6692468013a52a0154f08e8" title="Processes a syntax node in the module&#39;s AST.">ModuleRewriter::handle</a>(const slang::syntax::ModuleDeclarationSyntax &amp;module)</code> 方法中，通过 <code>insertAtBack(module.members, newDataNode)</code> 函数，成功地在模块成员的末尾插入了链式单元所需的中间变量声明，例如 <code>wire OP_i;</code>。</li>
@@ -373,7 +373,7 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 <li>配置了 GitHub Actions，实现了 Doxygen 文档和 Graphviz 图的自动化构建，以及 LaTeX 参考手册的自动编译（暂不支持中文）。每次在 <code>dev</code> 和 <code>main</code> 分支的提交都会触发文档和参考手册的生成，并发布到 <code>gh-pages</code> 分支。</li>
 <li>将第三方库放置到 <code>include_3rd_party</code> 目录下，方便管理。修改了 CMakeLists 文件，将第三方库的头文件路径添加到 <code>include_directories</code> 中。修改了 Doxyfile 文件，将第三方库的头文件路径添加到 <code>INPUT</code> 中，便于文档生成工具理解第三方库函数、类的关系及使用方法。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md49"></a>
+<h2><a class="anchor" id="autotoc_md51"></a>
 2025-03-29</h2>
 <ul>
 <li>修复了 Doxygen 生成 LaTeX 参考手册时中文显示不正确的问题。通过修改 Doxyfile 文件，添加 <code>EXTRA_PACKAGES = ctex</code> 选项，并指定 <code>lualatex</code> 作为编译器，成功解决了中文显示问题。同时，从 <code>include_3rd_party</code> 目录中移除了 <code>Allsyntax.h</code> 文件，避免了由于 LaTeX 文档过大导致的 "TeX capacity exceeded, sorry [main memory size=5000000]" 内存不足问题。</li>
@@ -396,7 +396,7 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md50"></a>
+<h2><a class="anchor" id="autotoc_md52"></a>
 2025-03-30</h2>
 <ul>
 <li>完成了 <code><a class="el" href="classLibFile.html#a90b6274f928d77388864ba61583a030f" title="Retrieves the logic functions for the output pins of a specified cell within the Liberty file.">LibFile::logic</a>(const std::string &amp;cell_name)</code> 方法，该方法返回指定 cell_name 所有输出引脚对应的逻辑表达式，以 <code>std::map&lt;std::string, std::string&gt;</code> 的形式返回，存储输出引脚名称到其逻辑表达式字符串的映射关系.</li>
@@ -412,7 +412,7 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md51"></a>
+<h2><a class="anchor" id="autotoc_md53"></a>
 2025-03-31</h2>
 <ul>
 <li>实现了从 Verilog 结构网表中提取逻辑表达式的功能，使用了 <code><a class="el" href="classLogicExtractor.html">LogicExtractor</a></code> 类。<ul>
@@ -443,9 +443,9 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 <li>为了更好地组织代码结构，将 <code><a class="el" href="classLogicExtractor.html">LogicExtractor</a></code> 类从 <code><a class="el" href="verilog__utils_8hpp.html">verilog_utils.hpp</a></code> 和 <code><a class="el" href="verilog__utils_8cpp.html">verilog_utils.cpp</a></code> 中分离出来，并创建了独立的 <code><a class="el" href="LogicExtractor_8hpp.html">LogicExtractor.hpp</a></code> 和 <code><a class="el" href="LogicExtractor_8cpp.html">LogicExtractor.cpp</a></code> 文件。同时，统一了所有 hpp 和 cpp 文件的命名规范，使其与对应的类名保持一致。</li>
 <li>新增 <code><a class="el" href="classLogicComparator.html">LogicComparator</a></code> 类及其头文件、源文件，用于比较两个逻辑表达式的等价性，并生成比较报告。</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md52"></a>
+<h1><a class="anchor" id="autotoc_md54"></a>
 2025-04</h1>
-<h2><a class="anchor" id="autotoc_md53"></a>
+<h2><a class="anchor" id="autotoc_md55"></a>
 2025-04-01</h2>
 <ul>
 <li>整理头文件引用，删除了不必要的引用，提高编译效率。</li>
@@ -520,7 +520,7 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 </li>
 <li>实现了 <code><a class="el" href="classLogicComparator.html#a11238591d905205ad26839e1977634f5" title="Generates a comparison report file based on cell logic comparison results.">LogicComparator::generateReport()</a></code> 方法，报告格式仍需要调整。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md54"></a>
+<h2><a class="anchor" id="autotoc_md56"></a>
 2025-04-02</h2>
 <ul>
 <li>取消所有模板函数的 <code>template &lt;typename T&gt;</code> 声明，改为使用 <code>double</code> 作为参数类型，加快编译速度。</li>
@@ -553,7 +553,7 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyLeft">Logically Equivalent   </td><td class="markdownTableBodyLeft">Yes   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md55"></a>
+<h2><a class="anchor" id="autotoc_md57"></a>
 2025-04-05</h2>
 <ul>
 <li><p class="startli">新增了 <code><a class="el" href="classLibFile.html#a290f9bfef8ea2f8039837fffceeaa465" title="Generates a SPICE netlist for the library based on a temporary Verilog file, using the V2LVS tool.">LibFile::spice()</a></code> 方法，为 <code>spice</code> 子命令添加了 SPICE 网表生成功能。   - 通过执行 <code>which v2lvs</code> 命令检测系统中是否安装了 <code>V2LVS</code> 工具。如果已安装，则调用该工具生成基本的 SPICE 网表。   - 添加了 <code>--vl</code> 和 <code>--sl</code> 命令行选项，允许用户指定 Verilog 库文件和 SPICE 库文件的路径。   - 目前已能生成基本的 SPICE 网表，后续需要进一步完善输出格式。</p>
@@ -592,9 +592,20 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 <li>调用 <code>v2lvs</code> 工具生成初步的 SPICE 网表。</li>
 <li>调用 <code><a class="el" href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255" title="Generates RC lines for a given net in either an intermediate or final stage.">LibFile::generateRCLines()</a></code> 方法，为 SPICE 网表中的每个 instance 生成对应的 RC lines。</li>
 <li>调用 <code><a class="el" href="classLibFile.html#a25b6fd7453e8a200a70b2d19a6e216e2" title="Modifies a SPICE netlist generated by v2lvs, adding metadata, inserting a global line,...">LibFile::modifySpiceNetlist()</a></code> 方法，修改 SPICE 网表，添加元数据、插入 global line、调整 instance lines，并生成最终的 SPICE 网表。</li>
-<li>将最终的 SPICE 网表输出到指定文件中。 </li>
+<li>将最终的 SPICE 网表输出到指定文件中。</li>
 </ul>
 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md58"></a>
+2025-04-07</h2>
+<ul>
+<li>将项目研发日记从 <code><a class="el" href="README_8md.html">README.md</a></code> 迁移至独立的 <code><a class="el" href="ChangeLog_8md.html">ChangeLog.md</a></code> 文件，存放于 <code>doc/</code> 目录下，集中记录更新与变更历史。</li>
+<li>全面完善 <code><a class="el" href="README_8md.html">README.md</a></code>，补充项目描述、目录、动机、安装指南、使用示例、文档与手册、致谢等内容，提升项目信息的完整性。</li>
+<li>调整 <code>CMakeLists.txt</code>，取消强制使用 <code>ccache</code> 和 <code>lld</code> 的设定，改为检测系统环境，仅在存在相应工具时启用，增强项目兼容性。</li>
+<li>移除 <code>FetchContent</code> 中的 <code>QUIET</code> 选项，增加必要提示信息，更清晰地展示依赖库的获取状态。</li>
+<li>项目版本更新至 <code>v1.1.0</code>。</li>
+<li>明确 CMake 版本需求为 <code>(VERSION 3.21...3.31)</code>，确保项目在指定版本范围内构建。</li>
+<li>在 <code><a class="el" href="README_8md.html">README.md</a></code> 中，特别感谢 <code>ZlibBoost</code> 项目，并新增编译文档和参考手册的教程，同时将 <code>ccache</code> 和 <code>lld</code> 列为可选编译准备。 </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -602,7 +613,7 @@ $(document).ready(function(){initNavTree('md_doc_DevelopmentDiary.html',''); ini
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Apr 6 2025 00:47:17 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Apr 7 2025 12:04:51 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
