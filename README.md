@@ -161,12 +161,12 @@ Then, run the following command in the root directory of the project:
 ```bash
 doxygen Doxyfile
 ```
-This will generate the documentation in the `doc_soxygen` directory. You can open the `doc_doxygen\html\index.html` file in your web browser to view the documentation.
+This will generate the documentation in the `doc_doxygen` directory. You can open the `doc_doxygen/html/index.html` file in your web browser to view the documentation.
 
 Alternatively, you can generate the PDF reference manual by LaTeX.
 
 ```bash
-cd doc_doxygen\latex
+cd doc_doxygen/latex
 make
 ```
 
