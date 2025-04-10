@@ -90,7 +90,8 @@ var NAVTREE =
         [ "2025-04-01", "md_doc_ChangeLog.html#autotoc_md55", null ],
         [ "2025-04-02", "md_doc_ChangeLog.html#autotoc_md56", null ],
         [ "2025-04-05", "md_doc_ChangeLog.html#autotoc_md57", null ],
-        [ "2025-04-07", "md_doc_ChangeLog.html#autotoc_md58", null ]
+        [ "2025-04-07", "md_doc_ChangeLog.html#autotoc_md58", null ],
+        [ "2025-04-10", "md_doc_ChangeLog.html#autotoc_md59", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [

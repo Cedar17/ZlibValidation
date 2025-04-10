@@ -60,6 +60,7 @@ var NAVTREEINDEX1 =
 "md_doc_ChangeLog.html#autotoc_md56":[1,3,1],
 "md_doc_ChangeLog.html#autotoc_md57":[1,3,2],
 "md_doc_ChangeLog.html#autotoc_md58":[1,3,3],
+"md_doc_ChangeLog.html#autotoc_md59":[1,3,4],
 "pages.html":[],
 "structGateInfo.html":[2,0,3],
 "structGateInfo.html#a723fc6a9effc5a729d3104ed178d0417":[2,0,3,1],
