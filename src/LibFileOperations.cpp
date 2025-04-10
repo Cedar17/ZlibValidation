@@ -5,7 +5,7 @@
  *
  * This function performs the following operations:
  * 1. Creates a console sink for logging with level set to INFO
- * 2. Creates a file sink for logging with level set to DEBUG, saving to [APP_NAME].log
+ * 2. Creates a file sink for logging with level set to TRACE, saving to [APP_NAME].log
  * 3. Configures a logger with both sinks and sets it as the default logger
  * 4. Outputs basic application information:
  *    - Version and build timestamp
