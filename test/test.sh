@@ -10,6 +10,12 @@ ninja
 ./zlibvalidation --help
 ./zlibvalidation --version
 
+## mono sub command
+cd ~/Projects/ZlibValidation/build
+./zlibvalidation clear
+./zlibvalidation -h
+./zlibvalidation mono ~/examples/liberate_lv/LIBRARY/example.lib -s
+
 ## verilog sub command
 
 cd ~/Projects/ZlibValidation/build
