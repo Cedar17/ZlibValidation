@@ -407,8 +407,9 @@ void LibraryComparator::generateReport(const std::string &output_file) {
             if (table[i][note_index].get_text() == "<") {
               outlier_count++;
             }
-            max_diff = std::max(max_diff, diff);
-            max_diff_percent = std::max(max_diff_percent, diff_percent);
+            // Change to absolute value for max diff
+            max_diff = std::max(max_diff, std::abs(diff));
+            max_diff_percent = std::max(max_diff_percent, std::abs(diff_percent));
 
           } catch (const std::invalid_argument &e) {
             spdlog::error("Could not convert value to double: {}", e.what());
