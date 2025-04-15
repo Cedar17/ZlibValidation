@@ -428,3 +428,8 @@
 
 - 修正了 `printInfo()` 函数中的注释错误，将文件日志级别更正为 `trace`，而非 `debug`。
 - 添加了 `mono` 子命令的测试命令到 `test.sh` 脚本中。
+
+### 2025-04-15
+
+- 修复了 `LibraryComparator::generateReport` 方法中的一个 bug，max_diff现在能基于绝对值比较得出最大差异，并且最大差异百分比保持一致。
+- 完善了所有关键子命令的测试命令，确保每个子命令都能在 `test.sh` 脚本中正确执行。
