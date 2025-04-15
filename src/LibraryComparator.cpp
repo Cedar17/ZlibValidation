@@ -386,8 +386,8 @@ void LibraryComparator::generateReport(const std::string &output_file) {
         double sum_diff = 0.0;
         double sum_diff_percent = 0.0;
         size_t outlier_count = 0;
-        double max_diff = -1e9;
-        double max_diff_percent = -1e9;
+        double max_diff = 0;
+        double max_diff_percent = 0;
         std::vector<double> diff_values; // Store diff values for std deviation calculation
 
         // Index of columns
@@ -408,8 +408,10 @@ void LibraryComparator::generateReport(const std::string &output_file) {
               outlier_count++;
             }
             // Change to absolute value for max diff
-            max_diff = std::max(max_diff, std::abs(diff));
-            max_diff_percent = std::max(max_diff_percent, std::abs(diff_percent));
+            if (std::abs(diff) > std::abs(max_diff)) {
+              max_diff = diff;
+              max_diff_percent = diff_percent;
+            }
 
           } catch (const std::invalid_argument &e) {
             spdlog::error("Could not convert value to double: {}", e.what());

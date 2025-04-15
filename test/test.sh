@@ -10,12 +10,20 @@ ninja
 ./zlibvalidation --help
 ./zlibvalidation --version
 
+## parse sub command
+
+cd ~/Projects/ZlibValidation/build
+./zlibvalidation clear
+./zlibvalidation -h
+./zlibvalidation parse ../pdk/tcbn65lpbc.lib ../pdk/tcbn65lplt.lib ../pdk/tcbn65lpml.lib
+
 ## mono sub command
 
 cd ~/Projects/ZlibValidation/build
 ./zlibvalidation clear
 ./zlibvalidation -h
-./zlibvalidation mono ~/examples/liberate_lv/LIBRARY/example.lib -s
+# ./zlibvalidation mono ~/examples/liberate_lv/LIBRARY/example.lib -s
+./zlibvalidation mono ../pdk/tcbn65lpbc.lib ../pdk/tcbn65lplt.lib ../pdk/tcbn65lpml.lib -s
 
 ## supercell sub command
 
@@ -43,7 +51,7 @@ cd ~/Projects/ZlibValidation/build
 cd ~/Projects/ZlibValidation/build
 ./zlibvalidation clear
 ./zlibvalidation -h
-./zlibvalidation compare --ref ../pdk/tcbn65lpbc.ski.lib --comp ../pdk/tcbn65lpbc.nldm.pt.lib
+./zlibvalidation compare --comp ../pdk/tcbn65lpbc.ski.lib --ref ../pdk/tcbn65lpbc.nldm.pt.lib
 
 ## func sub command
 
