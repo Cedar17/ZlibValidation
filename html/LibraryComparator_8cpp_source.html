@@ -395,62 +395,63 @@ $(document).ready(function(){initNavTree('LibraryComparator_8cpp_source.html',''
 <div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>            <span class="keywordflow">if</span> (table[i][note_index].get_text() == <span class="stringliteral">&quot;&lt;&quot;</span>) {</div>
 <div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>              outlier_count++;</div>
 <div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>            }</div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>            max_diff = std::max(max_diff, diff);</div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>            max_diff_percent = std::max(max_diff_percent, diff_percent);</div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span> </div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>          } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::invalid_argument &amp;e) {</div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>            spdlog::error(<span class="stringliteral">&quot;Could not convert value to double: {}&quot;</span>, e.what());</div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>            <span class="keywordflow">continue</span>; <span class="comment">// Skip this row if there&#39;s an error</span></div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>          }</div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>        }</div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span> </div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>        <span class="keywordtype">double</span> avg_diff = sum_diff / failed_count;</div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>        <span class="keywordtype">double</span> avg_diff_percent = sum_diff_percent / failed_count;</div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span> </div>
-<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>        outfile &lt;&lt; <span class="stringliteral">&quot;## &quot;</span> &lt;&lt; cell_name &lt;&lt; <span class="stringliteral">&quot;\n\n&quot;</span>;</div>
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>        outfile &lt;&lt; <span class="stringliteral">&quot;Delay Comparison in ns\n\n&quot;</span>;</div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>        <span class="keywordflow">if</span> (output_file.substr(output_file.size() - 3) == <span class="stringliteral">&quot;.md&quot;</span>) {</div>
-<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>          MarkdownExporter exporter;</div>
-<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>          <span class="keyword">auto</span> markdown = exporter.dump(table);</div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>          outfile &lt;&lt; markdown &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>          outfile &lt;&lt; table &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>        }</div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>        outfile &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>        std::cout &lt;&lt; table &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>        outfile &lt;&lt; cell_name &lt;&lt; <span class="stringliteral">&quot; delay SUMMARY (abstol: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classLibraryComparator.html#af427a02959ef09a0544e325f5b934d01">abstol_</a> &lt;&lt; <span class="stringliteral">&quot;, reltol: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classLibraryComparator.html#abf28f740c7095501489ae0d6c6745e70">reltol_</a></div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>                &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span> </div>
-<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>        <span class="comment">// Create summary table</span></div>
-<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>        Table summary_table;</div>
-<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>        summary_table.add_row({<span class="stringliteral">&quot;Cell Name&quot;</span>, <span class="stringliteral">&quot;Data Type&quot;</span>, <span class="stringliteral">&quot;Failed Count&quot;</span>, <span class="stringliteral">&quot;Avg Diff&quot;</span>, <span class="stringliteral">&quot;Avg Diff%&quot;</span>,</div>
-<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>                               <span class="stringliteral">&quot;Max Diff&quot;</span>, <span class="stringliteral">&quot;Max Diff%&quot;</span>, <span class="stringliteral">&quot;Outliers&quot;</span>});</div>
-<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>        summary_table.add_row({cell_name, <span class="stringliteral">&quot;delay(ns)&quot;</span>, std::to_string(failed_count),</div>
-<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>                               std::to_string(avg_diff), std::to_string(avg_diff_percent) + <span class="stringliteral">&quot;%&quot;</span>,</div>
-<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>                               std::to_string(max_diff), std::to_string(max_diff_percent) + <span class="stringliteral">&quot;%&quot;</span>,</div>
-<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>                               std::to_string(outlier_count)});</div>
-<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span> </div>
-<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>        <span class="comment">// Output summary table</span></div>
-<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>        <span class="comment">// Use std::filesystem to reliably get the extension</span></div>
-<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>        std::filesystem::path file_path(output_file);</div>
-<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>        <span class="keywordflow">if</span> (file_path.has_extension() &amp;&amp; file_path.extension() == <span class="stringliteral">&quot;.md&quot;</span>) {</div>
-<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>          MarkdownExporter exporter;</div>
-<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>          <span class="keyword">auto</span> markdown = exporter.dump(summary_table);</div>
-<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>          outfile &lt;&lt; markdown &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>          outfile &lt;&lt; summary_table &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>        }</div>
-<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>        outfile &lt;&lt; <span class="stringliteral">&quot;Worst delay outlier: Max Abs: &quot;</span> &lt;&lt; max_diff &lt;&lt; <span class="stringliteral">&quot;, Max Rel: &quot;</span> &lt;&lt; max_diff_percent</div>
-<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>                &lt;&lt; <span class="stringliteral">&quot;%, Outliers: &quot;</span> &lt;&lt; outlier_count &lt;&lt; <span class="stringliteral">&quot;\n\n&quot;</span>;</div>
-<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>      }</div>
-<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>      <span class="comment">// cell not found in reference JSON</span></div>
-<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>      spdlog::warn(<span class="stringliteral">&quot;Cell: &#39;{}&#39; not found in reference JSON&quot;</span>, cell_name);</div>
-<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>    }</div>
-<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>  }</div>
-<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span> </div>
-<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span>  outfile.close();</div>
-<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>}</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>            <span class="comment">// Change to absolute value for max diff</span></div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>            max_diff = std::max(max_diff, std::abs(diff));</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>            max_diff_percent = std::max(max_diff_percent, std::abs(diff_percent));</div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span> </div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>          } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::invalid_argument &amp;e) {</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>            spdlog::error(<span class="stringliteral">&quot;Could not convert value to double: {}&quot;</span>, e.what());</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>            <span class="keywordflow">continue</span>; <span class="comment">// Skip this row if there&#39;s an error</span></div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>          }</div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>        }</div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span> </div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>        <span class="keywordtype">double</span> avg_diff = sum_diff / failed_count;</div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>        <span class="keywordtype">double</span> avg_diff_percent = sum_diff_percent / failed_count;</div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span> </div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>        outfile &lt;&lt; <span class="stringliteral">&quot;## &quot;</span> &lt;&lt; cell_name &lt;&lt; <span class="stringliteral">&quot;\n\n&quot;</span>;</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>        outfile &lt;&lt; <span class="stringliteral">&quot;Delay Comparison in ns\n\n&quot;</span>;</div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>        <span class="keywordflow">if</span> (output_file.substr(output_file.size() - 3) == <span class="stringliteral">&quot;.md&quot;</span>) {</div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>          MarkdownExporter exporter;</div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>          <span class="keyword">auto</span> markdown = exporter.dump(table);</div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>          outfile &lt;&lt; markdown &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>          outfile &lt;&lt; table &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>        }</div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>        outfile &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>        std::cout &lt;&lt; table &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>        outfile &lt;&lt; cell_name &lt;&lt; <span class="stringliteral">&quot; delay SUMMARY (abstol: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classLibraryComparator.html#af427a02959ef09a0544e325f5b934d01">abstol_</a> &lt;&lt; <span class="stringliteral">&quot;, reltol: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classLibraryComparator.html#abf28f740c7095501489ae0d6c6745e70">reltol_</a></div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>                &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span> </div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>        <span class="comment">// Create summary table</span></div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>        Table summary_table;</div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>        summary_table.add_row({<span class="stringliteral">&quot;Cell Name&quot;</span>, <span class="stringliteral">&quot;Data Type&quot;</span>, <span class="stringliteral">&quot;Failed Count&quot;</span>, <span class="stringliteral">&quot;Avg Diff&quot;</span>, <span class="stringliteral">&quot;Avg Diff%&quot;</span>,</div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>                               <span class="stringliteral">&quot;Max Diff&quot;</span>, <span class="stringliteral">&quot;Max Diff%&quot;</span>, <span class="stringliteral">&quot;Outliers&quot;</span>});</div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>        summary_table.add_row({cell_name, <span class="stringliteral">&quot;delay(ns)&quot;</span>, std::to_string(failed_count),</div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>                               std::to_string(avg_diff), std::to_string(avg_diff_percent) + <span class="stringliteral">&quot;%&quot;</span>,</div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>                               std::to_string(max_diff), std::to_string(max_diff_percent) + <span class="stringliteral">&quot;%&quot;</span>,</div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>                               std::to_string(outlier_count)});</div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span> </div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>        <span class="comment">// Output summary table</span></div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>        <span class="comment">// Use std::filesystem to reliably get the extension</span></div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>        std::filesystem::path file_path(output_file);</div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>        <span class="keywordflow">if</span> (file_path.has_extension() &amp;&amp; file_path.extension() == <span class="stringliteral">&quot;.md&quot;</span>) {</div>
+<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>          MarkdownExporter exporter;</div>
+<div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span>          <span class="keyword">auto</span> markdown = exporter.dump(summary_table);</div>
+<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span>          outfile &lt;&lt; markdown &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00453" name="l00453"></a><span class="lineno">  453</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span>          outfile &lt;&lt; summary_table &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>        }</div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>        outfile &lt;&lt; <span class="stringliteral">&quot;Worst delay outlier: Max Abs: &quot;</span> &lt;&lt; max_diff &lt;&lt; <span class="stringliteral">&quot;, Max Rel: &quot;</span> &lt;&lt; max_diff_percent</div>
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>                &lt;&lt; <span class="stringliteral">&quot;%, Outliers: &quot;</span> &lt;&lt; outlier_count &lt;&lt; <span class="stringliteral">&quot;\n\n&quot;</span>;</div>
+<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>      }</div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>      <span class="comment">// cell not found in reference JSON</span></div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>      spdlog::warn(<span class="stringliteral">&quot;Cell: &#39;{}&#39; not found in reference JSON&quot;</span>, cell_name);</div>
+<div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>    }</div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>  }</div>
+<div class="line"><a id="l00464" name="l00464"></a><span class="lineno">  464</span> </div>
+<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>  outfile.close();</div>
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span>}</div>
 <div class="ttc" id="aLibraryComparator_8hpp_html"><div class="ttname"><a href="LibraryComparator_8hpp.html">LibraryComparator.hpp</a></div></div>
 <div class="ttc" id="aLibraryComparator_8hpp_html_ab701e3ac61a85b337ec5c1abaad6742d"><div class="ttname"><a href="LibraryComparator_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a></div><div class="ttdeci">nlohmann::json json</div><div class="ttdef"><b>Definition:</b> <a href="LibraryComparator_8hpp_source.html#l00016">LibraryComparator.hpp:16</a></div></div>
 <div class="ttc" id="aclassLibFile_html"><div class="ttname"><a href="classLibFile.html">LibFile</a></div><div class="ttdef"><b>Definition:</b> <a href="LibFile_8hpp_source.html#l00023">LibFile.hpp:23</a></div></div>
@@ -480,7 +481,7 @@ $(document).ready(function(){initNavTree('LibraryComparator_8cpp_source.html',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="LibraryComparator_8cpp.html">LibraryComparator.cpp</a></li>
-    <li class="footer">Generated on Mon Apr 14 2025 23:54:12 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Apr 15 2025 16:19:05 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
