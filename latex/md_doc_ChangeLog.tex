@@ -480,5 +480,10 @@ Logically Equivalent   &Yes   \\\cline{1-2}
 
 \begin{DoxyItemize}
 \item 修正了 {\ttfamily \mbox{\hyperlink{LibFileOperations_8hpp_a2dbaf5580b5305d54cff6848ae7deb30}{print\+Info()}}} 函数中的注释错误，将文件日志级别更正为 {\ttfamily trace}，而非 {\ttfamily debug}。
-\item 添加了 {\ttfamily mono} 子命令的测试命令到 {\ttfamily test.\+sh} 脚本中。 
+\item 添加了 {\ttfamily mono} 子命令的测试命令到 {\ttfamily test.\+sh} 脚本中。
+\end{DoxyItemize}\hypertarget{md_doc_ChangeLog_autotoc_md60}{}\doxysubsection{2025-\/04-\/15}\label{md_doc_ChangeLog_autotoc_md60}
+
+\begin{DoxyItemize}
+\item 修复了 {\ttfamily \mbox{\hyperlink{classLibraryComparator_a4f150829d621ad8f199813a0f9fc8be5}{Library\+Comparator\+::generate\+Report}}} 方法中的一个 bug，max\+\_\+diff现在能基于绝对值比较得出最大差异，并且最大差异百分比保持一致。
+\item 完善了所有关键子命令的测试命令，确保每个子命令都能在 {\ttfamily test.\+sh} 脚本中正确执行。 
 \end{DoxyItemize}

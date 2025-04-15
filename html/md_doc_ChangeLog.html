@@ -611,7 +611,13 @@ $(document).ready(function(){initNavTree('md_doc_ChangeLog.html',''); initResiza
 2025-04-10</h2>
 <ul>
 <li>修正了 <code><a class="el" href="LibFileOperations_8hpp.html#a2dbaf5580b5305d54cff6848ae7deb30" title="Sets up and configures the global logger and prints application information.">printInfo()</a></code> 函数中的注释错误，将文件日志级别更正为 <code>trace</code>，而非 <code>debug</code>。</li>
-<li>添加了 <code>mono</code> 子命令的测试命令到 <code>test.sh</code> 脚本中。 </li>
+<li>添加了 <code>mono</code> 子命令的测试命令到 <code>test.sh</code> 脚本中。</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md60"></a>
+2025-04-15</h2>
+<ul>
+<li>修复了 <code><a class="el" href="classLibraryComparator.html#a4f150829d621ad8f199813a0f9fc8be5" title="Generates a comparison report between the reference and comparison libraries.">LibraryComparator::generateReport</a></code> 方法中的一个 bug，max_diff现在能基于绝对值比较得出最大差异，并且最大差异百分比保持一致。</li>
+<li>完善了所有关键子命令的测试命令，确保每个子命令都能在 <code>test.sh</code> 脚本中正确执行。 </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -619,7 +625,7 @@ $(document).ready(function(){initNavTree('md_doc_ChangeLog.html',''); initResiza
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 15 2025 16:41:01 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Apr 15 2025 20:55:05 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
