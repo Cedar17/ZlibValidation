@@ -433,3 +433,9 @@
 
 - 修复了 `LibraryComparator::generateReport` 方法中的一个 bug，max_diff现在能基于绝对值比较得出最大差异，并且最大差异百分比保持一致。
 - 完善了所有关键子命令的测试命令，确保每个子命令都能在 `test.sh` 脚本中正确执行。
+
+## 2026-05
+
+### 2026-05-13
+
+- 修复作者联系邮件信息在cmakelists修改后不能自动更新到version.h的问题。导致这个问题的原因是 `CMakeLists.txt` 中使用了 `CACHE` 变量。`set(VAR "VALUE" CACHE STRING "DocString")` 这种方式只会在这两个变量还未缓存时赋值。如果在 CMakeLists.txt 中修改了内容，而且 CMake 之前已经生成过并保存了 Cache 文件（`CMakeCache.txt`），CMake 就不会再覆盖它们的值，因此相应的模板替换也就不会更新出新的结果。补充了中文名、备用邮箱、更新了版本号为1.1.3。

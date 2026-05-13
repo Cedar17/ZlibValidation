@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.21...3.31)
 project(ZlibValidation
     LANGUAGES CXX
-    VERSION 1.1.2
+    VERSION 1.1.3
 )
 
 # Define author information
-set(PROJECT_AUTHOR "Song Zixuan" CACHE STRING "Project maintainer")
-set(PROJECT_CONTACT "cedar@zju.edu.cn" CACHE STRING "Contact info")
+set(PROJECT_AUTHOR "Song Zixuan (宋子轩)")
+set(PROJECT_CONTACT "zx.song@zju.edu.cn, songcedar@outlook.com")
 
 # Set default build type to Release if not specified
 if(NOT CMAKE_BUILD_TYPE)
