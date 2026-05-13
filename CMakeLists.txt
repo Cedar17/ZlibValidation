@@ -95,6 +95,29 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(slang)
 
+# Fetch SQLiteCpp
+set(SQLITECPP_RUN_CPPLINT OFF CACHE BOOL "Run cpplint" FORCE)
+set(SQLITECPP_RUN_CPPCHECK OFF CACHE BOOL "Run cppcheck" FORCE)
+set(SQLITECPP_BUILD_TESTS OFF CACHE BOOL "Build SQLiteCpp tests" FORCE)
+set(SQLITECPP_BUILD_EXAMPLES OFF CACHE BOOL "Build SQLiteCpp examples" FORCE)
+FetchContent_Declare(
+    SQLiteCpp
+    GIT_REPOSITORY https://github.com/SRombauts/SQLiteCpp.git
+    GIT_SHALLOW ON
+    GIT_TAG 3.3.1
+)
+FetchContent_MakeAvailable(SQLiteCpp)
+
+# Fetch GoogleTest
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_Declare(
+    googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_SHALLOW ON
+    GIT_TAG v1.14.0
+)
+FetchContent_MakeAvailable(googletest)
+
 # Collect all source files
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 
@@ -129,3 +152,5 @@ target_link_libraries(zlibvalidation PRIVATE
 
 # Allow multiple definition of symbols
 target_link_options(zlibvalidation PRIVATE "-Wl,--allow-multiple-definition")
+
+add_subdirectory(test)
