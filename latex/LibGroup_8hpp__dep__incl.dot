@@ -1,0 +1,35 @@
+digraph "include/LibGroup.hpp"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [label="include/LibGroup.hpp",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="include/Iterators.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$Iterators_8hpp.html",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node3 [label="include/LibFile.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibFile_8hpp.html",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="steelblue1",style="solid"];
+  Node4 [label="include/LibFileOperations.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibFileOperations_8hpp.html",tooltip=" "];
+  Node4 -> Node5 [dir="back",color="steelblue1",style="solid"];
+  Node5 [label="src/LibFileOperations.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibFileOperations_8cpp.html",tooltip=" "];
+  Node4 -> Node6 [dir="back",color="steelblue1",style="solid"];
+  Node6 [label="src/main.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html",tooltip="This file contains the main function for the ZlibValidation tool."];
+  Node3 -> Node7 [dir="back",color="steelblue1",style="solid"];
+  Node7 [label="include/LibraryComparator.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibraryComparator_8hpp.html",tooltip=" "];
+  Node7 -> Node4 [dir="back",color="steelblue1",style="solid"];
+  Node7 -> Node8 [dir="back",color="steelblue1",style="solid"];
+  Node8 [label="src/LibraryComparator.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibraryComparator_8cpp.html",tooltip=" "];
+  Node3 -> Node9 [dir="back",color="steelblue1",style="solid"];
+  Node9 [label="src/LibFile.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibFile_8cpp.html",tooltip=" "];
+  Node2 -> Node10 [dir="back",color="steelblue1",style="solid"];
+  Node10 [label="include/json_utils.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$json__utils_8hpp.html",tooltip=" "];
+  Node10 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node10 -> Node11 [dir="back",color="steelblue1",style="solid"];
+  Node11 [label="src/json_utils.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$json__utils_8cpp.html",tooltip=" "];
+  Node2 -> Node12 [dir="back",color="steelblue1",style="solid"];
+  Node12 [label="src/Iterators.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$Iterators_8cpp.html",tooltip=" "];
+  Node1 -> Node10 [dir="back",color="steelblue1",style="solid"];
+  Node1 -> Node13 [dir="back",color="steelblue1",style="solid"];
+  Node13 [label="src/LibGroup.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibGroup_8cpp.html",tooltip=" "];
+}

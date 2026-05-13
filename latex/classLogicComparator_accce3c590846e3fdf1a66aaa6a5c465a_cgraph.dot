@@ -1,0 +1,13 @@
+digraph "LogicComparator::preprocessExpression"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [label="LogicComparator::preprocess\lExpression",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Preprocesses a logical expression string to prepare it for evaluation."];
+  Node1 -> Node2 [color="steelblue1",style="solid"];
+  Node2 [label="isIdentifier",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df",tooltip="Checks if a given string is a valid identifier."];
+  Node1 -> Node3 [color="steelblue1",style="solid"];
+  Node3 [label="isOperator",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LogicComparator_8cpp.html#a1c875672f908868869e6cce7cbd92c1c",tooltip="Checks if a given token is a logical operator."];
+}

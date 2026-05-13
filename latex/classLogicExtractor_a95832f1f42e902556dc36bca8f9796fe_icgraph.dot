@@ -1,0 +1,20 @@
+digraph "LogicExtractor::formatExpression"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [label="LogicExtractor::formatExpression",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Formats a logic expression based on the gate type and input expressions."];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="LogicExtractor::deriveLogic\lRecursive",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLogicExtractor.html#ad00ef591f9a574c2e1bb9ad6a30c0db4",tooltip="Recursively derives the logic expression for a given signal."];
+  Node2 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node3 [label="LogicExtractor::getLogic\lExpressions",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLogicExtractor.html#a234c934f2b8824311dbeca77f4d8ad52",tooltip="Extracts logic expressions for all primary output ports of the target cell."];
+  Node3 -> Node4 [dir="back",color="steelblue1",style="solid"];
+  Node4 [label="extractLogicFromVerilog",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LogicExtractor_8cpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d",tooltip="Extracts logic expressions from a Verilog file for a specified cell."];
+  Node4 -> Node5 [dir="back",color="steelblue1",style="solid"];
+  Node5 [label="funcLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476",tooltip="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..."];
+  Node5 -> Node6 [dir="back",color="steelblue1",style="solid"];
+  Node6 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97",tooltip=" "];
+}

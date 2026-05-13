@@ -1,0 +1,11 @@
+digraph "LogicExtractor::getInternalWires"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [label="LogicExtractor::getInternal\lWires",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="extractAndPrintNetlistInfo",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LogicExtractor_8cpp.html#a2276f971f6bd1d8f34f635811cc65e08",tooltip="Extracts and prints netlist information from a Verilog file for a specified cell."];
+}

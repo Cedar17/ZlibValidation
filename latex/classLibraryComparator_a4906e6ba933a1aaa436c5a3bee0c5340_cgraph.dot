@@ -1,0 +1,11 @@
+digraph "LibraryComparator::compareTimingArc"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [label="LibraryComparator::\lcompareTimingArc",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Compares a timing arc between two JSON objects."];
+  Node1 -> Node2 [color="steelblue1",style="solid"];
+  Node2 [label="LibraryComparator::\lcompareLut",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibraryComparator.html#afef02627c853b4956fb5f9bdf7f0e6ee",tooltip="Compares lookup tables (LUTs) between reference and comparison libraries for a specific timing arc."];
+}

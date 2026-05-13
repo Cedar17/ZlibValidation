@@ -1,0 +1,17 @@
+digraph "extractAndPrintNetlistInfo"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [label="extractAndPrintNetlistInfo",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Extracts and prints netlist information from a Verilog file for a specified cell."];
+  Node1 -> Node2 [color="steelblue1",style="solid"];
+  Node2 [label="LogicExtractor::getExtracted\lGates",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLogicExtractor.html#a1526e2569cae9fee072b8fc90c159567",tooltip=" "];
+  Node1 -> Node3 [color="steelblue1",style="solid"];
+  Node3 [label="LogicExtractor::getInternal\lWires",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLogicExtractor.html#a8fa7c2d7d0f96602169c4572c56f9292",tooltip=" "];
+  Node1 -> Node4 [color="steelblue1",style="solid"];
+  Node4 [label="LogicExtractor::getPrimary\lInputs",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLogicExtractor.html#a8bd2720fc5c89953124e82e56cd0d13d",tooltip=" "];
+  Node1 -> Node5 [color="steelblue1",style="solid"];
+  Node5 [label="LogicExtractor::getPrimary\lOutputs",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLogicExtractor.html#a9086b5ae491778be70e0f78f83bf7b77",tooltip=" "];
+}

@@ -1,0 +1,15 @@
+digraph "LogicComparator::extractVariables"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [label="LogicComparator::extract\lVariables",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Extracts and validates variables from two expressions, ensuring they match."];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="LogicComparator::compare\lCellLogic",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLogicComparator.html#ae5c1b36b4a05b18c36d7fe1cbeb3ec49",tooltip="Compares logic for all output pins defined in the input maps, and stores results in all_pin_results_."];
+  Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node3 [label="funcLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476",tooltip="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..."];
+  Node3 -> Node4 [dir="back",color="steelblue1",style="solid"];
+  Node4 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97",tooltip=" "];
+}

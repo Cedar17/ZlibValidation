@@ -1,0 +1,13 @@
+digraph "LibFile::spice"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [label="LibFile::spice",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Generates a SPICE netlist for the library based on a temporary Verilog file, using the V2LVS tool."];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="spiceLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibFileOperations_8cpp.html#a249215076db60dd83d4ed0b17fb132f7",tooltip="Generates a SPICE library file from a given library file, applying a specified chain length and cell ..."];
+  Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node3 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97",tooltip=" "];
+}
