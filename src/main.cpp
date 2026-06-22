@@ -64,19 +64,16 @@ int main(int argc, char *argv[]) {
   parse_cmd->add_option("-l,--log", log_file_name,
                         "Specify the log file name. Default: <basename>.parse.log");
 
-  // DB writing options (Phase 2: ZlibValidation generic DB write)
+  // DB writing options (SQLite database output)
   std::string db_path = "";
   std::string pvt_corner = "";
   double aged_year = 0.0;
-  std::string lib_json_path = "";
   parse_cmd->add_option("--db", db_path,
                         "Path to SQLite database for storing LUT entries (enables DB write)");
-  parse_cmd->add_option("--pvt-corner", pvt_corner,
-                        "PVT corner string (e.g. SS_1p08V_125C). Required when --db is set.");
+  parse_cmd->add_option("--pvt", pvt_corner,
+                        "PVT corner string (e.g. SS_1p08V_125C). Recommended when writing to DB.");
   parse_cmd->add_option("--aged-year", aged_year,
-                        "Aged year value (e.g. 0.01 for fresh). Required when --db is set.");
-  parse_cmd->add_option("--lib-json", lib_json_path,
-                        "Custom path for .lib.json output (default: <basename>.json)");
+                        "Aged year value (default: 0.0, not used for non-aging libraries).");
 
   parse_cmd->callback([&] {
     printInfo();
@@ -94,7 +91,7 @@ int main(int argc, char *argv[]) {
         parseLibFile(library_paths[0], log_file_name);
       }
     } else {
-      // ---- DB mode: parse each file, write to DB and optionally to JSON ----
+      // ---- DB mode: parse each file and write LUT entries to DB ----
       spdlog::info("DB write enabled: '{}' (corner={}, aged_year={})", db_path, pvt_corner,
                    aged_year);
       for (const auto &library_path : library_paths) {
@@ -103,15 +100,7 @@ int main(int argc, char *argv[]) {
                                   : log_file_name;
         LibFile libfile(library_path, logname);
         libfile.parse();
-
-        // Write LUT entries to DB
         libfile.writeToDB(db_path, pvt_corner, aged_year);
-
-        // Write JSON (custom path for single file, default for multi)
-        if (library_paths.size() == 1 && !lib_json_path.empty()) {
-          libfile.jsonname_ = lib_json_path;
-        }
-        libfile.writeJsonToFile();
       }
     }
   });

@@ -69,7 +69,9 @@ public:
    * @param index_1       Row index values (size == rows_n).
    * @param index_2       Column index values (size == cols_n).
    * @param values        Flattened LUT values (size == rows_n × cols_n, row-major).
-   * @param process       Process number from .lib header.
+   * @param process       Process number from .lib header (raw integer, e.g. 1).
+   *                       Not mapped to SS/FF/TT — that is the caller's responsibility
+   *                       via the --pvt CLI argument.
    * @param temperature   Temperature from .lib header.
    * @param voltage       Voltage from .lib header.
    */
