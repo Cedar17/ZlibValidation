@@ -1,5 +1,7 @@
 #include "LibFile.hpp"
 
+#include "LibDatabase.hpp"
+
 /**
  * @brief Constructs a LibFile object with specified file path and logger name
  *
@@ -177,6 +179,96 @@ void LibFile::parse() {
     // group_iter's lifetime ends here, and the destructor is called
   }
   si2drPIQuit(&err_);
+}
+
+void LibFile::writeToDB(const std::string &db_path, const std::string &pvt_corner,
+                         double aged_year) {
+  logger_->info("Writing LUT entries to DB: '{}'", db_path);
+
+  if (!lib_json_.contains("cells") || !lib_json_["cells"].is_array()) {
+    logger_->warn("No cells found in parsed JSON, skipping DB write");
+    return;
+  }
+
+  LibDatabase database(db_path);
+  database.initialize();
+
+  int total_entries = 0;
+
+  // --- Extract header-level PVT ---
+  int process = lib_json_.value("process", 0);
+  double temperature = lib_json_.value("temperature", 0.0);
+  double voltage = lib_json_.value("voltage", 0.0);
+
+  // library_name = .lib basename (scenario_id form)
+  std::string library_name = basename_;
+
+  // Walk: cells → output_pins → timing_arcs → arc_types
+  for (const auto &cell : lib_json_["cells"]) {
+    std::string cell_name = cell["cell_name"].get<std::string>();
+
+    if (!cell.contains("output_pins") || !cell["output_pins"].is_array()) continue;
+
+    for (const auto &pin : cell["output_pins"]) {
+      std::string output_pin = pin["pin_name"].get<std::string>();
+
+      if (!pin.contains("timing_arcs") || !pin["timing_arcs"].is_array()) continue;
+
+      for (const auto &arc : pin["timing_arcs"]) {
+        std::string related_pin = arc.value("related_pin", "");
+        std::string timing_sense = arc.value("timing_sense", "");
+        std::string timing_type = arc.value("timing_type", "");
+
+        // Four arc types to check
+        static const char *ARC_NAMES[] = {"cell_rise", "cell_fall", "rise_transition",
+                                          "fall_transition"};
+        for (const char *arc_type : ARC_NAMES) {
+          if (!arc.contains(arc_type)) continue;
+          const auto &lut = arc[arc_type];
+          if (!lut.contains("index_1") || !lut.contains("values")) continue;
+
+          // index_1 → rows_n
+          const auto &idx1_json = lut["index_1"];
+          std::vector<double> index_1 = idx1_json.get<std::vector<double>>();
+          int rows_n = static_cast<int>(index_1.size());
+
+          // index_2 (optional, derive cols_n from values shape)
+          std::vector<double> index_2;
+          if (lut.contains("index_2")) {
+            index_2 = lut["index_2"].get<std::vector<double>>();
+          }
+
+          // values → flatten
+          const auto &vals_json = lut["values"];
+          std::vector<double> values;
+          int cols_n = 0;
+          if (vals_json.is_array() && !vals_json.empty()) {
+            cols_n = static_cast<int>(vals_json[0].size());
+            for (const auto &row : vals_json) {
+              for (const auto &v : row) {
+                values.push_back(v.get<double>());
+              }
+            }
+          }
+
+          // If index_2 is missing, default to empty vector of size cols_n
+          if (index_2.empty()) {
+            index_2.resize(cols_n, 0.0);
+          }
+
+          database.writeLutEntry(
+              filename_,   // file_path (original path for provenance)
+              library_name, pvt_corner, aged_year, cell_name, output_pin,
+              related_pin, timing_sense, timing_type, arc_type, rows_n, cols_n,
+              index_1, index_2, values, process, temperature, voltage);
+
+          total_entries++;
+        }
+      }
+    }
+  }
+
+  logger_->info("Wrote {} LUT entries to DB: '{}'", total_entries, db_path);
 }
 
 void LibFile::modify() { logger_->info("Modifying the file..."); }

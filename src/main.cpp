@@ -63,18 +63,56 @@ int main(int argc, char *argv[]) {
       ->required();
   parse_cmd->add_option("-l,--log", log_file_name,
                         "Specify the log file name. Default: <basename>.parse.log");
+
+  // DB writing options (Phase 2: ZlibValidation generic DB write)
+  std::string db_path = "";
+  std::string pvt_corner = "";
+  double aged_year = 0.0;
+  std::string lib_json_path = "";
+  parse_cmd->add_option("--db", db_path,
+                        "Path to SQLite database for storing LUT entries (enables DB write)");
+  parse_cmd->add_option("--pvt-corner", pvt_corner,
+                        "PVT corner string (e.g. SS_1p08V_125C). Required when --db is set.");
+  parse_cmd->add_option("--aged-year", aged_year,
+                        "Aged year value (e.g. 0.01 for fresh). Required when --db is set.");
+  parse_cmd->add_option("--lib-json", lib_json_path,
+                        "Custom path for .lib.json output (default: <basename>.json)");
+
   parse_cmd->callback([&] {
     printInfo();
-    // Check if multi files
-    if (library_paths.size() > 1) {
-      spdlog::info("Running sequential parsing for {} files.", library_paths.size());
-      spdlog::info("Each library will write to its own log file.");
-      // Sequential parsing
-      for (const auto &library_path : library_paths) {
-        parseLibFile(library_path, log_file_name = "");
+    bool has_db = !db_path.empty();
+
+    if (!has_db) {
+      // ---- Existing behaviour: no DB ----
+      if (library_paths.size() > 1) {
+        spdlog::info("Running sequential parsing for {} files.", library_paths.size());
+        spdlog::info("Each library will write to its own log file.");
+        for (const auto &library_path : library_paths) {
+          parseLibFile(library_path, log_file_name = "");
+        }
+      } else {
+        parseLibFile(library_paths[0], log_file_name);
       }
     } else {
-      parseLibFile(library_paths[0], log_file_name);
+      // ---- DB mode: parse each file, write to DB and optionally to JSON ----
+      spdlog::info("DB write enabled: '{}' (corner={}, aged_year={})", db_path, pvt_corner,
+                   aged_year);
+      for (const auto &library_path : library_paths) {
+        std::string logname = log_file_name.empty()
+                                  ? std::filesystem::path(library_path).stem().string() + ".parse.log"
+                                  : log_file_name;
+        LibFile libfile(library_path, logname);
+        libfile.parse();
+
+        // Write LUT entries to DB
+        libfile.writeToDB(db_path, pvt_corner, aged_year);
+
+        // Write JSON (custom path for single file, default for multi)
+        if (library_paths.size() == 1 && !lib_json_path.empty()) {
+          libfile.jsonname_ = lib_json_path;
+        }
+        libfile.writeJsonToFile();
+      }
     }
   });
 

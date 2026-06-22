@@ -8,6 +8,9 @@ project(ZlibValidation
 set(PROJECT_AUTHOR "Song Zixuan (宋子轩)")
 set(PROJECT_CONTACT "zx.song@zju.edu.cn, songcedar@outlook.com")
 
+# Enable testing for CTest
+enable_testing()
+
 # Set default build type to Release if not specified
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release)
@@ -141,13 +144,14 @@ target_include_directories(zlibvalidation PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include_3rd_party
 )
 target_link_directories(zlibvalidation PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib)
-target_link_libraries(zlibvalidation PRIVATE 
+target_link_libraries(zlibvalidation PRIVATE
     si2dr_liberty
-    CLI11::CLI11 
-    spdlog::spdlog 
+    CLI11::CLI11
+    spdlog::spdlog
     nlohmann_json::nlohmann_json
     tabulate::tabulate
     slang::slang
+    SQLiteCpp
 )
 
 # Allow multiple definition of symbols

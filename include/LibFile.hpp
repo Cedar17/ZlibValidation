@@ -37,6 +37,7 @@ public:
   void modify();
   void mono(const bool is_slew);
   void supercell(const int chain_length, const std::vector<std::string> &cell_names);
+  void writeToDB(const std::string &db_path, const std::string &pvt_corner, double aged_year);
   void verilog(const int chain_length, const std::vector<std::string> &cell_names);
   void spice(const int chain_length, const std::vector<std::string> &cell_names,
              const std::string &verilog_lib_file, const std::string &spice_lib_file);
