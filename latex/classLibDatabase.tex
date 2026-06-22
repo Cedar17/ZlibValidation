@@ -140,7 +140,7 @@ Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (file\+\_\+path
 \hline
 {\em values} & Flattened LUT values (size == rows\+\_\+n × cols\+\_\+n, row-\/major). \\
 \hline
-{\em process} & Process number from .lib header. \\
+{\em process} & Process number from .lib header (raw integer, e.\+g. 1). Not mapped to SS/\+FF/\+TT — that is the caller\textquotesingle{}s responsibility via the --pvt CLI argument. \\
 \hline
 {\em temperature} & Temperature from .lib header. \\
 \hline
@@ -166,7 +166,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00087}{87}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
 
 \mbox{\Hypertarget{classLibDatabase_a83680ef45373d9d7c8f3ce8f84d83bfe}\label{classLibDatabase_a83680ef45373d9d7c8f3ce8f84d83bfe}} 
 \index{LibDatabase@{LibDatabase}!db\_path\_@{db\_path\_}}
@@ -176,7 +176,7 @@ Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00087}{87}} of file
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00086}{86}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
 
 \mbox{\Hypertarget{classLibDatabase_ad50c82ee4492b7babd4e99443c9d31fe}\label{classLibDatabase_ad50c82ee4492b7babd4e99443c9d31fe}} 
 \index{LibDatabase@{LibDatabase}!initialized\_@{initialized\_}}
@@ -186,7 +186,7 @@ Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00086}{86}} of file
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
 
 \mbox{\Hypertarget{classLibDatabase_ab1a62e802c5dac9e35f946e465227e97}\label{classLibDatabase_ab1a62e802c5dac9e35f946e465227e97}} 
 \index{LibDatabase@{LibDatabase}!insert\_stmt\_@{insert\_stmt\_}}
@@ -196,7 +196,7 @@ Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00091}{91}} of file
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00090}{90}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00092}{92}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
 
 
 
