@@ -59,4 +59,15 @@ digraph "src/LibFile.cpp"
   Node17 -> Node12 [color="steelblue1",style="solid"];
   Node2 -> Node21 [color="steelblue1",style="solid"];
   Node21 [label="version.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$version_8h.html",tooltip=" "];
+  Node1 -> Node22 [color="steelblue1",style="solid"];
+  Node22 [label="LibDatabase.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibDatabase_8hpp.html",tooltip=" "];
+  Node22 -> Node23 [color="steelblue1",style="solid"];
+  Node23 [label="memory",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node22 -> Node6 [color="steelblue1",style="solid"];
+  Node22 -> Node24 [color="steelblue1",style="solid"];
+  Node24 [label="vector",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node22 -> Node25 [color="steelblue1",style="solid"];
+  Node25 [label="SQLiteCpp/Database.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node22 -> Node26 [color="steelblue1",style="solid"];
+  Node26 [label="SQLiteCpp/Statement.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
 }

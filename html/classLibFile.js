@@ -15,6 +15,7 @@ var classLibFile =
     [ "supercell", "classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188", null ],
     [ "verilog", "classLibFile.html#a92ef7304afa302f98a69bd371b7955dd", null ],
     [ "writeJsonToFile", "classLibFile.html#a88de22798a64acdb38faefc0d785804f", null ],
+    [ "writeToDB", "classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a", null ],
     [ "basename_", "classLibFile.html#a167d7e2669926e724247cdd7e7bf48f4", null ],
     [ "err_", "classLibFile.html#aae4abb8e49b9baa04edd1ad5acef3abd", null ],
     [ "filename_", "classLibFile.html#ab2c4f2ae06328ce9fff447369ded1686", null ],

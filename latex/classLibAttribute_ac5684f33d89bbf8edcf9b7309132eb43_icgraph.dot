@@ -18,6 +18,7 @@ digraph "LibAttribute::getFloat"
   Node6 [label="funcLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476",tooltip="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..."];
   Node6 -> Node7 [dir="back",color="steelblue1",style="solid"];
   Node7 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97",tooltip=" "];
+  Node3 -> Node7 [dir="back",color="steelblue1",style="solid"];
   Node3 -> Node8 [dir="back",color="steelblue1",style="solid"];
   Node8 [label="LibFile::mono",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe",tooltip="Validates that lookup tables are monotonically increasing with respect to the output load."];
   Node8 -> Node9 [dir="back",color="steelblue1",style="solid"];

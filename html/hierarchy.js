@@ -4,6 +4,7 @@ var hierarchy =
     [ "GateInfo", "structGateInfo.html", null ],
     [ "GroupsIterator", "classGroupsIterator.html", null ],
     [ "LibAttribute", "classLibAttribute.html", null ],
+    [ "LibDatabase", "classLibDatabase.html", null ],
     [ "LibFile", "classLibFile.html", null ],
     [ "LibGroup", "classLibGroup.html", null ],
     [ "LibraryComparator", "classLibraryComparator.html", null ],

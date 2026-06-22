@@ -21,6 +21,8 @@ void \mbox{\hyperlink{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}{mono}} (co
 \begin{DoxyCompactList}\small\item\em Validates that lookup tables are monotonically increasing with respect to the output load. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{supercell}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
 \begin{DoxyCompactList}\small\item\em Creates supercells based on standard cells in the library file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLibFile_ac42966ae3c352b33ac89aa135e130a9a}{write\+To\+DB}} (const std\+::string \&db\+\_\+path, const std\+::string \&pvt\+\_\+corner, double aged\+\_\+year)
+\item 
 void \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{verilog}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names)
 \begin{DoxyCompactList}\small\item\em Generates Verilog files for cell validation based on the library file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{spice}} (const int chain\+\_\+length, const std\+::vector$<$ std\+::string $>$ \&cell\+\_\+names, const std\+::string \&verilog\+\_\+lib\+\_\+file, const std\+::string \&spice\+\_\+lib\+\_\+file)
@@ -106,7 +108,7 @@ This constructor initializes a \mbox{\hyperlink{classLibFile}{Lib\+File}} object
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 \mbox{\Hypertarget{classLibFile_ae6956feb0dd50065d6abf8f3cd46bb80}\label{classLibFile_ae6956feb0dd50065d6abf8f3cd46bb80}} 
 \index{LibFile@{LibFile}!````~LibFile@{$\sim$LibFile}}
@@ -116,7 +118,7 @@ Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00015}{15}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 
 
@@ -162,7 +164,7 @@ true if all values in the timing arc are monotonic, false otherwise
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00205}{205}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00297}{297}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the caller graph for this function\+:
 % FIG 0
@@ -208,7 +210,7 @@ This function generates SPICE-\/like resistor-\/capacitor (RC) lines and writes 
 \end{DoxyCode}
  
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00931}{931}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01023}{1023}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the caller graph for this function\+:
 % FIG 1
@@ -236,7 +238,7 @@ A map containing the logic functions for the output pins of the specified cell. 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01392}{1392}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01484}{1484}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the call graph for this function\+:
 % FIG 2
@@ -250,7 +252,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00182}{182}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00274}{274}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 \mbox{\Hypertarget{classLibFile_a25b6fd7453e8a200a70b2d19a6e216e2}\label{classLibFile_a25b6fd7453e8a200a70b2d19a6e216e2}} 
 \index{LibFile@{LibFile}!modifySpiceNetlist@{modifySpiceNetlist}}
@@ -305,7 +307,7 @@ The function assumes that the second to last token in an instance line is the ou
 \end{DoxySeeAlso}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01013}{1013}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01105}{1105}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the call graph for this function\+:
 % FIG 4
@@ -343,7 +345,7 @@ The function outputs\+:
 \item List of cells that failed the check (if any) 
 \end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00331}{331}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00423}{423}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the call graph for this function\+:
 % FIG 6
@@ -385,7 +387,7 @@ This method creates local scopes to ensure proper cleanup of SI2 Iterators.
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the call graph for this function\+:
 % FIG 8
@@ -422,7 +424,7 @@ This function uses the spdlog library for logging and the si2dr\+Read\+Liberty\+
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the caller graph for this function\+:
 % FIG 10
@@ -467,7 +469,7 @@ Temporary files (Verilog and intermediate SPICE) are kept for debugging purposes
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01279}{1279}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l01371}{1371}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the call graph for this function\+:
 % FIG 11
@@ -495,7 +497,7 @@ A vector of strings, where each string is a token from the input string.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00889}{889}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00981}{981}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the caller graph for this function\+:
 % FIG 13
@@ -527,7 +529,7 @@ The method will report any requested cells that were not found in the library.
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00460}{460}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00552}{552}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the call graph for this function\+:
 % FIG 14
@@ -570,7 +572,7 @@ The function writes a temporary file during processing that might not be removed
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00614}{614}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00706}{706}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the call graph for this function\+:
 % FIG 16
@@ -595,10 +597,24 @@ This method opens the file specified by jsonname\+\_\+ and writes the content of
 \end{DoxyExceptions}
 
 
-Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
 
 Here is the caller graph for this function\+:
 % FIG 18
+\mbox{\Hypertarget{classLibFile_ac42966ae3c352b33ac89aa135e130a9a}\label{classLibFile_ac42966ae3c352b33ac89aa135e130a9a}} 
+\index{LibFile@{LibFile}!writeToDB@{writeToDB}}
+\index{writeToDB@{writeToDB}!LibFile@{LibFile}}
+\doxysubsubsection{\texorpdfstring{writeToDB()}{writeToDB()}}
+{\footnotesize\ttfamily void Lib\+File\+::write\+To\+DB (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{db\+\_\+path,  }\item[{const std\+::string \&}]{pvt\+\_\+corner,  }\item[{double}]{aged\+\_\+year }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{LibFile_8cpp_source_l00184}{184}} of file \mbox{\hyperlink{LibFile_8cpp_source}{Lib\+File.\+cpp}}.
+
+Here is the call graph for this function\+:
+% FIG 19
+Here is the caller graph for this function\+:
+% FIG 20
 
 
 \doxysubsection{Member Data Documentation}
@@ -620,7 +636,7 @@ Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00029}{29}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00046}{46}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
 
 \mbox{\Hypertarget{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}\label{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}} 
 \index{LibFile@{LibFile}!filename\_@{filename\_}}
@@ -700,7 +716,7 @@ Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00033}{33}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00047}{47}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
 
 \mbox{\Hypertarget{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}\label{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}} 
 \index{LibFile@{LibFile}!temperature\_@{temperature\_}}
@@ -710,7 +726,7 @@ Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00047}{47}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00050}{50}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
 
 \mbox{\Hypertarget{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}\label{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}} 
 \index{LibFile@{LibFile}!voltage\_@{voltage\_}}
@@ -720,7 +736,7 @@ Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00049}{49}} of file \mb
 
 
 
-Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibFile_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{LibFile_8hpp_source}{Lib\+File.\+hpp}}.
 
 
 

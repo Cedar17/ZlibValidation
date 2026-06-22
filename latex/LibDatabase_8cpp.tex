@@ -1,0 +1,104 @@
+\hypertarget{LibDatabase_8cpp}{}\doxysection{src/\+Lib\+Database.cpp File Reference}
+\label{LibDatabase_8cpp}\index{src/LibDatabase.cpp@{src/LibDatabase.cpp}}
+{\ttfamily \#include \char`\"{}Lib\+Database.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$SQLite\+Cpp/\+Database.\+h$>$}\newline
+{\ttfamily \#include $<$SQLite\+Cpp/\+Statement.\+h$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for Lib\+Database.\+cpp\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ float $>$ \mbox{\hyperlink{LibDatabase_8cpp_aa1c231f3f6ea92a58aa1858fbea4de24}{to\+Float\+Blob}} (const std\+::vector$<$ double $>$ \&src)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const char $\ast$ \mbox{\hyperlink{LibDatabase_8cpp_a67a903b2b163348fd0f14490bf783f62}{DDL\+\_\+\+LUT\+\_\+\+ENTRIES}}
+\item 
+static const char $\ast$ \mbox{\hyperlink{LibDatabase_8cpp_af706e6c16ee15d3ad0ee6814f94ad273}{INSERT\+\_\+\+SQL}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{LibDatabase_8cpp_aa1c231f3f6ea92a58aa1858fbea4de24}\label{LibDatabase_8cpp_aa1c231f3f6ea92a58aa1858fbea4de24}} 
+\index{LibDatabase.cpp@{LibDatabase.cpp}!toFloatBlob@{toFloatBlob}}
+\index{toFloatBlob@{toFloatBlob}!LibDatabase.cpp@{LibDatabase.cpp}}
+\doxysubsubsection{\texorpdfstring{toFloatBlob()}{toFloatBlob()}}
+{\footnotesize\ttfamily static std\+::vector$<$ float $>$ to\+Float\+Blob (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{LibDatabase_8cpp_a67a903b2b163348fd0f14490bf783f62}\label{LibDatabase_8cpp_a67a903b2b163348fd0f14490bf783f62}} 
+\index{LibDatabase.cpp@{LibDatabase.cpp}!DDL\_LUT\_ENTRIES@{DDL\_LUT\_ENTRIES}}
+\index{DDL\_LUT\_ENTRIES@{DDL\_LUT\_ENTRIES}!LibDatabase.cpp@{LibDatabase.cpp}}
+\doxysubsubsection{\texorpdfstring{DDL\_LUT\_ENTRIES}{DDL\_LUT\_ENTRIES}}
+{\footnotesize\ttfamily const char$\ast$ DDL\+\_\+\+LUT\+\_\+\+ENTRIES\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= R\textcolor{stringliteral}{"{}sql(}}
+\DoxyCodeLine{\textcolor{stringliteral}{  CREATE TABLE IF NOT EXISTS lut\_entries (}}
+\DoxyCodeLine{\textcolor{stringliteral}{    entry\_id      INTEGER PRIMARY KEY AUTOINCREMENT,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    file\_path     TEXT NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    library\_name  TEXT NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    scenario\_id   TEXT,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    pvt\_corner    TEXT NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    aged\_year     REAL NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    cell\_name     TEXT NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    output\_pin    TEXT NOT NULL DEFAULT 'Y',}}
+\DoxyCodeLine{\textcolor{stringliteral}{    related\_pin   TEXT NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    timing\_sense  TEXT,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    timing\_type   TEXT,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    arc\_type      TEXT NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    rows\_n        INTEGER NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    cols\_n        INTEGER NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    index\_1\_blob  BLOB NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    index\_2\_blob  BLOB NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    values\_blob   BLOB NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    process       INTEGER,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    temperature   REAL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    voltage       REAL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    ingested\_at   TEXT NOT NULL DEFAULT (datetime('now')),}}
+\DoxyCodeLine{\textcolor{stringliteral}{    UNIQUE(file\_path, pvt\_corner, aged\_year, arc\_type, related\_pin)}}
+\DoxyCodeLine{\textcolor{stringliteral}{  );}}
+\DoxyCodeLine{\textcolor{stringliteral}{)sql"{}}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+
+\mbox{\Hypertarget{LibDatabase_8cpp_af706e6c16ee15d3ad0ee6814f94ad273}\label{LibDatabase_8cpp_af706e6c16ee15d3ad0ee6814f94ad273}} 
+\index{LibDatabase.cpp@{LibDatabase.cpp}!INSERT\_SQL@{INSERT\_SQL}}
+\index{INSERT\_SQL@{INSERT\_SQL}!LibDatabase.cpp@{LibDatabase.cpp}}
+\doxysubsubsection{\texorpdfstring{INSERT\_SQL}{INSERT\_SQL}}
+{\footnotesize\ttfamily const char$\ast$ INSERT\+\_\+\+SQL\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= R\textcolor{stringliteral}{"{}sql(}}
+\DoxyCodeLine{\textcolor{stringliteral}{  INSERT OR IGNORE INTO lut\_entries}}
+\DoxyCodeLine{\textcolor{stringliteral}{    (file\_path, library\_name, scenario\_id, pvt\_corner, aged\_year,}}
+\DoxyCodeLine{\textcolor{stringliteral}{     cell\_name, output\_pin, related\_pin, timing\_sense, timing\_type, arc\_type,}}
+\DoxyCodeLine{\textcolor{stringliteral}{     rows\_n, cols\_n, index\_1\_blob, index\_2\_blob, values\_blob,}}
+\DoxyCodeLine{\textcolor{stringliteral}{     process, temperature, voltage)}}
+\DoxyCodeLine{\textcolor{stringliteral}{  VALUES (?, ?, ?, ?, ?,}}
+\DoxyCodeLine{\textcolor{stringliteral}{          ?, ?, ?, ?, ?, ?,}}
+\DoxyCodeLine{\textcolor{stringliteral}{          ?, ?, ?, ?, ?,}}
+\DoxyCodeLine{\textcolor{stringliteral}{          ?, ?, ?)}}
+\DoxyCodeLine{\textcolor{stringliteral}{)sql"{}}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+

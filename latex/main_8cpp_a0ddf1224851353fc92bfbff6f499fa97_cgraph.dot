@@ -21,21 +21,13 @@ digraph "main"
   Node9 -> Node10 [color="steelblue1",style="solid"];
   Node10 [label="LogicComparator::compare\lSingleExpressionPair",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLogicComparator.html#a626ddc1bb2057eef7862cea7bbc860bb",tooltip="Compares two preprocessed logic expression strings for equivalence. Internal helper function."];
   Node9 -> Node11 [color="steelblue1",style="solid"];
-  Node11 [label="LogicComparator::extract\lVariables",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666",tooltip="Extracts and validates variables from two expressions, ensuring they match."];
-  Node11 -> Node12 [color="steelblue1",style="solid"];
-  Node12 [label="isIdentifier",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LogicComparator_8cpp.html#a6334f80db7207e331e587be0f9eae2df",tooltip="Checks if a given string is a valid identifier."];
+  Node11 [label="LogicComparator::extract\lVariables",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$classLogicComparator.html#a75c9d6faa38a1003670c59e5f60d1666",tooltip="Extracts and validates variables from two expressions, ensuring they match."];
   Node9 -> Node13 [color="steelblue1",style="solid"];
-  Node13 [label="LogicComparator::preprocess\lExpression",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a",tooltip="Preprocesses a logical expression string to prepare it for evaluation."];
-  Node13 -> Node12 [color="steelblue1",style="solid"];
-  Node13 -> Node14 [color="steelblue1",style="solid"];
-  Node14 [label="isOperator",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LogicComparator_8cpp.html#a1c875672f908868869e6cce7cbd92c1c",tooltip="Checks if a given token is a logical operator."];
+  Node13 [label="LogicComparator::preprocess\lExpression",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$classLogicComparator.html#accce3c590846e3fdf1a66aaa6a5c465a",tooltip="Preprocesses a logical expression string to prepare it for evaluation."];
   Node8 -> Node15 [color="steelblue1",style="solid"];
   Node15 [label="extractLogicFromVerilog",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LogicExtractor_8cpp.html#ae057244a8c2cf0f12f0fa95ce36c8a5d",tooltip="Extracts logic expressions from a Verilog file for a specified cell."];
   Node15 -> Node16 [color="steelblue1",style="solid"];
-  Node16 [label="LogicExtractor::getLogic\lExpressions",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLogicExtractor.html#a234c934f2b8824311dbeca77f4d8ad52",tooltip="Extracts logic expressions for all primary output ports of the target cell."];
-  Node16 -> Node17 [color="steelblue1",style="solid"];
-  Node17 [label="LogicExtractor::deriveLogic\lRecursive",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$classLogicExtractor.html#ad00ef591f9a574c2e1bb9ad6a30c0db4",tooltip="Recursively derives the logic expression for a given signal."];
-  Node17 -> Node17 [color="steelblue1",style="solid"];
+  Node16 [label="LogicExtractor::getLogic\lExpressions",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$classLogicExtractor.html#a234c934f2b8824311dbeca77f4d8ad52",tooltip="Extracts logic expressions for all primary output ports of the target cell."];
   Node8 -> Node19 [color="steelblue1",style="solid"];
   Node19 [label="LogicComparator::generate\lReport",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLogicComparator.html#a11238591d905205ad26839e1977634f5",tooltip="Generates a comparison report file based on cell logic comparison results."];
   Node8 -> Node20 [color="steelblue1",style="solid"];
@@ -114,6 +106,7 @@ digraph "main"
   Node51 [label="LibFile::checkTimingArcMonotonicity",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#acffc39bf8d1206b2efb2111229c57827",tooltip="Checks if the values in a timing arc are monotonically increasing."];
   Node50 -> Node22 [color="steelblue1",style="solid"];
   Node50 -> Node48 [color="steelblue1",style="solid"];
+  Node1 -> Node22 [color="steelblue1",style="solid"];
   Node1 -> Node52 [color="steelblue1",style="solid"];
   Node52 [label="parseLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibFileOperations_8cpp.html#a3ac24d33b321364527447f166fd31edf",tooltip="Parses a library file and generates corresponding output."];
   Node52 -> Node22 [color="steelblue1",style="solid"];
@@ -126,8 +119,6 @@ digraph "main"
   Node55 [label="LibFile::spice",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a290f9bfef8ea2f8039837fffceeaa465",tooltip="Generates a SPICE netlist for the library based on a temporary Verilog file, using the V2LVS tool."];
   Node55 -> Node56 [color="steelblue1",style="solid"];
   Node56 [label="LibFile::modifySpiceNetlist",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$classLibFile.html#a25b6fd7453e8a200a70b2d19a6e216e2",tooltip="Modifies a SPICE netlist generated by v2lvs, adding metadata, inserting a global line,..."];
-  Node56 -> Node57 [color="steelblue1",style="solid"];
-  Node57 [label="LibFile::generateRCLines",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255",tooltip="Generates RC lines for a given net in either an intermediate or final stage."];
   Node55 -> Node59 [color="steelblue1",style="solid"];
   Node59 [label="LibFile::verilog",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#a92ef7304afa302f98a69bd371b7955dd",tooltip="Generates Verilog files for cell validation based on the library file."];
   Node59 -> Node60 [color="steelblue1",style="solid"];
@@ -140,4 +131,13 @@ digraph "main"
   Node1 -> Node62 [color="steelblue1",style="solid"];
   Node62 [label="verilogLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibFileOperations_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2",tooltip="Generates Verilog files from a library file for specified cells."];
   Node62 -> Node59 [color="steelblue1",style="solid"];
+  Node1 -> Node48 [color="steelblue1",style="solid"];
+  Node1 -> Node63 [color="steelblue1",style="solid"];
+  Node63 [label="LibFile::writeToDB",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a",tooltip=" "];
+  Node63 -> Node64 [color="steelblue1",style="solid"];
+  Node64 [label="LibDatabase::initialize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibDatabase.html#a1ba443f5483f970be7231fe3d4a28169",tooltip="Create the lut_entries table if it does not already exist."];
+  Node63 -> Node65 [color="steelblue1",style="solid"];
+  Node65 [label="LibDatabase::writeLutEntry",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibDatabase.html#a0bb1214018232120513f2caeac846cc9",tooltip="Insert one LUT record into lut_entries."];
+  Node65 -> Node66 [color="steelblue1",style="solid"];
+  Node66 [label="toFloatBlob",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibDatabase_8cpp.html#aa1c231f3f6ea92a58aa1858fbea4de24",tooltip=" "];
 }

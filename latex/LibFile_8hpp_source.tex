@@ -41,34 +41,35 @@
 \DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00037}00037   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a13703620c950bdf0b72882d2eda1e401}{modify}}();}
 \DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00038}00038   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_af8446d3ee82f3fabed848c23ec262cbe}{mono}}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} is\_slew);}
 \DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00039}00039   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_ace2977ea0c9cd5fa0ada4c3277500188}{supercell}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} chain\_length, \textcolor{keyword}{const} std::vector<std::string> \&cell\_names);}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00040}00040   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{verilog}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} chain\_length, \textcolor{keyword}{const} std::vector<std::string> \&cell\_names);}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00041}00041   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{spice}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} chain\_length, \textcolor{keyword}{const} std::vector<std::string> \&cell\_names,}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00042}00042              \textcolor{keyword}{const} std::string \&verilog\_lib\_file, \textcolor{keyword}{const} std::string \&spice\_lib\_file);}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00043}00043   std::map<std::string, std::string> \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{logic}}(\textcolor{keyword}{const} std::string \&cell\_name);}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00044}00044 }
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00045}00045 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00046}\mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{00046}}   si2drErrorT \mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{err\_}};}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00047}\mbox{\hyperlink{classLibFile_a83c339b99f96a9692a500a6470208059}{00047}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classLibFile_a83c339b99f96a9692a500a6470208059}{process\_}} = 0;}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00048}\mbox{\hyperlink{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}{00048}}   \textcolor{keywordtype}{float} \mbox{\hyperlink{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}{voltage\_}} = 0.0;}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00049}\mbox{\hyperlink{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}{00049}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}{temperature\_}} = 0;}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00050}00050   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a070b5da7981c5b5dc049349404d2f5a4}{read}}();}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00051}00051   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLibFile_acffc39bf8d1206b2efb2111229c57827}{checkTimingArcMonotonicity}}(\textcolor{keyword}{const} \mbox{\hyperlink{LibFile_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&cell, \textcolor{keyword}{const} \mbox{\hyperlink{LibFile_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&pin, \textcolor{keyword}{const} \mbox{\hyperlink{LibFile_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&arc,}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00052}00052                                   \textcolor{keyword}{const} std::string \&type, \textcolor{keywordtype}{bool} is\_slew);}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00053}00053   \textcolor{comment}{// -\/-\/-\/ Private Helper Methods -\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00054}00054 }
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00055}00055   \textcolor{comment}{// Helper function to split a string by whitespace}}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00056}00056   std::vector<std::string> \mbox{\hyperlink{classLibFile_a42ba6a2e11bc60e26ce4c13c26dcaca2}{splitString}}(\textcolor{keyword}{const} std::string \&s);}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00057}00057 }
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00058}00058   \textcolor{comment}{// Function to generate RC lines based on instance index and stage}}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00059}00059   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{generateRCLines}}(std::ofstream \&outFile, \textcolor{keyword}{const} std::string \&netName, \textcolor{keywordtype}{int} instanceIndex,}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00060}00060                        \textcolor{keywordtype}{bool} isFinalStage);}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00061}00061 }
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00062}00062   \textcolor{comment}{// Function to modify the SPICE netlist generated by v2lvs}}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00063}00063   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLibFile_a25b6fd7453e8a200a70b2d19a6e216e2}{modifySpiceNetlist}}(\textcolor{keyword}{const} std::string \&v2lvsSpiceFile, \textcolor{comment}{// Input is the v2lvs output}}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00064}00064                           \textcolor{keyword}{const} std::string \&finalSpiceFile, \textcolor{comment}{// Output is the final file}}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00065}00065                           \textcolor{keyword}{const} std::string \&targetGlobalLine);}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00066}00066 \};}
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00067}00067 }
-\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00068}00068 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LIB\_FILE\_H}}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00040}00040   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_ac42966ae3c352b33ac89aa135e130a9a}{writeToDB}}(\textcolor{keyword}{const} std::string \&db\_path, \textcolor{keyword}{const} std::string \&pvt\_corner, \textcolor{keywordtype}{double} aged\_year);}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00041}00041   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a92ef7304afa302f98a69bd371b7955dd}{verilog}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} chain\_length, \textcolor{keyword}{const} std::vector<std::string> \&cell\_names);}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00042}00042   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a290f9bfef8ea2f8039837fffceeaa465}{spice}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} chain\_length, \textcolor{keyword}{const} std::vector<std::string> \&cell\_names,}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00043}00043              \textcolor{keyword}{const} std::string \&verilog\_lib\_file, \textcolor{keyword}{const} std::string \&spice\_lib\_file);}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00044}00044   std::map<std::string, std::string> \mbox{\hyperlink{classLibFile_a90b6274f928d77388864ba61583a030f}{logic}}(\textcolor{keyword}{const} std::string \&cell\_name);}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00046}00046 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00047}\mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{00047}}   si2drErrorT \mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{err\_}};}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00048}\mbox{\hyperlink{classLibFile_a83c339b99f96a9692a500a6470208059}{00048}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classLibFile_a83c339b99f96a9692a500a6470208059}{process\_}} = 0;}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00049}\mbox{\hyperlink{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}{00049}}   \textcolor{keywordtype}{float} \mbox{\hyperlink{classLibFile_a88ca2344a5bc7f2fdebb065fbb9cd2cf}{voltage\_}} = 0.0;}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00050}\mbox{\hyperlink{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}{00050}}   \textcolor{keywordtype}{int} \mbox{\hyperlink{classLibFile_ac5372343266c4a8fc6bcedd0c524c19d}{temperature\_}} = 0;}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00051}00051   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_a070b5da7981c5b5dc049349404d2f5a4}{read}}();}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00052}00052   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLibFile_acffc39bf8d1206b2efb2111229c57827}{checkTimingArcMonotonicity}}(\textcolor{keyword}{const} \mbox{\hyperlink{LibFile_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&cell, \textcolor{keyword}{const} \mbox{\hyperlink{LibFile_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&pin, \textcolor{keyword}{const} \mbox{\hyperlink{LibFile_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&arc,}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00053}00053                                   \textcolor{keyword}{const} std::string \&type, \textcolor{keywordtype}{bool} is\_slew);}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00054}00054   \textcolor{comment}{// -\/-\/-\/ Private Helper Methods -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00056}00056   \textcolor{comment}{// Helper function to split a string by whitespace}}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00057}00057   std::vector<std::string> \mbox{\hyperlink{classLibFile_a42ba6a2e11bc60e26ce4c13c26dcaca2}{splitString}}(\textcolor{keyword}{const} std::string \&s);}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00059}00059   \textcolor{comment}{// Function to generate RC lines based on instance index and stage}}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00060}00060   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_ad40cfe46d09d29f28034d10bc92ae255}{generateRCLines}}(std::ofstream \&outFile, \textcolor{keyword}{const} std::string \&netName, \textcolor{keywordtype}{int} instanceIndex,}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00061}00061                        \textcolor{keywordtype}{bool} isFinalStage);}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00063}00063   \textcolor{comment}{// Function to modify the SPICE netlist generated by v2lvs}}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00064}00064   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLibFile_a25b6fd7453e8a200a70b2d19a6e216e2}{modifySpiceNetlist}}(\textcolor{keyword}{const} std::string \&v2lvsSpiceFile, \textcolor{comment}{// Input is the v2lvs output}}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00065}00065                           \textcolor{keyword}{const} std::string \&finalSpiceFile, \textcolor{comment}{// Output is the final file}}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00066}00066                           \textcolor{keyword}{const} std::string \&targetGlobalLine);}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00067}00067 \};}
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{LibFile_8hpp_source_l00069}00069 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LIB\_FILE\_H}}
 
 \end{DoxyCode}

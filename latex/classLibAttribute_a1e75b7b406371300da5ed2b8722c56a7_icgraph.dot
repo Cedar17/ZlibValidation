@@ -24,6 +24,7 @@ digraph "LibAttribute::getValues"
   Node9 [label="funcLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476",tooltip="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..."];
   Node9 -> Node10 [dir="back",color="steelblue1",style="solid"];
   Node10 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97",tooltip=" "];
+  Node6 -> Node10 [dir="back",color="steelblue1",style="solid"];
   Node6 -> Node11 [dir="back",color="steelblue1",style="solid"];
   Node11 [label="LibFile::mono",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe",tooltip="Validates that lookup tables are monotonically increasing with respect to the output load."];
   Node11 -> Node12 [dir="back",color="steelblue1",style="solid"];

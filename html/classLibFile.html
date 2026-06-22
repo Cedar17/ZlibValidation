@@ -124,6 +124,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ace2977ea0c9cd5fa0ada4c3277500188"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188">supercell</a> (const int chain_length, const std::vector&lt; std::string &gt; &amp;cell_names)</td></tr>
 <tr class="memdesc:ace2977ea0c9cd5fa0ada4c3277500188"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates supercells based on standard cells in the library file.  <a href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188">More...</a><br /></td></tr>
 <tr class="separator:ace2977ea0c9cd5fa0ada4c3277500188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac42966ae3c352b33ac89aa135e130a9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a">writeToDB</a> (const std::string &amp;db_path, const std::string &amp;pvt_corner, double aged_year)</td></tr>
+<tr class="separator:ac42966ae3c352b33ac89aa135e130a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92ef7304afa302f98a69bd371b7955dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd">verilog</a> (const int chain_length, const std::vector&lt; std::string &gt; &amp;cell_names)</td></tr>
 <tr class="memdesc:a92ef7304afa302f98a69bd371b7955dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates Verilog files for cell validation based on the library file.  <a href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd">More...</a><br /></td></tr>
 <tr class="separator:a92ef7304afa302f98a69bd371b7955dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,7 +228,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00015">15</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00017">17</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 
 </div>
 </div>
@@ -245,7 +247,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00035">35</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00037">37</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 
 </div>
 </div>
@@ -326,7 +328,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00205">205</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00297">297</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -409,9 +411,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><a class="code hl_function" href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255">LibFile::generateRCLines</a>(outFile, <span class="stringliteral">&quot;net123&quot;</span>, 5, <span class="keyword">false</span>); <span class="comment">// Generate intermediate RC lines for net</span></div>
 <div class="line"><span class="stringliteral">&quot;net123&quot;</span>, instance 5 <a class="code hl_function" href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255">LibFile::generateRCLines</a>(outFile, <span class="stringliteral">&quot;net123&quot;</span>, 5, <span class="keyword">true</span>);  <span class="comment">// Generate final RC</span></div>
 <div class="line">lines <span class="keywordflow">for</span> net <span class="stringliteral">&quot;net123&quot;</span>, instance 5 outFile.close();</div>
-<div class="ttc" id="aclassLibFile_html_ad40cfe46d09d29f28034d10bc92ae255"><div class="ttname"><a href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255">LibFile::generateRCLines</a></div><div class="ttdeci">void generateRCLines(std::ofstream &amp;outFile, const std::string &amp;netName, int instanceIndex, bool isFinalStage)</div><div class="ttdoc">Generates RC lines for a given net in either an intermediate or final stage.</div><div class="ttdef"><b>Definition:</b> <a href="LibFile_8cpp_source.html#l00931">LibFile.cpp:931</a></div></div>
+<div class="ttc" id="aclassLibFile_html_ad40cfe46d09d29f28034d10bc92ae255"><div class="ttname"><a href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255">LibFile::generateRCLines</a></div><div class="ttdeci">void generateRCLines(std::ofstream &amp;outFile, const std::string &amp;netName, int instanceIndex, bool isFinalStage)</div><div class="ttdoc">Generates RC lines for a given net in either an intermediate or final stage.</div><div class="ttdef"><b>Definition:</b> <a href="LibFile_8cpp_source.html#l01023">LibFile.cpp:1023</a></div></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00931">931</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01023">1023</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -454,7 +456,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A map containing the logic functions for the output pins of the specified cell. The keys of the map are the pin names, and the values are the corresponding logic function strings. Returns an empty map if no logic functions are found or if an error occurs during file processing. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01392">1392</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01484">1484</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -518,7 +520,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00182">182</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00274">274</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 
 </div>
 </div>
@@ -594,7 +596,7 @@ Here is the caller graph for this function:</div>
 <dl class="section note"><dt>Note</dt><dd>The function assumes that the second to last token in an instance line is the output net. It also assumes a specific format for instance lines where VDD/VSS insertion and R/C line generation are applicable. The <code>generateRCLines</code> method is expected to handle the actual generation of R/C components.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classLibFile.html#ad40cfe46d09d29f28034d10bc92ae255" title="Generates RC lines for a given net in either an intermediate or final stage.">generateRCLines</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01013">1013</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01105">1105</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -655,7 +657,7 @@ Here is the caller graph for this function:</div>
 <li>List of cells that failed the check (if any) </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00331">331</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00423">423</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -740,7 +742,7 @@ Here is the caller graph for this function:</div>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>This method creates local scopes to ensure proper cleanup of SI2 Iterators. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00116">116</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00118">118</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -779,20 +781,20 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLibFile_a84d29423705e2dea8a382dc6437640d9_icgraph.png" border="0" usemap="#aclassLibFile_a84d29423705e2dea8a382dc6437640d9_icgraph" alt=""/></div>
 <map name="aclassLibFile_a84d29423705e2dea8a382dc6437640d9_icgraph" id="aclassLibFile_a84d29423705e2dea8a382dc6437640d9_icgraph">
-<area shape="rect" title="Parses the Liberty file and extracts library information into a JSON structure." alt="" coords="822,126,929,154"/>
+<area shape="rect" title="Parses the Liberty file and extracts library information into a JSON structure." alt="" coords="822,150,929,178"/>
 <area shape="rect" href="classLibraryComparator.html#a3b1cf4c12188388533050cc7f2804444" title="Constructor for the LibraryComparator class." alt="" coords="623,5,774,50"/>
 <area shape="rect" href="classLibFile.html#a90b6274f928d77388864ba61583a030f" title="Retrieves the logic functions for the output pins of a specified cell within the Liberty file." alt="" coords="647,74,750,102"/>
-<area shape="rect" href="classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe" title="Validates that lookup tables are monotonically increasing with respect to the output load." alt="" coords="644,126,752,154"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a3ac24d33b321364527447f166fd31edf" title="Parses a library file and generates corresponding output." alt="" coords="128,176,228,204"/>
-<area shape="rect" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188" title="Creates supercells based on standard cells in the library file." alt="" coords="633,227,764,255"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,227,60,255"/>
+<area shape="rect" href="classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe" title="Validates that lookup tables are monotonically increasing with respect to the output load." alt="" coords="644,175,752,203"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a3ac24d33b321364527447f166fd31edf" title="Parses a library file and generates corresponding output." alt="" coords="128,227,228,255"/>
+<area shape="rect" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188" title="Creates supercells based on standard cells in the library file." alt="" coords="633,276,764,304"/>
 <area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="304,74,396,102"/>
-<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,202,60,230"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#aebef9d1797be7b2aafcbc107bcc513cb" title="Performs monotonicity check on a library file." alt="" coords="108,124,248,152"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a0d7485f0df82adbd1671def221103a4e" title="Creates supercell map structures from a Liberty library file." alt="" coords="452,227,575,255"/>
-<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file." alt="" coords="455,279,572,307"/>
-<area shape="rect" href="classLibFile.html#a290f9bfef8ea2f8039837fffceeaa465" title="Generates a SPICE netlist for the library based on a temporary Verilog file, using the V2LVS tool." alt="" coords="298,278,403,306"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2" title="Generates Verilog files from a library file for specified cells." alt="" coords="296,330,404,358"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a249215076db60dd83d4ed0b17fb132f7" title="Generates a SPICE library file from a given library file, applying a specified chain length and cell ..." alt="" coords="129,278,226,306"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#aebef9d1797be7b2aafcbc107bcc513cb" title="Performs monotonicity check on a library file." alt="" coords="108,175,248,203"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a0d7485f0df82adbd1671def221103a4e" title="Creates supercell map structures from a Liberty library file." alt="" coords="452,276,575,304"/>
+<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file." alt="" coords="455,328,572,356"/>
+<area shape="rect" href="classLibFile.html#a290f9bfef8ea2f8039837fffceeaa465" title="Generates a SPICE netlist for the library based on a temporary Verilog file, using the V2LVS tool." alt="" coords="298,328,403,356"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2" title="Generates Verilog files from a library file for specified cells." alt="" coords="296,380,404,408"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a249215076db60dd83d4ed0b17fb132f7" title="Generates a SPICE library file from a given library file, applying a specified chain length and cell ..." alt="" coords="129,328,226,356"/>
 </map>
 </div>
 
@@ -838,27 +840,27 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00077">77</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00079">79</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLibFile_a070b5da7981c5b5dc049349404d2f5a4_icgraph.png" border="0" usemap="#aclassLibFile_a070b5da7981c5b5dc049349404d2f5a4_icgraph" alt=""/></div>
 <map name="aclassLibFile_a070b5da7981c5b5dc049349404d2f5a4_icgraph" id="aclassLibFile_a070b5da7981c5b5dc049349404d2f5a4_icgraph">
-<area shape="rect" title="Reads the Liberty file specified by the filename_ member variable." alt="" coords="977,126,1078,154"/>
-<area shape="rect" href="classLibFile.html#a84d29423705e2dea8a382dc6437640d9" title="Parses the Liberty file and extracts library information into a JSON structure." alt="" coords="822,126,929,154"/>
+<area shape="rect" title="Reads the Liberty file specified by the filename_ member variable." alt="" coords="977,150,1078,178"/>
+<area shape="rect" href="classLibFile.html#a84d29423705e2dea8a382dc6437640d9" title="Parses the Liberty file and extracts library information into a JSON structure." alt="" coords="822,150,929,178"/>
 <area shape="rect" href="classLibraryComparator.html#a3b1cf4c12188388533050cc7f2804444" title="Constructor for the LibraryComparator class." alt="" coords="623,5,774,50"/>
 <area shape="rect" href="classLibFile.html#a90b6274f928d77388864ba61583a030f" title="Retrieves the logic functions for the output pins of a specified cell within the Liberty file." alt="" coords="647,74,750,102"/>
-<area shape="rect" href="classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe" title="Validates that lookup tables are monotonically increasing with respect to the output load." alt="" coords="644,126,752,154"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a3ac24d33b321364527447f166fd31edf" title="Parses a library file and generates corresponding output." alt="" coords="128,176,228,204"/>
-<area shape="rect" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188" title="Creates supercells based on standard cells in the library file." alt="" coords="633,227,764,255"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,227,60,255"/>
+<area shape="rect" href="classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe" title="Validates that lookup tables are monotonically increasing with respect to the output load." alt="" coords="644,175,752,203"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a3ac24d33b321364527447f166fd31edf" title="Parses a library file and generates corresponding output." alt="" coords="128,227,228,255"/>
+<area shape="rect" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188" title="Creates supercells based on standard cells in the library file." alt="" coords="633,276,764,304"/>
 <area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="304,74,396,102"/>
-<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,202,60,230"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#aebef9d1797be7b2aafcbc107bcc513cb" title="Performs monotonicity check on a library file." alt="" coords="108,124,248,152"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a0d7485f0df82adbd1671def221103a4e" title="Creates supercell map structures from a Liberty library file." alt="" coords="452,227,575,255"/>
-<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file." alt="" coords="455,279,572,307"/>
-<area shape="rect" href="classLibFile.html#a290f9bfef8ea2f8039837fffceeaa465" title="Generates a SPICE netlist for the library based on a temporary Verilog file, using the V2LVS tool." alt="" coords="298,278,403,306"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2" title="Generates Verilog files from a library file for specified cells." alt="" coords="296,330,404,358"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a249215076db60dd83d4ed0b17fb132f7" title="Generates a SPICE library file from a given library file, applying a specified chain length and cell ..." alt="" coords="129,278,226,306"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#aebef9d1797be7b2aafcbc107bcc513cb" title="Performs monotonicity check on a library file." alt="" coords="108,175,248,203"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a0d7485f0df82adbd1671def221103a4e" title="Creates supercell map structures from a Liberty library file." alt="" coords="452,276,575,304"/>
+<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file." alt="" coords="455,328,572,356"/>
+<area shape="rect" href="classLibFile.html#a290f9bfef8ea2f8039837fffceeaa465" title="Generates a SPICE netlist for the library based on a temporary Verilog file, using the V2LVS tool." alt="" coords="298,328,403,356"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2" title="Generates Verilog files from a library file for specified cells." alt="" coords="296,380,404,408"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a249215076db60dd83d4ed0b17fb132f7" title="Generates a SPICE library file from a given library file, applying a specified chain length and cell ..." alt="" coords="129,328,226,356"/>
 </map>
 </div>
 
@@ -927,7 +929,7 @@ The generated SPICE netlist is post-processed to adjust global signals. </dd>
 <dd>
 Temporary files (Verilog and intermediate SPICE) are kept for debugging purposes. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01279">1279</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l01371">1371</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1015,7 +1017,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A vector of strings, where each string is a token from the input string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00889">889</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00981">981</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1071,7 +1073,7 @@ Here is the caller graph for this function:</div>
 <dd>
 The method will report any requested cells that were not found in the library. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00460">460</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00552">552</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1171,7 +1173,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>The function writes a temporary file during processing that might not be removed when the function completes (commented out cleanup code). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00614">614</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00706">706</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1247,26 +1249,82 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00046">46</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00048">48</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLibFile_a88de22798a64acdb38faefc0d785804f_icgraph.png" border="0" usemap="#aclassLibFile_a88de22798a64acdb38faefc0d785804f_icgraph" alt=""/></div>
 <map name="aclassLibFile_a88de22798a64acdb38faefc0d785804f_icgraph" id="aclassLibFile_a88de22798a64acdb38faefc0d785804f_icgraph">
-<area shape="rect" title="Writes the JSON data stored in the object to a file." alt="" coords="822,126,990,154"/>
+<area shape="rect" title="Writes the JSON data stored in the object to a file." alt="" coords="822,150,990,178"/>
 <area shape="rect" href="classLibraryComparator.html#a3b1cf4c12188388533050cc7f2804444" title="Constructor for the LibraryComparator class." alt="" coords="623,5,774,50"/>
 <area shape="rect" href="classLibFile.html#a90b6274f928d77388864ba61583a030f" title="Retrieves the logic functions for the output pins of a specified cell within the Liberty file." alt="" coords="647,74,750,102"/>
-<area shape="rect" href="classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe" title="Validates that lookup tables are monotonically increasing with respect to the output load." alt="" coords="644,126,752,154"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a3ac24d33b321364527447f166fd31edf" title="Parses a library file and generates corresponding output." alt="" coords="128,176,228,204"/>
-<area shape="rect" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188" title="Creates supercells based on standard cells in the library file." alt="" coords="633,227,764,255"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,227,60,255"/>
+<area shape="rect" href="classLibFile.html#af8446d3ee82f3fabed848c23ec262cbe" title="Validates that lookup tables are monotonically increasing with respect to the output load." alt="" coords="644,175,752,203"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a3ac24d33b321364527447f166fd31edf" title="Parses a library file and generates corresponding output." alt="" coords="128,227,228,255"/>
+<area shape="rect" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188" title="Creates supercells based on standard cells in the library file." alt="" coords="633,276,764,304"/>
 <area shape="rect" href="LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476" title="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..." alt="" coords="304,74,396,102"/>
-<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,202,60,230"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#aebef9d1797be7b2aafcbc107bcc513cb" title="Performs monotonicity check on a library file." alt="" coords="108,124,248,152"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a0d7485f0df82adbd1671def221103a4e" title="Creates supercell map structures from a Liberty library file." alt="" coords="452,227,575,255"/>
-<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file." alt="" coords="455,279,572,307"/>
-<area shape="rect" href="classLibFile.html#a290f9bfef8ea2f8039837fffceeaa465" title="Generates a SPICE netlist for the library based on a temporary Verilog file, using the V2LVS tool." alt="" coords="298,278,403,306"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2" title="Generates Verilog files from a library file for specified cells." alt="" coords="296,330,404,358"/>
-<area shape="rect" href="LibFileOperations_8cpp.html#a249215076db60dd83d4ed0b17fb132f7" title="Generates a SPICE library file from a given library file, applying a specified chain length and cell ..." alt="" coords="129,278,226,306"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#aebef9d1797be7b2aafcbc107bcc513cb" title="Performs monotonicity check on a library file." alt="" coords="108,175,248,203"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a0d7485f0df82adbd1671def221103a4e" title="Creates supercell map structures from a Liberty library file." alt="" coords="452,276,575,304"/>
+<area shape="rect" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd" title="Generates Verilog files for cell validation based on the library file." alt="" coords="455,328,572,356"/>
+<area shape="rect" href="classLibFile.html#a290f9bfef8ea2f8039837fffceeaa465" title="Generates a SPICE netlist for the library based on a temporary Verilog file, using the V2LVS tool." alt="" coords="298,328,403,356"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#ab649fe3c5663201c3e23700250f7b1c2" title="Generates Verilog files from a library file for specified cells." alt="" coords="296,380,404,408"/>
+<area shape="rect" href="LibFileOperations_8cpp.html#a249215076db60dd83d4ed0b17fb132f7" title="Generates a SPICE library file from a given library file, applying a specified chain length and cell ..." alt="" coords="129,328,226,356"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac42966ae3c352b33ac89aa135e130a9a" name="ac42966ae3c352b33ac89aa135e130a9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac42966ae3c352b33ac89aa135e130a9a">&#9670;&#160;</a></span>writeToDB()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LibFile::writeToDB </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>db_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>pvt_corner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>aged_year</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="LibFile_8cpp_source.html#l00184">184</a> of file <a class="el" href="LibFile_8cpp_source.html">LibFile.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLibFile_ac42966ae3c352b33ac89aa135e130a9a_cgraph.png" border="0" usemap="#aclassLibFile_ac42966ae3c352b33ac89aa135e130a9a_cgraph" alt=""/></div>
+<map name="aclassLibFile_ac42966ae3c352b33ac89aa135e130a9a_cgraph" id="aclassLibFile_ac42966ae3c352b33ac89aa135e130a9a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,32,143,60"/>
+<area shape="rect" href="classLibDatabase.html#a1ba443f5483f970be7231fe3d4a28169" title="Create the lut_entries table if it does not already exist." alt="" coords="206,5,372,33"/>
+<area shape="rect" href="classLibDatabase.html#a0bb1214018232120513f2caeac846cc9" title="Insert one LUT record into lut_entries." alt="" coords="191,57,388,85"/>
+<area shape="rect" href="LibDatabase_8cpp.html#aa1c231f3f6ea92a58aa1858fbea4de24" title=" " alt="" coords="436,57,532,85"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classLibFile_ac42966ae3c352b33ac89aa135e130a9a_icgraph.png" border="0" usemap="#aclassLibFile_ac42966ae3c352b33ac89aa135e130a9a_icgraph" alt=""/></div>
+<map name="aclassLibFile_ac42966ae3c352b33ac89aa135e130a9a_icgraph" id="aclassLibFile_ac42966ae3c352b33ac89aa135e130a9a_icgraph">
+<area shape="rect" title=" " alt="" coords="108,5,245,33"/>
+<area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,33"/>
 </map>
 </div>
 
@@ -1309,7 +1367,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8hpp_source.html#l00046">46</a> of file <a class="el" href="LibFile_8hpp_source.html">LibFile.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8hpp_source.html#l00047">47</a> of file <a class="el" href="LibFile_8hpp_source.html">LibFile.hpp</a>.</p>
 
 </div>
 </div>
@@ -1445,7 +1503,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8hpp_source.html#l00047">47</a> of file <a class="el" href="LibFile_8hpp_source.html">LibFile.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8hpp_source.html#l00048">48</a> of file <a class="el" href="LibFile_8hpp_source.html">LibFile.hpp</a>.</p>
 
 </div>
 </div>
@@ -1469,7 +1527,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8hpp_source.html#l00049">49</a> of file <a class="el" href="LibFile_8hpp_source.html">LibFile.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8hpp_source.html#l00050">50</a> of file <a class="el" href="LibFile_8hpp_source.html">LibFile.hpp</a>.</p>
 
 </div>
 </div>
@@ -1493,7 +1551,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibFile_8hpp_source.html#l00048">48</a> of file <a class="el" href="LibFile_8hpp_source.html">LibFile.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibFile_8hpp_source.html#l00049">49</a> of file <a class="el" href="LibFile_8hpp_source.html">LibFile.hpp</a>.</p>
 
 </div>
 </div>
@@ -1507,7 +1565,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classLibFile.html">LibFile</a></li>
-    <li class="footer">Generated on Mon Jun 22 2026 20:32:49 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Jun 22 2026 22:57:32 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

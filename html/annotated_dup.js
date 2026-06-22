@@ -6,6 +6,7 @@ var annotated_dup =
     [ "GateInfo", "structGateInfo.html", "structGateInfo" ],
     [ "GroupsIterator", "classGroupsIterator.html", "classGroupsIterator" ],
     [ "LibAttribute", "classLibAttribute.html", "classLibAttribute" ],
+    [ "LibDatabase", "classLibDatabase.html", "classLibDatabase" ],
     [ "LibFile", "classLibFile.html", "classLibFile" ],
     [ "LibGroup", "classLibGroup.html", "classLibGroup" ],
     [ "LibraryComparator", "classLibraryComparator.html", "classLibraryComparator" ],

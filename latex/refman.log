@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2025.3.1)  22 JUN 2026 12:35
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2025.3.1)  22 JUN 2026 15:00
  restricted system commands enabled.
 **refman
 (./refman.tex
@@ -1375,7 +1375,9 @@ n input line 177.
 
 [5]
 
-[6](load cache: extra_fandolfang-regular.luc)(load cache: extra_lmmono10-regular
+[6]
+
+[7](load cache: extra_fandolfang-regular.luc)(load cache: extra_lmmono10-regular
 .luc)
 
 Package fontspec Info: 
@@ -1393,8 +1395,6 @@ age=dflt;jfm=zh_CN/quanjiao;"
 
 (load cache: extra_lmmono8-regular.luc)
 
-[7]
-
 [8]
 
 [9]
@@ -1407,9 +1407,7 @@ age=dflt;jfm=zh_CN/quanjiao;"
 
 [13]
 
-[14
-
-]
+[14]
 Package hyperref Info: Option `pageanchor' set `true' on input line 180.
 
 Chapter 1.
@@ -1439,6 +1437,7 @@ n input line 1.
 
 
 [1
+
 
 ]
 LaTeX Font Info:    Font shape `LTJY3/FandolHei-Regular(0)/bx/n' in size <12.04
@@ -1610,21 +1609,16 @@ LaTeX Font Warning: Font shape `U/wasy/m/n' in size <7.52812> not available
 
 [42]
 
-[43]) (./classLibFile.tex
+[43]) (./classLibDatabase.tex
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <9.03374> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 11.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 16.
 (load cache: extra_lmsans9-oblique.luc)
 
 [44]
 
 [45]
 
-[46]
-
-[47]
-Overfull \vbox (20.90688pt too high) has occurred while \output is active []
-
-
+[46] [47]) (./classLibFile.tex
 
 [48]
 
@@ -1646,30 +1640,30 @@ Overfull \vbox (20.90688pt too high) has occurred while \output is active []
 
 [57]
 
-[58]) (./classLibGroup.tex
+[58]
 
 [59]
 
 [60]
 
-[61]) (./classLibraryComparator.tex
+[61]
 
 [62]
 
-[63]
-Overfull \vbox (35.29614pt too high) has occurred while \output is active []
-
-
+[63]) (./classLibGroup.tex
 
 [64]
 
 [65]
 
-[66]
+[66]) (./classLibraryComparator.tex
 
 [67]
 
-[68]) (./classLogicComparator.tex
+[68]
+Overfull \vbox (35.29614pt too high) has occurred while \output is active []
+
+
 
 [69]
 
@@ -1679,7 +1673,7 @@ Overfull \vbox (35.29614pt too high) has occurred while \output is active []
 
 [72]
 
-[73]
+[73]) (./classLogicComparator.tex
 
 [74]
 
@@ -1687,7 +1681,7 @@ Overfull \vbox (35.29614pt too high) has occurred while \output is active []
 
 [76]
 
-[77]) (./classLogicExtractor.tex
+[77]
 
 [78]
 
@@ -1696,6 +1690,16 @@ Overfull \vbox (35.29614pt too high) has occurred while \output is active []
 [80]
 
 [81]
+
+[82]) (./classLogicExtractor.tex
+
+[83]
+
+[84]
+
+[85]
+
+[86]
 LaTeX Font Info:    Font shape `LTJY3/FandolHei-Regular(0)/bx/n' in size <7.528
 12> not available
 (Font)              Font shape `LTJY3/FandolHei-Regular(0)/b/n' tried instead o
@@ -1704,152 +1708,142 @@ LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <7.52812> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 233.
 
 
-[82]
-
-[83]
-
-[84]
-
-[85]
-
-[86]) (./classModuleRewriter.tex
-
 [87]
 
 [88]
 
 [89]
 
-[90]) (./structPinComparisonResult.tex
+[90]
 
-[91]
+[91]) (./classModuleRewriter.tex
 
 [92]
 
-[93]) (./classValuesIterator.tex
+[93]
 
 [94]
 
-[95]
+[95]) (./structPinComparisonResult.tex
 
-[96]) (./classVerilogVisitor.tex
+[96]
 
 [97]
 
-[98]
+[98]) (./classValuesIterator.tex
 
-[99])
+[99]
 
 [100]
-Chapter 7.
-(./ChangeLog_8md.tex) (./Iterators_8hpp.tex) (./Iterators_8hpp_source.tex
 
-[101
-
-]) (./json__utils_8hpp.tex
+[101]) (./classVerilogVisitor.tex
 
 [102]
 
 [103]
 
-[104]
+[104])
+
+[105]
+
+[106
+
+]
+Chapter 7.
+(./ChangeLog_8md.tex) (./Iterators_8hpp.tex) (./Iterators_8hpp_source.tex
+
+[107]) (./json__utils_8hpp.tex
+
+[108]
+
+[109]
+
+[110]
 Overfull \vbox (17.94229pt too high) has occurred while \output is active []
 
 
 
-[105]) (./json__utils_8hpp_source.tex
+[111]) (./json__utils_8hpp_source.tex
 
-[106]) (./LibAttribute_8hpp.tex) (./LibAttribute_8hpp_source.tex
+[112]) (./LibAttribute_8hpp.tex) (./LibAttribute_8hpp_source.tex
 
-[107]) (./LibFile_8hpp.tex) (./LibFile_8hpp_source.tex
+[113]) (./LibDatabase_8hpp.tex) (./LibDatabase_8hpp_source.tex
 
-[108]
+[114]) (./LibFile_8hpp.tex
 
-[109]) (./LibFileOperations_8hpp.tex
+[115]) (./LibFile_8hpp_source.tex
 
-[110]
+[116]) (./LibFileOperations_8hpp.tex
 
-[111]
+[117] [118]
 
-[112]
+[119]
 
-[113]
-
-[114]
-
-[115]
-
-[116]) (./LibFileOperations_8hpp_source.tex) (./LibGroup_8hpp.tex)
-(./LibGroup_8hpp_source.tex
-
-[117]) (./LibraryComparator_8hpp.tex
-
-[118]) (./LibraryComparator_8hpp_source.tex
-
-[119]) (./LogicComparator_8hpp.tex) (./LogicComparator_8hpp_source.tex
-
-[120]) (./LogicExtractor_8hpp.tex
+[120]
 
 [121]
 
-[122]) (./LogicExtractor_8hpp_source.tex
+[122]
 
-[123]
+[123]) (./LibFileOperations_8hpp_source.tex) (./LibGroup_8hpp.tex
 
-[124]) (./verilog__utils_8hpp.tex
+[124]) (./LibGroup_8hpp_source.tex) (./LibraryComparator_8hpp.tex
 
-[125]) (./verilog__utils_8hpp_source.tex
+[125]) (./LibraryComparator_8hpp_source.tex
 
-[126]) (./version_8h.tex
+[126]) (./LogicComparator_8hpp.tex) (./LogicComparator_8hpp_source.tex
 
 [127]
 
-[128]) (./version_8h_source.tex) (./README_8md.tex) (./Iterators_8cpp.tex)
+[128]) (./LogicExtractor_8hpp.tex
+
+[129]
+
+[130]) (./LogicExtractor_8hpp_source.tex
+
+[131]) (./verilog__utils_8hpp.tex
+
+[132]) (./verilog__utils_8hpp_source.tex
+
+[133]) (./version_8h.tex
+
+[134]
+
+[135]) (./version_8h_source.tex) (./README_8md.tex) (./Iterators_8cpp.tex)
 (./Iterators_8cpp_source.tex
-
-[129]) (./json__utils_8cpp.tex
-
-[130]
-
-[131]
-
-[132]
-
-[133]
-
-[134]) (./json__utils_8cpp_source.tex
-
-[135]
 
 [136]
 
-[137]) (./LibAtrribute_8cpp.tex) (./LibAtrribute_8cpp_source.tex
+[137]) (./json__utils_8cpp.tex
 
-[138]) (./LibFile_8cpp.tex) (./LibFile_8cpp_source.tex
+[138]
 
 [139]
+Overfull \vbox (17.94229pt too high) has occurred while \output is active []
+
+
 
 [140]
 
 [141]
 
-[142]
+[142]) (./json__utils_8cpp_source.tex
 
 [143]
 
 [144]
 
-[145]
+[145]) (./LibAtrribute_8cpp.tex) (./LibAtrribute_8cpp_source.tex
 
-[146]
+[146]) (./LibDatabase_8cpp.tex
 
-[147]
+[147]) (./LibDatabase_8cpp_source.tex
 
 [148]
 
 [149]
 
-[150]
+[150]) (./LibFile_8cpp.tex) (./LibFile_8cpp_source.tex
 
 [151]
 
@@ -1859,9 +1853,11 @@ Overfull \vbox (17.94229pt too high) has occurred while \output is active []
 
 [154]
 
-[155]) (./LibFileOperations_8cpp.tex
+[155]
 
-[156] [157]
+[156]
+
+[157]
 
 [158]
 
@@ -1871,7 +1867,7 @@ Overfull \vbox (17.94229pt too high) has occurred while \output is active []
 
 [161]
 
-[162]) (./LibFileOperations_8cpp_source.tex
+[162]
 
 [163]
 
@@ -1879,28 +1875,26 @@ Overfull \vbox (17.94229pt too high) has occurred while \output is active []
 
 [165]
 
-[166]) (./LibGroup_8cpp.tex) (./LibGroup_8cpp_source.tex
+[166]
 
-[167
-Missing character: There is no 🥚 (U+1F95A) in font [lmmono8-regular]:!
-Missing character: There is no 😍 (U+1F60D) in font [lmmono8-regular]:!
-]) (./LibraryComparator_8cpp.tex) (./LibraryComparator_8cpp_source.tex
+[167]
 
-[168]
+[168]) (./LibFileOperations_8cpp.tex
 
-[169]
-
-[170]
+[169] [170]
 
 [171]
 
-[172]) (./LogicComparator_8cpp.tex
+[172]
 
 [173]
+Overfull \vbox (34.48909pt too high) has occurred while \output is active []
+
+
 
 [174]
 
-[175]) (./LogicComparator_8cpp_source.tex
+[175]) (./LibFileOperations_8cpp_source.tex
 
 [176]
 
@@ -1908,9 +1902,12 @@ Missing character: There is no 😍 (U+1F60D) in font [lmmono8-regular]:!
 
 [178]
 
-[179]
+[179]) (./LibGroup_8cpp.tex) (./LibGroup_8cpp_source.tex
 
-[180]
+[180
+Missing character: There is no 🥚 (U+1F95A) in font [lmmono8-regular]:!
+Missing character: There is no 😍 (U+1F60D) in font [lmmono8-regular]:!
+]) (./LibraryComparator_8cpp.tex) (./LibraryComparator_8cpp_source.tex
 
 [181]
 
@@ -1920,19 +1917,19 @@ Missing character: There is no 😍 (U+1F60D) in font [lmmono8-regular]:!
 
 [184]
 
-[185]
+[185]) (./LogicComparator_8cpp.tex
 
 [186]
 
-[187]
+[187]) (./LogicComparator_8cpp_source.tex
 
 [188]
 
-[189]) (./LogicExtractor_8cpp.tex
+[189]
 
 [190]
 
-[191]) (./LogicExtractor_8cpp_source.tex
+[191]
 
 [192]
 
@@ -1950,13 +1947,13 @@ Missing character: There is no 😍 (U+1F60D) in font [lmmono8-regular]:!
 
 [199]
 
-[200]) (./main_8cpp.tex
+[200]
 
-[201]
+[201]) (./LogicExtractor_8cpp.tex
 
-[202]) (./main_8cpp_source.tex
+[202]
 
-[203]
+[203]) (./LogicExtractor_8cpp_source.tex
 
 [204]
 
@@ -1964,7 +1961,7 @@ Missing character: There is no 😍 (U+1F60D) in font [lmmono8-regular]:!
 
 [206]
 
-[207]) (./verilog__utils_8cpp.tex) (./verilog__utils_8cpp_source.tex
+[207]
 
 [208]
 
@@ -1974,25 +1971,49 @@ Missing character: There is no 😍 (U+1F60D) in font [lmmono8-regular]:!
 
 [211]
 
-[212]
+[212]) (./main_8cpp.tex
 
 [213]
 
-[214]
+[214]) (./main_8cpp_source.tex
 
 [215]
 
-[216])
+[216]
 
 [217]
 
-[218
+[218]
+
+[219]) (./verilog__utils_8cpp.tex
+
+[220]) (./verilog__utils_8cpp_source.tex
+
+[221]
+
+[222]
+
+[223]
+
+[224]
+
+[225]
+
+[226]
+
+[227]
+
+[228])
+
+[229]
+
+[230
 
 ] (./refman.ind
 
 
 
-[219
+[231
 
 
 ]
@@ -2006,7 +2027,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
 
-[220]
+[232]
 
 
 
@@ -2017,7 +2038,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
 
-[221]
+[233]
 
 
 
@@ -2028,7 +2049,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
 
-[222]
+[234]
 
 
 
@@ -2039,7 +2060,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
 
-[223]
+[235]
 
 
 
@@ -2050,7 +2071,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
 
-[224]
+[236]
 
 
 
@@ -2061,7 +2082,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
 
-[225]
+[237]
 
 
 
@@ -2072,9 +2093,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.40004pt}.
 
-[226
-
-]) (./refman.aux)
+[238]) (./refman.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2022/07/14>
@@ -2088,20 +2107,20 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 3390FDB2D77D24886CD98961D639EDFD;81107.
+(rerunfilecheck)             Checksum: 56ECB13A1FD40F65D8A0A0FD3AD6256D;85899.
 )
 
 Here is how much of LuaTeX's memory you used:
- 30622 strings out of 475512
- 305297,1373583 words of node,token memory allocated
- 1065 words of node memory still in use:
-   5 hlist, 1 vlist, 2 rule, 2 glue, 3 kern, 1 glyph, 125 attribute, 113 glue_sp
-ec, 18 attribute_list, 2 write, 7 user_defined, 1 pdf_action nodes
-   avail lists: 1:132,2:66398,3:1072,4:1145,5:688,6:372,7:9690,8:6,9:2157,10:40,
-11:485,12:2
- 46403 multiletter control sequences out of 65536+600000
+ 31111 strings out of 475512
+ 305390,1373583 words of node,token memory allocated
+ 1017 words of node memory still in use:
+   5 hlist, 1 vlist, 2 rule, 2 glue, 3 kern, 1 glyph, 103 attribute, 113 glue_sp
+ec, 16 attribute_list, 2 write, 7 user_defined, 1 pdf_action nodes
+   avail lists: 1:118,2:67331,3:1143,4:1188,5:715,6:390,7:9833,8:7,9:2156,10:40,
+11:493,12:2
+ 46490 multiletter control sequences out of 65536+600000
  123 fonts using 71795743 bytes
- 101i,16n,115p,842b,856s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,16n,115p,1002b,848s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/texlive/texdir/texmf-dist/fonts/opentype/public/lm/lmsans9-oblique.otf></o
 pt/texlive/texdir/texmf-dist/fonts/opentype/public/fandol/FandolFang-Regular.otf
 ></opt/texlive/texdir/texmf-dist/fonts/opentype/public/fandol/FandolHei-Regular.
@@ -2122,10 +2141,10 @@ s/type1/public/amsfonts/cm/cmmi7.pfb></opt/texlive/texdir/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmsy10.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmsy6.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy7.pfb>
-Output written on refman.pdf (242 pages, 1277539 bytes).
+Output written on refman.pdf (254 pages, 1324825 bytes).
 
-PDF statistics: 12384 PDF objects out of 12825 (max. 8388607)
- 11954 compressed objects within 120 object streams
- 6316 named destinations out of 7423 (max. 131072)
- 3321 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 13064 PDF objects out of 15390 (max. 8388607)
+ 12615 compressed objects within 127 object streams
+ 6693 named destinations out of 7423 (max. 131072)
+ 3505 words of extra memory for PDF output out of 10000 (max. 100000000)
 

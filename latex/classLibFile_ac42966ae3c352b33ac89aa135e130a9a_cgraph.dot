@@ -1,0 +1,15 @@
+digraph "LibFile::writeToDB"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [label="LibFile::writeToDB",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="steelblue1",style="solid"];
+  Node2 [label="LibDatabase::initialize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibDatabase.html#a1ba443f5483f970be7231fe3d4a28169",tooltip="Create the lut_entries table if it does not already exist."];
+  Node1 -> Node3 [color="steelblue1",style="solid"];
+  Node3 [label="LibDatabase::writeLutEntry",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibDatabase.html#a0bb1214018232120513f2caeac846cc9",tooltip="Insert one LUT record into lut_entries."];
+  Node3 -> Node4 [color="steelblue1",style="solid"];
+  Node4 [label="toFloatBlob",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibDatabase_8cpp.html#aa1c231f3f6ea92a58aa1858fbea4de24",tooltip=" "];
+}
