@@ -439,3 +439,49 @@
 ### 2026-05-13
 
 - 修复作者联系邮件信息在cmakelists修改后不能自动更新到version.h的问题。导致这个问题的原因是 `CMakeLists.txt` 中使用了 `CACHE` 变量。`set(VAR "VALUE" CACHE STRING "DocString")` 这种方式只会在这两个变量还未缓存时赋值。如果在 CMakeLists.txt 中修改了内容，而且 CMake 之前已经生成过并保存了 Cache 文件（`CMakeCache.txt`），CMake 就不会再覆盖它们的值，因此相应的模板替换也就不会更新出新的结果。补充了中文名、备用邮箱、更新了版本号为1.1.3。
+
+- 集成SQLiteCpp 和 GoogleTest。
+  - 通过 `FetchContent` 拉取 SQLiteCpp 3.3.1 和 GoogleTest v1.14.0。
+  - 新建 `test/` 测试目录及 `test/CMakeLists.txt`，通过 `file(GLOB_RECURSE)` 自动发现测试文件。
+  - 新增 `test/utils/common.hpp`，提供 `DatabaseTest` 测试夹具，内置 `:memory:` 内存数据库生命周期管理。
+  - 编写 `test_sqlite.cpp`，验证 SQLiteCpp 基本 CRUD 读写能力。
+
+## 2026-06
+
+### 2026-06-22
+
+- `.gitignore` 添加 `CLAUDE.md` 条目，避免项目级 AI 辅助文件被跟踪到版本控制中。
+
+- 实现 `parse --db` SQLite 数据库写入功能，将 Liberty LUT 条目持久化到 SQLite 数据库：
+  - 新建 `LibDatabase` 类（RAII 封装），管理 SQLite 连接生命周期。
+    - `initialize()` 执行 DDL 创建 `lut_entries` 表（仅含此表，其余表由 Python 构建脚本管理）。
+    - 使用 `INSERT OR IGNORE` 实现写入幂等性：相同 UNIQUE 键（file_path, pvt_corner, aged_year, arc_type, related_pin）的重复写入自动忽略。
+    - LUT 的 `index_1`、`index_2`、`values` 数组以 `float32` BLOB 格式存储，相比 TEXT/JSON 节省约 60% 空间。
+    - 启用 WAL journal 模式和 `busy_timeout`，支持并发读写场景。
+    - `scenario_id` 字段预留为 `NULL`，留待后续 Python 脚本回填。
+  - `LibFile::writeToDB()` 方法实现完整的层次遍历：
+    - 从 `lib_json_` 中提取 PVT 头信息（process, temperature, voltage）。
+    - 逐层遍历 cells → output_pins → timing_arcs → 四种 arc_type（cell_rise, cell_fall, rise_transition, fall_transition）。
+    - 每个 LUT 写为 `lut_entries` 表的一行，携带完整的层级上下文。
+  - CLI 层新增 `--db`、`--pvt-corner`、`--aged-year`、`--lib-json` 四个选项。
+  - `CMakeLists.txt`：将 `SQLiteCpp` 链接到主目标。
+  - 编写数据库写入测试（8 个 GoogleTest 用例）：
+    - `test_libdb.cpp`：单元测试 `LibDatabase`，覆盖建表、单条目读写、BLOB 逐字节验证、UNIQUE 约束、四种 arc_type。
+    - `test_libfile_db.cpp`：集成测试 `LibFile::writeToDB()` 与真实 `.lib` 文件（`tcbn65lpbc.ski.lib`），覆盖完整写入流程、BLOB 值合理性、幂等写入、`scenario_id IS NULL` 不变式。
+    - 每个测试使用独立的临时 `.db` 文件，避免并行测试锁冲突。
+
+- 重构 `parse` 子命令的 CLI 选项与 DB 输出行为：
+  - `--pvt-corner` 更名为 `--pvt`，语义更通用（不限于老化场景）。
+  - `--aged-year` 从必选项改为可选项（默认 0.0），适用于非老化库。
+  - 移除 `--lib-json` 选项：DB 模式下不再同时输出 JSON，JSON 与 DB 输出正交化（纯 parse=JSON，parse --db=仅写 DB）。
+  - 明确 `process` 参数的语义：存储 `.lib` 头部的原始整数值，不映射为 SS/FF/TT，映射由调用者通过 `--pvt` 负责。
+
+### 2026-06-23
+
+- `parse --db` SQLite 入库时 `when` 条件丢失导致去重数据丢失修复：
+  - **问题**：`when`（同一 `related_pin` 区分不同时序弧的条件布尔表达式）未入库、未进 UNIQUE 约束，导致同一 `(cell, output_pin, related_pin, arc_type)` 下不同 `when` 的时序弧被 `INSERT OR IGNORE` 静默丢弃。真实生产级 PDK 入库测试：Wrote 35560，DB 仅实存 7936（丢失 77.7%）。
+  - **DDL**：`lut_entries` 表新增 `"when" TEXT` 列（放在 `timing_type` 与 `arc_type` 之间），UNIQUE 约束加入 `"when"`。
+  - **INSERT/bind**：INSERT 列和占位符同步加 `when`（第 11 位）。空 `when` 绑定空字符串而非 NULL，避免 SQLite UNIQUE 约束视多 NULL 为不冲突导致幂等破坏。
+  - **提取**：`LibFile::writeToDB()` 从 timing arc JSON 中提取 `arc.value("when", "")` 传入。
+  - **TDD 驱动**：新增 `test_libdb.cpp:DifferentWhenSameKeyBothPersisted`（纯 DB 层验证 when 进 UNIQUE）、`test_libfile_db.cpp:WhenConditionPreserved`（集成层，ski.lib related_pin=A 有 4 distinct when 全入库）、`MultipleWhenArcsAllPersisted`（>=12 行）；同步更新现有测试的 SELECT/DISTINCT 加 `when` 列。
+  - **验证**：生产级 PDK 集成验证 DB 条目 7936→35536（恢复 99.9%），条件弧 27772 全保留，distinct when=717，二次写入幂等不变。24 条差异（35560→35536）已追溯为 PDK `.lib` 数据本身的真实重复（某特定单元重复定义），非代码 bug。

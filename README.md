@@ -129,7 +129,7 @@ Options:
   -v,--version                Display program version information and exit
 
 Subcommands:
-  parse                       Parse the Liberty file and write JSON to a file
+  parse                       Parse the Liberty file and write JSON (or SQLite DB via --db)
   mono                        Check the monotonicity of timing arc values
   compare                     Compare the comparison library against the reference one and report differences
   supercell                   Generate supercells for the given Liberty file
@@ -214,6 +214,11 @@ make
 - **[ExprTk (Expression Toolkit Library)](http://www.partow.net/programming/exprtk/index.html):**
   - **Purpose:** A fast mathematical expression parser and evaluation engine. It is used in the `func` subcommand to dynamically evaluate the logical function strings extracted from libraries or Verilog, enabling the functional equivalence check by comparing truth tables.
   - **Integration:** The header file (`exprtk.hpp`) is included directly within this project's `include_3rd_party` directory.
+  - **License:** MIT License.
+
+- **[SQLiteCpp](https://github.com/SRombauts/SQLiteCpp):**
+  - **Purpose:** Provides a C++ wrapper around the SQLite3 C API, enabling the `parse --db` mode to persist Liberty LUT entries directly into a SQLite database for efficient querying and integration with ML data pipelines.
+  - **Integration:** Managed via CMake's `FetchContent`.
   - **License:** MIT License.
 
 ### Build, Documentation, and External Tools:

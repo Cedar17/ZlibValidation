@@ -1,12 +1,15 @@
 cmake_minimum_required(VERSION 3.21...3.31)
 project(ZlibValidation
     LANGUAGES CXX
-    VERSION 1.1.3
+    VERSION 1.2.1
 )
 
 # Define author information
 set(PROJECT_AUTHOR "Song Zixuan (宋子轩)")
 set(PROJECT_CONTACT "zx.song@zju.edu.cn, songcedar@outlook.com")
+
+# Enable testing for CTest
+enable_testing()
 
 # Set default build type to Release if not specified
 if(NOT CMAKE_BUILD_TYPE)
@@ -95,6 +98,29 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(slang)
 
+# Fetch SQLiteCpp
+set(SQLITECPP_RUN_CPPLINT OFF CACHE BOOL "Run cpplint" FORCE)
+set(SQLITECPP_RUN_CPPCHECK OFF CACHE BOOL "Run cppcheck" FORCE)
+set(SQLITECPP_BUILD_TESTS OFF CACHE BOOL "Build SQLiteCpp tests" FORCE)
+set(SQLITECPP_BUILD_EXAMPLES OFF CACHE BOOL "Build SQLiteCpp examples" FORCE)
+FetchContent_Declare(
+    SQLiteCpp
+    GIT_REPOSITORY https://github.com/SRombauts/SQLiteCpp.git
+    GIT_SHALLOW ON
+    GIT_TAG 3.3.1
+)
+FetchContent_MakeAvailable(SQLiteCpp)
+
+# Fetch GoogleTest
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_Declare(
+    googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_SHALLOW ON
+    GIT_TAG v1.14.0
+)
+FetchContent_MakeAvailable(googletest)
+
 # Collect all source files
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 
@@ -118,14 +144,17 @@ target_include_directories(zlibvalidation PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include_3rd_party
 )
 target_link_directories(zlibvalidation PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib)
-target_link_libraries(zlibvalidation PRIVATE 
+target_link_libraries(zlibvalidation PRIVATE
     si2dr_liberty
-    CLI11::CLI11 
-    spdlog::spdlog 
+    CLI11::CLI11
+    spdlog::spdlog
     nlohmann_json::nlohmann_json
     tabulate::tabulate
     slang::slang
+    SQLiteCpp
 )
 
 # Allow multiple definition of symbols
 target_link_options(zlibvalidation PRIVATE "-Wl,--allow-multiple-definition")
+
+add_subdirectory(test)
