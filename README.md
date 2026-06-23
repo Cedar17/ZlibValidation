@@ -129,7 +129,7 @@ Options:
   -v,--version                Display program version information and exit
 
 Subcommands:
-  parse                       Parse the Liberty file and write JSON to a file (or SQLite DB via --db)
+  parse                       Parse the Liberty file and write JSON (or SQLite DB via --db)
   mono                        Check the monotonicity of timing arc values
   compare                     Compare the comparison library against the reference one and report differences
   supercell                   Generate supercells for the given Liberty file

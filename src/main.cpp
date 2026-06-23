@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
 
   // Add subcommand for parse mode
   CLI::App *parse_cmd =
-      app.add_subcommand("parse", "Parse the Liberty file and write JSON to a file");
+      app.add_subcommand("parse", "Parse the Liberty file and write JSON (or SQLite DB via --db)");
   parse_cmd->add_option("library_path", library_paths, "Specify the library file to process")
       ->check(CLI::ExistingFile)
       ->required();

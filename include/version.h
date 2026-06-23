@@ -5,8 +5,8 @@
 #define APP_NAME          "ZlibValidation"
 #define APP_VERSION_MAJOR 1
 #define APP_VERSION_MINOR 2
-#define APP_VERSION_PATCH 0
-#define APP_VERSION       "1.2.0"
+#define APP_VERSION_PATCH 1
+#define APP_VERSION       "1.2.1"
 #define APP_AUTHOR        "Song Zixuan (宋子轩)"
 #define APP_CONTACT       "zx.song@zju.edu.cn, songcedar@outlook.com"
-#define BUILD_TIMESTAMP   "2026-06-23 11:27:11"
+#define BUILD_TIMESTAMP   "2026-06-23 12:06:48"
