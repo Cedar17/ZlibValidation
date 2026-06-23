@@ -20,7 +20,7 @@
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057 }
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058   \textcolor{comment}{// Add subcommand for parse mode}}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059   CLI::App *parse\_cmd =}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060       app.add\_subcommand(\textcolor{stringliteral}{"{}parse"{}}, \textcolor{stringliteral}{"{}Parse the Liberty file and write JSON to a file"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060       app.add\_subcommand(\textcolor{stringliteral}{"{}parse"{}}, \textcolor{stringliteral}{"{}Parse the Liberty file and write JSON (or SQLite DB via -\/-\/db)"{}});}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061   parse\_cmd-\/>add\_option(\textcolor{stringliteral}{"{}library\_path"{}}, library\_paths, \textcolor{stringliteral}{"{}Specify the library file to process"{}})}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062       -\/>check(CLI::ExistingFile)}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063       -\/>required();}

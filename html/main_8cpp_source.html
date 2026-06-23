@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('main_8cpp_source.html',''); initResiza
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="comment">// Add subcommand for parse mode</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  CLI::App *parse_cmd =</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>      app.add_subcommand(<span class="stringliteral">&quot;parse&quot;</span>, <span class="stringliteral">&quot;Parse the Liberty file and write JSON to a file&quot;</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>      app.add_subcommand(<span class="stringliteral">&quot;parse&quot;</span>, <span class="stringliteral">&quot;Parse the Liberty file and write JSON (or SQLite DB via --db)&quot;</span>);</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  parse_cmd-&gt;add_option(<span class="stringliteral">&quot;library_path&quot;</span>, library_paths, <span class="stringliteral">&quot;Specify the library file to process&quot;</span>)</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>      -&gt;check(CLI::ExistingFile)</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>      -&gt;required();</div>
@@ -465,7 +465,7 @@ $(document).ready(function(){initNavTree('main_8cpp_source.html',''); initResiza
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="main_8cpp.html">main.cpp</a></li>
-    <li class="footer">Generated on Tue Jun 23 2026 12:02:47 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Jun 23 2026 12:24:48 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
