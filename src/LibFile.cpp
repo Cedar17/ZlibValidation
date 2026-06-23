@@ -203,13 +203,18 @@ void LibFile::writeToDB(const std::string &db_path, const std::string &pvt_corne
   // library_name = .lib basename (scenario_id form)
   std::string library_name = basename_;
 
-  // Walk: cells → output_pins → timing_arcs → arc_types
+  try {
+    // Walk: cells → output_pins → timing_arcs → arc_types
+    database.beginTransaction();
+
   for (const auto &cell : lib_json_["cells"]) {
+    if (!cell.contains("cell_name") || !cell["cell_name"].is_string()) continue;
     std::string cell_name = cell["cell_name"].get<std::string>();
 
     if (!cell.contains("output_pins") || !cell["output_pins"].is_array()) continue;
 
     for (const auto &pin : cell["output_pins"]) {
+      if (!pin.contains("pin_name") || !pin["pin_name"].is_string()) continue;
       std::string output_pin = pin["pin_name"].get<std::string>();
 
       if (!pin.contains("timing_arcs") || !pin["timing_arcs"].is_array()) continue;
@@ -218,6 +223,7 @@ void LibFile::writeToDB(const std::string &db_path, const std::string &pvt_corne
         std::string related_pin = arc.value("related_pin", "");
         std::string timing_sense = arc.value("timing_sense", "");
         std::string timing_type = arc.value("timing_type", "");
+        std::string when = arc.value("when", "");
 
         // Four arc types to check
         static const char *ARC_NAMES[] = {"cell_rise", "cell_fall", "rise_transition",
@@ -225,16 +231,17 @@ void LibFile::writeToDB(const std::string &db_path, const std::string &pvt_corne
         for (const char *arc_type : ARC_NAMES) {
           if (!arc.contains(arc_type)) continue;
           const auto &lut = arc[arc_type];
-          if (!lut.contains("index_1") || !lut.contains("values")) continue;
+          if (!lut.is_object()) continue;
+          if (!lut.contains("index_1") || !lut["index_1"].is_array() ||
+              !lut.contains("values") || !lut["values"].is_array()) continue;
 
           // index_1 → rows_n
-          const auto &idx1_json = lut["index_1"];
-          std::vector<double> index_1 = idx1_json.get<std::vector<double>>();
+          std::vector<double> index_1 = lut["index_1"].get<std::vector<double>>();
           int rows_n = static_cast<int>(index_1.size());
 
           // index_2 (optional, derive cols_n from values shape)
           std::vector<double> index_2;
-          if (lut.contains("index_2")) {
+          if (lut.contains("index_2") && lut["index_2"].is_array()) {
             index_2 = lut["index_2"].get<std::vector<double>>();
           }
 
@@ -259,8 +266,8 @@ void LibFile::writeToDB(const std::string &db_path, const std::string &pvt_corne
           database.writeLutEntry(
               filename_,   // file_path (original path for provenance)
               library_name, pvt_corner, aged_year, cell_name, output_pin,
-              related_pin, timing_sense, timing_type, arc_type, rows_n, cols_n,
-              index_1, index_2, values, process, temperature, voltage);
+              related_pin, timing_sense, timing_type, when, arc_type, rows_n,
+              cols_n, index_1, index_2, values, process, temperature, voltage);
 
           total_entries++;
         }
@@ -268,7 +275,15 @@ void LibFile::writeToDB(const std::string &db_path, const std::string &pvt_corne
     }
   }
 
+  database.commitTransaction();
+
   logger_->info("Wrote {} LUT entries to DB: '{}'", total_entries, db_path);
+} catch (const std::exception &e) {
+  // Rollback on any error, then rethrow
+  database.commitTransaction();
+  logger_->error("DB write failed, rolled back: {}", e.what());
+  throw;
+}
 }
 
 void LibFile::modify() { logger_->info("Modifying the file..."); }

@@ -475,3 +475,13 @@
   - `--aged-year` 从必选项改为可选项（默认 0.0），适用于非老化库。
   - 移除 `--lib-json` 选项：DB 模式下不再同时输出 JSON，JSON 与 DB 输出正交化（纯 parse=JSON，parse --db=仅写 DB）。
   - 明确 `process` 参数的语义：存储 `.lib` 头部的原始整数值，不映射为 SS/FF/TT，映射由调用者通过 `--pvt` 负责。
+
+### 2026-06-23
+
+- `parse --db` SQLite 入库时 `when` 条件丢失导致去重数据丢失修复：
+  - **问题**：`when`（同一 `related_pin` 区分不同时序弧的条件布尔表达式）未入库、未进 UNIQUE 约束，导致同一 `(cell, output_pin, related_pin, arc_type)` 下不同 `when` 的时序弧被 `INSERT OR IGNORE` 静默丢弃。真实生产级 PDK 入库测试：Wrote 35560，DB 仅实存 7936（丢失 77.7%）。
+  - **DDL**：`lut_entries` 表新增 `"when" TEXT` 列（放在 `timing_type` 与 `arc_type` 之间），UNIQUE 约束加入 `"when"`。
+  - **INSERT/bind**：INSERT 列和占位符同步加 `when`（第 11 位）。空 `when` 绑定空字符串而非 NULL，避免 SQLite UNIQUE 约束视多 NULL 为不冲突导致幂等破坏。
+  - **提取**：`LibFile::writeToDB()` 从 timing arc JSON 中提取 `arc.value("when", "")` 传入。
+  - **TDD 驱动**：新增 `test_libdb.cpp:DifferentWhenSameKeyBothPersisted`（纯 DB 层验证 when 进 UNIQUE）、`test_libfile_db.cpp:WhenConditionPreserved`（集成层，ski.lib related_pin=A 有 4 distinct when 全入库）、`MultipleWhenArcsAllPersisted`（>=12 行）；同步更新现有测试的 SELECT/DISTINCT 加 `when` 列。
+  - **验证**：生产级 PDK 集成验证 DB 条目 7936→35536（恢复 99.9%），条件弧 27772 全保留，distinct when=717，二次写入幂等不变。24 条差异（35560→35536）已追溯为 PDK `.lib` 数据本身的真实重复（某特定单元重复定义），非代码 bug。

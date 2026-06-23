@@ -48,7 +48,7 @@ TEST_F(LibFileWriteToDBTest, ParseAndWriteSmallLib) {
   SQLite::Database db(db_path_, SQLite::OPEN_READWRITE);
   SQLite::Statement q(db,
       "SELECT cell_name, output_pin, related_pin, arc_type, "
-      "rows_n, cols_n, timing_sense, timing_type, "
+      "rows_n, cols_n, timing_sense, timing_type, \"when\", "
       "process, temperature, voltage, library_name, file_path "
       "FROM lut_entries ORDER BY cell_name, related_pin, arc_type");
 
@@ -66,14 +66,14 @@ TEST_F(LibFileWriteToDBTest, ParseAndWriteSmallLib) {
                 arc_type == "rise_transition" || arc_type == "fall_transition");
 
     // Expected PVT from the .lib header
-    EXPECT_DOUBLE_EQ(q.getColumn(9).getDouble(), 0.0);   // temperature
-    EXPECT_DOUBLE_EQ(q.getColumn(10).getDouble(), 1.32);  // voltage
-    EXPECT_EQ(q.getColumn(8).getInt(), 1);                // process
+    EXPECT_DOUBLE_EQ(q.getColumn(10).getDouble(), 0.0);   // temperature
+    EXPECT_DOUBLE_EQ(q.getColumn(11).getDouble(), 1.32);  // voltage
+    EXPECT_EQ(q.getColumn(9).getInt(), 1);                // process
 
     // library_name = basename
-    EXPECT_STREQ(q.getColumn(11).getText(), "tcbn65lpbc.ski");
+    EXPECT_STREQ(q.getColumn(12).getText(), "tcbn65lpbc.ski");
     // file_path = original path
-    EXPECT_STREQ(q.getColumn(12).getText(), lib_path.c_str());
+    EXPECT_STREQ(q.getColumn(13).getText(), lib_path.c_str());
   }
 
   // Must have some entries, and count divisible by 4 (4 arc types)
@@ -131,7 +131,8 @@ TEST_F(LibFileWriteToDBTest, IdempotentWrite) {
   SQLite::Database db(db_path_, SQLite::OPEN_READWRITE);
   SQLite::Statement distinct(db,
       "SELECT count(*) FROM ("
-      "  SELECT DISTINCT file_path, pvt_corner, aged_year, arc_type, related_pin "
+      "  SELECT DISTINCT file_path, pvt_corner, aged_year, "
+      "  cell_name, output_pin, related_pin, \"when\", arc_type "
       "  FROM lut_entries)");
   ASSERT_TRUE(distinct.executeStep());
   int distinct_count = distinct.getColumn(0).getInt();
@@ -142,4 +143,50 @@ TEST_F(LibFileWriteToDBTest, IdempotentWrite) {
 
   EXPECT_EQ(distinct_count, total_count);
   EXPECT_GT(total_count, 0);
+}
+
+// Regression for the silent-dedup data-loss bug: `tcbn65lpbc.ski.lib` has
+// multiple timing() groups under the same related_pin distinguished only by
+// `when` (e.g. related_pin=A has 6 distinct when conditions). Before `when`
+// joined the UNIQUE constraint, all but the first were silently dropped.
+TEST_F(LibFileWriteToDBTest, WhenConditionPreserved) {
+  std::string lib_path = std::string(TEST_DATA_DIR) + "/tcbn65lpbc.ski.lib";
+  ASSERT_TRUE(std::filesystem::exists(lib_path)) << "Missing: " << lib_path;
+
+  LibFile libfile(lib_path, "test_when.log");
+  libfile.parse();
+  libfile.writeToDB(db_path_, "SS_1p08V_125C", 0.01);
+
+  SQLite::Database db(db_path_, SQLite::OPEN_READWRITE);
+
+  // related_pin=A has 4 distinct when conditions in this .lib
+  // (!B*!CI, !B*CI, B*!CI, B*CI) — all must survive ingestion. Before `when`
+  // joined the UNIQUE constraint, all but the first per arc_type were dropped.
+  SQLite::Statement q(db,
+      "SELECT count(DISTINCT \"when\") FROM lut_entries "
+      "WHERE related_pin = 'A' AND \"when\" != ''");
+  ASSERT_TRUE(q.executeStep());
+  int distinct_when = q.getColumn(0).getInt();
+  EXPECT_EQ(distinct_when, 4) << "Expected 4 distinct when for related_pin=A";
+}
+
+// Same related_pin's different when conditions must each carry their own LUT
+// rows — not collapse onto the single first-seen arc. Count of rows for
+// related_pin=A must be far greater than the dedup-stripped baseline (1 per
+// arc_type). With 6 when × at least cell_rise+cell_fall, expect >= 12.
+TEST_F(LibFileWriteToDBTest, MultipleWhenArcsAllPersisted) {
+  std::string lib_path = std::string(TEST_DATA_DIR) + "/tcbn65lpbc.ski.lib";
+  ASSERT_TRUE(std::filesystem::exists(lib_path)) << "Missing: " << lib_path;
+
+  LibFile libfile(lib_path, "test_multi_when.log");
+  libfile.parse();
+  libfile.writeToDB(db_path_, "SS_1p08V_125C", 0.01);
+
+  SQLite::Database db(db_path_, SQLite::OPEN_READWRITE);
+  SQLite::Statement q(db,
+      "SELECT count(*) FROM lut_entries WHERE related_pin = 'A'");
+  ASSERT_TRUE(q.executeStep());
+  int rows_for_a = q.getColumn(0).getInt();
+  // 4 when × >=2 arc_type across output pins CO/S — dedup bug would yield <4.
+  EXPECT_GE(rows_for_a, 12) << "related_pin=A rows lost to when-dedup";
 }

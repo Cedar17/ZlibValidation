@@ -45,6 +45,13 @@ public:
   void initialize();
 
   // -----------------------------------------------------------------------
+  // Transaction support (for batched writes)
+  // -----------------------------------------------------------------------
+
+  void beginTransaction();
+  void commitTransaction();
+
+  // -----------------------------------------------------------------------
   // Write operations
   // -----------------------------------------------------------------------
 
@@ -63,6 +70,9 @@ public:
    * @param related_pin   Input related pin name (e.g. "A").
    * @param timing_sense  Timing sense (e.g. "negative_unate").
    * @param timing_type   Timing type (e.g. "combinational", "rising_edge").
+   * @param when           Boolean condition expression distinguishing arcs that
+   *                       share the same related_pin (e.g. "A * !B"). Empty
+   *                       string for unconditional arcs — stored as NULL.
    * @param arc_type      Arc type: cell_rise, cell_fall, rise_transition, fall_transition.
    * @param rows_n        Number of rows in the LUT.
    * @param cols_n        Number of columns in the LUT.
@@ -79,8 +89,9 @@ public:
                      const std::string &pvt_corner, double aged_year,
                      const std::string &cell_name, const std::string &output_pin,
                      const std::string &related_pin, const std::string &timing_sense,
-                     const std::string &timing_type, const std::string &arc_type, int rows_n,
-                     int cols_n, const std::vector<double> &index_1,
+                     const std::string &timing_type, const std::string &when,
+                     const std::string &arc_type, int rows_n, int cols_n,
+                     const std::vector<double> &index_1,
                      const std::vector<double> &index_2, const std::vector<double> &values,
                      int process, double temperature, double voltage);
 

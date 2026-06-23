@@ -33,6 +33,7 @@ static const char *DDL_LUT_ENTRIES = R"sql(
     related_pin   TEXT NOT NULL,
     timing_sense  TEXT,
     timing_type   TEXT,
+    "when"        TEXT,
     arc_type      TEXT NOT NULL,
     rows_n        INTEGER NOT NULL,
     cols_n        INTEGER NOT NULL,
@@ -43,18 +44,19 @@ static const char *DDL_LUT_ENTRIES = R"sql(
     temperature   REAL,
     voltage       REAL,
     ingested_at   TEXT NOT NULL DEFAULT (datetime('now')),
-    UNIQUE(file_path, pvt_corner, aged_year, arc_type, related_pin)
+    UNIQUE(file_path, pvt_corner, aged_year, cell_name, output_pin,
+           related_pin, "when", arc_type)
   );
 )sql";
 
 static const char *INSERT_SQL = R"sql(
   INSERT OR IGNORE INTO lut_entries
     (file_path, library_name, scenario_id, pvt_corner, aged_year,
-     cell_name, output_pin, related_pin, timing_sense, timing_type, arc_type,
+     cell_name, output_pin, related_pin, timing_sense, timing_type, "when", arc_type,
      rows_n, cols_n, index_1_blob, index_2_blob, values_blob,
      process, temperature, voltage)
   VALUES (?, ?, ?, ?, ?,
-          ?, ?, ?, ?, ?, ?,
+          ?, ?, ?, ?, ?, ?, ?,
           ?, ?, ?, ?, ?,
           ?, ?, ?)
 )sql";
@@ -92,6 +94,24 @@ void LibDatabase::initialize() {
 }
 
 // =========================================================================
+// Transaction support
+// =========================================================================
+
+void LibDatabase::beginTransaction() {
+  if (!initialized_) {
+    throw std::runtime_error("LibDatabase::beginTransaction() called before initialize()");
+  }
+  db_->exec("BEGIN");
+}
+
+void LibDatabase::commitTransaction() {
+  if (!initialized_) {
+    throw std::runtime_error("LibDatabase::commitTransaction() called before initialize()");
+  }
+  db_->exec("COMMIT");
+}
+
+// =========================================================================
 // writeLutEntry()
 // =========================================================================
 
@@ -100,8 +120,9 @@ void LibDatabase::writeLutEntry(const std::string &file_path,
                                 const std::string &pvt_corner, double aged_year,
                                 const std::string &cell_name, const std::string &output_pin,
                                 const std::string &related_pin, const std::string &timing_sense,
-                                const std::string &timing_type, const std::string &arc_type,
-                                int rows_n, int cols_n, const std::vector<double> &index_1,
+                                const std::string &timing_type, const std::string &when,
+                                const std::string &arc_type, int rows_n, int cols_n,
+                                const std::vector<double> &index_1,
                                 const std::vector<double> &index_2,
                                 const std::vector<double> &values, int process,
                                 double temperature, double voltage) {
@@ -111,10 +132,26 @@ void LibDatabase::writeLutEntry(const std::string &file_path,
 
   auto &stmt = *insert_stmt_;
 
+  // Reset before binding — safe even after a prior exec() failure
+  stmt.reset();
+
   // Convert doubles to float32 blobs
   auto idx1_f = toFloatBlob(index_1);
   auto idx2_f = toFloatBlob(index_2);
   auto vals_f = toFloatBlob(values);
+
+  // Empty vectors would bind NULL to BLOB NOT NULL columns — refuse early
+  if (idx1_f.empty()) {
+    throw std::runtime_error("Empty index_1 in LUT entry for " + cell_name + "/" + arc_type);
+  }
+  if (vals_f.empty()) {
+    throw std::runtime_error("Empty values in LUT entry for " + cell_name + "/" + arc_type);
+  }
+  // index_2 may be zero-filled for 1D LUTs — accept empty as 1-column placeholder
+  if (idx2_f.empty()) {
+    // BIND NULL is rejected by NOT NULL, so write a single zero
+    idx2_f.push_back(0.0f);
+  }
 
   // Bind parameters
   stmt.bind(1, file_path);
@@ -127,17 +164,20 @@ void LibDatabase::writeLutEntry(const std::string &file_path,
   stmt.bind(8, related_pin);
   stmt.bind(9, timing_sense);
   stmt.bind(10, timing_type);
-  stmt.bind(11, arc_type);
-  stmt.bind(12, rows_n);
-  stmt.bind(13, cols_n);
-  stmt.bind(14, idx1_f.data(), static_cast<int>(idx1_f.size() * sizeof(float)));
-  stmt.bind(15, idx2_f.data(), static_cast<int>(idx2_f.size() * sizeof(float)));
-  stmt.bind(16, vals_f.data(), static_cast<int>(vals_f.size() * sizeof(float)));
-  stmt.bind(17, process);
-  stmt.bind(18, temperature);
-  stmt.bind(19, voltage);
+  // Empty when → "" (NOT NULL string), so unconditional arcs still honor the
+  // UNIQUE constraint for idempotent re-writes. Binding NULL would let SQLite
+  // treat multiple NULLs as non-conflicting and break INSERT OR IGNORE dedup.
+  stmt.bind(11, when);
+  stmt.bind(12, arc_type);
+  stmt.bind(13, rows_n);
+  stmt.bind(14, cols_n);
+  stmt.bind(15, idx1_f.data(), static_cast<int>(idx1_f.size() * sizeof(float)));
+  stmt.bind(16, idx2_f.data(), static_cast<int>(idx2_f.size() * sizeof(float)));
+  stmt.bind(17, vals_f.data(), static_cast<int>(vals_f.size() * sizeof(float)));
+  stmt.bind(18, process);
+  stmt.bind(19, temperature);
+  stmt.bind(20, voltage);
 
   // Execute
   stmt.exec();
-  stmt.reset();
 }

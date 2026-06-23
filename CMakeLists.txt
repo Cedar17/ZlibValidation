@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21...3.31)
 project(ZlibValidation
     LANGUAGES CXX
-    VERSION 1.1.3
+    VERSION 1.2.0
 )
 
 # Define author information

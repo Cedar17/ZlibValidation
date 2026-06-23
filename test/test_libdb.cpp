@@ -60,7 +60,7 @@ TEST_F(LibDatabaseTest, WriteAndReadSingleEntry) {
   };
 
   db_->writeLutEntry("path/to/test.lib", "test_library", "SS_1p08V_125C", 0.01,
-                     "INVD0", "Y", "A", "negative_unate", "combinational",
+                     "INVD0", "Y", "A", "negative_unate", "combinational", "!B",
                      "cell_rise", 3, 3, index_1, index_2, values, 1, 125.0, 1.08);
 
   SQLite::Database db(db_path_, SQLite::OPEN_READWRITE);
@@ -131,14 +131,14 @@ TEST_F(LibDatabaseTest, UniqueConstraintPreventsDuplicates) {
 
   // First insert
   db_->writeLutEntry("f.lib", "lib", "SS_1p08V_125C", 0.01,
-                     "CELL", "Y", "A", "", "", "cell_rise",
+                     "CELL", "Y", "A", "", "", "!B", "cell_rise",
                      3, 3, idx, idx2, vals, 1, 25.0, 1.0);
 
   // Second insert with same UNIQUE key — must be ignored
   std::vector<double> vals2(9, 0.0);
   std::vector<double> idx2b(3, 0.0);
   db_->writeLutEntry("f.lib", "lib", "SS_1p08V_125C", 0.01,
-                     "CELL", "Y", "A", "", "", "cell_rise",
+                     "CELL", "Y", "A", "", "", "!B", "cell_rise",
                      3, 3, idx, idx2b, vals2, 1, 25.0, 1.0);
 
   SQLite::Database db(db_path_, SQLite::OPEN_READWRITE);
@@ -166,7 +166,7 @@ TEST_F(LibDatabaseTest, MultipleArcTypesWritten) {
   const char *ARC_TYPES[] = {"cell_fall", "cell_rise", "fall_transition", "rise_transition"};
   for (const char *at : ARC_TYPES) {
     db_->writeLutEntry("f.lib", "lib", "SS_1p08V_125C", 0.01,
-                       "INVD0", "Y", "A", "negative_unate", "combinational",
+                       "INVD0", "Y", "A", "negative_unate", "combinational", "!B",
                        at, 7, 7, idx1, idx2, vals, 1, 125.0, 1.08);
   }
 
@@ -178,4 +178,36 @@ TEST_F(LibDatabaseTest, MultipleArcTypesWritten) {
     count++;
   }
   EXPECT_EQ(count, 4);
+}
+
+// Same UNIQUE key (file/pvt/year/cell/pin/related_pin/arc_type) but different
+// `when` conditions must both persist — the core regression for the silent-dedup
+// data-loss bug. Before `when` joined the UNIQUE constraint, the second insert
+// was silently dropped by INSERT OR IGNORE.
+TEST_F(LibDatabaseTest, DifferentWhenSameKeyBothPersisted) {
+  std::vector<double> idx1 = {0.01, 0.02, 0.03};
+  std::vector<double> idx2 = {0.1, 0.2, 0.3};
+  std::vector<double> vals = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0};
+
+  // Identical key, different when condition
+  db_->writeLutEntry("f.lib", "lib", "SS_1p08V_125C", 0.01,
+                     "CELL", "Y", "A", "negative_unate", "combinational", "!B",
+                     "cell_rise", 3, 3, idx1, idx2, vals, 1, 125.0, 1.08);
+  db_->writeLutEntry("f.lib", "lib", "SS_1p08V_125C", 0.01,
+                     "CELL", "Y", "A", "negative_unate", "combinational", "B",
+                     "cell_rise", 3, 3, idx1, idx2, vals, 1, 125.0, 1.08);
+
+  SQLite::Database db(db_path_, SQLite::OPEN_READWRITE);
+  SQLite::Statement cnt(db, "SELECT count(*) FROM lut_entries");
+  ASSERT_TRUE(cnt.executeStep());
+  EXPECT_EQ(cnt.getColumn(0).getInt(), 2);
+
+  // Both when conditions are distinct
+  SQLite::Statement q(db,
+      "SELECT DISTINCT \"when\" FROM lut_entries ORDER BY \"when\"");
+  int distinct_when = 0;
+  while (q.executeStep()) {
+    distinct_when++;
+  }
+  EXPECT_EQ(distinct_when, 2);
 }
