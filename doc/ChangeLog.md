@@ -440,4 +440,38 @@
 
 - 修复作者联系邮件信息在cmakelists修改后不能自动更新到version.h的问题。导致这个问题的原因是 `CMakeLists.txt` 中使用了 `CACHE` 变量。`set(VAR "VALUE" CACHE STRING "DocString")` 这种方式只会在这两个变量还未缓存时赋值。如果在 CMakeLists.txt 中修改了内容，而且 CMake 之前已经生成过并保存了 Cache 文件（`CMakeCache.txt`），CMake 就不会再覆盖它们的值，因此相应的模板替换也就不会更新出新的结果。补充了中文名、备用邮箱、更新了版本号为1.1.3。
 
-- 集成了SQLiteCpp 和 GoogleTest。
+- 集成SQLiteCpp 和 GoogleTest。
+  - 通过 `FetchContent` 拉取 SQLiteCpp 3.3.1 和 GoogleTest v1.14.0。
+  - 新建 `test/` 测试目录及 `test/CMakeLists.txt`，通过 `file(GLOB_RECURSE)` 自动发现测试文件。
+  - 新增 `test/utils/common.hpp`，提供 `DatabaseTest` 测试夹具，内置 `:memory:` 内存数据库生命周期管理。
+  - 编写 `test_sqlite.cpp`，验证 SQLiteCpp 基本 CRUD 读写能力。
+
+## 2026-06
+
+### 2026-06-22
+
+- `.gitignore` 添加 `CLAUDE.md` 条目，避免项目级 AI 辅助文件被跟踪到版本控制中。
+
+- 实现 `parse --db` SQLite 数据库写入功能，将 Liberty LUT 条目持久化到 SQLite 数据库：
+  - 新建 `LibDatabase` 类（RAII 封装），管理 SQLite 连接生命周期。
+    - `initialize()` 执行 DDL 创建 `lut_entries` 表（仅含此表，其余表由 Python 构建脚本管理）。
+    - 使用 `INSERT OR IGNORE` 实现写入幂等性：相同 UNIQUE 键（file_path, pvt_corner, aged_year, arc_type, related_pin）的重复写入自动忽略。
+    - LUT 的 `index_1`、`index_2`、`values` 数组以 `float32` BLOB 格式存储，相比 TEXT/JSON 节省约 60% 空间。
+    - 启用 WAL journal 模式和 `busy_timeout`，支持并发读写场景。
+    - `scenario_id` 字段预留为 `NULL`，留待后续 Python 脚本回填。
+  - `LibFile::writeToDB()` 方法实现完整的层次遍历：
+    - 从 `lib_json_` 中提取 PVT 头信息（process, temperature, voltage）。
+    - 逐层遍历 cells → output_pins → timing_arcs → 四种 arc_type（cell_rise, cell_fall, rise_transition, fall_transition）。
+    - 每个 LUT 写为 `lut_entries` 表的一行，携带完整的层级上下文。
+  - CLI 层新增 `--db`、`--pvt-corner`、`--aged-year`、`--lib-json` 四个选项。
+  - `CMakeLists.txt`：将 `SQLiteCpp` 链接到主目标。
+  - 编写数据库写入测试（8 个 GoogleTest 用例）：
+    - `test_libdb.cpp`：单元测试 `LibDatabase`，覆盖建表、单条目读写、BLOB 逐字节验证、UNIQUE 约束、四种 arc_type。
+    - `test_libfile_db.cpp`：集成测试 `LibFile::writeToDB()` 与真实 `.lib` 文件（`tcbn65lpbc.ski.lib`），覆盖完整写入流程、BLOB 值合理性、幂等写入、`scenario_id IS NULL` 不变式。
+    - 每个测试使用独立的临时 `.db` 文件，避免并行测试锁冲突。
+
+- 重构 `parse` 子命令的 CLI 选项与 DB 输出行为：
+  - `--pvt-corner` 更名为 `--pvt`，语义更通用（不限于老化场景）。
+  - `--aged-year` 从必选项改为可选项（默认 0.0），适用于非老化库。
+  - 移除 `--lib-json` 选项：DB 模式下不再同时输出 JSON，JSON 与 DB 输出正交化（纯 parse=JSON，parse --db=仅写 DB）。
+  - 明确 `process` 参数的语义：存储 `.lib` 头部的原始整数值，不映射为 SS/FF/TT，映射由调用者通过 `--pvt` 负责。
