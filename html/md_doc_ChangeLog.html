@@ -625,7 +625,52 @@ $(document).ready(function(){initNavTree('md_doc_ChangeLog.html',''); initResiza
 2026-05-13</h2>
 <ul>
 <li>修复作者联系邮件信息在cmakelists修改后不能自动更新到version.h的问题。导致这个问题的原因是 <code>CMakeLists.txt</code> 中使用了 <code>CACHE</code> 变量。<code>set(VAR "VALUE" CACHE STRING "DocString")</code> 这种方式只会在这两个变量还未缓存时赋值。如果在 CMakeLists.txt 中修改了内容，而且 CMake 之前已经生成过并保存了 Cache 文件（<code>CMakeCache.txt</code>），CMake 就不会再覆盖它们的值，因此相应的模板替换也就不会更新出新的结果。补充了中文名、备用邮箱、更新了版本号为1.1.3。</li>
-<li>集成了SQLiteCpp 和 GoogleTest。 </li>
+<li>集成SQLiteCpp 和 GoogleTest。<ul>
+<li>通过 <code>FetchContent</code> 拉取 SQLiteCpp 3.3.1 和 GoogleTest v1.14.0。</li>
+<li>新建 <code>test/</code> 测试目录及 <code>test/CMakeLists.txt</code>，通过 <code>file(GLOB_RECURSE)</code> 自动发现测试文件。</li>
+<li>新增 <code>test/utils/common.hpp</code>，提供 <code>DatabaseTest</code> 测试夹具，内置 <code>:memory:</code> 内存数据库生命周期管理。</li>
+<li>编写 <code>test_sqlite.cpp</code>，验证 SQLiteCpp 基本 CRUD 读写能力。</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md63"></a>
+2026-06</h1>
+<h2><a class="anchor" id="autotoc_md64"></a>
+2026-06-22</h2>
+<ul>
+<li><code>.gitignore</code> 添加 <code>CLAUDE.md</code> 条目，避免项目级 AI 辅助文件被跟踪到版本控制中。</li>
+<li>实现 <code>parse --db</code> SQLite 数据库写入功能，将 Liberty LUT 条目持久化到 SQLite 数据库：<ul>
+<li>新建 <code><a class="el" href="classLibDatabase.html" title="Manages SQLite database connections for writing Liberty LUT data.">LibDatabase</a></code> 类（RAII 封装），管理 SQLite 连接生命周期。<ul>
+<li><code>initialize()</code> 执行 DDL 创建 <code>lut_entries</code> 表（仅含此表，其余表由 Python 构建脚本管理）。</li>
+<li>使用 <code>INSERT OR IGNORE</code> 实现写入幂等性：相同 UNIQUE 键（file_path, pvt_corner, aged_year, arc_type, related_pin）的重复写入自动忽略。</li>
+<li>LUT 的 <code>index_1</code>、<code>index_2</code>、<code>values</code> 数组以 <code>float32</code> BLOB 格式存储，相比 TEXT/JSON 节省约 60% 空间。</li>
+<li>启用 WAL journal 模式和 <code>busy_timeout</code>，支持并发读写场景。</li>
+<li><code>scenario_id</code> 字段预留为 <code>NULL</code>，留待后续 Python 脚本回填。</li>
+</ul>
+</li>
+<li><code><a class="el" href="classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a">LibFile::writeToDB()</a></code> 方法实现完整的层次遍历：<ul>
+<li>从 <code>lib_json_</code> 中提取 PVT 头信息（process, temperature, voltage）。</li>
+<li>逐层遍历 cells → output_pins → timing_arcs → 四种 arc_type（cell_rise, cell_fall, rise_transition, fall_transition）。</li>
+<li>每个 LUT 写为 <code>lut_entries</code> 表的一行，携带完整的层级上下文。</li>
+</ul>
+</li>
+<li>CLI 层新增 <code>--db</code>、<code>--pvt-corner</code>、<code>--aged-year</code>、<code>--lib-json</code> 四个选项。</li>
+<li><code>CMakeLists.txt</code>：将 <code>SQLiteCpp</code> 链接到主目标。</li>
+<li>编写数据库写入测试（8 个 GoogleTest 用例）：<ul>
+<li><code>test_libdb.cpp</code>：单元测试 <code><a class="el" href="classLibDatabase.html" title="Manages SQLite database connections for writing Liberty LUT data.">LibDatabase</a></code>，覆盖建表、单条目读写、BLOB 逐字节验证、UNIQUE 约束、四种 arc_type。</li>
+<li><code>test_libfile_db.cpp</code>：集成测试 <code><a class="el" href="classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a">LibFile::writeToDB()</a></code> 与真实 <code>.lib</code> 文件（<code>tcbn65lpbc.ski.lib</code>），覆盖完整写入流程、BLOB 值合理性、幂等写入、<code>scenario_id IS NULL</code> 不变式。</li>
+<li>每个测试使用独立的临时 <code>.db</code> 文件，避免并行测试锁冲突。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>重构 <code>parse</code> 子命令的 CLI 选项与 DB 输出行为：<ul>
+<li><code>--pvt-corner</code> 更名为 <code>--pvt</code>，语义更通用（不限于老化场景）。</li>
+<li><code>--aged-year</code> 从必选项改为可选项（默认 0.0），适用于非老化库。</li>
+<li>移除 <code>--lib-json</code> 选项：DB 模式下不再同时输出 JSON，JSON 与 DB 输出正交化（纯 parse=JSON，parse &ndash;db=仅写 DB）。</li>
+<li>明确 <code>process</code> 参数的语义：存储 <code>.lib</code> 头部的原始整数值，不映射为 SS/FF/TT，映射由调用者通过 <code>--pvt</code> 负责。 </li>
+</ul>
+</li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -633,7 +678,7 @@ $(document).ready(function(){initNavTree('md_doc_ChangeLog.html',''); initResiza
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jun 22 2026 23:29:02 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Jun 23 2026 10:15:48 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
