@@ -533,6 +533,18 @@ Logically Equivalent   &Yes   \\\cline{1-2}
 \item {\ttfamily -\/-\/pvt-\/corner} 更名为 {\ttfamily -\/-\/pvt}，语义更通用（不限于老化场景）。
 \item {\ttfamily -\/-\/aged-\/year} 从必选项改为可选项（默认 0.\+0），适用于非老化库。
 \item 移除 {\ttfamily -\/-\/lib-\/json} 选项：\+DB 模式下不再同时输出 JSON，\+JSON 与 DB 输出正交化（纯 parse=JSON，parse --db=仅写 DB）。
-\item 明确 {\ttfamily process} 参数的语义：存储 {\ttfamily .lib} 头部的原始整数值，不映射为 SS/\+FF/\+TT，映射由调用者通过 {\ttfamily -\/-\/pvt} 负责。 
+\item 明确 {\ttfamily process} 参数的语义：存储 {\ttfamily .lib} 头部的原始整数值，不映射为 SS/\+FF/\+TT，映射由调用者通过 {\ttfamily -\/-\/pvt} 负责。
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_doc_ChangeLog_autotoc_md65}{}\doxysubsection{2026-\/06-\/23}\label{md_doc_ChangeLog_autotoc_md65}
+
+\begin{DoxyItemize}
+\item {\ttfamily parse -\/-\/db} SQLite 入库时 {\ttfamily when} 条件丢失导致去重数据丢失修复：
+\begin{DoxyItemize}
+\item $\ast$$\ast$问题$\ast$$\ast$：{\ttfamily when}（同一 {\ttfamily related\+\_\+pin} 区分不同时序弧的条件布尔表达式）未入库、未进 UNIQUE 约束，导致同一 {\ttfamily (cell, output\+\_\+pin, related\+\_\+pin, arc\+\_\+type)} 下不同 {\ttfamily when} 的时序弧被 {\ttfamily INSERT OR IGNORE} 静默丢弃。真实生产级 PDK 入库测试：\+Wrote 35560，\+DB 仅实存 7936（丢失 77.\+7）。
+\item $\ast$$\ast$\+DDL$\ast$$\ast$：{\ttfamily lut\+\_\+entries} 表新增 {\ttfamily \char`\"{}when\char`\"{} TEXT} 列（放在 {\ttfamily timing\+\_\+type} 与 {\ttfamily arc\+\_\+type} 之间），\+UNIQUE 约束加入 {\ttfamily \char`\"{}when\char`\"{}}。
+\item $\ast$$\ast$\+INSERT/bind$\ast$$\ast$：\+INSERT 列和占位符同步加 {\ttfamily when}（第 11 位）。空 {\ttfamily when} 绑定空字符串而非 NULL，避免 SQLite UNIQUE 约束视多 NULL 为不冲突导致幂等破坏。
+\item $\ast$$\ast$提取$\ast$$\ast$：{\ttfamily \mbox{\hyperlink{classLibFile_ac42966ae3c352b33ac89aa135e130a9a}{Lib\+File\+::write\+To\+DB()}}} 从 timing arc JSON 中提取 {\ttfamily arc.\+value(\char`\"{}when\char`\"{}, \char`\"{}\char`\"{})} 传入。
+\item $\ast$$\ast$\+TDD 驱动$\ast$$\ast$：新增 {\ttfamily test\+\_\+libdb.\+cpp\+:Different\+When\+Same\+Key\+Both\+Persisted}（纯 DB 层验证 when 进 UNIQUE）、{\ttfamily test\+\_\+libfile\+\_\+db.\+cpp\+:When\+Condition\+Preserved}（集成层，ski.\+lib related\+\_\+pin=A 有 4 distinct when 全入库）、{\ttfamily Multiple\+When\+Arcs\+All\+Persisted}（\texorpdfstring{$>$}{>}=12 行）；同步更新现有测试的 SELECT/\+DISTINCT 加 {\ttfamily when} 列。
+\item $\ast$$\ast$验证$\ast$$\ast$：生产级 PDK 集成验证 DB 条目 7936→35536（恢复 99.\+9），条件弧 27772 全保留，distinct when=717，二次写入幂等不变。24 条差异（35560→35536）已追溯为 PDK {\ttfamily .lib} 数据本身的真实重复（某特定单元重复定义），非代码 bug。 
 \end{DoxyItemize}
 \end{DoxyItemize}

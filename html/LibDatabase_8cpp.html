@@ -164,7 +164,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="LibDatabase_8cpp_aa1c231f3f6ea92a58aa1858fbea4de24_icgraph.png" border="0" usemap="#aLibDatabase_8cpp_aa1c231f3f6ea92a58aa1858fbea4de24_icgraph" alt=""/></div>
 <map name="aLibDatabase_8cpp_aa1c231f3f6ea92a58aa1858fbea4de24_icgraph" id="aLibDatabase_8cpp_aa1c231f3f6ea92a58aa1858fbea4de24_icgraph">
 <area shape="rect" title=" " alt="" coords="538,5,635,33"/>
-<area shape="rect" href="classLibDatabase.html#a0bb1214018232120513f2caeac846cc9" title="Insert one LUT record into lut_entries." alt="" coords="293,5,490,33"/>
+<area shape="rect" href="classLibDatabase.html#a0f1f44ec762f77c79409593f13997fff" title="Insert one LUT record into lut_entries." alt="" coords="293,5,490,33"/>
 <area shape="rect" href="classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a" title=" " alt="" coords="108,5,245,33"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,33"/>
 </map>
@@ -205,6 +205,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="stringliteral">    related_pin   TEXT NOT NULL,</span></div>
 <div class="line"><span class="stringliteral">    timing_sense  TEXT,</span></div>
 <div class="line"><span class="stringliteral">    timing_type   TEXT,</span></div>
+<div class="line"><span class="stringliteral">    &quot;when&quot;        TEXT,</span></div>
 <div class="line"><span class="stringliteral">    arc_type      TEXT NOT NULL,</span></div>
 <div class="line"><span class="stringliteral">    rows_n        INTEGER NOT NULL,</span></div>
 <div class="line"><span class="stringliteral">    cols_n        INTEGER NOT NULL,</span></div>
@@ -215,7 +216,8 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="stringliteral">    temperature   REAL,</span></div>
 <div class="line"><span class="stringliteral">    voltage       REAL,</span></div>
 <div class="line"><span class="stringliteral">    ingested_at   TEXT NOT NULL DEFAULT (datetime(&#39;now&#39;)),</span></div>
-<div class="line"><span class="stringliteral">    UNIQUE(file_path, pvt_corner, aged_year, arc_type, related_pin)</span></div>
+<div class="line"><span class="stringliteral">    UNIQUE(file_path, pvt_corner, aged_year, cell_name, output_pin,</span></div>
+<div class="line"><span class="stringliteral">           related_pin, &quot;when&quot;, arc_type)</span></div>
 <div class="line"><span class="stringliteral">  );</span></div>
 <div class="line"><span class="stringliteral">)sql&quot;</span></div>
 </div><!-- fragment -->
@@ -245,16 +247,16 @@ Here is the caller graph for this function:</div>
 <b>Initial value:</b><div class="fragment"><div class="line">= R<span class="stringliteral">&quot;sql(</span></div>
 <div class="line"><span class="stringliteral">  INSERT OR IGNORE INTO lut_entries</span></div>
 <div class="line"><span class="stringliteral">    (file_path, library_name, scenario_id, pvt_corner, aged_year,</span></div>
-<div class="line"><span class="stringliteral">     cell_name, output_pin, related_pin, timing_sense, timing_type, arc_type,</span></div>
+<div class="line"><span class="stringliteral">     cell_name, output_pin, related_pin, timing_sense, timing_type, &quot;when&quot;, arc_type,</span></div>
 <div class="line"><span class="stringliteral">     rows_n, cols_n, index_1_blob, index_2_blob, values_blob,</span></div>
 <div class="line"><span class="stringliteral">     process, temperature, voltage)</span></div>
 <div class="line"><span class="stringliteral">  VALUES (?, ?, ?, ?, ?,</span></div>
-<div class="line"><span class="stringliteral">          ?, ?, ?, ?, ?, ?,</span></div>
+<div class="line"><span class="stringliteral">          ?, ?, ?, ?, ?, ?, ?,</span></div>
 <div class="line"><span class="stringliteral">          ?, ?, ?, ?, ?,</span></div>
 <div class="line"><span class="stringliteral">          ?, ?, ?)</span></div>
 <div class="line"><span class="stringliteral">)sql&quot;</span></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="LibDatabase_8cpp_source.html#l00050">50</a> of file <a class="el" href="LibDatabase_8cpp_source.html">LibDatabase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibDatabase_8cpp_source.html#l00052">52</a> of file <a class="el" href="LibDatabase_8cpp_source.html">LibDatabase.cpp</a>.</p>
 
 </div>
 </div>
@@ -264,7 +266,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="LibDatabase_8cpp.html">LibDatabase.cpp</a></li>
-    <li class="footer">Generated on Tue Jun 23 2026 10:15:48 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Tue Jun 23 2026 12:02:47 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

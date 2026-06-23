@@ -132,7 +132,7 @@ For convenience, you can temporarily add the {\ttfamily build} directory to your
 \DoxyCodeLine{  -\/v,-\/-\/version                Display program version information and exit}
 \DoxyCodeLine{}
 \DoxyCodeLine{Subcommands:}
-\DoxyCodeLine{  parse                       Parse the Liberty file and write JSON to a file}
+\DoxyCodeLine{  parse                       Parse the Liberty file and write JSON to a file (or SQLite DB via -\/-\/db)}
 \DoxyCodeLine{  mono                        Check the monotonicity of timing arc values}
 \DoxyCodeLine{  compare                     Compare the comparison library against the reference one and report differences}
 \DoxyCodeLine{  supercell                   Generate supercells for the given Liberty file}
@@ -222,6 +222,12 @@ Alternatively, you can generate the PDF reference manual by La\+TeX.
 \begin{DoxyItemize}
 \item {\bfseries{Purpose\+:}} A fast mathematical expression parser and evaluation engine. It is used in the {\ttfamily func} subcommand to dynamically evaluate the logical function strings extracted from libraries or Verilog, enabling the functional equivalence check by comparing truth tables.
 \item {\bfseries{Integration\+:}} The header file ({\ttfamily exprtk.\+hpp}) is included directly within this project\textquotesingle{}s {\ttfamily include\+\_\+3rd\+\_\+party} directory.
+\item {\bfseries{License\+:}} MIT License.
+\end{DoxyItemize}
+\item {\bfseries{\href{https://github.com/SRombauts/SQLiteCpp}{\texttt{ SQLite\+Cpp}}\+:}}
+\begin{DoxyItemize}
+\item {\bfseries{Purpose\+:}} Provides a C++ wrapper around the SQLite3 C API, enabling the {\ttfamily parse -\/-\/db} mode to persist Liberty LUT entries directly into a SQLite database for efficient querying and integration with ML data pipelines.
+\item {\bfseries{Integration\+:}} Managed via CMake\textquotesingle{}s {\ttfamily Fetch\+Content}.
 \item {\bfseries{License\+:}} MIT License.
 \end{DoxyItemize}
 \end{DoxyItemize}\hypertarget{md_README_autotoc_md16}{}\doxysubsection{Build, Documentation, and External Tools\+:}\label{md_README_autotoc_md16}

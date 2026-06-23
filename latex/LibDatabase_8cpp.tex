@@ -58,6 +58,7 @@ Here is the caller graph for this function\+:
 \DoxyCodeLine{\textcolor{stringliteral}{    related\_pin   TEXT NOT NULL,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    timing\_sense  TEXT,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    timing\_type   TEXT,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    "{}when"{}        TEXT,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    arc\_type      TEXT NOT NULL,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    rows\_n        INTEGER NOT NULL,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    cols\_n        INTEGER NOT NULL,}}
@@ -68,7 +69,8 @@ Here is the caller graph for this function\+:
 \DoxyCodeLine{\textcolor{stringliteral}{    temperature   REAL,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    voltage       REAL,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    ingested\_at   TEXT NOT NULL DEFAULT (datetime('now')),}}
-\DoxyCodeLine{\textcolor{stringliteral}{    UNIQUE(file\_path, pvt\_corner, aged\_year, arc\_type, related\_pin)}}
+\DoxyCodeLine{\textcolor{stringliteral}{    UNIQUE(file\_path, pvt\_corner, aged\_year, cell\_name, output\_pin,}}
+\DoxyCodeLine{\textcolor{stringliteral}{           related\_pin, "{}when"{}, arc\_type)}}
 \DoxyCodeLine{\textcolor{stringliteral}{  );}}
 \DoxyCodeLine{\textcolor{stringliteral}{)sql"{}}}
 
@@ -88,11 +90,11 @@ Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00023}{23}} of file
 \DoxyCodeLine{= R\textcolor{stringliteral}{"{}sql(}}
 \DoxyCodeLine{\textcolor{stringliteral}{  INSERT OR IGNORE INTO lut\_entries}}
 \DoxyCodeLine{\textcolor{stringliteral}{    (file\_path, library\_name, scenario\_id, pvt\_corner, aged\_year,}}
-\DoxyCodeLine{\textcolor{stringliteral}{     cell\_name, output\_pin, related\_pin, timing\_sense, timing\_type, arc\_type,}}
+\DoxyCodeLine{\textcolor{stringliteral}{     cell\_name, output\_pin, related\_pin, timing\_sense, timing\_type, "{}when"{}, arc\_type,}}
 \DoxyCodeLine{\textcolor{stringliteral}{     rows\_n, cols\_n, index\_1\_blob, index\_2\_blob, values\_blob,}}
 \DoxyCodeLine{\textcolor{stringliteral}{     process, temperature, voltage)}}
 \DoxyCodeLine{\textcolor{stringliteral}{  VALUES (?, ?, ?, ?, ?,}}
-\DoxyCodeLine{\textcolor{stringliteral}{          ?, ?, ?, ?, ?, ?,}}
+\DoxyCodeLine{\textcolor{stringliteral}{          ?, ?, ?, ?, ?, ?, ?,}}
 \DoxyCodeLine{\textcolor{stringliteral}{          ?, ?, ?, ?, ?,}}
 \DoxyCodeLine{\textcolor{stringliteral}{          ?, ?, ?)}}
 \DoxyCodeLine{\textcolor{stringliteral}{)sql"{}}}
@@ -100,5 +102,5 @@ Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00023}{23}} of file
 \end{DoxyCode}
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
 

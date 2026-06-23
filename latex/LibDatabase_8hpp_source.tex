@@ -24,27 +24,35 @@
 \DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00045}00045   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibDatabase_a1ba443f5483f970be7231fe3d4a28169}{initialize}}();}
 \DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00046}00046 }
 \DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00047}00047   \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00048}00048   \textcolor{comment}{// Write operations}}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00048}00048   \textcolor{comment}{// Transaction support (for batched writes)}}
 \DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00049}00049   \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00050}00050 }
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00078}00078   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibDatabase_a0bb1214018232120513f2caeac846cc9}{writeLutEntry}}(\textcolor{keyword}{const} std::string \&file\_path, \textcolor{keyword}{const} std::string \&library\_name,}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00079}00079                      \textcolor{keyword}{const} std::string \&pvt\_corner, \textcolor{keywordtype}{double} aged\_year,}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00080}00080                      \textcolor{keyword}{const} std::string \&cell\_name, \textcolor{keyword}{const} std::string \&output\_pin,}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00081}00081                      \textcolor{keyword}{const} std::string \&related\_pin, \textcolor{keyword}{const} std::string \&timing\_sense,}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00082}00082                      \textcolor{keyword}{const} std::string \&timing\_type, \textcolor{keyword}{const} std::string \&arc\_type, \textcolor{keywordtype}{int} rows\_n,}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00083}00083                      \textcolor{keywordtype}{int} cols\_n, \textcolor{keyword}{const} std::vector<double> \&index\_1,}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00084}00084                      \textcolor{keyword}{const} std::vector<double> \&index\_2, \textcolor{keyword}{const} std::vector<double> \&values,}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00085}00085                      \textcolor{keywordtype}{int} process, \textcolor{keywordtype}{double} temperature, \textcolor{keywordtype}{double} voltage);}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00086}00086 }
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00087}00087 \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00088}\mbox{\hyperlink{classLibDatabase_a83680ef45373d9d7c8f3ce8f84d83bfe}{00088}}   std::string \mbox{\hyperlink{classLibDatabase_a83680ef45373d9d7c8f3ce8f84d83bfe}{db\_path\_}};}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00089}\mbox{\hyperlink{classLibDatabase_aadd01f203392dbb5bef8e511e48e9aee}{00089}}   std::unique\_ptr<SQLite::Database> \mbox{\hyperlink{classLibDatabase_aadd01f203392dbb5bef8e511e48e9aee}{db\_}};}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00090}00090 }
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00091}00091   \textcolor{comment}{// Prepared statements cached across calls}}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00092}\mbox{\hyperlink{classLibDatabase_ab1a62e802c5dac9e35f946e465227e97}{00092}}   std::unique\_ptr<SQLite::Statement> \mbox{\hyperlink{classLibDatabase_ab1a62e802c5dac9e35f946e465227e97}{insert\_stmt\_}};}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00093}\mbox{\hyperlink{classLibDatabase_ad50c82ee4492b7babd4e99443c9d31fe}{00093}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLibDatabase_ad50c82ee4492b7babd4e99443c9d31fe}{initialized\_}} = \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00094}00094 \};}
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00095}00095 }
-\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00096}00096 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LIBDATABASE\_HPP}}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00051}00051   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibDatabase_a32d30ce7690c60558f3035231390379d}{beginTransaction}}();}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00052}00052   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibDatabase_aa682f3b696c650ee90472657afc33872}{commitTransaction}}();}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00054}00054   \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00055}00055   \textcolor{comment}{// Write operations}}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00056}00056   \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00088}00088   \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibDatabase_a0f1f44ec762f77c79409593f13997fff}{writeLutEntry}}(\textcolor{keyword}{const} std::string \&file\_path, \textcolor{keyword}{const} std::string \&library\_name,}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00089}00089                      \textcolor{keyword}{const} std::string \&pvt\_corner, \textcolor{keywordtype}{double} aged\_year,}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00090}00090                      \textcolor{keyword}{const} std::string \&cell\_name, \textcolor{keyword}{const} std::string \&output\_pin,}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00091}00091                      \textcolor{keyword}{const} std::string \&related\_pin, \textcolor{keyword}{const} std::string \&timing\_sense,}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00092}00092                      \textcolor{keyword}{const} std::string \&timing\_type, \textcolor{keyword}{const} std::string \&when,}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00093}00093                      \textcolor{keyword}{const} std::string \&arc\_type, \textcolor{keywordtype}{int} rows\_n, \textcolor{keywordtype}{int} cols\_n,}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00094}00094                      \textcolor{keyword}{const} std::vector<double> \&index\_1,}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00095}00095                      \textcolor{keyword}{const} std::vector<double> \&index\_2, \textcolor{keyword}{const} std::vector<double> \&values,}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00096}00096                      \textcolor{keywordtype}{int} process, \textcolor{keywordtype}{double} temperature, \textcolor{keywordtype}{double} voltage);}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00098}00098 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00099}\mbox{\hyperlink{classLibDatabase_a83680ef45373d9d7c8f3ce8f84d83bfe}{00099}}   std::string \mbox{\hyperlink{classLibDatabase_a83680ef45373d9d7c8f3ce8f84d83bfe}{db\_path\_}};}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00100}\mbox{\hyperlink{classLibDatabase_aadd01f203392dbb5bef8e511e48e9aee}{00100}}   std::unique\_ptr<SQLite::Database> \mbox{\hyperlink{classLibDatabase_aadd01f203392dbb5bef8e511e48e9aee}{db\_}};}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00102}00102   \textcolor{comment}{// Prepared statements cached across calls}}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00103}\mbox{\hyperlink{classLibDatabase_ab1a62e802c5dac9e35f946e465227e97}{00103}}   std::unique\_ptr<SQLite::Statement> \mbox{\hyperlink{classLibDatabase_ab1a62e802c5dac9e35f946e465227e97}{insert\_stmt\_}};}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00104}\mbox{\hyperlink{classLibDatabase_ad50c82ee4492b7babd4e99443c9d31fe}{00104}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classLibDatabase_ad50c82ee4492b7babd4e99443c9d31fe}{initialized\_}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00105}00105 \};}
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{LibDatabase_8hpp_source_l00107}00107 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LIBDATABASE\_HPP}}
 
 \end{DoxyCode}

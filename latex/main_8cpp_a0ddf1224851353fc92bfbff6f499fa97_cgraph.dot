@@ -11,9 +11,7 @@ digraph "main"
   Node2 -> Node3 [color="steelblue1",style="solid"];
   Node3 [label="LibraryComparator::\lgenerateReport",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibraryComparator.html#a4f150829d621ad8f199813a0f9fc8be5",tooltip="Generates a comparison report between the reference and comparison libraries."];
   Node3 -> Node4 [color="steelblue1",style="solid"];
-  Node4 [label="LibraryComparator::\lcompareCell",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibraryComparator.html#a33d180a887ce7b69245b1be5ffaf1e01",tooltip="Compares the output pins of a cell between a reference JSON and a comparison JSON."];
-  Node4 -> Node5 [color="steelblue1",style="solid"];
-  Node5 [label="LibraryComparator::\lcomparePin",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$classLibraryComparator.html#ac65c88728ce78808f4b067b55ef12ed6",tooltip="Compares the timing arcs of a given pin between a reference JSON and a comparison JSON."];
+  Node4 [label="LibraryComparator::\lcompareCell",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$classLibraryComparator.html#a33d180a887ce7b69245b1be5ffaf1e01",tooltip="Compares the output pins of a cell between a reference JSON and a comparison JSON."];
   Node1 -> Node8 [color="steelblue1",style="solid"];
   Node8 [label="funcLibFile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibFileOperations_8cpp.html#a56d944f0ea8b38f2f61c046c7fb44476",tooltip="Performs a functional equivalence check between two files (Liberty or Verilog) for a given set of cel..."];
   Node8 -> Node9 [color="steelblue1",style="solid"];
@@ -134,9 +132,11 @@ digraph "main"
   Node1 -> Node63 [color="steelblue1",style="solid"];
   Node63 [label="LibFile::writeToDB",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a",tooltip=" "];
   Node63 -> Node64 [color="steelblue1",style="solid"];
-  Node64 [label="LibDatabase::initialize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibDatabase.html#a1ba443f5483f970be7231fe3d4a28169",tooltip="Create the lut_entries table if it does not already exist."];
+  Node64 [label="LibDatabase::beginTransaction",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibDatabase.html#a32d30ce7690c60558f3035231390379d",tooltip=" "];
   Node63 -> Node65 [color="steelblue1",style="solid"];
-  Node65 [label="LibDatabase::writeLutEntry",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibDatabase.html#a0bb1214018232120513f2caeac846cc9",tooltip="Insert one LUT record into lut_entries."];
-  Node65 -> Node66 [color="steelblue1",style="solid"];
-  Node66 [label="toFloatBlob",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibDatabase_8cpp.html#aa1c231f3f6ea92a58aa1858fbea4de24",tooltip=" "];
+  Node65 [label="LibDatabase::commitTransaction",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibDatabase.html#aa682f3b696c650ee90472657afc33872",tooltip=" "];
+  Node63 -> Node66 [color="steelblue1",style="solid"];
+  Node66 [label="LibDatabase::initialize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibDatabase.html#a1ba443f5483f970be7231fe3d4a28169",tooltip="Create the lut_entries table if it does not already exist."];
+  Node63 -> Node67 [color="steelblue1",style="solid"];
+  Node67 [label="LibDatabase::writeLutEntry",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$classLibDatabase.html#a0f1f44ec762f77c79409593f13997fff",tooltip="Insert one LUT record into lut_entries."];
 }

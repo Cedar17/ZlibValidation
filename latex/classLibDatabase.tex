@@ -18,7 +18,11 @@ Manages SQLite database connections for writing Liberty LUT data.
 \item 
 void \mbox{\hyperlink{classLibDatabase_a1ba443f5483f970be7231fe3d4a28169}{initialize}} ()
 \begin{DoxyCompactList}\small\item\em Create the lut\+\_\+entries table if it does not already exist. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classLibDatabase_a0bb1214018232120513f2caeac846cc9}{write\+Lut\+Entry}} (const std\+::string \&file\+\_\+path, const std\+::string \&library\+\_\+name, const std\+::string \&pvt\+\_\+corner, double aged\+\_\+year, const std\+::string \&cell\+\_\+name, const std\+::string \&output\+\_\+pin, const std\+::string \&related\+\_\+pin, const std\+::string \&timing\+\_\+sense, const std\+::string \&timing\+\_\+type, const std\+::string \&arc\+\_\+type, int rows\+\_\+n, int cols\+\_\+n, const std\+::vector$<$ double $>$ \&index\+\_\+1, const std\+::vector$<$ double $>$ \&index\+\_\+2, const std\+::vector$<$ double $>$ \&values, int process, double temperature, double voltage)
+void \mbox{\hyperlink{classLibDatabase_a32d30ce7690c60558f3035231390379d}{begin\+Transaction}} ()
+\item 
+void \mbox{\hyperlink{classLibDatabase_aa682f3b696c650ee90472657afc33872}{commit\+Transaction}} ()
+\item 
+void \mbox{\hyperlink{classLibDatabase_a0f1f44ec762f77c79409593f13997fff}{write\+Lut\+Entry}} (const std\+::string \&file\+\_\+path, const std\+::string \&library\+\_\+name, const std\+::string \&pvt\+\_\+corner, double aged\+\_\+year, const std\+::string \&cell\+\_\+name, const std\+::string \&output\+\_\+pin, const std\+::string \&related\+\_\+pin, const std\+::string \&timing\+\_\+sense, const std\+::string \&timing\+\_\+type, const std\+::string \&when, const std\+::string \&arc\+\_\+type, int rows\+\_\+n, int cols\+\_\+n, const std\+::vector$<$ double $>$ \&index\+\_\+1, const std\+::vector$<$ double $>$ \&index\+\_\+2, const std\+::vector$<$ double $>$ \&values, int process, double temperature, double voltage)
 \begin{DoxyCompactList}\small\item\em Insert one LUT record into lut\+\_\+entries. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -41,7 +45,7 @@ Manages SQLite database connections for writing Liberty LUT data.
 Responsibilities\+:
 \begin{DoxyItemize}
 \item Create the {\ttfamily lut\+\_\+entries} table (DDL) on first use via \mbox{\hyperlink{classLibDatabase_a1ba443f5483f970be7231fe3d4a28169}{initialize()}}
-\item Write one LUT record per call to \mbox{\hyperlink{classLibDatabase_a0bb1214018232120513f2caeac846cc9}{write\+Lut\+Entry()}}
+\item Write one LUT record per call to \mbox{\hyperlink{classLibDatabase_a0f1f44ec762f77c79409593f13997fff}{write\+Lut\+Entry()}}
 \item Enforce idempotency via INSERT OR IGNORE
 \end{DoxyItemize}
 
@@ -69,7 +73,7 @@ Open (or create) a SQLite database at the given path.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
 
 \mbox{\Hypertarget{classLibDatabase_a8cfeea1b09417c46a51d1720595e7ee5}\label{classLibDatabase_a8cfeea1b09417c46a51d1720595e7ee5}} 
 \index{LibDatabase@{LibDatabase}!````~LibDatabase@{$\sim$LibDatabase}}
@@ -80,6 +84,30 @@ Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00066}{66}} of file
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLibDatabase_a32d30ce7690c60558f3035231390379d}\label{classLibDatabase_a32d30ce7690c60558f3035231390379d}} 
+\index{LibDatabase@{LibDatabase}!beginTransaction@{beginTransaction}}
+\index{beginTransaction@{beginTransaction}!LibDatabase@{LibDatabase}}
+\doxysubsubsection{\texorpdfstring{beginTransaction()}{beginTransaction()}}
+{\footnotesize\ttfamily void Lib\+Database\+::begin\+Transaction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{classLibDatabase_aa682f3b696c650ee90472657afc33872}\label{classLibDatabase_aa682f3b696c650ee90472657afc33872}} 
+\index{LibDatabase@{LibDatabase}!commitTransaction@{commitTransaction}}
+\index{commitTransaction@{commitTransaction}!LibDatabase@{LibDatabase}}
+\doxysubsubsection{\texorpdfstring{commitTransaction()}{commitTransaction()}}
+{\footnotesize\ttfamily void Lib\+Database\+::commit\+Transaction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+
+Here is the caller graph for this function\+:
+% FIG 1
 \mbox{\Hypertarget{classLibDatabase_a1ba443f5483f970be7231fe3d4a28169}\label{classLibDatabase_a1ba443f5483f970be7231fe3d4a28169}} 
 \index{LibDatabase@{LibDatabase}!initialize@{initialize}}
 \index{initialize@{initialize}!LibDatabase@{LibDatabase}}
@@ -92,15 +120,15 @@ Create the lut\+\_\+entries table if it does not already exist.
 
 Safe to call multiple times — uses CREATE TABLE IF NOT EXISTS. Sets WAL journal mode and busy\+\_\+timeout. 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
 
 Here is the caller graph for this function\+:
-% FIG 0
-\mbox{\Hypertarget{classLibDatabase_a0bb1214018232120513f2caeac846cc9}\label{classLibDatabase_a0bb1214018232120513f2caeac846cc9}} 
+% FIG 2
+\mbox{\Hypertarget{classLibDatabase_a0f1f44ec762f77c79409593f13997fff}\label{classLibDatabase_a0f1f44ec762f77c79409593f13997fff}} 
 \index{LibDatabase@{LibDatabase}!writeLutEntry@{writeLutEntry}}
 \index{writeLutEntry@{writeLutEntry}!LibDatabase@{LibDatabase}}
 \doxysubsubsection{\texorpdfstring{writeLutEntry()}{writeLutEntry()}}
-{\footnotesize\ttfamily void Lib\+Database\+::write\+Lut\+Entry (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path,  }\item[{const std\+::string \&}]{library\+\_\+name,  }\item[{const std\+::string \&}]{pvt\+\_\+corner,  }\item[{double}]{aged\+\_\+year,  }\item[{const std\+::string \&}]{cell\+\_\+name,  }\item[{const std\+::string \&}]{output\+\_\+pin,  }\item[{const std\+::string \&}]{related\+\_\+pin,  }\item[{const std\+::string \&}]{timing\+\_\+sense,  }\item[{const std\+::string \&}]{timing\+\_\+type,  }\item[{const std\+::string \&}]{arc\+\_\+type,  }\item[{int}]{rows\+\_\+n,  }\item[{int}]{cols\+\_\+n,  }\item[{const std\+::vector$<$ double $>$ \&}]{index\+\_\+1,  }\item[{const std\+::vector$<$ double $>$ \&}]{index\+\_\+2,  }\item[{const std\+::vector$<$ double $>$ \&}]{values,  }\item[{int}]{process,  }\item[{double}]{temperature,  }\item[{double}]{voltage }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Lib\+Database\+::write\+Lut\+Entry (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path,  }\item[{const std\+::string \&}]{library\+\_\+name,  }\item[{const std\+::string \&}]{pvt\+\_\+corner,  }\item[{double}]{aged\+\_\+year,  }\item[{const std\+::string \&}]{cell\+\_\+name,  }\item[{const std\+::string \&}]{output\+\_\+pin,  }\item[{const std\+::string \&}]{related\+\_\+pin,  }\item[{const std\+::string \&}]{timing\+\_\+sense,  }\item[{const std\+::string \&}]{timing\+\_\+type,  }\item[{const std\+::string \&}]{when,  }\item[{const std\+::string \&}]{arc\+\_\+type,  }\item[{int}]{rows\+\_\+n,  }\item[{int}]{cols\+\_\+n,  }\item[{const std\+::vector$<$ double $>$ \&}]{index\+\_\+1,  }\item[{const std\+::vector$<$ double $>$ \&}]{index\+\_\+2,  }\item[{const std\+::vector$<$ double $>$ \&}]{values,  }\item[{int}]{process,  }\item[{double}]{temperature,  }\item[{double}]{voltage }\end{DoxyParamCaption})}
 
 
 
@@ -128,6 +156,8 @@ Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (file\+\_\+path
 \hline
 {\em timing\+\_\+type} & Timing type (e.\+g. \char`\"{}combinational\char`\"{}, \char`\"{}rising\+\_\+edge\char`\"{}). \\
 \hline
+{\em when} & Boolean condition expression distinguishing arcs that share the same related\+\_\+pin (e.\+g. \char`\"{}\+A $\ast$ !\+B\char`\"{}). Empty string for unconditional arcs — stored as NULL. \\
+\hline
 {\em arc\+\_\+type} & Arc type\+: cell\+\_\+rise, cell\+\_\+fall, rise\+\_\+transition, fall\+\_\+transition. \\
 \hline
 {\em rows\+\_\+n} & Number of rows in the LUT. \\
@@ -149,12 +179,12 @@ Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (file\+\_\+path
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
 
 Here is the call graph for this function\+:
-% FIG 1
+% FIG 3
 Here is the caller graph for this function\+:
-% FIG 2
+% FIG 4
 
 
 \doxysubsection{Member Data Documentation}
@@ -166,7 +196,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00089}{89}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00100}{100}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
 
 \mbox{\Hypertarget{classLibDatabase_a83680ef45373d9d7c8f3ce8f84d83bfe}\label{classLibDatabase_a83680ef45373d9d7c8f3ce8f84d83bfe}} 
 \index{LibDatabase@{LibDatabase}!db\_path\_@{db\_path\_}}
@@ -176,7 +206,7 @@ Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00089}{89}} of file
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00099}{99}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
 
 \mbox{\Hypertarget{classLibDatabase_ad50c82ee4492b7babd4e99443c9d31fe}\label{classLibDatabase_ad50c82ee4492b7babd4e99443c9d31fe}} 
 \index{LibDatabase@{LibDatabase}!initialized\_@{initialized\_}}
@@ -186,7 +216,7 @@ Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00088}{88}} of file
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00093}{93}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00104}{104}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
 
 \mbox{\Hypertarget{classLibDatabase_ab1a62e802c5dac9e35f946e465227e97}\label{classLibDatabase_ab1a62e802c5dac9e35f946e465227e97}} 
 \index{LibDatabase@{LibDatabase}!insert\_stmt\_@{insert\_stmt\_}}
@@ -196,7 +226,7 @@ Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00093}{93}} of file
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00092}{92}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
 
 
 
