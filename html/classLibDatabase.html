@@ -177,7 +177,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LibDatabase_8cpp_source.html#l00068">68</a> of file <a class="el" href="LibDatabase_8cpp_source.html">LibDatabase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibDatabase_8cpp_source.html#l00071">71</a> of file <a class="el" href="LibDatabase_8cpp_source.html">LibDatabase.cpp</a>.</p>
 
 </div>
 </div>
@@ -222,7 +222,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibDatabase_8cpp_source.html#l00100">100</a> of file <a class="el" href="LibDatabase_8cpp_source.html">LibDatabase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibDatabase_8cpp_source.html#l00103">103</a> of file <a class="el" href="LibDatabase_8cpp_source.html">LibDatabase.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -251,7 +251,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibDatabase_8cpp_source.html#l00107">107</a> of file <a class="el" href="LibDatabase_8cpp_source.html">LibDatabase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibDatabase_8cpp_source.html#l00110">110</a> of file <a class="el" href="LibDatabase_8cpp_source.html">LibDatabase.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -283,7 +283,7 @@ Here is the caller graph for this function:</div>
 <p>Create the lut_entries table if it does not already exist. </p>
 <p >Safe to call multiple times — uses CREATE TABLE IF NOT EXISTS. Sets WAL journal mode and busy_timeout. </p>
 
-<p class="definition">Definition at line <a class="el" href="LibDatabase_8cpp_source.html#l00076">76</a> of file <a class="el" href="LibDatabase_8cpp_source.html">LibDatabase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibDatabase_8cpp_source.html#l00079">79</a> of file <a class="el" href="LibDatabase_8cpp_source.html">LibDatabase.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -426,10 +426,10 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Insert one LUT record into lut_entries. </p>
-<p >Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (file_path, pvt_corner, aged_year, arc_type, related_pin) are no-ops.</p>
+<p >Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (pvt_corner, aged_year, cell_name, output_pin, related_pin, "when", arc_type) are no-ops. <code>file_path</code> is deliberately excluded from the UNIQUE constraint because the same .lib data may exist under multiple paths (symlinks, directory mirrors); it is stored as a provenance column but does not participate in semantic deduplication.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">file_path</td><td>Source .lib file path (for provenance). </td></tr>
+    <tr><td class="paramname">file_path</td><td>Source .lib file path (for provenance only — not in UNIQUE). </td></tr>
     <tr><td class="paramname">library_name</td><td>Library name (basename of .lib file). </td></tr>
     <tr><td class="paramname">pvt_corner</td><td>PVT corner string (e.g. "SS_1p08V_125C"). </td></tr>
     <tr><td class="paramname">aged_year</td><td>Aging year (e.g. 0.01 for fresh, 10000 for aged). </td></tr>
@@ -452,7 +452,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LibDatabase_8cpp_source.html#l00118">118</a> of file <a class="el" href="LibDatabase_8cpp_source.html">LibDatabase.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibDatabase_8cpp_source.html#l00121">121</a> of file <a class="el" href="LibDatabase_8cpp_source.html">LibDatabase.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -496,7 +496,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibDatabase_8hpp_source.html#l00100">100</a> of file <a class="el" href="LibDatabase_8hpp_source.html">LibDatabase.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibDatabase_8hpp_source.html#l00104">104</a> of file <a class="el" href="LibDatabase_8hpp_source.html">LibDatabase.hpp</a>.</p>
 
 </div>
 </div>
@@ -520,7 +520,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibDatabase_8hpp_source.html#l00099">99</a> of file <a class="el" href="LibDatabase_8hpp_source.html">LibDatabase.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibDatabase_8hpp_source.html#l00103">103</a> of file <a class="el" href="LibDatabase_8hpp_source.html">LibDatabase.hpp</a>.</p>
 
 </div>
 </div>
@@ -544,7 +544,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibDatabase_8hpp_source.html#l00104">104</a> of file <a class="el" href="LibDatabase_8hpp_source.html">LibDatabase.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibDatabase_8hpp_source.html#l00108">108</a> of file <a class="el" href="LibDatabase_8hpp_source.html">LibDatabase.hpp</a>.</p>
 
 </div>
 </div>
@@ -568,7 +568,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="LibDatabase_8hpp_source.html#l00103">103</a> of file <a class="el" href="LibDatabase_8hpp_source.html">LibDatabase.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="LibDatabase_8hpp_source.html#l00107">107</a> of file <a class="el" href="LibDatabase_8hpp_source.html">LibDatabase.hpp</a>.</p>
 
 </div>
 </div>
@@ -582,7 +582,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classLibDatabase.html">LibDatabase</a></li>
-    <li class="footer">Generated on Tue Jun 23 2026 12:50:49 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Thu Jul 2 2026 20:59:03 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

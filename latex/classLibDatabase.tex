@@ -73,7 +73,7 @@ Open (or create) a SQLite database at the given path.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
 
 \mbox{\Hypertarget{classLibDatabase_a8cfeea1b09417c46a51d1720595e7ee5}\label{classLibDatabase_a8cfeea1b09417c46a51d1720595e7ee5}} 
 \index{LibDatabase@{LibDatabase}!````~LibDatabase@{$\sim$LibDatabase}}
@@ -92,7 +92,7 @@ Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00068}{68}} of file
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
 
 Here is the caller graph for this function\+:
 % FIG 0
@@ -104,7 +104,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
 
 Here is the caller graph for this function\+:
 % FIG 1
@@ -120,7 +120,7 @@ Create the lut\+\_\+entries table if it does not already exist.
 
 Safe to call multiple times — uses CREATE TABLE IF NOT EXISTS. Sets WAL journal mode and busy\+\_\+timeout. 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00079}{79}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
 
 Here is the caller graph for this function\+:
 % FIG 2
@@ -134,11 +134,11 @@ Here is the caller graph for this function\+:
 
 Insert one LUT record into lut\+\_\+entries. 
 
-Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (file\+\_\+path, pvt\+\_\+corner, aged\+\_\+year, arc\+\_\+type, related\+\_\+pin) are no-\/ops.
+Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (pvt\+\_\+corner, aged\+\_\+year, cell\+\_\+name, output\+\_\+pin, related\+\_\+pin, \char`\"{}when\char`\"{}, arc\+\_\+type) are no-\/ops. {\ttfamily file\+\_\+path} is deliberately excluded from the UNIQUE constraint because the same .lib data may exist under multiple paths (symlinks, directory mirrors); it is stored as a provenance column but does not participate in semantic deduplication.
 
 
 \begin{DoxyParams}{Parameters}
-{\em file\+\_\+path} & Source .lib file path (for provenance). \\
+{\em file\+\_\+path} & Source .lib file path (for provenance only — not in UNIQUE). \\
 \hline
 {\em library\+\_\+name} & Library name (basename of .lib file). \\
 \hline
@@ -179,7 +179,7 @@ Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (file\+\_\+path
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00121}{121}} of file \mbox{\hyperlink{LibDatabase_8cpp_source}{Lib\+Database.\+cpp}}.
 
 Here is the call graph for this function\+:
 % FIG 3
@@ -196,7 +196,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00100}{100}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00104}{104}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
 
 \mbox{\Hypertarget{classLibDatabase_a83680ef45373d9d7c8f3ce8f84d83bfe}\label{classLibDatabase_a83680ef45373d9d7c8f3ce8f84d83bfe}} 
 \index{LibDatabase@{LibDatabase}!db\_path\_@{db\_path\_}}
@@ -206,7 +206,7 @@ Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00100}{100}} of fil
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00099}{99}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
 
 \mbox{\Hypertarget{classLibDatabase_ad50c82ee4492b7babd4e99443c9d31fe}\label{classLibDatabase_ad50c82ee4492b7babd4e99443c9d31fe}} 
 \index{LibDatabase@{LibDatabase}!initialized\_@{initialized\_}}
@@ -216,7 +216,7 @@ Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00099}{99}} of file
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00104}{104}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00108}{108}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
 
 \mbox{\Hypertarget{classLibDatabase_ab1a62e802c5dac9e35f946e465227e97}\label{classLibDatabase_ab1a62e802c5dac9e35f946e465227e97}} 
 \index{LibDatabase@{LibDatabase}!insert\_stmt\_@{insert\_stmt\_}}
@@ -226,7 +226,7 @@ Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00104}{104}} of fil
 
 
 
-Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
+Definition at line \mbox{\hyperlink{LibDatabase_8hpp_source_l00107}{107}} of file \mbox{\hyperlink{LibDatabase_8hpp_source}{Lib\+Database.\+hpp}}.
 
 
 
