@@ -59,9 +59,13 @@ public:
    * @brief Insert one LUT record into lut_entries.
    *
    * Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key
-   * (file_path, pvt_corner, aged_year, arc_type, related_pin) are no-ops.
+   * (pvt_corner, aged_year, cell_name, output_pin, related_pin, "when", arc_type)
+   * are no-ops. `file_path` is deliberately excluded from the UNIQUE constraint
+   * because the same .lib data may exist under multiple paths (symlinks, directory
+   * mirrors); it is stored as a provenance column but does not participate in
+   * semantic deduplication.
    *
-   * @param file_path     Source .lib file path (for provenance).
+   * @param file_path     Source .lib file path (for provenance only — not in UNIQUE).
    * @param library_name  Library name (basename of .lib file).
    * @param pvt_corner    PVT corner string (e.g. "SS_1p08V_125C").
    * @param aged_year     Aging year (e.g. 0.01 for fresh, 10000 for aged).

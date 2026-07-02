@@ -127,11 +127,14 @@ TEST_F(LibFileWriteToDBTest, IdempotentWrite) {
   libfile.writeToDB(db_path_, "SS_1p08V_125C", 0.01);
   libfile.writeToDB(db_path_, "SS_1p08V_125C", 0.01);
 
-  // Verify no duplicate UNIQUE combinations
+  // Verify no duplicate UNIQUE combinations.
+  // Note: file_path is deliberately excluded — it is provenance only, not part
+  // of the UNIQUE constraint. The DISTINCT keys match the actual constraint:
+  // (pvt_corner, aged_year, cell_name, output_pin, related_pin, "when", arc_type)
   SQLite::Database db(db_path_, SQLite::OPEN_READWRITE);
   SQLite::Statement distinct(db,
       "SELECT count(*) FROM ("
-      "  SELECT DISTINCT file_path, pvt_corner, aged_year, "
+      "  SELECT DISTINCT pvt_corner, aged_year, "
       "  cell_name, output_pin, related_pin, \"when\", arc_type "
       "  FROM lut_entries)");
   ASSERT_TRUE(distinct.executeStep());
