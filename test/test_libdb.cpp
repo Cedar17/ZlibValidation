@@ -180,7 +180,7 @@ TEST_F(LibDatabaseTest, MultipleArcTypesWritten) {
   EXPECT_EQ(count, 4);
 }
 
-// Same UNIQUE key (file/pvt/year/cell/pin/related_pin/arc_type) but different
+// Same UNIQUE key (pvt/year/cell/pin/related_pin/arc_type) but different
 // `when` conditions must both persist — the core regression for the silent-dedup
 // data-loss bug. Before `when` joined the UNIQUE constraint, the second insert
 // was silently dropped by INSERT OR IGNORE.
@@ -210,4 +210,35 @@ TEST_F(LibDatabaseTest, DifferentWhenSameKeyBothPersisted) {
     distinct_when++;
   }
   EXPECT_EQ(distinct_when, 2);
+}
+
+// Same data inserted with different file_paths must deduplicate to one row.
+// Before the fix, file_path was part of the UNIQUE constraint, so 3 different
+// paths → 3 rows. After the fix, file_path is excluded from the constraint,
+// so only the first insert survives (INSERT OR IGNORE).
+TEST_F(LibDatabaseTest, DifferentPathsDeduplicated) {
+  std::vector<double> idx = {0.01, 0.0368, 0.1309};
+  std::vector<double> idx2 = {0.00077, 0.0017, 0.00355};
+  std::vector<double> vals = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0};
+
+  // Three inserts — identical semantic data, different file paths
+  db_->writeLutEntry("data/raw/A.lib", "lib", "SS_1p08V_125C", 0.01,
+                     "CELL", "Y", "A", "negative_unate", "combinational", "!B",
+                     "cell_rise", 3, 3, idx, idx2, vals, 1, 25.0, 1.0);
+  db_->writeLutEntry("mirror/B.lib", "lib", "SS_1p08V_125C", 0.01,
+                     "CELL", "Y", "A", "negative_unate", "combinational", "!B",
+                     "cell_rise", 3, 3, idx, idx2, vals, 1, 25.0, 1.0);
+  db_->writeLutEntry("backup/C.lib", "lib", "SS_1p08V_125C", 0.01,
+                     "CELL", "Y", "A", "negative_unate", "combinational", "!B",
+                     "cell_rise", 3, 3, idx, idx2, vals, 1, 25.0, 1.0);
+
+  SQLite::Database check(db_path_, SQLite::OPEN_READWRITE);
+  SQLite::Statement cnt(check, "SELECT count(*) FROM lut_entries");
+  ASSERT_TRUE(cnt.executeStep());
+  EXPECT_EQ(cnt.getColumn(0).getInt(), 1);
+
+  // The surviving row should hold the first-inserted file_path
+  SQLite::Statement q(check, "SELECT file_path FROM lut_entries");
+  ASSERT_TRUE(q.executeStep());
+  EXPECT_STREQ(q.getColumn(0).getText(), "data/raw/A.lib");
 }

@@ -18,6 +18,9 @@ static std::vector<float> toFloatBlob(const std::vector<double> &src) {
 
 // =========================================================================
 // DDL — only the lut_entries table (the rest is managed by Python)
+// NOTE: file_path is deliberately excluded from the UNIQUE constraint.
+// The same .lib data may exist under multiple paths (symlinks, directory mirrors),
+// so UNIQUE uses semantic keys only. file_path remains as a provenance column.
 // =========================================================================
 
 static const char *DDL_LUT_ENTRIES = R"sql(
@@ -44,7 +47,7 @@ static const char *DDL_LUT_ENTRIES = R"sql(
     temperature   REAL,
     voltage       REAL,
     ingested_at   TEXT NOT NULL DEFAULT (datetime('now')),
-    UNIQUE(file_path, pvt_corner, aged_year, cell_name, output_pin,
+    UNIQUE(pvt_corner, aged_year, cell_name, output_pin,
            related_pin, "when", arc_type)
   );
 )sql";
