@@ -545,6 +545,28 @@ Logically Equivalent   &Yes   \\\cline{1-2}
 \item $\ast$$\ast$\+INSERT/bind$\ast$$\ast$：\+INSERT 列和占位符同步加 {\ttfamily when}（第 11 位）。空 {\ttfamily when} 绑定空字符串而非 NULL，避免 SQLite UNIQUE 约束视多 NULL 为不冲突导致幂等破坏。
 \item $\ast$$\ast$提取$\ast$$\ast$：{\ttfamily \mbox{\hyperlink{classLibFile_aa9eadd490d636e0239021413cf8665bf}{Lib\+File\+::write\+To\+DB()}}} 从 timing arc JSON 中提取 {\ttfamily arc.\+value(\char`\"{}when\char`\"{}, \char`\"{}\char`\"{})} 传入。
 \item $\ast$$\ast$\+TDD 驱动$\ast$$\ast$：新增 {\ttfamily test\+\_\+libdb.\+cpp\+:Different\+When\+Same\+Key\+Both\+Persisted}（纯 DB 层验证 when 进 UNIQUE）、{\ttfamily test\+\_\+libfile\+\_\+db.\+cpp\+:When\+Condition\+Preserved}（集成层，ski.\+lib related\+\_\+pin=A 有 4 distinct when 全入库）、{\ttfamily Multiple\+When\+Arcs\+All\+Persisted}（\texorpdfstring{$>$}{>}=12 行）；同步更新现有测试的 SELECT/\+DISTINCT 加 {\ttfamily when} 列。
-\item $\ast$$\ast$验证$\ast$$\ast$：生产级 PDK 集成验证 DB 条目 7936→35536（恢复 99.\+9），条件弧 27772 全保留，distinct when=717，二次写入幂等不变。24 条差异（35560→35536）已追溯为 PDK {\ttfamily .lib} 数据本身的真实重复（某特定单元重复定义），非代码 bug。 
+\item $\ast$$\ast$验证$\ast$$\ast$：生产级 PDK 集成验证 DB 条目 7936→35536（恢复 99.\+9），条件弧 27772 全保留，distinct when=717，二次写入幂等不变。24 条差异（35560→35536）已追溯为 PDK {\ttfamily .lib} 数据本身的真实重复（某特定单元重复定义），非代码 bug。
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_doc_ChangeLog_autotoc_md66}{}\doxysection{2026-\/07}\label{md_doc_ChangeLog_autotoc_md66}
+\hypertarget{md_doc_ChangeLog_autotoc_md67}{}\doxysubsection{2026-\/07-\/02}\label{md_doc_ChangeLog_autotoc_md67}
+
+\begin{DoxyItemize}
+\item {\bfseries{v1.\+2.\+2}} {\ttfamily file\+\_\+path} 移出 {\ttfamily lut\+\_\+entries} UNIQUE 约束。
+\begin{DoxyItemize}
+\item $\ast$$\ast$问题$\ast$$\ast$：{\ttfamily file\+\_\+path} 在 UNIQUE 约束中导致同一份 {\ttfamily .lib} 数据从不同路径（aging-\/ml/\+DATA/raw/、0516\+\_\+scripts/\+LIBRARY/、\+Aging/\+ML/\+DATA/raw/）入库时被插入 2$\sim$3 次。fresh 数据 249,612 行中 142,360 行冗余。
+\item $\ast$$\ast$修复$\ast$$\ast$：{\ttfamily file\+\_\+path} 保留为溯源列（\+TEXT NOT NULL），移出 UNIQUE 约束。改用纯语义键 {\ttfamily (pvt\+\_\+corner, aged\+\_\+year, cell\+\_\+name, output\+\_\+pin, related\+\_\+pin, \char`\"{}when\char`\"{}, arc\+\_\+type)} 去重。
+\item $\ast$$\ast$影响$\ast$$\ast$：新入库数据按语义键去重，同一库多路径源不再产生冗余。aging-\/ml 侧需重建表 + `INSERT GROUP BY COALESCE(scenario\+\_\+id,'\textquotesingle{})\`{} 清理历史冗余。
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_doc_ChangeLog_autotoc_md68}{}\doxysubsection{2026-\/07-\/06}\label{md_doc_ChangeLog_autotoc_md68}
+
+\begin{DoxyItemize}
+\item {\bfseries{v1.\+2.\+3}} {\ttfamily aged\+\_\+year} → {\ttfamily age\+\_\+seconds} 全量重构，\+CLI {\ttfamily -\/-\/aged-\/year} 改为 {\ttfamily -\/-\/age-\/time}。
+\begin{DoxyItemize}
+\item $\ast$$\ast$问题$\ast$$\ast$：{\ttfamily aged\+\_\+year} 字段名为\char`\"{}年\char`\"{}，但 Zlib\+Validation 拿到 double 值后不校验单位直接 bind。新 Zlib\+Aging 管线 fresh 基线从 {\ttfamily 0.\+01y} 改 {\ttfamily 0.\+01h}（=36s），继续用\char`\"{}年\char`\"{}存则值为 {\ttfamily 1.\+14e-\/6}，浮点比较易腐化。这是命名债务。
+\item $\ast$$\ast$\+CLI 参数$\ast$$\ast$：{\ttfamily -\/-\/aged-\/year}（double）→ {\ttfamily -\/-\/age-\/time}（string + 单位后缀）。新增 {\ttfamily \mbox{\hyperlink{main_8cpp_aa9d62904adb04ab82e4d5cda71213a5e}{parse\+\_\+age\+\_\+time()}}} 解析 y/d/h/裸秒 → 秒：{\ttfamily 0.\+01h}→36.0s、{\ttfamily 10y}→315360000.0s、{\ttfamily 36}（裸秒）→36.0s、{\ttfamily \char`\"{}\char`\"{}}→0.0s。
+\item $\ast$$\ast$\+DB schema$\ast$$\ast$：{\ttfamily lut\+\_\+entries.\+aged\+\_\+year} → {\ttfamily lut\+\_\+entries.\+age\+\_\+seconds}（\+DDL + UNIQUE + INSERT + bind 全链路同步）。
+\item $\ast$$\ast$内部语义$\ast$$\ast$：所有变量名/参数名/注释 {\ttfamily aged\+\_\+year} → {\ttfamily age\+\_\+seconds}（涉及 {\ttfamily \mbox{\hyperlink{LibFile_8hpp}{Lib\+File.\+hpp}}}、{\ttfamily \mbox{\hyperlink{LibFile_8cpp}{Lib\+File.\+cpp}}}、{\ttfamily \mbox{\hyperlink{LibDatabase_8hpp}{Lib\+Database.\+hpp}}}、{\ttfamily \mbox{\hyperlink{LibDatabase_8cpp}{Lib\+Database.\+cpp}}}、{\ttfamily \mbox{\hyperlink{main_8cpp}{main.\+cpp}}}、{\ttfamily test\+\_\+libdb.\+cpp}、{\ttfamily test\+\_\+libfile\+\_\+db.\+cpp} 共 8 个文件）。
+\item $\ast$$\ast$清理$\ast$$\ast$：归档 {\ttfamily doc/sqlite\+\_\+dedup\+\_\+analysis.\+md}（v1.2.\+1 bug 排查文档，核心知识点已浓缩至 agent 记忆）。
+\item $\ast$$\ast$向后兼容$\ast$$\ast$：\+CLI 不向后兼容（唯一调用方 aging-\/ml 已确认同步改）；旧 aging\+\_\+v0.\+db 归档后不再读；裸秒值兼容（{\ttfamily -\/-\/age-\/time 36} 等价于 {\ttfamily -\/-\/age-\/time 0.\+01h}）。 
 \end{DoxyItemize}
 \end{DoxyItemize}
