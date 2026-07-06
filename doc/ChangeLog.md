@@ -485,3 +485,22 @@
   - **提取**：`LibFile::writeToDB()` 从 timing arc JSON 中提取 `arc.value("when", "")` 传入。
   - **TDD 驱动**：新增 `test_libdb.cpp:DifferentWhenSameKeyBothPersisted`（纯 DB 层验证 when 进 UNIQUE）、`test_libfile_db.cpp:WhenConditionPreserved`（集成层，ski.lib related_pin=A 有 4 distinct when 全入库）、`MultipleWhenArcsAllPersisted`（>=12 行）；同步更新现有测试的 SELECT/DISTINCT 加 `when` 列。
   - **验证**：生产级 PDK 集成验证 DB 条目 7936→35536（恢复 99.9%），条件弧 27772 全保留，distinct when=717，二次写入幂等不变。24 条差异（35560→35536）已追溯为 PDK `.lib` 数据本身的真实重复（某特定单元重复定义），非代码 bug。
+
+## 2026-07
+
+### 2026-07-02
+
+- **v1.2.2** `file_path` 移出 `lut_entries` UNIQUE 约束。
+  - **问题**：`file_path` 在 UNIQUE 约束中导致同一份 `.lib` 数据从不同路径（aging-ml/DATA/raw/、0516_scripts/LIBRARY/、Aging/ML/DATA/raw/）入库时被插入 2~3 次。fresh 数据 249,612 行中 142,360 行冗余。
+  - **修复**：`file_path` 保留为溯源列（TEXT NOT NULL），移出 UNIQUE 约束。改用纯语义键 `(pvt_corner, aged_year, cell_name, output_pin, related_pin, "when", arc_type)` 去重。
+  - **影响**：新入库数据按语义键去重，同一库多路径源不再产生冗余。aging-ml 侧需重建表 + `INSERT GROUP BY COALESCE(scenario_id,'')` 清理历史冗余。
+
+### 2026-07-06
+
+- **v1.2.3** `aged_year` → `age_seconds` 全量重构，CLI `--aged-year` 改为 `--age-time`。
+  - **问题**：`aged_year` 字段名为"年"，但 ZlibValidation 拿到 double 值后不校验单位直接 bind。新 ZlibAging 管线 fresh 基线从 `0.01y` 改 `0.01h`（=36s），继续用"年"存则值为 `1.14e-6`，浮点比较易腐化。这是命名债务。
+  - **CLI 参数**：`--aged-year`（double）→ `--age-time`（string + 单位后缀）。新增 `parse_age_time()` 解析 y/d/h/裸秒 → 秒：`0.01h`→36.0s、`10y`→315360000.0s、`36`（裸秒）→36.0s、`""`→0.0s。
+  - **DB schema**：`lut_entries.aged_year` → `lut_entries.age_seconds`（DDL + UNIQUE + INSERT + bind 全链路同步）。
+  - **内部语义**：所有变量名/参数名/注释 `aged_year` → `age_seconds`（涉及 `LibFile.hpp`、`LibFile.cpp`、`LibDatabase.hpp`、`LibDatabase.cpp`、`main.cpp`、`test_libdb.cpp`、`test_libfile_db.cpp` 共 8 个文件）。
+  - **清理**：归档 `doc/sqlite_dedup_analysis.md`（v1.2.1 bug 排查文档，核心知识点已浓缩至 agent 记忆）。
+  - **向后兼容**：CLI 不向后兼容（唯一调用方 aging-ml 已确认同步改）；旧 aging_v0.db 归档后不再读；裸秒值兼容（`--age-time 36` 等价于 `--age-time 0.01h`）。
