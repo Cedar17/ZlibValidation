@@ -5,6 +5,20 @@
 #include "LibFileOperations.hpp"
 #include "version.h"
 
+// Parse age-time string with optional unit suffix (y/d/h) into seconds.
+// Empty string -> 0.0 (non-aging). Bare number (no suffix) -> seconds.
+static double parse_age_time(const std::string &s) {
+  if (s.empty()) return 0.0;
+  char unit = s.back();
+  double num = std::stod(s);  // stod 解析前导数字，忽略尾部非数字字符
+  switch (unit) {
+    case 'y': return num * 365.0 * 24.0 * 3600.0;   // 31536000
+    case 'd': return num * 24.0 * 3600.0;            // 86400
+    case 'h': return num * 3600.0;                   // 3600
+    default:  return num;                            // 无后缀 → 秒
+  }
+}
+
 /**
  * @file main.cpp
  * @brief This file contains the main function for the ZlibValidation tool.
@@ -67,17 +81,21 @@ int main(int argc, char *argv[]) {
   // DB writing options (SQLite database output)
   std::string db_path = "";
   std::string pvt_corner = "";
-  double aged_year = 0.0;
+  std::string age_time_str;
+  double age_seconds = 0.0;
   parse_cmd->add_option("--db", db_path,
                         "Path to SQLite database for storing LUT entries (enables DB write)");
   parse_cmd->add_option("--pvt", pvt_corner,
                         "PVT corner string (e.g. SS_1p08V_125C). Recommended when writing to DB.");
-  parse_cmd->add_option("--aged-year", aged_year,
-                        "Aged year value (default: 0.0, not used for non-aging libraries).");
+  parse_cmd->add_option("--age-time", age_time_str,
+                        "Age time with unit suffix (e.g. 0.01h, 10y, 100d). Converted to seconds. Bare number = seconds.");
 
   parse_cmd->callback([&] {
     printInfo();
     bool has_db = !db_path.empty();
+
+    // Parse --age-time string -> seconds (empty/absent -> 0.0)
+    age_seconds = parse_age_time(age_time_str);
 
     if (!has_db) {
       // ---- Existing behaviour: no DB ----
@@ -92,15 +110,15 @@ int main(int argc, char *argv[]) {
       }
     } else {
       // ---- DB mode: parse each file and write LUT entries to DB ----
-      spdlog::info("DB write enabled: '{}' (corner={}, aged_year={})", db_path, pvt_corner,
-                   aged_year);
+      spdlog::info("DB write enabled: '{}' (corner={}, age_time='{}' -> {}s)",
+                   db_path, pvt_corner, age_time_str, age_seconds);
       for (const auto &library_path : library_paths) {
         std::string logname = log_file_name.empty()
                                   ? std::filesystem::path(library_path).stem().string() + ".parse.log"
                                   : log_file_name;
         LibFile libfile(library_path, logname);
         libfile.parse();
-        libfile.writeToDB(db_path, pvt_corner, aged_year);
+        libfile.writeToDB(db_path, pvt_corner, age_seconds);
       }
     }
   });

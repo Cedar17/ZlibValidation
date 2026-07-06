@@ -30,7 +30,7 @@ static const char *DDL_LUT_ENTRIES = R"sql(
     library_name  TEXT NOT NULL,
     scenario_id   TEXT,
     pvt_corner    TEXT NOT NULL,
-    aged_year     REAL NOT NULL,
+    age_seconds   REAL NOT NULL,
     cell_name     TEXT NOT NULL,
     output_pin    TEXT NOT NULL DEFAULT 'Y',
     related_pin   TEXT NOT NULL,
@@ -47,14 +47,14 @@ static const char *DDL_LUT_ENTRIES = R"sql(
     temperature   REAL,
     voltage       REAL,
     ingested_at   TEXT NOT NULL DEFAULT (datetime('now')),
-    UNIQUE(pvt_corner, aged_year, cell_name, output_pin,
+    UNIQUE(pvt_corner, age_seconds, cell_name, output_pin,
            related_pin, "when", arc_type)
   );
 )sql";
 
 static const char *INSERT_SQL = R"sql(
   INSERT OR IGNORE INTO lut_entries
-    (file_path, library_name, scenario_id, pvt_corner, aged_year,
+    (file_path, library_name, scenario_id, pvt_corner, age_seconds,
      cell_name, output_pin, related_pin, timing_sense, timing_type, "when", arc_type,
      rows_n, cols_n, index_1_blob, index_2_blob, values_blob,
      process, temperature, voltage)
@@ -120,7 +120,7 @@ void LibDatabase::commitTransaction() {
 
 void LibDatabase::writeLutEntry(const std::string &file_path,
                                 const std::string &library_name,
-                                const std::string &pvt_corner, double aged_year,
+                                const std::string &pvt_corner, double age_seconds,
                                 const std::string &cell_name, const std::string &output_pin,
                                 const std::string &related_pin, const std::string &timing_sense,
                                 const std::string &timing_type, const std::string &when,
@@ -161,7 +161,7 @@ void LibDatabase::writeLutEntry(const std::string &file_path,
   stmt.bind(2, library_name);
   stmt.bind(3); // scenario_id → NULL (Python fills later)
   stmt.bind(4, pvt_corner);
-  stmt.bind(5, aged_year);
+  stmt.bind(5, age_seconds);
   stmt.bind(6, cell_name);
   stmt.bind(7, output_pin);
   stmt.bind(8, related_pin);

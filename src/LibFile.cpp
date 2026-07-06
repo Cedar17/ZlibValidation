@@ -182,7 +182,7 @@ void LibFile::parse() {
 }
 
 void LibFile::writeToDB(const std::string &db_path, const std::string &pvt_corner,
-                         double aged_year) {
+                         double age_seconds) {
   logger_->info("Writing LUT entries to DB: '{}'", db_path);
 
   if (!lib_json_.contains("cells") || !lib_json_["cells"].is_array()) {
@@ -265,7 +265,7 @@ void LibFile::writeToDB(const std::string &db_path, const std::string &pvt_corne
 
           database.writeLutEntry(
               filename_,   // file_path (original path for provenance)
-              library_name, pvt_corner, aged_year, cell_name, output_pin,
+              library_name, pvt_corner, age_seconds, cell_name, output_pin,
               related_pin, timing_sense, timing_type, when, arc_type, rows_n,
               cols_n, index_1, index_2, values, process, temperature, voltage);
 
