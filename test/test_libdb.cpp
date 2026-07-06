@@ -66,7 +66,7 @@ TEST_F(LibDatabaseTest, WriteAndReadSingleEntry) {
   SQLite::Database db(db_path_, SQLite::OPEN_READWRITE);
   SQLite::Statement q(db,
       "SELECT file_path, library_name, scenario_id, "
-      "pvt_corner, aged_year, cell_name, output_pin, "
+      "pvt_corner, age_seconds, cell_name, output_pin, "
       "related_pin, timing_sense, timing_type, arc_type, "
       "rows_n, cols_n, "
       "index_1_blob, index_2_blob, values_blob, "
