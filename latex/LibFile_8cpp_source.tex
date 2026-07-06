@@ -124,8 +124,8 @@
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00181}00181   si2drPIQuit(\&\mbox{\hyperlink{classLibFile_aae4abb8e49b9baa04edd1ad5acef3abd}{err\_}});}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00182}00182 \}}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00183}00183 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00184}\mbox{\hyperlink{classLibFile_ac42966ae3c352b33ac89aa135e130a9a}{00184}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_ac42966ae3c352b33ac89aa135e130a9a}{LibFile::writeToDB}}(\textcolor{keyword}{const} std::string \&db\_path, \textcolor{keyword}{const} std::string \&pvt\_corner,}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00185}00185                          \textcolor{keywordtype}{double} aged\_year) \{}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00184}\mbox{\hyperlink{classLibFile_aa9eadd490d636e0239021413cf8665bf}{00184}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLibFile_aa9eadd490d636e0239021413cf8665bf}{LibFile::writeToDB}}(\textcolor{keyword}{const} std::string \&db\_path, \textcolor{keyword}{const} std::string \&pvt\_corner,}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00185}00185                          \textcolor{keywordtype}{double} age\_seconds) \{}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00186}00186   \mbox{\hyperlink{classLibFile_a347261b9d7d365b9f91c651efdfeb70d}{logger\_}}-\/>info(\textcolor{stringliteral}{"{}Writing LUT entries to DB: '\{\}'"{}}, db\_path);}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00187}00187 }
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00188}00188   \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\_json\_}}.contains(\textcolor{stringliteral}{"{}cells"{}}) || !\mbox{\hyperlink{classLibFile_aeb27fbc660990a2c0de6b285cf6a9449}{lib\_json\_}}[\textcolor{stringliteral}{"{}cells"{}}].is\_array()) \{}
@@ -206,9 +206,9 @@
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00263}00263             index\_2.resize(cols\_n, 0.0);}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00264}00264           \}}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00265}00265 }
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00266}00266           database.\mbox{\hyperlink{classLibDatabase_a0f1f44ec762f77c79409593f13997fff}{writeLutEntry}}(}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00266}00266           database.\mbox{\hyperlink{classLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8}{writeLutEntry}}(}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00267}00267               \mbox{\hyperlink{classLibFile_ab2c4f2ae06328ce9fff447369ded1686}{filename\_}},   \textcolor{comment}{// file\_path (original path for provenance)}}
-\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00268}00268               library\_name, pvt\_corner, aged\_year, cell\_name, output\_pin,}
+\DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00268}00268               library\_name, pvt\_corner, age\_seconds, cell\_name, output\_pin,}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00269}00269               related\_pin, timing\_sense, timing\_type, when, arc\_type, rows\_n,}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00270}00270               cols\_n, index\_1, index\_2, values, process, temperature, voltage);}
 \DoxyCodeLine{\Hypertarget{LibFile_8cpp_source_l00271}00271 }

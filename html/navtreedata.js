@@ -102,30 +102,6 @@ var NAVTREE =
         [ "2026-06-23", "md_doc_ChangeLog.html#autotoc_md65", null ]
       ] ]
     ] ],
-    [ "SQLite 入库去重分析：when 条件导致的静默数据丢失", "md_doc_sqlite_dedup_analysis.html", [
-      [ "背景", "md_doc_sqlite_dedup_analysis.html#autotoc_md67", null ],
-      [ "Liberty 文件层级结构（与「\"重复\"」的根源）", "md_doc_sqlite_dedup_analysis.html#autotoc_md68", [
-        [ "AOI 单元的时序结构", "md_doc_sqlite_dedup_analysis.html#autotoc_md69", null ]
-      ] ],
-      [ "去重链条（数据流分析）", "md_doc_sqlite_dedup_analysis.html#autotoc_md70", [
-        [ "Step 1: si2dr 解析 → JSON", "md_doc_sqlite_dedup_analysis.html#autotoc_md71", null ],
-        [ "Step 2: JSON → DB writeToDB", "md_doc_sqlite_dedup_analysis.html#autotoc_md72", null ],
-        [ "Step 3: UNIQUE 约束", "md_doc_sqlite_dedup_analysis.html#autotoc_md73", null ],
-        [ "效果", "md_doc_sqlite_dedup_analysis.html#autotoc_md74", null ]
-      ] ],
-      [ "丢失规模", "md_doc_sqlite_dedup_analysis.html#autotoc_md75", null ],
-      [ "当前 UNIQUE 约束的正确性", "md_doc_sqlite_dedup_analysis.html#autotoc_md76", null ],
-      [ "修复思路", "md_doc_sqlite_dedup_analysis.html#autotoc_md77", [
-        [ "注意事项", "md_doc_sqlite_dedup_analysis.html#autotoc_md78", null ]
-      ] ],
-      [ "验证方法", "md_doc_sqlite_dedup_analysis.html#autotoc_md79", null ],
-      [ "修复完成（2026-06-23，TDD 驱动）", "md_doc_sqlite_dedup_analysis.html#autotoc_md82", [
-        [ "验证结果（真实生产级 PDK，31MB / 531 cell / 6943 when）", "md_doc_sqlite_dedup_analysis.html#autotoc_md83", null ],
-        [ "35560 vs 35536 的 24 条差异（已追溯，非 bug）", "md_doc_sqlite_dedup_analysis.html#autotoc_md84", null ],
-        [ "范围边界（与 aging.db 迁移计划 Phase 2 对齐）", "md_doc_sqlite_dedup_analysis.html#autotoc_md85", null ],
-        [ "TDD 测试", "md_doc_sqlite_dedup_analysis.html#autotoc_md86", null ]
-      ] ]
-    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

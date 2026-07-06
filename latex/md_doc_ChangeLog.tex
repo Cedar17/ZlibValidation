@@ -513,7 +513,7 @@ Logically Equivalent   &Yes   \\\cline{1-2}
 \item 启用 WAL journal 模式和 {\ttfamily busy\+\_\+timeout}，支持并发读写场景。
 \item {\ttfamily scenario\+\_\+id} 字段预留为 {\ttfamily NULL}，留待后续 Python 脚本回填。
 \end{DoxyItemize}
-\item {\ttfamily \mbox{\hyperlink{classLibFile_ac42966ae3c352b33ac89aa135e130a9a}{Lib\+File\+::write\+To\+DB()}}} 方法实现完整的层次遍历：
+\item {\ttfamily \mbox{\hyperlink{classLibFile_aa9eadd490d636e0239021413cf8665bf}{Lib\+File\+::write\+To\+DB()}}} 方法实现完整的层次遍历：
 \begin{DoxyItemize}
 \item 从 {\ttfamily lib\+\_\+json\+\_\+} 中提取 PVT 头信息（process, temperature, voltage）。
 \item 逐层遍历 cells → output\+\_\+pins → timing\+\_\+arcs → 四种 arc\+\_\+type（cell\+\_\+rise, cell\+\_\+fall, rise\+\_\+transition, fall\+\_\+transition）。
@@ -524,7 +524,7 @@ Logically Equivalent   &Yes   \\\cline{1-2}
 \item 编写数据库写入测试（8 个 Google\+Test 用例）：
 \begin{DoxyItemize}
 \item {\ttfamily test\+\_\+libdb.\+cpp}：单元测试 {\ttfamily \mbox{\hyperlink{classLibDatabase}{Lib\+Database}}}，覆盖建表、单条目读写、\+BLOB 逐字节验证、\+UNIQUE 约束、四种 arc\+\_\+type。
-\item {\ttfamily test\+\_\+libfile\+\_\+db.\+cpp}：集成测试 {\ttfamily \mbox{\hyperlink{classLibFile_ac42966ae3c352b33ac89aa135e130a9a}{Lib\+File\+::write\+To\+DB()}}} 与真实 {\ttfamily .lib} 文件（{\ttfamily tcbn65lpbc.\+ski.\+lib}），覆盖完整写入流程、\+BLOB 值合理性、幂等写入、{\ttfamily scenario\+\_\+id IS NULL} 不变式。
+\item {\ttfamily test\+\_\+libfile\+\_\+db.\+cpp}：集成测试 {\ttfamily \mbox{\hyperlink{classLibFile_aa9eadd490d636e0239021413cf8665bf}{Lib\+File\+::write\+To\+DB()}}} 与真实 {\ttfamily .lib} 文件（{\ttfamily tcbn65lpbc.\+ski.\+lib}），覆盖完整写入流程、\+BLOB 值合理性、幂等写入、{\ttfamily scenario\+\_\+id IS NULL} 不变式。
 \item 每个测试使用独立的临时 {\ttfamily .db} 文件，避免并行测试锁冲突。
 \end{DoxyItemize}
 \end{DoxyItemize}
@@ -543,7 +543,7 @@ Logically Equivalent   &Yes   \\\cline{1-2}
 \item $\ast$$\ast$问题$\ast$$\ast$：{\ttfamily when}（同一 {\ttfamily related\+\_\+pin} 区分不同时序弧的条件布尔表达式）未入库、未进 UNIQUE 约束，导致同一 {\ttfamily (cell, output\+\_\+pin, related\+\_\+pin, arc\+\_\+type)} 下不同 {\ttfamily when} 的时序弧被 {\ttfamily INSERT OR IGNORE} 静默丢弃。真实生产级 PDK 入库测试：\+Wrote 35560，\+DB 仅实存 7936（丢失 77.\+7）。
 \item $\ast$$\ast$\+DDL$\ast$$\ast$：{\ttfamily lut\+\_\+entries} 表新增 {\ttfamily \char`\"{}when\char`\"{} TEXT} 列（放在 {\ttfamily timing\+\_\+type} 与 {\ttfamily arc\+\_\+type} 之间），\+UNIQUE 约束加入 {\ttfamily \char`\"{}when\char`\"{}}。
 \item $\ast$$\ast$\+INSERT/bind$\ast$$\ast$：\+INSERT 列和占位符同步加 {\ttfamily when}（第 11 位）。空 {\ttfamily when} 绑定空字符串而非 NULL，避免 SQLite UNIQUE 约束视多 NULL 为不冲突导致幂等破坏。
-\item $\ast$$\ast$提取$\ast$$\ast$：{\ttfamily \mbox{\hyperlink{classLibFile_ac42966ae3c352b33ac89aa135e130a9a}{Lib\+File\+::write\+To\+DB()}}} 从 timing arc JSON 中提取 {\ttfamily arc.\+value(\char`\"{}when\char`\"{}, \char`\"{}\char`\"{})} 传入。
+\item $\ast$$\ast$提取$\ast$$\ast$：{\ttfamily \mbox{\hyperlink{classLibFile_aa9eadd490d636e0239021413cf8665bf}{Lib\+File\+::write\+To\+DB()}}} 从 timing arc JSON 中提取 {\ttfamily arc.\+value(\char`\"{}when\char`\"{}, \char`\"{}\char`\"{})} 传入。
 \item $\ast$$\ast$\+TDD 驱动$\ast$$\ast$：新增 {\ttfamily test\+\_\+libdb.\+cpp\+:Different\+When\+Same\+Key\+Both\+Persisted}（纯 DB 层验证 when 进 UNIQUE）、{\ttfamily test\+\_\+libfile\+\_\+db.\+cpp\+:When\+Condition\+Preserved}（集成层，ski.\+lib related\+\_\+pin=A 有 4 distinct when 全入库）、{\ttfamily Multiple\+When\+Arcs\+All\+Persisted}（\texorpdfstring{$>$}{>}=12 行）；同步更新现有测试的 SELECT/\+DISTINCT 加 {\ttfamily when} 列。
 \item $\ast$$\ast$验证$\ast$$\ast$：生产级 PDK 集成验证 DB 条目 7936→35536（恢复 99.\+9），条件弧 27772 全保留，distinct when=717，二次写入幂等不变。24 条差异（35560→35536）已追溯为 PDK {\ttfamily .lib} 数据本身的真实重复（某特定单元重复定义），非代码 bug。 
 \end{DoxyItemize}

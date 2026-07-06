@@ -648,7 +648,7 @@ $(document).ready(function(){initNavTree('md_doc_ChangeLog.html',''); initResiza
 <li><code>scenario_id</code> 字段预留为 <code>NULL</code>，留待后续 Python 脚本回填。</li>
 </ul>
 </li>
-<li><code><a class="el" href="classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a">LibFile::writeToDB()</a></code> 方法实现完整的层次遍历：<ul>
+<li><code><a class="el" href="classLibFile.html#aa9eadd490d636e0239021413cf8665bf">LibFile::writeToDB()</a></code> 方法实现完整的层次遍历：<ul>
 <li>从 <code>lib_json_</code> 中提取 PVT 头信息（process, temperature, voltage）。</li>
 <li>逐层遍历 cells → output_pins → timing_arcs → 四种 arc_type（cell_rise, cell_fall, rise_transition, fall_transition）。</li>
 <li>每个 LUT 写为 <code>lut_entries</code> 表的一行，携带完整的层级上下文。</li>
@@ -658,7 +658,7 @@ $(document).ready(function(){initNavTree('md_doc_ChangeLog.html',''); initResiza
 <li><code>CMakeLists.txt</code>：将 <code>SQLiteCpp</code> 链接到主目标。</li>
 <li>编写数据库写入测试（8 个 GoogleTest 用例）：<ul>
 <li><code>test_libdb.cpp</code>：单元测试 <code><a class="el" href="classLibDatabase.html" title="Manages SQLite database connections for writing Liberty LUT data.">LibDatabase</a></code>，覆盖建表、单条目读写、BLOB 逐字节验证、UNIQUE 约束、四种 arc_type。</li>
-<li><code>test_libfile_db.cpp</code>：集成测试 <code><a class="el" href="classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a">LibFile::writeToDB()</a></code> 与真实 <code>.lib</code> 文件（<code>tcbn65lpbc.ski.lib</code>），覆盖完整写入流程、BLOB 值合理性、幂等写入、<code>scenario_id IS NULL</code> 不变式。</li>
+<li><code>test_libfile_db.cpp</code>：集成测试 <code><a class="el" href="classLibFile.html#aa9eadd490d636e0239021413cf8665bf">LibFile::writeToDB()</a></code> 与真实 <code>.lib</code> 文件（<code>tcbn65lpbc.ski.lib</code>），覆盖完整写入流程、BLOB 值合理性、幂等写入、<code>scenario_id IS NULL</code> 不变式。</li>
 <li>每个测试使用独立的临时 <code>.db</code> 文件，避免并行测试锁冲突。</li>
 </ul>
 </li>
@@ -679,7 +679,7 @@ $(document).ready(function(){initNavTree('md_doc_ChangeLog.html',''); initResiza
 <li>**问题**：<code>when</code>（同一 <code>related_pin</code> 区分不同时序弧的条件布尔表达式）未入库、未进 UNIQUE 约束，导致同一 <code>(cell, output_pin, related_pin, arc_type)</code> 下不同 <code>when</code> 的时序弧被 <code>INSERT OR IGNORE</code> 静默丢弃。真实生产级 PDK 入库测试：Wrote 35560，DB 仅实存 7936（丢失 77.7）。</li>
 <li>**DDL**：<code>lut_entries</code> 表新增 <code>"when" TEXT</code> 列（放在 <code>timing_type</code> 与 <code>arc_type</code> 之间），UNIQUE 约束加入 <code>"when"</code>。</li>
 <li>**INSERT/bind**：INSERT 列和占位符同步加 <code>when</code>（第 11 位）。空 <code>when</code> 绑定空字符串而非 NULL，避免 SQLite UNIQUE 约束视多 NULL 为不冲突导致幂等破坏。</li>
-<li>**提取**：<code><a class="el" href="classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a">LibFile::writeToDB()</a></code> 从 timing arc JSON 中提取 <code>arc.value("when", "")</code> 传入。</li>
+<li>**提取**：<code><a class="el" href="classLibFile.html#aa9eadd490d636e0239021413cf8665bf">LibFile::writeToDB()</a></code> 从 timing arc JSON 中提取 <code>arc.value("when", "")</code> 传入。</li>
 <li>**TDD 驱动**：新增 <code>test_libdb.cpp:DifferentWhenSameKeyBothPersisted</code>（纯 DB 层验证 when 进 UNIQUE）、<code>test_libfile_db.cpp:WhenConditionPreserved</code>（集成层，ski.lib related_pin=A 有 4 distinct when 全入库）、<code>MultipleWhenArcsAllPersisted</code>（&gt;=12 行）；同步更新现有测试的 SELECT/DISTINCT 加 <code>when</code> 列。</li>
 <li>**验证**：生产级 PDK 集成验证 DB 条目 7936→35536（恢复 99.9），条件弧 27772 全保留，distinct when=717，二次写入幂等不变。24 条差异（35560→35536）已追溯为 PDK <code>.lib</code> 数据本身的真实重复（某特定单元重复定义），非代码 bug。 </li>
 </ul>
@@ -691,7 +691,7 @@ $(document).ready(function(){initNavTree('md_doc_ChangeLog.html',''); initResiza
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jul 2 2026 21:02:18 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Jul 6 2026 17:32:32 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

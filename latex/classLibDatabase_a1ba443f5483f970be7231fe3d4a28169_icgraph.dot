@@ -7,7 +7,7 @@ digraph "LibDatabase::initialize"
   rankdir="RL";
   Node1 [label="LibDatabase::initialize",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Create the lut_entries table if it does not already exist."];
   Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
-  Node2 [label="LibFile::writeToDB",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a",tooltip=" "];
+  Node2 [label="LibFile::writeToDB",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibFile.html#aa9eadd490d636e0239021413cf8665bf",tooltip=" "];
   Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
   Node3 [label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97",tooltip=" "];
 }

@@ -22,7 +22,7 @@ void \mbox{\hyperlink{classLibDatabase_a32d30ce7690c60558f3035231390379d}{begin\
 \item 
 void \mbox{\hyperlink{classLibDatabase_aa682f3b696c650ee90472657afc33872}{commit\+Transaction}} ()
 \item 
-void \mbox{\hyperlink{classLibDatabase_a0f1f44ec762f77c79409593f13997fff}{write\+Lut\+Entry}} (const std\+::string \&file\+\_\+path, const std\+::string \&library\+\_\+name, const std\+::string \&pvt\+\_\+corner, double aged\+\_\+year, const std\+::string \&cell\+\_\+name, const std\+::string \&output\+\_\+pin, const std\+::string \&related\+\_\+pin, const std\+::string \&timing\+\_\+sense, const std\+::string \&timing\+\_\+type, const std\+::string \&when, const std\+::string \&arc\+\_\+type, int rows\+\_\+n, int cols\+\_\+n, const std\+::vector$<$ double $>$ \&index\+\_\+1, const std\+::vector$<$ double $>$ \&index\+\_\+2, const std\+::vector$<$ double $>$ \&values, int process, double temperature, double voltage)
+void \mbox{\hyperlink{classLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8}{write\+Lut\+Entry}} (const std\+::string \&file\+\_\+path, const std\+::string \&library\+\_\+name, const std\+::string \&pvt\+\_\+corner, double age\+\_\+seconds, const std\+::string \&cell\+\_\+name, const std\+::string \&output\+\_\+pin, const std\+::string \&related\+\_\+pin, const std\+::string \&timing\+\_\+sense, const std\+::string \&timing\+\_\+type, const std\+::string \&when, const std\+::string \&arc\+\_\+type, int rows\+\_\+n, int cols\+\_\+n, const std\+::vector$<$ double $>$ \&index\+\_\+1, const std\+::vector$<$ double $>$ \&index\+\_\+2, const std\+::vector$<$ double $>$ \&values, int process, double temperature, double voltage)
 \begin{DoxyCompactList}\small\item\em Insert one LUT record into lut\+\_\+entries. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -45,7 +45,7 @@ Manages SQLite database connections for writing Liberty LUT data.
 Responsibilities\+:
 \begin{DoxyItemize}
 \item Create the {\ttfamily lut\+\_\+entries} table (DDL) on first use via \mbox{\hyperlink{classLibDatabase_a1ba443f5483f970be7231fe3d4a28169}{initialize()}}
-\item Write one LUT record per call to \mbox{\hyperlink{classLibDatabase_a0f1f44ec762f77c79409593f13997fff}{write\+Lut\+Entry()}}
+\item Write one LUT record per call to \mbox{\hyperlink{classLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8}{write\+Lut\+Entry()}}
 \item Enforce idempotency via INSERT OR IGNORE
 \end{DoxyItemize}
 
@@ -124,17 +124,17 @@ Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00079}{79}} of file
 
 Here is the caller graph for this function\+:
 % FIG 2
-\mbox{\Hypertarget{classLibDatabase_a0f1f44ec762f77c79409593f13997fff}\label{classLibDatabase_a0f1f44ec762f77c79409593f13997fff}} 
+\mbox{\Hypertarget{classLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8}\label{classLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8}} 
 \index{LibDatabase@{LibDatabase}!writeLutEntry@{writeLutEntry}}
 \index{writeLutEntry@{writeLutEntry}!LibDatabase@{LibDatabase}}
 \doxysubsubsection{\texorpdfstring{writeLutEntry()}{writeLutEntry()}}
-{\footnotesize\ttfamily void Lib\+Database\+::write\+Lut\+Entry (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path,  }\item[{const std\+::string \&}]{library\+\_\+name,  }\item[{const std\+::string \&}]{pvt\+\_\+corner,  }\item[{double}]{aged\+\_\+year,  }\item[{const std\+::string \&}]{cell\+\_\+name,  }\item[{const std\+::string \&}]{output\+\_\+pin,  }\item[{const std\+::string \&}]{related\+\_\+pin,  }\item[{const std\+::string \&}]{timing\+\_\+sense,  }\item[{const std\+::string \&}]{timing\+\_\+type,  }\item[{const std\+::string \&}]{when,  }\item[{const std\+::string \&}]{arc\+\_\+type,  }\item[{int}]{rows\+\_\+n,  }\item[{int}]{cols\+\_\+n,  }\item[{const std\+::vector$<$ double $>$ \&}]{index\+\_\+1,  }\item[{const std\+::vector$<$ double $>$ \&}]{index\+\_\+2,  }\item[{const std\+::vector$<$ double $>$ \&}]{values,  }\item[{int}]{process,  }\item[{double}]{temperature,  }\item[{double}]{voltage }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Lib\+Database\+::write\+Lut\+Entry (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path,  }\item[{const std\+::string \&}]{library\+\_\+name,  }\item[{const std\+::string \&}]{pvt\+\_\+corner,  }\item[{double}]{age\+\_\+seconds,  }\item[{const std\+::string \&}]{cell\+\_\+name,  }\item[{const std\+::string \&}]{output\+\_\+pin,  }\item[{const std\+::string \&}]{related\+\_\+pin,  }\item[{const std\+::string \&}]{timing\+\_\+sense,  }\item[{const std\+::string \&}]{timing\+\_\+type,  }\item[{const std\+::string \&}]{when,  }\item[{const std\+::string \&}]{arc\+\_\+type,  }\item[{int}]{rows\+\_\+n,  }\item[{int}]{cols\+\_\+n,  }\item[{const std\+::vector$<$ double $>$ \&}]{index\+\_\+1,  }\item[{const std\+::vector$<$ double $>$ \&}]{index\+\_\+2,  }\item[{const std\+::vector$<$ double $>$ \&}]{values,  }\item[{int}]{process,  }\item[{double}]{temperature,  }\item[{double}]{voltage }\end{DoxyParamCaption})}
 
 
 
 Insert one LUT record into lut\+\_\+entries. 
 
-Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (pvt\+\_\+corner, aged\+\_\+year, cell\+\_\+name, output\+\_\+pin, related\+\_\+pin, \char`\"{}when\char`\"{}, arc\+\_\+type) are no-\/ops. {\ttfamily file\+\_\+path} is deliberately excluded from the UNIQUE constraint because the same .lib data may exist under multiple paths (symlinks, directory mirrors); it is stored as a provenance column but does not participate in semantic deduplication.
+Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (pvt\+\_\+corner, age\+\_\+seconds, cell\+\_\+name, output\+\_\+pin, related\+\_\+pin, \char`\"{}when\char`\"{}, arc\+\_\+type) are no-\/ops. {\ttfamily file\+\_\+path} is deliberately excluded from the UNIQUE constraint because the same .lib data may exist under multiple paths (symlinks, directory mirrors); it is stored as a provenance column but does not participate in semantic deduplication.
 
 
 \begin{DoxyParams}{Parameters}
@@ -144,7 +144,7 @@ Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (pvt\+\_\+corne
 \hline
 {\em pvt\+\_\+corner} & PVT corner string (e.\+g. \char`\"{}\+SS\+\_\+1p08\+V\+\_\+125\+C\char`\"{}). \\
 \hline
-{\em aged\+\_\+year} & Aging year (e.\+g. 0.\+01 for fresh, 10000 for aged). \\
+{\em age\+\_\+seconds} & Aging time in seconds (e.\+g. 36.\+0 for 0.\+01h fresh, 315360000.\+0 for 10y). \\
 \hline
 {\em cell\+\_\+name} & Cell name extracted from .lib. \\
 \hline

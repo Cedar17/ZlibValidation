@@ -52,7 +52,7 @@ Here is the caller graph for this function\+:
 \DoxyCodeLine{\textcolor{stringliteral}{    library\_name  TEXT NOT NULL,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    scenario\_id   TEXT,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    pvt\_corner    TEXT NOT NULL,}}
-\DoxyCodeLine{\textcolor{stringliteral}{    aged\_year     REAL NOT NULL,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    age\_seconds   REAL NOT NULL,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    cell\_name     TEXT NOT NULL,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    output\_pin    TEXT NOT NULL DEFAULT 'Y',}}
 \DoxyCodeLine{\textcolor{stringliteral}{    related\_pin   TEXT NOT NULL,}}
@@ -69,7 +69,7 @@ Here is the caller graph for this function\+:
 \DoxyCodeLine{\textcolor{stringliteral}{    temperature   REAL,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    voltage       REAL,}}
 \DoxyCodeLine{\textcolor{stringliteral}{    ingested\_at   TEXT NOT NULL DEFAULT (datetime('now')),}}
-\DoxyCodeLine{\textcolor{stringliteral}{    UNIQUE(pvt\_corner, aged\_year, cell\_name, output\_pin,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    UNIQUE(pvt\_corner, age\_seconds, cell\_name, output\_pin,}}
 \DoxyCodeLine{\textcolor{stringliteral}{           related\_pin, "{}when"{}, arc\_type)}}
 \DoxyCodeLine{\textcolor{stringliteral}{  );}}
 \DoxyCodeLine{\textcolor{stringliteral}{)sql"{}}}
@@ -89,7 +89,7 @@ Definition at line \mbox{\hyperlink{LibDatabase_8cpp_source_l00026}{26}} of file
 \begin{DoxyCode}{0}
 \DoxyCodeLine{= R\textcolor{stringliteral}{"{}sql(}}
 \DoxyCodeLine{\textcolor{stringliteral}{  INSERT OR IGNORE INTO lut\_entries}}
-\DoxyCodeLine{\textcolor{stringliteral}{    (file\_path, library\_name, scenario\_id, pvt\_corner, aged\_year,}}
+\DoxyCodeLine{\textcolor{stringliteral}{    (file\_path, library\_name, scenario\_id, pvt\_corner, age\_seconds,}}
 \DoxyCodeLine{\textcolor{stringliteral}{     cell\_name, output\_pin, related\_pin, timing\_sense, timing\_type, "{}when"{}, arc\_type,}}
 \DoxyCodeLine{\textcolor{stringliteral}{     rows\_n, cols\_n, index\_1\_blob, index\_2\_blob, values\_blob,}}
 \DoxyCodeLine{\textcolor{stringliteral}{     process, temperature, voltage)}}

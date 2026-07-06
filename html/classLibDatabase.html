@@ -118,9 +118,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a32d30ce7690c60558f3035231390379d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa682f3b696c650ee90472657afc33872"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLibDatabase.html#aa682f3b696c650ee90472657afc33872">commitTransaction</a> ()</td></tr>
 <tr class="separator:aa682f3b696c650ee90472657afc33872"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f1f44ec762f77c79409593f13997fff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLibDatabase.html#a0f1f44ec762f77c79409593f13997fff">writeLutEntry</a> (const std::string &amp;file_path, const std::string &amp;library_name, const std::string &amp;pvt_corner, double aged_year, const std::string &amp;cell_name, const std::string &amp;output_pin, const std::string &amp;related_pin, const std::string &amp;timing_sense, const std::string &amp;timing_type, const std::string &amp;when, const std::string &amp;arc_type, int rows_n, int cols_n, const std::vector&lt; double &gt; &amp;index_1, const std::vector&lt; double &gt; &amp;index_2, const std::vector&lt; double &gt; &amp;values, int process, double temperature, double voltage)</td></tr>
-<tr class="memdesc:a0f1f44ec762f77c79409593f13997fff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert one LUT record into lut_entries.  <a href="classLibDatabase.html#a0f1f44ec762f77c79409593f13997fff">More...</a><br /></td></tr>
-<tr class="separator:a0f1f44ec762f77c79409593f13997fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae808a0308d9bab6f5184fff7d5b209d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLibDatabase.html#ae808a0308d9bab6f5184fff7d5b209d8">writeLutEntry</a> (const std::string &amp;file_path, const std::string &amp;library_name, const std::string &amp;pvt_corner, double age_seconds, const std::string &amp;cell_name, const std::string &amp;output_pin, const std::string &amp;related_pin, const std::string &amp;timing_sense, const std::string &amp;timing_type, const std::string &amp;when, const std::string &amp;arc_type, int rows_n, int cols_n, const std::vector&lt; double &gt; &amp;index_1, const std::vector&lt; double &gt; &amp;index_2, const std::vector&lt; double &gt; &amp;values, int process, double temperature, double voltage)</td></tr>
+<tr class="memdesc:ae808a0308d9bab6f5184fff7d5b209d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert one LUT record into lut_entries.  <a href="classLibDatabase.html#ae808a0308d9bab6f5184fff7d5b209d8">More...</a><br /></td></tr>
+<tr class="separator:ae808a0308d9bab6f5184fff7d5b209d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -138,7 +138,7 @@ Private Attributes</h2></td></tr>
 <p ><a class="el" href="classLibDatabase.html" title="Manages SQLite database connections for writing Liberty LUT data.">LibDatabase</a> opens or creates a SQLite database file and provides methods to write timing look-up table (LUT) entries into the <code>lut_entries</code> table.</p>
 <p >Responsibilities:</p><ul>
 <li>Create the <code>lut_entries</code> table (DDL) on first use via <a class="el" href="classLibDatabase.html#a1ba443f5483f970be7231fe3d4a28169" title="Create the lut_entries table if it does not already exist.">initialize()</a></li>
-<li>Write one LUT record per call to <a class="el" href="classLibDatabase.html#a0f1f44ec762f77c79409593f13997fff" title="Insert one LUT record into lut_entries.">writeLutEntry()</a></li>
+<li>Write one LUT record per call to <a class="el" href="classLibDatabase.html#ae808a0308d9bab6f5184fff7d5b209d8" title="Insert one LUT record into lut_entries.">writeLutEntry()</a></li>
 <li>Enforce idempotency via INSERT OR IGNORE</li>
 </ul>
 <p >This class is deliberately scoped to Phase 2 of the aging.db migration: it only manages the lut_entries table. Other tables (scenarios, k_values, etc.) are managed by Python build scripts. </p>
@@ -229,7 +229,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classLibDatabase_a32d30ce7690c60558f3035231390379d_icgraph.png" border="0" usemap="#aclassLibDatabase_a32d30ce7690c60558f3035231390379d_icgraph" alt=""/></div>
 <map name="aclassLibDatabase_a32d30ce7690c60558f3035231390379d_icgraph" id="aclassLibDatabase_a32d30ce7690c60558f3035231390379d_icgraph">
 <area shape="rect" title=" " alt="" coords="293,5,513,33"/>
-<area shape="rect" href="classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a" title=" " alt="" coords="108,5,245,33"/>
+<area shape="rect" href="classLibFile.html#aa9eadd490d636e0239021413cf8665bf" title=" " alt="" coords="108,5,245,33"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,33"/>
 </map>
 </div>
@@ -258,7 +258,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classLibDatabase_aa682f3b696c650ee90472657afc33872_icgraph.png" border="0" usemap="#aclassLibDatabase_aa682f3b696c650ee90472657afc33872_icgraph" alt=""/></div>
 <map name="aclassLibDatabase_aa682f3b696c650ee90472657afc33872_icgraph" id="aclassLibDatabase_aa682f3b696c650ee90472657afc33872_icgraph">
 <area shape="rect" title=" " alt="" coords="293,5,527,33"/>
-<area shape="rect" href="classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a" title=" " alt="" coords="108,5,245,33"/>
+<area shape="rect" href="classLibFile.html#aa9eadd490d636e0239021413cf8665bf" title=" " alt="" coords="108,5,245,33"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,33"/>
 </map>
 </div>
@@ -290,15 +290,15 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classLibDatabase_a1ba443f5483f970be7231fe3d4a28169_icgraph.png" border="0" usemap="#aclassLibDatabase_a1ba443f5483f970be7231fe3d4a28169_icgraph" alt=""/></div>
 <map name="aclassLibDatabase_a1ba443f5483f970be7231fe3d4a28169_icgraph" id="aclassLibDatabase_a1ba443f5483f970be7231fe3d4a28169_icgraph">
 <area shape="rect" title="Create the lut_entries table if it does not already exist." alt="" coords="293,5,459,33"/>
-<area shape="rect" href="classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a" title=" " alt="" coords="108,5,245,33"/>
+<area shape="rect" href="classLibFile.html#aa9eadd490d636e0239021413cf8665bf" title=" " alt="" coords="108,5,245,33"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,33"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a0f1f44ec762f77c79409593f13997fff" name="a0f1f44ec762f77c79409593f13997fff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f1f44ec762f77c79409593f13997fff">&#9670;&#160;</a></span>writeLutEntry()</h2>
+<a id="ae808a0308d9bab6f5184fff7d5b209d8" name="ae808a0308d9bab6f5184fff7d5b209d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae808a0308d9bab6f5184fff7d5b209d8">&#9670;&#160;</a></span>writeLutEntry()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -325,7 +325,7 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>aged_year</em>, </td>
+          <td class="paramname"><em>age_seconds</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -426,13 +426,13 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Insert one LUT record into lut_entries. </p>
-<p >Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (pvt_corner, aged_year, cell_name, output_pin, related_pin, "when", arc_type) are no-ops. <code>file_path</code> is deliberately excluded from the UNIQUE constraint because the same .lib data may exist under multiple paths (symlinks, directory mirrors); it is stored as a provenance column but does not participate in semantic deduplication.</p>
+<p >Uses INSERT OR IGNORE so repeated calls with the same UNIQUE key (pvt_corner, age_seconds, cell_name, output_pin, related_pin, "when", arc_type) are no-ops. <code>file_path</code> is deliberately excluded from the UNIQUE constraint because the same .lib data may exist under multiple paths (symlinks, directory mirrors); it is stored as a provenance column but does not participate in semantic deduplication.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">file_path</td><td>Source .lib file path (for provenance only — not in UNIQUE). </td></tr>
     <tr><td class="paramname">library_name</td><td>Library name (basename of .lib file). </td></tr>
     <tr><td class="paramname">pvt_corner</td><td>PVT corner string (e.g. "SS_1p08V_125C"). </td></tr>
-    <tr><td class="paramname">aged_year</td><td>Aging year (e.g. 0.01 for fresh, 10000 for aged). </td></tr>
+    <tr><td class="paramname">age_seconds</td><td>Aging time in seconds (e.g. 36.0 for 0.01h fresh, 315360000.0 for 10y). </td></tr>
     <tr><td class="paramname">cell_name</td><td>Cell name extracted from .lib. </td></tr>
     <tr><td class="paramname">output_pin</td><td>Output pin name (e.g. "Y"). </td></tr>
     <tr><td class="paramname">related_pin</td><td>Input related pin name (e.g. "A"). </td></tr>
@@ -456,8 +456,8 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classLibDatabase_a0f1f44ec762f77c79409593f13997fff_cgraph.png" border="0" usemap="#aclassLibDatabase_a0f1f44ec762f77c79409593f13997fff_cgraph" alt=""/></div>
-<map name="aclassLibDatabase_a0f1f44ec762f77c79409593f13997fff_cgraph" id="aclassLibDatabase_a0f1f44ec762f77c79409593f13997fff_cgraph">
+<div class="center"><img src="classLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8_cgraph.png" border="0" usemap="#aclassLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8_cgraph" alt=""/></div>
+<map name="aclassLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8_cgraph" id="aclassLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8_cgraph">
 <area shape="rect" title="Insert one LUT record into lut_entries." alt="" coords="5,5,203,33"/>
 <area shape="rect" href="LibDatabase_8cpp.html#aa1c231f3f6ea92a58aa1858fbea4de24" title=" " alt="" coords="251,5,347,33"/>
 </map>
@@ -465,10 +465,10 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classLibDatabase_a0f1f44ec762f77c79409593f13997fff_icgraph.png" border="0" usemap="#aclassLibDatabase_a0f1f44ec762f77c79409593f13997fff_icgraph" alt=""/></div>
-<map name="aclassLibDatabase_a0f1f44ec762f77c79409593f13997fff_icgraph" id="aclassLibDatabase_a0f1f44ec762f77c79409593f13997fff_icgraph">
+<div class="center"><img src="classLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8_icgraph.png" border="0" usemap="#aclassLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8_icgraph" alt=""/></div>
+<map name="aclassLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8_icgraph" id="aclassLibDatabase_ae808a0308d9bab6f5184fff7d5b209d8_icgraph">
 <area shape="rect" title="Insert one LUT record into lut_entries." alt="" coords="293,5,490,33"/>
-<area shape="rect" href="classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a" title=" " alt="" coords="108,5,245,33"/>
+<area shape="rect" href="classLibFile.html#aa9eadd490d636e0239021413cf8665bf" title=" " alt="" coords="108,5,245,33"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,33"/>
 </map>
 </div>
@@ -582,7 +582,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classLibDatabase.html">LibDatabase</a></li>
-    <li class="footer">Generated on Thu Jul 2 2026 21:02:18 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Jul 6 2026 17:32:32 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

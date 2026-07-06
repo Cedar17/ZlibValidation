@@ -124,8 +124,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ace2977ea0c9cd5fa0ada4c3277500188"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188">supercell</a> (const int chain_length, const std::vector&lt; std::string &gt; &amp;cell_names)</td></tr>
 <tr class="memdesc:ace2977ea0c9cd5fa0ada4c3277500188"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates supercells based on standard cells in the library file.  <a href="classLibFile.html#ace2977ea0c9cd5fa0ada4c3277500188">More...</a><br /></td></tr>
 <tr class="separator:ace2977ea0c9cd5fa0ada4c3277500188"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac42966ae3c352b33ac89aa135e130a9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLibFile.html#ac42966ae3c352b33ac89aa135e130a9a">writeToDB</a> (const std::string &amp;db_path, const std::string &amp;pvt_corner, double aged_year)</td></tr>
-<tr class="separator:ac42966ae3c352b33ac89aa135e130a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9eadd490d636e0239021413cf8665bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLibFile.html#aa9eadd490d636e0239021413cf8665bf">writeToDB</a> (const std::string &amp;db_path, const std::string &amp;pvt_corner, double age_seconds)</td></tr>
+<tr class="separator:aa9eadd490d636e0239021413cf8665bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92ef7304afa302f98a69bd371b7955dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd">verilog</a> (const int chain_length, const std::vector&lt; std::string &gt; &amp;cell_names)</td></tr>
 <tr class="memdesc:a92ef7304afa302f98a69bd371b7955dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates Verilog files for cell validation based on the library file.  <a href="classLibFile.html#a92ef7304afa302f98a69bd371b7955dd">More...</a><br /></td></tr>
 <tr class="separator:a92ef7304afa302f98a69bd371b7955dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1274,8 +1274,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ac42966ae3c352b33ac89aa135e130a9a" name="ac42966ae3c352b33ac89aa135e130a9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac42966ae3c352b33ac89aa135e130a9a">&#9670;&#160;</a></span>writeToDB()</h2>
+<a id="aa9eadd490d636e0239021413cf8665bf" name="aa9eadd490d636e0239021413cf8665bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9eadd490d636e0239021413cf8665bf">&#9670;&#160;</a></span>writeToDB()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1296,7 +1296,7 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>aged_year</em>&#160;</td>
+          <td class="paramname"><em>age_seconds</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1310,21 +1310,21 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classLibFile_ac42966ae3c352b33ac89aa135e130a9a_cgraph.png" border="0" usemap="#aclassLibFile_ac42966ae3c352b33ac89aa135e130a9a_cgraph" alt=""/></div>
-<map name="aclassLibFile_ac42966ae3c352b33ac89aa135e130a9a_cgraph" id="aclassLibFile_ac42966ae3c352b33ac89aa135e130a9a_cgraph">
+<div class="center"><img src="classLibFile_aa9eadd490d636e0239021413cf8665bf_cgraph.png" border="0" usemap="#aclassLibFile_aa9eadd490d636e0239021413cf8665bf_cgraph" alt=""/></div>
+<map name="aclassLibFile_aa9eadd490d636e0239021413cf8665bf_cgraph" id="aclassLibFile_aa9eadd490d636e0239021413cf8665bf_cgraph">
 <area shape="rect" title=" " alt="" coords="5,84,143,112"/>
 <area shape="rect" href="classLibDatabase.html#a32d30ce7690c60558f3035231390379d" title=" " alt="" coords="198,5,418,33"/>
 <area shape="rect" href="classLibDatabase.html#aa682f3b696c650ee90472657afc33872" title=" " alt="" coords="191,57,425,85"/>
 <area shape="rect" href="classLibDatabase.html#a1ba443f5483f970be7231fe3d4a28169" title="Create the lut_entries table if it does not already exist." alt="" coords="225,109,391,137"/>
-<area shape="rect" href="classLibDatabase.html#a0f1f44ec762f77c79409593f13997fff" title="Insert one LUT record into lut_entries." alt="" coords="209,161,406,189"/>
+<area shape="rect" href="classLibDatabase.html#ae808a0308d9bab6f5184fff7d5b209d8" title="Insert one LUT record into lut_entries." alt="" coords="209,161,406,189"/>
 <area shape="rect" href="LibDatabase_8cpp.html#aa1c231f3f6ea92a58aa1858fbea4de24" title=" " alt="" coords="473,161,569,189"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classLibFile_ac42966ae3c352b33ac89aa135e130a9a_icgraph.png" border="0" usemap="#aclassLibFile_ac42966ae3c352b33ac89aa135e130a9a_icgraph" alt=""/></div>
-<map name="aclassLibFile_ac42966ae3c352b33ac89aa135e130a9a_icgraph" id="aclassLibFile_ac42966ae3c352b33ac89aa135e130a9a_icgraph">
+<div class="center"><img src="classLibFile_aa9eadd490d636e0239021413cf8665bf_icgraph.png" border="0" usemap="#aclassLibFile_aa9eadd490d636e0239021413cf8665bf_icgraph" alt=""/></div>
+<map name="aclassLibFile_aa9eadd490d636e0239021413cf8665bf_icgraph" id="aclassLibFile_aa9eadd490d636e0239021413cf8665bf_icgraph">
 <area shape="rect" title=" " alt="" coords="108,5,245,33"/>
 <area shape="rect" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,33"/>
 </map>
@@ -1567,7 +1567,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classLibFile.html">LibFile</a></li>
-    <li class="footer">Generated on Thu Jul 2 2026 21:02:18 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Mon Jul 6 2026 17:32:32 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

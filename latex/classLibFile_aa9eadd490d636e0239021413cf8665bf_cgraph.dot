@@ -13,7 +13,7 @@ digraph "LibFile::writeToDB"
   Node1 -> Node4 [color="steelblue1",style="solid"];
   Node4 [label="LibDatabase::initialize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibDatabase.html#a1ba443f5483f970be7231fe3d4a28169",tooltip="Create the lut_entries table if it does not already exist."];
   Node1 -> Node5 [color="steelblue1",style="solid"];
-  Node5 [label="LibDatabase::writeLutEntry",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibDatabase.html#a0f1f44ec762f77c79409593f13997fff",tooltip="Insert one LUT record into lut_entries."];
+  Node5 [label="LibDatabase::writeLutEntry",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLibDatabase.html#ae808a0308d9bab6f5184fff7d5b209d8",tooltip="Insert one LUT record into lut_entries."];
   Node5 -> Node6 [color="steelblue1",style="solid"];
   Node6 [label="toFloatBlob",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$LibDatabase_8cpp.html#aa1c231f3f6ea92a58aa1858fbea4de24",tooltip=" "];
 }
