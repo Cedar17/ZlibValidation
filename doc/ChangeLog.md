@@ -504,3 +504,8 @@
   - **内部语义**：所有变量名/参数名/注释 `aged_year` → `age_seconds`（涉及 `LibFile.hpp`、`LibFile.cpp`、`LibDatabase.hpp`、`LibDatabase.cpp`、`main.cpp`、`test_libdb.cpp`、`test_libfile_db.cpp` 共 8 个文件）。
   - **清理**：归档 `doc/sqlite_dedup_analysis.md`（v1.2.1 bug 排查文档，核心知识点已浓缩至 agent 记忆）。
   - **向后兼容**：CLI 不向后兼容（唯一调用方 aging-ml 已确认同步改）；旧 aging_v0.db 归档后不再读；裸秒值兼容（`--age-time 36` 等价于 `--age-time 0.01h`）。
+
+### 2026-07-17
+
+- 更新 `README.md` 中的源码克隆命令，使用 `--single-branch --branch master` 仅获取主分支，避免下载体积较大的文档分支，同时保留 `master` 的完整提交历史。
+

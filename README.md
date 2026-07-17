@@ -62,7 +62,7 @@ Follow these steps to compile `ZlibValidation` in your user directory:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Cedar17/ZlibValidation.git
+   git clone --single-branch --branch master https://github.com/Cedar17/ZlibValidation.git
    cd ZlibValidation
    ```
 
