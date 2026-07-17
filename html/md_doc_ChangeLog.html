@@ -706,9 +706,14 @@ $(document).ready(function(){initNavTree('md_doc_ChangeLog.html',''); initResiza
 <li>**DB schema**：<code>lut_entries.aged_year</code> → <code>lut_entries.age_seconds</code>（DDL + UNIQUE + INSERT + bind 全链路同步）。</li>
 <li>**内部语义**：所有变量名/参数名/注释 <code>aged_year</code> → <code>age_seconds</code>（涉及 <code><a class="el" href="LibFile_8hpp.html">LibFile.hpp</a></code>、<code><a class="el" href="LibFile_8cpp.html">LibFile.cpp</a></code>、<code><a class="el" href="LibDatabase_8hpp.html">LibDatabase.hpp</a></code>、<code><a class="el" href="LibDatabase_8cpp.html">LibDatabase.cpp</a></code>、<code><a class="el" href="main_8cpp.html" title="This file contains the main function for the ZlibValidation tool.">main.cpp</a></code>、<code>test_libdb.cpp</code>、<code>test_libfile_db.cpp</code> 共 8 个文件）。</li>
 <li>**清理**：归档 <code>doc/sqlite_dedup_analysis.md</code>（v1.2.1 bug 排查文档，核心知识点已浓缩至 agent 记忆）。</li>
-<li>**向后兼容**：CLI 不向后兼容（唯一调用方 aging-ml 已确认同步改）；旧 aging_v0.db 归档后不再读；裸秒值兼容（<code>--age-time 36</code> 等价于 <code>--age-time 0.01h</code>）。 </li>
+<li>**向后兼容**：CLI 不向后兼容（唯一调用方 aging-ml 已确认同步改）；旧 aging_v0.db 归档后不再读；裸秒值兼容（<code>--age-time 36</code> 等价于 <code>--age-time 0.01h</code>）。</li>
 </ul>
 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md69"></a>
+2026-07-17</h2>
+<ul>
+<li>更新 <code><a class="el" href="README_8md.html">README.md</a></code> 中的源码克隆命令，使用 <code>--single-branch --branch master</code> 仅获取主分支，避免下载体积较大的文档分支，同时保留 <code>master</code> 的完整提交历史。 </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -716,7 +721,7 @@ $(document).ready(function(){initNavTree('md_doc_ChangeLog.html',''); initResiza
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jul 6 2026 17:48:02 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Fri Jul 17 2026 17:18:28 for ZlibValidation by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

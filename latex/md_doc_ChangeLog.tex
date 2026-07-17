@@ -567,6 +567,10 @@ Logically Equivalent   &Yes   \\\cline{1-2}
 \item $\ast$$\ast$\+DB schema$\ast$$\ast$：{\ttfamily lut\+\_\+entries.\+aged\+\_\+year} → {\ttfamily lut\+\_\+entries.\+age\+\_\+seconds}（\+DDL + UNIQUE + INSERT + bind 全链路同步）。
 \item $\ast$$\ast$内部语义$\ast$$\ast$：所有变量名/参数名/注释 {\ttfamily aged\+\_\+year} → {\ttfamily age\+\_\+seconds}（涉及 {\ttfamily \mbox{\hyperlink{LibFile_8hpp}{Lib\+File.\+hpp}}}、{\ttfamily \mbox{\hyperlink{LibFile_8cpp}{Lib\+File.\+cpp}}}、{\ttfamily \mbox{\hyperlink{LibDatabase_8hpp}{Lib\+Database.\+hpp}}}、{\ttfamily \mbox{\hyperlink{LibDatabase_8cpp}{Lib\+Database.\+cpp}}}、{\ttfamily \mbox{\hyperlink{main_8cpp}{main.\+cpp}}}、{\ttfamily test\+\_\+libdb.\+cpp}、{\ttfamily test\+\_\+libfile\+\_\+db.\+cpp} 共 8 个文件）。
 \item $\ast$$\ast$清理$\ast$$\ast$：归档 {\ttfamily doc/sqlite\+\_\+dedup\+\_\+analysis.\+md}（v1.2.\+1 bug 排查文档，核心知识点已浓缩至 agent 记忆）。
-\item $\ast$$\ast$向后兼容$\ast$$\ast$：\+CLI 不向后兼容（唯一调用方 aging-\/ml 已确认同步改）；旧 aging\+\_\+v0.\+db 归档后不再读；裸秒值兼容（{\ttfamily -\/-\/age-\/time 36} 等价于 {\ttfamily -\/-\/age-\/time 0.\+01h}）。 
+\item $\ast$$\ast$向后兼容$\ast$$\ast$：\+CLI 不向后兼容（唯一调用方 aging-\/ml 已确认同步改）；旧 aging\+\_\+v0.\+db 归档后不再读；裸秒值兼容（{\ttfamily -\/-\/age-\/time 36} 等价于 {\ttfamily -\/-\/age-\/time 0.\+01h}）。
 \end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_doc_ChangeLog_autotoc_md69}{}\doxysubsection{2026-\/07-\/17}\label{md_doc_ChangeLog_autotoc_md69}
+
+\begin{DoxyItemize}
+\item 更新 {\ttfamily \mbox{\hyperlink{README_8md}{README.\+md}}} 中的源码克隆命令，使用 {\ttfamily -\/-\/single-\/branch -\/-\/branch master} 仅获取主分支，避免下载体积较大的文档分支，同时保留 {\ttfamily master} 的完整提交历史。 
 \end{DoxyItemize}

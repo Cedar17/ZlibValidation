@@ -103,7 +103,8 @@ var NAVTREE =
       ] ],
       [ "2026-07", "md_doc_ChangeLog.html#autotoc_md66", [
         [ "2026-07-02", "md_doc_ChangeLog.html#autotoc_md67", null ],
-        [ "2026-07-06", "md_doc_ChangeLog.html#autotoc_md68", null ]
+        [ "2026-07-06", "md_doc_ChangeLog.html#autotoc_md68", null ],
+        [ "2026-07-17", "md_doc_ChangeLog.html#autotoc_md69", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
